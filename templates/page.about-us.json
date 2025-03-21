@@ -111,7 +111,7 @@
         "template--16836918247663__bcdfdd92-1560-4fa2-832d-8531cf03526d-1680140482d774527d-0": {
           "type": "heading",
           "settings": {
-            "heading": "<p><strong>We’re All About The Sofa Experience…</strong></p>",
+            "heading": "<p><strong>More than Just Sofas - A Better Way to Live</strong></p>",
             "heading_size": "h2",
             "padding_top": 0,
             "padding_bottom": 8
@@ -120,7 +120,7 @@
         "template--16836918247663__bcdfdd92-1560-4fa2-832d-8531cf03526d-1680140482d774527d-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We believe that one's true appreciation for a good piece of furniture is found in the moments of comfort, joy, and contentment that are experienced at home and in the company of loved ones.<br/><br/></p><p>We aim to elevate this experience for our customers through our high-quality pieces and to be a part of creating unforgettable memories, undeniable connections, and a true sense of home pride.</p>",
+            "text": "<p>At Honeypot Furniture, we know a great sofa isn’t just about looks—it’s about the moments you create around it. Whether it’s family time, lazy Sundays, or hosting friends, our furniture is designed for real living, combining style, comfort, and durability.</p>",
             "padding_top": 10,
             "padding_bottom": 20
           }
@@ -166,7 +166,7 @@
         "template--16836918247663__a1a91792-a4e4-4254-bd04-603f6955212c-16801414794d24ed86-0": {
           "type": "heading",
           "settings": {
-            "heading": "<p><strong>We Keep it All At Home…</strong></p>",
+            "heading": "<p><strong>Quality Without </strong>Compromise</p>",
             "heading_size": "h2",
             "padding_top": 0,
             "padding_bottom": 8
@@ -175,7 +175,7 @@
         "template--16836918247663__a1a91792-a4e4-4254-bd04-603f6955212c-16801414794d24ed86-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We take pride in how far we've grown and evolved from our humble beginnings while keeping all of our activities a hundred percent home-grown.</p><p><br/></p><p>Determined to maintain our exceptional level of quality while keeping costs down, we've ensured that every aspect of the Honeypot experience remains in-house, including our own land, warehouses, and fulfilment services. Every detail is run by the Honeypot family through a very hands-on approach that has helped us keep our brand as true to its roots as possible.</p>",
+            "text": "<p>We’ve partnered closely with leading manufacturers to bring you exceptional craftsmanship, the finest fabrics, and a bespoke sofa service. No matter the size, style, or colour, we can create the perfect piece to suit your space. Our new collections blend timeless design with luxury, tailored for the region.</p>",
             "padding_top": 10,
             "padding_bottom": 20
           }
@@ -221,7 +221,7 @@
         "heading_jLiWzw": {
           "type": "heading",
           "settings": {
-            "heading": "<p><strong>We’re All For You…</strong></p>",
+            "heading": "<p><strong>A Design For Every Home</strong></p>",
             "heading_size": "h2",
             "padding_top": 10,
             "padding_bottom": 10
@@ -230,7 +230,7 @@
         "text_6tPXCa": {
           "type": "text",
           "settings": {
-            "text": "<p>We truly feel that everyone deserves to experience the luxury of being in love with the spaces they build and the interiors they create, hence why we want to help provide that for as many home-owners as possible.</p><p><br/></p><p>By bringing you a variety of pieces with different styles, functions and price-points, there is truly something for everyone. Additionally, our finance options make it a breeze to indulge in the \"Honeypot Experience\" on your own terms.</p>",
+            "text": "<p>Your home should reflect your style. That’s why we offer a range of designs, from modern minimalism to classic elegance. Because furniture isn’t just about filling a space—it’s about creating a home.</p>",
             "padding_top": 10,
             "padding_bottom": 10
           }
@@ -761,6 +761,9 @@
       ],
       "disabled": true,
       "settings": {
+        "layout": "default",
+        "use_hr": false,
+        "font": "normal",
         "content_inside_image": false,
         "heading": "Meet The Team",
         "link_label": "Link label",
@@ -858,6 +861,9 @@
       ],
       "disabled": true,
       "settings": {
+        "layout": "default",
+        "use_hr": false,
+        "font": "normal",
         "content_inside_image": false,
         "heading": "",
         "link_label": "",
@@ -955,6 +961,9 @@
       ],
       "disabled": true,
       "settings": {
+        "layout": "default",
+        "use_hr": false,
+        "font": "normal",
         "content_inside_image": false,
         "heading": "",
         "link_label": "",
@@ -1053,6 +1062,9 @@
       ],
       "disabled": true,
       "settings": {
+        "layout": "default",
+        "use_hr": false,
+        "font": "normal",
         "content_inside_image": false,
         "heading": "",
         "link_label": "",
