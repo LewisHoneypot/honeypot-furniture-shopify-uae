@@ -158,7 +158,7 @@
         "s_contact_form_builder_block_app_VyMX7V": {
           "type": "shopify://apps/s-contact-form-builder/blocks/block-app/cceef8dd-a4f1-4344-962d-06bf0022ec0d",
           "settings": {
-            "ify_contactform_short_code": "<button class=\"storeify-formbuilder-button\" style=\"margin-top:10px; width:100%; text-transform:uppercase; border:solid 1px #3c3c3b; font-size:15px; font-weight:900; color:#3c3c3b; min-height:80px; background:#fff; cursor:pointer;\" data-target=\"#storeify-light-modal-18882\">Customise your Dream Sofa</button>"
+            "ify_contactform_short_code": "<div class=\"storeify-formbuilder-view\" id=\"storeify-formbuilder-view-19265\"></div>"
           }
         }
       },
