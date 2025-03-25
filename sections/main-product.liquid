@@ -1198,7 +1198,17 @@
                         <span class="pr-1 mr-1">{{ block.settings.heading | escape }}</span>
 
                         {% comment %} Change display based on date type {% endcomment %}
-                        {%- if block.settings.date_type == 'accurate' -%}
+                        {%- if block.settings.date_type == 'UAE' -%}
+                          {%- if in_stock == true -%}
+                            <strong class="pr-1 mr-1"> 1 - 7 days</strong>
+                          {%- else -%}
+                            {%- if product.vendor == "UAE" -%}
+                              <strong class="pr-1 mr-1"> 2 - 4 weeks</strong>
+                            {%- else -%}
+                              <strong class="pr-1 mr-1"> 6 - 10 weeks</strong>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- elsif block.settings.date_type == 'accurate' -%}
                           <strong class="pr-1 mr-1">{{ formatted_date_1 }}</strong>
                           <span class="pr-1 mr-1">to</span>
                           <strong class="pr-1 mr-1">{{ formatted_date_2 }}</strong>
@@ -4739,6 +4749,10 @@
           "label": "t:sections.main-collection-product-grid.settings.delivery_eta.date_type.name",
           "options": [
             {
+              "value": "UAE",
+              "label": "UAE"
+            },
+            {
               "value": "accurate",
               "label": "t:sections.main-collection-product-grid.settings.delivery_eta.date_type.accurate"
             },
@@ -4747,7 +4761,7 @@
               "label": "t:sections.main-collection-product-grid.settings.delivery_eta.date_type.vague"
             }
           ],
-          "default": "accurate"
+          "default": "UAE"
         },
         {
           "type": "range",
