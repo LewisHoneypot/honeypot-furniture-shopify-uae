@@ -413,7 +413,7 @@
         "text_LrBhR9": {
           "type": "text",
           "settings": {
-            "text": "<p>Having conceptualised, procured and redistrubted popular sofas and sofa beds to other well-known retailers in the UK, we are well placed to understand what matters. We have built strong relationships with manfacturers across Europe to bring high-quality, fairly-priced furniture to the UK market</p>",
+            "text": "<p>With a proven track record of designing, sourcing, and supplying sought-after sofas and sofa beds to the UK market, we know what truly matters when it comes to quality, comfort, and style. Our strong relationships with top European manufacturers enable us to bring high-quality, fairly priced furniture to the UAE—helping you create a home that reflects both luxury and everyday practicality.</p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -459,16 +459,7 @@
           "settings": {
             "heading": "Our Products",
             "icon": "price_tag",
-            "row_content": "<p>Having worked closely with well-known UK retailers to design, source, and supply popular sofas and sofa beds, we truly understand what British homes love. Our close relationships with European manufacturers allow us to bring you high-quality, fairly-priced furniture. As a trusted distributor and retailer, we’re passionate about using our insights to keep our collections fresh and exciting, regularly updating our styles, fabrics, colours, and materials to fit your home perfectly. Thanks to our extensive network of European furniture manufacturers, if you’re looking for something specific and don’t see it on our site, just let us know! We’ll likely be able to source it for you.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_cUf7f7": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Our Service",
-            "icon": "star",
-            "row_content": "<p>At Honeypot Furniture, we take pride in delivering not just high-quality furniture but also an exceptional customer experience. From our 140,000 sq ft warehouse and headquarters, we offer fast and reliable delivery to your home, ensuring every detail is managed with care and precision. Here’s what you can expect from our service:</p><ul><li><strong>Fast Delivery</strong>: We dispatch from our extensive 140,000 sq ft warehouse, ensuring your furniture reaches you quickly.</li><li><strong>Two-Person Delivery Team</strong>: Our experienced, professional team deliver your furniture with care and precision. Most of our delivery team have been delivering heavy and bulky items for years - you're in safe hands!</li><li><strong>Assembly Service</strong>: Sofas are assembled exactly where you want them, making your experience hassle-free.</li><li><strong>Live Tracking Link</strong>: Receive a live tracking link on the day of delivery, with regular ETA updates to keep you informed.</li><li><strong>Doesn't Fit?</strong>: If your sofa doesn’t fit through your door, we'll return it to our HQ at no charge. Our team will recommend alternative products that will fit, and there are no additional delivery costs for an alternative sofa on a different date.</li></ul>",
+            "row_content": "<p>With years of experience designing, sourcing, and supplying sought-after furniture for UK homes, we understand what makes a space truly special. Our deep-rooted partnerships with top European manufacturers allow us to bring premium-quality, stylish, and fairly priced furniture to the UAE—helping you craft a home that’s both inviting and uniquely yours.</p><p></p><p>At Honeypot Furniture, we believe your home is more than just a space—it’s where life happens. That’s why we stay ahead of the latest design trends, offering a carefully curated selection of sofas, sofa beds, and home essentials that blend comfort, style, and practicality. If you’re looking for something specific and don’t see it on our site, just ask—we’ll do our best to source it for you.</p><p></p><p>Your home, your style, our expertise.</p>",
             "page": ""
           }
         },
@@ -495,7 +486,6 @@
       },
       "block_order": [
         "collapsible_row_rHyJtr",
-        "collapsible_row_cUf7f7",
         "collapsible_row_XgUb4V",
         "collapsible_row_GrjMg9"
       ],
@@ -526,7 +516,7 @@
           "type": "marquee",
           "settings": {
             "type_marquee": "text",
-            "text": "<p>1-7 Day Delivery</p>",
+            "text": "<p>Free Delivery</p>",
             "set_transparent_text": false,
             "enable_color_underline": false,
             "colors_underline": "#000000",
@@ -550,6 +540,7 @@
         },
         "marquee_qifkPq": {
           "type": "marquee",
+          "disabled": true,
           "settings": {
             "type_marquee": "text",
             "text": "<p>Flexible Payment and Finance Options</p>",
