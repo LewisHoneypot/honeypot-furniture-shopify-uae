@@ -739,6 +739,24 @@
                   </ul>
                 </nav>
                 <div class="menu-drawer__utility-links d-grid r-gap" style="--r-gap: 1rem;">
+
+                  {%- if section.settings.use_country_selector -%}
+                    <div class="country-selector caption-large">
+
+                      {%- if localization.country.iso_code == "AE" -%}
+                        <a href="{{ section.settings.country_selector_url_1 }}">
+                          <span>Switch to {{ section.settings.country_selector_text_1 }}</span>
+                          <img src="{{ section.settings.country_selector_image_1 | image_url }}">
+                        </a>
+                      {%- else -%}
+                        <a href="{{ section.settings.country_selector_url_2 }}">
+                          <span>Switch to {{ section.settings.country_selector_text_2 }}</span>
+                          <img src="{{ section.settings.country_selector_image_2 | image_url }}">
+                        </a>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+
                   {%- if section.settings.use_custom_button and section.settings.use_button_label != blank -%}
                     <div class="header__custom-button d-none-md">
                         <a {% if section.settings.use_button_link == blank %}role="link"aria-disabled="true"{% else %}href="{{ section.settings.use_button_link }}"{% endif %} 
@@ -761,23 +779,6 @@
                   -%}
                   {%- if check_selector -%}
                     <div class="menu-drawer__localization header-localization">
-
-                      {%- if section.settings.use_country_selector -%}
-                        <div class="country-selector caption-large">
-
-                          {%- if localization.country.iso_code == "AE" -%}
-                            <a href="{{ section.settings.country_selector_url_1 }}">
-                              <span>Switch to {{ section.settings.country_selector_text_1 }}</span>
-                              <img src="{{ section.settings.country_selector_image_1 | image_url }}">
-                            </a>
-                          {%- else -%}
-                            <a href="{{ section.settings.country_selector_url_2 }}">
-                              <span>Switch to {{ section.settings.country_selector_text_2 }}</span>
-                              <img src="{{ section.settings.country_selector_image_2 | image_url }}">
-                            </a>
-                          {%- endif -%}
-                        </div>
-                      {%- endif -%}
                       {%- if section.settings.enable_country_selector_mobile and localization.available_countries.size > 1 -%}
                         <noscript>
                           {%- form 'localization', 
