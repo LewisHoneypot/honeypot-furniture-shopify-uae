@@ -1197,6 +1197,10 @@
 
                         <span class="pr-1 mr-1">{{ block.settings.heading | escape }}</span>
 
+                        <script>
+                          console.log({{product | json}});
+                        </script>
+
                         {% comment %} Change display based on date type {% endcomment %}
                         {%- if block.settings.date_type == 'UAE' -%}
                           {%- if in_stock == true -%}
