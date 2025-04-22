@@ -1,3 +1,26 @@
+{%- if section.settings.image_tech == "cylindo" -%}
+  <link rel="preconnect" href="https://content.cylindo.com" crossorigin>
+  <script
+    type="module"
+    src="https://viewer-cdn.cylindo.com/v1/index.mjs"
+    async
+  ></script>
+  <script
+    type="module"
+    src="https://viewer-cdn.cylindo.com/v1/shopify.mjs"
+    async
+  ></script>
+
+  {%- if section.settings.cylindo_thumbnail_bar == "on" -%}
+    <script
+      type="module"
+      src="https://viewer-cdn.cylindo.com/v1/bar.mjs"
+      async
+    ></script>
+  {%- endif -%}
+  
+{%- endif -%}
+
 <section
   id="MainProduct-{{ section.id }}"
   data-section="{{ section.id }}"
@@ -179,18 +202,34 @@
             </div>
           {%- endif -%}
 
-          {% render 'product-media-gallery',
-            product: product,
-            gallery_layout: section.settings.gallery_layout,
-            media_size: section.settings.media_size,
-            enable_video_looping: section.settings.enable_video_looping,
-            type_style: section.settings.type_style,
-            show_product_badges: section.settings.show_product_badges,
-            carousel_direction: section.settings.carousel_direction,
-            carousel_gap_tablet: section.settings.carousel_gap_tablet,
-            carousel_gap_desktop: section.settings.carousel_gap_desktop,
-            ratio_square: section.settings.image_ratio
-          %}
+          {%- if section.settings.image_tech == "cylindo" -%}
+            {% render 'product-media-gallery-cylindo',
+              product: product,
+              gallery_layout: section.settings.gallery_layout,
+              media_size: section.settings.media_size,
+              enable_video_looping: section.settings.enable_video_looping,
+              type_style: section.settings.type_style,
+              show_product_badges: section.settings.show_product_badges,
+              carousel_direction: section.settings.carousel_direction,
+              carousel_gap_tablet: section.settings.carousel_gap_tablet,
+              carousel_gap_desktop: section.settings.carousel_gap_desktop,
+              ratio_square: section.settings.image_ratio
+            %}
+          {%- else -%}
+            {% render 'product-media-gallery',
+              product: product,
+              gallery_layout: section.settings.gallery_layout,
+              media_size: section.settings.media_size,
+              enable_video_looping: section.settings.enable_video_looping,
+              type_style: section.settings.type_style,
+              show_product_badges: section.settings.show_product_badges,
+              carousel_direction: section.settings.carousel_direction,
+              carousel_gap_tablet: section.settings.carousel_gap_tablet,
+              carousel_gap_desktop: section.settings.carousel_gap_desktop,
+              ratio_square: section.settings.image_ratio
+            %}
+          {%- endif -%}
+          
           {%- if section.settings.show_product_badges and section.settings.type_style != 'special' -%}
             {%- liquid
               if settings.badge_position == 'top left'
@@ -6423,6 +6462,38 @@
       "type": "header",
       "content": "t:sections.main-product.settings.header__1.content",
       "info": "t:sections.main-product.settings.header__1.info"
+    },
+    {
+      "type": "select",
+      "id": "image_tech",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "cylindo",
+          "label": "Cylindo"
+        }
+      ],
+      "default": "default",
+      "label": "Image Tech"
+    },
+    {
+      "type": "select",
+      "id": "cylindo_thumbnail_bar",
+      "options": [
+        {
+          "value": "off",
+          "label": "Off"
+        },
+        {
+          "value": "on",
+          "label": "On"
+        }
+      ],
+      "default": "off",
+      "label": "Cylindo Thumbnail Bar"
     },
     {
       "type": "select",
