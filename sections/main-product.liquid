@@ -1242,9 +1242,9 @@
 
                         <span class="pr-1 mr-1">{{ block.settings.heading | escape }}</span>
 
-                        <script>
+                        {% comment %} <script>
                           console.log({{product | json}});
-                        </script>
+                        </script> {% endcomment %}
 
                         {% comment %} Change display based on date type {% endcomment %}
                         {%- if block.settings.date_type == 'UAE' -%}
