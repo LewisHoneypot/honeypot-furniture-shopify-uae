@@ -1,9 +1,9 @@
 <script>
-  console.log({{ product.metafields.custom | json }});
-  console.log({{ product.metafields.custom.cylindo_parent | json | upcase }});
-  console.log({{ product.metafields.custom.primary_colour | json | upcase }});
+  // console.log({{ product.metafields.custom | json }});
+  // console.log({{ product.metafields.custom.cylindo_parent | json | upcase }});
+  // console.log({{ product.metafields.Details.Colour | json | upcase }});
 
-  let primary_colour = {{ product.metafields.custom.primary_colour | json | upcase }};
+  let colour = {{ product.metafields.Details.Colour | json | upcase }};
 </script>
 
 <!-- Upholstery Selectors -->
@@ -19,9 +19,16 @@
 
 <!-- Cylindo Viewer -->
 <cylindo-viewer 
+  slot="placeholder"
   customer-id="6981" 
   code="{{ product.metafields.custom.cylindo_parent | upcase }}"
-  features-by-variant-id='"UPHOLSTERY": "BLUE"'>
+>
+  <cylindo-360></cylindo-360>
+  <cylindo-360-frame frame="4"></cylindo-360-frame>
+  <cylindo-360-frame frame="9"></cylindo-360-frame>
+  <cylindo-360-frame frame="13"></cylindo-360-frame>
+  <cylindo-360-frame frame="17"></cylindo-360-frame>
+  <cylindo-thumbnail-bar></cylindo-thumbnail-bar>
 </cylindo-viewer>
 
 <script>
@@ -46,7 +53,7 @@
     setTimeout(tryFixViewerLayout, 1000);
 
     viewer.features = {
-      UPHOLSTERY: primary_colour
+      UPHOLSTERY: colour
     };
 
     // Event listener for manual or simulated dropdown changes
@@ -55,21 +62,18 @@
       viewer.features = {
         UPHOLSTERY: value
       };
-      console.log(`🎨 Feature updated: UPHOLSTERY = ${value}`);
+      // console.log(`🎨 Feature updated: UPHOLSTERY = ${value}`);
     });
 
     viewer.addEventListener("viewer-ready", () => {
-      console.log("🟢 Viewer is ready.");
+      // console.log("🟢 Viewer is ready.");
 
       // Delay before applying initial feature to ensure internal state is ready
       setTimeout(() => {
-        upholsterySelect.value = "GREEN";
-
         // Trigger change manually (simulate user interaction)
         upholsterySelect.dispatchEvent(new Event("input", { bubbles: true }));
         upholsterySelect.dispatchEvent(new Event("change", { bubbles: true }));
 
-        console.log("✅ Default upholstery (GREEN) applied via simulated change.");
       }, 1000); // <-- Delay increased to ensure viewer is 100% ready
     });
   });
