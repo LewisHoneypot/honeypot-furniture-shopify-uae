@@ -1,0 +1,76 @@
+<script>
+  console.log({{ product.metafields.custom | json }});
+  console.log({{ product.metafields.custom.cylindo_parent | json | upcase }});
+  console.log({{ product.metafields.custom.primary_colour | json | upcase }});
+
+  let primary_colour = {{ product.metafields.custom.primary_colour | json | upcase }};
+</script>
+
+<!-- Upholstery Selectors -->
+{% comment %} <select name="UPHOLSTERY">
+  <option value="BEIGE">Beige</option>
+  <option value="BLUE">Blue</option>
+  <option value="DARK GREY">Dark Grey</option>
+  <option value="GREEN">Green</option>
+  <option value="LIGHT GREY">Light Grey</option>
+  <option value="NATURAL">Natural</option>
+  <option value="STONE">Stone</option>
+</select> {% endcomment %}
+
+<!-- Cylindo Viewer -->
+<cylindo-viewer 
+  customer-id="6981" 
+  code="{{ product.metafields.custom.cylindo_parent | upcase }}"
+  features-by-variant-id='"UPHOLSTERY": "BLUE"'>
+</cylindo-viewer>
+
+<script>
+  customElements.whenDefined("cylindo-viewer").then(() => {
+    const viewer = document.querySelector("cylindo-viewer");
+    const upholsterySelect = document.querySelector("select[name='UPHOLSTERY']");
+
+    // Fix layout
+    const tryFixViewerLayout = () => {
+      const shadowRoot = viewer.shadowRoot;
+      if (!shadowRoot) return;
+
+      const rootDiv = shadowRoot.querySelector(".root.inactive");
+      if (rootDiv) {
+        rootDiv.classList.remove("inactive");
+        rootDiv.style.width = "100%";
+        rootDiv.style.height = "100%";
+        // console.log("✅ Viewer layout fixed.");
+      }
+    };
+
+    setTimeout(tryFixViewerLayout, 1000);
+
+    viewer.features = {
+      UPHOLSTERY: primary_colour
+    };
+
+    // Event listener for manual or simulated dropdown changes
+    upholsterySelect.addEventListener("change", (event) => {
+      const value = event.target.value;
+      viewer.features = {
+        UPHOLSTERY: value
+      };
+      console.log(`🎨 Feature updated: UPHOLSTERY = ${value}`);
+    });
+
+    viewer.addEventListener("viewer-ready", () => {
+      console.log("🟢 Viewer is ready.");
+
+      // Delay before applying initial feature to ensure internal state is ready
+      setTimeout(() => {
+        upholsterySelect.value = "GREEN";
+
+        // Trigger change manually (simulate user interaction)
+        upholsterySelect.dispatchEvent(new Event("input", { bubbles: true }));
+        upholsterySelect.dispatchEvent(new Event("change", { bubbles: true }));
+
+        console.log("✅ Default upholstery (GREEN) applied via simulated change.");
+      }, 1000); // <-- Delay increased to ensure viewer is 100% ready
+    });
+  });
+</script>
