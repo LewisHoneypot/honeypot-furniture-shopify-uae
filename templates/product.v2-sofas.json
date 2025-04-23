@@ -191,6 +191,8 @@
         "show_product_badges": true,
         "enable_share": false,
         "type_style": "classic",
+        "image_tech": "default",
+        "cylindo_thumbnail_bar": "off",
         "media_size": "large",
         "gallery_layout": "slider_thumbnail",
         "image_zoom": "lightbox",
@@ -314,12 +316,12 @@
         "button_HKewh9": {
           "type": "button",
           "settings": {
-            "primary_button_label": "CALL US",
-            "primary_button_link": "tel:01476338771",
-            "primary_button_type": "transparent",
+            "primary_button_label": "",
+            "primary_button_link": "",
+            "primary_button_type": "default",
             "secondary_button_label": "CHAT WITH US",
             "secondary_button_link": "https://wa.me/15557037896",
-            "secondary_button_type": "transparent",
+            "secondary_button_type": "default",
             "padding_top": 50,
             "padding_bottom": 10
           }
