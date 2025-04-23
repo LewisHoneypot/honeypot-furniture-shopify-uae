@@ -141,7 +141,7 @@
             "WhatsAppButtonIconColour2": "#ffffff",
             "EmailButtonText": "Email Customer Support",
             "EmailButtonIconColour": "#ffffff",
-            "use_sticky": false
+            "use_sticky": true
           }
         }
       },
