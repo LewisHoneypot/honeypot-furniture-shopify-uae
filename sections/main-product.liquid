@@ -842,7 +842,7 @@
 
                 {%- if block.settings.text != blank or block.settings.page != blank -%}
                   <side-drawer-opener
-                    class="popups-popup-modal__opener product-popup-modal__opener {%- if block.settings.use_custom_popup == "off" %} d-inline-block{%- endif %} no-js-hidden {%- if (product.metafields.custom.showroom != "UAE") or (product.vendor != "Honeypot Furniture UAE") -%} d-none{%- endif -%}"
+                    class="popups-popup-modal__opener product-popup-modal__opener {%- if block.settings.use_custom_popup == "off" %} d-inline-block{%- endif %} no-js-hidden {%- if product.metafields.custom.showroom != "UAE" or product.vendor != "Honeypot Furniture UAE" -%} d-none{%- endif -%}"
                     data-side-drawer="#PopupModal-{{ block.id }}"
                     {{ block.shopify_attributes }}
                   >
