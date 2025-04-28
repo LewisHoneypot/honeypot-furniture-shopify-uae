@@ -157,6 +157,7 @@
         },
         "s_contact_form_builder_block_app_dQXRJj": {
           "type": "shopify://apps/s-contact-form-builder/blocks/block-app/cceef8dd-a4f1-4344-962d-06bf0022ec0d",
+          "disabled": true,
           "settings": {
             "ify_contactform_short_code": "<button class=\"storeify-formbuilder-button\" style=\"margin-top:10px; width:100%; text-transform:uppercase; font-size:15px; font-weight:900; color:#3c3c3b; min-height:80px; background-color:#ededed; border: solid 1px #707070;  min-height: 80px;\nfont-family: Gotham, serif !important; font-weight: 400; font-size: 14pt; cursor:pointer;\" data-target=\"#storeify-light-modal-19265\">VISIT OUR SHOWROOM</button>"
           }
@@ -169,7 +170,6 @@
         },
         "popup_kQxeme": {
           "type": "popup",
-          "disabled": true,
           "settings": {
             "text": "VISIT OUR SHOWROOM",
             "page": "",
