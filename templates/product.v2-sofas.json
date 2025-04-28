@@ -166,6 +166,22 @@
           "settings": {
             "ify_contactform_short_code": "<button class=\"storeify-formbuilder-button\" style=\"margin-top:10px; width:100%; text-transform:uppercase; font-size:15px; font-weight:900; color:#3c3c3b; min-height:80px; background-color:#ededed; border: solid 1px #707070;  min-height: 80px;\nfont-family: Gotham, serif !important; font-weight: 400; font-size: 14pt; cursor:pointer;\" data-target=\"#storeify-light-modal-19315\">CUSTOMISE YOUR SOFA</button>"
           }
+        },
+        "popup_kQxeme": {
+          "type": "popup",
+          "disabled": true,
+          "settings": {
+            "text": "VISIT OUR SHOWROOM",
+            "page": "",
+            "use_custom_popup": "on",
+            "description": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help",
+            "button_1_image": "shopify://shop_images/Google_Maps_icon__2020__svg.png",
+            "button_1_text": "FIND US ON MAPS",
+            "button_1_link": "https://www.example.com",
+            "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
+            "button_2_text": "SEND US A MESSAGE",
+            "button_2_link": "https://www.example.com"
+          }
         }
       },
       "block_order": [
@@ -181,7 +197,8 @@
         "snap_buttons_HagTqx",
         "protection_drawer_iWbVLW",
         "s_contact_form_builder_block_app_dQXRJj",
-        "s_contact_form_builder_block_app_hDXrDD"
+        "s_contact_form_builder_block_app_hDXrDD",
+        "popup_kQxeme"
       ],
       "settings": {
         "use_custom_title": true,
