@@ -814,9 +814,35 @@
                 {%- endif -%}
 
               {%- when 'popup' -%}
+
+                {%- if block.settings.use_custom_popup == "on" -%}
+                  <style>
+                    #ProductInfo-{{ section.id }} .product-popup-modal__button {
+                      margin-top: 10px;
+                      width: 100%;
+                      text-transform: uppercase;
+                      color: rgb(60, 60, 59);
+                      background-color: rgb(237, 237, 237);
+                      border: 1px solid rgb(112, 112, 112);
+                      min-height: 80px;
+                      font-weight: 400;
+                      font-size: 14pt;
+                      cursor: pointer;
+                      font-family: Gotham, serif !important;
+                      display: inline-block;
+                      text-decoration: none;
+                    }
+                  </style>
+                {%- endif -%}
+
+                <script>
+                  console.log('Showroom: ', {{ product.metafields.custom.showroom | json }});
+                  console.log('Vendor: ', {{ product.vendor | json }});
+                </script>
+
                 {%- if block.settings.text != blank or block.settings.page != blank -%}
                   <side-drawer-opener
-                    class="popups-popup-modal__opener product-popup-modal__opener d-inline-block no-js-hidden"
+                    class="popups-popup-modal__opener product-popup-modal__opener {%- if block.settings.use_custom_popup == "off" %} d-inline-block{%- endif %} no-js-hidden {%- if (product.metafields.custom.showroom != "UAE") or (product.vendor != "Honeypot Furniture UAE") -%} d-none{%- endif -%}"
                     data-side-drawer="#PopupModal-{{ block.id }}"
                     {{ block.shopify_attributes }}
                   >
@@ -2316,8 +2342,96 @@
             <span class="i__close e-none d-block pos-relative color-current w-100 h-100"></span>
           </button>
           <div class="product-popup-modal__content-info popup-modal__content-info">
-            <h2 class="h2 center">{{ block.settings.page.title }}</h2>
-            {{ block.settings.page.content }}
+
+            {%- if block.settings.use_custom_popup == "no" -%}
+              <h2 class="h2 center">{{ block.settings.page.title }}</h2>
+              {{ block.settings.page.content }}
+            {%- else -%}
+              <h2 class="h2 center">{{ block.settings.text }}</h2>
+
+              <div class="my-5 text-center">{{ block.settings.description }}</div>
+
+              <button onclick="window.open('{{ block.settings.button_1_link }}', '_blank');"
+                class="" 
+                type="button"
+                style="
+                  margin-top: 10px;
+                  width: 100%;
+                  text-transform: uppercase;
+                  color: rgb(60, 60, 59);
+                  background-color: rgb(237, 237, 237);
+                  border: 1px solid rgb(112, 112, 112);
+                  min-height: 80px;
+                  font-weight: 400;
+                  font-size: 14pt;
+                  cursor: pointer;
+                  font-family: Gotham, serif !important;
+                  display: inline-block;
+                  text-decoration: none;
+                "
+              >
+              <img
+                srcset="
+                  {% if section.settings.logo2 != blank %}
+                    {{ block.settings.button_1_image | image_url: width: 360 }} 360w,
+                    {{ block.settings.button_1_image | image_url: width: 550 }} 550w,
+                    {{ block.settings.button_1_image | image_url: width: 750 }} 750w,
+                    {{ block.settings.button_1_image | image_url: width: 1000 }} 1000w,
+                    {{ block.settings.button_1_image | image_url: width: 1200 }} 1200w
+                  {% endif %}
+                "
+                sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+                src="{{ block.settings.button_1_image | image_url: width: 200 }}"
+                alt="{{ block.settings.button_1_text }}"
+                loading="lazy"
+                height="50"
+                width=""
+                style="margin-right: 15px; height:50px;"
+              >
+                {{ block.settings.button_1_text }}
+              </button>
+              <button onclick="window.open('{{ block.settings.button_2_link }}', '_blank');"
+                class="" 
+                type="button"
+                style="
+                  margin-top: 10px;
+                  width: 100%;
+                  text-transform: uppercase;
+                  color: rgb(60, 60, 59);
+                  background-color: rgb(237, 237, 237);
+                  border: 1px solid rgb(112, 112, 112);
+                  min-height: 80px;
+                  font-weight: 400;
+                  font-size: 14pt;
+                  cursor: pointer;
+                  font-family: Gotham, serif !important;
+                  display: inline-block;
+                  text-decoration: none;
+                "
+              >
+                <img
+                  srcset="
+                    {% if section.settings.logo2 != blank %}
+                      {{ block.settings.button_2_image | image_url: width: 360 }} 360w,
+                      {{ block.settings.button_2_image | image_url: width: 550 }} 550w,
+                      {{ block.settings.button_2_image | image_url: width: 750 }} 750w,
+                      {{ block.settings.button_2_image | image_url: width: 1000 }} 1000w,
+                      {{ block.settings.button_2_image | image_url: width: 1200 }} 1200w
+                    {% endif %}
+                  "
+                  sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+                  src="{{ block.settings.button_2_image | image_url: width: 200 }}"
+                  alt="{{ block.settings.button_2_text }}"
+                  loading="lazy"
+                  height="50"
+                  width=""
+                  style="margin-right: 15px; height:50px;"
+                >
+                {{ block.settings.button_2_text }}
+              </button>
+
+            {%- endif -%}
+
           </div>
         </div>
       </div>
@@ -4757,6 +4871,62 @@
           "id": "page",
           "type": "page",
           "label": "t:sections.all.content_from_page.label"
+        },
+        {
+          "type": "select",
+          "id": "use_custom_popup",
+          "label": "Use Custom Popup",
+          "options": [
+            {
+              "value": "off",
+              "label": "Off"
+            },
+            {
+              "value": "on",
+              "label": "On"
+            }
+          ],
+          "default": "off"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_1_image",
+          "label": "Button 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text",
+          "default": "FIND US ON MAPS"
+        },
+        {
+          "type": "text",
+          "id": "button_1_link",
+          "label": "Button 1 Link",
+          "default": "https://www.example.com"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_2_image",
+          "label": "Button 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text",
+          "default": "SEND US A MESSAGE"
+        },
+        {
+          "type": "text",
+          "id": "button_2_link",
+          "label": "Button 2 Link",
+          "default": "https://www.example.com"
         }
       ]
     },
