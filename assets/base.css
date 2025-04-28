@@ -1894,9 +1894,6 @@ hr {
 }
 
 /* Cart items */
-.cart-item {
-  background-color: #ededed !important;
-}
 .cart-item__remove-header .button--close {
   background-color: transparent;
   border: none;
@@ -5025,6 +5022,7 @@ input[type="checkbox"]:checked ~ svg {
   transition-property: transform, visibility;
   transition-duration: var(--duration-extra-long);
   transition-timing-function: var(--cubic-fade);
+  background-color: #ededed;
 }
 
 #CartDrawer {
@@ -5075,10 +5073,6 @@ input[type="checkbox"]:checked ~ svg {
   box-shadow: rgb(255 255 255 / 10%) 0rem 0.8rem 2.4rem,
     rgb(255 255 255 / 20%) 0rem 1.6rem 5.6rem,
     rgb(255 255 255 / 20%) 0rem 2.4rem 8rem;
-}
-
-.drawer__inner {
-  background-color: #ededed;
 }
 
 /* account-drawer */
