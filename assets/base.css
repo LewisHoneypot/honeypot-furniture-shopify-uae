@@ -1894,9 +1894,6 @@ hr {
 }
 
 /* Cart items */
-.cart-item {
-  background-color: #ededed !important;
-}
 .cart-item__remove-header .button--close {
   background-color: transparent;
   border: none;
