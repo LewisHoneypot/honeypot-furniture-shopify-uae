@@ -2347,14 +2347,9 @@
               <h2 class="h2 center">{{ block.settings.page.title }}</h2>
               {{ block.settings.page.content }}
             {%- else -%}
-              <h2 class="h2 center">{{ block.settings.text }}</h2>
 
-              <div class="my-5 text-center">{{ block.settings.description }}</div>
-
-              <button onclick="window.open('{{ block.settings.button_1_link }}', '_blank');"
-                class="" 
-                type="button"
-                style="
+              <style>
+                .showroom-buttons {
                   margin-top: 10px;
                   width: 100%;
                   text-transform: uppercase;
@@ -2363,12 +2358,32 @@
                   border: 1px solid rgb(112, 112, 112);
                   min-height: 80px;
                   font-weight: 400;
-                  font-size: 14pt;
+                  font-size: 10pt;
                   cursor: pointer;
                   font-family: Gotham, serif !important;
                   display: inline-block;
                   text-decoration: none;
-                "
+                }
+
+                @media screen and (min-width:340px) {
+                  .showroom-buttons {
+                    font-size: 12pt;
+                  }
+                }
+                @media screen and (min-width:370px) {
+                  .showroom-buttons {
+                    font-size: 14pt;
+                  }
+                }
+              </style>
+
+              <h2 class="h2 center">{{ block.settings.text }}</h2>
+
+              <div class="my-5 text-center">{{ block.settings.description }}</div>
+
+              <button onclick="window.open('{{ block.settings.button_1_link }}', '_blank');"
+                class="showroom-buttons" 
+                type="button"
               >
               <img
                 srcset="
@@ -2391,23 +2406,8 @@
                 {{ block.settings.button_1_text }}
               </button>
               <button onclick="window.open('{{ block.settings.button_2_link }}', '_blank');"
-                class="" 
+                class="showroom-buttons" 
                 type="button"
-                style="
-                  margin-top: 10px;
-                  width: 100%;
-                  text-transform: uppercase;
-                  color: rgb(60, 60, 59);
-                  background-color: rgb(237, 237, 237);
-                  border: 1px solid rgb(112, 112, 112);
-                  min-height: 80px;
-                  font-weight: 400;
-                  font-size: 14pt;
-                  cursor: pointer;
-                  font-family: Gotham, serif !important;
-                  display: inline-block;
-                  text-decoration: none;
-                "
               >
                 <img
                   srcset="
