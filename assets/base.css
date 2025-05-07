@@ -26709,7 +26709,7 @@ body.multitasking__show .newsletter-popup-opener {
 }
 @media screen and (min-width: 576px){
   .buy-button-price .price, .buy-button-price .price-item--regular, .buy-button-price .price-item--sale, .buy-button-price .price__caption, .buy-button-price .product-form__submit {
-    font-size: 16pt !important;
+    font-size: 14pt !important;
   }
 }
 .custom-buy-button-price {
@@ -26722,7 +26722,7 @@ body.multitasking__show .newsletter-popup-opener {
 }
 @media screen and (min-width: 576px){
   .custom-buy-button-price {
-    font-size: 16pt !important;
+    font-size: 14pt !important;
   }
 }
 
@@ -26751,7 +26751,7 @@ body.multitasking__show .newsletter-popup-opener {
 }
 @media screen and (min-width: 576px){
   .buy-button-price .price, .buy-button-price .price-item--regular, .buy-button-price .price-item--sale, .buy-button-price .price__caption, .buy-button-price .product-form__submit {
-    font-size: 16pt !important;
+    font-size: 14pt !important;
   }
 }
 .custom-buy-button-price {
@@ -26764,7 +26764,7 @@ body.multitasking__show .newsletter-popup-opener {
 }
 @media screen and (min-width: 576px){
   .custom-buy-button-price {
-    font-size: 16pt !important;
+    font-size: 14pt !important;
   }
 }
 
