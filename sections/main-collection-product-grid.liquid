@@ -1010,16 +1010,61 @@
       "default": "UAE"
     },
     {
+      "type": "header",
+      "content": "Overlays"
+    },
+    {
       "type": "checkbox",
       "id": "use_overlay_1",
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.delivery_eta.overlay_text_1_toggle.label"
     },
     {
+      "type": "checkbox",
+      "id": "use_based_on_stock",
+      "default": false,
+      "label": "In stock only"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_icon",
+      "default": false,
+      "label": "Use Icon"
+    },
+    {
+      "type": "select",
+      "id": "vendor_type",
+      "options": [
+        {
+          "value": "ALL",
+          "label": "All"
+        },
+        {
+          "value": "Honeypot Furniture UK",
+          "label": "UK"
+        },
+        {
+          "value": "Honeypot Furniture UAE",
+          "label": "UAE"
+        }
+      ],
+      "default": "ALL",
+      "label": "Vendor"
+    },
+    {
       "type": "text",
       "id": "overlay_text_1",
       "label": "Overlay Text 1",
-      "default": "Delivery from Fri, 13 Dec"
+      "default": "Enter Text Here..."
+    },
+    {
+      "type": "range",
+      "id": "overlay_text_size_1",
+      "label": "Text Size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "default": 16
     },
     {
       "type": "color",
@@ -1043,7 +1088,7 @@
       "type": "text",
       "id": "overlay_text_2",
       "label": "Overlay Text 2",
-      "default": "PRE-CHRISTMAS DELIVERY"
+      "default": "Enter Text Here..."
     },
     {
       "type": "color",
