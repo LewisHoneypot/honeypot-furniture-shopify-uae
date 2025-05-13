@@ -60,20 +60,67 @@
           {% endif %}
         {% endif %}
 
-        {%- if section.settings.use_overlay_1 == true -%}
-          {% assign current_variant = card_product.selected_or_first_available_variant %}
-          {% if current_variant.available and current_variant.inventory_quantity > 0 %}
+        {%- assign current_vendor = card_product.vendor -%}
+        {%- assign vendor_filter = section.settings.vendor_type -%}
+
+        {%- if vendor_filter == 'ALL' or current_vendor == vendor_filter -%}
+          {%- if section.settings.use_overlay_1 and section.settings.use_based_on_stock -%}
+            {%- assign current_variant = card_product.selected_or_first_available_variant -%}
+            {%- if current_variant.available and current_variant.inventory_quantity > 0 -%}
+              <div 
+                class="delivery-msg-1" 
+                style="
+                  color: {{ section.settings.overlay_text_color_1 }}; 
+                  background-color: {{ section.settings.overlay_background_color_1 }};
+                  font-size: {{ section.settings.overlay_text_size_1 }}px;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                "
+              >
+                {%- if section.settings.use_icon == true -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <g>
+                      <rect width="24" height="24" transform="translate(24 0) rotate(90)" fill="none" />
+                      <path d="M19,9a3,3,0,0,0-2.82,2H3a1,1,0,0,0,0,2H16.18A3,3,0,1,0,19,9Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,19,13Z" fill="#000"/>
+                      <path d="M3,7H4.18A3,3,0,0,0,9.82,7H21a1,1,0,0,0,0-2H9.82A3,3,0,0,0,4.18,5H3A1,1,0,0,0,3,7ZM7,5A1,1,0,1,1,6,6,1,1,0,0,1,7,5Z" fill="#000"/>
+                      <path d="M21,17H13.82a3,3,0,0,0-5.64,0H3a1,1,0,0,0,0,2H8.18a3,3,0,0,0,5.64,0H21a1,1,0,0,0,0-2ZM11,19a1,1,0,1,1,1-1A1,1,0,0,1,11,19Z" fill="#000"/>
+                    </g>
+                  </svg>
+                {% endif %}
+
+                {{ section.settings.overlay_text_1 }}
+              </div>
+
+            {%- endif -%}
+          {%- elsif section.settings.use_overlay_1 -%}
             <div 
               class="delivery-msg-1" 
               style="
                 color: {{ section.settings.overlay_text_color_1 }}; 
                 background-color: {{ section.settings.overlay_background_color_1 }};
+                font-size: {{ section.settings.overlay_text_size_1 }}px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
               "
             >
+              {%- if section.settings.use_icon == true -%}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g>
+                    <rect width="24" height="24" transform="translate(24 0) rotate(90)" fill="none" />
+                    <path d="M19,9a3,3,0,0,0-2.82,2H3a1,1,0,0,0,0,2H16.18A3,3,0,1,0,19,9Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,19,13Z" fill="#000"/>
+                    <path d="M3,7H4.18A3,3,0,0,0,9.82,7H21a1,1,0,0,0,0-2H9.82A3,3,0,0,0,4.18,5H3A1,1,0,0,0,3,7ZM7,5A1,1,0,1,1,6,6,1,1,0,0,1,7,5Z" fill="#000"/>
+                    <path d="M21,17H13.82a3,3,0,0,0-5.64,0H3a1,1,0,0,0,0,2H8.18a3,3,0,0,0,5.64,0H21a1,1,0,0,0,0-2ZM11,19a1,1,0,1,1,1-1A1,1,0,0,1,11,19Z" fill="#000"/>
+                  </g>
+                </svg>
+              {% endif %}
+
               {{ section.settings.overlay_text_1 }}
             </div>
+
           {%- endif -%}
-        {% endif %}
+        {%- endif -%}
 
         {%- if section.settings.use_overlay_2 == true -%}
           {% assign current_variant = card_product.selected_or_first_available_variant %}
@@ -85,7 +132,7 @@
                   color: {{ section.settings.overlay_text_color_2 }}; 
                   background-color: {{ section.settings.overlay_background_color_2 }};
                 "
-              >
+              >                
                 {{ section.settings.overlay_text_2 }}
               </div>
             </div>
