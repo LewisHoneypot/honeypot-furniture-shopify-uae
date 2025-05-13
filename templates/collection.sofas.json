@@ -132,7 +132,7 @@
         "collection_delivery_eta_toggle": true,
         "tiers": "on",
         "date_type": "UAE",
-        "use_overlay_1": false,
+        "use_overlay_1": true,
         "use_based_on_stock": false,
         "use_icon": true,
         "vendor_type": "Honeypot Furniture UAE",
