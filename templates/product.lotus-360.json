@@ -225,6 +225,7 @@
         "padding_bottom_mobile": 30,
         "use_overlay_1": false,
         "overlay_text_1": "Delivery from Fri, 13 Dec",
+        "overlay_text_size_1": 16,
         "overlay_text_color_1": "#000000",
         "overlay_background_color_1": "#ffffff",
         "use_overlay_2": false,
@@ -233,6 +234,86 @@
         "overlay_background_color_2": "#000000",
         "christmas_delivery_eta_toggle": false,
         "christmas_image": "shopify://shop_images/Copy_of_PRE-XMAS_DELIVERY_STICKER_1.png"
+      }
+    },
+    "collage_UGyXyA": {
+      "type": "collage",
+      "blocks": {
+        "image_dddzXW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Pick_your_colour_4f21dd0a-cade-4f2c-bb4a-c7fbf5f0ba89.png",
+            "heading_image": "",
+            "heading_size": "default",
+            "button_transparent": "transparent",
+            "button_type": "standard",
+            "button_label": "",
+            "link": "",
+            "image_overlay_opacity": 30,
+            "color_overlay_opacity": "#000000",
+            "desktop_content_position": "top-left"
+          }
+        },
+        "image_EGaLTd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Choose_your_layout.png",
+            "heading_image": "",
+            "heading_size": "default",
+            "button_transparent": "transparent",
+            "button_type": "standard",
+            "button_label": "",
+            "link": "",
+            "image_overlay_opacity": 30,
+            "color_overlay_opacity": "#000000",
+            "desktop_content_position": "top-left"
+          }
+        },
+        "image_NKJpXb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Choose_your_size.png",
+            "heading_image": "",
+            "heading_size": "medium",
+            "button_transparent": "default",
+            "button_type": "standard",
+            "button_label": "",
+            "link": "",
+            "image_overlay_opacity": 30,
+            "color_overlay_opacity": "#000000",
+            "desktop_content_position": "top-left"
+          }
+        }
+      },
+      "block_order": [
+        "image_dddzXW",
+        "image_EGaLTd",
+        "image_NKJpXb"
+      ],
+      "name": "t:sections.collage.presets.name",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1800,
+        "enable_full_width": true,
+        "heading": "Truly Custom.",
+        "text": "",
+        "text_alignment": "center",
+        "heading_margin_bottom": 30,
+        "image_ratio": "adapt",
+        "spacing_desktop": 20,
+        "spacing_tablet": 10,
+        "spacing_mobile": 10,
+        "enable_carousel": true,
+        "enable_pagination_type": "sm",
+        "pagination_type": "progressbar",
+        "color_scheme": "",
+        "image_animation": "none",
+        "image_behavior": "none",
+        "text_animation": "none",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
       }
     },
     "drawers_Ut99DD": {
@@ -825,6 +906,7 @@
   },
   "order": [
     "main",
+    "collage_UGyXyA",
     "drawers_Ut99DD",
     "rich_text_WaVhX9",
     "multicolumn_FJHgEr",
