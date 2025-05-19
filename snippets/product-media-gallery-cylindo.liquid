@@ -92,7 +92,6 @@
         imgs.forEach((img) => {
           img.style.objectFit = 'cover';
         });
-        // console.log(`✅ Applied object-fit to ${imgs.length} image(s) in ${label}`);
       };
 
       const observe360Viewer = () => {
@@ -111,13 +110,11 @@
               attributes: true,
             });
 
-            // console.log('👀 Observing 360-view for changes.');
             return true;
           }
           return false;
         };
 
-        // Watch viewer's shadowRoot for <cylindo-three-sixty> being added again
         const viewerObserver = new MutationObserver(() => {
           tryApply();
         });
@@ -129,7 +126,6 @@
           });
         }
 
-        // Try initially in case 360 is already there
         tryApply();
       };
 
@@ -162,23 +158,11 @@
           observe360Viewer();
           observeFrameImages();
 
-          // Z-index fix for iPhone overlay issue
-          const rootEl = viewer.shadowRoot.querySelector('.root');
-          if (rootEl) {
-            rootEl.style.zIndex = '9999';
-            rootEl.style.position = 'relative';
-            // console.log('✅ Applied z-index fix to .root inside shadow DOM');
-          }
-
           // Hide the Full screen button
           const fullscreenBtn = viewer.shadowRoot.querySelector('[aria-label="Full screen"]');
           if (fullscreenBtn) {
             fullscreenBtn.style.display = 'none';
-            // console.log('🚫 Full screen button hidden');
           }
-
-          // Optional fallback
-          viewer.style.zIndex = '9999';
         }
       }, 200);
     };
