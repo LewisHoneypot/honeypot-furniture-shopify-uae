@@ -168,7 +168,7 @@
             "ify_contactform_short_code": "<button class=\"storeify-formbuilder-button\" style=\"margin-top:10px; width:100%; text-transform:uppercase; font-size:15px; font-weight:900; color:#3c3c3b; min-height:80px; background-color:#ededed; border: solid 1px #707070;  min-height: 80px;\nfont-family: Gotham, serif !important; font-weight: 400; font-size: 14pt; cursor:pointer;\" data-target=\"#storeify-light-modal-19315\">CUSTOMISE YOUR SOFA</button>"
           }
         },
-        "popup_kQxeme": {
+        "popup_hPNiWt": {
           "type": "popup",
           "settings": {
             "text": "VISIT OUR SHOWROOM",
@@ -180,7 +180,7 @@
             "button_1_link": "https://maps.app.goo.gl/LukTXRkhEVRCqsBd9",
             "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
             "button_2_text": "SEND US A MESSAGE",
-            "button_2_link": "https://www.example.com"
+            "button_2_link": "https://wa.me/971507576629"
           }
         }
       },
@@ -198,7 +198,7 @@
         "protection_drawer_iWbVLW",
         "s_contact_form_builder_block_app_dQXRJj",
         "s_contact_form_builder_block_app_hDXrDD",
-        "popup_kQxeme"
+        "popup_hPNiWt"
       ],
       "settings": {
         "use_custom_title": true,
@@ -208,8 +208,8 @@
         "show_product_badges": true,
         "enable_share": false,
         "type_style": "classic",
-        "image_tech": "default",
-        "cylindo_thumbnail_bar": "off",
+        "image_tech": "cylindo",
+        "cylindo_thumbnail_bar": "on",
         "media_size": "large",
         "gallery_layout": "slider_thumbnail",
         "image_zoom": "lightbox",
@@ -334,11 +334,11 @@
           "type": "button",
           "settings": {
             "primary_button_label": "",
-            "primary_button_link": "",
-            "primary_button_type": "default",
+            "primary_button_link": "tel:01476338771",
+            "primary_button_type": "transparent",
             "secondary_button_label": "CHAT WITH US",
             "secondary_button_link": "https://wa.me/15557037896",
-            "secondary_button_type": "default",
+            "secondary_button_type": "transparent",
             "padding_top": 50,
             "padding_bottom": 10
           }

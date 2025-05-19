@@ -136,12 +136,12 @@
             "AvailabilityText2": "",
             "button_transparent": "transparent",
             "WhatsAppButtonText1": "Chat on WhatsApp",
-            "WhatsAppButtonPhoneNumber": "15557037896",
+            "WhatsAppButtonPhoneNumber": "971507576629",
             "WhatsAppButtonIconColour1": "#45544c",
             "WhatsAppButtonIconColour2": "#ffffff",
             "EmailButtonText": "Email Customer Support",
             "EmailButtonIconColour": "#ffffff",
-            "use_sticky": false
+            "use_sticky": true
           }
         }
       },

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "global": {
@@ -1849,7 +1858,7 @@
           "availability_text_1": "Availability Text 1",
           "availability_text_2": "Availability Text 2",
           "whatsapp_button_text_1": "WhatsApp Button Text",
-          "whatsapp_button_phone_number": "WhatsApp Button Text",
+          "whatsapp_button_phone_number": "WhatsApp Number",
           "whatsapp_button_icon_colour_1": "WhatsApp Icon Colour 1",
           "whatsapp_button_icon_colour_2": "WhatsApp Icon Colour 2",
           "email_button_text": "Email Button Text",
