@@ -167,14 +167,14 @@
           if (rootEl) {
             rootEl.style.zIndex = '9999';
             rootEl.style.position = 'relative';
-            console.log('✅ Applied z-index fix to .root inside shadow DOM');
+            // console.log('✅ Applied z-index fix to .root inside shadow DOM');
           }
 
           // Hide the Full screen button
           const fullscreenBtn = viewer.shadowRoot.querySelector('[aria-label="Full screen"]');
           if (fullscreenBtn) {
             fullscreenBtn.style.display = 'none';
-            console.log('🚫 Full screen button hidden');
+            // console.log('🚫 Full screen button hidden');
           }
 
           // Optional fallback
