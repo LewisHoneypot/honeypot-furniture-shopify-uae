@@ -1275,12 +1275,12 @@
                         {% comment %} Change display based on date type {% endcomment %}
                         {%- if block.settings.date_type == 'UAE' -%}
                           {%- if in_stock == true -%}
-                            <strong class="pr-1 mr-1"> 7 - 14 days</strong>
+                            <strong class="pr-1 mr-1"> Tomorrow</strong>
                           {%- else -%}
                             {%- if product.vendor == "Honeypot Furniture UAE" -%}
-                              <strong class="pr-1 mr-1"> 7 - 14 days</strong>
+                              <strong class="pr-1 mr-1"> 1 - 2 weeks</strong>
                             {%- else -%}
-                              <strong class="pr-1 mr-1"> 4 - 6 weeks</strong>
+                              <strong class="pr-1 mr-1"> 1 - 2 weeks</strong>
                             {%- endif -%}
                           {%- endif -%}
                         {%- elsif block.settings.date_type == 'accurate' -%}
