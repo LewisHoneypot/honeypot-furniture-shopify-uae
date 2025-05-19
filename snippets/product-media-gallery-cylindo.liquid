@@ -81,89 +81,101 @@
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const waitForViewer = async () => {
-    await customElements.whenDefined('cylindo-360');
-    const viewer = document.querySelector('cylindo-viewer');
-    if (!viewer) return console.warn('❌ cylindo-viewer not found');
+  document.addEventListener('DOMContentLoaded', function () {
+    const waitForViewer = async () => {
+      await customElements.whenDefined('cylindo-360');
+      const viewer = document.querySelector('cylindo-viewer');
+      if (!viewer) return console.warn('❌ cylindo-viewer not found');
 
-    const applyObjectFit = (root, label) => {
-      const imgs = root.querySelectorAll('img');
-      imgs.forEach(img => {
-        img.style.objectFit = 'cover';
-      });
-      // console.log(`✅ Applied object-fit to ${imgs.length} image(s) in ${label}`);
-    };
+      const applyObjectFit = (root, label) => {
+        const imgs = root.querySelectorAll('img');
+        imgs.forEach((img) => {
+          img.style.objectFit = 'cover';
+        });
+        // console.log(`✅ Applied object-fit to ${imgs.length} image(s) in ${label}`);
+      };
 
-    const observe360Viewer = () => {
-      const tryApply = () => {
-        const threeSixty = viewer.shadowRoot?.querySelector('cylindo-three-sixty');
-        if (threeSixty?.shadowRoot) {
-          applyObjectFit(threeSixty.shadowRoot, '360-view');
-
-          const observer = new MutationObserver(() => {
+      const observe360Viewer = () => {
+        const tryApply = () => {
+          const threeSixty = viewer.shadowRoot?.querySelector('cylindo-three-sixty');
+          if (threeSixty?.shadowRoot) {
             applyObjectFit(threeSixty.shadowRoot, '360-view');
-          });
 
-          observer.observe(threeSixty.shadowRoot, {
+            const observer = new MutationObserver(() => {
+              applyObjectFit(threeSixty.shadowRoot, '360-view');
+            });
+
+            observer.observe(threeSixty.shadowRoot, {
+              childList: true,
+              subtree: true,
+              attributes: true,
+            });
+
+            // console.log('👀 Observing 360-view for changes.');
+            return true;
+          }
+          return false;
+        };
+
+        // Watch viewer's shadowRoot for <cylindo-three-sixty> being added again
+        const viewerObserver = new MutationObserver(() => {
+          tryApply();
+        });
+
+        if (viewer.shadowRoot) {
+          viewerObserver.observe(viewer.shadowRoot, {
             childList: true,
             subtree: true,
-            attributes: true
           });
-
-          // console.log('👀 Observing 360-view for changes.');
-          return true;
         }
-        return false;
-      };
 
-      // Watch viewer's shadowRoot for <cylindo-three-sixty> being added again
-      const viewerObserver = new MutationObserver(() => {
+        // Try initially in case 360 is already there
         tryApply();
-      });
-
-      if (viewer.shadowRoot) {
-        viewerObserver.observe(viewer.shadowRoot, {
-          childList: true,
-          subtree: true
-        });
-      }
-
-      // Try initially in case 360 is already there
-      tryApply();
-    };
-
-    const observeFrameImages = () => {
-      const checkFrames = () => {
-        const contentArea = viewer.shadowRoot?.querySelector('[part="viewer-content"]');
-        if (!contentArea) return;
-
-        const frameDivs = contentArea.querySelectorAll('div');
-        frameDivs.forEach(div => applyObjectFit(div, 'frame'));
       };
 
-      checkFrames();
+      const observeFrameImages = () => {
+        const checkFrames = () => {
+          const contentArea = viewer.shadowRoot?.querySelector('[part="viewer-content"]');
+          if (!contentArea) return;
 
-      const observer = new MutationObserver(() => {
+          const frameDivs = contentArea.querySelectorAll('div');
+          frameDivs.forEach((div) => applyObjectFit(div, 'frame'));
+        };
+
         checkFrames();
-      });
 
-      viewer.shadowRoot && observer.observe(viewer.shadowRoot, {
-        childList: true,
-        subtree: true,
-        attributes: true
-      });
+        const observer = new MutationObserver(() => {
+          checkFrames();
+        });
+
+        viewer.shadowRoot &&
+          observer.observe(viewer.shadowRoot, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+          });
+      };
+
+      const waitUntilReady = setInterval(() => {
+        if (viewer.shadowRoot?.querySelector('[part="viewer-content"]')) {
+          clearInterval(waitUntilReady);
+          observe360Viewer();
+          observeFrameImages();
+
+          // Z-index fix for iPhone overlay issue
+          const rootEl = viewer.shadowRoot.querySelector('.root');
+          if (rootEl) {
+            rootEl.style.zIndex = '9999';
+            rootEl.style.position = 'relative';
+            console.log('✅ Applied z-index fix to .root inside shadow DOM');
+          }
+
+          // Optional fallback
+          viewer.style.zIndex = '9999';
+        }
+      }, 200);
     };
 
-    const waitUntilReady = setInterval(() => {
-      if (viewer.shadowRoot?.querySelector('[part="viewer-content"]')) {
-        clearInterval(waitUntilReady);
-        observe360Viewer();
-        observeFrameImages();
-      }
-    }, 200);
-  };
-
-  waitForViewer();
-});
+    waitForViewer();
+  });
 </script>
