@@ -324,6 +324,78 @@
         "padding_bottom_mobile": 15
       }
     },
+    "collection_with_bundle_AXQPUj": {
+      "type": "collection-with-bundle",
+      "blocks": {
+        "slide_fh8aYn": {
+          "type": "slide",
+          "settings": {
+            "collection": "",
+            "product_list": [
+              "lotus-sofa-white-3-seater-with-ottoman"
+            ]
+          }
+        },
+        "slide_FrxBpM": {
+          "type": "slide",
+          "settings": {
+            "collection": "",
+            "product_list": []
+          }
+        },
+        "slide_rdh8Qb": {
+          "type": "slide",
+          "settings": {
+            "collection": "",
+            "product_list": []
+          }
+        },
+        "slide_bWezMf": {
+          "type": "slide",
+          "settings": {
+            "collection": "",
+            "product_list": []
+          }
+        },
+        "slide_Mrc3RJ": {
+          "type": "slide",
+          "settings": {
+            "collection": "",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "slide_fh8aYn",
+        "slide_FrxBpM",
+        "slide_rdh8Qb",
+        "slide_bWezMf",
+        "slide_Mrc3RJ"
+      ],
+      "name": "t:sections.collection-with-bundle.presets.name",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1800,
+        "heading": "Collection with bundle",
+        "heading_size": "default",
+        "text": "<p>Pair text with an image to focus on your chosen collection. Add details on availability, style, or even provide a review.</p>",
+        "text_size": "x-small",
+        "text_alignment": "left",
+        "content_margin_bottom": 100,
+        "carousel_gap": 25,
+        "arrows_type": "all",
+        "carousel_infinite_scroll": false,
+        "color_scheme": "",
+        "use_custom_color": false,
+        "colors_text": "#424242",
+        "colors_background": "",
+        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "41769cb9-5f5a-4896-9da0-2d3bf33aef1e": {
       "type": "icon-with-text",
       "blocks": {
@@ -1412,6 +1484,7 @@
   "order": [
     "12b81e44-2b28-427b-9080-19dfb79fd112",
     "0b6105a9-a3ce-4181-b45b-7a55c709e140",
+    "collection_with_bundle_AXQPUj",
     "41769cb9-5f5a-4896-9da0-2d3bf33aef1e",
     "1736414156dbc7d523",
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596",
