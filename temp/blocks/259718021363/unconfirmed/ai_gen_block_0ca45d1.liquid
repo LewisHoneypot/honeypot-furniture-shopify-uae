@@ -1,6 +1,272 @@
+{% doc %}
+  @prompt
+    I need some animated text where the last word in the line is animated as a scroller and alternates between 3 different words
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-animated-text-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: {{ block.settings.text_alignment }};
+    gap: 0.4em;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+  }
+
+  .ai-animated-text-{{ ai_gen_id }} .ai-static-text {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    line-height: 1.2;
+  }
+
+  .ai-animated-text-{{ ai_gen_id }} .ai-word-animation {
+    position: relative;
+    display: inline-block;
+    height: 1.2em;
+    overflow: hidden;
+    color: {{ block.settings.highlight_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+  }
+
+  .ai-animated-text-{{ ai_gen_id }} .ai-word-animation-container {
+    position: relative;
+    transition: transform 0.5s ease;
+  }
+
+  .ai-animated-text-{{ ai_gen_id }} .ai-animated-word {
+    display: block;
+    height: 1.2em;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  .ai-animated-text-{{ ai_gen_id }} .ai-animated-word.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  .ai-animated-text-{{ ai_gen_id }} .ai-animated-word.previous {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-animated-text-{{ ai_gen_id }} .ai-static-text,
+    .ai-animated-text-{{ ai_gen_id }} .ai-word-animation {
+      font-size: {{ block.settings.font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<animated-text-{{ ai_gen_id }} 
+  class="ai-animated-text-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <span class="ai-static-text">{{ block.settings.static_text }}</span>
+  <span class="ai-word-animation">
+    <span class="ai-word-animation-container">
+      <span class="ai-animated-word" data-word="1">{{ block.settings.animated_word_1 }}</span>
+      <span class="ai-animated-word" data-word="2">{{ block.settings.animated_word_2 }}</span>
+      <span class="ai-animated-word" data-word="3">{{ block.settings.animated_word_3 }}</span>
+    </span>
+  </span>
+</animated-text-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AnimatedText extends HTMLElement {
+      constructor() {
+        super();
+        this.words = this.querySelectorAll('.ai-animated-word');
+        this.currentIndex = 0;
+        this.interval = {{ block.settings.animation_speed }};
+      }
+
+      connectedCallback() {
+        // Set initial state
+        this.words[this.currentIndex].classList.add('active');
+        
+        // Start animation
+        this.animationTimer = setInterval(() => {
+          this.animateWords();
+        }, this.interval);
+      }
+
+      disconnectedCallback() {
+        clearInterval(this.animationTimer);
+      }
+
+      animateWords() {
+        // Remove previous class from all words
+        this.words.forEach(word => {
+          word.classList.remove('previous');
+        });
+
+        // Add previous class to current word
+        this.words[this.currentIndex].classList.add('previous');
+        this.words[this.currentIndex].classList.remove('active');
+
+        // Update index
+        this.currentIndex = (this.currentIndex + 1) % this.words.length;
+
+        // Add active class to new current word
+        this.words[this.currentIndex].classList.add('active');
+      }
+    }
+
+    customElements.define('animated-text-{{ ai_gen_id }}', AnimatedText);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Animated Text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "static_text",
+      "label": "Static text",
+      "default": "We create"
+    },
+    {
+      "type": "text",
+      "id": "animated_word_1",
+      "label": "Animated word 1",
+      "default": "websites"
+    },
+    {
+      "type": "text",
+      "id": "animated_word_2",
+      "label": "Animated word 2",
+      "default": "brands"
+    },
+    {
+      "type": "text",
+      "id": "animated_word_3",
+      "label": "Animated word 3",
+      "default": "experiences"
+    },
+    {
+      "type": "header",
+      "content": "Animation Settings"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 1000,
+      "max": 5000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Animation speed",
+      "default": 2000
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 16,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Animated text color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom margin",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Text"
+    }
+  ]
+}
 {% endschema %}
