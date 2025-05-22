@@ -442,18 +442,19 @@
           "settings": {
             "padding": 40,
             "columns_gap": 40,
-            "background_color": "#FFFFFF",
-            "text": "AMAZING",
+            "background_color": "#ede9e2",
+            "text": "DUBAI Feather Cloud",
             "text_transform": "uppercase",
-            "text_alignment": "center",
+            "text_alignment": "flex-start",
+            "image": "shopify://shop_images/poi-burj-khalifa-3-dtcm-jun-2023_jpg.png",
             "fallback_color": "#000000",
-            "font_size": 120,
+            "font_size": 90,
             "font_size_mobile": 60,
             "font_weight": "800",
             "show_outline": false,
             "outline_width": 2,
             "outline_color": "#000000",
-            "product": "",
+            "product": "lotus-feather-cloud-sofa-linen-off-white-3-seater-ottoman",
             "product_card_bg_color": "#FFFFFF",
             "product_text_color": "#333333",
             "product_card_radius": 8,
@@ -470,7 +471,7 @@
       ],
       "name": "AI Smart Section",
       "settings": {
-        "section_margin": 40
+        "section_margin": 0
       }
     },
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596": {
