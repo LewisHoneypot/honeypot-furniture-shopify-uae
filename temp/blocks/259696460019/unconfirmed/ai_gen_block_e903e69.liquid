@@ -1,6 +1,630 @@
+{% doc %}
+  @prompt
+    I want a product highlight block I want to show 3 images of the product, Instead of images from the media library, I want them to be 3 products
+, On mobile, make the products display within a slider
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .product-highlight-{{ ai_gen_id }} {
+    margin: {{ block.settings.margin }}px 0;
+  }
+
+  .product-highlight__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.layout }}, 1fr);
+    gap: {{ block.settings.gap }}px;
+  }
+
+  .product-highlight__product-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    {% if block.settings.add_shadow %}
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    {% endif %}
+    height: 100%;
+  }
+
+  .product-highlight__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .product-highlight__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: {{ block.settings.image_fit }};
+    aspect-ratio: {{ block.settings.aspect_ratio }};
+    transition: transform 0.3s ease;
+  }
+
+  {% if block.settings.hover_effect %}
+  .product-highlight__image-wrapper-{{ ai_gen_id }}:hover .product-highlight__image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+  {% endif %}
+
+  .product-highlight__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    aspect-ratio: {{ block.settings.aspect_ratio }};
+  }
+
+  .product-highlight__placeholder-{{ ai_gen_id }} svg {
+    width: 80%;
+    height: 80%;
+  }
+
+  .product-highlight__info-{{ ai_gen_id }} {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .product-highlight__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.product_title_size }}px;
+    margin: 0 0 8px 0;
+    color: {{ block.settings.product_title_color }};
+    {% if block.settings.truncate_title %}
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    {% endif %}
+  }
+
+  .product-highlight__price-{{ ai_gen_id }} {
+    font-size: {{ block.settings.price_size }}px;
+    margin: 0 0 15px 0;
+    color: {{ block.settings.price_color }};
+  }
+
+  .product-highlight__button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+  }
+
+  .product-highlight__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  /* Slider Navigation */
+  .product-highlight__nav-{{ ai_gen_id }} {
+    display: none;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .product-highlight__nav-button-{{ ai_gen_id }} {
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-highlight__nav-button-{{ ai_gen_id }}:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .product-highlight__dots-{{ ai_gen_id }} {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .product-highlight__dot-{{ ai_gen_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .product-highlight__dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.button_bg_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-highlight__container-{{ ai_gen_id }} {
+      display: flex;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      gap: 0;
+      position: relative;
+    }
+    
+    .product-highlight__product-{{ ai_gen_id }} {
+      flex: 0 0 100%;
+      width: 100%;
+      scroll-snap-align: start;
+      padding: 0 {{ block.settings.gap | divided_by: 2 }}px;
+      box-sizing: border-box;
+    }
+    
+    .product-highlight__nav-{{ ai_gen_id }} {
+      display: flex;
+    }
+    
+    .product-highlight__dots-{{ ai_gen_id }} {
+      display: flex;
+    }
+  }
+{% endstyle %}
+
+<product-highlight-slider-{{ ai_gen_id }} class="product-highlight-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.title != blank %}
+    <h2 class="product-highlight__heading-{{ ai_gen_id }}" style="text-align: {{ block.settings.title_alignment }}; margin-bottom: 20px; color: {{ block.settings.title_color }}; font-size: {{ block.settings.title_size }}px;">
+      {{ block.settings.title }}
+    </h2>
+  {% endif %}
+
+  <div class="product-highlight__container-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% assign product_setting = 'product_' | append: i %}
+      {% assign product = block.settings[product_setting] %}
+      
+      {% if product != blank %}
+        <div class="product-highlight__product-{{ ai_gen_id }}" data-slide-index="{{ forloop.index0 }}">
+          <a href="{{ product.url }}" class="product-highlight__image-wrapper-{{ ai_gen_id }}">
+            {% if product.featured_image != blank %}
+              <img 
+                src="{{ product.featured_image | image_url: width: 800 }}"
+                alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                class="product-highlight__image-{{ ai_gen_id }}"
+                loading="lazy"
+                width="{{ product.featured_image.width }}"
+                height="{{ product.featured_image.height }}"
+              >
+            {% else %}
+              <div class="product-highlight__placeholder-{{ ai_gen_id }}">
+                {{ 'product-apparel-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </a>
+          <div class="product-highlight__info-{{ ai_gen_id }}">
+            <h3 class="product-highlight__title-{{ ai_gen_id }}">
+              <a href="{{ product.url }}" style="text-decoration: none; color: inherit;">{{ product.title }}</a>
+            </h3>
+            <div class="product-highlight__price-{{ ai_gen_id }}">
+              {% if product.compare_at_price > product.price %}
+                <span style="text-decoration: line-through; opacity: 0.7; margin-right: 8px;">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+              <span>{{ product.price | money }}</span>
+            </div>
+            
+            {% if block.settings.show_button %}
+              <a href="{{ product.url }}" class="product-highlight__button-{{ ai_gen_id }}">
+                {{ block.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        <div class="product-highlight__product-{{ ai_gen_id }}" data-slide-index="{{ forloop.index0 }}">
+          <div class="product-highlight__image-wrapper-{{ ai_gen_id }}">
+            <div class="product-highlight__placeholder-{{ ai_gen_id }}">
+              {{ 'product-apparel-1' | placeholder_svg_tag }}
+            </div>
+          </div>
+          
+          <div class="product-highlight__info-{{ ai_gen_id }}">
+            <h3 class="product-highlight__title-{{ ai_gen_id }}">Product title</h3>
+            <div class="product-highlight__price-{{ ai_gen_id }}">$0.00</div>
+            
+            {% if block.settings.show_button %}
+              <span class="product-highlight__button-{{ ai_gen_id }}">
+                {{ block.settings.button_text }}
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="product-highlight__nav-{{ ai_gen_id }}">
+    <button class="product-highlight__nav-button-{{ ai_gen_id }} prev" aria-label="Previous product">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="product-highlight__nav-button-{{ ai_gen_id }} next" aria-label="Next product">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="product-highlight__dots-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% assign product_setting = 'product_' | append: i %}
+      {% assign product = block.settings[product_setting] %}
+      {% if product != blank or forloop.first %}
+        <span class="product-highlight__dot-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+      {% endif %}
+    {% endfor %}
+  </div>
+</product-highlight-slider-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductHighlightSlider extends HTMLElement {
+      constructor() {
+        super();
+        this.container = this.querySelector('.product-highlight__container-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.product-highlight__product-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.product-highlight__nav-button-{{ ai_gen_id }}.prev');
+        this.nextButton = this.querySelector('.product-highlight__nav-button-{{ ai_gen_id }}.next');
+        this.dots = this.querySelectorAll('.product-highlight__dot-{{ ai_gen_id }}');
+        this.currentIndex = 0;
+        this.slideCount = this.slides.length;
+        this.isMobile = window.innerWidth <= 749;
+      }
+
+      connectedCallback() {
+        if (this.slideCount <= 1) {
+          this.prevButton.style.display = 'none';
+          this.nextButton.style.display = 'none';
+          return;
+        }
+
+        this.setupEventListeners();
+        this.updateButtonStates();
+        window.addEventListener('resize', this.handleResize.bind(this));
+      }
+
+      setupEventListeners() {
+        this.prevButton.addEventListener('click', this.goToPrevSlide.bind(this));
+        this.nextButton.addEventListener('click', this.goToNextSlide.bind(this));
+        
+        this.dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.dataset.index);
+            this.goToSlide(index);
+          });
+        });
+      }
+
+      handleResize() {
+        const wasMobile = this.isMobile;
+        this.isMobile = window.innerWidth <= 749;
+        
+        // Reset position if switching between mobile and desktop
+        if (wasMobile !== this.isMobile) {
+          this.goToSlide(0);
+        }
+      }
+
+      goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= this.slideCount) index = this.slideCount - 1;
+        
+        this.currentIndex = index;
+        
+        if (this.isMobile) {
+          const slide = this.slides[index];
+          if (slide) {
+            slide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          }
+        }
+        
+        this.updateButtonStates();
+        this.updateDots();
+      }
+
+      goToPrevSlide() {
+        this.goToSlide(this.currentIndex - 1);
+      }
+
+      goToNextSlide() {
+        this.goToSlide(this.currentIndex + 1);
+      }
+
+      updateButtonStates() {
+        this.prevButton.disabled = this.currentIndex === 0;
+        this.nextButton.disabled = this.currentIndex === this.slideCount - 1;
+      }
+
+      updateDots() {
+        this.dots.forEach((dot, index) => {
+          if (index === this.currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    customElements.define('product-highlight-slider-{{ ai_gen_id }}', ProductHighlightSlider);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product Highlights",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Products"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "header",
+      "content": "Product Details"
+    },
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Product title size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "truncate_title",
+      "label": "Limit title to two lines",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Price size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Product"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Desktop layout",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 column"
+        },
+        {
+          "value": "2",
+          "label": "2 columns"
+        },
+        {
+          "value": "3",
+          "label": "3 columns"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1/1",
+          "label": "1:1 | Square"
+        },
+        {
+          "value": "3/4",
+          "label": "3:4 | Portrait"
+        },
+        {
+          "value": "4/3",
+          "label": "4:3 | Landscape"
+        },
+        {
+          "value": "16/9",
+          "label": "16:9 | Widescreen"
+        }
+      ],
+      "default": "1/1"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between products",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical margin",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "add_shadow",
+      "label": "Add shadow",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_effect",
+      "label": "Enable hover zoom effect",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Highlights"
+    }
+  ]
+}
 {% endschema %}
