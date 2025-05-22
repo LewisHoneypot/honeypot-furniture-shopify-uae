@@ -440,8 +440,8 @@
         "ai_gen_block_6faa2ed_FPnhEw": {
           "type": "ai_gen_block_6faa2ed",
           "settings": {
-            "padding": 40,
-            "columns_gap": 40,
+            "padding": 80,
+            "columns_gap": 20,
             "background_color": "#ede9e2",
             "text": "DUBAI Feather Cloud",
             "text_transform": "uppercase",
