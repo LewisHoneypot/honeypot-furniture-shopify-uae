@@ -449,7 +449,7 @@
             "image": "shopify://shop_images/poi-burj-khalifa-3-dtcm-jun-2023_jpg.png",
             "fallback_color": "#000000",
             "font_size": 90,
-            "font_size_mobile": 55,
+            "font_size_mobile": 45,
             "font_weight": "800",
             "show_outline": false,
             "outline_width": 2,
@@ -474,6 +474,39 @@
         "section_width": "full-width",
         "customize_width": 1400,
         "section_margin": 0
+      }
+    },
+    "ai_smart_section_LwNh6R": {
+      "type": "ai-smart-section",
+      "blocks": {
+        "ai_gen_block_77a2d6f_77ziyE": {
+          "type": "ai_gen_block_77a2d6f",
+          "settings": {
+            "heading": "Fully Custom.",
+            "heading_font": "Lato",
+            "heading_size": 32,
+            "heading_weight": "normal",
+            "heading_color": "#000000",
+            "image_1": "shopify://shop_images/Choose_your_size.png",
+            "image_2": "shopify://shop_images/Choose_your_layout.png",
+            "image_3": "shopify://shop_images/Pick_your_colour_4f21dd0a-cade-4f2c-bb4a-c7fbf5f0ba89.png",
+            "image_aspect_ratio": 100,
+            "image_border_radius": 8,
+            "button_color": "#000000",
+            "button_text_color": "#FFFFFF",
+            "button_hover_color": "#333333"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_77a2d6f_77ziyE"
+      ],
+      "name": "AI Smart Section",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1400,
+        "section_margin": 40
       }
     },
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596": {
@@ -1457,6 +1490,7 @@
     "41769cb9-5f5a-4896-9da0-2d3bf33aef1e",
     "1736414156dbc7d523",
     "ai_smart_section_Y9Fai9",
+    "ai_smart_section_LwNh6R",
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596",
     "trustpilot_service_reviews_mini_qrrfxa",
     "17364240654517feb4",
