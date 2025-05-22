@@ -1,6 +1,140 @@
+{% doc %}
+  @prompt
+    Large Text filled with an image.  Add an option to select the text alignment. Add an option to change the block background colour, Add an option to change the text so it is uppercase
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .image-text-block-{{ ai_gen_id }} {
+    position: relative;
+    padding: 60px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: {{ block.settings.background_color }};
+    overflow: hidden;
+  }
+
+  .image-text-container-{{ ai_gen_id }} {
+    position: relative;
+    text-align: {{ block.settings.text_alignment }};
+    max-width: 100%;
+    z-index: 1;
+  }
+
+  .image-text-heading-{{ ai_gen_id }} {
+    font-size: clamp(40px, 10vw, 120px);
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-image: url({{ block.settings.fill_image | image_url }});
+    {% if block.settings.uppercase_text %}
+      text-transform: uppercase;
+    {% endif %}
+  }
+
+  .image-text-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .image-text-block-{{ ai_gen_id }} {
+      padding: 40px 20px;
+    }
+    
+    .image-text-heading-{{ ai_gen_id }} {
+      font-size: clamp(30px, 8vw, 80px);
+    }
+  }
+{% endstyle %}
+
+<div class="image-text-block-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="image-text-container-{{ ai_gen_id }}">
+    <h2 class="image-text-heading-{{ ai_gen_id }}">{{ block.settings.text }}</h2>
+  </div>
+  
+  {% if block.settings.fill_image == blank %}
+    <div class="image-text-placeholder-{{ ai_gen_id }}">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Image Filled Text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Bold Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase_text",
+      "label": "Uppercase text",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "fill_image",
+      "label": "Fill image"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f4f4f4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Filled Text"
+    }
+  ]
+}
 {% endschema %}
