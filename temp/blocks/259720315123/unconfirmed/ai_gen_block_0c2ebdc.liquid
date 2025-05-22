@@ -1,6 +1,279 @@
+{% doc %}
+  @prompt
+    Make a line of text where the last word scrolls up into line then up out of line with 3 different words, animate the last word scrolling up out of line too
+, slide the word up into frame, hold it for 1 second then slide it up out of frame
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-text-scroller-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: {{ block.settings.text_alignment }};
+    padding: {{ block.settings.padding }}px;
+    margin: {{ block.settings.margin }}px 0;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    color: {{ block.settings.text_color }};
+    line-height: 1.2;
+    overflow: hidden;
+  }
+
+  .ai-text-scroller-static-{{ ai_gen_id }} {
+    margin-right: 10px;
+  }
+
+  .ai-text-scroller-dynamic-{{ ai_gen_id }} {
+    position: relative;
+    height: {{ block.settings.font_size | plus: 5 }}px;
+    overflow: hidden;
+    color: {{ block.settings.highlight_color }};
+  }
+
+  .ai-text-scroller-words-{{ ai_gen_id }} {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .ai-text-scroller-word-{{ ai_gen_id }} {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+  }
+
+  .ai-text-scroller-word-{{ ai_gen_id }}.entering {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .ai-text-scroller-word-{{ ai_gen_id }}.exiting {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-text-scroller-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size_mobile }}px;
+    }
+    
+    .ai-text-scroller-dynamic-{{ ai_gen_id }} {
+      height: {{ block.settings.font_size_mobile | plus: 5 }}px;
+    }
+  }
+{% endstyle %}
+
+<text-scroller-{{ ai_gen_id }} 
+  class="ai-text-scroller-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-text-scroller-static-{{ ai_gen_id }}">{{ block.settings.static_text }}</div>
+  <div class="ai-text-scroller-dynamic-{{ ai_gen_id }}">
+    <div class="ai-text-scroller-words-{{ ai_gen_id }}">
+      <div class="ai-text-scroller-word-{{ ai_gen_id }}">{{ block.settings.word_1 }}</div>
+      <div class="ai-text-scroller-word-{{ ai_gen_id }}">{{ block.settings.word_2 }}</div>
+      <div class="ai-text-scroller-word-{{ ai_gen_id }}">{{ block.settings.word_3 }}</div>
+    </div>
+  </div>
+</text-scroller-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TextScroller extends HTMLElement {
+      constructor() {
+        super();
+        this.words = this.querySelectorAll('.ai-text-scroller-word-{{ ai_gen_id }}');
+        this.currentIndex = 0;
+        this.animationDuration = 500; // 0.5s for slide in/out animation
+        this.visibleDuration = 1000; // 1s visible time
+        this.totalCycleDuration = this.animationDuration * 2 + this.visibleDuration;
+      }
+
+      connectedCallback() {
+        // Start animation cycle
+        this.startAnimation();
+      }
+
+      disconnectedCallback() {
+        if (this.animationTimer) {
+          clearTimeout(this.animationTimer);
+        }
+      }
+
+      startAnimation() {
+        // Start with the first word
+        this.animateWord(0);}
+
+      animateWord(index) {
+        const word = this.words[index];
+        
+        // Slide in
+        word.classList.add('entering');
+        // Schedule slide out after visible duration
+        setTimeout(() => {
+          word.classList.remove('entering');
+          word.classList.add('exiting');
+          // Schedule next word after this one exits
+          setTimeout(() => {
+            word.classList.remove('exiting');
+            
+            // Move to next word
+            const nextIndex = (index + 1) % this.words.length;
+            this.animateWord(nextIndex);
+          }, this.animationDuration);
+        }, this.animationDuration + this.visibleDuration);
+      }
+    }
+
+    customElements.define('text-scroller-{{ ai_gen_id }}', TextScroller);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Scrolling Text",
+  "tag": null,
+  "class": "scrolling-text-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "static_text",
+      "label": "Static text",
+      "default": "We create amazing"
+    },
+    {
+      "type": "text",
+      "id": "word_1",
+      "label": "Scrolling word 1",
+      "default": "products"
+    },
+    {
+      "type": "text",
+      "id": "word_2",
+      "label": "Scrolling word 2",
+      "default": "experiences"
+    },
+    {
+      "type": "text",
+      "id": "word_3",
+      "label": "Scrolling word 3",
+      "default": "designs"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 16,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Scrolling text color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Text"
+    }
+  ]
+}
 {% endschema %}
