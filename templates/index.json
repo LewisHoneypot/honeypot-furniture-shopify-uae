@@ -493,7 +493,7 @@
             "image_aspect_ratio": 100,
             "image_border_radius": 8,
             "button_color": "#000000",
-            "button_text_color": "#FFFFFF",
+            "button_text_color": "#ffffff",
             "button_hover_color": "#333333"
           },
           "blocks": {}
@@ -564,6 +564,7 @@
         "004436e0-e2cf-4a59-bf91-6668d2138e8f",
         "a7e7e249-f6e6-4b09-9bef-19db66cbd683"
       ],
+      "disabled": true,
       "settings": {
         "type_style": "classic",
         "heading": "Shop Sofas by Size",
@@ -602,8 +603,18 @@
         "padding_bottom_mobile": 0
       }
     },
+    "ai_smart_section_q9pfMm": {
+      "type": "ai-smart-section",
+      "name": "AI Smart Section",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1400,
+        "section_margin": 40
+      }
+    },
     "trustpilot_service_reviews_mini_qrrfxa": {
       "type": "trustpilot-service-reviews-mini",
+      "disabled": true,
       "settings": {
         "section_width": "customized-width",
         "customize_width": 1050,
@@ -682,6 +693,7 @@
         "collection_LA3XCq",
         "collection_3HMabm"
       ],
+      "disabled": true,
       "settings": {
         "type_style": "classic",
         "heading": "",
@@ -1492,6 +1504,7 @@
     "ai_smart_section_Y9Fai9",
     "ai_smart_section_LwNh6R",
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596",
+    "ai_smart_section_q9pfMm",
     "trustpilot_service_reviews_mini_qrrfxa",
     "17364240654517feb4",
     "collection_list_NKqtYJ",
