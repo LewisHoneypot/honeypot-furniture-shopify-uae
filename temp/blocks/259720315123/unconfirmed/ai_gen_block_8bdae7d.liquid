@@ -1,6 +1,285 @@
+{% doc %}
+  @prompt
+    animate text where the last word scrolls into line and then out of line with 3 options
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .animated-text-container-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: {{ block.settings.text_alignment }};
+    padding: {{ block.settings.padding }}px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .animated-text-static-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    margin-right: 8px;
+  }
+
+  .animated-text-dynamic-{{ ai_gen_id }} {
+    position: relative;
+    color: {{ block.settings.highlight_color }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    overflow: hidden;
+    height: {{ block.settings.font_size | plus: 10 }}px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .animated-text-word-{{ ai_gen_id }} {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform {{ block.settings.animation_speed }}ms ease, opacity {{ block.settings.animation_speed }}ms ease;
+  }
+
+  .animated-text-word-{{ ai_gen_id }}.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animated-text-word-{{ ai_gen_id }}.exit {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  @media screen and (max-width: 749px) {
+    .animated-text-static-{{ ai_gen_id }},
+    .animated-text-dynamic-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size_mobile }}px;
+    }
+
+    .animated-text-dynamic-{{ ai_gen_id }} {
+      height: {{ block.settings.font_size_mobile | plus: 10 }}px;
+    }
+  }
+{% endstyle %}
+
+<animated-text-{{ ai_gen_id }} 
+  class="animated-text-container-{{ ai_gen_id }}" 
+  data-animation-speed="{{ block.settings.animation_speed }}"
+  data-animation-delay="{{ block.settings.animation_delay }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="animated-text-static-{{ ai_gen_id }}">{{ block.settings.static_text }}</div>
+  <div class="animated-text-dynamic-{{ ai_gen_id }}">
+    <span class="animated-text-word-{{ ai_gen_id }}" data-word="1">{{ block.settings.dynamic_text_1 }}</span>
+    <span class="animated-text-word-{{ ai_gen_id }}" data-word="2">{{ block.settings.dynamic_text_2 }}</span>
+    <span class="animated-text-word-{{ ai_gen_id }}" data-word="3">{{ block.settings.dynamic_text_3 }}</span>
+  </div>
+</animated-text-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AnimatedText extends HTMLElement {
+      constructor() {
+        super();
+        this.animationSpeed = parseInt(this.getAttribute('data-animation-speed'));
+        this.animationDelay = parseInt(this.getAttribute('data-animation-delay'));
+        this.words = this.querySelectorAll('.animated-text-word-{{ ai_gen_id }}');
+        this.currentWordIndex = 0;
+        this.totalWords = this.words.length;
+      }
+
+      connectedCallback() {
+        // Start the animation
+        this.startAnimation();
+      }
+
+      startAnimation() {
+        // Show the first word immediately
+        this.words[0].classList.add('active');
+        
+        // Start the animation cycle
+        setTimeout(() => {
+          this.animateWords();
+        }, this.animationDelay);
+      }
+
+      animateWords() {
+        setInterval(() => {
+          // Remove active class from current word and add exit class
+          this.words[this.currentWordIndex].classList.remove('active');
+          this.words[this.currentWordIndex].classList.add('exit');
+          
+          // After exit animation, remove exit class
+          setTimeout(() => {
+            this.words[this.currentWordIndex].classList.remove('exit');
+          }, this.animationSpeed);
+          
+          // Move to next word
+          this.currentWordIndex = (this.currentWordIndex + 1) % this.totalWords;
+          
+          // Add active class to new current word
+          this.words[this.currentWordIndex].classList.add('active');
+        }, this.animationDelay);
+      }
+    }
+
+    customElements.define('animated-text-{{ ai_gen_id }}', AnimatedText);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Animated Text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "static_text",
+      "label": "Static text",
+      "default": "We make products that are"
+    },
+    {
+      "type": "text",
+      "id": "dynamic_text_1",
+      "label": "Dynamic text 1",
+      "default": "beautiful"
+    },
+    {
+      "type": "text",
+      "id": "dynamic_text_2",
+      "label": "Dynamic text 2",
+      "default": "innovative"
+    },
+    {
+      "type": "text",
+      "id": "dynamic_text_3",
+      "label": "Dynamic text 3",
+      "default": "sustainable"
+    },
+    {
+      "type": "header",
+      "content": "Animation Settings"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 200,
+      "max": 1000,
+      "step": 100,
+      "unit": "ms",
+      "label": "Animation speed",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "animation_delay",
+      "min": 1000,
+      "max": 5000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Time between words",
+      "default": 3000
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 14,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Text"
+    }
+  ]
+}
 {% endschema %}
