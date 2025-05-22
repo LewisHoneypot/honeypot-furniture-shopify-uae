@@ -471,6 +471,8 @@
       ],
       "name": "AI Smart Section",
       "settings": {
+        "section_width": "full-width",
+        "customize_width": 1400,
         "section_margin": 0
       }
     },
