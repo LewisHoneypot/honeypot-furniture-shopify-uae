@@ -448,7 +448,7 @@
             "text_alignment": "center",
             "image": "shopify://shop_images/poi-burj-khalifa-3-dtcm-jun-2023_jpg.png",
             "fallback_color": "#000000",
-            "font_size": 90,
+            "font_size": 135,
             "font_size_mobile": 45,
             "font_weight": "800",
             "show_outline": false,
@@ -624,7 +624,8 @@
             "button_hover_color": "#333333",
             "slide_1_image": "shopify://shop_images/UAE-Banner-2.jpg",
             "slide_1_product": "lotus-feather-cloud-sofa-linen-off-white-3-seater-ottoman",
-            "slide_2_product": "",
+            "slide_2_image": "shopify://shop_images/1860785.png",
+            "slide_2_product": "iris-sofa-beige-4-seater",
             "slide_3_product": ""
           },
           "blocks": {}
