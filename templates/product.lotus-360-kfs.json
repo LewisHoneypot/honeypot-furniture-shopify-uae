@@ -254,7 +254,7 @@
             "image_aspect_ratio": 100,
             "image_border_radius": 8,
             "button_color": "#000000",
-            "button_text_color": "#FFFFFF",
+            "button_text_color": "#ffffff",
             "button_hover_color": "#333333"
           },
           "blocks": {}
@@ -262,6 +262,46 @@
       },
       "block_order": [
         "ai_gen_block_77a2d6f_wAXWr8"
+      ],
+      "name": "AI Smart Section",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1400,
+        "section_margin": 40
+      }
+    },
+    "ai_smart_section_GjRPtc": {
+      "type": "ai-smart-section",
+      "blocks": {
+        "ai_gen_block_f4547ec_BxVpcb": {
+          "type": "ai_gen_block_f4547ec",
+          "settings": {
+            "heading": "Why we love the Dubai Feather Cloud",
+            "main_image": "shopify://shop_images/Vertical_Lotus.jpg",
+            "tile_caption_1": "Feather Filled Cushoins",
+            "tile_caption_2": "Modular Design",
+            "padding": 20,
+            "gap": 20,
+            "tile_gap": 16,
+            "heading_margin": 20,
+            "tile_aspect_ratio": "1.33",
+            "mobile_main_image_aspect_ratio": "1.33",
+            "background_color": "#ffffff",
+            "heading_color": "#121212",
+            "caption_color": "#121212",
+            "heading_size": 32,
+            "heading_size_mobile": 24,
+            "caption_font_size": 16,
+            "tile_border_width": 1,
+            "tile_border_color": "#e0e0e0",
+            "tile_border_radius": 8,
+            "tile_caption_padding": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_f4547ec_BxVpcb"
       ],
       "name": "AI Smart Section",
       "settings": {
@@ -861,6 +901,7 @@
   "order": [
     "main",
     "ai_smart_section_MqbznV",
+    "ai_smart_section_GjRPtc",
     "drawers_Ut99DD",
     "rich_text_WaVhX9",
     "multicolumn_FJHgEr",
