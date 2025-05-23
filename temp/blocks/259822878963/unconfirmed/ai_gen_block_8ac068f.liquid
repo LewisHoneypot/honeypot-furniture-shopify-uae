@@ -1,6 +1,571 @@
+{% doc %}
+  @prompt
+    Create a responsive carousel block featuring lifestyle background imagery with a floating product card overlay. The design should:
+Display one image per slide in the carousel, full width.
+Overlay a product card on the lower-right corner of each slide, inside a semi-rounded white box.
+The product card must include:
+Product image
+Price
+Optional “Add to Cart” button
+Allow merchants to:
+Upload/change the background lifestyle image for each slide
+Select a Shopify product for each card from their store
+Ensure mobile responsiveness and sleek visual hierarchy
+Use smooth slide transitions
+Follow minimal, elegant design principles with subtle shadows and clean font choices, scale down the product card by 30%
+, Centralise the navigation items below the image
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .product-carousel-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-slides-{{ ai_gen_id }} {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .carousel-slide-{{ ai_gen_id }} {
+    flex: 0 0 100%;
+    position: relative;
+    width: 100%;}
+
+  .carousel-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.carousel_height }}px;
+    object-fit: cover;
+  }
+
+  .carousel-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.carousel_height }}px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-image-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.5;
+  }
+
+  .product-card-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: calc({{ block.settings.card_width }}px * 0.7); /* Scaled down by 30% */
+    background-color: {{ block.settings.card_bg_color }};
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 16px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap */
+  }
+
+  .product-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .product-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .product-details-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Reduced gap */
+  }
+
+  .product-title-{{ ai_gen_id }} {
+    font-size: 14px; /* Reduced font size */
+    font-weight: 600;
+    margin: 0;
+    color: {{ block.settings.title_color }};
+  }
+
+  .product-price-{{ ai_gen_id }} {
+    font-size: 15px; /* Reduced font size */
+    font-weight: 700;
+    margin: 0;
+    color: {{ block.settings.price_color }};
+  }
+
+  .product-button-{{ ai_gen_id }} {
+    margin-top: 6px; /* Reduced margin */
+    padding: 8px 14px; /* Reduced padding */
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: 6px;
+    font-size: 12px; /* Reduced font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .product-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .carousel-navigation-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    gap: 15px;
+  }
+
+  .carousel-dots-{{ ai_gen_id }} {
+    display: flex;
+    gap: 8px;
+  }
+
+  .carousel-dot-{{ ai_gen_id }} {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .carousel-dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.dot_active_color }};
+  }
+
+  .carousel-arrow-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: 768px) {
+    .carousel-image-{{ ai_gen_id }} {
+      height: {{ block.settings.carousel_height_mobile }}px;
+    }
+
+    .carousel-image-placeholder-{{ ai_gen_id }} {
+      height: {{ block.settings.carousel_height_mobile }}px;
+    }
+
+    .product-card-{{ ai_gen_id }} {
+      width: calc({{ block.settings.card_width }}px * 0.56); /* Further reduced for mobile */
+      bottom: 20px;
+      right: 20px;
+      padding: 12px;
+    }
+
+    .carousel-arrow-{{ ai_gen_id }} {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .product-card-{{ ai_gen_id }} {
+      width: calc({{ block.settings.card_width }}px * 0.42); /* Further reduced for small mobile */
+      bottom: 15px;
+      right: 15px;
+      padding: 10px;
+    }
+
+    .product-title-{{ ai_gen_id }} {
+      font-size: 12px;
+    }
+
+    .product-price-{{ ai_gen_id }} {
+      font-size: 14px;
+    }
+
+    .product-button-{{ ai_gen_id }} {
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+  }
+{% endstyle %}
+
+<product-carousel-{{ ai_gen_id }} 
+  class="product-carousel-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="carousel-slides-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign image_key = 'slide_' | append: i | append: '_image'
+        assign product_key = 'slide_' | append: i | append: '_product'
+        assign image = block.settings[image_key]
+        assign product = block.settings[product_key]
+      %}
+
+      {% if image != blank or product != blank %}
+        <div class="carousel-slide-{{ ai_gen_id }}" data-slide-index="{{ forloop.index0 }}">
+          {% if image != blank %}
+            <img 
+              src="{{ image | img_url: 'master' }}" 
+              alt="{{ image.alt | escape }}"
+              class="carousel-image-{{ ai_gen_id }}"
+              loading="{% if forloop.index == 1 %}eager{% else %}lazy{% endif %}"
+            >
+          {% else %}
+            <div class="carousel-image-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+
+          {% if product != blank %}
+            <div class="product-card-{{ ai_gen_id }}">
+              <div class="product-image-{{ ai_gen_id }}">
+                {% if product.featured_image %}
+                  <img 
+                    src="{{ product.featured_image | img_url: '300x' }}" 
+                    alt="{{ product.featured_image.alt | escape }}"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <div class="product-image-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="product-details-{{ ai_gen_id }}">
+                <h3 class="product-title-{{ ai_gen_id }}">{{ product.title }}</h3>
+                <p class="product-price-{{ ai_gen_id }}">{{ product.price | money }}</p>
+                {% if block.settings.show_add_to_cart %}
+                  <button 
+                    class="product-button-{{ ai_gen_id }}" 
+                    data-product-id="{{ product.id }}"
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                  >
+                    {{ block.settings.add_to_cart_text }}
+                  </button>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="carousel-navigation-{{ ai_gen_id }}">
+    {% if block.settings.show_navigation %}
+      <div class="carousel-arrow-{{ ai_gen_id }} carousel-arrow-{{ ai_gen_id }}--prev">
+        <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 1L2 8L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    {% endif %}
+    
+    {% if block.settings.show_dots %}
+      <div class="carousel-dots-{{ ai_gen_id }}">
+        {% for i in (1..3) %}
+          {% liquid
+            assign image_key = 'slide_' | append: i | append: '_image'
+            assign product_key = 'slide_' | append: i | append: '_product'
+            assign image = block.settings[image_key]
+            assign product = block.settings[product_key]
+          %}
+          {% if image != blank or product != blank %}
+            <div class="carousel-dot-{{ ai_gen_id }} {% if forloop.index == 1 %}active{% endif %}" data-slide-index="{{ forloop.index0 }}"></div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% if block.settings.show_navigation %}
+      <div class="carousel-arrow-{{ ai_gen_id }} carousel-arrow-{{ ai_gen_id }}--next">
+        <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    {% endif %}
+  </div>
+</product-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductCarousel extends HTMLElement {
+      constructor() {
+        super();
+        this.slidesContainer = this.querySelector('.carousel-slides-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.carousel-slide-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.carousel-dot-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.carousel-arrow-{{ ai_gen_id }}--prev');
+        this.nextButton = this.querySelector('.carousel-arrow-{{ ai_gen_id }}--next');
+        this.addToCartButtons = this.querySelectorAll('.product-button-{{ ai_gen_id }}');
+        this.currentSlide = 0;
+        this.slideCount = this.slides.length;
+        
+        if (this.slideCount <= 0) return;
+        
+        this.init();
+      }
+
+      init() {
+        this.setupEventListeners();
+        this.updateSlidePosition();
+      }
+
+      setupEventListeners() {
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.goToSlide(this.currentSlide - 1));
+        }
+        
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.goToSlide(this.currentSlide + 1));
+        }
+        
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        this.addToCartButtons.forEach(button => {
+          button.addEventListener('click', this.addToCart.bind(this));
+        });
+      }
+
+      goToSlide(index) {
+        if (index < 0) {
+          index = this.slideCount - 1;
+        } else if (index >= this.slideCount) {
+          index = 0;
+        }
+        
+        this.currentSlide = index;
+        this.updateSlidePosition();
+        this.updateDots();
+      }
+
+      updateSlidePosition() {
+        this.slidesContainer.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+      }
+
+      updateDots() {
+        this.dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentSlide);
+        });
+      }
+
+      addToCart(event) {
+        const button = event.target;
+        const productId = button.dataset.productId;
+        const variantId = button.dataset.variantId;
+        
+        if (!variantId) return;
+        
+        button.textContent = 'Adding...';
+        button.disabled = true;
+        
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [{
+              id: variantId,
+              quantity: 1
+            }]
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          button.textContent = 'Added!';
+          setTimeout(() => {
+            button.textContent = '{{ block.settings.add_to_cart_text }}';
+            button.disabled = false;
+          }, 2000);
+        })
+        .catch(error => {
+          button.textContent = 'Error';
+          setTimeout(() => {
+            button.textContent = '{{ block.settings.add_to_cart_text }}';
+            button.disabled = false;
+          }, 2000);
+        });
+      }
+    }
+
+    customElements.define('product-carousel-{{ ai_gen_id }}', ProductCarousel);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product Carousel",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "range",
+      "id": "carousel_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Carousel height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "carousel_height_mobile",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Mobile carousel height",
+      "default": 400
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show navigation dots",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active dot color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Product Card Settings"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 200,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "label": "Card width",
+      "default": 280
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product title color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Product price color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_to_cart",
+      "label": "Show Add to Cart button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_text",
+      "label": "Add to cart text",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Slide 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_1_image",
+      "label": "Background image"
+    },
+    {
+      "type": "product",
+      "id": "slide_1_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Slide 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_2_image",
+      "label": "Background image"
+    },
+    {
+      "type": "product",
+      "id": "slide_2_product",
+      "label": "Product"
+    },
+    {
+      "type": "header",
+      "content": "Slide 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_3_image",
+      "label": "Background image"
+    },
+    {
+      "type": "product",
+      "id": "slide_3_product",
+      "label": "Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Carousel"
+    }
+  ]
+}
 {% endschema %}
