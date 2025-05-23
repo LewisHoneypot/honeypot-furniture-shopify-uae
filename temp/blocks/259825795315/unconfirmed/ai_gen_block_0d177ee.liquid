@@ -1,6 +1,311 @@
+{% doc %}
+  @prompt
+    Create a full-width section heading block with the following design features:
+A centred title with bold typography.
+Two horizontal lines (1px solid) flanking the title on the left and right, aligned vertically with the centre of the text.
+Lines should automatically adjust length to maintain balance on both sides of the title.
+Provide a customisable text field for the heading.
+Allow merchants to choose the font size, font weight, alignment (left/centre/right), and line colour.
+Ensure the block has mobile responsiveness — stacking or line resizing as needed.
+Use clean, modern spacing with adequate padding above and below the block.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .section-heading-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: {{ block.settings.alignment }};
+    width: 100%;
+    padding: {{ block.settings.padding_vertical }}px 0;
+    gap: {{ block.settings.line_spacing }}px;
+  }
+
+  .section-heading-line-{{ ai_gen_id }} {
+    flex-grow: 1;
+    height: 1px;
+    background-color: {{ block.settings.line_color }};
+    max-width: {{ block.settings.line_max_width }}px;}
+
+  .section-heading-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    color: {{ block.settings.text_color }};
+    text-align: center;
+    margin: 0;
+    padding: 0 {{ block.settings.text_padding }}px;white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-heading-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_vertical_mobile }}px 0;gap: {{ block.settings.line_spacing_mobile }}px;
+    }
+    
+    .section-heading-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size_mobile }}px;
+      padding: 0 {{ block.settings.text_padding_mobile }}px;
+      {% if block.settings.wrap_text_mobile %}
+        white-space: normal;
+      {% endif %}
+    }
+    
+    {% if block.settings.mobile_layout == 'stacked' %}
+      .section-heading-{{ ai_gen_id }} {
+        flex-direction: column;
+      }
+      
+      .section-heading-line-{{ ai_gen_id }} {
+        width: {{ block.settings.line_width_mobile }}%;max-width: 100%;
+      }
+    {% else %}
+      .section-heading-line-{{ ai_gen_id }} {
+        max-width: {{ block.settings.line_max_width_mobile }}px;
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<div class="section-heading-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.alignment != 'flex-end' %}
+    <div class="section-heading-line-{{ ai_gen_id }}"></div>
+  {% endif %}
+  <h2 class="section-heading-text-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+  
+  {% if block.settings.alignment != 'flex-start' %}
+    <div class="section-heading-line-{{ ai_gen_id }}"></div>
+  {% endif %}
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Section Heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Section Heading"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 16,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Lines"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Line color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "line_spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between text and lines",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "line_spacing_mobile",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between text and lines (mobile)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "line_max_width",
+      "min": 50,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Maximum line width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "line_max_width_mobile",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Maximum line width (mobile)",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding (mobile)",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "text_padding",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Text padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_padding_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "label": "Text padding (mobile)",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Mobile Layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        {
+          "value": "inline",
+          "label": "Inline (horizontal)"
+        },
+        {
+          "value": "stacked",
+          "label": "Stacked (vertical)"
+        }
+      ],
+      "default": "inline"
+    },
+    {
+      "type": "checkbox",
+      "id": "wrap_text_mobile",
+      "label": "Allow text to wrap on mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "line_width_mobile",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Line width for stacked layout",
+      "default": 80,
+      "info": "Only applies when mobile layout is set to stacked"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Heading"
+    }
+  ]
+}
 {% endschema %}
