@@ -276,7 +276,7 @@
             "text_color": "#333333",
             "button_text": "START CHAT",
             "phone_number": "971507576629",
-            "button_color": "#25D366",
+            "button_color": "#25d366",
             "button_width": 200,
             "border_radius": 24
           },
@@ -299,6 +299,7 @@
       "blocks": {
         "ai_gen_block_f4547ec_BxVpcb": {
           "type": "ai_gen_block_f4547ec",
+          "disabled": true,
           "settings": {
             "heading": "Why we love the Dubai Feather Cloud",
             "main_image": "shopify://shop_images/Vertical_Lotus.jpg",
