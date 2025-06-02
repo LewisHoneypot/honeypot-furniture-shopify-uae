@@ -1,0 +1,557 @@
+{% doc %}
+  @prompt
+    Create an informative section explaining how customers can track and make upcoming payments using Tabby. The layout should be structured, mobile-first, and clearly divided into visual and text elements.
+
+🔹 Structure:
+Section Title:
+Text: Making upcoming payments
+
+Large, bold font
+
+Center-aligned with spacing underneath
+
+Description Paragraph:
+Text:
+“The best way to track your purchases and upcoming bills is by getting the Tabby app.”
+
+Font: Medium size (16–18px), max width ~600px, center-aligned
+
+Image:
+Visual of a phone showing the Tabby app interface
+
+Centered below paragraph or aligned side-by-side with text (on desktop)
+
+Responsive: stacked vertically on mobile
+
+Instructional Text Block:
+Plain text block with two sections:
+
+A. For Visa & Mastercard Users
+
+“When you use Visa and Mastercard cards to shop with Tabby, your payments are automatically charged.”
+
+B. For MADA Card Users
+
+“If you paid with a MADA card, please follow the steps below:
+
+Log in to the app or tabby.ai
+
+Select the ‘My Payments’ tab
+
+Choose the order you want to pay for and follow the steps to make your payment.”
+
+Use a monospaced or indented style for numbered steps
+
+App Download Badges:
+Apple App Store & Google Play Store badges
+
+Displayed side-by-side and centered under the instructions
+
+🧩 Section Settings:
+Include these to support flexibility:
+
+section_padding_top: (range: 0–100px)
+
+section_padding_bottom: (range: 0–100px)
+
+title_alignment: (select: center/left/right)
+
+paragraph_max_width: (range: 300–800px)
+
+text_alignment: (select: center/left)
+
+image_max_width: (range: 200–600px)
+
+image_alignment: (select: left/right/center)
+
+list_indent_style: (select: bullet / numbered / dashed)
+
+badge_spacing: (range: 8–32px between App Store icons)
+
+🎨 Styling Guidance:
+Background: optional soft gray to visually separate from previous section
+
+Use card-style container for the instructional text block if desired
+
+Font styling should be consistent with the rest of the page
+
+Add light shadows or separ, make sure the 3 steps in MADA section are numbered 1,2 and 3
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+.tabby-payments-{{ ai_gen_id }} {
+  padding-top: {{ block.settings.section_padding_top }}px;
+  padding-bottom: {{ block.settings.section_padding_bottom }}px;
+  background-color: {{ block.settings.background_color }};
+}
+
+.tabby-payments__container-{{ ai_gen_id }} {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tabby-payments__title-{{ ai_gen_id }} {
+  font-size: {{ block.settings.title_font_size }}px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: {{ block.settings.title_alignment }};
+  color: {{ block.settings.title_color }};
+}
+
+.tabby-payments__description-{{ ai_gen_id }} {
+  font-size: {{ block.settings.paragraph_font_size }}px;
+  line-height: 1.5;
+  margin: 0 auto 30px;
+  text-align: {{ block.settings.text_alignment }};
+  max-width: {{ block.settings.paragraph_max_width }}px;
+  color: {{ block.settings.text_color }};
+}
+
+.tabby-payments__image-container-{{ ai_gen_id }} {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.tabby-payments__image-wrapper-{{ ai_gen_id }} {
+  max-width: {{ block.settings.image_max_width }}px;
+  width: 100%;
+}
+
+.tabby-payments__image-{{ ai_gen_id }} {
+  width: 100%;
+  height: auto;display: block;
+}
+
+.tabby-payments__image-wrapper-{{ ai_gen_id }} svg {
+  width: 100%;
+  height: auto;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  aspect-ratio: 1/1;
+}
+
+.tabby-payments__instructions-{{ ai_gen_id }} {
+  background-color: {{ block.settings.instruction_background_color }};
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.tabby-payments__section-title-{{ ai_gen_id }} {
+  font-size: calc({{ block.settings.paragraph_font_size }}px + 2px);
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: {{ block.settings.text_color }};
+}
+
+.tabby-payments__section-text-{{ ai_gen_id }} {
+  margin-bottom: 20px;
+  color: {{ block.settings.text_color }};
+}
+
+.tabby-payments__steps-{{ ai_gen_id }} {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  counter-reset: step-counter;
+}
+
+.tabby-payments__step-{{ ai_gen_id }} {
+  margin-bottom: 8px;
+}
+
+.tabby-payments__step-numbered-{{ ai_gen_id }} {
+  counter-increment: step-counter;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 28px;
+}
+
+.tabby-payments__step-numbered-{{ ai_gen_id }}::before {
+  content: counter(step-counter) ".";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: {{ block.settings.text_color }};
+}
+
+.tabby-payments__badges-{{ ai_gen_id }} {
+  display: flex;
+  justify-content: center;
+  gap: {{ block.settings.badge_spacing }}px;
+  flex-wrap: wrap;
+}
+
+.tabby-payments__badge-{{ ai_gen_id }} {
+  height: 40px;
+  width: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .tabby-payments__flex-container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+  }
+  
+  .tabby-payments__content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+  
+  .tabby-payments__image-container-{{ ai_gen_id }} {
+    flex: 1;
+    margin-bottom: 0;
+  }
+  
+  .tabby-payments__image-wrapper-{{ ai_gen_id }} {
+    margin: 0 auto;
+  }
+  .tabby-payments__title-{{ ai_gen_id }} {
+    font-size: calc({{ block.settings.title_font_size }}px + 4px);}
+  
+  .tabby-payments__badge-{{ ai_gen_id }} {
+    height: 50px;
+  }
+}
+{% endstyle %}
+
+<div class="tabby-payments-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="tabby-payments__container-{{ ai_gen_id }}">
+    <h2 class="tabby-payments__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+    
+    {% if block.settings.layout == 'stacked' %}
+      <p class="tabby-payments__description-{{ ai_gen_id }}">{{ block.settings.description }}</p>
+      <div class="tabby-payments__image-container-{{ ai_gen_id }}">
+        <div class="tabby-payments__image-wrapper-{{ ai_gen_id }}">
+          {% if block.settings.app_image %}
+            <img 
+              src="{{ block.settings.app_image | image_url: width: 600 }}" 
+              alt="{{ block.settings.app_image.alt | escape | default: 'Tabby app interface' }}" 
+              loading="lazy"
+              class="tabby-payments__image-{{ ai_gen_id }}"width="{{ block.settings.app_image.width }}"
+              height="{{ block.settings.app_image.height }}"
+            >
+          {% else %}
+            <div class="tabby-payments__image-wrapper-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <div class="tabby-payments__flex-container-{{ ai_gen_id }}">
+        <div class="tabby-payments__content-{{ ai_gen_id }}">
+          <p class="tabby-payments__description-{{ ai_gen_id }}">{{ block.settings.description }}</p></div>
+        
+        <div class="tabby-payments__image-container-{{ ai_gen_id }}">
+          <div class="tabby-payments__image-wrapper-{{ ai_gen_id }}">
+            {% if block.settings.app_image %}
+              <img 
+                src="{{ block.settings.app_image | image_url: width: 600 }}" 
+                alt="{{ block.settings.app_image.alt | escape | default: 'Tabby app interface' }}" 
+                loading="lazy"
+                class="tabby-payments__image-{{ ai_gen_id }}"
+                width="{{ block.settings.app_image.width }}"
+                height="{{ block.settings.app_image.height }}"
+              >
+            {% else %}
+              <div class="tabby-payments__image-wrapper-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}<div class="tabby-payments__instructions-{{ ai_gen_id }}">
+      <div class="tabby-payments__section-title-{{ ai_gen_id }}">{{ block.settings.visa_mastercard_title }}</div>
+      <p class="tabby-payments__section-text-{{ ai_gen_id }}">{{ block.settings.visa_mastercard_text }}</p>
+      <div class="tabby-payments__section-title-{{ ai_gen_id }}">{{ block.settings.mada_title }}</div>
+      <p class="tabby-payments__section-text-{{ ai_gen_id }}">{{ block.settings.mada_intro_text }}</p><div class="tabby-payments__steps-{{ ai_gen_id }}">
+        {% assign steps = block.settings.mada_steps | split: '
+' %}
+        {% for step in steps %}
+          <div class="tabby-payments__step-numbered-{{ ai_gen_id }}">{{ step }}</div>
+        {% endfor %}
+      </div></div>
+    <div class="tabby-payments__badges-{{ ai_gen_id }}">
+      {% if block.settings.app_store_image %}
+        <a href="{{ block.settings.app_store_link }}" target="_blank" rel="noopener">
+          <img 
+            src="{{ block.settings.app_store_image | image_url: width: 200 }}" 
+            alt="Download on App Store" 
+            loading="lazy"
+            class="tabby-payments__badge-{{ ai_gen_id }}"
+            width="{{ block.settings.app_store_image.width }}"
+            height="{{ block.settings.app_store_image.height }}"
+          >
+        </a>
+      {% endif %}
+      
+      {% if block.settings.google_play_image %}
+        <a href="{{ block.settings.google_play_link }}" target="_blank" rel="noopener">
+          <img 
+            src="{{ block.settings.google_play_image | image_url: width: 200 }}" 
+            alt="Get it on Google Play" 
+            loading="lazy"
+            class="tabby-payments__badge-{{ ai_gen_id }}"
+            width="{{ block.settings.google_play_image.width }}"
+            height="{{ block.settings.google_play_image.height }}"
+          >
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tabby Payments Guide",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Making upcoming payments"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "The best way to track your purchases and upcoming bills is by getting the Tabby app."
+    },
+    {
+      "type": "image_picker",
+      "id": "app_image",
+      "label": "App image"
+    },
+    {
+      "type": "header",
+      "content": "Payment Instructions"
+    },
+    {
+      "type": "text",
+      "id": "visa_mastercard_title",
+      "label": "Visa & Mastercard title",
+      "default": "For Visa & Mastercard Users"
+    },
+    {
+      "type": "textarea",
+      "id": "visa_mastercard_text",
+      "label": "Visa & Mastercard text",
+      "default": "When you use Visa and Mastercard cards to shop with Tabby, your payments are automatically charged."
+    },
+    {
+      "type": "text",
+      "id": "mada_title",
+      "label": "MADA title",
+      "default": "For MADA Card Users"
+    },
+    {
+      "type": "textarea",
+      "id": "mada_intro_text",
+      "label": "MADA introduction text",
+      "default": "If you paid with a MADA card, please follow the steps below:"
+    },
+    {
+      "type": "textarea",
+      "id": "mada_steps",
+      "label": "MADA steps (one per line)",
+      "default": "Log in to the app or tabby.ai\nSelect the 'My Payments' tab\nChoose the order you want to pay for and follow the steps to make your payment"
+    },
+    {
+      "type": "header",
+      "content": "App Download Links"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_image",
+      "label": "App Store badge"
+    },
+    {
+      "type": "url",
+      "id": "app_store_link",
+      "label": "App Store link"
+    },
+    {
+      "type": "image_picker",
+      "id": "google_play_image",
+      "label": "Google Play badge"
+    },
+    {
+      "type": "url",
+      "id": "google_play_link",
+      "label": "Google Play link"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Styling"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "Stacked (image below text)"
+        },
+        {
+          "value": "side_by_side",
+          "label": "Side by side (desktop only)"
+        }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title font size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "paragraph_max_width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Text max width",
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Image max width",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "badge_spacing",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "label": "Badge spacing",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "instruction_background_color",
+      "label": "Instructions background",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabby Payments Guide"
+    }
+  ]
+}
+{% endschema %}
