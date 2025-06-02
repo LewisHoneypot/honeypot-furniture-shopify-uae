@@ -55,6 +55,12 @@
             "padding_bottom": 12
           }
         },
+        "tabby_pay_later_pdp_final_6UJUkc": {
+          "type": "shopify://apps/tabby-pay-later/blocks/pdp-final/b31c2495-41fc-4b20-9fc7-8cb2e9dd9a95",
+          "settings": {
+            "no_price_display": false
+          }
+        },
         "drawer_j3bNWd": {
           "type": "drawer",
           "settings": {
@@ -189,6 +195,7 @@
         "trustpilot_mini_TB9jLy",
         "color_swatch_bWwLRJ",
         "price",
+        "tabby_pay_later_pdp_final_6UJUkc",
         "drawer_j3bNWd",
         "usp_drawer_1_h8wxkV",
         "usp_drawer_2_Yk9cgj",
