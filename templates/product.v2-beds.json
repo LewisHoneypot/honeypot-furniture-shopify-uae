@@ -258,6 +258,7 @@
         },
         "drawer_EkDrRn": {
           "type": "drawer",
+          "disabled": true,
           "settings": {
             "heading": "Additional Information",
             "content_type": "additional_information",
@@ -323,7 +324,7 @@
         "heading_yjApHr": {
           "type": "heading",
           "settings": {
-            "heading": "QUESTIONS ABOUT THIS SOFA?",
+            "heading": "QUESTIONS ABOUT THIS BED?",
             "heading_size": "default",
             "padding_top": 10,
             "padding_bottom": 10
