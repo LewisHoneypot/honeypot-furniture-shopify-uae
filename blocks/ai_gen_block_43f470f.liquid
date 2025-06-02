@@ -1,0 +1,637 @@
+{% doc %}
+  @prompt
+    Create a clean, mobile-optimized landing page that promotes Tabby – a buy now, pay later solution. This page should have a modern, scrollable structure with defined content blocks that mirror the attached layout. Each section must be clearly spaced and visually separated using padding, background contrast, or card layouts. Please include all headlines, subheadlines, button placements, and image placeholders. Here's the breakdown of what I want:
+
+1. Header: Introducing Tabby
+Logo: Placeholder for the Tabby logo at the top-left.
+
+Headline: Shop now. Pay later with Tabby.
+
+Subtext: “We’ve partnered with Tabby to bring you a more rewarding way to shop. Tabby lets you split your purchases into 4 interest-free payments with no fees.”
+
+Visual: Image of a happy shopper with clear "0% interest / no fees" and “Split in 4 payments” badges overlayed.
+
+Style: Hero section with bold fonts, centered alignment on mobile, generous top and bottom padding.
+
+2. Section: Here’s How It Works
+This should be broken into three distinct steps, each with its own visual and description.
+
+Step One:
+
+Heading: STEP ONE
+
+Text: “Choose Tabby at checkout.”
+
+Image: Screenshot showing Tabby as a payment method.
+
+Layout: Visual on left, text on right (stacked on mobile).
+
+Step Two:
+
+Heading: STEP TWO
+
+Text: “Link any debit or credit card and get instant approval.”
+
+Image: Credit card input form.
+
+Step Three:
+
+Heading: STEP THREE
+
+Text: “Complete checkout and Tabby will remind you when it’s time to pay.”
+
+Image: Confirmation screen with payment reminder.
+
+Spacing Note: Each step should have visual padding between them, with subtle dividers or whitespace.
+
+3. Section: Making Upcoming Payments
+Title: Making upcoming payments
+
+Paragraph:
+“The best way to track your purchases and upcoming bills is by getting the Tabby app.”
+
+Visual: A hand holding a phone with the Tabby app.
+
+Text block:
+
+“When you use Visa and Mastercard cards to shop with Tabby, your payments are automatically charged.
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .tabby-landing-{{ ai_gen_id }} {
+    font-family: {{ settings.type_body_font.family }}, sans-serif;
+    color: {{ block.settings.text_color }};
+    line-height: 1.5;
+  }
+
+  .tabby-landing-{{ ai_gen_id }} * {
+    box-sizing: border-box;
+  }
+
+  .tabby-section-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .tabby-hero-{{ ai_gen_id }} {
+    text-align: center;
+    background-color: {{ block.settings.hero_background }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: {{ block.settings.section_padding }}px 20px;
+    margin-bottom: 30px;
+  }
+
+  .tabby-logo-{{ ai_gen_id }} {
+    max-width: 120px;
+    margin-bottom: 20px;
+  }
+
+  .tabby-hero-title-{{ ai_gen_id }} {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .tabby-hero-text-{{ ai_gen_id }} {
+    font-size: 18px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tabby-hero-image-container-{{ ai_gen_id }} {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+  }
+
+  .tabby-hero-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tabby-badge-{{ ai_gen_id }} {
+    position: absolute;
+    background-color: {{ block.settings.badge_background }};
+    color: {{ block.settings.badge_text }};
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .tabby-badge-interest-{{ ai_gen_id }} {
+    top: 20px;
+    left: 20px;
+  }
+
+  .tabby-badge-split-{{ ai_gen_id }} {
+    top: 20px;
+    right: 20px;
+  }
+
+  .tabby-section-title-{{ ai_gen_id }} {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .tabby-steps-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tabby-steps-{{ ai_gen_id }} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tabby-step-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .tabby-step-heading-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: {{ block.settings.accent_color }};
+  }
+
+  .tabby-step-text-{{ ai_gen_id }} {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .tabby-step-image-container-{{ ai_gen_id }} {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+  }
+
+  .tabby-step-image-container-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tabby-payments-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tabby-payments-{{ ai_gen_id }} {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .tabby-payments-text-{{ ai_gen_id }} {
+    padding: 20px;
+  }
+
+  .tabby-payments-title-{{ ai_gen_id }} {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .tabby-payments-description-{{ ai_gen_id }} {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .tabby-payments-image-container-{{ ai_gen_id }} {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+  }
+
+  .tabby-payments-image-container-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tabby-button-{{ ai_gen_id }} {
+    display: inline-block;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text }};
+    padding: 12px 24px;
+    border-radius: {{ block.settings.button_radius }}px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .tabby-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover }};
+  }
+{% endstyle %}
+
+<div class="tabby-landing-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <!-- Hero Section -->
+  <div class="tabby-hero-{{ ai_gen_id }}">
+    <div class="tabby-logo-container-{{ ai_gen_id }}">
+      <div class="tabby-logo-{{ ai_gen_id }}">
+        {{ 'image' | placeholder_svg_tag }}
+      </div>
+    </div>
+    
+    <h1 class="tabby-hero-title-{{ ai_gen_id }}">{{ block.settings.hero_title }}</h1>
+    <div class="tabby-hero-text-{{ ai_gen_id }}">{{ block.settings.hero_text }}</div>
+    
+    <div class="tabby-hero-image-container-{{ ai_gen_id }}">
+      {% if block.settings.hero_image %}
+        <img 
+          src="{{ block.settings.hero_image | image_url: width: 800 }}" 
+          alt="Shop now, pay later with Tabby" 
+          class="tabby-hero-image-{{ ai_gen_id }}"
+          width="{{ block.settings.hero_image.width }}"
+          height="{{ block.settings.hero_image.height }}"
+          loading="lazy"
+        >
+      {% else %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% endif %}
+      
+      <div class="tabby-badge-{{ ai_gen_id }} tabby-badge-interest-{{ ai_gen_id }}">
+        0% interest / no fees
+      </div>
+      <div class="tabby-badge-{{ ai_gen_id }} tabby-badge-split-{{ ai_gen_id }}">
+        Split in 4 payments
+      </div>
+    </div>
+    
+    <a href="{{ block.settings.hero_button_link }}" class="tabby-button-{{ ai_gen_id }}">
+      {{ block.settings.hero_button_text }}
+    </a>
+  </div>
+
+  <!-- How It Works Section -->
+  <div class="tabby-section-{{ ai_gen_id }}">
+    <h2 class="tabby-section-title-{{ ai_gen_id }}">{{ block.settings.steps_title }}</h2>
+    
+    <div class="tabby-steps-{{ ai_gen_id }}">
+      <!-- Step 1 -->
+      <div class="tabby-step-{{ ai_gen_id }}">
+        <h3 class="tabby-step-heading-{{ ai_gen_id }}">{{ block.settings.step_1_heading }}</h3>
+        <div class="tabby-step-image-container-{{ ai_gen_id }}">
+          {% if block.settings.step_1_image %}
+            <img 
+              src="{{ block.settings.step_1_image | image_url: width: 400 }}" 
+              alt="{{ block.settings.step_1_heading }}" 
+              width="{{ block.settings.step_1_image.width }}"
+              height="{{ block.settings.step_1_image.height }}"
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        <p class="tabby-step-text-{{ ai_gen_id }}">{{ block.settings.step_1_text }}</p>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="tabby-step-{{ ai_gen_id }}">
+        <h3 class="tabby-step-heading-{{ ai_gen_id }}">{{ block.settings.step_2_heading }}</h3>
+        <div class="tabby-step-image-container-{{ ai_gen_id }}">
+          {% if block.settings.step_2_image %}
+            <img 
+              src="{{ block.settings.step_2_image | image_url: width: 400 }}" 
+              alt="{{ block.settings.step_2_heading }}" 
+              width="{{ block.settings.step_2_image.width }}"
+              height="{{ block.settings.step_2_image.height }}"
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        <p class="tabby-step-text-{{ ai_gen_id }}">{{ block.settings.step_2_text }}</p>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="tabby-step-{{ ai_gen_id }}">
+        <h3 class="tabby-step-heading-{{ ai_gen_id }}">{{ block.settings.step_3_heading }}</h3>
+        <div class="tabby-step-image-container-{{ ai_gen_id }}">
+          {% if block.settings.step_3_image %}
+            <img 
+              src="{{ block.settings.step_3_image | image_url: width: 400 }}" 
+              alt="{{ block.settings.step_3_heading }}" 
+              width="{{ block.settings.step_3_image.width }}"
+              height="{{ block.settings.step_3_image.height }}"
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        <p class="tabby-step-text-{{ ai_gen_id }}">{{ block.settings.step_3_text }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Making Payments Section -->
+  <div class="tabby-section-{{ ai_gen_id }}">
+    <div class="tabby-payments-{{ ai_gen_id }}">
+      <div class="tabby-payments-text-{{ ai_gen_id }}">
+        <h2 class="tabby-payments-title-{{ ai_gen_id }}">{{ block.settings.payments_title }}</h2>
+        <p class="tabby-payments-description-{{ ai_gen_id }}">{{ block.settings.payments_text }}</p>
+        <p class="tabby-payments-description-{{ ai_gen_id }}">{{ block.settings.payments_subtext }}</p>
+        
+        <a href="{{ block.settings.payments_button_link }}" class="tabby-button-{{ ai_gen_id }}">
+          {{ block.settings.payments_button_text }}
+        </a>
+      </div>
+      
+      <div class="tabby-payments-image-container-{{ ai_gen_id }}">
+        {% if block.settings.payments_image %}
+          <img 
+            src="{{ block.settings.payments_image | image_url: width: 600 }}" 
+            alt="Tabby app on mobile phone" 
+            width="{{ block.settings.payments_image.width }}"
+            height="{{ block.settings.payments_image.height }}"
+            loading="lazy"
+          >
+        {% else %}
+          {{ 'image' | placeholder_svg_tag }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tabby Payment Landing",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#4B0082"
+    },
+    {
+      "type": "color",
+      "id": "hero_background",
+      "label": "Hero background",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Badge background",
+      "default": "#4B0082"
+    },
+    {
+      "type": "color",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#4B0082"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover",
+      "label": "Button hover",
+      "default": "#3B0062"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 80,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Button radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "Shop now. Pay later with Tabby."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Text",
+      "default": "We've partnered with Tabby to bring you a more rewarding way to shop. Tabby lets you split your purchases into 4 interest-free payments with no fees."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_text",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "hero_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "How It Works Section"
+    },
+    {
+      "type": "text",
+      "id": "steps_title",
+      "label": "Section title",
+      "default": "Here's How It Works"
+    },
+    {
+      "type": "text",
+      "id": "step_1_heading",
+      "label": "Step 1 heading",
+      "default": "STEP ONE"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_text",
+      "label": "Step 1 text",
+      "default": "Choose Tabby at checkout."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_1_image",
+      "label": "Step 1 image"
+    },
+    {
+      "type": "text",
+      "id": "step_2_heading",
+      "label": "Step 2 heading",
+      "default": "STEP TWO"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_text",
+      "label": "Step 2 text",
+      "default": "Link any debit or credit card and get instant approval."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_2_image",
+      "label": "Step 2 image"
+    },
+    {
+      "type": "text",
+      "id": "step_3_heading",
+      "label": "Step 3 heading",
+      "default": "STEP THREE"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_text",
+      "label": "Step 3 text",
+      "default": "Complete checkout and Tabby will remind you when it's time to pay."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_3_image",
+      "label": "Step 3 image"
+    },
+    {
+      "type": "header",
+      "content": "Payments Section"
+    },
+    {
+      "type": "text",
+      "id": "payments_title",
+      "label": "Title",
+      "default": "Making Upcoming Payments"
+    },
+    {
+      "type": "textarea",
+      "id": "payments_text",
+      "label": "Text",
+      "default": "The best way to track your purchases and upcoming bills is by getting the Tabby app."
+    },
+    {
+      "type": "textarea",
+      "id": "payments_subtext",
+      "label": "Subtext",
+      "default": "When you use Visa and Mastercard cards to shop with Tabby, your payments are automatically charged."
+    },
+    {
+      "type": "image_picker",
+      "id": "payments_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "payments_button_text",
+      "label": "Button text",
+      "default": "Download the Tabby App"
+    },
+    {
+      "type": "url",
+      "id": "payments_button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabby Payment Landing"
+    }
+  ]
+}
+{% endschema %}
