@@ -251,7 +251,7 @@
           "settings": {
             "heading": "Dimensions",
             "content_type": "dimensions",
-            "content1": "",
+            "content1": "<p>{{ product.metafields.custom.length_3.value }}</p>",
             "content2": "",
             "page": ""
           }
