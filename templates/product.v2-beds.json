@@ -43,6 +43,15 @@
             "padding_bottom": 10
           }
         },
+        "variant_picker_9aPepy": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch": "Color",
+            "padding_top": 5,
+            "padding_bottom": 5
+          }
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -194,6 +203,7 @@
         "title",
         "trustpilot_mini_TB9jLy",
         "color_swatch_bWwLRJ",
+        "variant_picker_9aPepy",
         "price",
         "usp_drawer_1_h8wxkV",
         "usp_drawer_2_Yk9cgj",
