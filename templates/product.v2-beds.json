@@ -261,7 +261,7 @@
           "settings": {
             "heading": "Additional Information",
             "content_type": "additional_information",
-            "content1": "",
+            "content1": "<p>{{ product.metafields.custom.features.value }}</p>",
             "content2": "",
             "page": ""
           }
