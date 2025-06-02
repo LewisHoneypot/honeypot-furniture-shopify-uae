@@ -1,0 +1,424 @@
+{% doc %}
+  @prompt
+    Structure & Layout:
+Tabby Logo
+
+Image placeholder at the very top
+
+Centered horizontally
+
+Add a margin-bottom spacing setting for desktop
+
+Main Headline
+
+Text: Shop now. Pay later with Tabby.
+
+Bold, modern type (visually similar to bold Helvetica or Inter)
+
+Center aligned
+
+Subheading Paragraph
+
+Text: “We’ve partnered with Tabby to bring you a more rewarding way to shop. Tabby lets you split your purchases into 4 interest-free payments with no fees.”
+
+Medium font weight
+
+Max width of 600px and center aligned
+
+Spacing below it should be adjustable
+
+Badges Row
+
+Two horizontally aligned badges:
+
+0% No fees, no interest.
+
+Split in 4 payments.
+
+Styled with:
+
+Light pastel purple background
+
+Rounded-pill shape
+
+Padding inside (around 10–14px)
+
+Bold font
+
+Stacked on mobile with vertical spacing
+
+Horizontal on desktop, center aligned with gap control setting
+
+Hero Image
+
+Image of a happy woman using a phone
+
+Should appear centered below the badges
+
+Max width adjustable via setting (suggest 400–600px default)
+
+🧩 Section Settings to Include:
+section_padding_top (range: 0–100px)
+
+section_padding_bottom (range: 0–100px)
+
+logo_margin_bottom_desktop (range: 0–80px)
+
+headline_font_size (range: 24–48px)
+
+text_alignment (default: center, options: left/center/right)
+
+subheadline_max_width (range: 300–800px)
+
+subheadline_margin_bottom (range: 0–40px)
+
+badge_spacing_desktop (range: 8–32px)
+
+badge_spacing_mobile (range: 4–24px)
+
+image_max_width (range: 200–600px)
+
+image_margin_top (range: 0–60px)
+
+🎨 Styling Instructions:
+Keep everything centered by default
+
+Font: clean, modern sans-serif
+
+Background: soft light tone (off-white or #f9f9f9)
+
+Ensure smooth mobile responsiveness:
+
+Stack all blocks vertically
+
+Apply media queries to switch badge layout to horizontal on larger screens
+
+Use generous padding, especially between sections
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .tabby-info-block-{{ ai_gen_id }} {
+    background-color: {{ block.settings.background_color }};
+    padding-top: {{ block.settings.section_padding_top }}px;
+    padding-bottom: {{ block.settings.section_padding_bottom }}px;
+    text-align: {{ block.settings.text_alignment }};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .tabby-logo-{{ ai_gen_id }} {
+    max-width: 120px;
+    margin: 0 auto {{ block.settings.logo_margin_bottom_desktop }}px;
+    display: block;
+  }
+
+  .tabby-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_font_size }}px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .tabby-subheadline-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 500;
+    max-width: {{ block.settings.subheadline_max_width }}px;
+    margin: 0 auto {{ block.settings.subheadline_margin_bottom }}px;
+    line-height: 1.5;
+  }
+
+  .tabby-badges-container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ block.settings.badge_spacing_mobile }}px;
+    margin-bottom: 30px;
+  }
+
+  .tabby-badge-{{ ai_gen_id }} {
+    background-color: {{ block.settings.badge_background_color }};
+    color: {{ block.settings.badge_text_color }};
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  .tabby-hero-image-wrapper-{{ ai_gen_id }} {
+    margin-top: {{ block.settings.image_margin_top }}px;
+    text-align: center;
+  }
+
+  .tabby-hero-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .tabby-hero-image-placeholder-{{ ai_gen_id }} {
+    max-width: {{ block.settings.image_max_width }}px;
+    width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+  }
+
+  .tabby-hero-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: auto;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    aspect-ratio: 16/9;
+  }
+
+  @media screen and (min-width: 750px) {
+    .tabby-badges-container-{{ ai_gen_id }} {
+      flex-direction: row;
+      justify-content: center;
+      gap: {{ block.settings.badge_spacing_desktop }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="tabby-info-block-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="tabby-logo-{{ ai_gen_id }}">
+    {% if block.settings.tabby_logo %}
+      <img 
+        src="{{ block.settings.tabby_logo | image_url: width: 240 }}" 
+        alt="Tabby Logo"
+        width="{{ block.settings.tabby_logo.width }}"
+        height="{{ block.settings.tabby_logo.height }}"
+        loading="lazy"
+      >
+    {% else %}
+      <div class="tabby-logo-placeholder-{{ ai_gen_id }}">
+        {{ 'image' | placeholder_svg_tag }}
+      </div>
+    {% endif %}
+  </div>
+
+  <h2 class="tabby-headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+  
+  <div class="tabby-subheadline-{{ ai_gen_id }}">{{ block.settings.subheadline }}</div>
+  
+  <div class="tabby-badges-container-{{ ai_gen_id }}">
+    <div class="tabby-badge-{{ ai_gen_id }}">{{ block.settings.badge_1_text }}</div>
+    <div class="tabby-badge-{{ ai_gen_id }}">{{ block.settings.badge_2_text }}</div>
+  </div>
+  
+  <div class="tabby-hero-image-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.hero_image %}
+      <img 
+        src="{{ block.settings.hero_image | image_url: width: block.settings.image_max_width }}" 
+        alt="{{ block.settings.hero_image.alt | escape }}"
+        width="{{ block.settings.hero_image.width }}"
+        height="{{ block.settings.hero_image.height }}"
+        loading="lazy"
+        class="tabby-hero-image-{{ ai_gen_id }}"
+        style="max-width: {{ block.settings.image_max_width }}px;"
+      >
+    {% else %}
+      <div class="tabby-hero-image-placeholder-{{ ai_gen_id }}">
+        {{ 'image' | placeholder_svg_tag }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tabby Payment Info",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "tabby_logo",
+      "label": "Tabby logo"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Shop now. Pay later with Tabby."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "We've partnered with Tabby to bring you a more rewarding way to shop. Tabby lets you split your purchases into 4 interest-free payments with no fees."
+    },
+    {
+      "type": "text",
+      "id": "badge_1_text",
+      "label": "First badge text",
+      "default": "0% No fees, no interest."
+    },
+    {
+      "type": "text",
+      "id": "badge_2_text",
+      "label": "Second badge text",
+      "default": "Split in 4 payments."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_margin_bottom_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo bottom margin",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "headline_font_size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Headline font size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subheadline_max_width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Subheadline max width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "subheadline_margin_bottom",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Subheadline bottom margin",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "badge_spacing_desktop",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "label": "Badge spacing (desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "badge_spacing_mobile",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "unit": "px",
+      "label": "Badge spacing (mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Image max width",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_margin_top",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Image top margin",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "badge_background_color",
+      "label": "Badge background color",
+      "default": "#e6e1f9"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabby Payment Info"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}
