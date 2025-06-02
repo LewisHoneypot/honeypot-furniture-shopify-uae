@@ -774,6 +774,7 @@
 
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
+
               {%- when 'collapsible_tab' -%}
                 {%- if block.settings.heading != blank or block.settings.page != blank -%}
                   <div
@@ -813,8 +814,12 @@
                   </div>
                 {%- endif -%}
 
+              {%- when 'anchor_link' -%}
+                <a href="#{{ block.settings.target_id }}" class="product-anchor-link scroll-link">
+                  {{ block.settings.label }}
+                </a>
+                
               {%- when 'popup' -%}
-
                 {%- if block.settings.use_custom_popup == "on" -%}
                   <style>
                     #ProductInfo-{{ section.id }} .product-popup-modal__button {
@@ -6563,6 +6568,25 @@
           "unit": "px",
           "label": "t:sections.all.padding.padding_bottom",
           "default": 5
+        }
+      ]
+    },
+    {
+      "type": "anchor_link",
+      "name": "Anchor Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link Text",
+          "default": "Jump to Details"
+        },
+        {
+          "type": "text",
+          "id": "target_id",
+          "label": "Target Section ID",
+          "default": "product-details",
+          "info": "Use the ID of the section you want to scroll to (no # symbol)."
         }
       ]
     }
