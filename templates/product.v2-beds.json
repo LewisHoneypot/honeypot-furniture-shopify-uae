@@ -258,7 +258,6 @@
         },
         "drawer_EkDrRn": {
           "type": "drawer",
-          "disabled": true,
           "settings": {
             "heading": "Additional Information",
             "content_type": "additional_information",
