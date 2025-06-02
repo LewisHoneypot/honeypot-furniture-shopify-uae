@@ -75,6 +75,12 @@
             "content": ""
           }
         },
+        "tabby_pay_later_pdp_final_kHwRFp": {
+          "type": "shopify://apps/tabby-pay-later/blocks/pdp-final/b31c2495-41fc-4b20-9fc7-8cb2e9dd9a95",
+          "settings": {
+            "no_price_display": false
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -114,12 +120,6 @@
             "padding_top": 0,
             "padding_bottom": 0,
             "background_colour": "#ededed"
-          }
-        },
-        "tabby_pay_later_pdp_final_kHwRFp": {
-          "type": "shopify://apps/tabby-pay-later/blocks/pdp-final/b31c2495-41fc-4b20-9fc7-8cb2e9dd9a95",
-          "settings": {
-            "no_price_display": false
           }
         },
         "drawer_j3bNWd": {
@@ -197,9 +197,9 @@
         "price",
         "usp_drawer_1_h8wxkV",
         "usp_drawer_2_Yk9cgj",
+        "tabby_pay_later_pdp_final_kHwRFp",
         "buy_buttons",
         "expected_delivery_TKcTdt",
-        "tabby_pay_later_pdp_final_kHwRFp",
         "drawer_j3bNWd",
         "snap_buttons_HagTqx",
         "protection_drawer_iWbVLW",
