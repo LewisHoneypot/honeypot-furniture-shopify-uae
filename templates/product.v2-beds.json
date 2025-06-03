@@ -258,8 +258,8 @@
           "type": "drawer",
           "settings": {
             "heading": "Dimensions",
-            "content_type": "dimensions",
-            "content1": "<p>{{ product.metafields.custom.length_3.value }}</p>",
+            "content_type": "custom",
+            "content1": "<p>{{ product.metafields.Dimensions.Length1.value }}</p>",
             "content2": "",
             "page": ""
           }
@@ -288,9 +288,9 @@
           "type": "drawer",
           "settings": {
             "heading": "Care & Cleaning",
-            "content_type": "care_and_cleaning",
-            "content1": "<p><strong>Fabric Bed Care Guide</strong></p><p><strong>Handling Spills:</strong></p><p>Address spills immediately to prevent stains from setting into the fabric.<br/><br/>Gently blot the area with a clean, absorbent cloth. Rubbing can spread the stain and damage the fibres.<br/><br/>Avoid bleach or harsh chemicals. Opt for fabric-safe, mild cleaning solutions.<br/><br/>If a stain persists, seek advice from a professional upholstery cleaning service.<br/></p><p><strong>Routine Cleaning:</strong></p><p>Use a vacuum with an upholstery attachment to remove dust, hair, and debris.<br/><br/>Gently clean high-contact areas with a damp cloth and a mild fabric cleaner.<br/><br/>Prolonged exposure can cause fabric to fade or weaken over time.<br/><br/>Keep the bed in a well-ventilated area to avoid mold or mildew buildup.<br/></p><p><strong>Additional Tips:</strong></p><p>Consider using mattress and headboard protectors, especially if eating or drinking in bed.<br/><br/>If you have pets, use washable pet throws or discourage them from jumping on the bed.<br/><br/>Keep sharp or abrasive items away from the fabric to prevent snags or tears.<br/><br/>By following these simple care steps, you can preserve the appearance and comfort of your fabric bed for years to come.</p>",
-            "content2": "",
+            "content_type": "custom",
+            "content1": "<p><strong>Fabric Bed Care Guide</strong></p><p><strong>Handling Spills:</strong></p><p>Address spills immediately to prevent stains from setting into the fabric.<br/><br/>Gently blot the area with a clean, absorbent cloth. Rubbing can spread the stain and damage the fibres.<br/><br/>Avoid bleach or harsh chemicals. Opt for fabric-safe, mild cleaning solutions.<br/><br/>If a stain persists, seek advice from a professional upholstery cleaning service.<br/></p><p></p>",
+            "content2": "<p><strong>Routine Cleaning:</strong></p><p>Use a vacuum with an upholstery attachment to remove dust, hair, and debris.<br/><br/>Gently clean high-contact areas with a damp cloth and a mild fabric cleaner.<br/><br/>Prolonged exposure can cause fabric to fade or weaken over time.<br/><br/>Keep the bed in a well-ventilated area to avoid mold or mildew buildup.<br/></p><p><strong>Additional Tips:</strong></p><p>Consider using mattress and headboard protectors, especially if eating or drinking in bed.<br/><br/>If you have pets, use washable pet throws or discourage them from jumping on the bed.<br/><br/>Keep sharp or abrasive items away from the fabric to prevent snags or tears.<br/><br/>By following these simple care steps, you can preserve the appearance and comfort of your fabric bed for years to come.</p>",
             "page": ""
           }
         },
