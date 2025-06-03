@@ -257,9 +257,10 @@ class VariantSelects extends HTMLElement {
       : this.dataset.section;
 
     fetch(
-      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${this.dataset.originalSection
-        ? this.dataset.originalSection
-        : this.dataset.section
+      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${
+        this.dataset.originalSection
+          ? this.dataset.originalSection
+          : this.dataset.section
       }`
     )
       .then((response) => response.text())
@@ -275,30 +276,34 @@ class VariantSelects extends HTMLElement {
           `price-sticky-${this.dataset.section}`
         );
         const source = html.getElementById(
-          `price-${this.dataset.originalSection
-            ? this.dataset.originalSection
-            : this.dataset.section
+          `price-${
+            this.dataset.originalSection
+              ? this.dataset.originalSection
+              : this.dataset.section
           }`
         );
         const sourceSticky = html.getElementById(
-          `price-sticky-${this.dataset.originalSection
-            ? this.dataset.originalSection
-            : this.dataset.section
+          `price-sticky-${
+            this.dataset.originalSection
+              ? this.dataset.originalSection
+              : this.dataset.section
           }`
         );
         const skuSource = html.getElementById(
-          `Sku-${this.dataset.originalSection
-            ? this.dataset.originalSection
-            : this.dataset.section
+          `Sku-${
+            this.dataset.originalSection
+              ? this.dataset.originalSection
+              : this.dataset.section
           }`
         );
         const skuDestination = document.getElementById(
           `Sku-${this.dataset.section}`
         );
         const inventorySource = html.getElementById(
-          `Inventory-${this.dataset.originalSection
-            ? this.dataset.originalSection
-            : this.dataset.section
+          `Inventory-${
+            this.dataset.originalSection
+              ? this.dataset.originalSection
+              : this.dataset.section
           }`
         );
         const inventoryDestination = document.getElementById(
@@ -387,6 +392,31 @@ class VariantSelects extends HTMLElement {
           addButtonUpdated ? addButtonUpdated.hasAttribute("disabled") : true,
           window.variantStrings.soldOut
         );
+
+        // Update the add to cart button text with price
+        const productForm = document.querySelector(
+          `[id^="product-form-${this.dataset.section}"]`
+        );
+        const addButton = productForm?.querySelector('[name="add"]');
+        const addButtonText = addButton?.querySelector("span");
+        const updatedPrice = html.getElementById(
+          `price-${
+            this.dataset.originalSection
+              ? this.dataset.originalSection
+              : this.dataset.section
+          }`
+        );
+
+        if (addButtonText && updatedPrice) {
+          const priceAmountEl =
+            updatedPrice.querySelector(".price-item--sale") ||
+            updatedPrice.querySelector(".price-item--regular");
+
+          if (priceAmountEl) {
+            const cleanPrice = priceAmountEl.textContent.trim();
+            addButtonText.textContent = `${window.variantStrings.addToCart} — ${cleanPrice}`;
+          }
+        }
 
         publish(PUB_SUB_EVENTS.variantChange, {
           data: {
