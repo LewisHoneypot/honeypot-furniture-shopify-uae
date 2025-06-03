@@ -260,21 +260,21 @@
           "type": "ai_gen_block_beccf96",
           "settings": {
             "button_1_text": "Double",
-            "tab_1_description": "<p>Our Double bed frame measures 135cm x 190cm (4'6\" x 6'3\") and is perfect for couples or individuals who enjoy extra sleeping space. This size offers a good balance between comfort and room efficiency.</p>",
-            "tab_1_additional_info": "<p><strong>Double Bed Specifications:</strong></p><p>Dimensions: 135cm x 190cm (4'6\" x 6'3\")<br>Weight capacity: 350kg<br>Assembly time: Approximately 45 minutes<br>Recommended mattress: Double (135cm x 190cm)</p>",
-            "tab_1_bullet_points": "<ul><li>Ideal for couples or individuals who like extra space</li><li>Fits comfortably in most standard bedrooms</li><li>Compatible with our Double storage drawers</li><li>Includes reinforced center support</li><li>Headboard height: 100cm</li><li>Footboard height: 40cm</li><li>Floor clearance: 20cm</li><li>Frame weight: 45kg</li></ul>",
-            "button_2_text": "King",
-            "tab_2_description": "<p>Our King size bed frame measures 150cm x 200cm (5' x 6'6\") and provides generous space for couples. This popular size offers extra width and length compared to a Double, ensuring a comfortable night's sleep.</p>",
-            "tab_2_additional_info": "<p><strong>King Bed Specifications:</strong></p><p>Dimensions: 150cm x 200cm (5' x 6'6\")<br>Weight capacity: 400kg<br>Assembly time: Approximately 60 minutes<br>Recommended mattress: King (150cm x 200cm)</p>",
-            "tab_2_bullet_points": "<ul><li>Perfect for couples who value sleeping space</li><li>Extra length accommodates taller individuals</li><li>Compatible with our King storage drawers</li><li>Includes dual reinforced center supports</li><li>Headboard height: 110cm</li><li>Footboard height: 45cm</li><li>Floor clearance: 20cm</li><li>Frame weight: 55kg</li></ul>",
-            "button_3_text": "Super King",
-            "tab_3_description": "<p>Our Super King bed frame measures 180cm x 200cm (6' x 6'6\") and offers luxurious sleeping space. This generous size is perfect for couples who prioritize maximum comfort and room to stretch out.</p>",
-            "tab_3_additional_info": "<p><strong>Super King Specifications:</strong></p><p>Dimensions: 180cm x 200cm (6' x 6'6\")<br>Weight capacity: 450kg<br>Assembly time: Approximately 75 minutes<br>Recommended mattress: Super King (180cm x 200cm)</p>",
-            "tab_3_bullet_points": "<ul><li>Ultimate luxury sleeping experience</li><li>Ideal for master bedrooms and larger spaces</li><li>Compatible with our Super King storage options</li><li>Includes triple reinforced center supports</li><li>Headboard height: 120cm</li><li>Footboard height: 45cm</li><li>Floor clearance: 20cm</li><li>Frame weight: 65kg</li></ul>",
-            "button_4_text": "Emperor",
-            "tab_4_description": "<p>Our Emperor bed frame measures 200cm x 200cm (6'6\" x 6'6\") and represents the pinnacle of bedroom luxury. This majestic size provides unparalleled sleeping space for those who demand the very best.</p>",
-            "tab_4_additional_info": "<p><strong>Emperor Specifications:</strong></p><p>Dimensions: 200cm x 200cm (6'6\" x 6'6\")<br>Weight capacity: 500kg<br>Assembly time: Approximately 90 minutes<br>Recommended mattress: Emperor (200cm x 200cm)</p>",
-            "tab_4_bullet_points": "<ul><li>The ultimate statement piece for your bedroom</li><li>Requires a spacious master bedroom</li><li>Custom storage solutions available</li><li>Features our premium support system</li><li>Headboard height: 130cm</li><li>Footboard height: 50cm</li><li>Floor clearance: 20cm</li><li>Frame weight: 80kg</li></ul>",
+            "tab_1_description": "<p><strong>Description:</strong></p>{{ closest.product.description }}",
+            "tab_1_additional_info": "<p><strong>Additional Information:</strong></p><p>{{ closest.product.metafields.custom.features.value }}</p>",
+            "tab_1_bullet_points": "<ul><li>Mattress Size: {{ closest.product.metafields.custom.mattress_size_double.value }}</li><li>Base Height: {{ closest.product.metafields.custom.bed_base_height_double.value }}</li><li>Headboard Height: {{ closest.product.metafields.custom.bed_headboard_height_double.value }}</li><li>Width: {{ closest.product.metafields.custom.bed_width_double.value }}</li><li>Length: {{ closest.product.metafields.custom.bed_length_double.value }}</li></ul>",
+            "button_2_text": "Queen",
+            "tab_2_description": "<p><strong>Description:</strong></p>{{ closest.product.description }}",
+            "tab_2_additional_info": "<p><strong>Additional Information:</strong></p><p>{{ closest.product.metafields.custom.features.value }}</p>",
+            "tab_2_bullet_points": "<ul><li>Mattress Size: {{ closest.product.metafields.custom.mattress_size_queen.value }}</li><li>Base Height: {{ closest.product.metafields.custom.bed_base_height_queen.value }}</li><li>Headboard Height: {{ closest.product.metafields.custom.bed_headboard_height_queen.value }}</li><li>Width: {{ closest.product.metafields.custom.bed_width_queen.value }}</li><li>Length: {{ closest.product.metafields.custom.bed_length_queen.value }}</li></ul>",
+            "button_3_text": "King",
+            "tab_3_description": "<p><strong>Description:</strong></p>{{ closest.product.description }}",
+            "tab_3_additional_info": "<p><strong>Additional Information:</strong></p><p>{{ closest.product.metafields.custom.features.value }}</p>",
+            "tab_3_bullet_points": "<ul><li>Mattress Size: {{ closest.product.metafields.custom.mattress_size_king.value }}</li><li>Base Height: {{ closest.product.metafields.custom.bed_base_height_king.value }}</li><li>Headboard Height: {{ closest.product.metafields.custom.bed_headboard_height_king.value }}</li><li>Width: {{ closest.product.metafields.custom.bed_width_king.value }}</li><li>Length: {{ closest.product.metafields.custom.bed_length_king.value }}</li></ul>",
+            "button_4_text": "Super King",
+            "tab_4_description": "<p><strong>Description:</strong></p>{{ closest.product.description }}",
+            "tab_4_additional_info": "<p><strong>Additional Information:</strong></p><p>{{ closest.product.metafields.custom.features.value }}</p>",
+            "tab_4_bullet_points": "<ul><li>Mattress Size: {{ closest.product.metafields.custom.mattress_size_super_king.value }}</li><li>Base Height: {{ closest.product.metafields.custom.bed_base_height_super_king.value }}</li><li>Headboard Height: {{ closest.product.metafields.custom.bed_headboard_height_super.value }}</li><li>Width: {{ closest.product.metafields.custom.bed_width_super_king.value }}</li><li>Length: {{ closest.product.metafields.custom.bed_length_super_king.value }}</li></ul>",
             "section_padding": 30,
             "content_padding": 20,
             "button_spacing": 10,
@@ -310,6 +310,7 @@
       "blocks": {
         "drawer_nfiTCK": {
           "type": "drawer",
+          "disabled": true,
           "settings": {
             "heading": "Dimensions",
             "content_type": "custom",
@@ -320,6 +321,7 @@
         },
         "drawer_EkDrRn": {
           "type": "drawer",
+          "disabled": true,
           "settings": {
             "heading": "Additional Information",
             "content_type": "additional_information",
@@ -350,6 +352,7 @@
         },
         "drawer_aNBQEa": {
           "type": "drawer",
+          "disabled": true,
           "settings": {
             "heading": "Description",
             "content_type": "description",
