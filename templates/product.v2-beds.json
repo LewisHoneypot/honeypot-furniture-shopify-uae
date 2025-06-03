@@ -259,7 +259,7 @@
           "settings": {
             "heading": "Dimensions",
             "content_type": "custom",
-            "content1": "<p>{{ product.metafields.custom.length_3.value }}</p>",
+            "content1": "<p>{{ product.metafields.Dimensions.Length1.value }}</p>",
             "content2": "",
             "page": ""
           }
