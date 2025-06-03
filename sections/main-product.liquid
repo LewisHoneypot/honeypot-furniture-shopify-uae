@@ -1,4 +1,4 @@
-{%- if section.settings.image_tech == "cylindo" -%}
+{%- if section.settings.image_tech == 'cylindo' -%}
   <link rel="preconnect" href="https://content.cylindo.com" crossorigin>
   <script
     type="module"
@@ -11,14 +11,13 @@
     async
   ></script>
 
-  {%- if section.settings.cylindo_thumbnail_bar == "on" -%}
+  {%- if section.settings.cylindo_thumbnail_bar == 'on' -%}
     <script
       type="module"
       src="https://viewer-cdn.cylindo.com/v1/bar.mjs"
       async
     ></script>
   {%- endif -%}
-  
 {%- endif -%}
 
 <section
@@ -202,7 +201,7 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.image_tech == "cylindo" -%}
+          {%- if section.settings.image_tech == 'cylindo' -%}
             {% render 'product-media-gallery-cylindo',
               product: product,
               gallery_layout: section.settings.gallery_layout,
@@ -229,7 +228,7 @@
               ratio_square: section.settings.image_ratio
             %}
           {%- endif -%}
-          
+
           {%- if section.settings.show_product_badges and section.settings.type_style != 'special' -%}
             {%- liquid
               if settings.badge_position == 'top left'
@@ -814,13 +813,43 @@
                   </div>
                 {%- endif -%}
 
+              {% when 'dual_action_buttons' %}
+                <div class="dual-buttons" {{ block.shopify_attributes }}>
+                  {% assign btn1_type = block.settings.button_1_type %}
+                  {% assign btn2_type = block.settings.button_2_type %}
+
+                  <a
+                    class="dual-button"
+                    {% if btn1_type == 'anchor' %}
+                      href="#{{ block.settings.button_1_target }}"
+                    {% else %}
+                      href="#"
+                      data-popup="{{ block.settings.button_1_target }}"
+                    {% endif %}
+                  >
+                    {{ block.settings.button_1_text }}
+                  </a>
+
+                  <a
+                    class="dual-button"
+                    {% if btn2_type == 'anchor' %}
+                      href="#{{ block.settings.button_2_target }}"
+                    {% else %}
+                      href="#"
+                      data-popup="{{ block.settings.button_2_target }}"
+                    {% endif %}
+                  >
+                    {{ block.settings.button_2_text }}
+                  </a>
+                </div>
+
               {%- when 'anchor_link' -%}
                 <a href="#{{ block.settings.target_id }}" class="product-anchor-link scroll-link">
                   {{ block.settings.label }}
                 </a>
-                
+
               {%- when 'popup' -%}
-                {%- if block.settings.use_custom_popup == "on" -%}
+                {%- if block.settings.use_custom_popup == 'on' -%}
                   <style>
                     #ProductInfo-{{ section.id }} .product-popup-modal__button {
                       margin-top: 10px;
@@ -1282,7 +1311,7 @@
                           {%- if in_stock == true -%}
                             <strong class="pr-1 mr-1"> Tomorrow</strong>
                           {%- else -%}
-                            {%- if product.vendor == "Honeypot Furniture UAE" -%}
+                            {%- if product.vendor == 'Honeypot Furniture UAE' -%}
                               <strong class="pr-1 mr-1"> 1 - 2 weeks</strong>
                             {%- else -%}
                               <strong class="pr-1 mr-1"> 1 - 2 weeks</strong>
@@ -1387,7 +1416,13 @@
                       <!-- Popup -->
                       <div id="finance-options-popup" class="popup">
                         <div class="popup-content">
-                          <svg xmlns="http://www.w3.org/2000/svg" height="undefined" id="Layer_2" viewBox="0 0 400.69 179.37" style="width: 40px; height:25px;">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="undefined"
+                            id="Layer_2"
+                            viewBox="0 0 400.69 179.37"
+                            style="width: 40px; height:25px;"
+                          >
                             <defs>
                               <style>.cls-1{fill:#0d2b47}</style>
                             </defs>
@@ -1421,19 +1456,19 @@
                           <span style="position:inherit; margin-left:9px;">FINANCE OPTIONS</span>
                           <span class="close">&times;</span>
                           <div class="popup-body">
-                            {%- endif %}
+                    {%- endif %}
 
-                            <div class="col-12 pt-2 pl-0 pr-0">
-                              {% render 'snap-finance-rbp-widget', colors_background: colors_background %}
-                            </div>
-                            <div class="col-12 pt-2 pl-0 pr-0">
-                              {% render 'snap-finance-bnpl-widget', colors_background: colors_background %}
-                            </div>
+                    <div class="col-12 pt-2 pl-0 pr-0">
+                      {% render 'snap-finance-rbp-widget', colors_background: colors_background %}
+                    </div>
+                    <div class="col-12 pt-2 pl-0 pr-0">
+                      {% render 'snap-finance-bnpl-widget', colors_background: colors_background %}
+                    </div>
 
-                            {%- if block.settings.use_finance_popup == true -%}
-                            <p class="mb-0">Choice available at checkout.</p>
-                          </div>
-                        </div>
+                    {%- if block.settings.use_finance_popup == true -%}
+                      <p class="mb-0">Choice available at checkout.</p>
+                      </div>
+                      </div>
                       </div>
 
                       <style>
@@ -1476,35 +1511,35 @@
                       </style>
 
                       <script>
-                    document.getElementById("open-finance-options").addEventListener("click", function() {
-                      document.getElementById("finance-options-popup").style.display = "block";
-                    });
-                    
-                    // Close popup when clicking the X button
-                    document.querySelector(".popup .close").addEventListener("click", function() {
-                      document.getElementById("finance-options-popup").style.display = "none";
-                    });
-                    
-                    // Close popup when clicking outside of the popup content
-                    document.getElementById("finance-options-popup").addEventListener("click", function(event) {
-                      if (event.target === this) {
-                        this.style.display = "none";
-                      }
-                    });
+                        document.getElementById('open-finance-options').addEventListener('click', function () {
+                          document.getElementById('finance-options-popup').style.display = 'block';
+                        });
 
-                    // APR
-                    document.addEventListener('DOMContentLoaded', function() {
-                      // Select the shadow host element
-                      const shadowHost = document.querySelector('#snap-uk-widgets-product-rbp');
-                      
-                      // Access the shadow root
-                      const shadowRoot = shadowHost.shadowRoot;
-                      
-                      // Create a style element
-                      const style = document.createElement('style');
-                      
-                      // Add CSS rules to the style element
-                      style.textContent = `
+                        // Close popup when clicking the X button
+                        document.querySelector('.popup .close').addEventListener('click', function () {
+                          document.getElementById('finance-options-popup').style.display = 'none';
+                        });
+
+                        // Close popup when clicking outside of the popup content
+                        document.getElementById('finance-options-popup').addEventListener('click', function (event) {
+                          if (event.target === this) {
+                            this.style.display = 'none';
+                          }
+                        });
+
+                        // APR
+                        document.addEventListener('DOMContentLoaded', function () {
+                          // Select the shadow host element
+                          const shadowHost = document.querySelector('#snap-uk-widgets-product-rbp');
+
+                          // Access the shadow root
+                          const shadowRoot = shadowHost.shadowRoot;
+
+                          // Create a style element
+                          const style = document.createElement('style');
+
+                          // Add CSS rules to the style element
+                          style.textContent = `
                         .injected-product-widget {
                           background-color: {{ colors_background }} !important;
                           border: 0.1rem solid #707070 !important;
@@ -1561,24 +1596,24 @@
                           display: none !important;
                         }
                       `;
-                      
-                      // Append the style element to the shadow root
-                      shadowRoot.appendChild(style);
-                    });
-                    
-                    // Interest Free (BNPL)
-                    document.addEventListener('DOMContentLoaded', function() {  
-                      // Select the shadow host element
-                      const shadowHost = document.querySelector('#snap-uk-widgets-product-bnpl');
-                      
-                      // Access the shadow root
-                      const shadowRoot = shadowHost.shadowRoot;
-                      
-                      // Create a style element
-                      const style = document.createElement('style');
-                      
-                      // Add CSS rules to the style element
-                      style.textContent = `
+
+                          // Append the style element to the shadow root
+                          shadowRoot.appendChild(style);
+                        });
+
+                        // Interest Free (BNPL)
+                        document.addEventListener('DOMContentLoaded', function () {
+                          // Select the shadow host element
+                          const shadowHost = document.querySelector('#snap-uk-widgets-product-bnpl');
+
+                          // Access the shadow root
+                          const shadowRoot = shadowHost.shadowRoot;
+
+                          // Create a style element
+                          const style = document.createElement('style');
+
+                          // Add CSS rules to the style element
+                          style.textContent = `
                         .injected-product-widget {
                           background-color: {{ colors_background }} !important;
                           border: 0.1rem solid #707070 !important;
@@ -1635,10 +1670,10 @@
                           display: none !important;
                         }
                       `;
-                      
-                      // Append the style element to the shadow root
-                      shadowRoot.appendChild(style);
-                    });
+
+                          // Append the style element to the shadow root
+                          shadowRoot.appendChild(style);
+                        });
                       </script>
                     {%- endif %}
                   </div>
@@ -2347,12 +2382,10 @@
             <span class="i__close e-none d-block pos-relative color-current w-100 h-100"></span>
           </button>
           <div class="product-popup-modal__content-info popup-modal__content-info">
-
-            {%- if block.settings.use_custom_popup == "no" -%}
+            {%- if block.settings.use_custom_popup == 'no' -%}
               <h2 class="h2 center">{{ block.settings.page.title }}</h2>
               {{ block.settings.page.content }}
             {%- else -%}
-
               <style>
                 .showroom-buttons {
                   margin-top: 10px;
@@ -2370,12 +2403,12 @@
                   text-decoration: none;
                 }
 
-                @media screen and (min-width:340px) {
+                @media screen and (min-width: 340px) {
                   .showroom-buttons {
                     font-size: 12pt;
                   }
                 }
-                @media screen and (min-width:370px) {
+                @media screen and (min-width: 370px) {
                   .showroom-buttons {
                     font-size: 14pt;
                   }
@@ -2386,32 +2419,34 @@
 
               <div class="my-5 text-center">{{ block.settings.description }}</div>
 
-              <button onclick="window.open('{{ block.settings.button_1_link }}', '_blank');"
-                class="showroom-buttons" 
+              <button
+                onclick="window.open('{{ block.settings.button_1_link }}', '_blank');"
+                class="showroom-buttons"
                 type="button"
               >
-              <img
-                srcset="
-                  {% if section.settings.logo2 != blank %}
-                    {{ block.settings.button_1_image | image_url: width: 360 }} 360w,
-                    {{ block.settings.button_1_image | image_url: width: 550 }} 550w,
-                    {{ block.settings.button_1_image | image_url: width: 750 }} 750w,
-                    {{ block.settings.button_1_image | image_url: width: 1000 }} 1000w,
-                    {{ block.settings.button_1_image | image_url: width: 1200 }} 1200w
-                  {% endif %}
-                "
-                sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
-                src="{{ block.settings.button_1_image | image_url: width: 200 }}"
-                alt="{{ block.settings.button_1_text }}"
-                loading="lazy"
-                height="50"
-                width=""
-                style="margin-right: 15px; height:50px;"
-              >
+                <img
+                  srcset="
+                    {% if section.settings.logo2 != blank %}
+                      {{ block.settings.button_1_image | image_url: width: 360 }} 360w,
+                      {{ block.settings.button_1_image | image_url: width: 550 }} 550w,
+                      {{ block.settings.button_1_image | image_url: width: 750 }} 750w,
+                      {{ block.settings.button_1_image | image_url: width: 1000 }} 1000w,
+                      {{ block.settings.button_1_image | image_url: width: 1200 }} 1200w
+                    {% endif %}
+                  "
+                  sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+                  src="{{ block.settings.button_1_image | image_url: width: 200 }}"
+                  alt="{{ block.settings.button_1_text }}"
+                  loading="lazy"
+                  height="50"
+                  width=""
+                  style="margin-right: 15px; height:50px;"
+                >
                 {{ block.settings.button_1_text }}
               </button>
-              <button onclick="window.open('{{ block.settings.button_2_link }}', '_blank');"
-                class="showroom-buttons" 
+              <button
+                onclick="window.open('{{ block.settings.button_2_link }}', '_blank');"
+                class="showroom-buttons"
                 type="button"
               >
                 <img
@@ -2434,9 +2469,7 @@
                 >
                 {{ block.settings.button_2_text }}
               </button>
-
             {%- endif -%}
-
           </div>
         </div>
       </div>
@@ -6589,6 +6622,58 @@
           "info": "Use the ID of the section you want to scroll to (no # symbol)."
         }
       ]
+    },
+    {
+      "type": "dual_action_buttons",
+      "name": "Dual Action Buttons",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text",
+          "default": "Scroll to Target"
+        },
+        {
+          "type": "select",
+          "id": "button_1_type",
+          "label": "Button 1 Type",
+          "options": [
+            { "value": "anchor", "label": "Anchor Link" },
+            { "value": "popup", "label": "Trigger Popup" }
+          ],
+          "default": "anchor"
+        },
+        {
+          "type": "text",
+          "id": "button_1_target",
+          "label": "Button 1 Target ID",
+          "default": "reviews",
+          "info": "For anchors, use a section ID (e.g., 'reviews'). For popups, use the popup ID."
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text",
+          "default": "Open Popup"
+        },
+        {
+          "type": "select",
+          "id": "button_2_type",
+          "label": "Button 2 Type",
+          "options": [
+            { "value": "anchor", "label": "Anchor Link" },
+            { "value": "popup", "label": "Trigger Popup" }
+          ],
+          "default": "popup"
+        },
+        {
+          "type": "text",
+          "id": "button_2_target",
+          "label": "Button 2 Target ID",
+          "default": "popup-id",
+          "info": "For anchors, use a section ID. For popups, use the popup ID."
+        }
+      ]
     }
   ],
   "settings": [
@@ -7104,3 +7189,26 @@
     attachClickListener();
   });
 </script>
+
+<style>
+  .dual-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.dual-button {
+  flex: 1;
+  padding: 10px 16px;
+  background-color: rgb(237, 237, 237);
+  border: 1px solid rgb(112, 112, 112);  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.dual-button:hover {
+  background-color: #ccc;
+}
+</style>
