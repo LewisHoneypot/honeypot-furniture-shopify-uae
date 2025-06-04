@@ -109,7 +109,7 @@
   }
 {% endstyle %}
 
-<div class="ai-image-carousel-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+<div id="{{ block.settings.anchor_id }}" class="ai-image-carousel-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   {% if block.settings.heading != blank %}
     <h2 class="ai-image-carousel-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
   {% endif %}
@@ -285,6 +285,11 @@
     {
       "type": "header",
       "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID"
     },
     {
       "type": "text",

@@ -814,34 +814,209 @@
                 {%- endif -%}
 
               {% when 'dual_action_buttons' %}
+                <style>
+                  .dual-buttons {
+                    display: flex;
+                    gap: 12px;
+                    margin-top: 12px;
+                  }
+
+                  .dual-button {
+                    flex: 1;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    background-color: rgb(237, 237, 237);
+                    border: 1px solid rgb(112, 112, 112);
+                    text-align: center;
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 500;
+                    transition: background-color 0.3s ease;
+                    width: 100%;
+                    height: 100%;
+                    font-weight: 400;
+                    font-size: 13pt;
+                    cursor: pointer;
+                    font-family: Gotham, serif !important;
+                  }
+
+                  .dual-button:hover {
+                    background-color: #ccc;
+                  }
+                </style>
+
                 <div class="dual-buttons" {{ block.shopify_attributes }}>
-                  {% assign btn1_type = block.settings.button_1_type %}
-                  {% assign btn2_type = block.settings.button_2_type %}
+                  {% if block.settings.pi_button_1_type == 'anchor' %}
+                    <a class="dual-button" href="#{{ block.settings.pi_button_1_target }}">
+                      {{ block.settings.pi_button_1_text }}
+                    </a>
+                  {% else %}
+                    <side-drawer-opener
+                      class="popups-popup-modal__opener product-popup-modal__opener no-js-hidden"
+                      data-side-drawer="#PopupModal-{{ block.id }}-1"
+                      style="flex: 1;"
+                    >
+                      <button
+                        id="ProductPopup-{{ block.id }}-1"
+                        class="dual-button"
+                        type="button"
+                        aria-haspopup="dialog"
+                      >
+                        {{ block.settings.pi_button_1_text }}
+                      </button>
+                    </side-drawer-opener>
+                  {% endif %}
 
-                  <a
-                    class="dual-button"
-                    {% if btn1_type == 'anchor' %}
-                      href="#{{ block.settings.button_1_target }}"
-                    {% else %}
-                      href="#"
-                      data-popup="{{ block.settings.button_1_target }}"
-                    {% endif %}
-                  >
-                    {{ block.settings.button_1_text }}
-                  </a>
-
-                  <a
-                    class="dual-button"
-                    {% if btn2_type == 'anchor' %}
-                      href="#{{ block.settings.button_2_target }}"
-                    {% else %}
-                      href="#"
-                      data-popup="{{ block.settings.button_2_target }}"
-                    {% endif %}
-                  >
-                    {{ block.settings.button_2_text }}
-                  </a>
+                  {% if block.settings.pi_button_2_type == 'anchor' %}
+                    <a class="dual-button" href="#{{ block.settings.pi_button_2_target }}">
+                      {{ block.settings.pi_button_2_text }}
+                    </a>
+                  {% else %}
+                    <side-drawer-opener
+                      class="popups-popup-modal__opener product-popup-modal__opener no-js-hidden"
+                      data-side-drawer="#PopupModal-{{ block.id }}-2"
+                      style="flex: 1;"
+                    >
+                      <button
+                        id="ProductPopup-{{ block.id }}-2"
+                        class="dual-button"
+                        type="button"
+                        aria-haspopup="dialog"
+                      >
+                        {{ block.settings.pi_button_2_text }}
+                      </button>
+                    </side-drawer-opener>
+                  {% endif %}
                 </div>
+
+                {%- if block.settings.pi_button_1_type == 'popup' -%}
+                  <side-drawer
+                    class="popups-popup-modal drawer pos-fixed top-0 left-0 z-index-8 w-100v h-100 d-flex j-c-end no-js-hidden animate gradient"
+                    id="PopupModal-{{ block.id }}-1"
+                  >
+                  </side-drawer>
+                {%- endif -%}
+
+                {%- if block.settings.pi_button_2_type == 'popup' -%}
+                  <side-drawer
+                    class="popups-popup-modal drawer pos-fixed top-0 left-0 z-index-8 w-100v h-100 d-flex j-c-end no-js-hidden animate gradient"
+                    id="PopupModal-{{ block.id }}-2"
+                  >
+                    <div class="side-drawer no-animation--popup w-100">
+                      <div
+                        id="Drawer-Overlay-Ask-An-Experts"
+                        class="drawer__overlay pos-fixed top-0 left-0 right-0 bottom-0 c-pointer"
+                      ></div>
+                      <div
+                        class="popup-wrapper popups-popup-modal__content drawer__inner popup-modal__content gradient h-100 h-100 d-flex pos-absolute pos-absolute-c-c f-column o-h cus-scrollbar"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Ask An Experts"
+                        tabindex="-1"
+                        style="--popup-max-height: 85%;"
+                      >
+                        <button
+                          class="product-popup-modal__toggle popup-modal__toggle d-block t-button b-none b-circle pos-absolute z-index-3 button--close"
+                          type="button"
+                          onclick="this.closest('side-drawer').close()"
+                          aria-label="{{ 'accessibility.close' | t }}"
+                        >
+                          <span class="i__close e-none d-block pos-relative color-current w-100 h-100"></span>
+                        </button>
+                        <div class="product-popup-modal__content-info popup-modal__content-info">
+                          {%- if block.settings.use_custom_popup == 'no' -%}
+                            <h2 class="h2 center">{{ block.settings.page.title }}</h2>
+                            {{ block.settings.page.content }}
+                          {%- else -%}
+                            <style>
+                              .showroom-buttons {
+                                margin-top: 10px;
+                                width: 100%;
+                                text-transform: uppercase;
+                                color: rgb(60, 60, 59);
+                                background-color: rgb(237, 237, 237);
+                                border: 1px solid rgb(112, 112, 112);
+                                min-height: 80px;
+                                font-weight: 400;
+                                font-size: 10pt;
+                                cursor: pointer;
+                                font-family: Gotham, serif !important;
+                                display: inline-block;
+                                text-decoration: none;
+                              }
+
+                              @media screen and (min-width: 340px) {
+                                .showroom-buttons {
+                                  font-size: 12pt;
+                                }
+                              }
+                              @media screen and (min-width: 370px) {
+                                .showroom-buttons {
+                                  font-size: 14pt;
+                                }
+                              }
+                            </style>
+
+                            <h2 class="h2 center">{{ block.settings.text }}</h2>
+
+                            <div class="my-5 text-center">{{ block.settings.description }}</div>
+
+                            <button
+                              onclick="window.open('{{ block.settings.button_1_link }}', '_blank');"
+                              class="showroom-buttons"
+                              type="button"
+                            >
+                              <img
+                                srcset="
+                                  {% if section.settings.logo2 != blank %}
+                                    {{ block.settings.button_1_image | image_url: width: 360 }} 360w,
+                                    {{ block.settings.button_1_image | image_url: width: 550 }} 550w,
+                                    {{ block.settings.button_1_image | image_url: width: 750 }} 750w,
+                                    {{ block.settings.button_1_image | image_url: width: 1000 }} 1000w,
+                                    {{ block.settings.button_1_image | image_url: width: 1200 }} 1200w
+                                  {% endif %}
+                                "
+                                sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+                                src="{{ block.settings.button_1_image | image_url: width: 200 }}"
+                                alt="{{ block.settings.button_1_text }}"
+                                loading="lazy"
+                                height="50"
+                                width=""
+                                style="margin-right: 15px; height:50px;"
+                              >
+                              {{ block.settings.button_1_text }}
+                            </button>
+                            <button
+                              onclick="window.open('{{ block.settings.button_2_link }}', '_blank');"
+                              class="showroom-buttons"
+                              type="button"
+                            >
+                              <img
+                                srcset="
+                                  {% if section.settings.logo2 != blank %}
+                                    {{ block.settings.button_2_image | image_url: width: 360 }} 360w,
+                                    {{ block.settings.button_2_image | image_url: width: 550 }} 550w,
+                                    {{ block.settings.button_2_image | image_url: width: 750 }} 750w,
+                                    {{ block.settings.button_2_image | image_url: width: 1000 }} 1000w,
+                                    {{ block.settings.button_2_image | image_url: width: 1200 }} 1200w
+                                  {% endif %}
+                                "
+                                sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+                                src="{{ block.settings.button_2_image | image_url: width: 200 }}"
+                                alt="{{ block.settings.button_2_text }}"
+                                loading="lazy"
+                                height="50"
+                                width=""
+                                style="margin-right: 15px; height:50px;"
+                              >
+                              {{ block.settings.button_2_text }}
+                            </button>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    </div>
+                  </side-drawer>
+                {%- endif -%}
 
               {%- when 'anchor_link' -%}
                 <a href="#{{ block.settings.target_id }}" class="product-anchor-link scroll-link">
@@ -6629,49 +6804,100 @@
       "settings": [
         {
           "type": "text",
-          "id": "button_1_text",
+          "id": "pi_button_1_text",
           "label": "Button 1 Text",
-          "default": "Scroll to Target"
+          "default": "Scroll to Section or Open Popup"
         },
         {
           "type": "select",
-          "id": "button_1_type",
+          "id": "pi_button_1_type",
           "label": "Button 1 Type",
           "options": [
-            { "value": "anchor", "label": "Anchor Link" },
+            { "value": "anchor", "label": "Scroll to Section" },
             { "value": "popup", "label": "Trigger Popup" }
           ],
           "default": "anchor"
         },
         {
           "type": "text",
-          "id": "button_1_target",
-          "label": "Button 1 Target ID",
+          "id": "pi_button_1_target",
+          "label": "Button 1 Anchor Target",
           "default": "reviews",
-          "info": "For anchors, use a section ID (e.g., 'reviews'). For popups, use the popup ID."
+          "info": "Only used if action type is 'anchor'. Enter section ID (e.g., 'reviews')."
         },
         {
           "type": "text",
-          "id": "button_2_text",
+          "id": "pi_button_2_text",
           "label": "Button 2 Text",
-          "default": "Open Popup"
+          "default": "Open Popup or Scroll"
         },
         {
           "type": "select",
-          "id": "button_2_type",
+          "id": "pi_button_2_type",
           "label": "Button 2 Type",
           "options": [
-            { "value": "anchor", "label": "Anchor Link" },
+            { "value": "anchor", "label": "Scroll to Section" },
             { "value": "popup", "label": "Trigger Popup" }
           ],
           "default": "popup"
         },
         {
           "type": "text",
-          "id": "button_2_target",
-          "label": "Button 2 Target ID",
-          "default": "popup-id",
-          "info": "For anchors, use a section ID. For popups, use the popup ID."
+          "id": "pi_button_2_target",
+          "label": "Button 2 Anchor Target",
+          "default": "product-details",
+          "info": "Only used if action type is 'anchor'. Enter section ID (e.g., 'details')."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Pop-up link text",
+          "label": "t:sections.all.link_label.label"
+        },
+        {
+          "id": "page",
+          "type": "page",
+          "label": "t:sections.all.content_from_page.label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_1_image",
+          "label": "Button 1 Image"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text",
+          "default": "FIND US ON MAPS"
+        },
+        {
+          "type": "text",
+          "id": "button_1_link",
+          "label": "Button 1 Link",
+          "default": "https://www.example.com"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_2_image",
+          "label": "Button 2 Image"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text",
+          "default": "SEND US A MESSAGE"
+        },
+        {
+          "type": "text",
+          "id": "button_2_link",
+          "label": "Button 2 Link",
+          "default": "https://www.example.com"
         }
       ]
     }
@@ -7189,26 +7415,3 @@
     attachClickListener();
   });
 </script>
-
-<style>
-  .dual-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.dual-button {
-  flex: 1;
-  padding: 10px 16px;
-  background-color: rgb(237, 237, 237);
-  border: 1px solid rgb(112, 112, 112);  text-align: center;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-.dual-button:hover {
-  background-color: #ccc;
-}
-</style>
