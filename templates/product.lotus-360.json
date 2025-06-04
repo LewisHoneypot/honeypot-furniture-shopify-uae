@@ -134,6 +134,27 @@
             "background_colour": "#ededed"
           }
         },
+        "dual_action_buttons_z8X4K3": {
+          "type": "dual_action_buttons",
+          "disabled": true,
+          "settings": {
+            "pi_button_1_text": "CUSTOMISE",
+            "pi_button_1_type": "anchor",
+            "pi_button_1_target": "customise",
+            "pi_button_2_text": "SHOWROOM",
+            "pi_button_2_type": "popup",
+            "pi_button_2_target": "",
+            "text": "VISIT OUR SHOWROOM",
+            "page": "",
+            "description": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help",
+            "button_1_image": "shopify://shop_images/Google_Maps_icon__2020__svg.png",
+            "button_1_text": "FIND US ON MAPS",
+            "button_1_link": "https://maps.app.goo.gl/LukTXRkhEVRCqsBd9",
+            "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
+            "button_2_text": "SEND US A MESSAGE",
+            "button_2_link": "https://wa.me/971507576629"
+          }
+        },
         "snap_buttons_HagTqx": {
           "type": "snap_buttons",
           "disabled": true,
@@ -201,6 +222,7 @@
         "usp_drawer_2_Yk9cgj",
         "buy_buttons",
         "expected_delivery_TKcTdt",
+        "dual_action_buttons_z8X4K3",
         "snap_buttons_HagTqx",
         "protection_drawer_iWbVLW",
         "s_contact_form_builder_block_app_dQXRJj",
@@ -250,6 +272,7 @@
           "type": "ai_gen_block_77a2d6f",
           "name": "Image Carousel",
           "settings": {
+            "anchor_id": "customise",
             "heading": "Truly Custom.",
             "heading_font": "Lato",
             "heading_size": 32,
