@@ -73,7 +73,7 @@
         "slide_DRDiED": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Tabby_Banner_Desktop_2000_x_800_px_2.jpg",
+            "image": "shopify://shop_images/Tabby_Banner_Desktop_2000_x_800_px_3.jpg",
             "mobile_image": "shopify://shop_images/Tabby_Banner_Mobile_800_x_1000_px_6.jpg",
             "content_max_width": 440,
             "heading_font": "font-heading",
