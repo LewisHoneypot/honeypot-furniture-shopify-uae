@@ -261,8 +261,10 @@
           "settings": {
             "heading": "Why we love the Dubai Feather Cloud",
             "main_image": "shopify://shop_images/Vertical_Lotus.jpg",
-            "tile_caption_1": "Feather Filled Cushoins",
-            "tile_caption_2": "Modular Design",
+            "tile_image_1": "shopify://shop_images/LOTUS_MODULAR.jpg",
+            "tile_caption_1": "Modular Design",
+            "tile_image_2": "shopify://shop_images/LOTUS_CLIPS.jpg",
+            "tile_caption_2": "Cushion Clips",
             "padding": 20,
             "gap": 20,
             "tile_gap": 16,
