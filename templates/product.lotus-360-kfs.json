@@ -73,26 +73,6 @@
             "colors_border": "#707070"
           }
         },
-        "usp_drawer_1_h8wxkV": {
-          "type": "usp_drawer_1",
-          "disabled": true,
-          "settings": {
-            "heading": "Buy With Confidence",
-            "usp_icon_1": "trust",
-            "usp_content_type": "custom",
-            "content": "<p>At Honeypot, we want you to find your perfect sofa. If you're not 100% satisfied for any reason and want to return it, no problem! We offer an on-the-spot return option with our friendly delivery drivers. Here’s how it works:</p><ul><li><strong>Try it out:</strong> Once the drivers unpack the sofa, feel free to sit, relax, and make sure it's right for you before deciding.</li><li><strong>Immediate Return:</strong> If you're not 100% satisfied for any reason and want to return the sofa, simply let our drivers know before they leave, and we'll either arrange a full refund or an exchange. </li><li><strong>Final Decision:</strong> Once the drivers leave, this option expires, but you can still use our standard return policy (additional fees may apply).</li></ul><p>Your satisfaction is our priority, and we’re committed to giving you the flexibility to create your dream home!</p>"
-          }
-        },
-        "usp_drawer_2_Yk9cgj": {
-          "type": "usp_drawer_2",
-          "disabled": true,
-          "settings": {
-            "heading": "Product Dimensions",
-            "usp_icon_2": "dimensions",
-            "usp_content_type": "usp_content_selector_2",
-            "content": ""
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -134,15 +114,6 @@
             "background_colour": "#ededed"
           }
         },
-        "snap_buttons_HagTqx": {
-          "type": "snap_buttons",
-          "disabled": true,
-          "settings": {
-            "colors_background": "#ededed",
-            "use_finance_popup": true,
-            "finance_button_text": "FINANCE AVAILABLE"
-          }
-        },
         "protection_drawer_iWbVLW": {
           "type": "protection_drawer",
           "settings": {
@@ -161,33 +132,22 @@
             "button-2-text": "RETURN TO CART"
           }
         },
-        "s_contact_form_builder_block_app_dQXRJj": {
-          "type": "shopify://apps/s-contact-form-builder/blocks/block-app/cceef8dd-a4f1-4344-962d-06bf0022ec0d",
-          "disabled": true,
+        "dual_action_buttons_gXiiNJ": {
+          "type": "dual_action_buttons",
           "settings": {
-            "ify_contactform_short_code": "<button class=\"storeify-formbuilder-button\" style=\"margin-top:10px; width:100%; text-transform:uppercase; font-size:15px; font-weight:900; color:#3c3c3b; min-height:80px; background-color:#ededed; border: solid 1px #707070;  min-height: 80px;\nfont-family: Gotham, serif !important; font-weight: 400; font-size: 14pt; cursor:pointer;\" data-target=\"#storeify-light-modal-19265\">VISIT OUR SHOWROOM</button>"
-          }
-        },
-        "s_contact_form_builder_block_app_hDXrDD": {
-          "type": "shopify://apps/s-contact-form-builder/blocks/block-app/cceef8dd-a4f1-4344-962d-06bf0022ec0d",
-          "disabled": true,
-          "settings": {
-            "ify_contactform_short_code": "<button class=\"storeify-formbuilder-button\" style=\"margin-top:10px; width:100%; text-transform:uppercase; font-size:15px; font-weight:900; color:#3c3c3b; min-height:80px; background-color:#ededed; border: solid 1px #707070;  min-height: 80px;\nfont-family: Gotham, serif !important; font-weight: 400; font-size: 14pt; cursor:pointer;\" data-target=\"#storeify-light-modal-19315\">CUSTOMISE YOUR SOFA</button>"
-          }
-        },
-        "popup_hPNiWt": {
-          "type": "popup",
-          "settings": {
-            "text": "VISIT OUR SHOWROOM",
+            "pi_button_1_text": "CUSTOMISE YOUR SOFA",
+            "pi_button_1_type": "anchor",
+            "pi_button_1_target": "customise",
+            "pi_button_2_text": "VISIT OUR SHOWROOM",
+            "pi_button_2_type": "popup",
+            "pi_button_2_target": "product-details",
+            "text": "Pop-up link text",
             "page": "",
-            "use_custom_popup": "on",
             "description": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help",
-            "button_1_image": "shopify://shop_images/Google_Maps_icon__2020__svg.png",
             "button_1_text": "FIND US ON MAPS",
-            "button_1_link": "https://maps.app.goo.gl/LukTXRkhEVRCqsBd9",
-            "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
+            "button_1_link": "https://www.example.com",
             "button_2_text": "SEND US A MESSAGE",
-            "button_2_link": "https://wa.me/971507576629"
+            "button_2_link": "https://www.example.com"
           }
         }
       },
@@ -198,15 +158,10 @@
         "price",
         "tabby_pay_later_pdp_final_6UJUkc",
         "drawer_j3bNWd",
-        "usp_drawer_1_h8wxkV",
-        "usp_drawer_2_Yk9cgj",
         "buy_buttons",
         "expected_delivery_TKcTdt",
-        "snap_buttons_HagTqx",
         "protection_drawer_iWbVLW",
-        "s_contact_form_builder_block_app_dQXRJj",
-        "s_contact_form_builder_block_app_hDXrDD",
-        "popup_hPNiWt"
+        "dual_action_buttons_gXiiNJ"
       ],
       "settings": {
         "use_custom_title": true,
@@ -251,6 +206,7 @@
           "type": "ai_gen_block_77a2d6f",
           "name": "Image Carousel",
           "settings": {
+            "anchor_id": "customise",
             "heading": "Truly Custom.",
             "heading_font": "Lato",
             "heading_size": 32,

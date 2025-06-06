@@ -185,6 +185,7 @@
         },
         "popup_kQxeme": {
           "type": "popup",
+          "disabled": true,
           "settings": {
             "text": "VISIT OUR SHOWROOM",
             "page": "",
@@ -194,6 +195,24 @@
             "button_1_text": "FIND US ON MAPS",
             "button_1_link": "https://maps.app.goo.gl/LukTXRkhEVRCqsBd9",
             "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
+            "button_2_text": "SEND US A MESSAGE",
+            "button_2_link": "https://www.example.com"
+          }
+        },
+        "dual_action_buttons_RpLfm3": {
+          "type": "dual_action_buttons",
+          "settings": {
+            "pi_button_1_text": "Scroll to Section or Open Popup",
+            "pi_button_1_type": "anchor",
+            "pi_button_1_target": "reviews",
+            "pi_button_2_text": "Open Popup or Scroll",
+            "pi_button_2_type": "popup",
+            "pi_button_2_target": "product-details",
+            "text": "Pop-up link text",
+            "page": "",
+            "description": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help",
+            "button_1_text": "FIND US ON MAPS",
+            "button_1_link": "https://www.example.com",
             "button_2_text": "SEND US A MESSAGE",
             "button_2_link": "https://www.example.com"
           }
@@ -215,7 +234,8 @@
         "protection_drawer_iWbVLW",
         "s_contact_form_builder_block_app_dQXRJj",
         "s_contact_form_builder_block_app_hDXrDD",
-        "popup_kQxeme"
+        "popup_kQxeme",
+        "dual_action_buttons_RpLfm3"
       ],
       "settings": {
         "use_custom_title": true,
