@@ -144,10 +144,12 @@
             "text": "Pop-up link text",
             "page": "",
             "description": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help",
+            "button_1_image": "shopify://shop_images/Google_Maps_icon__2020__svg.png",
             "button_1_text": "FIND US ON MAPS",
-            "button_1_link": "https://www.example.com",
+            "button_1_link": "https://maps.app.goo.gl/ye5J6Qk7QtFJjk7X7",
+            "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
             "button_2_text": "SEND US A MESSAGE",
-            "button_2_link": "https://www.example.com"
+            "button_2_link": "https://wa.me/971507576629"
           }
         }
       },
