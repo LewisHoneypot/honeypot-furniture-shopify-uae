@@ -280,7 +280,7 @@
           "type": "ai_gen_block_beccf96",
           "settings": {
             "button_1_text": "Double",
-            "tab_1_description": "<p><strong>Description:</strong></p>{{ closest.product.description }}",
+            "tab_1_description": "<p><strong>Description:</strong></p>{{ closest.product.description }}<p>{{ closest.product.metafields.Descriptions.ModelDescription.value }}</p>",
             "tab_1_additional_info": "<p><strong>Product Highlights:</strong></p><p>{{ closest.product.metafields.custom.features.value }}</p>",
             "tab_1_bullet_points": "<p><strong>Specifications:</strong></p><ul><li>Mattress Size: {{ closest.product.metafields.custom.mattress_size_double.value }}</li><li>Base Height: {{ closest.product.metafields.custom.bed_base_height_double.value }}</li><li>Headboard Height: {{ closest.product.metafields.custom.bed_headboard_height_double.value }}</li><li>Width: {{ closest.product.metafields.custom.bed_width_double.value }}</li><li>Length: {{ closest.product.metafields.custom.bed_length_double.value }}</li></ul>",
             "button_2_text": "Queen",
