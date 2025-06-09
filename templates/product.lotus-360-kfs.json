@@ -217,6 +217,7 @@
             "image_1": "shopify://shop_images/Choose_your_colour.jpg",
             "image_2": "shopify://shop_images/Choose_your_Layout.jpg",
             "image_3": "shopify://shop_images/Choose_your_layout_image.jpg",
+            "image_4": "shopify://shop_images/Take_a_photo.jpg",
             "image_aspect_ratio": 100,
             "image_border_radius": 8,
             "button_color": "#000000",
