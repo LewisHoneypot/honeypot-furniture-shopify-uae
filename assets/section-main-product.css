@@ -994,6 +994,11 @@ pickup-availability[available] {
 
 .gallery-view-col.--thumb .swiper-slide {
   height: auto !important;
+  /* border: solid 1px #d1d1d1; */
+  filter: brightness(97%);
+}
+.gallery-view-col.--thumb .swiper-slide, .gallery-view-col.--thumb .swiper-slide .product-media-container, .gallery-view-col.--thumb .swiper-slide .product__media {
+  border-radius: 8px;
 }
 
 .gallery-view-col.--thumb .swiper-slide-thumb-active {
@@ -1997,7 +2002,7 @@ pickup-availability[available] {
 
   /* slider-thumbnail */
   .carousel-thumb__wrap.--thumb.full .product__media {
-    padding-bottom: 117%;
+    /* padding-bottom: 117%; */
   }
 }
 
