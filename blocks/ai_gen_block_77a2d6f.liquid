@@ -116,7 +116,7 @@
 
   <carousel-component-{{ ai_gen_id }} class="ai-image-carousel-container-{{ ai_gen_id }}">
     <div class="ai-image-carousel-track-{{ ai_gen_id }}">
-      {% for i in (1..3) %}
+      {% for i in (1..4) %}
         {% assign image_setting = 'image_' | append: i %}
         <div class="ai-image-carousel-slide-{{ ai_gen_id }} {% if forloop.index == 2 %}active{% endif %}">
           <div class="ai-image-carousel-image-wrapper-{{ ai_gen_id }}">
@@ -375,6 +375,11 @@
       "type": "image_picker",
       "id": "image_3",
       "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
     },
     {
       "type": "range",
