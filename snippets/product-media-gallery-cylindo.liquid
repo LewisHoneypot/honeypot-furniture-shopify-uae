@@ -194,7 +194,7 @@
       const waitUntilReady = setInterval(() => {
         if (viewer.shadowRoot?.querySelector('[part="viewer-content"]')) {
           clearInterval(waitUntilReady);
-          observe360Viewer(); // ✅ now safe
+          observe360Viewer();
           observeFrameImages();
 
           // Hide the Full screen button
@@ -214,15 +214,12 @@
 </script>
 
 <style>
-  .cylindo-custom-content {
-    margin-top: -22%;
+  cylindo-viewer {
+    aspect-ratio: 3 / 3.74 !important;
   }
-  @media screen and (min-width: 750px) {
-    .cylindo-custom-content {
-      margin-top: -18%;
+  @media screen and (min-width: 550px) {
+    cylindo-viewer {
+      aspect-ratio: 3 / 3.4 !important;
     }
-  }
-  .cylindo-thumbnail-inner-item:not(.contained) {
-    border: solid 5px red !important;
   }
 </style>
