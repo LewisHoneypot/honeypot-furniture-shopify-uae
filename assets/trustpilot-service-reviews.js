@@ -6,6 +6,8 @@ function fetchReviews2(endpoint) {
       var starsTotal = 0;
       var numberOfReviews = reviewData.reviews.length;
 
+      console.log('numberOfReviews: ', numberOfReviews);
+
       var oneStarCount = 0;
       var twoStarCount = 0;
       var threeStarCount = 0;

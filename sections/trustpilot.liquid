@@ -1,12 +1,16 @@
 <div class="color-{{ section.settings.color_scheme }}">
-  <div id="service-reviews" class="container m-auto" 
+  <div
+    id="service-reviews"
+    class="container m-auto"
     style="
       padding-top: {{section.settings.padding_top}}px;
       padding-bottom: {{section.settings.padding_bottom}}px;
-    ">
+    "
+  >
     <div class="row">
       <div class="col-12" style="display:flex; justify-content:center;">
-        <div class="serviceStarsWord mr-3"></div>
+        <div class="serviceStarsWord mr-2 d-none d-sm-block"></div>
+        <div class="numberOfReviews mr-3"></div>
         <div class="numberOfReviewsImage mr-3"></div>
         <div class=""></div>
         <div class="">
@@ -75,7 +79,7 @@
     </div>
   </div>
 </div>
-  
+
 {% schema %}
 {
   "name": "t:sections.trustpilot.name",
@@ -117,8 +121,51 @@
   ],
   "presets": [
     {
-      "name": "t:sections.trustpilot.name",
+      "name": "t:sections.trustpilot.name"
     }
   ]
 }
 {% endschema %}
+
+{% style %} 
+#service-reviews {
+  max-height: 27px;
+  font-size: 10px;
+  img {
+    max-width: 75px;
+  }
+  svg {
+    transform: translate(0, -5px);
+    max-width: 65px;
+  }
+}
+@media screen and (min-width: 360px) {
+  #service-reviews {
+    font-size: 12px;
+  }
+  img {
+    transform: translate(0, -1px);
+  }
+  svg {
+    transform: translate(0, -4px);
+  }
+}
+@media screen and (min-width: 576px) {
+  #service-reviews {
+    font-size: 16px;
+    max-height: unset;
+    min-height: 35px;
+    img {
+      max-width: unset;
+    }
+    svg {
+      transform: translate(0, -2px);
+      top: 3px !important;
+      max-width: unset;
+    }
+    .numberOfReviews {
+      text-transform: lowercase;
+    }
+  }
+}
+{% endstyle %}
