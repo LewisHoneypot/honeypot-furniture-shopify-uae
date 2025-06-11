@@ -11,6 +11,7 @@ const serviceStarsUrl =
 fetch(serviceStarsUrl)
   .then((response) => response.json())
   .then((serviceStars) => {
+    // console.log(serviceStars);
     const serviceStarsWordElement = document.querySelector(".serviceStarsWord");
     const numberOfReviewsImageElement = document.querySelector(".numberOfReviewsImage");
 
@@ -26,4 +27,20 @@ fetch(serviceStarsUrl)
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
+  });
+
+fetch('https://honeypot-trade.co.uk/' + environment + '/trustpilot/service-reviews-total.php')
+  .then((response) => response.json())
+  .then((reviewData) => {
+
+    var numberOfReviews = reviewData.numberOfReviews.total;
+    // console.log('numberOfReviews: ', numberOfReviews)
+
+    const numberOfReviewsElement = document.querySelector(".numberOfReviews");
+
+    if (numberOfReviewsElement) {
+      numberOfReviewsElement.innerHTML = numberOfReviewsElement
+        ? 'Based on ' + numberOfReviews + ' reviews '
+        : "";
+    }
   });
