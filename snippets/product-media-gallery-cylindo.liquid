@@ -45,7 +45,7 @@
 
       <cylindo-custom-content
         slot="Picture(0{{ media_position }})"
-        data-thumbnail-src="{{ media.src | image_url }}"
+        thumbnail-src="{{ media.src | image_url }}"
         class="cylindo-custom-content"
       >
         <img
@@ -211,28 +211,6 @@
     };
 
     waitForViewer();
-  });
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const thumbnailSrc = el.getAttribute("data-thumbnail-src");
-          if (thumbnailSrc) {
-            el.setAttribute("thumbnail-src", thumbnailSrc);
-            el.removeAttribute("data-thumbnail-src");
-          }
-          obs.unobserve(el);
-        }
-      });
-    });
-
-    document.querySelectorAll("cylindo-custom-content[data-thumbnail-src]").forEach(el => {
-      observer.observe(el);
-    });
   });
 </script>
 
