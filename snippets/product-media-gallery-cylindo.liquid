@@ -142,8 +142,10 @@
 
       const applyBrightnessFilterToUncontained = () => {
         const items = deepQuerySelectorAll(viewer, '.cylindo-thumbnail-inner-item:not(.contained)');
+
         items.forEach((item) => {
           item.style.filter = 'brightness(96%)';
+          item.setAttribute('loading', 'lazy');
         });
       };
 
