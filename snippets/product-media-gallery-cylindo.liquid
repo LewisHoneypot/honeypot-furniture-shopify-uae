@@ -53,6 +53,7 @@
           alt="{{ media.alt | escape }}"
           height="1500"
           width="1500"
+          loading="lazy"
         >
       </cylindo-custom-content>
     {%- endunless -%}
@@ -141,8 +142,10 @@
 
       const applyBrightnessFilterToUncontained = () => {
         const items = deepQuerySelectorAll(viewer, '.cylindo-thumbnail-inner-item:not(.contained)');
+
         items.forEach((item) => {
           item.style.filter = 'brightness(96%)';
+          item.setAttribute('loading', 'lazy');
         });
       };
 
