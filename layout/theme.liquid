@@ -145,16 +145,21 @@
     {%- endif -%}
 
     {% comment %} Clarity Script {% endcomment %}
-    {% comment %}
     <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "g4fmvmhh6m");
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', 's0x6yo01lj');
     </script>
-    {% endcomment %}
-     
+    
     <meta name="google-site-verification" content="mEm2ZsFKEg6DDfGPtaJ5HzbyU4m4xjUeYhDQAunyOxA">
   </head>
   <body class="page-{{ request.page_type | replace: 'customers/', '' }} gradient {{ settings.text_size | prepend: 'text-size main-text-' }} {{ settings.heading_size | prepend: 'heading-size main-heading-' }}{% if settings.enable_animated_cursor and settings.animated_cursor_style == 'following' %} cursor-fixed__show{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -300,9 +305,11 @@
       <script src="{{ 'ufurnish.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {% comment %} {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%} {% endcomment %}
+    {% comment %}
+      {%- if settings.predictive_search_enabled -%}
+        <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+    {% endcomment %}
     <link rel="stylesheet" href="{{ 'animation.css' | asset_url }}" media="print" onload="this.media='all'">
   </body>
 </html>
