@@ -61,6 +61,12 @@
             "no_price_display": false
           }
         },
+        "custom_liquid_EQdq9N": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'tamara' %}"
+          }
+        },
         "drawer_j3bNWd": {
           "type": "drawer",
           "settings": {
@@ -217,6 +223,7 @@
         "color_swatch_bWwLRJ",
         "price",
         "tabby_pay_later_pdp_final_YykJF4",
+        "custom_liquid_EQdq9N",
         "drawer_j3bNWd",
         "usp_drawer_1_h8wxkV",
         "usp_drawer_2_Yk9cgj",
