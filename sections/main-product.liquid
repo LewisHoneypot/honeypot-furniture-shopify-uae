@@ -1199,7 +1199,9 @@
                 </div>
 
               {%- when 'tamara' -%}
-                {% render 'tamara' %}
+                <div {{ block.shopify_attributes }}>
+                  {% render 'tamara' %}
+                </div>
 
               {%- when 'drawer' -%}
                 <div
