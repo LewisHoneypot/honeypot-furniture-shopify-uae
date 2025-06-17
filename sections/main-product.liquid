@@ -1198,6 +1198,9 @@
                   %}
                 </div>
 
+              {%- when 'tamara' -%}
+                {% render 'tamara' %}
+
               {%- when 'drawer' -%}
                 <div
                   class="element-spacing-all{{ block.settings.show_quantity_selector }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
@@ -5223,6 +5226,10 @@
           "label": "t:sections.main-collection-product-grid.settings.delivery_eta.background_colour.label"
         }
       ]
+    },
+    {
+      "type": "tamara",
+      "name": "Tamara"
     },
     {
       "type": "drawer",
