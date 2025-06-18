@@ -61,6 +61,10 @@
             "no_price_display": false
           }
         },
+        "tamara_r7RzVK": {
+          "type": "tamara",
+          "settings": {}
+        },
         "drawer_j3bNWd": {
           "type": "drawer",
           "settings": {
@@ -159,6 +163,7 @@
         "color_swatch_bWwLRJ",
         "price",
         "tabby_pay_later_pdp_final_6UJUkc",
+        "tamara_r7RzVK",
         "drawer_j3bNWd",
         "buy_buttons",
         "expected_delivery_TKcTdt",
@@ -230,7 +235,7 @@
           "type": "ai_gen_block_91e5717",
           "settings": {
             "heading": "Design your dream sofa",
-            "subheading": "Contact our interior design experts today to plan your custom sofa",
+            "subheading": "Contact our customisation team today to design your dream sofa",
             "heading_size": 28,
             "subheading_size": 16,
             "text_color": "#333333",
