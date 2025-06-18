@@ -430,6 +430,51 @@
         "section_margin": 0
       }
     },
+    "ai_smart_section_EgDGpH": {
+      "type": "ai-smart-section",
+      "blocks": {
+        "ai_gen_block_17d2a5e_ykFmwG": {
+          "type": "ai_gen_block_17d2a5e",
+          "settings": {
+            "image_height": 500,
+            "mobile_image_height": 400,
+            "column_gap": 16,
+            "image_border_radius": 12,
+            "image_1": "shopify://shop_images/Iris_Sofa_Beige_Lifestyle.png",
+            "product_1": "sadir-sofa-beige-4-seater",
+            "title_1": "",
+            "product_2": "",
+            "title_2": "",
+            "product_3": "",
+            "title_3": "",
+            "card_background_color": "#ededed",
+            "card_padding": 16,
+            "card_border_radius": 12,
+            "card_bottom_offset": 16,
+            "title_color": "#000000",
+            "title_font_size": 14,
+            "button_text": "Shop Now",
+            "button_background_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_hover_color": "#333333",
+            "button_font_size": 12,
+            "button_border_radius": 6,
+            "enable_autoplay": false,
+            "autoplay_duration": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_17d2a5e_ykFmwG"
+      ],
+      "name": "AI Smart Section",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1400,
+        "section_margin": 40
+      }
+    },
     "ai_smart_section_LwNh6R": {
       "type": "ai-smart-section",
       "blocks": {
@@ -1019,6 +1064,7 @@
     "41769cb9-5f5a-4896-9da0-2d3bf33aef1e",
     "1736414156dbc7d523",
     "ai_smart_section_Y9Fai9",
+    "ai_smart_section_EgDGpH",
     "ai_smart_section_LwNh6R",
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596",
     "ai_smart_section_R8VTxh",
