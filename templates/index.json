@@ -136,7 +136,7 @@
             "image": "shopify://shop_images/Tabby_Banner_Desktop_2000_x_800_px_4.jpg",
             "mobile_image": "shopify://shop_images/Tabby_Mob.jpg",
             "content_max_width": 440,
-            "content_type": "text",
+            "content_type": "image",
             "overlay_image": "shopify://shop_images/Tabby.png",
             "heading_font": "font-heading",
             "heading": "",
