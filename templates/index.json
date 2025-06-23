@@ -137,7 +137,7 @@
             "mobile_image": "shopify://shop_images/Tabby_Mob.jpg",
             "content_max_width": 440,
             "content_type": "image",
-            "overlay_image": "shopify://shop_images/Tabby.png",
+            "overlay_image": "shopify://shop_images/Tabby_Text2.png",
             "heading_font": "font-heading",
             "heading": "",
             "heading_size": "default",
