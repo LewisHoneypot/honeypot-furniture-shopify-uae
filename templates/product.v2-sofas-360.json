@@ -61,6 +61,10 @@
             "no_price_display": false
           }
         },
+        "tamara_Hw8QMq": {
+          "type": "tamara",
+          "settings": {}
+        },
         "drawer_j3bNWd": {
           "type": "drawer",
           "settings": {
@@ -196,6 +200,7 @@
         "color_swatch_bWwLRJ",
         "price",
         "tabby_pay_later_pdp_final_VAVpq4",
+        "tamara_Hw8QMq",
         "drawer_j3bNWd",
         "usp_drawer_1_h8wxkV",
         "usp_drawer_2_Yk9cgj",
