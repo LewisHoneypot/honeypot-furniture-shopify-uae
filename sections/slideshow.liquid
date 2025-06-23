@@ -48,31 +48,44 @@
                         "
                       >
                         <div class="banner__box--wrapper w-100 data__media-hover">
-                          {%- if block.settings.heading != blank -%}
-                            <h2 
-                              class="banner__heading {{ block.settings.heading_size | prepend: 'heading-size-' }} {{ block.settings.heading_font | prepend: 'typography-' }} m-spacing" 
-                              data-animate="fade-down" 
-                              style="
-                                --a-delay: 0.6s;
-                                --m-spacing-t: 0;
-                                --m-spacing-b: {{ block.settings.heading_margin_bottom }}px;
-                              "
+                          {%- if block.settings.content_type == "image" -%}
+                            <img
+                              srcset="{{ block.settings.overlay_image | image_url: width: 250 }}"
+                              src="{{ block.settings.overlay_image | image_url: width: 250 }}"
+                              sizes="(min-width: 750px) 550, calc(100vw - 30px)"
+                              alt="{{ block.settings.overlay_image.alt | escape }}"
+                              class="motion-reduce"
+                              loading="lazy"
+                              width="{{ block.settings.overlay_image.width | divided_by: 2 }}"
+                              height="{{ block.settings.overlay_image.height | divided_by: 2 }}"
                             >
-                              {{ block.settings.heading | escape }}
-                            </h2>
-                          {%- endif -%}
-                          {%- if block.settings.subheading != blank -%}
-                            <div 
-                              class="banner__text {{ block.settings.subheading_size | prepend: 'text-size-' }} m-spacing" 
-                              data-animate="fade-down" 
-                              style="
-                                --a-delay: 0.8s;
-                                --m-spacing-t: 0;
-                                --m-spacing-b: {{ block.settings.subheading_margin_bottom }}px;
-                              "
-                            >
-                              {{ block.settings.subheading | escape }}
-                            </div>
+                          {%- elsif block.settings.content_type == "text" -%}                          
+                            {%- if block.settings.heading != blank -%}
+                              <h2 
+                                class="banner__heading {{ block.settings.heading_size | prepend: 'heading-size-' }} {{ block.settings.heading_font | prepend: 'typography-' }} m-spacing" 
+                                data-animate="fade-down" 
+                                style="
+                                  --a-delay: 0.6s;
+                                  --m-spacing-t: 0;
+                                  --m-spacing-b: {{ block.settings.heading_margin_bottom }}px;
+                                "
+                              >
+                                {{ block.settings.heading | escape }}
+                              </h2>
+                            {%- endif -%}
+                            {%- if block.settings.subheading != blank -%}
+                              <div 
+                                class="banner__text {{ block.settings.subheading_size | prepend: 'text-size-' }} m-spacing" 
+                                data-animate="fade-down" 
+                                style="
+                                  --a-delay: 0.8s;
+                                  --m-spacing-t: 0;
+                                  --m-spacing-b: {{ block.settings.subheading_margin_bottom }}px;
+                                "
+                              >
+                                {{ block.settings.subheading | escape }}
+                              </div>
+                            {%- endif -%}
                           {%- endif -%}
                           {%- if block.settings.primary_button_label != blank or block.settings.secondary_button_label != blank -%}
                             <div 
@@ -893,6 +906,27 @@
           "default": 440,
           "unit": "px",
           "label": "t:sections.slideshow.blocks.slide.label__4"
+        },
+        {
+          "type": "select",
+          "id": "content_type",
+          "options": [
+            {
+              "value": "text",
+              "label": "Text"
+            },
+            {
+              "value": "image",
+              "label": "Image"
+            }
+          ],
+          "default": "text",
+          "label": "Content Type"
+        },
+        {
+          "type": "image_picker",
+          "id": "overlay_image",
+          "label": "Overlay Image"
         },
         {
           "type": "select",
