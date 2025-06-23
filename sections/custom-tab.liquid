@@ -196,6 +196,24 @@
                                 Depth: <span>{{ product.metafields.Dimensions.Depth | replace: '.0', '' }}cm</span>
                               </p>
                             {%- endif -%}
+                            {%- if product.metafields.Dimensions.FloortoArmrestHeight -%}
+                              <p>
+                                Floor to Armrest Height: <span>{{ product.metafields.Dimensions.FloortoArmrestHeight | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.Dimensions.FloortoSeatHeight -%}
+                              <p>
+                                Floor to Seat Height:
+                                <span>{{ product.metafields.Dimensions.FloortoSeatHeight | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.Dimensions.SeatDepth -%}
+                              <p>
+                                Seat Depth:
+                                <span>{{ product.metafields.Dimensions.SeatDepth | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+
                             {{ block.settings.content }}
                           </div>
                         {%- else -%}
@@ -221,11 +239,14 @@
                           {%- if product.metafields.Dimensions.Length2 -%}
                             {%- assign dimensions_data = true -%}
                           {%- endif -%}
-                          
+
                           <div class="col-12 {% if dimensions_data == true %}col-lg-7{% endif %} center">
                             {{ product.metafields.custom.dimension_image_file | image_url: width: 1000 | image_tag }}
                           </div>
-                          <div class="col-12 {% if dimensions_data == true %}col-lg-4{% endif %}" style="align-self: center;">
+                          <div
+                            class="col-12 {% if dimensions_data == true %}col-lg-4{% endif %}"
+                            style="align-self: center;"
+                          >
                             <ol
                               style="
                                 list-style-position: inside;
