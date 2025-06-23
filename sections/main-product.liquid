@@ -111,7 +111,10 @@
       {%- endif -%}
 
       {%- if product.media.size > 0 -%}
-        <div class="product__media-wrapper w-100 pos-relative f-grow f-shrink" style="min-height:275px; z-index:0; margin-top: 40px;">
+        <div
+          class="product__media-wrapper w-100 pos-relative f-grow f-shrink"
+          style="min-height:275px; z-index:0; margin-top: 40px;"
+        >
           {%- if section.settings.use_dimensions_icon == true or section.settings.use_image_zoom_icon == true -%}
             <div
               class="container-fluid"
@@ -2709,6 +2712,23 @@
                       {%- if product.metafields.Dimensions.Depth -%}
                         <p>
                           Depth: <span>{{ product.metafields.Dimensions.Depth | replace: '.0', '' }}cm</span>
+                        </p>
+                      {%- endif -%}
+                      {%- if product.metafields.Dimensions.FloortoArmrestHeight -%}
+                        <p>
+                          Floor to Armrest Height: <span>{{ product.metafields.Dimensions.FloortoArmrestHeight | replace: '.0', '' }}cm</span>
+                        </p>
+                      {%- endif -%}
+                      {%- if product.metafields.Dimensions.FloortoSeatHeight -%}
+                        <p>
+                          Floor to Seat Height:
+                          <span>{{ product.metafields.Dimensions.FloortoSeatHeight | replace: '.0', '' }}cm</span>
+                        </p>
+                      {%- endif -%}
+                      {%- if product.metafields.Dimensions.SeatDepth -%}
+                        <p>
+                          Seat Depth:
+                          <span>{{ product.metafields.Dimensions.SeatDepth | replace: '.0', '' }}cm</span>
                         </p>
                       {%- endif -%}
                       {{ block.settings.content }}
