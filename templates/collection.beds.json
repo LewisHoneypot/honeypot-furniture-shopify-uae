@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "type": "custom",
@@ -74,7 +75,7 @@
         "color_scheme": "",
         "use_custom_color": true,
         "colors_text": "#424242",
-        "colors_background": "#F6EEE3",
+        "colors_background": "#f6eee3",
         "gradient_background": "",
         "padding_top": 30,
         "padding_bottom": 30,
@@ -375,12 +376,12 @@
   },
   "order": [
     "banner",
-    "newsletter_TRb9yQ",
     "product-grid",
     "1737458306dc1ec5c6",
     "29a4766e-9b16-4206-927b-f13e02616027",
     "collection_list_ig8tXp",
     "1737458318373bdd13",
-    "recently-products"
+    "recently-products",
+    "newsletter_TRb9yQ"
   ]
 }
