@@ -45,7 +45,7 @@
 
       <cylindo-custom-content
         slot="Picture(0{{ media_position }})"
-        thumbnail-src="{{ media.src | image_url }}"
+        thumbnail-src="{{ media.src | image_url: width: 50, height: 50, crop: 'center' }}"
         class="cylindo-custom-content"
       >
         <img
@@ -53,7 +53,6 @@
           alt="{{ media.alt | escape }}"
           height="1500"
           width="1500"
-          loading="lazy"
         >
       </cylindo-custom-content>
     {%- endunless -%}
@@ -112,11 +111,28 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const waitForViewer = async () => {
+      // console.log('🕓 Waiting for cylindo-360 definition...');
       await customElements.whenDefined('cylindo-360');
+      // console.log('✅ cylindo-360 defined.');
       const viewer = document.querySelector('cylindo-viewer');
-      if (!viewer) return console.warn('❌ cylindo-viewer not found');
+      if (!viewer) {
+        // console.warn('❌ cylindo-viewer not found');
+        return;
+      }
+      // console.log('✅ cylindo-viewer found:', viewer);
 
-      // ✅ Recursively traverse into all shadow roots
+      // ✅ Apply `position: relative` to .container-fluid
+      const containerFluid = document.querySelector('.product__media-wrapper .container-fluid');
+      if (containerFluid) {
+        // console.log('🎯 .container-fluid found:', containerFluid);
+        // console.log('🔍 Current computed position:', getComputedStyle(containerFluid).position);
+        containerFluid.style.position = 'relative';
+        // console.log('✅ Applied position: relative');
+        // console.log('🧪 New inline style:', containerFluid.getAttribute('style'));
+      } else {
+        // console.warn('⚠️ .container-fluid not found');
+      }
+
       const deepQuerySelectorAll = (root, selector) => {
         const results = [];
 
@@ -145,7 +161,6 @@
 
         items.forEach((item) => {
           item.style.filter = 'brightness(96%)';
-          item.setAttribute('loading', 'lazy');
         });
       };
 
