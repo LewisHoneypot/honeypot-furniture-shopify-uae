@@ -142,18 +142,18 @@
             "pi_button_1_text": "CUSTOMISE YOUR SOFA",
             "pi_button_1_type": "anchor",
             "pi_button_1_target": "customise",
-            "pi_button_2_text": "VISIT OUR SHOWROOM",
+            "pi_button_2_text": "ARRANGE A HOME VISIT",
             "pi_button_2_type": "popup",
             "pi_button_2_target": "product-details",
-            "text": "Pop-up link text",
+            "text": "",
             "page": "",
-            "description": "Before your visit, make sure you send us a message so we can ensure one of our experts is available to help",
+            "description": "Try our signature Dubai Feather Cloud sofa at home — we’ll bring it to your doorstep to sink into. \n\nFeel our Signature Linen and other fabrics in the comfort of your home!",
             "button_1_image": "shopify://shop_images/Google_Maps_icon__2020__svg.png",
             "button_1_text": "FIND US ON MAPS",
             "button_1_link": "https://maps.app.goo.gl/ye5J6Qk7QtFJjk7X7",
             "button_2_image": "shopify://shop_images/WhatsApp_svg.webp",
             "button_2_text": "SEND US A MESSAGE",
-            "button_2_link": "https://wa.me/971507576629"
+            "button_2_link": "https://wa.me/971507576629?text=I%20would%20like%20a%20home%20visit%20to%20try%20a%20Dubai%20Feather%20Cloud%20Sofa"
           }
         }
       },
