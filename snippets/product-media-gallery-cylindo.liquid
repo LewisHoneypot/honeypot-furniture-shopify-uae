@@ -225,6 +225,18 @@
           applyBrightnessFilterToUncontained();
         }
       }, 200);
+
+      const waitUntilReady2 = setInterval(() => {
+        if (viewer.shadowRoot?.querySelector('[part="viewer-content"]')) {
+          clearInterval(waitUntilReady2);
+
+          // console.log('viewer available', viewer);
+
+          if (viewer) {
+            viewer.style.maxHeight = "601px";
+          }
+        }
+      }, 1000);
     };
 
     waitForViewer();
