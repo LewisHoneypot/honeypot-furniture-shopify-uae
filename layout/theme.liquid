@@ -20,10 +20,9 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
+   {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
-
     {% render 'meta-tags' %}
     {% render 'global-style' %}
     {{ content_for_header }}
