@@ -20,9 +20,11 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-   {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+   {% if template.name == 'index' %}
+  <meta name="description" content="Discover sofas and beds crafted in Dubai. Stylish, durable, and locally made. Shop online at Honeypot Furniture for fast UAE-wide delivery.">
+{% elsif page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+{% endif %}
 
       {% if template.name == 'collection-list' %}
     <title>Browse Sofas & Beds | Dubai-Made Comfort by Honeypot UAE</title>
