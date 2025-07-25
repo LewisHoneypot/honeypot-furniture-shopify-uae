@@ -1,4 +1,7 @@
-{%- if section.blocks.size > 0 -%}
+{% if template.name == 'collection-list' %}
+  {% assign custom_meta_title = "Browse Sofas & Beds | Dubai-Made Comfort by Honeypot UAE" %}
+  {% assign custom_meta_description = "Explore our range of sofas and beds made in Dubai. Designed for comfort and style. Shop now and enjoy quick delivery across the UAE." %}
+{% endif %}{%- if section.blocks.size > 0 -%}
   {%- liquid
     assign column = section.settings.columns_desktop
     assign class_item = ''
