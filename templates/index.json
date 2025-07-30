@@ -799,7 +799,7 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FurnitureStore\",\n  \"name\": \"Honeypot Furniture\",\n  \"url\": \"https://honeypotfurniture.ae/\",\n  \"logo\": \"https://honeypotfurniture.ae/logo.png\",\n  \"image\": \"https://honeypotfurniture.ae/logo.png\",\n  \"email\": \"Hello@honeypotfurniture.ae\",\n  \"address\": {\n    \"@type\": \"PostalAddress\",\n    \"streetAddress\": \"Warehouse 10, MAG Logistic Park, Maleha St - Warehouses Land\",\n    \"addressLocality\": \"Sharjah\",\n    \"addressCountry\": \"AE\"\n  },\n  \"openingHoursSpecification\": [\n    {\n      \"@type\": \"OpeningHoursSpecification\",\n      \"dayOfWeek\": [\n        \"Monday\",\n        \"Tuesday\",\n        \"Wednesday\",\n        \"Thursday\",\n        \"Friday\"\n      ],\n      \"opens\": \"09:00\",\n      \"closes\": \"17:00\"\n    },\n    {\n      \"@type\": \"OpeningHoursSpecification\",\n      \"dayOfWeek\": \"Saturday\",\n      \"opens\": \"10:00\",\n      \"closes\": \"15:00\"\n    }\n  ],\n  \"contactPoint\": {\n    \"@type\": \"ContactPoint\",\n    \"email\": \"Hello@honeypotfurniture.ae\",\n    \"contactType\": \"customer support\",\n    \"availableLanguage\": [\"English\", \"Arabic\"]\n  }\n}\n</script>",
         "padding_top": 20,
         "padding_bottom": 20,
         "padding_top_mobile": 20,
