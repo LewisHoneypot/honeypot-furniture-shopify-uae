@@ -13,12 +13,17 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
+    
     <title>
-  Sofas & Beds Made in Dubai 
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-    </title>
+  {% if template.name == 'index' %}
+    Sofas & Beds Made in Dubai – {{ shop.name }}
+  {% else %}
+    Sofas & Beds Made in Dubai
+    {%- if current_tags %} – tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} – Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} – {{ shop.name }}{% endunless -%}
+  {% endif %}
+</title>
 
    {% if template.name == 'index' %}
   <meta name="description" content="Discover sofas and beds crafted in Dubai. Stylish, durable, and locally made. Shop online at Honeypot Furniture for fast UAE-wide delivery.">
