@@ -25,7 +25,8 @@
 {% elsif page_description %}
   <meta name="description" content="{{ page_description | escape }}">
 {% endif %}
-
+ {{ content_for_header }}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
         
     {% render 'meta-tags' %}
     {% render 'global-style' %}
