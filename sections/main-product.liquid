@@ -2759,12 +2759,6 @@
                           <span>{{- product.metafields.Dimensions.SeatDepth | replace: '.0', '' }}cm</span>
                         </p>
                       {%- endif -%}
-                      {%- if product.metafields.custom.seat_depth_cm -%}
-                        <p>
-                          <span>Seat Depth:</span>
-                          <span>{{- product.metafields.custom.seat_depth_cm | replace: '.0', '' }}cm</span>
-                        </p>
-                      {%- endif -%}
                       {%- if product.metafields.custom.seat_width_cm -%}
                         <p>
                           <span>Seat Width:</span>
