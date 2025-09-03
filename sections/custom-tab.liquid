@@ -181,39 +181,96 @@
                       <div class="row">
                         {%- if product.metafields.custom.dimension_image_file == blank -%}
                           <div class="col-12">
-                            {%- if product.metafields.Dimensions.Height -%}
-                              <p>
-                                Height: <span>{{ product.metafields.Dimensions.Height | replace: '.0', '' }}cm</span>
-                              </p>
-                            {%- endif -%}
                             {%- if product.metafields.Dimensions.Length1 -%}
                               <p>
-                                Width: <span>{{ product.metafields.Dimensions.Length1 | replace: '.0', '' }}cm</span>
+                                <span>Length:</span>
+                                <span>{{- product.metafields.Dimensions.Length1 | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.Dimensions.Length2 -%}
+                              <p>
+                                <span>Length 2:</span>
+                                <span>{{- product.metafields.Dimensions.Length2 | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.Dimensions.Length3 -%}
+                              <p>
+                                <span>Length 3:</span>
+                                <span>{{- product.metafields.Dimensions.Length3 | replace: '.0', '' }}cm</span>
                               </p>
                             {%- endif -%}
                             {%- if product.metafields.Dimensions.Depth -%}
                               <p>
-                                Depth: <span>{{ product.metafields.Dimensions.Depth | replace: '.0', '' }}cm</span>
+                                <span>Depth:</span>
+                                <span>{{- product.metafields.Dimensions.Depth | replace: '.0', '' }}cm</span>
                               </p>
                             {%- endif -%}
-                            {%- if product.metafields.Dimensions.FloortoArmrestHeight -%}
+                            {%- if product.metafields.Dimensions.Height -%}
                               <p>
-                                Floor to Armrest Height: <span>{{ product.metafields.Dimensions.FloortoArmrestHeight | replace: '.0', '' }}cm</span>
+                                <span>Height:</span>
+                                <span>{{- product.metafields.Dimensions.Height | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.custom.floor_to_base_height_cm -%}
+                              <p>
+                                <span>Floor to Base Height:</span>
+                                <span>
+                                  {{- product.metafields.custom.floor_to_base_height_cm | replace: '.0', '' }}cm</span
+                                >
                               </p>
                             {%- endif -%}
                             {%- if product.metafields.Dimensions.FloortoSeatHeight -%}
                               <p>
-                                Floor to Seat Height:
-                                <span>{{ product.metafields.Dimensions.FloortoSeatHeight | replace: '.0', '' }}cm</span>
+                                <span>Floor to Seat Height:</span>
+                                <span>
+                                  {{- product.metafields.Dimensions.FloortoSeatHeight | replace: '.0', '' }}cm</span
+                                >
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.Dimensions.FloortoArmrestHeight -%}
+                              <p>
+                                <span>Floor to Armrest Height:</span>
+                                <span>
+                                  {{- product.metafields.Dimensions.FloortoArmrestHeight | replace: '.0', '' }}cm</span
+                                >
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.custom.back_rest_height_cm -%}
+                              <p>
+                                <span>Back Rest Height:</span>
+                                <span>{{- product.metafields.custom.back_rest_height_cm | replace: '.0', '' }}cm</span>
                               </p>
                             {%- endif -%}
                             {%- if product.metafields.Dimensions.SeatDepth -%}
                               <p>
-                                Seat Depth:
-                                <span>{{ product.metafields.Dimensions.SeatDepth | replace: '.0', '' }}cm</span>
+                                <span>Seat Depth:</span>
+                                <span>{{- product.metafields.Dimensions.SeatDepth | replace: '.0', '' }}cm</span>
                               </p>
                             {%- endif -%}
-
+                            {%- if product.metafields.Dimensions.SeatDepth -%}
+                              <p>
+                                <span>Seat Depth:</span>
+                                <span>{{- product.metafields.custom.seat_depth_cm | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.custom.seat_width_cm -%}
+                              <p>
+                                <span>Seat Width:</span>
+                                <span>{{- product.metafields.custom.seat_width_cm | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.custom.arm_rest_width_cm -%}
+                              <p>
+                                <span>Arm Rest Width:</span>
+                                <span>{{- product.metafields.custom.arm_rest_width_cm | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
+                            {%- if product.metafields.custom.back_rest_width_cm -%}
+                              <p>
+                                <span>Back Rest Width:</span>
+                                <span>{{- product.metafields.custom.back_rest_width_cm | replace: '.0', '' }}cm</span>
+                              </p>
+                            {%- endif -%}
                             {{ block.settings.content }}
                           </div>
                         {%- else -%}
