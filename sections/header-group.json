@@ -238,12 +238,24 @@
         "country_selector_url_2": "https://honeypotfurniture.ae/",
         "country_selector_image_2": "shopify://shop_images/ae.webp"
       }
+    },
+    "breadcrump_with_bg_c4mHzP": {
+      "type": "breadcrump_with_bg",
+      "name": "Breadcrumb with Banner",
+      "settings": {
+        "banner_bg": "shopify://shop_images/Jasmine_Sofas.jpg",
+        "banner_heading": "fsdfdsfsdf",
+        "banner_text": "fsdfdsfsdfsdf",
+        "banner_button_text": "Shop Now",
+        "banner_button_link": ""
+      }
     }
   },
   "order": [
     "announcement-bar",
     "b38aad37-e5d6-4a4a-9109-e406344cc53a",
     "trustpilot_xfrEFN",
-    "header"
+    "header",
+    "breadcrump_with_bg_c4mHzP"
   ]
 }
