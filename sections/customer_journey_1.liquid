@@ -3,9 +3,9 @@
   <div class="container">
 
     <!-- Top Row -->
-    <div class="choose-style-row">
+    <div class="choose-style-row top-row">
       <!-- Left (Text) -->
-      <div class="choose-style-left">
+      <div class="choose-style-left text-col">
         <div class="section-number">
           <h2>{{ section.settings.number }}</h2>
         </div>
@@ -18,7 +18,7 @@
       </div>
 
       <!-- Right (Images 1 & 2) -->
-      <div class="choose-style-right">
+      <div class="choose-style-right image-col">
         <div class="choose-style-images">
           {% for block in section.blocks limit:2 %}
             <div class="style-image">
@@ -30,9 +30,9 @@
     </div>
 
     <!-- Bottom Row -->
-    <div class="choose-style-row">
+    <div class="choose-style-row bottom-row">
       <!-- Left (Images 3 & 4) -->
-      <div class="choose-style-left">
+      <div class="choose-style-left image-col">
         <div class="choose-style-images">
           {% for block in section.blocks offset:2 limit:2 %}
             <div class="style-image">
@@ -43,7 +43,7 @@
       </div>
 
       <!-- Right (Extra Text) -->
-      <div class="choose-style-right">
+      <div class="choose-style-right text-col">
         <div class="choose-style-extra-text">
           <p>{{ section.settings.extra_text1 }}</p>
           <p>{{ section.settings.extra_text2 }}</p>
@@ -67,7 +67,7 @@
   justify-content: space-between;
   gap: 30px;
   margin-bottom: 40px;
-  align-items:center;
+  align-items: center;
 }
 .choose-style-left, .choose-style-right {
   flex: 1;
@@ -111,8 +111,16 @@
     gap: 20px;
     margin-bottom: 30px;
   }
+
+  /* Force text first, then images on mobile */
+  .choose-style-row.top-row .text-col { order: 1; }
+  .choose-style-row.top-row .image-col { order: 2; }
+
+  .choose-style-row.bottom-row .text-col { order: 2; }
+  .choose-style-row.bottom-row .image-col { order: 1; }
+
   .choose-style-images {
-    {% comment %} grid-template-columns: 1fr; {% endcomment %}
+    grid-template-columns: 1fr;
   }
 }
 </style>
