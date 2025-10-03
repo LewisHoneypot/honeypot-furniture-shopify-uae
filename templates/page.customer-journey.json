@@ -73,11 +73,65 @@
         "extra_text1": "Start with one of our base designs, or bring your own inspiration photo.",
         "extra_text2": "<br>\nWhether you prefer modern designs or a classic look, the style is entirely yours."
       }
+    },
+    "customer_journey_2_i7LHUN": {
+      "type": "customer_journey_2",
+      "blocks": {
+        "shape_image_THeHwF": {
+          "type": "shape_image",
+          "settings": {
+            "image": "shopify://shop_images/image_25_11zon.webp"
+          }
+        },
+        "shape_image_Ry3neN": {
+          "type": "shape_image",
+          "settings": {
+            "image": "shopify://shop_images/image_26_11zon.webp"
+          }
+        },
+        "shape_image_epbXTq": {
+          "type": "shape_image",
+          "settings": {
+            "image": "shopify://shop_images/image_27_11zon.webp"
+          }
+        },
+        "shape_image_3tcqQJ": {
+          "type": "shape_image",
+          "settings": {
+            "image": "shopify://shop_images/image_28_11zon.webp"
+          }
+        },
+        "shape_image_ttqnaW": {
+          "type": "shape_image",
+          "settings": {
+            "image": "shopify://shop_images/image_29_11zon.webp"
+          }
+        }
+      },
+      "block_order": [
+        "shape_image_THeHwF",
+        "shape_image_Ry3neN",
+        "shape_image_epbXTq",
+        "shape_image_3tcqQJ",
+        "shape_image_ttqnaW"
+      ],
+      "name": "Customer Journey 2 - Customise Size",
+      "settings": {
+        "number": "02",
+        "heading": "Customise Your Size",
+        "subheading": "Create any shape:",
+        "paragraph": "L-shape, U-shape, 3 Seater, 4 Seater, 5 Seater – anything you need.",
+        "middle_text": "Specify every detail from seat depth and armrest width, to backrest height so your sofa fits your space and design perfectly.",
+        "measurements_title": "Measurements you can tailor include:",
+        "note": "No awkward gaps, no wasted space!",
+        "main_image": "shopify://shop_images/Untitled_design_3_1_11zon.webp"
+      }
     }
   },
   "order": [
     "main",
     "custom_liquid_T7RRLB",
-    "customer_journey_1_MPXCwG"
+    "customer_journey_1_MPXCwG",
+    "customer_journey_2_i7LHUN"
   ]
 }
