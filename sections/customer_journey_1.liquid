@@ -106,3 +106,61 @@
   }
 }
 </style>
+
+{% schema %}
+{
+  "name": "Choose Style Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "number",
+      "label": "Section Number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose Your Style"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph",
+      "default": "Mix & Match: Adjust arm shapes, back styles, or combine elements from different sofa styles."
+    },
+    {
+      "type": "textarea",
+      "id": "extra_text1",
+      "label": "Extra Text 1",
+      "default": "Start with one of our base designs, or bring your own inspiration photo."
+    },
+    {
+      "type": "textarea",
+      "id": "extra_text2",
+      "label": "Extra Text 2",
+      "default": "Whether you prefer modern designs or a classic look, the style is entirely yours."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Choose Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Choose Style Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
