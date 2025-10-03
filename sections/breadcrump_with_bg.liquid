@@ -1,4 +1,4 @@
-<div class="breadcrumb-banner relative" 
+<div class="breadcrumb-banner relative custom_breadcrumb" 
      style="
         background-image: url({{ section.settings.banner_bg | image_url: width: 1600 }}); 
         background-size: cover; 
@@ -38,7 +38,9 @@
     {% endif %}
   </div>
 </div>
-
+<style>
+    .breadcrumb
+</style>
 {% schema %}
 {
   "name": "Breadcrumb with Banner",
