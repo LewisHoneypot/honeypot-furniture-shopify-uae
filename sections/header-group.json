@@ -244,7 +244,7 @@
       "name": "Breadcrumb with Banner",
       "settings": {
         "banner_bg": "shopify://shop_images/Untitled_1080_x_1920_px_1920_x_1080_px_1_11zon.webp",
-        "banner_height": "medium",
+        "banner_height": "large",
         "banner_heading": "Your Custom Sofa journey",
         "banner_text": "Designed by Honeypot Furniture",
         "banner_button_text": "",
