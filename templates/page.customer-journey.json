@@ -207,6 +207,16 @@
         "paragraph2": "We provide a price for every fabric so you can see exactly which options fit your budget!",
         "paragraph3": "This transparency lets you explore options confidently and avoid surprises."
       }
+    },
+    "grid_image_text_qChzVn": {
+      "type": "grid-image-text",
+      "name": "Grid Image Text",
+      "settings": {
+        "heading": "<p>03<br/><br/></p>",
+        "subheading": "<p>Select Your Filling</p>",
+        "feather_content": "",
+        "foam_content": ""
+      }
     }
   },
   "order": [
@@ -214,6 +224,7 @@
     "custom_liquid_T7RRLB",
     "customer_journey_1_MPXCwG",
     "customer_journey_2_i7LHUN",
-    "customer_journey_3_6ew86H"
+    "customer_journey_3_6ew86H",
+    "grid_image_text_qChzVn"
   ]
 }
