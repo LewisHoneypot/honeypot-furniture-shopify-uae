@@ -1,0 +1,152 @@
+{% schema %}
+{
+  "name": "Grid Image Text",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+
+    /* Feather Column */
+    {
+      "type": "image_picker",
+      "id": "feather_image1",
+      "label": "Feather Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "feather_image2",
+      "label": "Feather Image 2"
+    },
+    {
+      "type": "richtext",
+      "id": "feather_content",
+      "label": "Feather Content"
+    },
+
+    /* Foam Column */
+    {
+      "type": "image_picker",
+      "id": "foam_image1",
+      "label": "Foam Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "foam_image2",
+      "label": "Foam Image 2"
+    },
+    {
+      "type": "richtext",
+      "id": "foam_content",
+      "label": "Foam Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid Image Text"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="select-filling">
+  <div class="container">
+    <div class="section-header">
+      {{ section.settings.heading }}
+      {{ section.settings.subheading }}
+    </div>
+
+    <div class="filling-grid">
+
+      <!-- Feather Column -->
+      <div class="filling-column">
+        <div class="filling-images">
+          {% if section.settings.feather_image1 %}
+            {{ section.settings.feather_image1 | image_url: width: 400 | image_tag: class: 'filling-image' }}
+          {% endif %}
+          {% if section.settings.feather_image2 %}
+            {{ section.settings.feather_image2 | image_url: width: 400 | image_tag: class: 'filling-image' }}
+          {% endif %}
+        </div>
+        <div class="filling-content">
+          {{ section.settings.feather_content }}
+        </div>
+      </div>
+
+      <!-- Foam Column -->
+      <div class="filling-column">
+        <div class="filling-images">
+          {% if section.settings.foam_image1 %}
+            {{ section.settings.foam_image1 | image_url: width: 400 | image_tag: class: 'filling-image' }}
+          {% endif %}
+          {% if section.settings.foam_image2 %}
+            {{ section.settings.foam_image2 | image_url: width: 400 | image_tag: class: 'filling-image' }}
+          {% endif %}
+        </div>
+        <div class="filling-content">
+          {{ section.settings.foam_content }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.select-filling .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.filling-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.filling-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filling-images {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.filling-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.filling-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .filling-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filling-images {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
