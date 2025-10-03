@@ -30,10 +30,54 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "customer_journey_1_MPXCwG": {
+      "type": "customer_journey_1",
+      "blocks": {
+        "image_3a6J8t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_4__11zon.webp"
+          }
+        },
+        "image_PN4PUj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_5__11zon.webp"
+          }
+        },
+        "image_pA8hJ8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_11zon.webp"
+          }
+        },
+        "image_fTNRHC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_6__11zon.webp"
+          }
+        }
+      },
+      "block_order": [
+        "image_3a6J8t",
+        "image_PN4PUj",
+        "image_pA8hJ8",
+        "image_fTNRHC"
+      ],
+      "name": "customer journey 1",
+      "settings": {
+        "number": "01",
+        "heading": "Choose Your Style",
+        "paragraph": "Mix & Match: Adjust arm shapes, back styles, or combine elements from different sofa styles.",
+        "extra_text1": "Start with one of our base designs, or bring your own inspiration photo.",
+        "extra_text2": "Whether you prefer modern designs or a classic look, the style is entirely yours."
+      }
     }
   },
   "order": [
     "main",
-    "custom_liquid_T7RRLB"
+    "custom_liquid_T7RRLB",
+    "customer_journey_1_MPXCwG"
   ]
 }
