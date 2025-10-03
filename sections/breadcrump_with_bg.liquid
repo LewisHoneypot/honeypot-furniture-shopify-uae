@@ -23,7 +23,7 @@
   {%- endunless -%}
 
   <!-- Banner Content -->
-  <div class="banner-content relative z-10 text-center">
+  <div class="banner-content relative z-10 text-center flex flex-col items-center justify-center h-full">
     {% if section.settings.banner_heading != blank %}
       <h1 class="text-4xl font-bold">{{ section.settings.banner_heading }}</h1>
     {% endif %}
@@ -39,22 +39,26 @@
 </div>
 
 <style>
-  .custom_breadcrumb .breadcrumb ul li a { 
-    color: white !important;
-  }
-  .custom_breadcrumb .breadcrumb ul { 
-    display: flex;
-    gap: 6px;
-    list-style: none;
-  }
-  .custom_breadcrumb .breadcrumb { 
-    background: none !important;
-  }
-
-  /* Height Options */
-  .breadcrumb-banner.small { padding: 60px 20px; }
-  .breadcrumb-banner.medium { padding: 120px 20px; }
-  .breadcrumb-banner.large { padding: 180px 20px; }
+.custom_breadcrumb.small {
+  height: 200px;
+}
+.custom_breadcrumb.medium {
+  height: 350px;
+}
+.custom_breadcrumb.large {
+  height: 500px;
+}
+.custom_breadcrumb .breadcrumb ul li a { 
+  color: white !important;
+}
+.custom_breadcrumb .breadcrumb ul { 
+  display: flex;
+  gap: 6px;
+  list-style: none;
+}
+.custom_breadcrumb .breadcrumb { 
+  background:none !important;
+}
 </style>
 
 {% schema %}
@@ -70,12 +74,12 @@
       "type": "select",
       "id": "banner_height",
       "label": "Banner Height",
-      "default": "medium",
       "options": [
         { "value": "small", "label": "Small" },
         { "value": "medium", "label": "Medium" },
         { "value": "large", "label": "Large" }
-      ]
+      ],
+      "default": "medium"
     },
     {
       "type": "text",
