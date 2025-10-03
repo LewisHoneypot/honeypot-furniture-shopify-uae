@@ -22,14 +22,20 @@
     </nav>
   {%- endunless -%}
 
-  <!-- Banner Content -->
-  <div class="banner-content relative z-10 text-center flex flex-col items-center justify-center h-full">
+  <!-- Banner Content (centered) -->
+  <div class="banner-content absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
     {% if section.settings.banner_heading != blank %}
-      <h1 class="text-4xl font-bold">{{ section.settings.banner_heading }}</h1>
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight">{{ section.settings.banner_heading }}</h1>
     {% endif %}
+
     {% if section.settings.banner_text != blank %}
-      <p class="mt-2">{{ section.settings.banner_text }}</p>
+      <div class="divider-text flex items-center justify-center w-full max-w-2xl mt-4 mb-4">
+        <span class="flex-1 border-t border-white"></span>
+        <span class="px-3 text-base md:text-lg whitespace-nowrap">{{ section.settings.banner_text }}</span>
+        <span class="flex-1 border-t border-white"></span>
+      </div>
     {% endif %}
+
     {% if section.settings.banner_button_text != blank and section.settings.banner_button_link != blank %}
       <a href="{{ section.settings.banner_button_link }}" class="btn btn-primary mt-4 inline-block">
         {{ section.settings.banner_button_text }}
@@ -39,15 +45,12 @@
 </div>
 
 <style>
-.custom_breadcrumb.small {
-  height: 300px;
-}
-.custom_breadcrumb.medium {
-  height: 450px;
-}
-.custom_breadcrumb.large {
-  height: 700px;
-}
+/* Banner Height Options */
+.custom_breadcrumb.small { height: 300px; }
+.custom_breadcrumb.medium { height: 450px; }
+.custom_breadcrumb.large { height: 700px; }
+
+/* Breadcrumb Links */
 .custom_breadcrumb .breadcrumb ul li a { 
   color: white !important;
 }
@@ -58,8 +61,21 @@
 }
 .custom_breadcrumb .breadcrumb { 
   background:none !important;
-          margin-left: -40px;
-          padding-top: 17px;
+  margin-left: -40px;
+  padding-top: 17px;
+}
+
+/* Responsive Styling */
+@media (max-width: 767px) {
+  .banner-content h1 {
+    font-size: 1.8rem; /* Smaller heading on mobile */
+  }
+  .divider-text span {
+    font-size: 0.9rem; /* Smaller text on mobile */
+  }
+  .custom_breadcrumb.small { height: 200px; }
+  .custom_breadcrumb.medium { height: 300px; }
+  .custom_breadcrumb.large { height: 400px; }
 }
 </style>
 
