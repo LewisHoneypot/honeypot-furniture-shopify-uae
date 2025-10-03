@@ -1,138 +1,131 @@
 <!-- sections/tailored-quote.liquid -->
-<section class="tailored-quote">
+<section class="tailored-quote-section">
   <div class="container">
-    <!-- Heading -->
-    <div class="quote-heading">
-      <h2><span>{{ section.settings.step_number }}</span><br>{{ section.settings.heading }}</h2>
-      {% if section.settings.subtext_1 != blank %}
-        <p>{{ section.settings.subtext_1 }}</p>
-      {% endif %}
-      {% if section.settings.subtext_2 != blank %}
-        <p>{{ section.settings.subtext_2 }}</p>
-      {% endif %}
-      {% if section.settings.subtext_3 != blank %}
-        <p>{{ section.settings.subtext_3 }}</p>
-      {% endif %}
+
+    <!-- Top Content -->
+    <div class="tailored-quote-header">
+      <div class="section-number">
+        <h2>{{ section.settings.number }}</h2>
+      </div>
+      <div class="section-heading">
+        <h3>{{ section.settings.heading }}</h3>
+      </div>
+      <div class="section-text">
+        <p>{{ section.settings.paragraph1 }}</p>
+        <p>{{ section.settings.paragraph2 }}</p>
+        <p>{{ section.settings.paragraph3 }}</p>
+      </div>
     </div>
 
-    <!-- Table -->
+    <!-- Static Table -->
     <div class="quote-table-wrapper">
       <table class="quote-table">
         <thead>
           <tr>
             <th>Options</th>
-            {% for col in section.blocks %}
-              {% if col.type == 'column' %}
-                <th class="{{ col.settings.bg_color }}">{{ col.settings.title }}</th>
-              {% endif %}
-            {% endfor %}
+            <th class="yellow">Honeypot Classics</th>
+            <th class="grey">Honeypot Signatures</th>
+            <th class="blue">Performance Select</th>
+            <th class="orange">Performance Luxe</th>
+            <th class="green">Performance Elite</th>
           </tr>
         </thead>
         <tbody>
-       {% for row in section.blocks %}
-  {% if row.type == 'row' %}
-    <tr>
-      <td class="{{ row.settings.bg_color }}">{{ row.settings.option_name }}</td>
-      {% for i in (1..5) %}
-        {% assign key = 'price_' | append: i %}
-        <td>{% if row.settings[key] != blank %}{{ row.settings[key] }}{% endif %}</td>
-      {% endfor %}
-    </tr>
-  {% endif %}
-{% endfor %}
+          <tr>
+            <td class="beige">Feather Filled</td>
+            <td>dh 8,900</td>
+            <td>dh 10,550</td>
+            <td>dh 11,750</td>
+            <td>dh 12,900</td>
+            <td>dh 14,950</td>
+          </tr>
+          <tr>
+            <td class="light-yellow">Foam Filled</td>
+            <td>dh 8,000</td>
+            <td>dh 9,700</td>
+            <td>dh 10,900</td>
+            <td>dh 12,050</td>
+            <td>dh 14,100</td>
+          </tr>
         </tbody>
       </table>
     </div>
+
   </div>
 </section>
 
 <style>
-.tailored-quote {
-  padding: 60px 0;
-  font-family: Arial, sans-serif;
+.tailored-quote-section {
+  padding: 50px 20px;
 }
-
-.tailored-quote .container {
-  max-width: 1100px;
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
 }
-
-.tailored-quote .quote-heading h2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  line-height: 1.4;
-}
-
-.tailored-quote .quote-heading h2 span {
+.section-number h2 {
   font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.section-heading h3 {
+  font-size: 24px;
   font-weight: 700;
-  display: block;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
-
-.tailored-quote .quote-heading p {
-  margin-bottom: 12px;
+.section-text p {
   font-size: 16px;
-  line-height: 1.6;
+  color: #555;
+  margin-bottom: 10px;
 }
-
 .quote-table-wrapper {
-  margin-top: 30px;
   overflow-x: auto;
+  margin-top: 20px;
 }
-
 .quote-table {
   width: 100%;
   border-collapse: collapse;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
 }
-
 .quote-table th,
 .quote-table td {
   border: 1px solid #ddd;
-  padding: 15px;
-  font-weight: 500;
+  padding: 12px;
 }
-
 .quote-table th {
-  background: #f9f9f9;
-  font-weight: bold;
+  font-weight: 700;
 }
-
 .quote-table td:first-child {
-  font-weight: bold;
+  font-weight: 600;
   text-align: left;
 }
 
-/* Background color options */
-.bg-yellow { background: #ffffa5; }
-.bg-gray { background: #cfcfcf; }
-.bg-blue { background: #9ebeff; }
-.bg-orange { background: #ffcf94; }
-.bg-green { background: #b9f3b2; }
-.bg-beige { background: #f9e2cc; }
-.bg-light-yellow { background: #fff1cc; }
+/* Colors */
+.quote-table th.yellow { background: #fff9c4; }
+.quote-table th.grey { background: #e0e0e0; }
+.quote-table th.blue { background: #bbdefb; }
+.quote-table th.orange { background: #ffe0b2; }
+.quote-table th.green { background: #c8e6c9; }
+.quote-table td.beige { background: #fbe9e7; font-weight: bold; }
+.quote-table td.light-yellow { background: #fff8e1; font-weight: bold; }
 
 /* Responsive */
 @media (max-width: 768px) {
   .quote-table th, .quote-table td {
-    font-size: 14px;
-    padding: 10px;
+    font-size: 13px;
+    padding: 8px;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "customer journey 3",
+  "name": "Customer Journey 3 ",
   "settings": [
     {
       "type": "text",
-      "id": "step_number",
-      "label": "Step Number",
+      "id": "number",
+      "label": "Section Number",
       "default": "03"
     },
     {
@@ -143,97 +136,27 @@
     },
     {
       "type": "textarea",
-      "id": "subtext_1",
-      "label": "Subtext Line 1",
+      "id": "paragraph1",
+      "label": "Paragraph 1",
       "default": "Your style and size choices lead straight to a clear, Upfront price that covers both filling options and all five fabric categories."
     },
     {
       "type": "textarea",
-      "id": "subtext_2",
-      "label": "Subtext Line 2",
+      "id": "paragraph2",
+      "label": "Paragraph 2",
       "default": "We provide a price for every fabric so you can see exactly which options fit your budget!"
     },
     {
       "type": "textarea",
-      "id": "subtext_3",
-      "label": "Subtext Line 3",
+      "id": "paragraph3",
+      "label": "Paragraph 3",
       "default": "This transparency lets you explore options confidently and avoid surprises."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "column",
-      "name": "Table Column",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Column Title"
-        },
-        {
-          "type": "select",
-          "id": "bg_color",
-          "label": "Background Color",
-          "options": [
-            { "value": "bg-yellow", "label": "Yellow" },
-            { "value": "bg-gray", "label": "Gray" },
-            { "value": "bg-blue", "label": "Blue" },
-            { "value": "bg-orange", "label": "Orange" },
-            { "value": "bg-green", "label": "Green" }
-          ],
-          "default": "bg-yellow"
-        }
-      ]
-    },
-    {
-      "type": "row",
-      "name": "Table Row",
-      "settings": [
-        {
-          "type": "text",
-          "id": "option_name",
-          "label": "Row Title (Option)"
-        },
-        {
-          "type": "select",
-          "id": "bg_color",
-          "label": "Row Background",
-          "options": [
-            { "value": "bg-beige", "label": "Beige" },
-            { "value": "bg-light-yellow", "label": "Light Yellow" }
-          ]
-        },
-        {
-          "type": "text",
-          "id": "price_1",
-          "label": "Price for Column 1"
-        },
-        {
-          "type": "text",
-          "id": "price_2",
-          "label": "Price for Column 2"
-        },
-        {
-          "type": "text",
-          "id": "price_3",
-          "label": "Price for Column 3"
-        },
-        {
-          "type": "text",
-          "id": "price_4",
-          "label": "Price for Column 4"
-        },
-        {
-          "type": "text",
-          "id": "price_5",
-          "label": "Price for Column 5"
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "customer journey 3"
+      "name": "Customer Journey 3 ",
+      "category": "Custom"
     }
   ]
 }
