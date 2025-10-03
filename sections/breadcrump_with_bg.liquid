@@ -1,9 +1,8 @@
-<div class="breadcrumb-banner relative custom_breadcrumb" 
+<div class="breadcrumb-banner relative custom_breadcrumb {{ section.settings.banner_height }}" 
      style="
         background-image: url({{ section.settings.banner_bg | image_url: width: 1600 }}); 
         background-size: cover; 
         background-position: center; 
-        padding: 25px; 
         color: #fff;">
 
   <!-- Breadcrumb on Top Left -->
@@ -38,20 +37,26 @@
     {% endif %}
   </div>
 </div>
+
 <style>
-        .custom_breadcrumb .breadcrumb ul li a{ 
-        color: white !important;
-        }
-    .custom_breadcrumb .breadcrumb ul{ 
+  .custom_breadcrumb .breadcrumb ul li a { 
+    color: white !important;
+  }
+  .custom_breadcrumb .breadcrumb ul { 
     display: flex;
     gap: 6px;
-    color: black;
     list-style: none;
-    }
-    .custom_breadcrumb .breadcrumb{ 
-    background:none !important;
-}
+  }
+  .custom_breadcrumb .breadcrumb { 
+    background: none !important;
+  }
+
+  /* Height Options */
+  .breadcrumb-banner.small { padding: 60px 20px; }
+  .breadcrumb-banner.medium { padding: 120px 20px; }
+  .breadcrumb-banner.large { padding: 180px 20px; }
 </style>
+
 {% schema %}
 {
   "name": "Breadcrumb with Banner",
@@ -60,6 +65,17 @@
       "type": "image_picker",
       "id": "banner_bg",
       "label": "Banner Background Image"
+    },
+    {
+      "type": "select",
+      "id": "banner_height",
+      "label": "Banner Height",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ]
     },
     {
       "type": "text",
