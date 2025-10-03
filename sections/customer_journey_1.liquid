@@ -1,49 +1,53 @@
 <!-- sections/choose-style.liquid -->
 <section class="choose-style-section">
-  <div class="container choose-style-grid">
-    
-    <!-- Left Side -->
-    <div class="choose-style-left">
-      <!-- Number -->
-      <div class="section-number">
-        <h2>{{ section.settings.number }}</h2>
+  <div class="container">
+
+    <!-- Top Row -->
+    <div class="choose-style-row">
+      <!-- Left (Text) -->
+      <div class="choose-style-left">
+        <div class="section-number">
+          <h2>{{ section.settings.number }}</h2>
+        </div>
+        <div class="section-heading">
+          <h3>{{ section.settings.heading }}</h3>
+        </div>
+        <div class="section-text">
+          <p>{{ section.settings.paragraph }}</p>
+        </div>
       </div>
 
-      <!-- Heading -->
-      <div class="section-heading">
-        <h3>{{ section.settings.heading }}</h3>
-      </div>
-
-      <!-- Paragraph -->
-      <div class="section-text">
-        <p>{{ section.settings.paragraph }}</p>
-      </div>
-
-      <!-- Bottom Images (Left Side) -->
-      <div class="choose-style-images">
-        {% for block in section.blocks limit:2 %}
-          <div class="style-image">
-            <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
-          </div>
-        {% endfor %}
+      <!-- Right (Images 1 & 2) -->
+      <div class="choose-style-right">
+        <div class="choose-style-images">
+          {% for block in section.blocks limit:2 %}
+            <div class="style-image">
+              <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
 
-    <!-- Right Side -->
-    <div class="choose-style-right">
-      <!-- Top Images (Right Side) -->
-      <div class="choose-style-images">
-        {% for block in section.blocks offset:2 limit:2 %}
-          <div class="style-image">
-            <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
-          </div>
-        {% endfor %}
+    <!-- Bottom Row -->
+    <div class="choose-style-row">
+      <!-- Left (Images 3 & 4) -->
+      <div class="choose-style-left">
+        <div class="choose-style-images">
+          {% for block in section.blocks offset:2 limit:2 %}
+            <div class="style-image">
+              <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
+            </div>
+          {% endfor %}
+        </div>
       </div>
 
-      <!-- Extra Text -->
-      <div class="choose-style-extra-text">
-        <p>{{ section.settings.extra_text1 }}</p>
-        <p>{{ section.settings.extra_text2 }}</p>
+      <!-- Right (Extra Text) -->
+      <div class="choose-style-right">
+        <div class="choose-style-extra-text">
+          <p>{{ section.settings.extra_text1 }}</p>
+          <p>{{ section.settings.extra_text2 }}</p>
+        </div>
       </div>
     </div>
 
@@ -54,62 +58,66 @@
 .choose-style-section {
   padding: 40px 20px;
 }
-.choose-style-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px; /* reduced from 40px */
-  align-items: start;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.choose-style-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.choose-style-left, .choose-style-right {
+  flex: 1;
 }
 .section-number h2 {
   font-size: 28px;
   font-weight: 600;
-  margin: 0 0 5px 0; /* tight bottom spacing */
+  margin: 0 0 5px 0;
 }
 .section-heading h3 {
   font-size: 22px;
   font-weight: 700;
-  margin: 0 0 8px 0; /* tighter margin */
+  margin: 0 0 8px 0;
 }
 .section-text p {
   font-size: 16px;
   color: #555;
-  margin: 0 0 15px 0; /* reduced margin */
+  margin: 0;
 }
 .choose-style-images {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px; /* reduced from 15px */
+  gap: 12px;
 }
 .choose-style-images img {
   width: 100%;
   height: auto;
   border-radius: 6px;
 }
-.choose-style-extra-text {
-  margin-top: 12px; /* reduced from 20px */
-}
 .choose-style-extra-text p {
   font-size: 15px;
   color: #444;
-  margin-bottom: 6px; /* reduced spacing */
+  margin: 0 0 8px 0;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .choose-style-grid {
-    grid-template-columns: 1fr;
+  .choose-style-row {
+    flex-direction: column;
     gap: 20px;
+    margin-bottom: 30px;
   }
   .choose-style-images {
     grid-template-columns: 1fr;
-    gap: 12px;
   }
 }
 </style>
 
 {% schema %}
 {
-  "name": "customer journey 1",
+  "name": "Customer Journey 1",
   "settings": [
     {
       "type": "text",
@@ -158,7 +166,7 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "customer journey 1",
+      "name": "Customer Journey 1",
       "category": "Custom"
     }
   ]
