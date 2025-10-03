@@ -29,11 +29,9 @@
     {% endif %}
 
     {% if section.settings.banner_text != blank %}
-      <div class="divider-text flex items-center justify-center w-full max-w-2xl mt-4 mb-4">
-        <span class="flex-1 border-t border-white"></span>
-        <span class="px-3 text-base md:text-lg whitespace-nowrap">{{ section.settings.banner_text }}</span>
-        <span class="flex-1 border-t border-white"></span>
-      </div>
+      <div class="w-24 border-t-2 border-white mt-4 mb-2"></div> <!-- Top Line -->
+      <p class="mt-2 max-w-2xl text-base md:text-lg">{{ section.settings.banner_text }}</p>
+      <div class="w-24 border-t-2 border-white mt-2 mb-4"></div> <!-- Bottom Line -->
     {% endif %}
 
     {% if section.settings.banner_button_text != blank and section.settings.banner_button_link != blank %}
@@ -70,8 +68,9 @@
   .banner-content h1 {
     font-size: 1.8rem; /* Smaller heading on mobile */
   }
-  .divider-text span {
+  .banner-content p {
     font-size: 0.9rem; /* Smaller text on mobile */
+    padding: 0 10px;
   }
   .custom_breadcrumb.small { height: 200px; }
   .custom_breadcrumb.medium { height: 300px; }
