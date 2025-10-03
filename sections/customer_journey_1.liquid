@@ -1,7 +1,9 @@
 <!-- sections/choose-style.liquid -->
 <section class="choose-style-section">
-  <div class="container">
-    <div class="choose-style-content">
+  <div class="container choose-style-grid">
+    
+    <!-- Left Side -->
+    <div class="choose-style-left">
       <!-- Number -->
       <div class="section-number">
         <h2>{{ section.settings.number }}</h2>
@@ -16,25 +18,35 @@
       <div class="section-text">
         <p>{{ section.settings.paragraph }}</p>
       </div>
-    </div>
 
-    <!-- Images -->
-    <div class="choose-style-images">
-      {% for block in section.blocks %}
-        {% if block.type == 'image' %}
+      <!-- Bottom Images (Left Side) -->
+      <div class="choose-style-images">
+        {% for block in section.blocks limit:2 %}
           <div class="style-image">
             <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
           </div>
-        {% endif %}
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
 
-    <!-- Right Side Text -->
-    <div class="choose-style-extra-text">
-        
-      <p>{{ section.settings.extra_text1 }}</p>
-      <p>{{ section.settings.extra_text2 }}</p>
+    <!-- Right Side -->
+    <div class="choose-style-right">
+      <!-- Top Images (Right Side) -->
+      <div class="choose-style-images">
+        {% for block in section.blocks offset:2 limit:2 %}
+          <div class="style-image">
+            <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Extra Text -->
+      <div class="choose-style-extra-text">
+        <p>{{ section.settings.extra_text1 }}</p>
+        <p>{{ section.settings.extra_text2 }}</p>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -42,16 +54,11 @@
 .choose-style-section {
   padding: 50px 20px;
 }
-.choose-style-section .container {
+.choose-style-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 40px;
   align-items: start;
-}
-.choose-style-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 .section-number h2 {
   font-size: 28px;
@@ -61,30 +68,36 @@
 .section-heading h3 {
   font-size: 22px;
   font-weight: 700;
+  margin: 10px 0;
 }
 .section-text p {
   font-size: 16px;
   color: #555;
+  margin-bottom: 20px;
 }
 .choose-style-images {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
+  margin-top: 15px;
 }
 .choose-style-images img {
   width: 100%;
   height: auto;
   border-radius: 6px;
 }
+.choose-style-extra-text {
+  margin-top: 20px;
+}
 .choose-style-extra-text p {
   font-size: 15px;
   color: #444;
-  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .choose-style-section .container {
+  .choose-style-grid {
     grid-template-columns: 1fr;
   }
   .choose-style-images {
@@ -95,7 +108,7 @@
 
 {% schema %}
 {
-  "name": "customer journey 1",
+  "name": "Choose Style Section",
   "settings": [
     {
       "type": "text",
@@ -141,10 +154,10 @@
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 4,
   "presets": [
     {
-      "name": "customer journey 1",
+      "name": "Choose Style Section",
       "category": "Custom"
     }
   ]
