@@ -1,0 +1,124 @@
+<!-- sections/tailored-quote.liquid -->
+<section class="tailored-quote">
+  <div class="container">
+    <!-- Heading -->
+    <div class="quote-heading">
+      <h2><span>03</span><br>Get a Tailored Quote</h2>
+      <p>Your style and size choices lead straight to a clear, Upfront price that covers both filling options and all five fabric categories.</p>
+      <p>We provide a price for every fabric so you can see exactly which options fit your budget!</p>
+      <p>This transparency lets you explore options confidently and avoid surprises.</p>
+    </div>
+
+    <!-- Table -->
+    <div class="quote-table-wrapper">
+      <table class="quote-table">
+        <thead>
+          <tr>
+            <th>Options</th>
+            <th class="yellow">Honeypot Classics</th>
+            <th class="gray">Honeypot Signatures</th>
+            <th class="blue">Performance Select</th>
+            <th class="orange">Performance Luxe</th>
+            <th class="green">Performance Elite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="beige">Feather Filled</td>
+            <td>dh 8,900</td>
+            <td>dh 10,550</td>
+            <td>dh 11,750</td>
+            <td>dh 12,900</td>
+            <td>dh 14,950</td>
+          </tr>
+          <tr>
+            <td class="light-yellow">Foam Filled</td>
+            <td>dh 8,000</td>
+            <td>dh 9,700</td>
+            <td>dh 10,900</td>
+            <td>dh 12,050</td>
+            <td>dh 14,100</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+.tailored-quote {
+  padding: 60px 0;
+  font-family: Arial, sans-serif;
+}
+
+.tailored-quote .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.tailored-quote .quote-heading h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.tailored-quote .quote-heading h2 span {
+  font-size: 28px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.tailored-quote .quote-heading p {
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.quote-table-wrapper {
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 16px;
+}
+
+.quote-table th,
+.quote-table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  font-weight: 500;
+}
+
+.quote-table th {
+  background: #f9f9f9;
+  font-weight: bold;
+}
+
+.quote-table td:first-child {
+  font-weight: bold;
+  text-align: left;
+}
+
+.quote-table .yellow { background: #ffffa5; }
+.quote-table .gray { background: #cfcfcf; }
+.quote-table .blue { background: #9ebeff; }
+.quote-table .orange { background: #ffcf94; }
+.quote-table .green { background: #b9f3b2; }
+.quote-table .beige { background: #f9e2cc; }
+.quote-table .light-yellow { background: #fff1cc; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quote-table th, .quote-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+</style>
