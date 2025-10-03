@@ -1,157 +1,44 @@
-<div class="breadcrumb-banner"
+<div class="breadcrumb-banner relative" 
      style="
-        background-image: url({{ section.settings.banner_bg | image_url: 'master' }}); 
+        background-image: url({{ section.settings.banner_bg | image_url: width: 1600 }}); 
         background-size: cover; 
         background-position: center; 
-        padding: 80px 20px; 
-        text-align: center; 
+        padding: 120px 20px; 
         color: #fff;">
-  
+
+  <!-- Breadcrumb on Top Left -->
+  {%- unless template == 'index' -%}
+    <nav class="breadcrumb absolute top-5 left-5 text-white" role="navigation" aria-label="breadcrumbs">
+      <ul class="flex gap-2 text-sm">
+        <li>
+          <a class="underline" href="{{ routes.root_url }}">
+            {{ 'breadcrumb.home' | t }}
+          </a>
+        </li>
+        ›
+        <li class="is-active">
+          <span aria-current="page">{{ page_title }}</span>
+        </li>
+      </ul>
+    </nav>
+  {%- endunless -%}
+
   <!-- Banner Content -->
-  <div class="banner-content">
+  <div class="banner-content relative z-10 text-center">
     {% if section.settings.banner_heading != blank %}
-      <h1>{{ section.settings.banner_heading }}</h1>
+      <h1 class="text-4xl font-bold">{{ section.settings.banner_heading }}</h1>
     {% endif %}
     {% if section.settings.banner_text != blank %}
-      <p>{{ section.settings.banner_text }}</p>
+      <p class="mt-2">{{ section.settings.banner_text }}</p>
     {% endif %}
     {% if section.settings.banner_button_text != blank and section.settings.banner_button_link != blank %}
-      <a href="{{ section.settings.banner_button_link }}" class="btn btn-primary">
+      <a href="{{ section.settings.banner_button_link }}" class="btn btn-primary mt-4 inline-block">
         {{ section.settings.banner_button_text }}
       </a>
     {% endif %}
   </div>
-
-  <!-- Old Breadcrumb Code (Untouched) -->
-  {%- liquid
-    capture separate
-      echo '<li>'
-      echo '<span class="separate d-block pos-relative" aria-hidden="true"></span>'
-      echo '</li>'
-    endcapture
-  -%}
-  {%- unless template == 'index' -%}
-    <nav
-      class="breadcrumb color-background-1 bg-transparent-i gradient{% if font_size == 'default' %} subrte{% else %} {{ font_size | prepend: 'text-size text-size-' }}{% endif %} element-spacing"
-      role="navigation"
-      aria-label="breadcrumbs"
-      style="
-        --padding-top: {{ padding_top  }};
-        --padding-bottom: {{ padding_top }};
-      "
-    >
-      <ul class="d-flex f-wrap j-c-{{ alignment }} list-unstyled g-gap" style="--g-gap: 0.7rem;">
-        <li>
-          <a class="link link--text h-link link--style-line" href="{{ routes.root_url }}">
-            <span class="link-style">{{ 'breadcrumb.home' | t }}</span>
-          </a>
-        </li>
-        {{ separate }}
-        {%- case template -%}
-          {%- when 'article' -%}
-            <li>
-              <a class="link link--text h-link link--style-line" href="{{- blog.url -}}">
-                <span class="link-style">{{ blog.title | split: '|' | first }}</span>
-              </a>
-            </li>
-            {{ separate }}
-            <li class="is-active">
-              <span aria-current="page">{{ article.title | split: '|' | first }}</span>
-            </li>
-          {%- when 'blog' -%}
-            {%- if current_tags -%}
-              <li>
-                <a class="link link--text h-link link--style-line" href="{{- blog.url -}}">
-                  <span class="link-style">{{ blog.title | split: '|' | first }}</span>
-                </a>
-              </li>
-              {{ separate }}
-              <li class="is-active">
-                {%- capture tag_url -%}{{- blog.url -}}/tagged/{{- current_tags | join: "+" }}{%- endcapture -%}
-                <a class="link link--text h-link link--style-line" href="{{ tag_url }}" aria-current="page">
-                  <span class="link-style">{{- current_tags | join: ' + ' -}}</span>
-                </a>
-              </li>
-            {%- else -%}
-              <li class="is-active">
-                <span aria-current="page">{{ blog.title }}</span>
-              </li>
-            {%- endif -%}
-          {%- when 'cart' -%}
-            <li class="is-active">
-              <span aria-current="page">{{ 'breadcrumb.cart' | t }}</span>
-            </li>
-          {%- when 'collection' and collection.handle -%}
-            {%- if current_tags -%}
-              <li>
-                <a class="link link--text h-link link--style-line" href="/collections" aria-current="page">
-                  <span class="link-style">{{ 'breadcrumb.collections' | t }}</span>
-                </a>
-              </li>
-              {{ separate }}
-              <li>
-                <a class="link link--text h-link link--style-line" href="{{- collection.url -}}">
-                  <span class="link-style">{{ collection.title | split: '|' | first }}</span>
-                </a>
-              </li>
-              {{ separate }}
-              <li class="is-active">
-                {%- capture tag_url -%}{{- collection.url -}}/{{- current_tags | join: "+" }}{%- endcapture -%}
-                <a class="link link--text h-link link--style-line" href="{{ tag_url }}" aria-current="page">
-                  <span class="link-style">{{ current_tags | join: ' + ' }}</span>
-                </a>
-              </li>
-            {%- else -%}
-              <li>
-                <a class="link link--text h-link link--style-line" href="/collections" aria-current="page">
-                  <span class="link-style">{{ 'breadcrumb.collections' | t }}</span>
-                </a>
-              </li>
-              {{ separate }}
-              <li class="is-active">
-                <span aria-current="page">{{ collection.title }}</span>
-              </li>
-            {%- endif -%}
-          {%- when 'product' -%}
-            {%- if collection.url -%}
-              <li>
-                <a class="link link--text h-link link--style-line" href="collection.url">
-                  <span class="link-style">{{ collection.title | split: '|' | first }}</span>
-                </a>
-              </li>
-              {{ separate }}
-            {%- endif -%}
-            <li class="is-active">
-              <span aria-current="page">{{ product.title | split: '|' | first }}</span>
-            </li>
-          {%- when 'product.sofas' -%}
-            {%- if collection.url -%}
-              <li>
-                <a class="link link--text h-link link--style-line" href="collection.url">
-                  <span class="link-style">Test 1 {{ collection.title | split: '|' | first }}</span>
-                </a>
-              </li>
-              {{ separate }}
-            {%- endif -%}
-            {% comment %} <script>console.log('Product: ', {{ product | json }});</script> {% endcomment %}
-            <script>console.log('Collection: ', {{ collection }});</script>
-            {{ collection }}
-            <li class="is-active">
-              <span aria-current="page">{{ product.title | split: '|' | first }}</span>
-            </li>
-          {%- when 'search' -%}
-            <li class="is-active">
-              <span aria-current="page">{{ 'breadcrumb.search' | t }}</span>
-            </li>
-          {%- else -%}
-            <li class="is-active">
-              <span aria-current="page">{{ page_title }}</span>
-            </li>
-        {%- endcase -%}
-      </ul>
-    </nav>
-  {%- endunless -%}
 </div>
+
 {% schema %}
 {
   "name": "Breadcrumb with Banner",
