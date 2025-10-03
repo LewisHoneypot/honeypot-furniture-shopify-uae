@@ -1,140 +1,59 @@
-<div class="breadcrumb-banner relative custom_breadcrumb {{ section.settings.banner_height }}" 
-     style="
-        background-image: url({{ section.settings.banner_bg | image_url: width: 1600 }}); 
-        background-size: cover; 
-        background-position: center; 
-        color: #fff;">
+{% comment %}
+  Full Banner with Heading + Paragraph (--- text --- style) + Background
+{% endcomment %}
+<section class="breadcrumb-banner" 
+  style="position: relative; background-image: url({{ section.settings.bg_image | image_url: width: 1600 }}); background-size: cover; background-position: center; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+  
+  <!-- Dark overlay -->
+  <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
 
-  <!-- Breadcrumb on Top Left -->
-  {%- unless template == 'index' -%}
-    <nav class="breadcrumb absolute top-5 left-5 text-white" role="navigation" aria-label="breadcrumbs">
-      <ul class="flex gap-2 text-sm">
-        <li>
-          <a class="underline" href="{{ routes.root_url }}">
-            {{ 'breadcrumb.home' | t }}
-          </a>
-        </li>
-        /
-        <li class="is-active">
-          <span aria-current="page">{{ page_title }}</span>
-        </li>
-      </ul>
-    </nav>
-  {%- endunless -%}
+  <!-- Content -->
+  <div style="position: relative; z-index: 2; max-width: 900px; padding: 20px;">
 
-  <!-- Banner Content -->
-  <div class="banner-content relative z-10 text-center flex flex-col items-center justify-center h-full px-4">
-    {% if section.settings.banner_heading != blank %}
-      <div class="decorated-text">
-        <span>{{ section.settings.banner_heading }}</span>
+    {%- if section.settings.banner_heading != blank -%}
+      <h1 style="font-size: 42px; font-weight: 700; margin-bottom: 20px;">
+        {{ section.settings.banner_heading }}
+      </h1>
+    {%- endif -%}
+
+    {%- if section.settings.banner_text != blank -%}
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
+        <span style="flex: 1; height: 1px; background: #fff; max-width: 120px;"></span>
+        <p style="margin: 0; font-size: 18px; font-weight: 400;">
+          {{ section.settings.banner_text }}
+        </p>
+        <span style="flex: 1; height: 1px; background: #fff; max-width: 120px;"></span>
       </div>
-    {% endif %}
-    {% if section.settings.banner_text != blank %}
-      <p class="mt-2 max-w-2xl mx-auto">{{ section.settings.banner_text }}</p>
-    {% endif %}
-    {% if section.settings.banner_button_text != blank and section.settings.banner_button_link != blank %}
-      <a href="{{ section.settings.banner_button_link }}" class="btn btn-primary mt-4 inline-block">
-        {{ section.settings.banner_button_text }}
-      </a>
-    {% endif %}
-  </div>
-</div>
+    {%- endif -%}
 
-<style>
-.custom_breadcrumb.small {
-  height: 300px;
-}
-.custom_breadcrumb.medium {
-  height: 450px;
-}
-.custom_breadcrumb.large {
-  height: 700px;
-}
-.custom_breadcrumb .breadcrumb ul li a { 
-  color: white !important;
-}
-.custom_breadcrumb .breadcrumb ul { 
-  display: flex;
-  gap: 6px;
-  list-style: none;
-}
-.custom_breadcrumb .breadcrumb { 
-  background:none !important;
-  margin-left: -40px;
-  padding-top: 17px;
-}
-/* Decorative line around heading */
-.decorated-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-}
-.decorated-text::before,
-.decorated-text::after {
-  content: "";
-  flex: 1;
-  border-bottom: 2px solid #fff;
-  margin: 0 10px;
-}
-@media(max-width:768px){
-  .decorated-text { font-size: 1.5rem; }
-  .custom_breadcrumb.small { height: 200px; }
-  .custom_breadcrumb.medium { height: 300px; }
-  .custom_breadcrumb.large { height: 450px; }
-}
-</style>
+  </div>
+</section>
 
 {% schema %}
 {
-  "name": "Breadcrumb with Banner",
+  "name": "Breadcrumb Banner",
   "settings": [
     {
       "type": "image_picker",
-      "id": "banner_bg",
-      "label": "Banner Background Image"
-    },
-    {
-      "type": "select",
-      "id": "banner_height",
-      "label": "Banner Height",
-      "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
-      ],
-      "default": "medium"
+      "id": "bg_image",
+      "label": "Background Image"
     },
     {
       "type": "text",
       "id": "banner_heading",
-      "label": "Banner Heading",
-      "default": "Page Title Here"
-    },
-    {
-      "type": "textarea",
-      "id": "banner_text",
-      "label": "Banner Text",
-      "default": "You can add some description here."
+      "label": "Heading",
+      "default": "Your Heading Here"
     },
     {
       "type": "text",
-      "id": "banner_button_text",
-      "label": "Button Text",
-      "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "banner_button_link",
-      "label": "Button Link",
-      "default": "/collections/all"
+      "id": "banner_text",
+      "label": "Paragraph Text",
+      "default": "This is the paragraph text."
     }
   ],
   "presets": [
     {
-      "name": "Breadcrumb with Banner",
-      "category": "Custom"
+      "name": "Breadcrumb Banner"
     }
   ]
 }
