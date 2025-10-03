@@ -39,13 +39,22 @@
       <!-- Left Text -->
       <div class="customise-bottom-left">
         <h4>{{ section.settings.measurements_title }}</h4>
-        <ul>
-          {% for block in section.blocks %}
-            {% if block.type == 'list_item' %}
-              <li>{{ block.settings.text }}</li>
-            {% endif %}
-          {% endfor %}
-        </ul>
+        <div class="measurement-lists">
+          <ul>
+            {% for block in section.blocks %}
+              {% if block.type == 'list_item' and forloop.index <= 5 %}
+                <li>{{ block.settings.text }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <ul>
+            {% for block in section.blocks %}
+              {% if block.type == 'list_item' and forloop.index > 5 %}
+                <li>{{ block.settings.text }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
         <p class="note-text">{{ section.settings.note }}</p>
       </div>
 
@@ -121,11 +130,17 @@
   font-weight: 600;
   margin-bottom: 15px;
 }
-.customise-bottom-left ul {
-  padding-left: 20px;
-  margin: 0 0 15px 0;
+.measurement-lists {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 15px;
 }
-.customise-bottom-left li {
+.measurement-lists ul {
+  padding-left: 20px;
+  margin: 0;
+}
+.measurement-lists li {
   font-size: 15px;
   margin-bottom: 8px;
   list-style-type: disc;
@@ -152,8 +167,8 @@
     flex-direction: column;
     gap: 20px;
   }
-  .customise-shapes {
-    justify-content: flex-start;
+  .measurement-lists {
+    grid-template-columns: 1fr;
   }
   .customise-shapes img {
     max-width: 120px;
