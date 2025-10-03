@@ -3,7 +3,7 @@
         background-image: url({{ section.settings.banner_bg | image_url: width: 1600 }}); 
         background-size: cover; 
         background-position: center; 
-        padding: 120px 20px; 
+        padding: 25px; 
         color: #fff;">
 
   <!-- Breadcrumb on Top Left -->
@@ -39,9 +39,15 @@
   </div>
 </div>
 <style>
-    .custom_breadcrumb .breadcrumb{
-    background:none;
-    display:flex;
+    .custom_breadcrumb .breadcrumb ul{ 
+    display: flex;
+    gap: 6px;
+    color: black;
+    list-style: none;
+}
+    }
+    .custom_breadcrumb .breadcrumb{ 
+    background:none !important;
 }
 </style>
 {% schema %}
