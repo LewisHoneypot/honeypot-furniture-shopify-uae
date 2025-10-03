@@ -106,6 +106,66 @@
           "settings": {
             "image": "shopify://shop_images/image_29_11zon.webp"
           }
+        },
+        "list_item_JVnHnT": {
+          "type": "list_item",
+          "settings": {
+            "text": "Length"
+          }
+        },
+        "list_item_TrUAKb": {
+          "type": "list_item",
+          "settings": {
+            "text": "Depth"
+          }
+        },
+        "list_item_HDxkfT": {
+          "type": "list_item",
+          "settings": {
+            "text": "Floor-to-Base Height"
+          }
+        },
+        "list_item_nGCNLt": {
+          "type": "list_item",
+          "settings": {
+            "text": "Floor-to-Seat Height"
+          }
+        },
+        "list_item_rxjpqU": {
+          "type": "list_item",
+          "settings": {
+            "text": "Seat Depth"
+          }
+        },
+        "list_item_Crzq6y": {
+          "type": "list_item",
+          "settings": {
+            "text": "Armrest Height"
+          }
+        },
+        "list_item_ffLFBx": {
+          "type": "list_item",
+          "settings": {
+            "text": "Backrest Height"
+          }
+        },
+        "list_item_b8GWFJ": {
+          "type": "list_item",
+          "settings": {
+            "text": "Armrest Width"
+          }
+        },
+        "list_item_f3rYgD": {
+          "type": "list_item",
+          "settings": {
+            "text": "Backrest Width"
+          }
+        },
+        "list_item_wA6hky": {
+          "type": "list_item",
+          "settings": {
+            "text": "Seat Width"
+          }
         }
       },
       "block_order": [
@@ -113,7 +173,17 @@
         "shape_image_Ry3neN",
         "shape_image_epbXTq",
         "shape_image_3tcqQJ",
-        "shape_image_ttqnaW"
+        "shape_image_ttqnaW",
+        "list_item_JVnHnT",
+        "list_item_TrUAKb",
+        "list_item_HDxkfT",
+        "list_item_nGCNLt",
+        "list_item_rxjpqU",
+        "list_item_Crzq6y",
+        "list_item_ffLFBx",
+        "list_item_b8GWFJ",
+        "list_item_f3rYgD",
+        "list_item_wA6hky"
       ],
       "name": "Customer Journey 2 - Customise Size",
       "settings": {
@@ -123,7 +193,7 @@
         "paragraph": "L-shape, U-shape, 3 Seater, 4 Seater, 5 Seater – anything you need.",
         "middle_text": "Specify every detail from seat depth and armrest width, to backrest height so your sofa fits your space and design perfectly.",
         "measurements_title": "Measurements you can tailor include:",
-        "note": "",
+        "note": "No awkward gaps, no wasted space!",
         "main_image": "shopify://shop_images/Untitled_design_3_1_11zon.webp"
       }
     }
