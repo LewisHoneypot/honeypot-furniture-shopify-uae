@@ -8,7 +8,7 @@
   <!-- Breadcrumb on Top Left -->
   {%- unless template == 'index' -%}
     <nav class="breadcrumb absolute top-5 left-5 text-white" role="navigation" aria-label="breadcrumbs">
-      <ul>
+      <ul class="flex gap-2 text-sm">
         <li>
           <a class="underline" href="{{ routes.root_url }}">
             {{ 'breadcrumb.home' | t }}
@@ -43,12 +43,10 @@
 </div>
 
 <style>
-/* Banner Heights */
 .custom_breadcrumb.small { height: 300px; }
 .custom_breadcrumb.medium { height: 450px; }
 .custom_breadcrumb.large { height: 700px; }
 
-/* Breadcrumb Styling */
 .custom_breadcrumb .breadcrumb ul li a { 
   color: white !important;
 }
@@ -81,7 +79,7 @@
   margin: 0 10px;
 }
 
-/* Responsive */
+/* Responsive Fix */
 @media(max-width:768px){
   .custom_breadcrumb.small { height: 200px; }
   .custom_breadcrumb.medium { height: 300px; }
