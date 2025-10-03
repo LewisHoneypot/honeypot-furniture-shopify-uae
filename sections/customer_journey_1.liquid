@@ -31,6 +31,16 @@
 
     <!-- Right Side Text -->
     <div class="choose-style-extra-text">
+          <!-- Images -->
+    <div class="choose-style-images">
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          <div class="style-image">
+            <img src="{{ block.settings.image | img_url: '600x' }}" alt="style image">
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
       <p>{{ section.settings.extra_text1 }}</p>
       <p>{{ section.settings.extra_text2 }}</p>
     </div>
