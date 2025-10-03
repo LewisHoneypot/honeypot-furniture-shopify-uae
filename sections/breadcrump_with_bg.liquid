@@ -23,19 +23,19 @@
   {%- endunless -%}
 
   <!-- Banner Content -->
-  <div class="banner-content relative z-10 text-center flex flex-col items-center justify-center h-full px-4">
+  <div class="banner-content relative z-10 text-center flex flex-col items-center justify-center h-full w-full px-4">
     {% if section.settings.banner_heading != blank %}
-      <h1 class="text-4xl font-bold">{{ section.settings.banner_heading }}</h1>
+      <h1 class="text-4xl font-bold mb-4">{{ section.settings.banner_heading }}</h1>
     {% endif %}
 
     {% if section.settings.banner_text != blank %}
-      <div class="decorated-para mt-4">
+      <div class="decorated-para">
         <span>{{ section.settings.banner_text }}</span>
       </div>
     {% endif %}
 
     {% if section.settings.banner_button_text != blank and section.settings.banner_button_link != blank %}
-      <a href="{{ section.settings.banner_button_link }}" class="btn btn-primary mt-4 inline-block">
+      <a href="{{ section.settings.banner_button_link }}" class="btn btn-primary mt-6 inline-block">
         {{ section.settings.banner_button_text }}
       </a>
     {% endif %}
@@ -43,10 +43,12 @@
 </div>
 
 <style>
+/* Banner Heights */
 .custom_breadcrumb.small { height: 300px; }
 .custom_breadcrumb.medium { height: 450px; }
 .custom_breadcrumb.large { height: 700px; }
 
+/* Breadcrumb */
 .custom_breadcrumb .breadcrumb ul li a { 
   color: white !important;
 }
@@ -59,6 +61,16 @@
   background:none !important;
   margin-left: -40px;
   padding-top: 17px;
+}
+
+/* Ensure Banner Content Centers */
+.custom_breadcrumb .banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
 }
 
 /* Paragraph Decorative Lines */
