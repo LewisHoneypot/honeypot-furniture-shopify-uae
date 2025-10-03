@@ -196,12 +196,24 @@
         "note": "No awkward gaps, no wasted space!",
         "main_image": "shopify://shop_images/Untitled_design_3_1_11zon.webp"
       }
+    },
+    "customer_journey_3_6ew86H": {
+      "type": "customer_journey_3",
+      "name": "Customer Journey 3 ",
+      "settings": {
+        "number": "03",
+        "heading": "Get a Tailored Quote",
+        "paragraph1": "Your style and size choices lead straight to a clear, Upfront price that covers both filling options and all five fabric categories.",
+        "paragraph2": "We provide a price for every fabric so you can see exactly which options fit your budget!",
+        "paragraph3": "This transparency lets you explore options confidently and avoid surprises."
+      }
     }
   },
   "order": [
     "main",
     "custom_liquid_T7RRLB",
     "customer_journey_1_MPXCwG",
-    "customer_journey_2_i7LHUN"
+    "customer_journey_2_i7LHUN",
+    "customer_journey_3_6ew86H"
   ]
 }
