@@ -3,10 +3,16 @@
   <div class="container">
     <!-- Heading -->
     <div class="quote-heading">
-      <h2><span>03</span><br>Get a Tailored Quote</h2>
-      <p>Your style and size choices lead straight to a clear, Upfront price that covers both filling options and all five fabric categories.</p>
-      <p>We provide a price for every fabric so you can see exactly which options fit your budget!</p>
-      <p>This transparency lets you explore options confidently and avoid surprises.</p>
+      <h2><span>{{ section.settings.step_number }}</span><br>{{ section.settings.heading }}</h2>
+      {% if section.settings.subtext_1 != blank %}
+        <p>{{ section.settings.subtext_1 }}</p>
+      {% endif %}
+      {% if section.settings.subtext_2 != blank %}
+        <p>{{ section.settings.subtext_2 }}</p>
+      {% endif %}
+      {% if section.settings.subtext_3 != blank %}
+        <p>{{ section.settings.subtext_3 }}</p>
+      {% endif %}
     </div>
 
     <!-- Table -->
@@ -15,30 +21,25 @@
         <thead>
           <tr>
             <th>Options</th>
-            <th class="yellow">Honeypot Classics</th>
-            <th class="gray">Honeypot Signatures</th>
-            <th class="blue">Performance Select</th>
-            <th class="orange">Performance Luxe</th>
-            <th class="green">Performance Elite</th>
+            {% for col in section.blocks %}
+              {% if col.type == 'column' %}
+                <th class="{{ col.settings.bg_color }}">{{ col.settings.title }}</th>
+              {% endif %}
+            {% endfor %}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="beige">Feather Filled</td>
-            <td>dh 8,900</td>
-            <td>dh 10,550</td>
-            <td>dh 11,750</td>
-            <td>dh 12,900</td>
-            <td>dh 14,950</td>
-          </tr>
-          <tr>
-            <td class="light-yellow">Foam Filled</td>
-            <td>dh 8,000</td>
-            <td>dh 9,700</td>
-            <td>dh 10,900</td>
-            <td>dh 12,050</td>
-            <td>dh 14,100</td>
-          </tr>
+       {% for row in section.blocks %}
+  {% if row.type == 'row' %}
+    <tr>
+      <td class="{{ row.settings.bg_color }}">{{ row.settings.option_name }}</td>
+      {% for i in (1..5) %}
+        {% assign key = 'price_' | append: i %}
+        <td>{% if row.settings[key] != blank %}{{ row.settings[key] }}{% endif %}</td>
+      {% endfor %}
+    </tr>
+  {% endif %}
+{% endfor %}
         </tbody>
       </table>
     </div>
@@ -106,13 +107,14 @@
   text-align: left;
 }
 
-.quote-table .yellow { background: #ffffa5; }
-.quote-table .gray { background: #cfcfcf; }
-.quote-table .blue { background: #9ebeff; }
-.quote-table .orange { background: #ffcf94; }
-.quote-table .green { background: #b9f3b2; }
-.quote-table .beige { background: #f9e2cc; }
-.quote-table .light-yellow { background: #fff1cc; }
+/* Background color options */
+.bg-yellow { background: #ffffa5; }
+.bg-gray { background: #cfcfcf; }
+.bg-blue { background: #9ebeff; }
+.bg-orange { background: #ffcf94; }
+.bg-green { background: #b9f3b2; }
+.bg-beige { background: #f9e2cc; }
+.bg-light-yellow { background: #fff1cc; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -122,3 +124,117 @@
   }
 }
 </style>
+
+{% schema %}
+{
+  "name": "customer journey 3",
+  "settings": [
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step Number",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get a Tailored Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext_1",
+      "label": "Subtext Line 1",
+      "default": "Your style and size choices lead straight to a clear, Upfront price that covers both filling options and all five fabric categories."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext_2",
+      "label": "Subtext Line 2",
+      "default": "We provide a price for every fabric so you can see exactly which options fit your budget!"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext_3",
+      "label": "Subtext Line 3",
+      "default": "This transparency lets you explore options confidently and avoid surprises."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Table Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column Title"
+        },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background Color",
+          "options": [
+            { "value": "bg-yellow", "label": "Yellow" },
+            { "value": "bg-gray", "label": "Gray" },
+            { "value": "bg-blue", "label": "Blue" },
+            { "value": "bg-orange", "label": "Orange" },
+            { "value": "bg-green", "label": "Green" }
+          ],
+          "default": "bg-yellow"
+        }
+      ]
+    },
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "option_name",
+          "label": "Row Title (Option)"
+        },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Row Background",
+          "options": [
+            { "value": "bg-beige", "label": "Beige" },
+            { "value": "bg-light-yellow", "label": "Light Yellow" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "price_1",
+          "label": "Price for Column 1"
+        },
+        {
+          "type": "text",
+          "id": "price_2",
+          "label": "Price for Column 2"
+        },
+        {
+          "type": "text",
+          "id": "price_3",
+          "label": "Price for Column 3"
+        },
+        {
+          "type": "text",
+          "id": "price_4",
+          "label": "Price for Column 4"
+        },
+        {
+          "type": "text",
+          "id": "price_5",
+          "label": "Price for Column 5"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "customer journey 3"
+    }
+  ]
+}
+{% endschema %}
