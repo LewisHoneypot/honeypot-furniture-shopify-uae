@@ -154,12 +154,11 @@
 }
 
 .bottom-heading {
-  font-size: {{ section.settings.bottom_heading_size }}px;
-  font-weight: {{ section.settings.bottom_heading_weight }};
-  color: {{ section.settings.bottom_heading_color }};
-  margin-bottom: {{ section.settings.bottom_heading_margin_bottom }}px;
-  line-height: {{ section.settings.bottom_heading_line_height }};
-  {% comment %} font-family: {{ section.settings.bottom_heading_font }}; {% endcomment %}
+   font-size: 32px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 25px;
+    line-height: 1.2;
 }
 
 /* Steps in one flex row */
@@ -247,12 +246,7 @@
   }
   
   .bottom-heading {
-    {% comment %} font-size: {{ section.settings.mobile_bottom_heading_size }}px; {% endcomment %}
-    font-size: 32px;
-    font-weight: 500;
-    color: #000000;
-    margin-bottom: 25px;
-    line-height: 1.2;
+    font-size: {{ section.settings.mobile_bottom_heading_size }}px;
   }
   
   .customer-journey-section .step-item {
