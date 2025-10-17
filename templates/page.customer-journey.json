@@ -164,7 +164,7 @@
         "steps_align": "center",
         "steps_gap": 25,
         "steps_margin_bottom": 15,
-        "step_item_size": 24,
+        "step_item_size": 32,
         "step_item_weight": "600",
         "step_item_color": "#000000",
         "step_item_font": "",
