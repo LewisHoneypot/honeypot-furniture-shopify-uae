@@ -428,56 +428,6 @@
     },
     "customer_journey_3_6ew86H": {
       "type": "customer_journey_3",
-      "blocks": {
-        "column_C8LeUj": {
-          "type": "column",
-          "settings": {
-            "column_title": "Honeypot <br> Classics",
-            "column_color": "#fff9c4"
-          }
-        },
-        "column_7KWaFJ": {
-          "type": "column",
-          "settings": {
-            "column_title": "Honeypot <br>  Signatures",
-            "column_color": "#d9d9d9"
-          }
-        },
-        "column_drQNpQ": {
-          "type": "column",
-          "settings": {
-            "column_title": "Honeypot <br> Performance",
-            "column_color": "#9cc1fa"
-          }
-        },
-        "row_E3J9zf": {
-          "type": "row",
-          "settings": {
-            "row_title": "Feather Filling",
-            "row_color": "#fbe9e7",
-            "price_1": "dh 8,950",
-            "price_2": "dh 10,650",
-            "price_3": "dh 12,150"
-          }
-        },
-        "row_EfedbN": {
-          "type": "row",
-          "settings": {
-            "row_title": "Foam Filling",
-            "row_color": "#fbe9e7",
-            "price_1": "dh 8,100",
-            "price_2": "dh 9,750",
-            "price_3": "dh 11,300"
-          }
-        }
-      },
-      "block_order": [
-        "column_C8LeUj",
-        "column_7KWaFJ",
-        "column_drQNpQ",
-        "row_E3J9zf",
-        "row_EfedbN"
-      ],
       "name": "Customer Journey 3 ",
       "settings": {
         "container_max_width": 1200,
@@ -502,18 +452,9 @@
         "text_font_size": 16,
         "text_line_height": 1.5,
         "text_max_width": 800,
-        "option_header": "OPTIONS",
-        "table_margin_top": 30,
-        "table_font_size": 18,
-        "table_header_font_size": 18,
-        "table_header_font_weight": "600",
-        "table_row_header_font_weight": "500",
-        "table_cell_padding": 15,
-        "table_border_width": 1,
-        "table_border_color": "#565656",
-        "table_header_bg": "#f5f5f5",
-        "table_header_text": "#000000",
-        "table_text_color": "#000000"
+        "image": "shopify://shop_images/Group_1000004181.png",
+        "image_alt": "Quote Image",
+        "table_margin_top": 30
       }
     },
     "grid_image_text_qChzVn": {
