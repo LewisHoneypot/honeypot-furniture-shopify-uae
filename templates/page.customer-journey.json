@@ -773,7 +773,7 @@
         "fabric_xqALjy": {
           "type": "fabric",
           "settings": {
-            "title": "Boucel - look",
+            "title": "Boucle - look",
             "main_image": "shopify://shop_images/Rectangle_34624296.png",
             "color_swatch_1": "",
             "color_image_1": "shopify://shop_images/1_20ac6e5a-a17e-44a0-8f9e-c121d8f1638e.jpg",
@@ -885,7 +885,8 @@
       "settings": {
         "step_title": "STEP 6",
         "subtitle": "Creation & Delivery",
-        "cylindo_product_id": "",
+        "cylindo_sku": "",
+        "cylindo_client": "",
         "image": "shopify://shop_images/Mask_group_4__11zon.webp",
         "image_alt": "Custom Sofa Creation & Delivery",
         "description": "Once you've finalised your design and fabric choice, we handcraft your sofa to order and deliver it within 7–14 days.",
