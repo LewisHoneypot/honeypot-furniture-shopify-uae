@@ -78,8 +78,9 @@
   display: flex;
   align-items: {{ section.settings.content_alignment }};
   justify-content: space-between;
-  gap: {{ section.settings.content_gap }}px;
-  flex-wrap: wrap;
+  {% comment %} gap: {{ section.settings.content_gap }}px; {% endcomment %}
+   gap: 102px
+  {% comment %} flex-wrap: wrap; {% endcomment %}
 }
 
 .creation-text {
