@@ -6,7 +6,8 @@
   margin-bottom: {{ section.settings.section_margin_bottom }}px;
 ">
   <div class="container">
-    <!-- Top Content - Centered -->
+
+    <!-- Top Content -->
     <div class="tailored-quote-header" style="text-align: center;">
       <div class="section-number" style="margin-bottom: {{ section.settings.number_margin_bottom }}px;">
         <h2 style="
@@ -16,6 +17,7 @@
           margin: 0;
         ">{{ section.settings.number }}</h2>
       </div>
+
       <div class="section-heading" style="margin-bottom: {{ section.settings.heading_margin_bottom }}px;">
         <h3 style="
           color: {{ section.settings.heading_color }};
@@ -24,10 +26,8 @@
           margin: 0;
         ">{{ section.settings.heading }}</h3>
       </div>
-      <div class="section-text" style="
-        max-width: {{ section.settings.text_max_width }}px;
-        margin: 0 auto;
-      ">
+
+      <div class="section-text" style="max-width: {{ section.settings.text_max_width }}px; margin: 0 auto;">
         <div style="
           color: {{ section.settings.text_color }};
           font-size: {{ section.settings.text_font_size }}px;
@@ -37,81 +37,18 @@
       </div>
     </div>
 
-    <!-- Table - Centered -->
-    <div class="quote-table-wrapper" style="
-      margin-top: {{ section.settings.table_margin_top }}px;
-      text-align: center;
-    ">
-      <table class="quote-table" style="
-        margin: 0 auto;
-        font-size: {{ section.settings.table_font_size }}px;
-        border: {{ section.settings.table_border_width }}px solid {{ section.settings.table_border_color }};
-      ">
-        <thead>
-          <tr>
-            <th style="
-              background-color: {{ section.settings.table_header_bg }};
-              color: {{ section.settings.table_header_text }};
-              font-size: {{ section.settings.table_header_font_size }}px;
-              font-weight: {{ section.settings.table_header_font_weight }};
-              padding: {{ section.settings.table_cell_padding }}px;
-            ">{{ section.settings.option_header }}</th>
-            {% for column in section.blocks %}
-              {% if column.type == 'column' %}
-                <th style="
-                  background-color: {{ column.settings.column_color }};
-                  color: {{ section.settings.table_header_text }};
-                  font-size: {{ section.settings.table_header_font_size }}px;
-                  font-weight: {{ section.settings.table_header_font_weight }};
-                  padding: {{ section.settings.table_cell_padding }}px;
-                ">{{ column.settings.column_title }}</th>
-              {% endif %}
-            {% endfor %}
-          </tr>
-        </thead>
-        <tbody>
-          {% for row in section.blocks %}
-            {% if row.type == 'row' %}
-              <tr>
-                <td style="
-                  background-color: {{ row.settings.row_color }};
-                  color: {{ section.settings.table_text_color }};
-                  font-weight: {{ section.settings.table_row_header_font_weight }};
-                  padding: {{ section.settings.table_cell_padding }}px;
-                  text-align: left;
-                ">{{ row.settings.row_title }}</td>
-                {% for column in section.blocks %}
-                  {% if column.type == 'column' %}
-                    {% assign price_index = forloop.index %}
-                    {% if price_index == 1 and row.settings.price_1 != blank %}
-                      <td style="
-                        color: {{ section.settings.table_text_color }};
-                        padding: {{ section.settings.table_cell_padding }}px;
-                      ">{{ row.settings.price_1 }}</td>
-                    {% elsif price_index == 2 and row.settings.price_2 != blank %}
-                      <td style="
-                        color: {{ section.settings.table_text_color }};
-                        padding: {{ section.settings.table_cell_padding }}px;
-                      ">{{ row.settings.price_2 }}</td>
-                    {% elsif price_index == 3 and row.settings.price_3 != blank %}
-                      <td style="
-                        color: {{ section.settings.table_text_color }};
-                        padding: {{ section.settings.table_cell_padding }}px;
-                      ">{{ row.settings.price_3 }}</td>
-                    {% else %}
-                      <td style="
-                        color: {{ section.settings.table_text_color }};
-                        padding: {{ section.settings.table_cell_padding }}px;
-                      ">-</td>
-                    {% endif %}
-                  {% endif %}
-                {% endfor %}
-              </tr>
-            {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+    <!-- Image Section -->
+    {% if section.settings.image != blank %}
+      <div class="quote-image-wrapper" style="margin-top: {{ section.settings.table_margin_top }}px; text-align: center;">
+        <img 
+          src="{{ section.settings.image | image_url: width: 1200 }}" 
+          alt="{{ section.settings.image_alt | escape }}"
+          class="quote-image"
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+
   </div>
 </section>
 
@@ -121,68 +58,37 @@
   margin: 0 auto;
 }
 
-.quote-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: center;
+.quote-image-wrapper {
+  max-width: 100%;
 }
 
-.quote-table th,
-.quote-table td {
-  border: 1px solid #565656;
-  text-align:center !important;
-    font-family: 'Albert Sans', sans-serif;
-  color:#171717;
+.quote-image {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
 }
 
-.quote-table-wrapper {
-  overflow-x: auto;
-    max-width: 900px;
-    margin: auto;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .tailored-quote-section {
     padding: 20px 15px !important;
   }
-   .section-number h2{
-  font-size:24px !important;
+  .section-number h2 {
+    font-size: 24px !important;
   }
-  .quote-table th, 
-  .quote-table td {
-    padding: 8px !important;
-    font-size: 12px !important;
+  .section-heading h3 {
+    font-size: 20px !important;
   }
-.section-heading h3 {
-  font-size:20px !important;
+  .quote-image {
+    width: 100%;
+    height: auto;
   }
-  .fabric-title {
-    font-size: 20px;
-}
-.fabric-step {
-    font-size: 24px;
-}
-.fabric-name {
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-  .quote-table {
-    overflow: hidden;
-}
 }
 </style>
 
 {% schema %}
 {
-  "name": "Customer Journey 3 ",
-  "max_blocks": 8,
+  "name": "Customer Journey 3",
   "settings": [
-    {
-      "type": "header",
-      "content": "Section Layout"
-    },
     {
       "type": "range",
       "id": "container_max_width",
@@ -250,10 +156,6 @@
       "default": "#ffffff"
     },
     {
-      "type": "header",
-      "content": "Step Number"
-    },
-    {
       "type": "text",
       "id": "number",
       "label": "Step Number",
@@ -297,10 +199,6 @@
       "step": 1,
       "default": 8,
       "unit": "px"
-    },
-    {
-      "type": "header",
-      "content": "Heading"
     },
     {
       "type": "text",
@@ -348,14 +246,10 @@
       "unit": "px"
     },
     {
-      "type": "header",
-      "content": "Paragraph Text"
-    },
-    {
       "type": "richtext",
       "id": "paragraph",
       "label": "Paragraph Content",
-      "default": "<p>Your chosen style and size lead straight to a clear, upfront price that includes both filling types and all three fabric categories.</p><p>We provide a price for every fabric so you can easily see what fits your budget, because transparency matters. No surprises, just clarity and choice.</p>"
+      "default": "<p>Your chosen style and size lead straight to a clear, upfront price.</p>"
     },
     {
       "type": "color",
@@ -395,216 +289,34 @@
     },
     {
       "type": "header",
-      "content": "Table Settings"
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Upload Image"
     },
     {
       "type": "text",
-      "id": "option_header",
-      "label": "Options Header Text",
-      "default": "OPTIONS"
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "default": "Quote Image"
     },
     {
       "type": "range",
       "id": "table_margin_top",
-      "label": "Table Margin Top",
+      "label": "Image Top Margin",
       "min": 0,
       "max": 100,
       "step": 5,
       "default": 30,
       "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "table_font_size",
-      "label": "Table Font Size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "default": 15,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "table_header_font_size",
-      "label": "Table Header Font Size",
-      "min": 12,
-      "max": 20,
-      "step": 1,
-      "default": 15,
-      "unit": "px"
-    },
-    {
-      "type": "select",
-      "id": "table_header_font_weight",
-      "label": "Table Header Font Weight",
-      "options": [
-        {"value": "400", "label": "Normal"},
-        {"value": "500", "label": "Medium"},
-        {"value": "600", "label": "Semi Bold"},
-        {"value": "700", "label": "Bold"}
-      ],
-      "default": "700"
-    },
-    {
-      "type": "select",
-      "id": "table_row_header_font_weight",
-      "label": "Row Header Font Weight",
-      "options": [
-        {"value": "400", "label": "Normal"},
-        {"value": "500", "label": "Medium"},
-        {"value": "600", "label": "Semi Bold"},
-        {"value": "700", "label": "Bold"}
-      ],
-      "default": "600"
-    },
-    {
-      "type": "range",
-      "id": "table_cell_padding",
-      "label": "Table Cell Padding",
-      "min": 5,
-      "max": 30,
-      "step": 1,
-      "default": 15,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "table_border_width",
-      "label": "Table Border Width",
-      "min": 0,
-      "max": 5,
-      "step": 1,
-      "default": 1,
-      "unit": "px"
-    },
-    {
-      "type": "color",
-      "id": "table_border_color",
-      "label": "Table Border Color",
-      "default": "#dddddd"
-    },
-    {
-      "type": "color",
-      "id": "table_header_bg",
-      "label": "Table Header Background",
-      "default": "#f5f5f5"
-    },
-    {
-      "type": "color",
-      "id": "table_header_text",
-      "label": "Table Header Text Color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "table_text_color",
-      "label": "Table Text Color",
-      "default": "#000000"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "column",
-      "name": "Table Column",
-      "settings": [
-        {
-          "type": "text",
-          "id": "column_title",
-          "label": "Column Title",
-          "default": "Honeypot Classics"
-        },
-        {
-          "type": "color",
-          "id": "column_color",
-          "label": "Column Background Color",
-          "default": "#fff9c4"
-        }
-      ]
-    },
-    {
-      "type": "row",
-      "name": "Table Row",
-      "settings": [
-        {
-          "type": "text",
-          "id": "row_title",
-          "label": "Row Title",
-          "default": "Feather Filling"
-        },
-        {
-          "type": "color",
-          "id": "row_color",
-          "label": "Row Background Color",
-          "default": "#fbe9e7"
-        },
-        {
-          "type": "text",
-          "id": "price_1",
-          "label": "Price for Column 1",
-          "default": "dh 8,950"
-        },
-        {
-          "type": "text",
-          "id": "price_2",
-          "label": "Price for Column 2",
-          "default": "dh 10,650"
-        },
-        {
-          "type": "text",
-          "id": "price_3",
-          "label": "Price for Column 3",
-          "default": "dh 12,150"
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "Customer Journey 3 - Quote",
-      "category": "Custom Sections",
-      "blocks": [
-        {
-          "type": "column",
-          "settings": {
-            "column_title": "Honeypot Classics",
-            "column_color": "#fff9c4"
-          }
-        },
-        {
-          "type": "column",
-          "settings": {
-            "column_title": "Honeypot Signatures",
-            "column_color": "#e0e0e0"
-          }
-        },
-        {
-          "type": "column",
-          "settings": {
-            "column_title": "Honeypot Performance",
-            "column_color": "#bbdefb"
-          }
-        },
-        {
-          "type": "row",
-          "settings": {
-            "row_title": "Feather Filling",
-            "row_color": "#fbe9e7",
-            "price_1": "dh 8,950",
-            "price_2": "dh 10,650",
-            "price_3": "dh 12,150"
-          }
-        },
-        {
-          "type": "row",
-          "settings": {
-            "row_title": "Foam Filling",
-            "row_color": "#fff8e1",
-            "price_1": "dh 8,100",
-            "price_2": "dh 9,750",
-            "price_3": "dh 11,300"
-          }
-        }
-      ]
+      "name": "Customer Journey 3 ",
+      "category": "Custom Sections"
     }
   ]
 }
