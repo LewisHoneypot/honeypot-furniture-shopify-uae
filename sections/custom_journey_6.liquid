@@ -15,13 +15,16 @@ Creation & Delivery (with Cylindo Viewer)
       <p class="creation-delivery__subtitle">{{ section.settings.subtitle }}</p>
     {% endif %}
 
-    {% if section.settings.cylindo_product_id != blank %}
+    {% if section.settings.cylindo_sku != blank and section.settings.cylindo_client != blank %}
       <div class="creation-delivery__image-wrapper">
         <div 
           class="cylindo-viewer" 
-          data-product-id="{{ section.settings.cylindo_product_id }}" 
+          data-sku="{{ section.settings.cylindo_sku }}" 
+          data-client="{{ section.settings.cylindo_client }}" 
+          data-config="default" 
           style="width:100%; height:500px;">
         </div>
+        <script async src="https://viewer.cylindo.com/v3/viewer.js"></script>
       </div>
     {% elsif section.settings.image != blank %}
       <div class="creation-delivery__image-wrapper">
@@ -102,22 +105,21 @@ Creation & Delivery (with Cylindo Viewer)
   border-color: #999;
 }
 @media (max-width: 768px) {
-
   .creation-delivery__description {
     font-size: 0.95rem;
   }
   .creation-delivery__step {
-  font-size: 24px;
-}
-.creation-delivery__subtitle {
-  font-size: 20px;
-}
+    font-size: 24px;
+  }
+  .creation-delivery__subtitle {
+    font-size: 20px;
+  }
 }
 </style>
 
 {% schema %}
 {
-  "name": "Creation & Delivery",
+  "name": "Creation & Delivery (3D)",
   "settings": [
     {
       "type": "text",
@@ -133,9 +135,15 @@ Creation & Delivery (with Cylindo Viewer)
     },
     {
       "type": "text",
-      "id": "cylindo_product_id",
-      "label": "Cylindo Product ID",
-      "info": "Paste the Cylindo Product ID here if you want to show the 360° viewer."
+      "id": "cylindo_sku",
+      "label": "Cylindo SKU",
+      "info": "Paste the Cylindo SKU here (e.g. SOFA-3SEATER-OTTOMAN)"
+    },
+    {
+      "type": "text",
+      "id": "cylindo_client",
+      "label": "Cylindo Client ID",
+      "info": "Paste your Cylindo client name (e.g. honeypotfurniture)"
     },
     {
       "type": "image_picker",
@@ -168,7 +176,7 @@ Creation & Delivery (with Cylindo Viewer)
   ],
   "presets": [
     {
-      "name": "Creation & Delivery ",
+      "name": "Creation & Delivery 3D",
       "category": "Custom Sections"
     }
   ]
