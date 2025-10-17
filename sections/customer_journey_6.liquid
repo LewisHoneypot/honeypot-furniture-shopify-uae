@@ -247,7 +247,12 @@
   }
   
   .bottom-heading {
-    font-size: {{ section.settings.mobile_bottom_heading_size }}px;
+    {% comment %} font-size: {{ section.settings.mobile_bottom_heading_size }}px; {% endcomment %}
+    font-size: 32px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 25px;
+    line-height: 1.2;
   }
   
   .customer-journey-section .step-item {
