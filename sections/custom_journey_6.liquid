@@ -32,7 +32,10 @@ Creation & Delivery (with Cylindo Viewer)
 
     {% elsif section.settings.image != blank %}
       <div class="creation-delivery__image-wrapper">
+        {%- comment -%}
         <img src="{{ section.settings.image | img_url: 'medium' }}" alt="{{ section.settings.image_alt | default: 'Fallback Image' }}" class="creation-delivery__image">
+        {%- endcomment -%}
+        <img src="{{ section.settings.image | img_url: '2048x' }}" alt="{{ section.settings.image_alt | default: 'Fallback Image' }}" class="creation-delivery__image">
       </div>
     {% endif %}
 
