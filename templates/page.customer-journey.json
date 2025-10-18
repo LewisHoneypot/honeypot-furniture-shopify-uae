@@ -495,7 +495,7 @@
         "label_font_weight": "600",
         "label_padding": 14,
         "label_border_radius": 0,
-        "feather_content": "<ul><li><strong>Feather Cloud: </strong>Cloud-like, soft, and full of feathers.</li><li><strong>Feather Balanced:</strong> A perfect blend of feather and biscuit foam</li><li><strong>Feather Support: </strong>Firmer, with more biscuit foam and extra spring-back<br/><br/>     </li></ul>",
+        "feather_content": "<ul><li><strong>Feather Cloud: </strong>Cloud-like, soft, and full of feathers</li><li><strong>Feather Balanced:</strong> A perfect blend of feather and biscuit foam</li><li><strong>Feather Support: </strong>Firmer, with more biscuit foam and extra spring-back<br/><br/>     </li></ul>",
         "foam_content": "<ul><li><strong>Foam Cloud:</strong> The most cushioned, sink in feel</li><li><strong>Foam Balanced:</strong> Balanced comfort with soft yet supportive foams</li><li><strong>Foam Support:</strong> Higher density foam for extra resilience and support<br/><br/></li></ul>",
         "content_text_color": "#000000",
         "content_font_size": 16,
