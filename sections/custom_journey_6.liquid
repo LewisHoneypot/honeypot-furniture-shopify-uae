@@ -7,8 +7,6 @@ Creation & Delivery (with Cylindo Viewer)
 <!-- Only load the script for the model viewer or Cylindo if the condition is met -->
 {% if section.settings.model_url != blank %}
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-{% elsif section.settings.cylindo_sku != blank and section.settings.cylindo_client != blank %}
-  <script async src="https://viewer.cylindo.com/v3/viewer.js"></script>
 {% endif %}
 
 <section class="creation-delivery">
@@ -22,17 +20,8 @@ Creation & Delivery (with Cylindo Viewer)
       <p class="creation-delivery__subtitle">{{ section.settings.subtitle }}</p>
     {% endif %}
 
-    {% if section.settings.cylindo_sku != blank and section.settings.cylindo_client != blank %}
-      <div class="creation-delivery__image-wrapper">
-        <div 
-          class="cylindo-viewer" 
-          data-sku="{{ section.settings.cylindo_sku }}" 
-          data-client="{{ section.settings.cylindo_client }}" 
-          data-config="default" 
-          style="width:100%; height:500px;">
-        </div>
-      </div>
-    {% elsif section.settings.model_url != blank %}
+    
+    {% if section.settings.model_url != blank %}
       <!-- Use model-viewer to render the 3D model -->
       <model-viewer 
         alt="{{ section.settings.image_alt | default: '3D model preview' }}" 
