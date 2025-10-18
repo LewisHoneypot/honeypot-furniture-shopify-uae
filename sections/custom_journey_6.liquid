@@ -221,16 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const viewer = document.querySelector('#homepage-model-viewer');
   if (!viewer) return;
 
-  // Optional: Load Shopify AR feature (for .usdz models on iOS)
-  if (Shopify && Shopify.loadFeatures) {
+  // Optional: Enable Shopify AR for USDZ models
+  if (window.Shopify && Shopify.loadFeatures) {
     Shopify.loadFeatures([
       {
         name: 'shopify-xr',
         version: '1.0',
         onLoad() {
-          if (window.ShopifyXR) {
-            window.ShopifyXR.setupXRElements();
-          }
+          if (window.ShopifyXR) window.ShopifyXR.setupXRElements();
         },
       },
     ]);
