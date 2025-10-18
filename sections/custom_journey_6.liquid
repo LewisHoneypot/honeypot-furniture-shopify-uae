@@ -26,13 +26,22 @@ Creation & Delivery (with Cylindo Viewer)
         </div>
         <script async src="https://viewer.cylindo.com/v3/viewer.js"></script>
       </div>
-    {% elsif section.settings.image != blank %}
-      <div class="creation-delivery__image-wrapper">
-        <img 
-          src="{{ section.settings.image | image_url: width: 1200 }}" 
-          alt="{{ section.settings.image_alt | escape }}" 
-          class="creation-delivery__image">
-      </div>
+    {% elsif section.settings.model_url != blank %}
+        <model-viewer
+          src="{{ section.settings.model_url | escape }}"
+          {% if section.settings.poster_image != blank %}
+            poster="{{ section.settings.poster_image | image_url: width: 800 }}"
+          {% endif %}
+          alt="{{ section.settings.alt_text }}"
+          camera-controls
+          {% if section.settings.auto_rotate %}auto-rotate{% endif %}
+          ar
+          style="width:100%; height: 600px; max-width: 900px; margin: 0 auto; display: block;"
+        ></model-viewer>
+      {% else %}
+        <div class="three-d-placeholder" style="padding:60px 20px;">
+          <p>Paste your .glb or .usdz file URL from <strong>Settings → Files</strong> in the theme editor.</p>
+        </div>
     {% endif %}
 
     {% if section.settings.description != blank %}
@@ -122,6 +131,12 @@ Creation & Delivery (with Cylindo Viewer)
 {
   "name": "Creation & Delivery (3D)",
   "settings": [
+    {
+      "type": "text",
+      "id": "model_url",
+      "label": "3D Model URL (.glb or .usdz)",
+      "info": "Upload your model in Settings → Files and paste its URL here."
+    },
     {
       "type": "text",
       "id": "step_title",
