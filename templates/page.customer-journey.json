@@ -883,6 +883,7 @@
       "type": "custom_journey_6",
       "name": "Sofa Step Section 6",
       "settings": {
+        "model_url": "https://cdn.shopify.com/3d/models/cbc7e1767cb6b56d/Lotus_Sofa_Armless_Piece.glb",
         "step_title": "STEP 06",
         "subtitle": "Creation & Delivery",
         "cylindo_sku": "",
