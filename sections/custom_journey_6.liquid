@@ -20,16 +20,16 @@ Creation & Delivery (with Cylindo Viewer)
     
     {% if section.settings.model_url != blank %}
       <!-- Use model-viewer to render the 3D model -->
-      <model-viewer 
-        alt="{{ section.settings.image_alt | default: '3D model preview' }}" 
-        src="{{ section.settings.model_url }}" 
-        ar 
-        environment-image="shared-assets/environments/moon_1k.hdr" 
-        poster="{{ section.settings.image | default: 'fallback-image.jpg' }}" 
-        shadow-intensity="1" 
-        camera-controls 
+      <model-viewer
+        alt="{{ section.settings.image_alt | default: '3D model preview' }}"
+        src="{{ section.settings.model_url }}"
+        ar
+        poster="{{ section.settings.image | image_url: width: 800 }}"
+        shadow-intensity="1"
+        camera-controls
         touch-action="pan-y">
       </model-viewer>
+
     {% elsif section.settings.image != blank %}
       <div class="creation-delivery__image-wrapper">
         <img src="{{ section.settings.image | img_url: 'medium' }}" alt="{{ section.settings.image_alt | default: 'Fallback Image' }}" class="creation-delivery__image">
