@@ -4,6 +4,13 @@ Creation & Delivery (with Cylindo Viewer)
 ==============================================
 {% endcomment %}
 
+<!-- Only load the script for the model viewer or Cylindo if the condition is met -->
+{% if section.settings.model_url != blank %}
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+{% elsif section.settings.cylindo_sku != blank and section.settings.cylindo_client != blank %}
+  <script async src="https://viewer.cylindo.com/v3/viewer.js"></script>
+{% endif %}
+
 <section class="creation-delivery">
   <div class="creation-delivery__container">
 
@@ -15,22 +22,33 @@ Creation & Delivery (with Cylindo Viewer)
       <p class="creation-delivery__subtitle">{{ section.settings.subtitle }}</p>
     {% endif %}
 
-  {% if section.settings.model_url != blank %}
-    <div class="homepage-model__viewer">
-      <model-viewer
-        id="homepage-model-viewer"
-        src="{{ section.settings.model_url }}"
-        alt="3D Model"
-        auto-rotate
-        camera-controls
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        style="width: 100%; height: 500px; background-color: #f9f9f9; border-radius: 8px;">
+    {% if section.settings.cylindo_sku != blank and section.settings.cylindo_client != blank %}
+      <div class="creation-delivery__image-wrapper">
+        <div 
+          class="cylindo-viewer" 
+          data-sku="{{ section.settings.cylindo_sku }}" 
+          data-client="{{ section.settings.cylindo_client }}" 
+          data-config="default" 
+          style="width:100%; height:500px;">
+        </div>
+      </div>
+    {% elsif section.settings.model_url != blank %}
+      <!-- Use model-viewer to render the 3D model -->
+      <model-viewer 
+        alt="{{ section.settings.image_alt | default: '3D model preview' }}" 
+        src="{{ section.settings.model_url }}" 
+        ar 
+        environment-image="shared-assets/environments/moon_1k.hdr" 
+        poster="{{ section.settings.image | default: 'fallback-image.jpg' }}" 
+        shadow-intensity="1" 
+        camera-controls 
+        touch-action="pan-y">
       </model-viewer>
-    </div>
-  {% else %}
-    <p>Please add a model file URL from the customizer to show the 3D model.</p>
-  {% endif %}
+    {% elsif section.settings.image != blank %}
+      <div class="creation-delivery__image-wrapper">
+        <img src="{{ section.settings.image | img_url: 'medium' }}" alt="{{ section.settings.image_alt | default: 'Fallback Image' }}" class="creation-delivery__image">
+      </div>
+    {% endif %}
 
     {% if section.settings.description != blank %}
       <p class="creation-delivery__description">{{ section.settings.description }}</p>
@@ -113,128 +131,8 @@ Creation & Delivery (with Cylindo Viewer)
     font-size: 20px;
   }
 }
-
-
-
-.deferred-media__poster {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  border-radius: calc(var(--border-radius) - var(--border-width));
-}
-
-.media > .deferred-media__poster {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.deferred-media__poster img {
-  width: auto;
-  max-width: 100%;
-  height: 100%;
-}
-
-.deferred-media {
-  overflow: hidden;
-}
-
-.deferred-media:not([loaded]) template {
-  z-index: -1;
-}
-
-.deferred-media[loaded] > .deferred-media__poster {
-  display: none;
-}
-
-.deferred-media__poster:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 var(--media-border-width) rgba(var(--color-foreground), var(--media-border-opacity)),
-    0 0 0 calc(var(--media-border-width) + 0.3rem) rgb(var(--color-background)),
-    0 0 0 calc(var(--media-border-width) + 0.5rem) rgba(var(--color-foreground), 0.5);
-  border-radius: calc(var(--media-radius) - var(--media-border-width));
-}
-
-.deferred-media__poster:focus {
-  outline: none;
-  box-shadow: 0 0 0 var(--media-border-width) rgba(var(--color-foreground), var(--media-border-opacity)),
-    0 0 0 calc(var(--media-border-width) + 0.3rem) rgb(var(--color-background)),
-    0 0 0 calc(var(--media-border-width) + 0.5rem) rgba(var(--color-foreground), 0.5);
-  border-radius: calc(var(--media-radius) - var(--media-border-width));
-}
-
-.global-media-settings--full-width .deferred-media__poster,
-.global-media-settings--full-width .deferred-media__poster:is(:focus, :focus-visible) {
-  border-radius: 0;
-}
-
-/* outline styling for Windows High Contrast Mode */
-@media (forced-colors: active) {
-  .deferred-media__poster:focus {
-    outline: transparent solid 1px;
-  }
-}
-.deferred-media__poster:focus:not(:focus-visible) {
-  outline: 0;
-  box-shadow: none;
-}
-
-.deferred-media__poster-button {
-  background-color: rgb(var(--color-background));
-  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
-  border-radius: 50%;
-  color: rgb(var(--color-foreground));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 6.2rem;
-  width: 6.2rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform var(--duration-short) ease, color var(--duration-short) ease;
-  z-index: 1;
-}
-
-.deferred-media__poster-button:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.deferred-media__poster-button .icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-.deferred-media__poster-button .icon-play {
-  margin-left: 0.2rem;
-}
-
 </style>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const viewer = document.querySelector('#homepage-model-viewer');
-  if (!viewer) return;
 
-  // Optional: Enable Shopify AR for USDZ models
-  if (window.Shopify && Shopify.loadFeatures) {
-    Shopify.loadFeatures([
-      {
-        name: 'shopify-xr',
-        version: '1.0',
-        onLoad() {
-          if (window.ShopifyXR) window.ShopifyXR.setupXRElements();
-        },
-      },
-    ]);
-  }
-});
-</script>
 {% schema %}
 {
   "name": "Creation & Delivery (3D)",
