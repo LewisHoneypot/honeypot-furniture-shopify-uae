@@ -1,0 +1,811 @@
+<!-- Section Schema for Shopify Customizer -->
+{% schema %}
+{
+  "name": "Custom Sofa Journey",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Unique Section ID",
+      "default": "sofa-section-1",
+      "info": "Add a unique ID for this section (e.g., sofa-section-1, sofa-section-2)"
+    },
+    {
+      "type": "header",
+      "content": "Layout Switch"
+    },
+    {
+      "type": "select",
+      "id": "layout_direction",
+      "label": "Content & Image Position",
+      "options": [
+        {
+          "value": "content_left",
+          "label": "Content Left - Image Right"
+        },
+        {
+          "value": "content_right",
+          "label": "Content Right - Image Left"
+        }
+      ],
+      "default": "content_left"
+    },
+    {
+      "type": "header",
+      "content": "Outer Section Background"
+    },
+    {
+      "type": "color",
+      "id": "outer_bg_color",
+      "label": "Outer Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "image_picker",
+      "id": "outer_bg_image",
+      "label": "Outer Background Image"
+    },
+    {
+      "type": "select",
+      "id": "outer_bg_size",
+      "label": "Outer Background Size",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "outer_bg_position",
+      "label": "Outer Background Position",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "left top",
+          "label": "Left Top"
+        },
+        {
+          "value": "right top",
+          "label": "Right Top"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "range",
+      "id": "outer_section_padding_top",
+      "label": "Outer Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "outer_section_padding_bottom",
+      "label": "Outer Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "outer_mobile_section_padding_top",
+      "label": "Mobile Outer Section Padding Top",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "outer_mobile_section_padding_bottom",
+      "label": "Mobile Outer Section Padding Bottom",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile Layout",
+      "options": [
+        {
+          "value": "image_top",
+          "label": "Image on Top"
+        },
+        {
+          "value": "image_bottom",
+          "label": "Image on Bottom"
+        }
+      ],
+      "default": "image_top"
+    },
+    {
+      "type": "header",
+      "content": "Inner Section Background"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Inner Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image",
+      "label": "Inner Background Image"
+    },
+    {
+      "type": "select",
+      "id": "bg_size",
+      "label": "Inner Background Size",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Inner Background Position",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "left top",
+          "label": "Left Top"
+        },
+        {
+          "value": "right top",
+          "label": "Right Top"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Inner Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Inner Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_section_padding_top",
+      "label": "Mobile Inner Section Padding Top",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_section_padding_bottom",
+      "label": "Mobile Inner Section Padding Bottom",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Desktop Width Settings"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content Block Width",
+      "min": 30,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image Block Width",
+      "min": 30,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Width Settings"
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_height",
+      "label": "Mobile Content Height",
+      "min": 200,
+      "max": 500,
+      "step": 50,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "label": "Mobile Image Height",
+      "min": 200,
+      "max": 500,
+      "step": 50,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Custom Sofa Journey"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop Heading Font Size",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile Heading Font Size",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>With Honeypot Furniture</p>"
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "label": "Desktop Content Font Size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_size",
+      "label": "Mobile Content Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content_border",
+      "label": "Show Content Border",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "border_side",
+      "label": "Border Side",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left Side"
+        },
+        {
+          "value": "right",
+          "label": "Right Side"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mobile_border",
+      "label": "Show Mobile Border",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border Width",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Button Settings - Desktop"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Start Your Journey"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_top",
+      "label": "Button Padding Top/Bottom",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_padding_sides",
+      "label": "Button Padding Left/Right",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Button Margin Top",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Button Settings - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_padding_top",
+      "label": "Mobile Button Padding Top/Bottom",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_padding_sides",
+      "label": "Mobile Button Padding Left/Right",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_margin_top",
+      "label": "Mobile Button Margin Top",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_button_font_size",
+      "label": "Mobile Button Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Sofa Journey",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  /* Base styles for all sections */
+  .custom_main_sofa_section {
+    width: 100%;
+  }
+
+  .custom-sofa-section {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    gap: 55px;
+  }
+  
+  .custom-sofa-section.content-right {
+    flex-direction: row-reverse;
+  }
+  
+  .sofa-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0px 40px;
+    box-sizing: border-box;
+  }
+  
+  .sofa-content.with-border-left {
+    border-left: 3px solid #000000;
+  }
+  
+  .sofa-content.with-border-right {
+    border-right: 3px solid #000000;
+  }
+  
+  .sofa-heading {
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight:600;
+  }
+  
+  .sofa-text {
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+  
+  .sofa-button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .sofa-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  .sofa-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .sofa-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  #sofa-section-1 .sofa-text p {
+  font-size:30px !important;
+  }
+
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .custom-sofa-section {
+      flex-direction: column;
+    }
+    
+    .sofa-content {
+      width: 100% !important;
+      padding: 30px 20px;
+    }
+    
+    .sofa-content.with-border-left,
+    .sofa-content.with-border-right {
+      border-left: none;
+      border-right: none;
+      border-top: 3px solid #000000;
+    }
+    
+    .sofa-image {
+      width: 100% !important;
+    }
+    
+    .sofa-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  @media (max-width: 520px) {
+  .custom_main_sofa_section .sofa-content.with-border-left {
+   margin: 0px;
+        margin-bottom: 0px;
+        border-top: 0px !important;
+        padding-top: 0px;
+        padding-bottom: 0px;
+  } 
+  #sofa-section-2 .sofa-content {
+  text-align:center;
+  }
+  .customise-size-section .customise-size-header {
+  text-align:center;
+}
+  #sofa-section-2 .sofa-image {
+  margin-top:-70px;
+  }
+  #sofa-section-1 .sofa-content.with-border-left{
+  border:none !important;
+  }
+    #sofa-section-1 .sofa-text p {
+  font-size:20px !important;
+  }
+  .sofa-text h2{
+  font-size:30px;}
+  #sofa-section-1 .custom_main_sofa_section .for_border_sofa{
+      border-left: 1px solid black;
+    padding-left: 21px;
+    margin-top: 22px;
+    margin-left: 18px;
+    padding-top: 10px;
+  }
+      .customer-journey-section .arrow {
+        font-size: 11px;
+    }
+    .customer-journey-section .steps {
+    gap: 3px;
+}
+  }
+
+  /* Dynamic styles for this specific section instance */
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .custom_main_sofa_section {
+    background-size: {{ section.settings.outer_bg_size }};
+    background-position: {{ section.settings.outer_bg_position }};
+    {% if section.settings.outer_bg_image %}
+      background-image: url('{{ section.settings.outer_bg_image | img_url: '2000x' }}');
+    {% endif %}
+    background-color: {{ section.settings.outer_bg_color }};
+    padding-top: {{ section.settings.outer_section_padding_top }}px;
+    padding-bottom: {{ section.settings.outer_section_padding_bottom }}px;
+  }
+
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .custom-sofa-section {
+    background-size: {{ section.settings.bg_size }};
+    background-position: {{ section.settings.bg_position }};
+    {% if section.settings.section_bg_image %}
+      background-image: url('{{ section.settings.section_bg_image | img_url: '2000x' }}');
+    {% endif %}
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.section_padding_top }}px;
+    padding-bottom: {{ section.settings.section_padding_bottom }}px;
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-content {
+    width: {{ section.settings.content_width }}%;
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-content.with-border-left {
+    border-left: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-content.with-border-right {
+    border-right: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-heading {
+    font-size: {{ section.settings.heading_size }}px;
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-text {
+    font-size: {{ section.settings.content_size }}px;
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-button {
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    padding: {{ section.settings.button_padding_top }}px {{ section.settings.button_padding_sides }}px;
+    margin-top: {{ section.settings.button_margin_top }}px;
+    font-size: {{ section.settings.content_size | plus: 2 }}px;
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-image {
+    width: {{ section.settings.image_width }}%;
+  }
+  
+  #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-image img {
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+  
+  /* Mobile specific styles for this section */
+  @media (max-width: 768px) {
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .custom_main_sofa_section {
+      padding-top: {{ section.settings.outer_mobile_section_padding_top }}px;
+      padding-bottom: {{ section.settings.outer_mobile_section_padding_bottom }}px;
+    }
+
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .custom-sofa-section {
+      flex-direction: {% if section.settings.mobile_layout == 'image_top' %}column{% else %}column-reverse{% endif %};
+      padding-top: {{ section.settings.mobile_section_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_section_padding_bottom }}px;
+    }
+    
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-content {
+      min-height: {{ section.settings.mobile_content_height }}px;
+    }
+    
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-content.with-border-left,
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-content.with-border-right {
+      {% if section.settings.show_mobile_border %}
+        border-top: {{ section.settings.border_width }}px solid {{ section.settings.border_color }};
+      {% else %}
+        border-top: none;
+      {% endif %}
+    }
+    
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-heading {
+      font-size: {{ section.settings.mobile_heading_size }}px;
+    }
+    
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-text {
+      font-size: {{ section.settings.mobile_content_size }}px;
+    }
+    
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-button {
+      padding: {{ section.settings.mobile_button_padding_top }}px {{ section.settings.mobile_button_padding_sides }}px;
+      margin-top: {{ section.settings.mobile_button_margin_top }}px;
+      font-size: {{ section.settings.mobile_button_font_size }}px;
+    }
+    
+    #{{ section.settings.section_id | default: 'sofa-section-1' }} .sofa-image {
+      min-height: {{ section.settings.mobile_image_height }}px;
+    }
+  }
+</style>
+
+<div id="{{ section.settings.section_id | default: 'sofa-section-1' }}">
+  <div class="custom_main_sofa_section">
+    <div class="custom-sofa-section {% if section.settings.layout_direction == 'content_right' %}content-right{% endif %}" 
+         {% unless section.settings.show_section %}style="display: none;"{% endunless %}>
+      
+      <!-- Content Block -->
+      <div class="sofa-content {% if section.settings.show_content_border %}{% if section.settings.border_side == 'left' %}with-border-left{% else %}with-border-right{% endif %}{% endif %}">
+       <div class="for_border_sofa">
+ <h2 class="sofa-heading">
+          {{ section.settings.heading }}
+        </h2>
+        
+        <div class="sofa-text">
+          {{ section.settings.content }}
+        </div>
+
+       </div>
+        
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link }}" 
+             class="sofa-button">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+      
+      <!-- Image Block -->
+      <div class="sofa-image">
+        {% if section.settings.section_image != blank %}
+          <img src="{{ section.settings.section_image | img_url: '800x' }}" 
+               alt="{{ section.settings.heading | escape }}" />
+        {% else %}
+          <div style="background: #f5f5f5; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: {{ section.settings.image_border_radius }}px;">
+            <p>Add an image in the theme editor</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

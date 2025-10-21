@@ -1,0 +1,202 @@
+{% comment %}
+==============================================
+Creation & Delivery (with Cylindo Viewer)
+==============================================
+{% endcomment %}
+
+<!-- Only load the script for the model viewer or Cylindo if the condition is met -->
+
+<section class="creation-delivery">
+  <div class="creation-delivery__container">
+
+    {% if section.settings.step_title != blank %}
+      <h2 class="creation-delivery__step">{{ section.settings.step_title }}</h2>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <p class="creation-delivery__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    
+    {% if section.settings.model_url != blank %}
+      <!-- Use model-viewer to render the 3D model -->
+      <model-viewer
+        alt="{{ section.settings.image_alt | default: '3D model preview' }}"
+        src="{{ section.settings.model_url }}"
+        ar
+        poster="{{ section.settings.image | image_url: width: 800 }}"
+        shadow-intensity="1"
+        camera-controls
+        touch-action="pan-y">
+      </model-viewer>
+
+    {% elsif section.settings.image != blank %}
+      <div class="creation-delivery__image-wrapper">
+        {%- comment -%}
+        <img src="{{ section.settings.image | img_url: 'medium' }}" alt="{{ section.settings.image_alt | default: 'Fallback Image' }}" class="creation-delivery__image">
+        {%- endcomment -%}
+        <img src="{{ section.settings.image | img_url: '2048x' }}" alt="{{ section.settings.image_alt | default: 'Fallback Image' }}" class="creation-delivery__image">
+      </div>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="creation-delivery__description">{{ section.settings.description }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="creation-delivery__btn">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<style>
+#journey-6 .creation-delivery {
+  background: #fff;
+  text-align: center;
+  padding: 60px 0px;
+}
+.creation-delivery__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align:center;
+}
+.creation-delivery__step {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.creation-delivery__subtitle {
+  font-size: 2.5rem;
+  color: #222;
+  margin :0px;
+}
+.creation-delivery__image-wrapper {
+  max-width: 100%;
+  margin: 0 auto 30px;
+}
+.creation-delivery__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.creation-delivery__description {
+  font-size: 16px;
+  color: #171717;
+  max-width: 600px;
+  margin: 0 auto 25px;
+  line-height: 1.6;
+}
+.creation-delivery__btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid #CEAD8E;
+  color: #CEAD8E;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.creation-delivery__btn:hover {
+  background: #f5f5f5;
+  color: #000;
+  border-color: #999;
+}
+
+model-viewer {
+  width: 100%;
+  height: 500px;
+  margin: 50px 0;
+}
+@media (max-width: 768px) {
+  .creation-delivery__description {
+    font-size: 15px;
+  }
+  .creation-delivery__step {
+    font-size: 32px;
+  }
+  .creation-delivery__subtitle {
+    font-size: 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Creation & Delivery (3D)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_url",
+      "label": "3D Model URL (.glb or .usdz)",
+      "info": "Upload your model in Settings → Files and paste its URL here."
+    },
+    {
+      "type": "text",
+      "id": "step_title",
+      "label": "Step Title",
+      "default": "STEP 6"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Creation & Delivery"
+    },
+    {
+      "type": "text",
+      "id": "cylindo_sku",
+      "label": "Cylindo SKU",
+      "info": "Paste the Cylindo SKU here (e.g. SOFA-3SEATER-OTTOMAN)"
+    },
+    {
+      "type": "text",
+      "id": "cylindo_client",
+      "label": "Cylindo Client ID",
+      "info": "Paste your Cylindo client name (e.g. honeypotfurniture)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "default": "Custom Sofa Creation & Delivery"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Once you've finalised your design and fabric choice, we handcraft your sofa to order and deliver it within 7–14 days."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "CUSTOMISE YOUR SOFA"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creation & Delivery 3D",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
