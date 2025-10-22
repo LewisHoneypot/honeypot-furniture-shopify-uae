@@ -336,18 +336,21 @@
         },
         "list_item_b8GWFJ": {
           "type": "list_item",
+          "disabled": true,
           "settings": {
             "text": "Armrest Width"
           }
         },
         "list_item_f3rYgD": {
           "type": "list_item",
+          "disabled": true,
           "settings": {
             "text": "Backrest Width"
           }
         },
         "list_item_wA6hky": {
           "type": "list_item",
+          "disabled": true,
           "settings": {
             "text": "Seat Width"
           }
