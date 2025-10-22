@@ -466,7 +466,7 @@
       "settings": {
         "container_max_width": 1200,
         "section_padding_top": 60,
-        "section_padding_bottom": 60,
+        "section_padding_bottom": 0,
         "section_padding_sides": 0,
         "background_color": "#ffffff",
         "grid_gap": 40,
