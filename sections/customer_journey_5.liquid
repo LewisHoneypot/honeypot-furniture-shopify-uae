@@ -1,401 +1,241 @@
 {% comment %}
-✅ Section: Pick Your Fabric & Colour (Exact Layout)
-- 60+ fabric types with 15-20 color swatches each
-- Click swatch → main image updates
-- Fully responsive with pagination
-- Includes footer with three boxes
+✅ Section: Pick Your Fabric & Colour
+- Desktop → Grid + Pagination
+- Mobile (≤767px) → Native Swipe Slider
+- Swatches update main image
 {% endcomment %}
 
 <section class="fabric-section_main">
-<div class="fabric-section">
-  <div class="fabric-header">
-    <h2 class="fabric-step">{{ section.settings.heading_number }}</h2>
-    <h3 class="fabric-title">{{ section.settings.heading }}</h3>
-    <p class="fabric-desc">{{ section.settings.subheading_1 }}</p>
-    <p class="fabric-desc">{{ section.settings.subheading_2 }}</p>
-  </div>
-
-  <div class="fabric-grid">
-    {% for block in section.blocks %}
-      <div class="fabric-item" data-fabric-item>
-        <div class="fabric-image">
-          {% if block.settings.main_image != blank %}
-            <img src="{{ block.settings.main_image | image_url: width: 500 }}" alt="{{ block.settings.title }}" data-fabric-main-image>
-          {% else %}
-            <div class="placeholder-image">No image</div>
-          {% endif %}
-        </div>
-        <p class="fabric-name">{{ block.settings.title }}</p>
-
-        <div class="fabric-swatches">
-          {% assign swatch_count = 0 %}
-          {% for i in (1..20) %}
-            {% assign color_key = 'color_swatch_' | append: i %}
-            {% assign image_key = 'color_image_' | append: i %}
-            {% assign swatch_color = block.settings[color_key] %}
-            {% assign swatch_image = block.settings[image_key] %}
-            
-            {% if swatch_color != blank or swatch_image != blank %}
-              {% assign swatch_count = swatch_count | plus: 1 %}
-              {% if swatch_image != blank %}  
-                <span
-                  class="fabric-swatch {% if swatch_image != blank %}has-image{% endif %}"
-                  style="{% if swatch_color != blank %}background-color: {{ swatch_color }};{% endif %}"
-                  data-swatch-image="{% if swatch_image != blank %}{{ swatch_image | image_url: width: 500 }}{% endif %}">
-                  <img src="{{ swatch_image | image_url: width: 40 }}" alt="Swatch {{ i }}" class="swatch-thumb">
-                </span>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-          
-          {% comment %} Minimum 15 swatches validation {% endcomment %}
-          {% if swatch_count < 2 %}
-            <div class="swatch-warning" style="color: #ff4444; font-size: 12px; margin-top: 5px;">
-              ⚠️ Add {{ 15 | minus: swatch_count }} more swatches (min 15 required)
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-
- 
-
-  <div class="fabric-footer">
-    <h4>{{ section.settings.footer_title }}</h4>
-    <div class="fabric-footer-boxes">
-      <div class="fabric-box">
-        <span>01</span>
-        <p>{{ section.settings.list_item_1 }}</p>
-      </div>
-      <div class="fabric-box">
-        <span>02</span>
-        <p>{{ section.settings.list_item_2 }}</p>
-      </div>
-      <div class="fabric-box">
-        <span>03</span>
-        <p>{{ section.settings.list_item_3 }}</p>
-      </div>
+  <div class="fabric-section">
+    <div class="fabric-header">
+      <h2 class="fabric-step">{{ section.settings.heading_number }}</h2>
+      <h3 class="fabric-title">{{ section.settings.heading }}</h3>
+      <p class="fabric-desc">{{ section.settings.subheading_1 }}</p>
+      <p class="fabric-desc">{{ section.settings.subheading_2 }}</p>
     </div>
-    <p class="fabric-note">{{ section.settings.footer_note }}</p>
-  </div>
+
+    <!-- Fabric Grid / Slider -->
+    <div class="fabric-grid" data-fabric-grid>
+      {% for block in section.blocks %}
+        <div class="fabric-item" data-fabric-item>
+          <div class="fabric-image">
+            {% if block.settings.main_image != blank %}
+              <img src="{{ block.settings.main_image | image_url: width: 500 }}" alt="{{ block.settings.title }}" data-fabric-main-image>
+            {% else %}
+              <div class="placeholder-image">No image</div>
+            {% endif %}
+          </div>
+          <p class="fabric-name">{{ block.settings.title }}</p>
+
+          <div class="fabric-swatches">
+            {% assign swatch_count = 0 %}
+            {% for i in (1..20) %}
+              {% assign color_key = 'color_swatch_' | append: i %}
+              {% assign image_key = 'color_image_' | append: i %}
+              {% assign swatch_color = block.settings[color_key] %}
+              {% assign swatch_image = block.settings[image_key] %}
+              
+              {% if swatch_color != blank or swatch_image != blank %}
+                {% assign swatch_count = swatch_count | plus: 1 %}
+                {% if swatch_image != blank %}
+                  <span
+                    class="fabric-swatch {% if swatch_image != blank %}has-image{% endif %}"
+                    style="{% if swatch_color != blank %}background-color: {{ swatch_color }};{% endif %}"
+                    data-swatch-image="{% if swatch_image != blank %}{{ swatch_image | image_url: width: 500 }}{% endif %}">
+                    <img src="{{ swatch_image | image_url: width: 40 }}" alt="Swatch {{ i }}" class="swatch-thumb">
+                  </span>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination (Desktop only) -->
+    <div class="fabric-pagination desktop-only">
+      <button class="pagination-btn prev-btn">Prev</button>
+      <span class="pagination-info">
+        Page <span class="current-page">1</span> of <span class="total-pages">1</span>
+      </span>
+      <button class="pagination-btn next-btn">Next</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="fabric-footer">
+      <h4>{{ section.settings.footer_title }}</h4>
+      <div class="fabric-footer-boxes">
+        <div class="fabric-box"><span>01</span><p>{{ section.settings.list_item_1 }}</p></div>
+        <div class="fabric-box"><span>02</span><p>{{ section.settings.list_item_2 }}</p></div>
+        <div class="fabric-box"><span>03</span><p>{{ section.settings.list_item_3 }}</p></div>
+      </div>
+      <p class="fabric-note">{{ section.settings.footer_note }}</p>
+    </div>
   </div>
 </section>
 
 <style>
-  .fabric-section_main{
-  background:#EDEDED
-}
+.fabric-section_main { background:#EDEDED; }
 .fabric-section {
   padding: 60px 20px;
   text-align: left;
   max-width:1440px;
   margin:auto;
-  color: #000;
+  color:#000;
 }
-.fabric-header {
-  max-width: 700px;
-  margin: 0 auto 50px;
-  text-align:center;
-}
-.fabric-step {
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 35px;
-  letter-spacing: 1px;
-}
-.fabric-title {
-  font-size: 28px;
-  font-weight: 500;
-  margin: 10px 0 15px;
-}
-.fabric-desc {
-  font-size: 15px;
-  color: #171717;
-  margin: 4px 0;
-}
+.fabric-header { max-width:700px; margin:0 auto 50px; text-align:center; }
+.fabric-step { text-transform:uppercase; font-weight:700; font-size:35px; }
+.fabric-title { font-size:28px; font-weight:500; margin:10px 0 15px; }
+.fabric-desc { font-size:15px; color:#171717; margin:4px 0; }
+
+/* === Desktop Grid === */
 .fabric-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  margin-bottom: 60px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  margin-bottom:60px;
 }
-.fabric-item {
-  text-align: center;
-}
+.fabric-item { text-align:center; flex:0 0 auto; }
 .fabric-image img {
-  width: 100%;
-  border-radius: 4px;
-  object-fit: cover;
-  transition: opacity 0.3s ease;
+  width:100%; border-radius:4px; object-fit:cover; transition:opacity 0.3s ease;
 }
-.fabric-name {
-  font-weight: 500;
-  font-size: 20px;
-  margin-top: 10px;
-  text-align:start;
-}
+.fabric-name { font-weight:500; font-size:20px; margin-top:10px; text-align:start; }
 .fabric-swatches {
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
+  display:flex; justify-content:start; flex-wrap:wrap; gap:6px; margin-top:8px;
 }
 .fabric-swatch {
-    width: 25px;
-    height: 25px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  transition: transform 0.2s ease, border 0.2s ease;
-  overflow: hidden;
+  width:25px; height:25px; border-radius:50%; border:1px solid #ccc; cursor:pointer;
+  transition:transform 0.2s ease, border 0.2s ease; overflow:hidden;
 }
-.fabric-swatch img.swatch-thumb {
-  width: 100%;
-  height: 102%;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.fabric-swatch:hover {
-  transform: scale(1.2);
-  border-color: #000;
-}
-.fabric-swatch.active {
-  border: 2px solid #000;
-}
-.fabric-footer {
-  text-align: center;
-  margin-top: 40px;
-}
-.fabric-footer h4 {
-     font-size: 28px;
-    font-weight: 500;
-    margin-bottom: 30px;
-    text-transform: capitalize;
-}
+.fabric-swatch img.swatch-thumb { width:100%; height:102%; border-radius:50%; object-fit:cover; }
+.fabric-swatch:hover { transform:scale(1.2); border-color:#000; }
+.fabric-swatch.active { border:2px solid #000; }
+
+/* === Footer === */
+.fabric-footer { text-align:center; margin-top:40px; }
+.fabric-footer h4 { font-size:28px; font-weight:500; margin-bottom:30px; }
 .fabric-footer-boxes {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 25px;
+  display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:25px;
 }
 .fabric-box {
-border: 1px solid #565656;
-    border-radius: 10px;
-    padding: 20px 30px;
-    width: 267px;
-    text-align: center;
-    transition: all 0.3s ease;
+  border:1px solid #565656; border-radius:10px; padding:20px 30px; width:267px; text-align:center;
+  transition:all 0.3s ease;
 }
-.fabric-box:hover {
-  border-color: #000;
-  transform: translateY(-3px);
-}
-.fabric-box span {
-  display: block;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.fabric-box p {
-  margin: 0;
-  font-size: 15px;
-}
-.fabric-note {
-  font-size: 16px;
-  color: #171717;
-}
+.fabric-box:hover { border-color:#000; transform:translateY(-3px); }
+.fabric-box span { display:block; font-size:24px; font-weight:700; margin-bottom:6px; }
+.fabric-note { font-size:16px; color:#171717; }
 
-/* Pagination for large number of fabric items */
+/* Pagination */
 .fabric-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40px 0 20px;
-  gap: 15px;
+  display:flex; justify-content:center; align-items:center; margin:40px 0 20px; gap:15px;
 }
-
 .pagination-btn {
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: inherit;
+  padding:10px 20px; border:1px solid #ddd; background:white; border-radius:5px; cursor:pointer;
+  transition:all 0.3s ease;
 }
+.pagination-btn:hover:not(:disabled) { background:#f5f5f5; border-color:#000; }
+.pagination-btn:disabled { opacity:0.5; cursor:not-allowed; }
+.pagination-info { font-size:14px; color:#666; }
 
-.pagination-btn:hover:not(:disabled) {
-  background: #f5f5f5;
-  border-color: #000;
-}
+/* Responsive Layouts */
+@media (max-width:1200px){ .fabric-grid{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:992px){ .fabric-grid{grid-template-columns:repeat(2,1fr);} }
 
-.pagination-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.pagination-info {
-  font-size: 14px;
-  color: #666;
-}
-
-.swatch-warning {
-  background: #fff3cd;
-  border: 1px solid #ffeaa7;
-  border-radius: 4px;
-  padding: 5px 8px;
-  margin-top: 8px !important;
-  font-size: 11px !important;
-  color: #856404 !important;
-}
-
-@media (max-width: 1200px) {
-  .fabric-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 992px) {
-  .fabric-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
-  .fabric-grid { grid-template-columns: repeat(2, 1fr); }
-  .fabric-pagination { flex-wrap: wrap; }
-}
-@media (max-width: 480px) {
-  .fabric-grid { grid-template-columns: repeat(2, 1fr); }
-  .fabric-footer-boxes { flex-direction: column; align-items: center; }
-  .fabric-box { width: 100%; max-width: 300px; }
-  .fabric-pagination { flex-direction: column; gap: 10px; }
-  .fabric-name{
-    font-size: 16px;
-    margin-bottom: 0;
+/* === Mobile Swipe Mode === */
+@media (max-width:767px){
+  .desktop-only { display:none !important; }
+  .fabric-grid {
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:15px;
+    padding-bottom:10px;
   }
-  .fabric-swatches img{
-  vertical-align: text-top;
+  .fabric-grid::-webkit-scrollbar { display:none; }
+  .fabric-item {
+    flex:0 0 70%;
+    scroll-snap-align:start;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    padding:10px;
   }
-  .fabric-swatch {
-    width: 10px;
-    height: 10px;
-}
-.fabric-swatch img.swatch-thumb {
-  width: 100%;
-  height: 102%;
-}
+  .fabric-name { font-size:16px; margin-bottom:0; }
+  .fabric-swatch { width:18px; height:18px; }
+  .fabric-swatches { justify-content:flex-start; }
+  .fabric-footer-boxes { flex-direction:column; align-items:center; }
+  .fabric-box { width:100%; max-width:300px; }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Swatch click functionality - OPTIMIZED FAST TRANSITION
+  // ===== Swatch Click Functionality =====
   document.querySelectorAll('[data-fabric-item]').forEach(function(item) {
     const mainImg = item.querySelector('[data-fabric-main-image]');
     const swatches = item.querySelectorAll('.fabric-swatch');
-
     if (!swatches.length || !mainImg) return;
 
-    // Preload images for instant switching
     const imageCache = {};
-    swatches.forEach(function(swatch) {
-      const imageUrl = swatch.getAttribute('data-swatch-image');
-      if (imageUrl && !imageCache[imageUrl]) {
+    swatches.forEach(swatch => {
+      const imgUrl = swatch.dataset.swatchImage;
+      if (imgUrl && !imageCache[imgUrl]) {
         const img = new Image();
-        img.src = imageUrl;
-        imageCache[imageUrl] = img;
+        img.src = imgUrl;
+        imageCache[imgUrl] = img;
       }
     });
 
-    // Auto-activate first swatch with image
     const first = Array.from(swatches).find(s => s.dataset.swatchImage);
     if (first) {
       first.classList.add('active');
-      const firstImage = first.getAttribute('data-swatch-image');
-      if (firstImage) {
-        mainImg.src = firstImage;
-      }
+      mainImg.src = first.dataset.swatchImage;
     }
 
-    // Optimized click handler with FAST transition
-    swatches.forEach(function(swatch) {
-      swatch.addEventListener('click', function() {
-        const newImgUrl = swatch.getAttribute('data-swatch-image');
-        if (!newImgUrl) return;
-
-        // Remove active class from all swatches
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const url = swatch.dataset.swatchImage;
+        if (!url) return;
         swatches.forEach(s => s.classList.remove('active'));
-        
-        // Add active class to clicked swatch
         swatch.classList.add('active');
-        
-        // FAST transition (only 100ms instead of 200ms)
         mainImg.style.opacity = '0.7';
-        
-        // Use setTimeout with minimal delay for smooth transition
-        setTimeout(() => {
-          if (imageCache[newImgUrl]) {
-            mainImg.src = newImgUrl;
-          } else {
-            mainImg.src = newImgUrl;
-          }
-          mainImg.style.opacity = '1';
-        }, 50); // Reduced from 200ms to 50ms
+        setTimeout(() => { mainImg.src = url; mainImg.style.opacity = '1'; }, 100);
       });
     });
   });
 
-  // Pagination functionality remains same
-  function initializePagination() {
-    const fabricGrid = document.querySelector('.fabric-grid');
-    const fabricItems = document.querySelectorAll('.fabric-item');
+  // ===== Pagination (Desktop only) =====
+  if (window.innerWidth > 767) {
+    const grid = document.querySelector('[data-fabric-grid]');
+    const items = document.querySelectorAll('.fabric-item');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    const currentPageSpan = document.querySelector('.current-page');
-    const totalPagesSpan = document.querySelector('.total-pages');
-    
-    if (!fabricGrid || fabricItems.length === 0) return;
-    
-    const itemsPerPage = 12;
-    let currentPage = 1;
-    const totalPages = Math.ceil(fabricItems.length / itemsPerPage);
-    
-    totalPagesSpan.textContent = totalPages;
-    
-    function showPage(page) {
-      const start = (page - 1) * itemsPerPage;
-      const end = start + itemsPerPage;
-      
-      fabricItems.forEach((item, index) => {
-        item.style.display = (index >= start && index < end) ? 'block' : 'none';
+    const currSpan = document.querySelector('.current-page');
+    const totalSpan = document.querySelector('.total-pages');
+    if (!grid || !items.length) return;
+    const perPage = 12;
+    let current = 1;
+    const total = Math.ceil(items.length / perPage);
+    totalSpan.textContent = total;
+
+    function showPage(p) {
+      const start = (p - 1) * perPage;
+      const end = start + perPage;
+      items.forEach((item, i) => {
+        item.style.display = (i >= start && i < end) ? 'block' : 'none';
       });
-      
-      currentPageSpan.textContent = page;
-      prevBtn.disabled = page === 1;
-      nextBtn.disabled = page === totalPages;
-      
-      fabricGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      currSpan.textContent = p;
+      prevBtn.disabled = p === 1;
+      nextBtn.disabled = p === total;
     }
-    
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage--;
-        showPage(currentPage);
-      }
-    });
-    
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        showPage(currentPage);
-      }
-    });
-    
+    prevBtn.addEventListener('click', ()=>{ if(current>1) showPage(--current); });
+    nextBtn.addEventListener('click', ()=>{ if(current<total) showPage(++current); });
     showPage(1);
   }
-  
-  initializePagination();
 });
 </script>
+
 
 {% schema %}
 {
