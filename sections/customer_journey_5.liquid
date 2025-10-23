@@ -288,7 +288,9 @@ border: 1px solid #565656;
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // =============================
   // Swatch click functionality - OPTIMIZED FAST TRANSITION
+  // =============================
   document.querySelectorAll('[data-fabric-item]').forEach(function(item) {
     const mainImg = item.querySelector('[data-fabric-main-image]');
     const swatches = item.querySelectorAll('.fabric-swatch');
@@ -322,29 +324,70 @@ document.addEventListener('DOMContentLoaded', function() {
         const newImgUrl = swatch.getAttribute('data-swatch-image');
         if (!newImgUrl) return;
 
-        // Remove active class from all swatches
         swatches.forEach(s => s.classList.remove('active'));
-        
-        // Add active class to clicked swatch
         swatch.classList.add('active');
-        
-        // FAST transition (only 100ms instead of 200ms)
+
         mainImg.style.opacity = '0.7';
-        
-        // Use setTimeout with minimal delay for smooth transition
+
         setTimeout(() => {
-          if (imageCache[newImgUrl]) {
-            mainImg.src = newImgUrl;
-          } else {
-            mainImg.src = newImgUrl;
-          }
+          mainImg.src = newImgUrl;
           mainImg.style.opacity = '1';
-        }, 50); // Reduced from 200ms to 50ms
+        }, 50);
       });
     });
+
+    // =============================
+    // 📱 MOBILE SWIPE FUNCTIONALITY
+    // =============================
+    if (window.innerWidth <= 767) {
+      let startX = 0;
+      let currentIndex = 0;
+
+      // Detect active swatch index initially
+      swatches.forEach((sw, i) => {
+        if (sw.classList.contains('active')) currentIndex = i;
+      });
+
+      mainImg.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      mainImg.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+
+        if (Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+            // Swipe left → next
+            currentIndex = (currentIndex + 1) % swatches.length;
+          } else {
+            // Swipe right → previous
+            currentIndex = (currentIndex - 1 + swatches.length) % swatches.length;
+          }
+
+          const targetSwatch = swatches[currentIndex];
+          if (!targetSwatch) return;
+
+          const newImgUrl = targetSwatch.getAttribute('data-swatch-image');
+          if (!newImgUrl) return;
+
+          // Update main image + active swatch
+          swatches.forEach(s => s.classList.remove('active'));
+          targetSwatch.classList.add('active');
+
+          mainImg.style.opacity = '0.7';
+          setTimeout(() => {
+            mainImg.src = newImgUrl;
+            mainImg.style.opacity = '1';
+          }, 50);
+        }
+      });
+    }
   });
 
+  // =============================
   // Pagination functionality remains same
+  // =============================
   function initializePagination() {
     const fabricGrid = document.querySelector('.fabric-grid');
     const fabricItems = document.querySelectorAll('.fabric-item');
@@ -396,6 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializePagination();
 });
 </script>
+
 
 {% schema %}
 {
