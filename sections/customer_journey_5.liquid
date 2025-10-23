@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Optimized click handler with FAST transition
+    // Optimized click handler
     swatches.forEach(function(swatch) {
       swatch.addEventListener('click', function() {
         const newImgUrl = swatch.getAttribute('data-swatch-image');
@@ -327,61 +327,98 @@ document.addEventListener('DOMContentLoaded', function() {
         swatches.forEach(s => s.classList.remove('active'));
         swatch.classList.add('active');
 
-        mainImg.style.opacity = '0.7';
+        // Smooth fade transition
+        mainImg.style.transition = 'opacity 0.3s ease';
+        mainImg.style.opacity = '0';
 
         setTimeout(() => {
           mainImg.src = newImgUrl;
           mainImg.style.opacity = '1';
-        }, 50);
+        }, 150);
       });
     });
 
     // =============================
-    // 📱 MOBILE SWIPE FUNCTIONALITY
+    // 📱 MOBILE SWIPE FUNCTIONALITY (with smooth slide)
     // =============================
     if (window.innerWidth <= 767) {
       let startX = 0;
       let currentIndex = 0;
+      let isSwiping = false;
 
-      // Detect active swatch index initially
+      // Create sliding wrapper dynamically
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('fabric-slide-wrapper');
+      mainImg.parentNode.insertBefore(wrapper, mainImg);
+      wrapper.appendChild(mainImg);
+
+      // Inject all images (for smooth sliding)
+      const imgArray = [];
       swatches.forEach((sw, i) => {
-        if (sw.classList.contains('active')) currentIndex = i;
+        const img = new Image();
+        img.src = sw.getAttribute('data-swatch-image');
+        img.classList.add('slide-img');
+        if (i === 0) img.classList.add('active');
+        wrapper.appendChild(img);
+        imgArray.push(img);
       });
 
-      mainImg.addEventListener('touchstart', (e) => {
+      // Apply CSS via JS for smooth slide
+      wrapper.style.display = 'flex';
+      wrapper.style.overflow = 'hidden';
+      wrapper.style.position = 'relative';
+      wrapper.style.width = '100%';
+
+      imgArray.forEach(img => {
+        img.style.minWidth = '100%';
+        img.style.transition = 'transform 0.4s ease';
+        img.draggable = false;
+      });
+
+      function updateSlidePosition() {
+        imgArray.forEach((img, i) => {
+          img.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
+      }
+
+      wrapper.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
+        isSwiping = true;
       });
 
-      mainImg.addEventListener('touchend', (e) => {
+      wrapper.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        const currentX = e.touches[0].clientX;
+        const diff = startX - currentX;
+        imgArray.forEach((img) => {
+          img.style.transition = 'none';
+          img.style.transform = `translateX(${-currentIndex * 100 - (diff / window.innerWidth) * 100}%)`;
+        });
+      });
+
+      wrapper.addEventListener('touchend', (e) => {
+        isSwiping = false;
         const endX = e.changedTouches[0].clientX;
         const diffX = startX - endX;
 
+        imgArray.forEach((img) => (img.style.transition = 'transform 0.4s ease'));
+
         if (Math.abs(diffX) > 50) {
           if (diffX > 0) {
-            // Swipe left → next
-            currentIndex = (currentIndex + 1) % swatches.length;
+            currentIndex = (currentIndex + 1) % swatches.length; // next
           } else {
-            // Swipe right → previous
-            currentIndex = (currentIndex - 1 + swatches.length) % swatches.length;
+            currentIndex = (currentIndex - 1 + swatches.length) % swatches.length; // prev
           }
-
-          const targetSwatch = swatches[currentIndex];
-          if (!targetSwatch) return;
-
-          const newImgUrl = targetSwatch.getAttribute('data-swatch-image');
-          if (!newImgUrl) return;
-
-          // Update main image + active swatch
-          swatches.forEach(s => s.classList.remove('active'));
-          targetSwatch.classList.add('active');
-
-          mainImg.style.opacity = '0.7';
-          setTimeout(() => {
-            mainImg.src = newImgUrl;
-            mainImg.style.opacity = '1';
-          }, 50);
         }
+        updateSlidePosition();
+
+        // Update swatch + image
+        swatches.forEach(s => s.classList.remove('active'));
+        swatches[currentIndex].classList.add('active');
       });
+
+      // Initial setup
+      updateSlidePosition();
     }
   });
 
@@ -439,6 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializePagination();
 });
 </script>
+
 
 
 {% schema %}
