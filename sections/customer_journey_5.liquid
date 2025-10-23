@@ -1,9 +1,9 @@
 {% comment %}
-✅ Section: Pick Your Fabric & Colour (Mobile Swipe Enabled)
+✅ Section: Pick Your Fabric & Colour (Exact Layout)
 - 60+ fabric types with 15-20 color swatches each
 - Click swatch → main image updates
-- Mobile: Swipe through swatches (no arrows needed)
 - Fully responsive with pagination
+- Includes footer with three boxes
 {% endcomment %}
 
 <section class="fabric-section_main">
@@ -48,6 +48,7 @@
             {% endif %}
           {% endfor %}
           
+          {% comment %} Minimum 15 swatches validation {% endcomment %}
           {% if swatch_count < 2 %}
             <div class="swatch-warning" style="color: #ff4444; font-size: 12px; margin-top: 5px;">
               ⚠️ Add {{ 15 | minus: swatch_count }} more swatches (min 15 required)
@@ -57,6 +58,8 @@
       </div>
     {% endfor %}
   </div>
+
+ 
 
   <div class="fabric-footer">
     <h4>{{ section.settings.footer_title }}</h4>
@@ -140,14 +143,13 @@
   margin-top: 8px;
 }
 .fabric-swatch {
-  width: 25px;
-  height: 25px;
+    width: 25px;
+    height: 25px;
   border-radius: 50%;
   border: 1px solid #ccc;
   cursor: pointer;
   transition: transform 0.2s ease, border 0.2s ease;
   overflow: hidden;
-  flex-shrink: 0;
 }
 .fabric-swatch img.swatch-thumb {
   width: 100%;
@@ -167,10 +169,10 @@
   margin-top: 40px;
 }
 .fabric-footer h4 {
-  font-size: 28px;
-  font-weight: 500;
-  margin-bottom: 30px;
-  text-transform: capitalize;
+     font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-transform: capitalize;
 }
 .fabric-footer-boxes {
   display: flex;
@@ -180,12 +182,12 @@
   margin-bottom: 25px;
 }
 .fabric-box {
-  border: 1px solid #565656;
-  border-radius: 10px;
-  padding: 20px 30px;
-  width: 267px;
-  text-align: center;
-  transition: all 0.3s ease;
+border: 1px solid #565656;
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 267px;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 .fabric-box:hover {
   border-color: #000;
@@ -206,6 +208,7 @@
   color: #171717;
 }
 
+/* Pagination for large number of fabric items */
 .fabric-pagination {
   display: flex;
   justify-content: center;
@@ -256,125 +259,39 @@
 @media (max-width: 992px) {
   .fabric-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 768px) {
   .fabric-grid { grid-template-columns: repeat(2, 1fr); }
   .fabric-pagination { flex-wrap: wrap; }
-  
-  /* Tablet: Horizontal scrollable swatches */
-  .fabric-swatches {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    gap: 8px;
-    padding-bottom: 8px;
-  }
-  
-  .fabric-swatches::-webkit-scrollbar {
-    height: 4px;
-  }
-  
-  .fabric-swatches::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-  
-  .fabric-swatches::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-  }
-  
-  .fabric-swatches::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 }
-
 @media (max-width: 480px) {
-  .fabric-grid { 
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  
-  .fabric-footer-boxes { 
-    flex-direction: column; 
-    align-items: center; 
-  }
-  
-  .fabric-box { 
-    width: 100%; 
-    max-width: 300px; 
-  }
-  
-  .fabric-pagination { 
-    flex-direction: column; 
-    gap: 10px; 
-  }
-  
+  .fabric-grid { grid-template-columns: repeat(2, 1fr); }
+  .fabric-footer-boxes { flex-direction: column; align-items: center; }
+  .fabric-box { width: 100%; max-width: 300px; }
+  .fabric-pagination { flex-direction: column; gap: 10px; }
   .fabric-name{
-    font-size: 14px;
-    margin-bottom: 5px;
-    margin-top: 8px;
+    font-size: 16px;
+    margin-bottom: 0;
   }
-  
-  /* Mobile: Horizontal scrollable swatches with bigger touch targets */
-  .fabric-swatches {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 10px;
-    padding: 5px 0 10px 0;
-    margin-top: 5px;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
+  .fabric-swatches img{
+  vertical-align: text-top;
   }
-  
-  /* Hide scrollbar */
-  .fabric-swatches::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Bigger swatches for better touch */
   .fabric-swatch {
-    width: 35px;
-    height: 35px;
-    min-width: 35px;
-    min-height: 35px;
-    flex-shrink: 0;
-    border: 2px solid #ccc;
-  }
-  
-  .fabric-swatch img.swatch-thumb {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  }
-  
-  .fabric-swatch.active {
-    border: 3px solid #000;
-    transform: scale(1.1);
-  }
-  
-  .fabric-swatches::after {
-    content: '';
-    display: block;
-    min-width: 5px;
-    height: 1px;
-  }
+    width: 10px;
+    height: 10px;
+}
+.fabric-swatch img.swatch-thumb {
+  width: 100%;
+  height: 102%;
+}
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Swatch click functionality with FAST transition
+  // Swatch click functionality - OPTIMIZED FAST TRANSITION
   document.querySelectorAll('[data-fabric-item]').forEach(function(item) {
     const mainImg = item.querySelector('[data-fabric-main-image]');
     const swatches = item.querySelectorAll('.fabric-swatch');
-    const swatchContainer = item.querySelector('.fabric-swatches');
 
     if (!swatches.length || !mainImg) return;
 
@@ -399,17 +316,22 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Click handler with fast transition
+    // Optimized click handler with FAST transition
     swatches.forEach(function(swatch) {
       swatch.addEventListener('click', function() {
         const newImgUrl = swatch.getAttribute('data-swatch-image');
         if (!newImgUrl) return;
 
+        // Remove active class from all swatches
         swatches.forEach(s => s.classList.remove('active'));
+        
+        // Add active class to clicked swatch
         swatch.classList.add('active');
         
+        // FAST transition (only 100ms instead of 200ms)
         mainImg.style.opacity = '0.7';
         
+        // Use setTimeout with minimal delay for smooth transition
         setTimeout(() => {
           if (imageCache[newImgUrl]) {
             mainImg.src = newImgUrl;
@@ -417,45 +339,12 @@ document.addEventListener('DOMContentLoaded', function() {
             mainImg.src = newImgUrl;
           }
           mainImg.style.opacity = '1';
-        }, 50);
-        
-        // On mobile, scroll clicked swatch into view
-        if (window.innerWidth <= 480 && swatchContainer) {
-          const scrollLeft = swatch.offsetLeft - (swatchContainer.offsetWidth / 2) + (swatch.offsetWidth / 2);
-          swatchContainer.scrollTo({
-            left: scrollLeft,
-            behavior: 'smooth'
-          });
-        }
+        }, 50); // Reduced from 200ms to 50ms
       });
     });
-
-    // Touch scroll for mobile swatches
-    if (window.innerWidth <= 480 && swatchContainer) {
-      let isScrolling = false;
-      let startX;
-      let scrollLeft;
-
-      swatchContainer.addEventListener('touchstart', function(e) {
-        isScrolling = true;
-        startX = e.touches[0].pageX - swatchContainer.offsetLeft;
-        scrollLeft = swatchContainer.scrollLeft;
-      }, { passive: true });
-
-      swatchContainer.addEventListener('touchend', function() {
-        isScrolling = false;
-      }, { passive: true });
-
-      swatchContainer.addEventListener('touchmove', function(e) {
-        if (!isScrolling) return;
-        const x = e.touches[0].pageX - swatchContainer.offsetLeft;
-        const walk = (x - startX) * 2;
-        swatchContainer.scrollLeft = scrollLeft - walk;
-      }, { passive: true });
-    }
   });
 
-  // Pagination functionality
+  // Pagination functionality remains same
   function initializePagination() {
     const fabricGrid = document.querySelector('.fabric-grid');
     const fabricItems = document.querySelectorAll('.fabric-item');
@@ -469,8 +358,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const itemsPerPage = 12;
     let currentPage = 1;
     const totalPages = Math.ceil(fabricItems.length / itemsPerPage);
-    
-    if (!prevBtn || !nextBtn || !currentPageSpan || !totalPagesSpan) return;
     
     totalPagesSpan.textContent = totalPages;
     
@@ -596,8 +483,262 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   "presets": [
     { 
-      "name": "Pick Your Fabric & Colour", 
-      "category": "Custom"
+      "name": "Pick Your Fabric & Colour - 60+ Fabrics", 
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Cotton Canvas",
+            "color_swatch_1": "#8B4513",
+            "color_swatch_2": "#228B22",
+            "color_swatch_3": "#1E90FF",
+            "color_swatch_4": "#FFD700",
+            "color_swatch_5": "#DC143C",
+            "color_swatch_6": "#4B0082",
+            "color_swatch_7": "#FF69B4",
+            "color_swatch_8": "#00CED1",
+            "color_swatch_9": "#FF6347",
+            "color_swatch_10": "#32CD32",
+            "color_swatch_11": "#8A2BE2",
+            "color_swatch_12": "#FF4500",
+            "color_swatch_13": "#2E8B57",
+            "color_swatch_14": "#DA70D6",
+            "color_swatch_15": "#F0E68C"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Velvet Luxe",
+            "color_swatch_1": "#4B0082",
+            "color_swatch_2": "#FF69B4",
+            "color_swatch_3": "#00CED1",
+            "color_swatch_4": "#FF6347",
+            "color_swatch_5": "#32CD32",
+            "color_swatch_6": "#8A2BE2",
+            "color_swatch_7": "#FF4500",
+            "color_swatch_8": "#2E8B57",
+            "color_swatch_9": "#DA70D6",
+            "color_swatch_10": "#F0E68C",
+            "color_swatch_11": "#FFA500",
+            "color_swatch_12": "#FFC0CB",
+            "color_swatch_13": "#A52A2A",
+            "color_swatch_14": "#DEB887",
+            "color_swatch_15": "#5F9EA0"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Linen Blend",
+            "color_swatch_1": "#8A2BE2",
+            "color_swatch_2": "#FF4500",
+            "color_swatch_3": "#2E8B57",
+            "color_swatch_4": "#DA70D6",
+            "color_swatch_5": "#F0E68C",
+            "color_swatch_6": "#800000",
+            "color_swatch_7": "#808000",
+            "color_swatch_8": "#008080",
+            "color_swatch_9": "#000080",
+            "color_swatch_10": "#800080",
+            "color_swatch_11": "#FF0000",
+            "color_swatch_12": "#00FF00",
+            "color_swatch_13": "#0000FF",
+            "color_swatch_14": "#FFFF00",
+            "color_swatch_15": "#00FFFF"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Chenille Soft",
+            "color_swatch_1": "#800000",
+            "color_swatch_2": "#808000",
+            "color_swatch_3": "#008080",
+            "color_swatch_4": "#000080",
+            "color_swatch_5": "#800080",
+            "color_swatch_6": "#FFA500",
+            "color_swatch_7": "#FFC0CB",
+            "color_swatch_8": "#A52A2A",
+            "color_swatch_9": "#DEB887",
+            "color_swatch_10": "#5F9EA0",
+            "color_swatch_11": "#7FFF00",
+            "color_swatch_12": "#D2691E",
+            "color_swatch_13": "#FF7F50",
+            "color_swatch_14": "#6495ED",
+            "color_swatch_15": "#FFF8DC"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Silk Elegance",
+            "color_swatch_1": "#FF0000",
+            "color_swatch_2": "#00FF00",
+            "color_swatch_3": "#0000FF",
+            "color_swatch_4": "#FFFF00",
+            "color_swatch_5": "#00FFFF",
+            "color_swatch_6": "#DC143C",
+            "color_swatch_7": "#00FFFF",
+            "color_swatch_8": "#00008B",
+            "color_swatch_9": "#008B8B",
+            "color_swatch_10": "#B8860B",
+            "color_swatch_11": "#A9A9A9",
+            "color_swatch_12": "#006400",
+            "color_swatch_13": "#BDB76B",
+            "color_swatch_14": "#8B008B",
+            "color_swatch_15": "#556B2F"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Wool Comfort",
+            "color_swatch_1": "#FFA500",
+            "color_swatch_2": "#FFC0CB",
+            "color_swatch_3": "#A52A2A",
+            "color_swatch_4": "#DEB887",
+            "color_swatch_5": "#5F9EA0",
+            "color_swatch_6": "#FF8C00",
+            "color_swatch_7": "#9932CC",
+            "color_swatch_8": "#8B0000",
+            "color_swatch_9": "#E9967A",
+            "color_swatch_10": "#8FBC8F",
+            "color_swatch_11": "#483D8B",
+            "color_swatch_12": "#2F4F4F",
+            "color_swatch_13": "#00CED1",
+            "color_swatch_14": "#9400D3",
+            "color_swatch_15": "#FF1493"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Polyester Durable",
+            "color_swatch_1": "#7FFF00",
+            "color_swatch_2": "#D2691E",
+            "color_swatch_3": "#FF7F50",
+            "color_swatch_4": "#6495ED",
+            "color_swatch_5": "#FFF8DC",
+            "color_swatch_6": "#1E90FF",
+            "color_swatch_7": "#B22222",
+            "color_swatch_8": "#FFFAF0",
+            "color_swatch_9": "#228B22",
+            "color_swatch_10": "#FFB6C1",
+            "color_swatch_11": "#000000",
+            "color_swatch_12": "#696969",
+            "color_swatch_13": "#C0C0C0",
+            "color_swatch_14": "#FFFFFF",
+            "color_swatch_15": "#2F4F4F"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Jacquard Pattern",
+            "color_swatch_1": "#DC143C",
+            "color_swatch_2": "#00FFFF",
+            "color_swatch_3": "#00008B",
+            "color_swatch_4": "#008B8B",
+            "color_swatch_5": "#B8860B",
+            "color_swatch_6": "#8B4513",
+            "color_swatch_7": "#A0522D",
+            "color_swatch_8": "#CD853F",
+            "color_swatch_9": "#D2691E",
+            "color_swatch_10": "#F4A460",
+            "color_swatch_11": "#FFFACD",
+            "color_swatch_12": "#ADD8E6",
+            "color_swatch_13": "#F08080",
+            "color_swatch_14": "#E0FFFF",
+            "color_swatch_15": "#FAFAD2"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Twill Weave",
+            "color_swatch_1": "#A9A9A9",
+            "color_swatch_2": "#006400",
+            "color_swatch_3": "#BDB76B",
+            "color_swatch_4": "#8B008B",
+            "color_swatch_5": "#556B2F",
+            "color_swatch_6": "#FFE4E1",
+            "color_swatch_7": "#F0FFF0",
+            "color_swatch_8": "#F5FFFA",
+            "color_swatch_9": "#F0F8FF",
+            "color_swatch_10": "#F8F8FF",
+            "color_swatch_11": "#FFE4B5",
+            "color_swatch_12": "#FFDAB9",
+            "color_swatch_13": "#EEE8AA",
+            "color_swatch_14": "#F0E68C",
+            "color_swatch_15": "#BDB76B"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Satin Shine",
+            "color_swatch_1": "#FF8C00",
+            "color_swatch_2": "#9932CC",
+            "color_swatch_3": "#8B0000",
+            "color_swatch_4": "#E9967A",
+            "color_swatch_5": "#8FBC8F",
+            "color_swatch_6": "#E6E6FA",
+            "color_swatch_7": "#FFF0F5",
+            "color_swatch_8": "#FFF5EE",
+            "color_swatch_9": "#F5F5DC",
+            "color_swatch_10": "#FFEBCD",
+            "color_swatch_11": "#800000",
+            "color_swatch_12": "#8B0000",
+            "color_swatch_13": "#A52A2A",
+            "color_swatch_14": "#B22222",
+            "color_swatch_15": "#DC143C"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Denim Classic",
+            "color_swatch_1": "#483D8B",
+            "color_swatch_2": "#2F4F4F",
+            "color_swatch_3": "#00CED1",
+            "color_swatch_4": "#9400D3",
+            "color_swatch_5": "#FF1493",
+            "color_swatch_6": "#F5F5F5",
+            "color_swatch_7": "#DCDCDC",
+            "color_swatch_8": "#D3D3D3",
+            "color_swatch_9": "#C0C0C0",
+            "color_swatch_10": "#A9A9A9",
+            "color_swatch_11": "#2F4F4F",
+            "color_swatch_12": "#708090",
+            "color_swatch_13": "#778899",
+            "color_swatch_14": "#B0C4DE",
+            "color_swatch_15": "#ADD8E6"
+          }
+        },
+        {
+          "type": "fabric",
+          "settings": {
+            "title": "Corduroy Textured",
+            "color_swatch_1": "#1E90FF",
+            "color_swatch_2": "#B22222",
+            "color_swatch_3": "#FFFAF0",
+            "color_swatch_4": "#228B22",
+            "color_swatch_5": "#FFB6C1",
+            "color_swatch_6": "#191970",
+            "color_swatch_7": "#000080",
+            "color_swatch_8": "#6495ED",
+            "color_swatch_9": "#483D8B",
+            "color_swatch_10": "#6A5ACD",
+            "color_swatch_11": "#98FB98",
+            "color_swatch_12": "#90EE90",
+            "color_swatch_13": "#00FA9A",
+            "color_swatch_14": "#00FF7F",
+            "color_swatch_15": "#3CB371"
+          }
+        }
+      ]
     }
   ]
 }
