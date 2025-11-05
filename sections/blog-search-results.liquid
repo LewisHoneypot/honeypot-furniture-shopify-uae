@@ -1,0 +1,78 @@
+{% comment %} React {% endcomment %}
+<div class="container">
+  <div 
+    style="
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    "
+  >
+    <h1 id="blog-search-heading"></h1>
+    <div id="blog-search-root"></div>
+  </div>
+</div>
+
+{% comment %} React {% endcomment %}
+<script src="{{ 'blog-search-react.js' | asset_url }}" defer></script> 
+
+{% comment %} Vanilla {% endcomment %}
+{% comment %} <div class="container blog-live-search">
+  <input
+    type="text"
+    id="blog-search-input" 
+    placeholder="Search blog posts..."
+    autocomplete="off"
+  >
+  <div id="blog-search-results" class="hidden"></div>
+</div>
+
+<div class="container blog-search-results-page">
+  <h1 id="blog-search-heading">Search results</h1>
+  <div id="blog-search-results-page"></div>
+</div> {% endcomment %}
+
+{% comment %} Vanilla {% endcomment %}
+{% comment %} <script src="{{ 'blog-search.js' | asset_url }}" defer></script> {% endcomment %}
+{% comment %} {{ 'blog-search.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+{% schema %}
+{
+  "name": "Blog Search Results",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Test"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Search Results"
+    }
+  ]
+}
+{% endschema %}
