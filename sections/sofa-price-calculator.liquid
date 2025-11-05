@@ -1,0 +1,346 @@
+{% comment %}
+  Shopify Section: Get Estimate (dynamic inputs + placeholder images)
+{% endcomment %}
+
+<section id="get-estimate" class="container">
+  <h2>{{ section.settings.main_heading }}</h2>
+
+  <!-- Step 1 -->
+  <div class="section">
+    <h3>{{ section.settings.step1_heading }}</h3>
+    <div class="row options-1">
+      {% for block in section.blocks %}
+        {% if block.type == 'sofa_type' %}
+          <div
+            class="col{% if forloop.first %} active{% endif %}"
+            data-value="{{ block.settings.value }}"
+            data-index="{{ forloop.index }}"
+          >
+            <div>{{ block.settings.label }}</div>
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
+                alt="{{ block.settings.label }}"
+                style="max-width:{{ block.settings.image_width }}px;"
+                height=""
+                width=""
+              >
+            {% else %}
+              <img
+                src="https://placeholdit.com/{{ block.settings.image_width }}x300"
+                alt="{{ block.settings.label }}"
+                style="max-width:{{ block.settings.image_width }}px;"
+                height=""
+                width=""
+              >
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="section">
+    <h3>{{ section.settings.step2_heading }}</h3>
+    {% if section.settings.dimensions_image != blank %}
+      <img
+        src="{{ section.settings.dimensions_image | image_url: width: section.settings.dimensions_image_width }}"
+        alt="Sofa dimensions"
+        style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+        height=""
+        width=""
+      >
+    {% else %}
+      <img
+        src="https://placeholdit.com/{{ section.settings.dimensions_image_width }}"
+        alt="Sofa dimensions"
+        style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+        height=""
+        width=""
+      >
+    {% endif %}
+
+    <div class="row options-2">
+      <div class="col length-field" data-field="a">
+        <div>Length A</div>
+        <input id="length-a" type="number" placeholder="Enter cm">
+      </div>
+      <div class="col length-field" data-field="b">
+        <div>Length B</div>
+        <input id="length-b" type="number" placeholder="Enter cm">
+      </div>
+      <div class="col length-field" data-field="c">
+        <div>Length C</div>
+        <input id="length-c" type="number" placeholder="Enter cm">
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="section">
+    <h3>{{ section.settings.step3_heading }}</h3>
+    <div class="row options-3">
+      {% for block in section.blocks %}
+        {% if block.type == 'sofa_filling' %}
+          <div class="col" data-value="{{ block.settings.value }}">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
+                alt="{{ block.settings.label }}"
+                style="max-width:{{ block.settings.image_width }}px;"
+                height=""
+                width=""
+              >
+            {% else %}
+              <img
+                src="https://placeholdit.com/{{ block.settings.image_width }}"
+                alt="{{ block.settings.label }}"
+                style="max-width:{{ block.settings.image_width }}px;"
+                height=""
+                width=""
+              >
+            {% endif %}
+            <div>{{ block.settings.label }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="section">
+    <h3>{{ section.settings.step4_heading }}</h3>
+    <div class="row options-4">
+      {% for block in section.blocks %}
+        {% if block.type == 'filling_option' %}
+          <div class="col" data-value="{{ block.settings.value }}">
+            <div>{{ block.settings.label }}</div>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <span id="price">Price: Dhs. —</span>
+  <span id="monthly">AED —/month (for 4 months)</span>
+
+  <button id="book-btn">{{ section.settings.button_label }}</button>
+
+  <style>
+    /* --- Inline Bootstrap-like Styles --- */
+    #get-estimate {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial;
+    }
+    #get-estimate h2,
+    #get-estimate h3 {
+      font-weight: 600;
+    }
+    #get-estimate .section {
+      border: 1px solid #e5e5e5;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    #get-estimate .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    #get-estimate .col {
+      flex: 1;
+      text-align: center;
+      cursor: pointer;
+    }
+    #get-estimate .col img {
+      width: 100%;
+      border-radius: 0.25rem;
+      border: 1px solid #ccc;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #get-estimate .col:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    #get-estimate .col.active img {
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px #007bff33;
+    }
+    #get-estimate input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+    }
+    #get-estimate button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 1rem;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    #get-estimate button:hover {
+      background: #0056b3;
+    }
+    #get-estimate span {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const lengthFields = document.querySelectorAll('#get-estimate .length-field');
+      const sofaTypeRow = document.querySelector('#get-estimate .options-1');
+
+      function showLengthFields(count) {
+        lengthFields.forEach((field, i) => {
+          field.style.display = i < count ? 'block' : 'none';
+        });
+      }
+
+      // Initial state: first sofa type active, only Length A visible
+      showLengthFields(1);
+
+      sofaTypeRow.querySelectorAll('.col').forEach((col) => {
+        col.addEventListener('click', () => {
+          sofaTypeRow.querySelectorAll('.col').forEach((c) => c.classList.remove('active'));
+          col.classList.add('active');
+          const index = parseInt(col.dataset.index);
+          if (index === 1) showLengthFields(1);
+          else if (index === 2) showLengthFields(2);
+          else if (index === 3) showLengthFields(3);
+          updatePrice(); // recalc
+        });
+      });
+
+      const inputs = document.querySelectorAll(
+        '#get-estimate #length-a, #get-estimate #length-b, #get-estimate #length-c'
+      );
+      inputs.forEach((input) => input.addEventListener('input', updatePrice));
+
+      function updatePrice() {
+        // Only count visible fields
+        let total = 0;
+        lengthFields.forEach((field) => {
+          if (field.style.display !== 'none') {
+            const input = field.querySelector('input');
+            total += parseFloat(input.value) || 0;
+          }
+        });
+        total = total * 5;
+        document.getElementById('price').textContent = `Price: Dhs. ${total.toFixed(2)}`;
+        document.getElementById('monthly').textContent = `AED ${(total / 4).toFixed(2)}/month (for 4 months)`;
+      }
+
+      // Active state for other option rows
+      document.querySelectorAll('#get-estimate .row').forEach((row) => {
+        if (row.classList.contains('options-1')) return;
+        row.addEventListener('click', (e) => {
+          const col = e.target.closest('.col');
+          if (!col) return;
+          row.querySelectorAll('.col').forEach((c) => c.classList.remove('active'));
+          col.classList.add('active');
+        });
+      });
+    });
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Get Estimate",
+  "settings": [
+    { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Get Estimate" },
+    { "type": "text", "id": "step1_heading", "label": "Step 1 Heading", "default": "Step 1: Select Sofa Type" },
+    { "type": "text", "id": "step2_heading", "label": "Step 2 Heading", "default": "Step 2: Select Sofa Size" },
+    { "type": "image_picker", "id": "dimensions_image", "label": "Sofa Dimensions Image" },
+    {
+      "type": "range",
+      "id": "dimensions_image_width",
+      "label": "Dimensions Image Width (px)",
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "default": 200
+    },
+    { "type": "text", "id": "step3_heading", "label": "Step 3 Heading", "default": "Step 3: Select Sofa Filling" },
+    { "type": "text", "id": "step4_heading", "label": "Step 4 Heading", "default": "Step 4: Select Filling Option" },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "BOOK A FREE VISIT" }
+  ],
+  "blocks": [
+    {
+      "type": "sofa_type",
+      "name": "Sofa Type",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (px)",
+          "min": 50,
+          "max": 400,
+          "step": 10,
+          "default": 150
+        }
+      ]
+    },
+    {
+      "type": "sofa_filling",
+      "name": "Sofa Filling",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (px)",
+          "min": 50,
+          "max": 400,
+          "step": 10,
+          "default": 150
+        }
+      ]
+    },
+    {
+      "type": "filling_option",
+      "name": "Filling Option",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        { "type": "text", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Get Estimate",
+      "blocks": [
+        { "type": "sofa_type", "settings": { "label": "Straight", "value": "straight" } },
+        { "type": "sofa_type", "settings": { "label": "L-Corner", "value": "l-corner" } },
+        { "type": "sofa_type", "settings": { "label": "Corner", "value": "corner" } },
+        { "type": "sofa_filling", "settings": { "label": "Feather", "value": "feather" } },
+        { "type": "sofa_filling", "settings": { "label": "Foam", "value": "foam" } },
+        { "type": "filling_option", "settings": { "label": "Classic", "value": "classic" } },
+        { "type": "filling_option", "settings": { "label": "Signature", "value": "signature" } },
+        { "type": "filling_option", "settings": { "label": "Performance", "value": "performance" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
