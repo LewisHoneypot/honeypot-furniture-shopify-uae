@@ -20,6 +20,95 @@
         "padding_bottom_mobile": 30
       }
     },
+    "sofa_price_calculator_JtAKFQ": {
+      "type": "sofa-price-calculator",
+      "blocks": {
+        "sofa_type_Wqr38g": {
+          "type": "sofa_type",
+          "settings": {
+            "label": "Straight",
+            "value": "straight",
+            "image_width": 150
+          }
+        },
+        "sofa_type_QVBhLF": {
+          "type": "sofa_type",
+          "settings": {
+            "label": "L-Corner",
+            "value": "l-corner",
+            "image_width": 150
+          }
+        },
+        "sofa_type_EXtE4g": {
+          "type": "sofa_type",
+          "settings": {
+            "label": "Corner",
+            "value": "corner",
+            "image_width": 150
+          }
+        },
+        "sofa_filling_gGrLmi": {
+          "type": "sofa_filling",
+          "settings": {
+            "label": "Feather",
+            "value": "feather",
+            "image_width": 150
+          }
+        },
+        "sofa_filling_PRJYzp": {
+          "type": "sofa_filling",
+          "settings": {
+            "label": "Foam",
+            "value": "foam",
+            "image_width": 150
+          }
+        },
+        "filling_option_NEFKTh": {
+          "type": "filling_option",
+          "settings": {
+            "label": "Classics",
+            "value": "classics",
+            "description": ""
+          }
+        },
+        "filling_option_FwpzUw": {
+          "type": "filling_option",
+          "settings": {
+            "label": "Signature",
+            "value": "signature",
+            "description": ""
+          }
+        },
+        "filling_option_EWdUaF": {
+          "type": "filling_option",
+          "settings": {
+            "label": "Performance",
+            "value": "performance",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "sofa_type_Wqr38g",
+        "sofa_type_QVBhLF",
+        "sofa_type_EXtE4g",
+        "sofa_filling_gGrLmi",
+        "sofa_filling_PRJYzp",
+        "filling_option_NEFKTh",
+        "filling_option_FwpzUw",
+        "filling_option_EWdUaF"
+      ],
+      "name": "Get Estimate",
+      "settings": {
+        "main_heading": "Get Estimate",
+        "step1_heading": "Step 1: Select Sofa Type",
+        "step2_heading": "Step 2: Select Sofa Size",
+        "dimensions_image_width": 200,
+        "step3_heading": "Step 3: Select Sofa Filling",
+        "step4_heading": "Step 4: Select Filling Option",
+        "button_label": "BOOK A FREE VISIT"
+      }
+    },
     "custom_liquid_T7RRLB": {
       "type": "custom-liquid",
       "settings": {
@@ -33,6 +122,7 @@
   },
   "order": [
     "main",
+    "sofa_price_calculator_JtAKFQ",
     "custom_liquid_T7RRLB"
   ]
 }
