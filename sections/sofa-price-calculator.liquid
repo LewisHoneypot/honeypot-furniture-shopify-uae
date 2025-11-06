@@ -16,24 +16,26 @@
             data-value="{{ block.settings.value }}"
             data-index="{{ forloop.index }}"
           >
-            <div>{{ block.settings.label }}</div>
-            {% if block.settings.image != blank %}
-              <img
-                src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
-                alt="{{ block.settings.label }}"
-                style="max-width:{{ block.settings.image_width }}px;"
-                height=""
-                width=""
-              >
-            {% else %}
-              <img
-                src="https://placeholdit.com/{{ block.settings.image_width }}x300"
-                alt="{{ block.settings.label }}"
-                style="max-width:{{ block.settings.image_width }}px;"
-                height=""
-                width=""
-              >
-            {% endif %}
+            <div class="border rounded">
+              <div>{{ block.settings.label }}</div>
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
+                  alt="{{ block.settings.label }}"
+                  style="max-width:{{ block.settings.image_width }}px;"
+                  height=""
+                  width=""
+                >
+              {% else %}
+                <img
+                  src="https://placeholdit.com/{{ block.settings.image_width }}x300"
+                  alt="{{ block.settings.label }}"
+                  style="max-width:{{ block.settings.image_width }}px;"
+                  height=""
+                  width=""
+                >
+              {% endif %}
+            </div>
           </div>
         {% endif %}
       {% endfor %}
@@ -61,16 +63,16 @@
       >
     {% endif %}
 
-    <div class="row options-2">
-      <div class="col length-field" data-field="a">
+    <div class="row options-2 text-center">
+      <div class="col-12 col-md length-field" data-field="a">
         <div>Length A</div>
         <input id="length-a" type="number" placeholder="Enter cm">
       </div>
-      <div class="col length-field" data-field="b">
+      <div class="col-12 col-md length-field" data-field="b">
         <div>Length B</div>
         <input id="length-b" type="number" placeholder="Enter cm">
       </div>
-      <div class="col length-field" data-field="c">
+      <div class="col-12 col-md length-field" data-field="c">
         <div>Length C</div>
         <input id="length-c" type="number" placeholder="Enter cm">
       </div>
@@ -164,13 +166,13 @@
       border: 1px solid #ccc;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    #get-estimate .col:hover img {
-      transform: scale(1.05);
+    #get-estimate .col:hover .border {
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
-    #get-estimate .col.active img {
-      border-color: #007bff;
-      box-shadow: 0 0 0 2px #007bff33;
+    #get-estimate .col.active .border {
+      border-color: #ccc;
+      box-shadow: 0 0 0 2px #ccc;
+      border-radius: 0.25rem;
     }
     #get-estimate input {
       width: 100%;
@@ -197,6 +199,19 @@
       display: block;
       margin-top: 0.5rem;
       font-size: 1.1rem;
+    }
+
+    #get-estimate .options-3 .col {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    #get-estimate .options-3 .col.active {
+      background: #007bff;
+      color: #fff;
+      border-color: #0056b3;
     }
   </style>
 
@@ -226,6 +241,19 @@
         });
       });
 
+      // Step 3: Sofa Filling selection
+      const fillingRow = document.querySelector('#get-estimate .options-3');
+      let selectedFilling = null; // store active filling
+
+      fillingRow.querySelectorAll('.col').forEach((col) => {
+        col.addEventListener('click', () => {
+          fillingRow.querySelectorAll('.col').forEach((c) => c.classList.remove('active'));
+          col.classList.add('active');
+          selectedFilling = col.dataset.value; // store selected type
+          updatePrice(); // recalc price
+        });
+      });
+
       const inputs = document.querySelectorAll(
         '#get-estimate #length-a, #get-estimate #length-b, #get-estimate #length-c'
       );
@@ -240,7 +268,15 @@
             total += parseFloat(input.value) || 0;
           }
         });
+
+        // Base price per cm
         total = total * 5;
+
+        // Apply filling multiplier
+        if (selectedFilling === 'feather') total *= 1.2;
+        else if (selectedFilling === 'foam') total *= 1.0;
+
+        // Update display
         document.getElementById('price').textContent = `Price: Dhs. ${total.toFixed(2)}`;
         document.getElementById('monthly').textContent = `AED ${(total / 4).toFixed(2)}/month (for 4 months)`;
       }
