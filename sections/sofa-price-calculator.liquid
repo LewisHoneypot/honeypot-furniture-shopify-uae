@@ -128,8 +128,15 @@
       {% for block in section.blocks %}
         {% if block.type == 'filling_option' %}
           <div class="col" data-value="{{ block.settings.value }}">
-            <div>{{ block.settings.label }}</div>
-            <p>{{ block.settings.description }}</p>
+            <div class="filling-card">
+              <div class="option-title">{{ block.settings.label }}</div>
+              <div class="option-price" data-option="{{ block.settings.value }}">Dhs —</div>
+              <div class="dropdown-arrow"></div>
+
+              <div class="filling-description">
+                {{ block.settings.description }}
+              </div>
+            </div>
           </div>
         {% endif %}
       {% endfor %}
@@ -261,6 +268,10 @@
       color: #cdac8e;
     }
 
+    #get-estimate #monthly {
+      font-size: 16px;
+    }
+
     #get-estimate .input-field {
       display: flex;
       align-items: center;
@@ -303,6 +314,82 @@
 
     #get-estimate #book-btn {
       height: 50px;
+    }
+
+    /* Step 4 layout */
+    #get-estimate .options-4 {
+      display: flex;
+      gap: 1rem;
+    }
+
+    #get-estimate .options-4 .col {
+      flex: 1;
+    }
+
+    /* Actual card */
+    #get-estimate .options-4 .filling-card {
+      background: #fbf7f3;
+      border: 1px solid #f1e5d5;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Active card */
+    #get-estimate .options-4 .col.active .filling-card {
+      background: #cdac8e;
+      border-color: #cdac8e;
+      color: #fff;
+    }
+
+    /* Title + Price */
+    #get-estimate .options-4 .option-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    #get-estimate .options-4 .option-price {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Arrow */
+    #get-estimate .options-4 .dropdown-arrow {
+      width: 12px;
+      height: 12px;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(-45deg);
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+
+    /* Rotate */
+    #get-estimate .options-4 .col.active .dropdown-arrow {
+      transform: rotate(135deg);
+    }
+
+    /* Description (reveal area) */
+    #get-estimate .options-4 .filling-description {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 0.5rem;
+      transition: max-height 0.45s ease, opacity 0.3s ease;
+      line-height: 1.4;
+      color: #fff;
+    }
+
+    /* Show description when active */
+    #get-estimate .options-4 .col.active .filling-description {
+      max-height: 160px;
+      opacity: 1;
     }
   </style>
 
@@ -354,40 +441,101 @@
         });
       });
 
-      // --- Step 4: Filling Option ---
-      fillingOptionRow.querySelectorAll('.col').forEach((col) => {
-        col.addEventListener('click', () => {
-          fillingOptionRow.querySelectorAll('.col').forEach((c) => c.classList.remove('active'));
-          col.classList.add('active');
-          selectedFillingOption = col.dataset.value;
+      // Step 4 — Only one open at a time
+      const fillingCards = document.querySelectorAll('.options-4 .col');
+
+      fillingCards.forEach((card) => {
+        card.addEventListener('click', () => {
+          // Already active? Do nothing (radio behavior)
+          if (card.classList.contains('active')) return;
+
+          // Deactivate all
+          fillingCards.forEach((c) => c.classList.remove('active'));
+
+          // Activate clicked one
+          card.classList.add('active');
+
+          selectedFillingOption = card.dataset.value;
+
           updatePrice();
         });
       });
 
+      // --- CEILING helper (round up to nearest multiple) ---
+      function ceiling(value, significance) {
+        return Math.ceil(value / significance) * significance;
+      }
+
+      function updateStep4Prices(totalLength, selectedFilling) {
+        const L = totalLength / 100; // cm → meters
+        const prices = document.querySelectorAll('.option-price');
+
+        prices.forEach((priceEl) => {
+          const option = priceEl.dataset.option;
+          let base = 0;
+          let result = 0;
+
+          if (!option || totalLength === 0) {
+            priceEl.textContent = `Dhs —`;
+            return;
+          }
+
+          // Logic from updatePrice()
+          if (option === 'classics') {
+            base = selectedFilling === 'feather' ? 1200 : 1100;
+            result = ceiling(base * L * 2.1, 50);
+          } else if (option === 'signature') {
+            base = selectedFilling === 'feather' ? 1400 : 1300;
+            result = ceiling(base * L * 2.1, 50);
+          } else if (option === 'performance') {
+            base = selectedFilling === 'feather' ? 1050 : 950;
+            result = ceiling((base * L + 7.5 * 75 * L) * 2.1, 50);
+          }
+
+          priceEl.textContent = `Dhs ${result.toLocaleString()}`;
+        });
+      }
+
       // --- Update price ---
       function updatePrice() {
-        let total = 0;
-
+        let totalLength = 0;
         lengthFields.forEach((field) => {
           if (field.style.display !== 'none') {
             const input = field.querySelector('input');
-            total += parseFloat(input.value) || 0;
+            totalLength += parseFloat(input.value) || 0;
           }
         });
 
-        total = total * 5;
+        // Update Step 4 prices dynamically no matter what
+        updateStep4Prices(totalLength, selectedFilling);
 
-        // Step 3 multiplier
-        if (selectedFilling === 'feather') total *= 1.2;
-        else if (selectedFilling === 'foam') total *= 1.0;
+        // Only update the final price if everything is selected
+        if (!selectedFillingOption || !selectedFilling || totalLength === 0) {
+          document.getElementById('price').textContent = 'Price: Dhs. —';
+          document.getElementById('monthly').textContent = 'AED —/month (for 4 months)';
+          return;
+        }
 
-        // Step 4 multiplier
-        if (selectedFillingOption === 'classics') total *= 1.0;
-        else if (selectedFillingOption === 'signature') total *= 1.15;
-        else if (selectedFillingOption === 'performance') total *= 1.3;
+        let base = 0;
+        const L = totalLength / 100;
 
-        document.getElementById('price').textContent = `Price: Dhs. ${total.toFixed(2)}`;
-        document.getElementById('monthly').textContent = `AED ${(total / 4).toFixed(2)}/month (for 4 months)`;
+        let result = 0;
+
+        // SAME LOGIC as above
+        if (selectedFillingOption === 'classics') {
+          base = selectedFilling === 'feather' ? 1200 : 1100;
+          result = ceiling(base * L * 2.1, 50);
+        } else if (selectedFillingOption === 'signature') {
+          base = selectedFilling === 'feather' ? 1400 : 1300;
+          result = ceiling(base * L * 2.1, 50);
+        } else if (selectedFillingOption === 'performance') {
+          base = selectedFilling === 'feather' ? 1050 : 950;
+          result = ceiling((base * L + 7.5 * 75 * L) * 2.1, 50);
+        }
+
+        // Update main display
+        document.getElementById('price').textContent = `Price: Dhs. ${result.toLocaleString()}`;
+        document.getElementById('monthly').textContent = `AED ${(result / 4).toFixed(2)}/month (for 4 months)`;
       }
     });
   </script>
@@ -457,7 +605,12 @@
       "settings": [
         { "type": "text", "id": "label", "label": "Label" },
         { "type": "text", "id": "value", "label": "Value" },
-        { "type": "text", "id": "description", "label": "Description" }
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
       ]
     }
   ],
