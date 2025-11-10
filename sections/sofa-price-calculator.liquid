@@ -67,21 +67,21 @@
       <div class="col-12 col-md-4 length-field" data-field="a">
         <div class="title">Length A</div>
         <div class="input-field">
-          <input id="length-a" type="number" placeholder="Enter cm">
+          <input id="length-a" type="number" value="200" placeholder="Enter cm">
           <span class="units">cm</span>
         </div>
       </div>
       <div class="col-12 col-md-4 length-field" data-field="b">
         <div class="title">Length B</div>
         <div class="input-field">
-          <input id="length-b" type="number" placeholder="Enter cm">
+          <input id="length-b" type="number" value="100" placeholder="Enter cm">
           <span class="units">cm</span>
         </div>
       </div>
       <div class="col-12 col-md-4 length-field" data-field="c">
         <div class="title">Length C</div>
         <div class="input-field">
-          <input id="length-c" type="number" placeholder="Enter cm">
+          <input id="length-c" type="number" value="100" placeholder="Enter cm">
           <span class="units">cm</span>
         </div>
       </div>
@@ -92,9 +92,11 @@
   <div class="section">
     <h3>{{ section.settings.step3_heading }}</h3>
     <div class="row options-3">
+      {% assign first_filling = true %}
       {% for block in section.blocks %}
         {% if block.type == 'sofa_filling' %}
-          <div class="col" data-value="{{ block.settings.value }}">
+          <div class="col{% if first_filling %} active{% endif %}" data-value="{{ block.settings.value }}">
+            {% assign first_filling = false %}
             <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
               {% if block.settings.image != blank %}
                 <img
@@ -125,9 +127,11 @@
   <div class="section">
     <h3>{{ section.settings.step4_heading }}</h3>
     <div class="row options-4">
+      {% assign first_filling_option = true %}
       {% for block in section.blocks %}
         {% if block.type == 'filling_option' %}
-          <div class="col" data-value="{{ block.settings.value }}">
+          <div class="col{% if first_filling_option %} active{% endif %}" data-value="{{ block.settings.value }}">
+            {% assign first_filling_option = false %}
             <div class="filling-card">
               <div class="option-title">{{ block.settings.label }}</div>
               <div class="option-price" data-option="{{ block.settings.value }}">Dhs —</div>
@@ -223,10 +227,6 @@
       background: transparent;
     }
 
-    #get-estimate .row .col.active {
-      color: #fff;
-    }
-
     #get-estimate .row .col.active img {
       filter: brightness(0.9);
     }
@@ -244,8 +244,7 @@
       border: none;
     }
 
-    #get-estimate .col.active .border,
-    #get-estimate .options-4 .col.active {
+    #get-estimate .col.active .border {
       background: #cdac8e;
       color: #fff;
     }
@@ -316,10 +315,27 @@
       height: 50px;
     }
 
+    /* Step 3: center on mobile, left-align on tablet+ */
+    #get-estimate .options-3 {
+      justify-content: center; /* center by default */
+    }
+
+    @media (min-width: 768px) {
+      #get-estimate .options-3 {
+        justify-content: flex-start; /* align left on tablet+ */
+      }
+
+      #get-estimate .options-3 .border {
+        margin-left: 0; /* remove mx-auto effect */
+        margin-right: 1rem; /* optional spacing between cards */
+      }
+    }
+
     /* Step 4 layout */
     #get-estimate .options-4 {
       display: flex;
       gap: 1rem;
+      min-height: 270px;
     }
 
     #get-estimate .options-4 .col {
@@ -328,13 +344,12 @@
 
     /* Actual card */
     #get-estimate .options-4 .filling-card {
-      background: #fbf7f3;
+      background: #fff;
       border: 1px solid #f1e5d5;
       border-radius: 1rem;
-      padding: 1.5rem;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.5s ease;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -342,21 +357,27 @@
 
     /* Active card */
     #get-estimate .options-4 .col.active .filling-card {
-      background: #cdac8e;
       border-color: #cdac8e;
-      color: #fff;
     }
 
     /* Title + Price */
     #get-estimate .options-4 .option-title {
+      background: #fbf7f3;
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 0.2rem;
+      padding: 15px;
+      border-radius: 1rem;
+    }
+    #get-estimate .options-4 .col.active .option-title {
+      background: #cdac8e;
+      color: #fff;
     }
 
     #get-estimate .options-4 .option-price {
-      font-size: 1.4rem;
+      font-size: 2.4rem;
       margin-bottom: 0.5rem;
+      padding-top: 10px;
     }
 
     /* Arrow */
@@ -372,7 +393,7 @@
 
     /* Rotate */
     #get-estimate .options-4 .col.active .dropdown-arrow {
-      transform: rotate(135deg);
+      color: transparent;
     }
 
     /* Description (reveal area) */
@@ -381,9 +402,9 @@
       opacity: 0;
       overflow: hidden;
       margin-top: 0.5rem;
-      transition: max-height 0.45s ease, opacity 0.3s ease;
+      transition: max-height 0.45s ease, opacity 0.5s ease;
       line-height: 1.4;
-      color: #fff;
+      padding: 1.5rem;
     }
 
     /* Show description when active */
@@ -400,8 +421,8 @@
       const fillingRow = document.querySelector('#get-estimate .options-3');
       const fillingOptionRow = document.querySelector('#get-estimate .options-4');
 
-      let selectedFilling = null;
-      let selectedFillingOption = null;
+      let selectedFilling = document.querySelector('#get-estimate .options-3 .col')?.dataset.value || null;
+      let selectedFillingOption = document.querySelector('#get-estimate .options-4 .col')?.dataset.value || null;
 
       function showLengthFields(count) {
         lengthFields.forEach((field, i) => {
@@ -537,6 +558,8 @@
         document.getElementById('price').textContent = `Price: Dhs. ${result.toLocaleString()}`;
         document.getElementById('monthly').textContent = `AED ${(result / 4).toFixed(2)}/month (for 4 months)`;
       }
+
+      updatePrice();
     });
   </script>
 </section>
