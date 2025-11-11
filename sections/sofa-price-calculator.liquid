@@ -28,7 +28,7 @@
                 >
               {% else %}
                 <img
-                  src="https://placeholdit.com/{{ block.settings.image_width }}x300"
+                  src="https://placeholdit.com/{{ block.settings.image_width }}x300/ffffff/999999"
                   alt="{{ block.settings.label }}"
                   style="max-width:{{ block.settings.image_width }}px;"
                   height=""
@@ -55,7 +55,7 @@
       >
     {% else %}
       <img
-        src="https://placeholdit.com/{{ section.settings.dimensions_image_width }}x100"
+        src="https://placeholdit.com/{{ section.settings.dimensions_image_width }}x100/ffffff/999999"
         alt="Sofa dimensions"
         style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
         height=""
@@ -108,7 +108,7 @@
                 >
               {% else %}
                 <img
-                  src="https://placeholdit.com/{{ block.settings.image_width }}"
+                  src="https://placeholdit.com/{{ block.settings.image_width }}/ffffff/999999"
                   alt="{{ block.settings.label }}"
                   style="max-width:{{ block.settings.image_width }}px; margin-top:4px;"
                   height=""
@@ -188,7 +188,6 @@
     #get-estimate .col img {
       width: 100%;
       border-radius: 1rem;
-      border: 1px solid #ccc;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     #get-estimate .col:hover .border {
@@ -263,8 +262,9 @@
     }
 
     #get-estimate #price {
-      font-size: 26px;
+      font-size: 35px;
       color: #cdac8e;
+      font-weight: 600;
     }
 
     #get-estimate #monthly {
@@ -288,7 +288,6 @@
       width: 100%;
       font-size: 16px;
       font-style: normal;
-      font-weight: 600;
       line-height: 1;
       background: var(--beige-200, #fbf7f3);
       border: none;
@@ -318,6 +317,9 @@
     /* Step 3: center on mobile, left-align on tablet+ */
     #get-estimate .options-3 {
       justify-content: center; /* center by default */
+    }
+    #get-estimate .options-3 .col {
+      flex-grow: inherit;
     }
 
     @media (min-width: 768px) {
@@ -570,6 +572,46 @@
       }
 
       updatePrice();
+
+      // --- SEND TO WHATSAPP ---
+      document.getElementById('book-btn').addEventListener('click', function () {
+        // ✅ Replace with your WhatsApp number (include country code, no +)
+        const phoneNumber = '971509046848';
+
+        // Get selected sofa type
+        const sofaType = document.querySelector('.options-1 .col.active')?.dataset.value || 'Not selected';
+
+        // Get selected filling
+        const filling = document.querySelector('.options-3 .col.active')?.dataset.value || 'Not selected';
+
+        // Get selected filling option
+        const fillingOption = document.querySelector('.options-4 .col.active')?.dataset.value || 'Not selected';
+
+        // Get lengths
+        const lengthA = document.getElementById('length-a').value || '—';
+        const lengthB = document.getElementById('length-b').value || '—';
+        const lengthC = document.getElementById('length-c').value || '—';
+
+        // Get price
+        const priceText = document.getElementById('price').textContent.replace('Price: ', '');
+
+        // Format WhatsApp message (URL encoded)
+        const message =
+          `*New Estimate Request*\n\n` +
+          `*Sofa Type:* ${sofaType}\n` +
+          `*Filling:* ${filling}\n` +
+          `*Filling Option:* ${fillingOption}\n\n` +
+          `*Length A:* ${lengthA} cm\n` +
+          `*Length B:* ${lengthB} cm\n` +
+          `*Length C:* ${lengthC} cm\n\n` +
+          `*Estimated Price:* ${priceText}`;
+
+        const encodedMessage = encodeURIComponent(message);
+
+        // Open WhatsApp
+        const waURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(waURL, '_blank');
+      });
     });
   </script>
 </section>
