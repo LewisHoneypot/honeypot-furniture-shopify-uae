@@ -319,6 +319,9 @@
     #get-estimate .options-3 {
       justify-content: center; /* center by default */
     }
+    #get-estimate .options-3 .col {
+      flex-grow: inherit;
+    }
 
     @media (min-width: 768px) {
       #get-estimate .options-3 {
@@ -570,6 +573,46 @@
       }
 
       updatePrice();
+
+      // --- SEND TO WHATSAPP ---
+      document.getElementById('book-btn').addEventListener('click', function () {
+        // ✅ Replace with your WhatsApp number (include country code, no +)
+        const phoneNumber = '971509046848';
+
+        // Get selected sofa type
+        const sofaType = document.querySelector('.options-1 .col.active')?.dataset.value || 'Not selected';
+
+        // Get selected filling
+        const filling = document.querySelector('.options-3 .col.active')?.dataset.value || 'Not selected';
+
+        // Get selected filling option
+        const fillingOption = document.querySelector('.options-4 .col.active')?.dataset.value || 'Not selected';
+
+        // Get lengths
+        const lengthA = document.getElementById('length-a').value || '—';
+        const lengthB = document.getElementById('length-b').value || '—';
+        const lengthC = document.getElementById('length-c').value || '—';
+
+        // Get price
+        const priceText = document.getElementById('price').textContent.replace('Price: ', '');
+
+        // Format WhatsApp message (URL encoded)
+        const message =
+          `*New Estimate Request*\n\n` +
+          `*Sofa Type:* ${sofaType}\n` +
+          `*Filling:* ${filling}\n` +
+          `*Filling Option:* ${fillingOption}\n\n` +
+          `*Length A:* ${lengthA} cm\n` +
+          `*Length B:* ${lengthB} cm\n` +
+          `*Length C:* ${lengthC} cm\n\n` +
+          `*Estimated Price:* ${priceText}`;
+
+        const encodedMessage = encodeURIComponent(message);
+
+        // Open WhatsApp
+        const waURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(waURL, '_blank');
+      });
     });
   </script>
 </section>
