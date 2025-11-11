@@ -68,7 +68,7 @@
           "settings": {
             "label": "Classics",
             "value": "classics",
-            "description": ""
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
           }
         },
         "filling_option_FwpzUw": {
@@ -76,7 +76,7 @@
           "settings": {
             "label": "Signature",
             "value": "signature",
-            "description": ""
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
           }
         },
         "filling_option_EWdUaF": {
@@ -84,7 +84,7 @@
           "settings": {
             "label": "Performance",
             "value": "performance",
-            "description": ""
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
           }
         }
       },
