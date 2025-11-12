@@ -1,0 +1,271 @@
+/* --- Inline Bootstrap-like Styles --- */
+#get-estimate {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+}
+#get-estimate h2,
+#get-estimate h3 {
+  font-weight: 600;
+}
+#get-estimate .section {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+
+#get-estimate .title {
+  padding: 10px;
+}
+#get-estimate .rounded {
+  border-radius: 1rem;
+}
+#get-estimate .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+#get-estimate .col {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
+#get-estimate .col img {
+  width: 100%;
+  border-radius: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#get-estimate .col:hover .border {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+#get-estimate .col.active .border {
+  box-shadow: 0 0 0 2px #ccc;
+  border-radius: 1rem;
+}
+#get-estimate button {
+  background: #cdac8e;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  width: 100%;
+  transition: background 0.2s;
+}
+#get-estimate button:hover {
+  background: #cdac8e;
+}
+#get-estimate span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* --- Active/Selectable Button Styles --- */
+#get-estimate .row .col {
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+#get-estimate .row .col.active img {
+  filter: brightness(0.9);
+}
+
+#get-estimate .row .col:hover {
+  transform: scale(1.02);
+}
+
+/* Fix blue background staying inside the border for sofa type selections */
+#get-estimate .options-1 .col .border {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+#get-estimate .col.active .border {
+  background: #cdac8e;
+  color: #fff;
+}
+#get-estimate .options-1 .col.active .border {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#get-estimate .options-1 .col.active .border img {
+  filter: brightness(0.9);
+}
+
+#get-estimate .options-1 .col.active .border div {
+  color: #000;
+}
+
+#get-estimate #price {
+  font-size: 35px;
+  color: #cdac8e;
+  font-weight: 600;
+}
+
+#get-estimate #monthly {
+  font-size: 16px;
+}
+
+#get-estimate .input-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px !important;
+  border: 1px solid var(--beige-600, #f1e5d5) !important;
+  background: var(--beige-200, #fbf7f3) !important;
+  height: 48px !important;
+  font-size: 16px !important;
+  padding-left: 15px;
+}
+
+#get-estimate input[type="number"] {
+  height: 46px;
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1;
+  background: var(--beige-200, #fbf7f3);
+  border: none;
+  border-radius: 1rem;
+  margin-left: -12px;
+  padding-left: 12px;
+  margin-right: 6px;
+}
+#get-estimate .units {
+  display: flex;
+  width: 50px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #cdac8e;
+  font-size: 16px;
+  margin-top: -1px;
+  color: #fff;
+}
+
+#get-estimate #book-btn {
+  height: 50px;
+}
+
+/* Step 3: center on mobile, left-align on tablet+ */
+#get-estimate .options-3 {
+  justify-content: center; /* center by default */
+}
+#get-estimate .options-3 .col {
+  flex-grow: inherit;
+}
+
+@media (min-width: 768px) {
+  #get-estimate .options-3 {
+    justify-content: flex-start; /* align left on tablet+ */
+  }
+
+  #get-estimate .options-3 .border {
+    margin-left: 0; /* remove mx-auto effect */
+    margin-right: 1rem; /* optional spacing between cards */
+  }
+}
+
+/* Step 4 layout */
+#get-estimate .options-4 {
+  display: flex;
+  gap: 1rem;
+  min-height: 270px;
+}
+
+@media (max-width: 767px) {
+  #get-estimate .options-4 {
+    flex-direction: column; /* stack vertically */
+  }
+
+  #get-estimate .options-4 .col {
+    width: 100%;
+  }
+}
+
+#get-estimate .options-4 .col {
+  flex: 1;
+}
+
+/* Actual card */
+#get-estimate .options-4 .filling-card {
+  background: #fff;
+  border: 1px solid #f1e5d5;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Active card */
+#get-estimate .options-4 .col.active .filling-card {
+  border-color: #cdac8e;
+}
+
+/* Title + Price */
+#get-estimate .options-4 .option-title {
+  background: #fbf7f3;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  padding: 15px;
+  border-radius: 1rem;
+}
+#get-estimate .options-4 .col.active .option-title {
+  background: #cdac8e;
+  color: #fff;
+}
+
+#get-estimate .options-4 .option-price {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  padding-top: 10px;
+}
+
+/* Arrow */
+#get-estimate .options-4 .dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate */
+#get-estimate .options-4 .col.active .dropdown-arrow {
+  color: transparent;
+}
+
+/* Description (reveal area) */
+#get-estimate .options-4 .filling-description {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  transition: max-height 0.45s ease, opacity 0.5s ease;
+  line-height: 1.4;
+  padding: 1.5rem;
+}
+
+/* Show description when active */
+#get-estimate .options-4 .col.active .filling-description {
+  max-height: 160px;
+  opacity: 1;
+}
