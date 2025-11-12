@@ -23,16 +23,12 @@
                   src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
                   alt="{{ block.settings.label }}"
                   style="max-width:{{ block.settings.image_width }}px;"
-                  height=""
-                  width=""
                 >
               {% else %}
                 <img
                   src="https://placeholdit.com/{{ block.settings.image_width }}x300/ffffff/999999"
                   alt="{{ block.settings.label }}"
                   style="max-width:{{ block.settings.image_width }}px;"
-                  height=""
-                  width=""
                 >
               {% endif %}
             </div>
@@ -50,16 +46,12 @@
         src="{{ section.settings.dimensions_image | image_url: width: section.settings.dimensions_image_width }}"
         alt="Sofa dimensions"
         style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
-        height=""
-        width=""
       >
     {% else %}
       <img
         src="https://placeholdit.com/{{ section.settings.dimensions_image_width }}x100/ffffff/999999"
         alt="Sofa dimensions"
         style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
-        height=""
-        width=""
       >
     {% endif %}
 
@@ -103,16 +95,12 @@
                   src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
                   alt="{{ block.settings.label }}"
                   style="max-width:{{ block.settings.image_width }}px; padding-top:4px;"
-                  height=""
-                  width=""
                 >
               {% else %}
                 <img
                   src="https://placeholdit.com/{{ block.settings.image_width }}/ffffff/999999"
                   alt="{{ block.settings.label }}"
                   style="max-width:{{ block.settings.image_width }}px; margin-top:4px;"
-                  height=""
-                  width=""
                 >
               {% endif %}
               <div class="title">{{ block.settings.label }}</div>
@@ -136,10 +124,7 @@
               <div class="option-title">{{ block.settings.label }}</div>
               <div class="option-price" data-option="{{ block.settings.value }}">Dhs —</div>
               <div class="dropdown-arrow"></div>
-
-              <div class="filling-description">
-                {{ block.settings.description }}
-              </div>
+              <div class="filling-description">{{ block.settings.description }}</div>
             </div>
           </div>
         {% endif %}
@@ -152,8 +137,9 @@
 
   <button id="book-btn">{{ section.settings.button_label }}</button>
 
-  {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
-
+  <style>
+    {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
+  </style>
   <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
 </section>
 
@@ -221,12 +207,7 @@
       "settings": [
         { "type": "text", "id": "label", "label": "Label" },
         { "type": "text", "id": "value", "label": "Value" },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description",
-          "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        }
+        { "type": "text", "id": "description", "label": "Description", "default": "Lorem ipsum dolor sit amet." }
       ]
     }
   ],
