@@ -3,65 +3,71 @@
 {% endcomment %}
 
 <section id="get-estimate" class="container">
-  <h2>{{ block.settings.main_heading }}</h2>
-
   <!-- Step 1 -->
   <div class="section">
-    <h3>{{ block.settings.step1_heading }}</h3>
-    <div class="row options-1">
-      {% for sub_block in block.blocks %}
-        {% if sub_block.type == 'sofa_type' %}
-          <div
-            class="col{% if forloop.first %} active{% endif %}"
-            data-value="{{ sub_block.settings.value }}"
-            data-index="{{ forloop.index }}"
+    <h3>Step 1: Select Sofa Type</h3>
+    <div class="row options-1" style="font-size: 12px;">
+      <div
+        class="col active"
+        data-value="straight"
+        data-index="1"
+      >
+        <div class="border rounded">
+          <div class="title">Straight</div>
+          <img
+            src="https://placeholdit.com/100x300/ffffff/999999"
+            alt="#"
+            style="max-width:100px;"
+            height=""
+            width=""
           >
-            <div class="border rounded">
-              <div class="title">{{ sub_block.settings.label }}</div>
-              {% if sub_block.settings.image != blank %}
-                <img
-                  src="{{ sub_block.settings.image | image_url: width: sub_block.settings.image_width }}"
-                  alt="{{ sub_block.settings.label }}"
-                  style="max-width:{{ sub_block.settings.image_width }}px;"
-                  height=""
-                  width=""
-                >
-              {% else %}
-                <img
-                  src="https://placeholdit.com/{{ sub_block.settings.image_width }}x300/ffffff/999999"
-                  alt="{{ sub_block.settings.label }}"
-                  style="max-width:{{ sub_block.settings.image_width }}px;"
-                  height=""
-                  width=""
-                >
-              {% endif %}
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+        </div>
+      </div>
+      <div
+        class="col"
+        data-value="l-corner"
+        data-index="2"
+      >
+        <div class="border rounded">
+          <div class="title">L-Corner</div>
+          <img
+            src="https://placeholdit.com/100x300/ffffff/999999"
+            alt="#"
+            style="max-width:100px;"
+            height=""
+            width=""
+          >
+        </div>
+      </div>
+      <div
+        class="col"
+        data-value="corner"
+        data-index="3"
+      >
+        <div class="border rounded">
+          <div class="title">Corner</div>
+          <img
+            src="https://placeholdit.com/100x300/ffffff/999999"
+            alt="#"
+            style="max-width:100px;"
+            height=""
+            width=""
+          >
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Step 2 -->
   <div class="section">
-    <h3>{{ block.settings.step2_heading }}</h3>
-    {% if block.settings.dimensions_image != blank %}
-      <img
-        src="{{ block.settings.dimensions_image | image_url: width: block.settings.dimensions_image_width }}"
-        alt="Sofa dimensions"
-        style="width:100%;max-width:{{ block.settings.dimensions_image_width }}px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% else %}
-      <img
-        src="https://placeholdit.com/{{ block.settings.dimensions_image_width }}x100/ffffff/999999"
-        alt="Sofa dimensions"
-        style="width:100%;max-width:{{ block.settings.dimensions_image_width }}px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% endif %}
+    <h3>Step 2: Select Sofa Size</h3>
+    <img
+      src="https://placeholdit.com/200x100/ffffff/999999"
+      alt="Sofa dimensions"
+      style="width:100%;max-width:200px;margin-bottom:1rem;"
+      height=""
+      width=""
+    >
 
     <div class="row options-2">
       <div class="col-12 col-md-4 length-field" data-field="a">
@@ -90,64 +96,70 @@
 
   <!-- Step 3 -->
   <div class="section">
-    <h3>{{ block.settings.step3_heading }}</h3>
+    <h3>Step 3: Select Sofa Filling</h3>
     <div class="row options-3">
-      {% assign first_filling = true %}
-      {% for sub_block in block.blocks %}
-        {% if sub_block.type == 'sofa_filling' %}
-          <div class="col{% if first_filling %} active{% endif %}" data-value="{{ sub_block.settings.value }}">
-            {% assign first_filling = false %}
-            <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
-              {% if sub_block.settings.image != blank %}
-                <img
-                  src="{{ sub_block.settings.image | image_url: width: sub_block.settings.image_width }}"
-                  alt="{{ sub_block.settings.label }}"
-                  style="max-width:{{ sub_block.settings.image_width }}px; padding-top:4px;"
-                  height=""
-                  width=""
-                >
-              {% else %}
-                <img
-                  src="https://placeholdit.com/{{ sub_block.settings.image_width }}/ffffff/999999"
-                  alt="{{ sub_block.settings.label }}"
-                  style="max-width:{{ sub_block.settings.image_width }}px; margin-top:4px;"
-                  height=""
-                  width=""
-                >
-              {% endif %}
-              <div class="title">{{ sub_block.settings.label }}</div>
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+      <div class="col active" data-value="feather">
+        <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
+          <img
+            src="https://placeholdit.com/150/ffffff/999999"
+            alt="Feather"
+            style="max-width:150px; margin-top:4px;"
+            height=""
+            width=""
+          >
+          <div class="title">Feather</div>
+        </div>
+      </div>
+      <div class="col " data-value="foam">
+        <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
+          <img
+            src="https://placeholdit.com/150/ffffff/999999"
+            alt="Foam"
+            style="max-width:150px; margin-top:4px;"
+            height=""
+            width=""
+          >
+          <div class="title">Foam</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Step 4 -->
   <div class="section">
-    <h3>{{ block.settings.step4_heading }}</h3>
+    <h3>Step 4: Select Filling Option</h3>
     <div class="row options-4">
-      {% assign first_filling_option = true %}
-      {% for sub_block in block.blocks %}
-        {% if sub_block.type == 'filling_option' %}
-          <div class="col{% if first_filling_option %} active{% endif %}" data-value="{{ sub_block.settings.value }}">
-            {% assign first_filling_option = false %}
-            <div class="filling-card">
-              <div class="option-title">{{ sub_block.settings.label }}</div>
-              <div class="option-price" data-option="{{ sub_block.settings.value }}">Dhs —</div>
-              <div class="dropdown-arrow"></div>
-              <div class="filling-description">{{ sub_block.settings.description }}</div>
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+      <div class="col active" data-value="classics">
+        <div class="filling-card">
+          <div class="option-title">Classics</div>
+          <div class="option-price" data-option="classics">Dhs —</div>
+          <div class="dropdown-arrow"></div>
+          <div class="filling-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+      </div>
+      <div class="col" data-value="signature">
+        <div class="filling-card">
+          <div class="option-title">Signature</div>
+          <div class="option-price" data-option="signature">Dhs —</div>
+          <div class="dropdown-arrow"></div>
+          <div class="filling-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+      </div>
+      <div class="col" data-value="performance">
+        <div class="filling-card">
+          <div class="option-title">Performance</div>
+          <div class="option-price" data-option="performance">Dhs —</div>
+          <div class="dropdown-arrow"></div>
+          <div class="filling-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <span id="price">Price: Dhs. —</span>
   <span id="monthly">AED —/month (for 4 months)</span>
 
-  <button id="book-btn">{{ block.settings.button_label }}</button>
+  <button id="book-btn">BOOK A FREE VISIT</button>
 
   {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>

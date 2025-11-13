@@ -79,6 +79,10 @@
   transform: scale(1.02);
 }
 
+#get-estimate .options-1 .col {
+  max-width: 33%;
+}
+
 /* Fix blue background staying inside the border for sofa type selections */
 #get-estimate .options-1 .col .border {
   background: #fff;
