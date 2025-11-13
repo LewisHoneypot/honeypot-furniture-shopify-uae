@@ -79,6 +79,10 @@
   transform: scale(1.02);
 }
 
+#get-estimate .options-1 .col {
+  max-width: 33%;
+}
+
 /* Fix blue background staying inside the border for sofa type selections */
 #get-estimate .options-1 .col .border {
   background: #fff;
@@ -232,7 +236,7 @@
 }
 
 #get-estimate .options-4 .option-price {
-  font-size: 2.4rem;
+  font-size: 2.0rem;
   margin-bottom: 0.5rem;
   padding-top: 10px;
 }
@@ -268,4 +272,5 @@
 #get-estimate .options-4 .col.active .filling-description {
   max-height: 160px;
   opacity: 1;
+  font-size: 14px;
 }
