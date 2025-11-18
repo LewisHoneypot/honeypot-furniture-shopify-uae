@@ -23,14 +23,6 @@
             "heading_size": "default"
           }
         },
-        "trustpilot_mini_TB9jLy": {
-          "type": "trustpilot_mini",
-          "settings": {
-            "title": "Trustpilot Mini",
-            "padding_top": 0,
-            "padding_bottom": 0
-          }
-        },
         "color_swatch_bWwLRJ": {
           "type": "color_swatch",
           "settings": {
@@ -192,11 +184,22 @@
             "button_2_text": "SEND US A MESSAGE",
             "button_2_link": "https://www.example.com"
           }
+        },
+        "drawer_RDRfaN": {
+          "type": "drawer",
+          "settings": {
+            "heading": "ESTIMATE YOUR SOFA",
+            "font": "Garamond",
+            "content_type": "sofa_estimator",
+            "content": "",
+            "page": "",
+            "colors_background": "#ededed",
+            "colors_border": "#707070"
+          }
         }
       },
       "block_order": [
         "title",
-        "trustpilot_mini_TB9jLy",
         "color_swatch_bWwLRJ",
         "price",
         "tabby_pay_later_pdp_final_kHwRFp",
@@ -210,7 +213,8 @@
         "protection_drawer_iWbVLW",
         "s_contact_form_builder_block_app_dQXRJj",
         "s_contact_form_builder_block_app_hDXrDD",
-        "popup_kQxeme"
+        "popup_kQxeme",
+        "drawer_RDRfaN"
       ],
       "settings": {
         "use_custom_title": true,
@@ -574,42 +578,6 @@
         "padding_bottom_mobile": 0
       }
     },
-    "trustpilot_product_reviews_collapsible_8YH8Ak": {
-      "type": "trustpilot-product-reviews-collapsible",
-      "blocks": {
-        "collapsible_row_V9KmDH": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Customer Reviews",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_top_mobile": 0,
-            "padding_bottom_mobile": 0,
-            "primary_button_label": "Rating Breakdown",
-            "primary_button_color_scheme": "background-1",
-            "secondary_button_label": "Hide Breakdown",
-            "secondary_button_color_scheme": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_V9KmDH"
-      ],
-      "settings": {
-        "heading": "Reviews",
-        "use_hr": true,
-        "font": "Gotham",
-        "section_width": "customized-width",
-        "customize_width": 1400,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 35,
-        "padding_bottom_mobile": 43,
-        "padding_left_right": 50,
-        "padding_left_right_mobile": 10
-      }
-    },
     "lookbook_pGUge4": {
       "type": "lookbook",
       "blocks": {
@@ -845,7 +813,6 @@
     "1736163654e8d791fe",
     "as_seen_in_Pnd8YJ",
     "1736163667c8a5c273",
-    "trustpilot_product_reviews_collapsible_8YH8Ak",
     "lookbook_pGUge4",
     "featured_collection_RD8KMd",
     "related-products",
