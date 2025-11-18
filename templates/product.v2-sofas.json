@@ -189,7 +189,7 @@
           "type": "drawer",
           "settings": {
             "heading": "ESTIMATE YOUR SOFA",
-            "font": "Garamond",
+            "font": "Gotham",
             "content_type": "sofa_estimator",
             "content": "",
             "page": "",
