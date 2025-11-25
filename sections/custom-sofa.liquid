@@ -1,0 +1,257 @@
+<section class="custom-sofa-hero-section color-background gradient">
+
+  {% if section.settings.image %}
+    <div 
+      class="custom-sofa-hero-bg"
+      style="background-image: url('{{ section.settings.image | image_url: width: 2500 }}');">
+    </div>
+  {% endif %}
+
+  <div class="custom-sofa-hero-content page-width">
+
+    <div class="custom-sofa-text-box">
+
+
+    <h2 class="honeypot-intro">{{ section.settings.intro_text }}</h2>
+      <h2 class="custom-sofa-intro">{{ section.settings.heading }}</h2>
+
+      <p class="custom-sofa-description">{{ section.settings.description }}</p>
+
+      <p>Choose your shape and dimensions</p>
+      <p>Select your comfort level Cloud, Balanced or Support</p>
+      <p>Pick from over 30 fabrics and 150+ colours</p>
+      <p>All designed, built, and delivered in as little as 7–14 days.</p>
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="button custom-sofa-button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+   <div 
+  class="honeypot-hero-bg-desktop-custom-sofa"
+
+>
+
+  <img 
+  class="honeypot-hero-img-mobile"
+  src="{{ section.settings.image | image_url: width: 2500 }}"
+  alt="Mobile Banner"
+  height="auto"
+  width="auto"
+/>
+</div>
+
+</section>
+
+{% render 'guarantee-strip', text_1: section.settings.text_1, text_2: section.settings.text_2, text_3: section.settings.text_3 %}
+
+
+<style>
+.custom-sofa-hero-section {
+  position: relative;
+  width: 100%;
+  height: 1250px;
+  overflow: hidden;
+}
+
+.custom-sofa-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: 100%; /* zoom out the image slightly */
+  background-position: center; /* adjust if needed: center top, center center */
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.custom-sofa-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end; /* move text box to right */
+  align-items: center;
+}
+
+.custom-sofa-text-box {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  padding: 50px 60px;
+  max-width: 520px;
+  border-radius: 4px;
+}
+
+.custom-sofa-intro {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #111;
+}
+
+.custom-sofa-description {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.custom-sofa-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.custom-sofa-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+.custom-sofa-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 1.5rem;
+  line-height: 0.6;
+}
+
+.custom-sofa-button {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 1.2rem 2rem;
+  border-radius: 0;
+  background-color: #a47b45;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.custom-sofa-button:hover {
+  background-color: #8c6b38;
+}
+
+
+
+@media (max-width: 990px) {
+  .custom-sofa-hero-bg {
+    display: none !important;
+  }
+}
+
+
+.honeypot-hero-bg-desktop-custom-sofa {
+width: 100%;
+height:100%
+
+}
+
+.honeypot-hero-bg-desktop-custom-sofa img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+@media (min-width: 990px) {
+
+  .honeypot-hero-bg-desktop-custom-sofa {
+    display: none !important;
+  }
+
+  .honeypot-desktop-button {
+  display : none !important 
+}
+
+
+}
+
+/* Mobile Responsive */
+@media (max-width: 990px) {
+  .custom-sofa-hero-section {
+    height: auto;
+  }
+
+  .custom-sofa-hero-content {
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .custom-sofa-text-box {
+    width: 100%;
+    padding: 30px;
+    margin-top: -40px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Custom Sofa Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+    },
+    { "type": "text", "id": "intro_text", "label": "Intro Text", "default": "Your Custom" },
+
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From style and size to fabric and filling, every Honeypot sofa can be customised to You."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Start Customizing"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+                                 {
+      "type": "text",
+      "id": "text_1",
+      "label": "First Text",
+      "default": "Over 150+ Fabrics & Colours"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Second Text",
+      "default": "Book a Free Home Visit"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Third Text",
+      "default": "Unlimited Customisation"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Custom Sofa Hero Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -154,13 +154,53 @@
           {%- endif -%}
           {%- if section.settings.enable_account or section.settings.enable_account_mobile -%}
             {%- if shop.customer_accounts_enabled -%}
-              <side-drawer-opener class="header__icon header__icon--account d-flex j-c-center a-i-center p-0 u-none color-foreground f-a-none{% unless section.settings.enable_account %} d-none-l{% endunless %}{% unless section.settings.enable_account_mobile %} d-none-mw-md{% endunless %}" data-side-drawer="#Drawer-Account">
-                <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden {{ section.settings.font_transform }}" type="button" aria-haspopup="dialog" aria-label="{% if customer %}{{ 'customer.account_fallback' | t }}{% else %}{% if section.settings.icon_type_style == 'default-text' %}{{ 'customer.account.title' | t }}{% else %}{{ 'customer.log_in' | t }}{% endif %}{% endif %}">
-                  {{ icon_account }}
-                </button>
-                <noscript>
-                  <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}">
+              <side-drawer-opener 
+                class="header__icon header__icon--account d-flex j-c-center a-i-center p-0 u-none color-foreground f-a-none
+                {% unless section.settings.enable_account %} d-none-l{% endunless %}
+                {% unless section.settings.enable_account_mobile %} d-none-mw-md{% endunless %}" 
+                data-side-drawer="#Drawer-Account"
+              >
+                <button 
+                  class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden
+                  {% if section.settings.icon_type_style == 'default-text' %}
+                    u-none link {{ section.settings.link_type | prepend: 'link--style-' }}
+                  {% endif %} 
+                  {{ section.settings.font_transform }}" 
+                  type="button" 
+                  aria-haspopup="dialog" 
+                  aria-label="{% if customer %}{{ 'customer.account_fallback' | t }}{% else %}{% if section.settings.icon_type_style == 'default-text' %}{{ 'customer.account.title' | t }}{% else %}{{ 'customer.log_in' | t }}{% endif %}{% endif %}"
+                >
+                  {%- if section.settings.custom_account_icon_svg contains '<svg' -%}
+                    {{ section.settings.custom_account_icon_svg }}
+                  {%- elsif section.settings.custom_account_icon != blank -%}
+                    <img 
+                      src="{{ section.settings.custom_account_icon | image_url: width: 32 }}" 
+                      alt="Account" 
+                      class="icon-account-custom"
+                      style="width: 24px; height: 24px;"
+                    >
+                  {%- else -%}
                     {{ icon_account }}
+                  {%- endif -%}
+                </button>
+
+                <noscript>
+                  <a 
+                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" 
+                    class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}"
+                  >
+                    {%- if section.settings.custom_account_icon_svg contains '<svg' -%}
+                      {{ section.settings.custom_account_icon_svg }}
+                    {%- elsif section.settings.custom_account_icon != blank -%}
+                      <img 
+                        src="{{ section.settings.custom_account_icon | image_url: width: 32 }}" 
+                        alt="Account"
+                        class="icon-account-custom"
+                        style="width: 24px; height: 24px;"
+                      >
+                    {%- else -%}
+                      {{ icon_account }}
+                    {%- endif -%}
                     <span class="visually-hidden">
                       {%- liquid
                         if customer
@@ -180,38 +220,76 @@
             {%- endif -%}
           {%- endif -%}
           {%- if section.settings.enable_wishlist or section.settings.enable_wishlist_mobile -%}
-            <side-drawer-opener class="header__icon header__icon--wishlist d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none{% unless section.settings.enable_wishlist %} d-none-md{% endunless %}{% unless section.settings.enable_wishlist_mobile %} d-none-xs{% endunless %}" data-side-drawer="#Drawer-Wishlist">
-              <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden {{ section.settings.font_transform }}{% if section.settings.icon_type_style == 'default-text' %} d-flex c-gap{% endif %}" 
+            <side-drawer-opener 
+              class="header__icon header__icon--wishlist d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none
+              {% unless section.settings.enable_wishlist %} d-none-md{% endunless %}
+              {% unless section.settings.enable_wishlist_mobile %} d-none-xs{% endunless %}" 
+              data-side-drawer="#Drawer-Wishlist"
+            >
+              <button 
+                class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden 
+                {{ section.settings.font_transform }}
+                {% if section.settings.icon_type_style == 'default-text' %} d-flex c-gap{% endif %}" 
                 type="button" 
                 aria-haspopup="dialog" 
                 aria-label="{{ 'templates.wishlist.wishlist_items' | t: count: cart.item_count }}"
-                {%- if section.settings.icon_type_style == 'default-text' %}
+                {%- if section.settings.icon_type_style == 'default-text' -%}
                   style="--c-gap: 0.3rem"
-                {% endif -%}
+                {%- endif -%}
               >
-                {{ icon_wishlist }}
+
+                {%- if section.settings.custom_wishlist_icon_svg contains '<svg' -%}
+                  {{ section.settings.custom_wishlist_icon_svg }}
+                {%- elsif section.settings.custom_wishlist_icon != blank -%}
+                  <img 
+                    src="{{ section.settings.custom_wishlist_icon | image_url: width: 32 }}" 
+                    alt="Wishlist"
+                    class="icon-wishlist-custom"
+                    style="width: 24px; height: 24px;"
+                  >
+                {%- else -%}
+                  {{ icon_wishlist }}
+                {%- endif -%}
+
                 {%- if section.settings.icon_type_style != 'default-text' -%}
                   <div class="wishlist-count-bubble l-h-1 pos-absolute b-circle d-flex j-c-center a-i-center">
                     <span class="number" aria-hidden="true">0</span>
-                    <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">0 {{ 'templates.wishlist.items' | t }}</span>
+                    <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">
+                      0 {{ 'templates.wishlist.items' | t }}
+                    </span>
                   </div>
                 {%- else -%}
                   <div class="wishlist-text-count wishlist-count-bubble d-flex function-menu-item">  
                     (<div class="wishlist-icon-bubble">
                       <span class="number" aria-hidden="true">0</span>
-                      <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">0 {{ 'templates.wishlist.items' | t }}</span>
+                      <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">
+                        0 {{ 'templates.wishlist.items' | t }}
+                      </span>
                     </div>)
                   </div>
                 {%- endif -%}
               </button>
+
               <noscript>
                 <a href="{{ routes.cart_url }}" class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}">
-                  {{ icon_wishlist }}
+                  {%- if section.settings.custom_wishlist_icon_svg contains '<svg' -%}
+                    {{ section.settings.custom_wishlist_icon_svg }}
+                  {%- elsif section.settings.custom_wishlist_icon != blank -%}
+                    <img 
+                      src="{{ section.settings.custom_wishlist_icon | image_url: width: 32 }}" 
+                      alt="Wishlist"
+                      class="icon-wishlist-custom"
+                      style="width: 24px; height: 24px;"
+                    >
+                  {%- else -%}
+                    {{ icon_wishlist }}
+                  {%- endif -%}
                   <span class="visually-hidden">{{ 'templates.wishlist.wishlist' | t }}</span>
                 </a>
               </noscript>
             </side-drawer-opener>
           {%- endif -%}
+
           {%- if section.settings.enable_cart or section.settings.enable_cart_mobile -%}
             {%- if settings.cart_type == 'drawer' -%}
               <side-drawer-opener class="header__icon header__icon--cart d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none{% unless section.settings.enable_cart %} d-none-l{% endunless %}{% unless section.settings.enable_cart_mobile %} d-none-mw-l{% endunless %}" data-side-drawer="#Cart-Drawer">
@@ -967,32 +1045,67 @@
             </div>
           </div>
         </details>
+        {%- if section.settings.enable_search_mobile -%}
+          <div class="header__icon header__icon--search-mobile header__icon--search-mobile-2 d-flex a-i-center">
+            <side-drawer-opener data-side-drawer="#Drawer-Search">
+              <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset"
+                type="button"
+                aria-haspopup="dialog"
+                aria-label="{{ 'general.search.search' | t }}">
+                {{ icon_search }}
+              </button>
+            </side-drawer-opener>
+          </div>
+        {%- endif -%}
         {%- if section.settings.enable_wishlist_mobile and section.settings.mobile_logo_position == 'center' -%}
           <div class="header__icons icons-style-{{ section.settings.icon_type_style }}">
-            <side-drawer-opener class="header__icon header__icon--wishlist d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none" data-side-drawer="#Drawer-Wishlist">
-              <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden {{ section.settings.font_transform }}{% if section.settings.icon_type_style == 'default-text' %} d-flex c-gap{% endif %}" 
-                type="button" 
-                aria-haspopup="dialog" 
+            <side-drawer-opener
+              class="header__icon header__icon--wishlist d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none"
+              data-side-drawer="#Drawer-Wishlist"
+            >
+              <button
+                class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden {{ section.settings.font_transform }}{% if section.settings.icon_type_style == 'default-text' %} d-flex c-gap{% endif %}"
+                type="button"
+                aria-haspopup="dialog"
                 aria-label="{{ 'templates.wishlist.wishlist_items' | t: count: cart.item_count }}"
                 {%- if section.settings.icon_type_style == 'default-text' %}
                   style="--c-gap: 0.3rem"
                 {% endif -%}
               >
-                {{ icon_wishlist }}
+
+                {%- comment -%} ✅ Custom wishlist icon (SVG or uploaded image) {%- endcomment -%}
+                {%- if section.settings.custom_wishlist_icon_svg contains '<svg' -%}
+                  {{ section.settings.custom_wishlist_icon_svg }}
+                {%- elsif section.settings.custom_wishlist_icon != blank -%}
+                  <img
+                    src="{{ section.settings.custom_wishlist_icon | image_url: width: 32 }}"
+                    alt="Wishlist"
+                    class="icon-wishlist-custom"
+                    style="width: 24px; height: 24px;"
+                  >
+                {%- else -%}
+                  {{ icon_wishlist }}
+                {%- endif -%}
+
                 {%- if section.settings.icon_type_style != 'default-text' -%}
                   <div class="wishlist-count-bubble l-h-1 pos-absolute b-circle d-flex j-c-center a-i-center">
                     <span class="number" aria-hidden="true">0</span>
-                    <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">0 {{ 'templates.wishlist.items' | t }}</span>
+                    <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">
+                      0 {{ 'templates.wishlist.items' | t }}
+                    </span>
                   </div>
                 {%- else -%}
-                  <div class="wishlist-text-count wishlist-count-bubble d-flex function-menu-item">  
+                  <div class="wishlist-text-count wishlist-count-bubble d-flex function-menu-item">
                     (<div class="wishlist-icon-bubble">
                       <span class="number" aria-hidden="true">0</span>
-                      <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">0 {{ 'templates.wishlist.items' | t }}</span>
+                      <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">
+                        0 {{ 'templates.wishlist.items' | t }}
+                      </span>
                     </div>)
                   </div>
                 {%- endif -%}
               </button>
+
               <noscript>
                 <a href="{{ routes.cart_url }}" class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}">
                   {{ icon_wishlist }}
@@ -1002,6 +1115,7 @@
             </side-drawer-opener>
           </div>
         {%- endif -%}
+
       </header-drawer>
     {%- endif -%}
     {%- if section.settings.logo_position != 'middle-center' -%}
@@ -1206,7 +1320,9 @@
     {%- endif -%}
     {%- if section.settings.menu != blank -%}
       <nav class="{% if section.settings.use_wide_search == true %}inline-wide-menu {% endif %}header__inline-menu d-none d-block-lg{% unless section.settings.logo_position == 'middle-center' %} {{ section.settings.menu_alignment_desktop }}{% endunless %} {{ section.settings.font_transform }}">
-        <ul class="list-menu list-menu--inline d-inline-flex f-wrap list-unstyled left g-gap" role="list" style="--g-gap: {{ section.settings.spacing_gap }}px; --m-t: calc(var(--padding-bottom) * 1);">
+        <ul class="list-menu list-menu--inline d-inline-flex f-wrap list-unstyled left g-gap"
+          role="list"
+          style="--g-gap: {{ section.settings.spacing_gap }}px; --m-t: calc(var(--padding-bottom) * 1);">
           {%- for link in section.settings.menu.links -%}
             {%- liquid
               assign megamenu_1 = section.blocks | where: "type", "mega_menu_1"
@@ -1440,7 +1556,7 @@
                   {%- assign index = forloop.index -%}
                   <header-menu id="Details-HeaderMenu-{{ forloop.index }}" class="dropdown-menu pos-relative">
                     <a href="{{ link.url }}" class="header__menu-item menu-lv-1 link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset d-flex a-i-center c-pointer pos-relative"{% if link.current %} aria-current="page"{% endif %}>
-                      <span class="link-style">{{ link.title | escape }}</span>
+                      <span class="link-style">Shop Sofas</span>
                     </a>
                     <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu gradient motion-reduce global-settings-popup list-unstyled pos-absolute m-t rounded {{ section.settings.menu_transform }}" role="list" tabindex="-1">
                       {%- for childlink in link.links -%}
@@ -1470,11 +1586,11 @@
                       {%- endfor -%}
                     </ul>
                   </header-menu>
-                {%- else -%}
-                  <a href="{{ link.url }}" class="header__menu-item menu-lv-1 d-flex a-i-center c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset"{% if link.current %} aria-current="page"{% endif %}>
-                    <span class="link-style">{{ link.title | escape }}</span>
-                  </a>
-                {%- endif -%}
+                  {%- elsif link.title == "Custom Sofas" -%}
+                    <a href="{{ link.url }}" class="header__menu-item menu-lv-1 d-flex a-i-center c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                      <span class="link-style">{{ link.title | escape }}</span>
+                    </a>
+                  {%- endif -%}
               </li>
             {%- endif -%}
           {%- endfor -%}
@@ -1549,6 +1665,9 @@
                 position: relative;
                 display: inline-block;
                 padding-top: 9px;
+              }
+              .header__submenu .icon {
+                color: black !important;
               }
               .dropdown-button {
                 display: flex;
@@ -1782,26 +1901,63 @@
               </a>
           </div>
         {%- endif -%}
-        {%- if section.settings.enable_search or section.settings.enable_search_mobile -%}
-          <side-drawer-opener class="header__icon header__icon--search d-flex j-c-center a-i-center p-0 u-none color-foreground f-a-none{% unless section.settings.enable_search %} d-none-l{% endunless %}{% unless section.settings.enable_search_mobile %} d-none-mw-l{% endunless %}" data-side-drawer="#Drawer-Search">
-            <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden{% if section.settings.icon_type_style == 'default-text' %} u-none link {{ section.settings.link_type | prepend: "link--style-" }}{% endif %} {{ section.settings.font_transform }}" type="button" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">{{ icon_search }}</button>
-            <noscript>
-              <a href="{{ routes.search_url }}" class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}">
-                {{ icon_search }}
-                <span class="visually-hidden">{{ 'general.search.search' | t }}</span>
-              </a>
-            </noscript>
+        {% if section.settings.enable_search %}
+          <side-drawer-opener class="header__icon header__icon--search-desktop d-flex j-c-center a-i-center p-0 u-none color-foreground f-a-none d-none-mw-l" data-side-drawer="#Drawer-Search">
+            <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden"
+              type="button" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">
+              {{ icon_search }}
+            </button>
           </side-drawer-opener>
-        {%- endif -%}
+        {% endif %}
         {%- if section.settings.enable_account or section.settings.enable_account_mobile -%}
           {%- if shop.customer_accounts_enabled -%}
-            <side-drawer-opener class="header__icon header__icon--account d-flex j-c-center a-i-center p-0 u-none color-foreground f-a-none{% unless section.settings.enable_account %} d-none-l{% endunless %}{% unless section.settings.enable_account_mobile %} d-none-mw-md{% endunless %}" data-side-drawer="#Drawer-Account">
-              <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden{% if section.settings.icon_type_style == 'default-text' %} u-none link {{ section.settings.link_type | prepend: "link--style-" }}{% endif %} {{ section.settings.font_transform }}" type="button" aria-haspopup="dialog" aria-label="{% if customer %}{{ 'customer.account_fallback' | t }}{% else %}{% if section.settings.icon_type_style == 'default-text' %}{{ 'customer.account.title' | t }}{% else %}{{ 'customer.log_in' | t }}{% endif %}{% endif %}">
-                {{ icon_account }}
-              </button>
-              <noscript>
-                <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}">
+            <side-drawer-opener 
+              class="header__icon header__icon--account d-flex j-c-center a-i-center p-0 u-none color-foreground f-a-none
+              {% unless section.settings.enable_account %} d-none-l{% endunless %}
+              {% unless section.settings.enable_account_mobile %} d-none-mw-md{% endunless %}" 
+              data-side-drawer="#Drawer-Account"
+            >
+              <button 
+                class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden
+                {% if section.settings.icon_type_style == 'default-text' %}
+                  u-none link {{ section.settings.link_type | prepend: 'link--style-' }}
+                {% endif %} 
+                {{ section.settings.font_transform }}" 
+                type="button" 
+                aria-haspopup="dialog" 
+                aria-label="{% if customer %}{{ 'customer.account_fallback' | t }}{% else %}{% if section.settings.icon_type_style == 'default-text' %}{{ 'customer.account.title' | t }}{% else %}{{ 'customer.log_in' | t }}{% endif %}{% endif %}"
+              >
+                {%- if section.settings.custom_account_icon_svg contains '<svg' -%}
+                  {{ section.settings.custom_account_icon_svg }}
+                {%- elsif section.settings.custom_account_icon != blank -%}
+                  <img 
+                    src="{{ section.settings.custom_account_icon | image_url: width: 32 }}" 
+                    alt="Account" 
+                    class="icon-account-custom"
+                    style="width: 24px; height: 24px;"
+                  >
+                {%- else -%}
                   {{ icon_account }}
+                {%- endif -%}
+              </button>
+
+              <noscript>
+                <a 
+                  href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" 
+                  class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}"
+                >
+                  {%- if section.settings.custom_account_icon_svg contains '<svg' -%}
+                    {{ section.settings.custom_account_icon_svg }}
+                  {%- elsif section.settings.custom_account_icon != blank -%}
+                    <img 
+                      src="{{ section.settings.custom_account_icon | image_url: width: 32 }}" 
+                      alt="Account"
+                      class="icon-account-custom"
+                      style="width: 24px; height: 24px;"
+                    >
+                  {%- else -%}
+                    {{ icon_account }}
+                  {%- endif -%}
                   <span class="visually-hidden">
                     {%- liquid
                       if customer
@@ -1820,39 +1976,78 @@
             </side-drawer-opener>
           {%- endif -%}
         {%- endif -%}
+
         {%- if section.settings.enable_wishlist or section.settings.enable_wishlist_mobile -%}
-          <side-drawer-opener class="header__icon header__icon--wishlist{% if section.settings.enable_wishlist_mobile and section.settings.mobile_logo_position == 'center' %} d-none-xs{% endif %} d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none{% unless section.settings.enable_wishlist %} d-none-md{% endunless %}{% unless section.settings.enable_wishlist_mobile %} d-none-xs{% endunless %}" data-side-drawer="#Drawer-Wishlist">
-            <button class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden{% if section.settings.icon_type_style == 'default-text' %} u-none link {{ section.settings.link_type | prepend: "link--style-" }}{% endif %} {{ section.settings.font_transform }}{% if section.settings.icon_type_style == 'default-text' %} d-flex c-gap{% endif %}" 
+          <side-drawer-opener 
+            class="header__icon header__icon--wishlist d-flex j-c-center a-i-center p-0 pos-relative u-none color-foreground f-a-none
+            {% unless section.settings.enable_wishlist %} d-none-md{% endunless %}
+            {% unless section.settings.enable_wishlist_mobile %} d-none-xs{% endunless %}" 
+            data-side-drawer="#Drawer-Wishlist"
+          >
+            <button 
+              class="t-button b-none c-pointer p-0 color-foreground bg-transparent focus-inset no-js-hidden 
+              {{ section.settings.font_transform }}
+              {% if section.settings.icon_type_style == 'default-text' %} d-flex c-gap{% endif %}" 
               type="button" 
               aria-haspopup="dialog" 
               aria-label="{{ 'templates.wishlist.wishlist_items' | t: count: cart.item_count }}"
-              {%- if section.settings.icon_type_style == 'default-text' %}
+              {%- if section.settings.icon_type_style == 'default-text' -%}
                 style="--c-gap: 0.3rem"
-              {% endif -%}
+              {%- endif -%}
             >
-              {{ icon_wishlist }}
+
+              {%- if section.settings.custom_wishlist_icon_svg != blank and section.settings.custom_wishlist_icon_svg contains '<svg' -%}
+                {{ section.settings.custom_wishlist_icon_svg }}
+              {%- elsif section.settings.custom_wishlist_icon != blank -%}
+                <img 
+                  src="{{ section.settings.custom_wishlist_icon | image_url: width: 32 }}" 
+                  alt="Wishlist"
+                  class="icon-wishlist-custom"
+                  style="width: 24px; height: 24px; object-fit: contain;"
+                >
+              {%- else -%}
+                {{ icon_wishlist }}
+              {%- endif -%}
+
               {%- if section.settings.icon_type_style != 'default-text' -%}
                 <div class="wishlist-count-bubble l-h-1 pos-absolute b-circle d-flex j-c-center a-i-center">
                   <span class="number" aria-hidden="true">0</span>
-                  <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">0 {{ 'templates.wishlist.items' | t }}</span>
+                  <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">
+                    0 {{ 'templates.wishlist.items' | t }}
+                  </span>
                 </div>
               {%- else -%}
                 <div class="wishlist-text-count wishlist-count-bubble d-flex function-menu-item">  
                   (<div class="wishlist-icon-bubble">
                     <span class="number" aria-hidden="true">0</span>
-                    <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">0 {{ 'templates.wishlist.items' | t }}</span>
+                    <span class="visually-hidden" data-text="{{ 'templates.wishlist.items' | t }}">
+                      0 {{ 'templates.wishlist.items' | t }}
+                    </span>
                   </div>)
                 </div>
               {%- endif -%}
             </button>
+
             <noscript>
               <a href="{{ routes.cart_url }}" class="link u-none color-foreground focus-inset {{ section.settings.font_transform }}">
-                {{ icon_wishlist }}
+                {%- if section.settings.custom_wishlist_icon_svg != blank and section.settings.custom_wishlist_icon_svg contains '<svg' -%}
+                  {{ section.settings.custom_wishlist_icon_svg }}
+                {%- elsif section.settings.custom_wishlist_icon != blank -%}
+                  <img 
+                    src="{{ section.settings.custom_wishlist_icon | image_url: width: 32 }}" 
+                    alt="Wishlist"
+                    class="icon-wishlist-custom"
+                    style="width: 24px; height: 24px; object-fit: contain;"
+                  >
+                {%- else -%}
+                  {{ icon_wishlist }}
+                {%- endif -%}
                 <span class="visually-hidden">{{ 'templates.wishlist.wishlist' | t }}</span>
               </a>
             </noscript>
           </side-drawer-opener>
         {%- endif -%}
+
 
         {%- if section.settings.use_country_selector -%}
           {%- if section.settings.country_selector_position == "right" -%}
@@ -2004,6 +2199,25 @@
                 }
                 .wide-search-container-fix {
                   min-width: 0vw;
+                }
+              }
+              @media screen and (max-width: 767px) {
+                .header__icon--menu { order: 1; }
+                .header__icon--search-mobile { order: 2; margin-left: 8px; }
+                .header__heading { order: 3; }
+                .header__icons { order: 4; }
+                .header__icon--search-mobile {margin-top: 5px !important}
+
+                /* Hide the original search on mobile */
+                .header__icons .header__icon--search:not(.header__icon--search-mobile) {
+                  display: none !important;
+                }
+                .header__icon .icon {margin-top: 5px}
+              }
+              
+              @media screen and (min-width: 768px) {
+                .header__icon--search-mobile {
+                  display: none !important;
                 }
               }
             </style>
@@ -2193,6 +2407,32 @@
     "default": "classic",
     "label": "t:settings_schema.layout.name__2",
     "info": "Special style applies to the homepage: 'Beauty Blossom' for the specific logo position. When using this style, you cannot move the logo position."
+  },
+  {
+    "type": "image_picker",
+    "id": "custom_account_icon",
+    "label": "Custom Account Icon (optional)"
+  },
+  {
+    "type": "textarea",
+    "id": "custom_account_icon_svg",
+    "label": "Custom Account Icon SVG (optional)",
+    "info": "Paste inline SVG markup here if you prefer a vector icon instead of an image."
+  },
+  {
+    "type": "header",
+    "content": "Wishlist Icon Customization"
+  },
+  {
+    "type": "image_picker",
+    "id": "custom_wishlist_icon",
+    "label": "Upload Wishlist Icon (PNG or SVG)"
+  },
+  {
+    "type": "textarea",
+    "id": "custom_wishlist_icon_svg",
+    "label": "Paste Custom Wishlist Icon SVG",
+    "info": "Paste your SVG code here if you want to override the uploaded image."
   },
   {
     "type": "checkbox",

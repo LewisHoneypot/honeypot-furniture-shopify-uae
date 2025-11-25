@@ -1,0 +1,181 @@
+{% comment %} <section
+  class="category-strip pos-relative w-100 o-h"
+  style="--padding-top: {{ section.settings.padding_top }}px;
+         --padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="category-strip__wrapper d-flex f-wrap w-100">
+    {% for block in section.blocks %}
+      <div class="category-strip__item flex-1 pos-relative o-h" style="width: 25%; flex: 1 1 25%;">
+        {% if block.settings.image != blank %}
+          <a href="{{ block.settings.link }}" class="d-block pos-relative w-100 h-100">
+            <img
+              src="{{ block.settings.image | image_url: width: 1200 }}"
+              alt="{{ block.settings.title | escape }}"
+              class="w-100 h-100 object-cover"
+              loading="lazy"
+            >
+
+            <!-- Dark overlay for readability -->
+            <div class="category-strip__overlay pos-absolute top-0 left-0 w-100 h-100" 
+                 style="background: rgba(0,0,0,0.25); transition: background 0.3s ease;"></div>
+
+            <!-- Text and arrow -->
+            <div class="category-strip__content pos-absolute bottom-0 left-0 w-100 z-index-2 d-flex j-c-between a-i-end p-4">
+              <h3 class="m-0 f-bold" 
+                  style="text-transform: uppercase; font-size: 1.25rem; color: white;">
+                {{ block.settings.title }}
+              </h3>
+              <span class="category-strip__arrow" 
+                    style="color: white; font-size: 1.5rem; display: inline-block; transform: rotate(315deg);">
+                →
+              </span>
+            </div>
+          </a>
+        {% else %}
+          <div class="bg-color-foreground-subdued d-flex a-i-center j-c-center" style="aspect-ratio: 1 / 1;">
+            <span class="color-background-subdued">Add image</span>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section> {% endcomment %}
+
+<section
+  class="category-strip pos-relative w-100 o-h"
+  style="--padding-top: {{ section.settings.padding_top }}px;
+         --padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="category-strip__wrapper swiper w-100">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="category-strip__item swiper-slide pos-relative o-h">
+          {% if block.settings.image != blank %}
+            <a href="{{ block.settings.link }}" class="d-block pos-relative w-100 h-100">
+              <img
+                src="{{ block.settings.image | image_url: width: 1200 }}"
+                alt="{{ block.settings.title | escape }}"
+                class="w-100 h-100 object-cover"
+                loading="lazy"
+              >
+
+              <div class="category-strip__overlay pos-absolute top-0 left-0 w-100 h-100" 
+                   style="background: rgba(0,0,0,0.25); transition: background 0.3s ease;"></div>
+
+              <div class="category-strip__content pos-absolute bottom-0 left-0 w-100 z-index-2 d-flex j-c-between a-i-end p-4">
+                <h3 class="m-0 f-bold" 
+                    style="text-transform: uppercase; font-size: 1.25rem; color: white;">
+                  {{ block.settings.title }}
+                </h3>
+                <span class="category-strip__arrow" 
+                      style="color: white; font-size: 1.5rem; display: inline-block; transform: rotate(315deg);">
+                  →
+                </span>
+              </div>
+            </a>
+          {% else %}
+            <div class="bg-color-foreground-subdued d-flex a-i-center j-c-center" style="aspect-ratio: 1 / 1;">
+              <span class="color-background-subdued">Add image</span>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Swiper pagination and nav -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Category Strip (4 Images)",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Strip (4 Images)",
+      "category": "Custom",
+      "blocks": [
+        { "type": "image_block", "settings": { "title": "All Sofas" } },
+        { "type": "image_block", "settings": { "title": "Custom Sofas" } },
+        { "type": "image_block", "settings": { "title": "Best Sellers" } },
+        { "type": "image_block", "settings": { "title": "Delivered Tomorrow" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const swiperEl = document.querySelector(".category-strip__wrapper");
+
+    if (swiperEl && typeof Swiper !== "undefined") {
+      new Swiper(swiperEl, {
+        slidesPerView: 1.2,
+        spaceBetween: 0,
+        loop: true,
+        pagination: false, // ✅ disable dots
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+              0: { slidesPerView: 1.2 },       // mobile
+    768: { slidesPerView: 1.2 },     // tablet
+    1024: { slidesPerView: 4 },    // desktop
+
+              },
+      });
+    } else {
+      console.warn("Swiper not found or element missing");
+    }
+  });
+</script>
