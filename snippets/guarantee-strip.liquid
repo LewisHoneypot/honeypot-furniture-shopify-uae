@@ -1,0 +1,67 @@
+<section class="guarantee-strip-section color-background gradient">
+  <div class="guarantee-marquee">
+    <div class="guarantee-track">
+      <span>{{ text_1 }}</span>
+      <span>{{ text_2 }}</span>
+      <span>{{ text_3 }}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+.guarantee-strip-section {
+  background-color: #d9d9d9;
+  padding: 20px 0;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  overflow: hidden;
+}
+
+/* Marquee container */
+.guarantee-marquee {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Moving track */
+.guarantee-track {
+    display: flex;
+justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+  animation: scrollMarquee 20s linear infinite;
+}
+
+/* Text styling */
+.guarantee-track span {
+  font-size: 1.1rem;
+  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+{% comment %} /* Animation - right to left */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .guarantee-track {
+    gap: 2rem;
+    animation-duration: 14s;
+  }
+
+  .guarantee-track span {
+    font-size: 1rem;
+  }
+} {% endcomment %}
+</style>

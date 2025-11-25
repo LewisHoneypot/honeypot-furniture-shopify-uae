@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "af56dcf8-8a72-482f-b12b-b4ef33768eeb": {
+      "type": "map",
+      "settings": {
+        "map_address": "Warehouse 10, MAG Logistic Park - Maleha St - Warehouses Land - Sharjah - United Arab Emirates",
+        "section_width": "full-width",
+        "customize_width": 1800,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "section_width": "customized-width",
+        "customize_width": 1400,
+        "padding_top": 4,
+        "padding_bottom": 36,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "d1c5ec7d-2c7a-4649-a40a-563193a66463": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Please Do Get In Touch!</p>",
+            "show_line_separator": true,
+            "padding_top": 0,
+            "padding_bottom": 25
+          }
+        },
+        "13f481e9-b58f-4365-9135-6e1c09456cd0": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our friendly team are available online, in store or over the phone to help with any questions you may have.</p>",
+            "padding_top": 32,
+            "padding_bottom": 10
+          }
+        },
+        "6590b1b0-227d-4fcc-9983-ab8aa8ae9b41": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Opening hours:</strong></p><p>Monday to Friday: 9am - 5pm</p><p>Saturday: 10am - 3pm</p>",
+            "padding_top": 10,
+            "padding_bottom": 10
+          }
+        },
+        "7eb523e0-fbfa-4d9b-90d1-038ce283339f": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Email: Hello@honeypotfurniture.ae</p>",
+            "padding_top": 10,
+            "padding_bottom": 10
+          }
+        },
+        "d01a6557-5884-4263-a2ef-8a5cb59815aa": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Warehouse:</strong></p><p>Warehouse 10, MAG Logistic Park</p><p> Maleha St - Warehouses Land</p><p>Sharjah - United Arab Emirates</p>",
+            "padding_top": 10,
+            "padding_bottom": 10
+          }
+        }
+      },
+      "block_order": [
+        "d1c5ec7d-2c7a-4649-a40a-563193a66463",
+        "13f481e9-b58f-4365-9135-6e1c09456cd0",
+        "6590b1b0-227d-4fcc-9983-ab8aa8ae9b41",
+        "7eb523e0-fbfa-4d9b-90d1-038ce283339f",
+        "d01a6557-5884-4263-a2ef-8a5cb59815aa"
+      ],
+      "settings": {
+        "section_width": "customized-width",
+        "customize_width": 1400,
+        "heading": "",
+        "color_scheme": "accent-2",
+        "padding_top": 0,
+        "padding_bottom": 30,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 30
+      }
+    }
+  },
+  "order": [
+    "af56dcf8-8a72-482f-b12b-b4ef33768eeb",
+    "main",
+    "form"
+  ]
+}

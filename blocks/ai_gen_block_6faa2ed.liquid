@@ -1,0 +1,467 @@
+{% doc %}
+  @prompt
+    Large Text Filled with an image, Add the option to change the background colour for the block
+, Now make it two columns. Leave the Text content on the left and in the right add a product card
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .two-column-block-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: {{ block.settings.columns_gap }}px;
+    padding: {{ block.settings.padding }}px;background-color: {{ block.settings.background_color }};
+  }
+
+  .image-text-column-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    justify-content: {{ block.settings.text_alignment }};
+  }
+
+  .product-column-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-text-content-{{ ai_gen_id }} {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  .image-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: cover;
+    background-position: center;
+    {% if block.settings.image %}
+      background-image: url({{ block.settings.image | image_url }});
+    {% else %}
+      background-color: {{ block.settings.fallback_color }};
+    {% endif %}text-transform: {{ block.settings.text_transform }};
+  }
+
+  .image-text-outline-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    -webkit-text-stroke: {{ block.settings.outline_width }}px {{ block.settings.outline_color }};
+    color: transparent;
+    text-transform: {{ block.settings.text_transform }};
+    z-index: -1;
+  }
+
+  .product-card-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 400px;
+    border-radius: {{ block.settings.product_card_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: {{ block.settings.product_card_bg_color }};
+  }
+
+  .product-image-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+  }
+
+  .product-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-image-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;}
+
+  .product-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+  }
+
+  .product-info-{{ ai_gen_id }} {
+    padding: 20px;
+  }
+
+  .product-title-{{ ai_gen_id }} {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ block.settings.product_text_color }};
+  }
+
+  .product-price-{{ ai_gen_id }} {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: {{ block.settings.product_text_color }};
+  }
+
+  .product-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: {{ block.settings.product_button_color }};
+    color: {{ block.settings.product_button_text_color }};
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .product-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.product_button_hover_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .two-column-block-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .image-text-column-{{ ai_gen_id }},
+    .product-column-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .image-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size_mobile }}px;
+    }
+    .image-text-outline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="two-column-block-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="image-text-column-{{ ai_gen_id }}">
+    <div class="image-text-content-{{ ai_gen_id }}">
+      <h2 class="image-text-{{ ai_gen_id }}">{{ block.settings.text }}</h2>
+      {% if block.settings.show_outline %}
+        <h2 class="image-text-outline-{{ ai_gen_id }}">{{ block.settings.text }}</h2>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="product-column-{{ ai_gen_id }}">
+    <a href="products/{{ block.settings.product }}" style="text-decoration: none;">
+      <div class="product-card-{{ ai_gen_id }}">
+        <div class="product-image-container-{{ ai_gen_id }}">
+          {% if block.settings.product.featured_image %}
+            <img 
+              src="{{ block.settings.product.featured_image | image_url: width: 500 }}" 
+              alt="{{ block.settings.product.featured_image.alt | escape }}"
+              class="product-image-{{ ai_gen_id }}"
+              loading="lazy"
+              width="500"
+              height="500"
+            >
+          {% else %}
+            <div class="product-image-placeholder-{{ ai_gen_id }}">
+              {{ 'product-apparel-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="product-info-{{ ai_gen_id }}">
+          <h3 class="product-title-{{ ai_gen_id }}">
+            {% if block.settings.product.title %}
+              {{ block.settings.product.title }}
+            {% else %}
+              Product Title
+            {% endif %}
+          </h3>
+          <div class="product-price-{{ ai_gen_id }}">
+            {% if block.settings.product.price %}
+              {{ block.settings.product.price | money }}
+            {% else %}
+              $0.00
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Text & Product",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Columns gap",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "AMAZING"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fill image"
+    },
+    {
+      "type": "color",
+      "id": "fallback_color",
+      "label": "Fallback color (if no image)",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Text Style"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 40,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Font size (desktop)",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Font size (mobile)",
+      "default": 60
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        },
+        {
+          "value": "900",
+          "label": "Black"
+        }
+      ],
+      "default": "800"
+    },
+    {
+      "type": "header",
+      "content": "Outline Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_outline",
+      "label": "Show text outline",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "outline_width",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Outline width",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "outline_color",
+      "label": "Outline color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "color",
+      "id": "product_card_bg_color",
+      "label": "Card background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "product_text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "product_card_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "product_button_text",
+      "label": "Button text",
+      "default": "View Product"
+    },
+    {
+      "type": "color",
+      "id": "product_button_color",
+      "label": "Button color",
+      "default": "#000f9f"
+    },
+    {
+      "type": "color",
+      "id": "product_button_hover_color",
+      "label": "Button hover color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text & Product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,259 @@
+<script>
+  // console.log({{ product.metafields.custom | json }});
+  // console.log({{ product.metafields.custom.cylindo_parent | json | upcase }});
+  // console.log({{ product.metafields.Details.Colour | json | upcase }});
+
+  let colour = {{ product.metafields.Details.Colour | json | upcase }};
+</script>
+
+<!-- Upholstery Selectors -->
+{% comment %}
+  <select name="UPHOLSTERY">
+    <option value="BEIGE">Beige</option>
+    <option value="BLUE">Blue</option>
+    <option value="DARK GREY">Dark Grey</option>
+    <option value="GREEN">Green</option>
+    <option value="LIGHT GREY">Light Grey</option>
+    <option value="NATURAL">Natural</option>
+    <option value="STONE">Stone</option>
+  </select>
+{% endcomment %}
+
+{%- if template contains '360' -%}
+  {%- assign product_code = product.metafields.custom.cylindo_parent | upcase -%}
+{%- else -%}
+  {%- assign product_code = 'Lavender-Sofa-3-Seater' -%}
+{%- endif -%}
+
+<!-- Cylindo Viewer -->
+<cylindo-viewer
+  slot="placeholder"
+  customer-id="6981"
+  code="{{ product_code }}"
+>
+  {%- if template contains '360' -%}
+    <cylindo-360></cylindo-360>
+    <cylindo-360-frame frame="4"></cylindo-360-frame>
+    <cylindo-360-frame frame="9"></cylindo-360-frame>
+    <cylindo-360-frame frame="13"></cylindo-360-frame>
+    <cylindo-360-frame frame="17"></cylindo-360-frame>
+  {%- endif -%}
+
+  {%- for media in product.media -%}
+    {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+      {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+
+      <cylindo-custom-content
+        slot="Picture(0{{ media_position }})"
+        thumbnail-src="{{ media.src | image_url: width: 50, height: 50, crop: 'center' }}"
+        class="cylindo-custom-content"
+      >
+        <img
+          src="{{ media | image_url: width: 1500 }}"
+          alt="{{ media.alt | escape }}"
+          height="1500"
+          width="1500"
+        >
+      </cylindo-custom-content>
+    {%- endunless -%}
+  {%- endfor -%}
+
+  <cylindo-thumbnail-bar></cylindo-thumbnail-bar>
+</cylindo-viewer>
+
+<script>
+  customElements.whenDefined('cylindo-viewer').then(() => {
+    const viewer = document.querySelector('cylindo-viewer');
+    const upholsterySelect = document.querySelector("select[name='UPHOLSTERY']");
+
+    // Fix layout
+    const tryFixViewerLayout = () => {
+      const shadowRoot = viewer.shadowRoot;
+      if (!shadowRoot) return;
+
+      const rootDiv = shadowRoot.querySelector('.root.inactive');
+      if (rootDiv) {
+        rootDiv.classList.remove('inactive');
+        rootDiv.style.width = '100%';
+        rootDiv.style.height = '100%';
+        // console.log("✅ Viewer layout fixed.");
+      }
+    };
+
+    setTimeout(tryFixViewerLayout, 1000);
+
+    viewer.features = {
+      UPHOLSTERY: colour,
+    };
+
+    // Event listener for manual or simulated dropdown changes
+    // upholsterySelect.addEventListener('change', (event) => {
+    //   const value = event.target.value;
+    //   viewer.features = {
+    //     UPHOLSTERY: value,
+    //   };
+      // console.log(`🎨 Feature updated: UPHOLSTERY = ${value}`);
+    // });
+
+    viewer.addEventListener('viewer-ready', () => {
+      // console.log("🟢 Viewer is ready.");
+
+      // Delay before applying initial feature to ensure internal state is ready
+      setTimeout(() => {
+        // Trigger change manually (simulate user interaction)
+        upholsterySelect.dispatchEvent(new Event('input', { bubbles: true }));
+        upholsterySelect.dispatchEvent(new Event('change', { bubbles: true }));
+      }, 1000); // <-- Delay increased to ensure viewer is 100% ready
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const waitForViewer = async () => {
+      // console.log('🕓 Waiting for cylindo-360 definition...');
+      await customElements.whenDefined('cylindo-360');
+      // console.log('✅ cylindo-360 defined.');
+      const viewer = document.querySelector('cylindo-viewer');
+      if (!viewer) {
+        // console.warn('❌ cylindo-viewer not found');
+        return;
+      }
+      // console.log('✅ cylindo-viewer found:', viewer);
+
+      // ✅ Apply `position: relative` to .container-fluid
+      const containerFluid = document.querySelector('.product__media-wrapper .container-fluid');
+      if (containerFluid) {
+        // console.log('🎯 .container-fluid found:', containerFluid);
+        // console.log('🔍 Current computed position:', getComputedStyle(containerFluid).position);
+        containerFluid.style.position = 'relative';
+        // console.log('✅ Applied position: relative');
+        // console.log('🧪 New inline style:', containerFluid.getAttribute('style'));
+      } else {
+        // console.warn('⚠️ .container-fluid not found');
+      }
+
+      const deepQuerySelectorAll = (root, selector) => {
+        const results = [];
+
+        const search = (node) => {
+          if (!node) return;
+          if (node.shadowRoot) {
+            node.shadowRoot.querySelectorAll(selector).forEach((el) => results.push(el));
+            node.shadowRoot.querySelectorAll('*').forEach(search);
+          }
+          node.querySelectorAll?.('*')?.forEach(search);
+        };
+
+        search(root);
+        return results;
+      };
+
+      const applyObjectFit = (root, label) => {
+        const imgs = root.querySelectorAll('img');
+        imgs.forEach((img) => {
+          img.style.objectFit = 'cover';
+        });
+      };
+
+      const applyBrightnessFilterToUncontained = () => {
+        const items = deepQuerySelectorAll(viewer, '.cylindo-thumbnail-inner-item:not(.contained)');
+
+        items.forEach((item) => {
+          item.style.filter = 'brightness(96%)';
+        });
+      };
+
+      const observe360Viewer = () => {
+        const threeSixty = viewer.shadowRoot?.querySelector('cylindo-three-sixty');
+
+        if (!threeSixty || !threeSixty.shadowRoot) {
+          console.info('ℹ️ Skipping 360 viewer observer: cylindo-three-sixty not found.');
+          return;
+        }
+
+        applyObjectFit(threeSixty.shadowRoot, '360-view');
+
+        const observer = new MutationObserver(() => {
+          applyObjectFit(threeSixty.shadowRoot, '360-view');
+          applyBrightnessFilterToUncontained();
+        });
+
+        observer.observe(threeSixty.shadowRoot, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+        });
+      };
+
+      const observeFrameImages = () => {
+        const checkFrames = () => {
+          const contentArea = viewer.shadowRoot?.querySelector('[part="viewer-content"]');
+          if (!contentArea) return;
+
+          const frameDivs = contentArea.querySelectorAll('div');
+          frameDivs.forEach((div) => applyObjectFit(div, 'frame'));
+        };
+
+        checkFrames();
+
+        const observer = new MutationObserver(() => {
+          checkFrames();
+        });
+
+        viewer.shadowRoot &&
+          observer.observe(viewer.shadowRoot, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+          });
+      };
+
+      const waitUntilReady = setInterval(() => {
+        if (viewer.shadowRoot?.querySelector('[part="viewer-content"]')) {
+          clearInterval(waitUntilReady);
+          observe360Viewer();
+          observeFrameImages();
+
+          // Hide the Full screen button
+          const fullscreenBtn = viewer.shadowRoot.querySelector('[aria-label="Full screen"]');
+          if (fullscreenBtn) {
+            fullscreenBtn.style.display = 'none';
+          }
+
+          // 🔴 Apply border styling once viewer is ready
+          applyBrightnessFilterToUncontained();
+        }
+      }, 200);
+
+      const waitUntilReady2 = setInterval(() => {
+        if (viewer.shadowRoot?.querySelector('[part="viewer-content"]')) {
+          clearInterval(waitUntilReady2);
+
+          // console.log('viewer available', viewer);
+
+          if (viewer) {
+            viewer.style.maxHeight = "601px";
+          }
+        }
+      }, 1000);
+    };
+
+    waitForViewer();
+  });
+</script>
+
+<style>
+  cylindo-viewer {
+    aspect-ratio: 3 / 3.74 !important;
+  }
+  @media screen and (min-width: 550px) {
+    cylindo-viewer {
+      aspect-ratio: 3 / 3.4 !important;
+      max-height: 600px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>

@@ -1,0 +1,533 @@
+{% doc %}
+  @prompt
+    Section 4: FAQs with Accordion
+Create a FAQ section with three questions displayed using an accordion-style layout. Each question should be clickable to reveal the answer. This section should be clean, responsive, and styled consistently with the rest of the page. Include a link to Tabby's help center at the bottom.
+
+🔹 Structure:
+Section Title: Frequently Asked Questions
+
+Accordion block for each of the 3 FAQs below:
+
+FAQ 1:
+Question: “Who can use Tabby?”
+
+Answer:
+“To be eligible to use Tabby, you must:
+
+Be at least 18 years of age
+
+Be a UAE resident
+
+Have a valid National ID
+
+Link a valid debit or credit card to cover Tabby payments
+
+Have a good credit history”
+
+FAQ 2:
+Question: “How much can I spend with Tabby?”
+
+Answer:
+“Your spending limit is determined by:
+
+Your payment history with Tabby
+
+Your remaining balance and unpaid Tabby orders
+
+The total purchase amount in your basket
+
+Other internal approval factors”
+
+FAQ 3:
+Question: “Is Tabby free to use?”
+
+Answer:
+“Yes! When you split purchases into 4 payments, there are no fees or interest if payments are made on time. For longer-term plans, a service fee may apply.”
+
+🔗 Help Center Link (below accordion):
+Text: Visit Tabby’s help center to find out more.
+
+Link: https://support.tabby.ai/l/en
+
+Styling: Underlined, center-aligned, brand-colored
+
+🧩 Optional Settings:
+accordion_border_style: (none / thin line / shadow)
+
+accordion_icon: (plus/minus or caret toggle)
+
+title_font_size: (range: 18–32px)
+
+section_padding_top: (0–100px)
+
+section_padding_bottom: (0–100px)
+
+link_alignment: (left / center / right)
+
+🎨 Styling Notes:
+Keep it minimal, clean, and aligned with the page theme
+
+Ensure smooth accordion transitions and accessibility (keyboard/touch friendly)
+
+Responsive on all devices: accordions collapse nicely on mobile
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-faq-accordion-{{ ai_gen_id }} {
+    padding-top: {{ block.settings.section_padding_top }}px;
+    padding-bottom: {{ block.settings.section_padding_bottom }}px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ai-faq-title-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: {{ block.settings.title_font_size }}px;
+  }
+
+  .ai-faq-item-{{ ai_gen_id }} {
+    margin-bottom: 16px;
+    overflow: hidden;
+    {% case block.settings.accordion_border_style %}
+      {% when 'thin_line' %}
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      {% when 'shadow' %}
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      {% else %}
+        border: none;
+    {% endcase %}
+    border-radius: 8px;
+  }
+
+  .ai-faq-question-{{ ai_gen_id }} {
+    position: relative;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    background-color: {{ block.settings.question_bg_color }};
+    color: {{ block.settings.question_text_color }};
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-faq-question-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.question_hover_color }};
+  }
+
+  .ai-faq-icon-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  {% if block.settings.accordion_icon == 'plus_minus' %}
+    .ai-faq-icon-{{ ai_gen_id }}::before,
+    .ai-faq-icon-{{ ai_gen_id }}::after {
+      content: '';
+      position: absolute;
+      background-color: currentColor;
+    }
+
+    .ai-faq-icon-{{ ai_gen_id }}::before {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transform: translateY(-50%);
+    }
+
+    .ai-faq-icon-{{ ai_gen_id }}::after {
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      transform: translateX(-50%);
+      transition: transform 0.3s ease;
+    }
+
+    .ai-faq-item-{{ ai_gen_id }}.active .ai-faq-icon-{{ ai_gen_id }}::after {
+      transform: translateX(-50%) scaleY(0);
+    }
+  {% else %}
+    .ai-faq-icon-{{ ai_gen_id }}::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: translate(-50%, -75%) rotate(45deg);
+      transition: transform 0.3s ease;
+    }
+
+    .ai-faq-item-{{ ai_gen_id }}.active .ai-faq-icon-{{ ai_gen_id }}::before {
+      transform: translate(-50%, -25%) rotate(-135deg);
+    }
+  {% endif %}
+
+  .ai-faq-answer-{{ ai_gen_id }} {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: {{ block.settings.answer_bg_color }};
+    color: {{ block.settings.answer_text_color }};
+  }
+
+  .ai-faq-answer-inner-{{ ai_gen_id }} {
+    padding: 0 20px 20px;
+  }
+
+  .ai-faq-answer-{{ ai_gen_id }} ul {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+
+  .ai-faq-answer-{{ ai_gen_id }} li {
+    margin-bottom: 5px;
+  }
+
+  .ai-faq-help-center-{{ ai_gen_id }} {
+    margin-top: 30px;
+    text-align: {{ block.settings.link_alignment }};
+  }
+
+  .ai-faq-help-center-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-faq-help-center-{{ ai_gen_id }} a:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 767px) {
+    .ai-faq-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_font_size | minus: 4 }}px;
+    }
+    
+    .ai-faq-question-{{ ai_gen_id }} {
+      padding: 15px;
+    }
+    
+    .ai-faq-answer-inner-{{ ai_gen_id }} {
+      padding: 0 15px 15px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-faq-accordion-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.title != blank %}
+    <h2 class="ai-faq-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+  {% endif %}
+  
+  <div class="ai-faq-items-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% assign question_key = 'question_' | append: i %}
+      {% assign answer_key = 'answer_' | append: i %}
+      
+      {% if block.settings[question_key] != blank %}
+        <div class="ai-faq-item-{{ ai_gen_id }}" data-index="{{ i }}">
+          <div class="ai-faq-question-{{ ai_gen_id }}" tabindex="0" role="button" aria-expanded="false" aria-controls="ai-faq-answer-{{ ai_gen_id }}-{{ i }}">
+            <span>{{ block.settings[question_key] }}</span>
+            <span class="ai-faq-icon-{{ ai_gen_id }}"></span>
+          </div>
+          <div id="ai-faq-answer-{{ ai_gen_id }}-{{ i }}" class="ai-faq-answer-{{ ai_gen_id }}">
+            <div class="ai-faq-answer-inner-{{ ai_gen_id }}">
+              {{ block.settings[answer_key] }}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  {% if block.settings.help_center_text != blank and block.settings.help_center_link != blank %}
+    <div class="ai-faq-help-center-{{ ai_gen_id }}">
+      <a href="{{ block.settings.help_center_link }}" target="_blank" rel="noopener">
+        {{ block.settings.help_center_text }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  (function() {
+    class FaqAccordion extends HTMLElement {
+      constructor() {
+        super();
+        this.accordionItems = this.querySelectorAll('.ai-faq-item-{{ ai_gen_id }}');
+        this.init();
+      }
+      
+      init() {
+        this.accordionItems.forEach(item => {
+          const question = item.querySelector('.ai-faq-question-{{ ai_gen_id }}');
+          const answer = item.querySelector('.ai-faq-answer-{{ ai_gen_id }}');
+          
+          question.addEventListener('click', () => this.toggleItem(item, answer, question));
+          question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.toggleItem(item, answer, question);
+            }
+          });
+        });
+      }
+      
+      toggleItem(item, answer, question) {
+        const isActive = item.classList.contains('active');
+        
+        // Close all items
+        this.accordionItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            const otherAnswer = otherItem.querySelector('.ai-faq-answer-{{ ai_gen_id }}');
+            const otherQuestion = otherItem.querySelector('.ai-faq-question-{{ ai_gen_id }}');
+            otherItem.classList.remove('active');
+            otherAnswer.style.maxHeight = '0';
+            otherQuestion.setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          answer.style.maxHeight = '0';
+          question.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          question.setAttribute('aria-expanded', 'true');
+        }
+      }
+    }
+    
+    customElements.define('faq-accordion-{{ ai_gen_id }}', FaqAccordion);
+    
+    const accordionElement = document.querySelector('.ai-faq-accordion-{{ ai_gen_id }}');
+    if (accordionElement && !customElements.get('faq-accordion-{{ ai_gen_id }}')) {
+      new FaqAccordion();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "header",
+      "content": "FAQ 1"
+    },
+    {
+      "type": "text",
+      "id": "question_1",
+      "label": "Question",
+      "default": "Who can use Tabby?"
+    },
+    {
+      "type": "richtext",
+      "id": "answer_1",
+      "label": "Answer",
+      "default": "<p>To be eligible to use Tabby, you must:</p><ul><li>Be at least 18 years of age</li><li>Be a UAE resident</li><li>Have a valid National ID</li><li>Link a valid debit or credit card to cover Tabby payments</li><li>Have a good credit history</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "FAQ 2"
+    },
+    {
+      "type": "text",
+      "id": "question_2",
+      "label": "Question",
+      "default": "How much can I spend with Tabby?"
+    },
+    {
+      "type": "richtext",
+      "id": "answer_2",
+      "label": "Answer",
+      "default": "<p>Your spending limit is determined by:</p><ul><li>Your payment history with Tabby</li><li>Your remaining balance and unpaid Tabby orders</li><li>The total purchase amount in your basket</li><li>Other internal approval factors</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "FAQ 3"
+    },
+    {
+      "type": "text",
+      "id": "question_3",
+      "label": "Question",
+      "default": "Is Tabby free to use?"
+    },
+    {
+      "type": "richtext",
+      "id": "answer_3",
+      "label": "Answer",
+      "default": "<p>Yes! When you split purchases into 4 payments, there are no fees or interest if payments are made on time. For longer-term plans, a service fee may apply.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Help Center Link"
+    },
+    {
+      "type": "text",
+      "id": "help_center_text",
+      "label": "Help center text",
+      "default": "Visit Tabby's help center to find out more."
+    },
+    {
+      "type": "url",
+      "id": "help_center_link",
+      "label": "Help center URL"
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "select",
+      "id": "accordion_border_style",
+      "label": "Accordion border style",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "thin_line",
+          "label": "Thin line"
+        },
+        {
+          "value": "shadow",
+          "label": "Shadow"
+        }
+      ],
+      "default": "thin_line"
+    },
+    {
+      "type": "select",
+      "id": "accordion_icon",
+      "label": "Accordion icon",
+      "options": [
+        {
+          "value": "plus_minus",
+          "label": "Plus/Minus"
+        },
+        {
+          "value": "caret",
+          "label": "Caret"
+        }
+      ],
+      "default": "plus_minus"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 18,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Title font size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "link_alignment",
+      "label": "Help center link alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "question_bg_color",
+      "label": "Question background color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "color",
+      "id": "question_text_color",
+      "label": "Question text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "question_hover_color",
+      "label": "Question hover color",
+      "default": "#efefef"
+    },
+    {
+      "type": "color",
+      "id": "answer_bg_color",
+      "label": "Answer background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "answer_text_color",
+      "label": "Answer text color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Help center link color",
+      "default": "#4A90E2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion"
+    }
+  ]
+}
+{% endschema %}

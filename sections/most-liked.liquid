@@ -1,0 +1,312 @@
+{% comment %}
+  Section: Order Today, Delivered Tomorrow
+  Displays products from a selected collection in a horizontal scrollable row.
+  Uses metafield custom.product_colour_list to display color dots.
+  Product titles are split into two lines:
+    - If 3rd word is 'Bed' → first 3 words
+    - Otherwise → first 2 words
+{% endcomment %}
+
+<section class="most-liked-section">
+  <div class="page-width">
+    <div class="most-liked-header">
+      <h2 class="most-liked-title">Order Today, Delivered Tomorrow</h2>
+    </div>
+
+    {% if section.settings.collection != blank %}
+      {% assign collection = collections[section.settings.collection] %}
+      {% if collection.products_count > 0 %}
+        <div class="most-liked-scroll">
+          {% for product in collection.products %}
+            <div class="most-liked-item">
+              <div class="most-liked-image-wrapper">
+                <a href="{{ product.url }}" class="most-liked-link main-product-link">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                    class="most-liked-image"
+                    id="main-image-{{ product.id }}"
+                  >
+                </a>
+
+                {% assign color_products = product.metafields.custom.product_colour_list.value %}
+
+                {% if color_products and color_products.size > 0 %}
+                  <div class="color-swatches">
+                    {% for color_product in color_products %}
+                      {% assign color_code = color_product.metafields.custom.color.value | default: color_product.metafields.custom.colour.value %}
+                      {% if color_code %}
+                        <span
+                          class="color-dot"
+                          style="background-color: {{ color_code }};"
+                          data-image="{{ color_product.featured_image | image_url: width: 800 }}"
+                          data-handle="{{ color_product.handle }}"
+                        ></span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <div class="delivery-divider"></div>
+                {% assign tomorrow = 'now' | date: "%s" | plus: 86400 | date: "%s" | date: "%a, %d %b" %}
+                <div class="delivery-text">DELIVERY FROM {{ tomorrow | upcase }}</div>
+              </div>
+
+              <div class="most-liked-info">
+                <a href="{{ product.url }}" class="most-liked-link title-product-link">
+
+                  {% comment %} Split title into two lines {% endcomment %}
+                  {% assign words = product.title | split: " " %}
+                  {% assign word_count = words | size %}
+                  {% assign third_word = words[2] | downcase %}
+                  {% if word_count > 2 %}
+                    {% if third_word == "bed" or third_word == "sofa" %}
+                      {% assign first_line = words[0] | append: " " | append: words[1] | append: " " | append: words[2] %}
+                      {% assign second_line = words | slice: 3, word_count | join: " " %}
+                    {% else %}
+                      {% assign first_line = words[0] | append: " " | append: words[1] %}
+                      {% assign second_line = words | slice: 2, word_count | join: " " %}
+                    {% endif %}
+                  {% else %}
+                    {% assign first_line = product.title %}
+                    {% assign second_line = "" %}
+                  {% endif %}
+
+                  <h3 class="most-liked-product-title">
+                    <span class="title-line-upper">{{ first_line }}</span><br>
+                    <span class="title-line-lower">{{ second_line }}</span>
+                  </h3>
+
+                  {% if product.variants.first.title != 'Default Title' %}
+                    <p class="most-liked-product-variant">{{ product.variants.first.title }}</p>
+                  {% endif %}
+
+                  <p class="most-liked-price">{{ product.price | money }}</p>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>No products found in this collection.</p>
+      {% endif %}
+    {% else %}
+      <p>Please select a collection in the section settings.</p>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".most-liked-item").forEach(item => {
+      const dots = item.querySelectorAll(".color-dot");
+      const mainImage = item.querySelector(".most-liked-image");
+
+      const mainLink = item.querySelector(".main-product-link");
+      const titleLink = item.querySelector(".title-product-link");
+
+      dots.forEach(dot => {
+        dot.addEventListener("click", e => {
+          e.preventDefault();  
+          e.stopPropagation();
+
+          const newSrc = dot.getAttribute("data-image");
+          const newHandle = dot.getAttribute("data-handle");
+
+          if (newHandle) {
+            const newURL = `/products/${newHandle}`;
+
+            mainLink.href = newURL;
+            titleLink.href = newURL;
+          }
+
+          if (newSrc) {
+            mainImage.style.opacity = 0;
+            setTimeout(() => {
+              mainImage.src = newSrc;
+              mainImage.style.opacity = 1;
+            }, 200);
+          }
+
+          dots.forEach(d => d.classList.remove("active"));
+          dot.classList.add("active");
+        });
+      });
+
+      if (dots.length > 0) dots[0].classList.add("active");
+    });
+  });
+</script>
+
+<style>
+.title-line-upper {
+  font-weight: 700; /* make upper line bold */
+  font-size: 16px;  /* optional: increase font size */
+}
+
+.title-line-lower {
+  font-weight: 400; /* normal weight for lower line */
+  font-size: 14px;  /* optional: slightly smaller */
+}
+.most-liked-section {
+  padding: 30px 0;
+  background-color: #fff;
+}
+
+.most-liked-header {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.most-liked-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+.most-liked-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+}
+.most-liked-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.most-liked-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.most-liked-item {
+  flex: 0 0 270px;
+  scroll-snap-align: start;
+  text-align: left;
+  background: #fff;
+  position: relative;
+}
+
+.most-liked-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.most-liked-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: #EEEEEE;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.most-liked-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.most-liked-link:hover .most-liked-image {
+  transform: scale(1.03);
+}
+
+/* Swatches inside image */
+.color-swatches {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  background: transparent;
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.color-dot:hover,
+.color-dot.active {
+  border-color: #111;
+  transform: scale(1.2);
+}
+
+/* Divider + Delivery Text */
+.delivery-divider {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: #ccc;
+  opacity: 0.8;
+}
+.delivery-text {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #333;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Product Info */
+.most-liked-info {
+  padding-top: 10px;
+}
+.most-liked-product-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+  text-transform: uppercase;
+}
+.most-liked-product-variant {
+  font-size: 12px;
+  color: #777;
+  margin: 4px 0;
+}
+.most-liked-price {
+  margin-top :1px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #000;
+  text-transform: uppercase;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Most Liked (Scrollable)",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Order Today, Delivered Tomorrow",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

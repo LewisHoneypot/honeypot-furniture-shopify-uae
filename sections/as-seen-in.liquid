@@ -1,0 +1,268 @@
+<div
+  id="as-seen-in"
+  class="spacing spacing-xs gradient container-fluid"
+  style="
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+    --padding-top-xs: {{ section.settings.padding_top_mobile }}px;
+    --padding-bottom-xs: {{ section.settings.padding_bottom_mobile }}px;
+  "
+  {{ section.shopify_attributes }}
+>
+  <div class="row">
+
+    <div
+      class="col-12 d-md-none center
+      {% if section.settings.font == 'Anaktoria' %} Anaktoria {% elsif section.settings.font == 'Garamond' %} Garamond {% elsif section.settings.font == 'Gotham' %} Gotham {% endif %}"
+      style="padding-top:15px; padding-bottom:15px;"
+    >
+      As Seen In:
+    </div>
+
+    <div
+      class="d-none d-md-block col-md-3 center 
+      {% if section.settings.font == 'Anaktoria' %} Anaktoria {% elsif section.settings.font == 'Garamond' %} Garamond {% elsif section.settings.font == 'Gotham' %} Gotham {% endif %}"
+      style="padding-top:15px; padding-bottom:15px; background-color: {{ section.settings.background_color }}; color: #fff; font-size: 26px;"
+    >
+      As Seen In:
+    </div>
+
+    {%- if section.settings.logo1 != blank -%}
+      <div
+        class="col-4 col-md-3"
+        style="padding-top:15px; padding-bottom:15px; background-color: {{ section.settings.background_color }}; align-content: space-evenly;"
+      >
+        {%- if section.settings.image_picker_link1 != blank -%}
+          <a href="{{ section.settings.image_picker_link1 }}">
+        {%- endif -%}
+        <img
+          srcset="{% if section.settings.logo1 != blank %}
+              {{ section.settings.logo1 | image_url: width: 360 }} 360w,
+              {{ section.settings.logo1 | image_url: width: 550 }} 550w,
+              {{ section.settings.logo1 | image_url: width: 750 }} 750w,
+              {{ section.settings.logo1 | image_url: width: 1000 }} 1000w,
+              {{ section.settings.logo1 | image_url: width: 1200 }} 1200w
+            {% endif %}"
+          sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+          src="{{ section.settings.logo1 | image_url: width: 200 }}"
+          alt="{{ section.settings.image_picker_alt1 }}"
+          loading="lazy"
+          height="50"
+          width="200"
+          style="margin-right: 15px;"
+        >
+        {%- if section.settings.image_picker_link1 != blank -%}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.logo2 != blank -%}
+      <div
+        class="col-4 col-md-3"
+        style="padding-top:15px; padding-bottom:15px; background-color: {{ section.settings.background_color }}; align-content: space-evenly;"
+      >
+        {%- if section.settings.image_picker_link2 != blank -%}
+          <a href="{{ section.settings.image_picker_link2 }}">
+        {%- endif -%}
+        <img
+          srcset="{% if section.settings.logo2 != blank %}
+              {{ section.settings.logo2 | image_url: width: 360 }} 360w,
+              {{ section.settings.logo2 | image_url: width: 550 }} 550w,
+              {{ section.settings.logo2 | image_url: width: 750 }} 750w,
+              {{ section.settings.logo2 | image_url: width: 1000 }} 1000w,
+              {{ section.settings.logo2 | image_url: width: 1200 }} 1200w
+            {% endif %}"
+          sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+          src="{{ section.settings.logo2 | image_url: width: 200 }}"
+          alt="{{ section.settings.image_picker_alt2 }}"
+          loading="lazy"
+          height="50"
+          width="200"
+          style="margin-right: 15px;"
+        >
+        {%- if section.settings.image_picker_link2 != blank -%}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.logo3 != blank -%}
+      <div
+        class="col-4 col-md-3"
+        style="padding-top:15px; padding-bottom:15px; background-color: {{ section.settings.background_color }}; align-content: space-evenly;"
+      >
+        {%- if section.settings.image_picker_link3 != blank -%}
+          <a href="{{ section.settings.image_picker_link3 }}">
+        {%- endif -%}
+        <img
+          srcset="{% if section.settings.logo3 != blank %}
+              {{ section.settings.logo3 | image_url: width: 360 }} 360w,
+              {{ section.settings.logo3 | image_url: width: 550 }} 550w,
+              {{ section.settings.logo3 | image_url: width: 750 }} 750w,
+              {{ section.settings.logo3 | image_url: width: 1000 }} 1000w,
+              {{ section.settings.logo3 | image_url: width: 1200 }} 1200w
+            {% endif %}"
+          sizes="(min-width: 1200px) 1000px, (min-width: 750px) 50vw, 100vw"
+          src="{{ section.settings.logo3 | image_url: width: 200 }}"
+          alt="{{ section.settings.image_picker_alt3 }}"
+          loading="lazy"
+          height="50"
+          width="200"
+          style="margin-right: 15px;"
+        >
+        {%- if section.settings.image_picker_link3 != blank -%}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "As Seen In",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.popup"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.all.heading.label",
+      "default": "As Seen In"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "options": [
+        {
+          "value": "normal",
+          "label": "t:settings_schema.global.settings.font_name.label_3"
+        },
+        {
+          "value": "Anaktoria",
+          "label": "t:settings_schema.global.settings.font_name.label"
+        },
+        {
+          "value": "Garamond",
+          "label": "t:settings_schema.global.settings.font_name.label_2"
+        },
+        {
+          "value": "Gotham",
+          "label": "t:settings_schema.global.settings.font_name.label_4"
+        }
+      ],
+      "default": "normal",
+      "label": "t:sections.main-product.blocks.color_swatch.settings.font"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top_mobile",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom_mobile",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "t:sections.as_seen_in.settings.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo1",
+      "label": "t:sections.as_seen_in.settings.label_1"
+    },
+    {
+      "type": "url",
+      "id": "image_picker_link1",
+      "label": "t:sections.as_seen_in.settings.label_2"
+    },
+    {
+      "type": "text",
+      "id": "image_picker_alt1",
+      "label": "t:sections.as_seen_in.settings.label_3",
+      "default": "HouseBeautiful"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo2",
+      "label": "t:sections.as_seen_in.settings.label_4"
+    },
+    {
+      "type": "url",
+      "id": "image_picker_link2",
+      "label": "t:sections.as_seen_in.settings.label_5"
+    },
+    {
+      "type": "text",
+      "id": "image_picker_alt2",
+      "label": "t:sections.as_seen_in.settings.label_6",
+      "default": "interior designer"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo3",
+      "label": "t:sections.as_seen_in.settings.label_7"
+    },
+    {
+      "type": "url",
+      "id": "image_picker_link3",
+      "label": "t:sections.as_seen_in.settings.label_8"
+    },
+    {
+      "type": "text",
+      "id": "image_picker_alt3",
+      "label": "t:sections.as_seen_in.settings.label_9",
+      "default": "COUNTRY LIVING"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.as_seen_in.settings.label_10",
+      "default": "#48544C"
+    }
+  ],
+  "presets": [{
+    "name": "As Seen In"
+  }]
+}
+{% endschema %}

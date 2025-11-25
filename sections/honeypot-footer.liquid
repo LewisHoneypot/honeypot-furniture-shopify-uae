@@ -1,0 +1,254 @@
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-column office">
+      <h4>OFFICE TIMINGS</h4>
+      <p>Mon–Fri: 8am–8pm<br>Sat–Sun: 10am–3pm</p>
+      <p><strong>Call us:</strong> 01476 338771<br>
+      or Email<br>
+      <a href="mailto:hello@honeypotfurniture.ae">hello@honeypotfurniture.ae</a></p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-column collapsible collapsible-no-border">
+      <h4>QUICK LINKS</h4>
+      <ul>
+        <li><a href="/pages/about-us">About Us</a></li>
+        <li><a href="/pages/tabby-payments">Tabby Payments</a></li>
+        <li><a href="/pages/delivery">Delivery</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+        <li><a href="/pages/terms-conditions">Terms & Conditions</a></li>
+        <li><a href="/pages/complaints">Complaints</a></li>
+        <li><a href="/pages/returns-policy">Returns Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column collapsible">
+      <h4>LEGAL</h4>
+      <ul>
+        <li><a href="/pages/terms-conditions">Terms & Conditions</a></li>
+        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/pages/gdpr">GDPR Web Statement</a></li>
+        <li><a href="/pages/complaints-policy">Complaints Policy</a></li>
+        <li><a href="/pages/finance-complaints-policy">Finance Complaints Policy</a></li>
+        <li><a href="/pages/cookie-policy">Cookie Policy</a></li>
+        <li><a href="/pages/vulnerable-customer-policy">Vulnerable Customer Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column collapsible">
+      <h4>NEED HELP?</h4>
+      <a class="footer-btn whatsapp" href="https://wa.me/XXXXXXXXXXXX" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a class="footer-btn email" href="mailto:hello@honeypotfurniture.co.uk">
+        <i class="fa-solid fa-paper-plane"></i> Email Customer Support
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-payments">
+      <img src="{{ 'payment-gateway.png' | asset_url }}" width="400" height="50" alt="Payment Methods">
+      <p class="footer-texts">Privacy policy Refund policy Terms of service</p>
+    </div>
+    <p>© {{ 'now' | date: '%Y' }} Honeypot Furniture</p>
+  </div>
+</footer>
+
+<style>
+/* === MOBILE VIEW ONLY === */
+@media (max-width: 767px) {
+  .footer {
+    padding: 30px 22px !important;
+    background-color: #f4ede3;
+  }
+  .footer-texts {
+    display: none;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0px !important;
+  }
+
+  /* OFFICE TIMINGS (Always visible) */
+  .footer-column.office {
+    margin-bottom: 20px;
+  }
+
+  .footer-column.office h4 {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .footer-column.office p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .footer-socials {
+    display: flex;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  /* COLLAPSIBLE SECTIONS */
+  .footer-column.collapsible {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .footer-column.collapsible-no-border {
+    border: none !important;
+  }
+
+  .footer-column.collapsible h4 {
+    position: relative;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  .footer-column.collapsible h4::after {
+    content: "⌄";
+    position: absolute;
+    right: 10px;
+    transition: transform 0.3s;
+  }
+
+  .footer-column.collapsible.active h4::after {
+    transform: rotate(180deg);
+  }
+
+  .footer-column.collapsible ul,
+  .footer-column.collapsible .footer-btn {
+    display: none;
+  }
+
+  .footer-column.collapsible.active ul,
+  .footer-column.collapsible.active .footer-btn {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .footer-column.collapsible ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .footer-column.collapsible ul li {
+    margin-bottom: 8px;
+  }
+
+  .footer-column.collapsible ul li a {
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+  }
+
+  .footer-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  /* PAYMENTS + COPYRIGHT */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0 !important;
+  }
+
+  .footer-payments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .footer-payments img {
+    width: 340px !important;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    color: #000;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* === DESKTOP (unchanged except order fix) === */
+@media (min-width: 768px) {
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  /* Trademark first, then payments (correct order) */
+  .footer-bottom p {
+    order: 1;
+    margin: 0;
+  }
+
+  .footer-payments {
+    order: 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-payments img {
+    max-width: 400px;
+    height: auto;
+  }
+
+  .footer-column.collapsible h4::after {
+    display: none;
+  }
+  .footer-column.collapsible ul,
+  .footer-column.collapsible .footer-btn {
+    display: block !important;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.innerWidth <= 767) {
+    document.querySelectorAll(".footer-column.collapsible h4").forEach(header => {
+      header.addEventListener("click", () => {
+        const parent = header.parentElement;
+        parent.classList.toggle("active");
+      });
+    });
+  }
+});
+</script>
