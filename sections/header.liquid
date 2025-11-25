@@ -1323,40 +1323,276 @@
         <ul class="list-menu list-menu--inline d-inline-flex f-wrap list-unstyled left g-gap"
           role="list"
           style="--g-gap: {{ section.settings.spacing_gap }}px; --m-t: calc(var(--padding-bottom) * 1);">
-
           {%- for link in section.settings.menu.links -%}
-            {%- assign title = link.title | strip | downcase -%}
-
-            {%- comment -%}
-              KEEP ONLY THESE TWO:
-              - "Sofas" → renamed to "Shop Sofas"
-              - "Custom Sofas" → renamed to "Made For You"
-              OTHER ITEMS (Home, About, New in, Beds) COMMENTED OUT BELOW
-            {%- endcomment -%}
-
-            {%- if title == "sofas" -%}
+            {%- liquid
+              assign megamenu_1 = section.blocks | where: "type", "mega_menu_1"
+              assign megamenu_2 = section.blocks | where: "type", "mega_menu_2"
+              assign check_megamenu = false
+              if megamenu_1.size > 0 or megamenu_2.size > 0
+                  assign check_megamenu = true
+              endif
+              assign has_megamenu = false
+              assign menu_title = link.title | escape | downcase | handle
+              for block in section.blocks
+                assign block_title = block.settings.menu_item | escape | downcase | handle
+                if block_title == menu_title
+                  assign has_megamenu = true
+                  case block.type
+                    when 'mega_menu_1'
+                      assign menu_type = 'mega_menu_1'
+                      assign section_width = block.settings.section_width
+                      assign customize_width = block.settings.customize_width
+                      assign mg1_image_1 = block.settings.image_1
+                      assign mg1_text_image_1 = block.settings.text_image_1
+                      assign mg1_link_image_1 = block.settings.link_image_1
+                      assign image_overlay_opacity = block.settings.image_overlay_opacity
+                      assign color_overlay_opacity = block.settings.color_overlay_opacity
+                    when 'mega_menu_2'
+                      assign menu_type = 'mega_menu_2'
+                      assign section_width = block.settings.section_width
+                      assign customize_width = block.settings.customize_width
+                      assign mg2_image_1 = block.settings.image_1
+                      assign mg2_image_2 = block.settings.image_2
+                      assign mg2_image_3 = block.settings.image_3
+                      assign mg2_image_4 = block.settings.image_4
+                      assign mg2_text_image_1 = block.settings.text_image_1
+                      assign mg2_text_image_2 = block.settings.text_image_2
+                      assign mg2_text_image_3 = block.settings.text_image_3
+                      assign mg2_text_image_4 = block.settings.text_image_4
+                      assign mg2_link_image_1 = block.settings.link_image_1
+                      assign mg2_link_image_2 = block.settings.link_image_2
+                      assign mg2_link_image_3 = block.settings.link_image_3
+                      assign mg2_link_image_4 = block.settings.link_image_4
+                  endcase
+                endif
+              endfor
+            -%}
+            {%- if check_megamenu and has_megamenu -%}
               <li class="menu-lv-1-item">
-                <a href="{{ link.url }}"
-                  class="header__menu-item menu-lv-1 d-inline-block link {{ section.settings.link_type | prepend: 'link--style-' }} u-none color-foreground focus-inset">
-                  <span class="link-style">Shop Sofas</span>
-                </a>
+                {%- if link.links != blank -%}
+                  <header-menu id="Details-HeaderMenu-{{ forloop.index }} test-{{ link.links.size }}" class="mega-menu pos-static">
+                    <a href="{{ link.url }}" class="header__menu-item menu-lv-1 link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset d-flex a-i-center c-pointer pos-relative"{% if link.current %} aria-current="page"{% endif %}>
+                      <span class="link-style">{{ link.title | escape }}</span>
+                    </a>
+                    <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup pos-absolute top-100 left-0 right-0 {{ section.settings.menu_transform }} cus-scrollbar 
+                      
+                      {% if section.settings.use_wide_search == true %}wide-search-menu 
+                        {% if request.page_type != 'index' %} wide-search-menu-fix {% endif %}
+                      {% endif %}                      
+                                            
+                      " tabindex="-1">
+                      <div class="{{ menu_type }} {{ section_width }} m-auto d-flex f-wrap j-c-between"{% if section_width == 'customized-width' %} style="--page-width: {{ customize_width }}px;"{% endif %}>
+                        <ul class="mega-menu__list d-grid list-unstyled rounded grid-mg-{{ link.links.size }}{% if menu_type == 'mega_menu_1' and mg1_image_1 == blank %} no-mg1--image{% endif %}{% if menu_type == 'mega_menu_2' and link.links.size > 1 %} no-mg2--image{% endif %}" role="list">
+                          {%- for childlink in link.links -%}
+                            <li class="menu-lv-2-item">
+                              <animate-element class="d-block item pos-relative o-h">
+                                <div class="d-block item pos-relative o-h" data-animate="fade-down" style="--a-delay: {{ '0.1' | times: forloop.index }}s;">
+                                  <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 d-inline-block link {{ section.settings.link_type | prepend: "link--style-" | replace: "dot", "line" | replace: "border", "line" }} u-none color-foreground f-bold{% if childlink.current %} mega-menu__link--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                    <span class="link-style">{{ childlink.title | escape }}</span>
+                                  </a>
+                                  {%- if childlink.links != blank -%}
+                                    <ul class="list-unstyled" role="list">
+                                      {%- for grandchildlink in childlink.links -%}
+                                        <li class="menu-lv-3-item">
+                                          <a href="{{ grandchildlink.url }}" class="mega-menu__link link {{ section.settings.link_type | prepend: "link--style-" | replace: "dot", "line" | replace: "border", "line" }} u-none d-inline-block color-foreground{% if grandchildlink.current %} mega-menu__link--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                            <span class="link-style">{{ grandchildlink.title | escape }}</span>
+                                          </a>
+                                        </li>
+                                      {%- endfor -%}
+                                    </ul>
+                                  {%- endif -%}
+                                </div>
+                              </animate-element>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                        {%- if menu_type == 'mega_menu_1' -%}
+                          {%- if mg1_image_1 != blank -%}
+                            <div class="mega-menu__banner d-flex grid pos-relative o-h h-max-c banner__media-hover" 
+                              style="
+                                  --c-xs: 1; --c-sm: 1; --c-md: 1; --c-lg: 1;
+                                  --media-opacity: {{ image_overlay_opacity | divided_by: 100.0 }};
+                                  --color-opacity: {{ color_overlay_opacity.red }},{{ color_overlay_opacity.green }},{{ color_overlay_opacity.blue }};
+                                "
+                            >
+                                <{% if mg1_link_image_1 != blank %}a{% else %}div{% endif %} class="mega-menu__item grid__item"{% if mg1_link_image_1 != blank %} href="{{ mg1_link_image_1 }}" aria-label="{{ mg1_image_1.alt | escape }}"{% endif %}>
+                                    <div class="media media--transparent media--adapt media--zoom d-block pos-relative o-h z-index-0 data__media-hover" style="padding-bottom: {{ 1 | divided_by: mg1_image_1.aspect_ratio | times: 100 }}%;">
+                                      <img
+                                        srcset="{%- if mg1_image_1.width >= 210 -%}{{ mg1_image_1 | image_url: width: 210 }} 210w,{%- endif -%}
+                                                {%- if mg1_image_1.width >= 390 -%}{{ mg1_image_1 | image_url: width: 390 }} 390w,{%- endif -%}
+                                                {%- if mg1_image_1.width >= 570 -%}{{ mg1_image_1 | image_url: width: 570 }} 570w,{%- endif -%}
+                                                {%- if mg1_image_1.width >= 710 -%}{{ mg1_image_1 | image_url: width: 710 }} 710w,{%- endif -%}
+                                                {{ mg1_image_1 | image_url }} {{ mg1_image_1.width }}w"
+                                        src="{{ mg1_image_1 | image_url: width: 210 }}"
+                                        sizes="(min-width: 990px) 710px, (min-width: 750px) 570px, calc(100vw - 30px)"
+                                        alt="{{ mg1_image_1.alt }}"
+                                        height="{{ mg1_image_1.height }}"
+                                        width="{{ mg1_image_1.width }}"
+                                        loading="lazy"
+                                      >
+                                    </div>
+                                    {%- if mg1_text_image_1 != blank -%}
+                                      <div class="mega-menu__heading pos-absolute top-0 h-100 d-flex a-i-center j-c-center z-index-2">
+                                        <div class="mg_heading d-inline-block u-none color-foreground uppercase">
+                                          <span>{{ mg1_text_image_1 }}</span>
+                                        </div>
+                                      </div>
+                                    {%- endif -%}
+                                </{% if mg1_link_image_1 != blank %}a{% else %}div{% endif %}>
+                            </div>
+                        {%- endif -%}
+                        {%- elsif menu_type == 'mega_menu_2' -%}
+                          <div class="mega-menu__banner d-flex grid o-h" style="--c-xs: 2; --c-sm: 2; --c-md: 3; --c-lg: 4; --grid-h-md: 30px;">
+                            {%- if mg2_image_1 != blank -%}
+                              <{% if mg2_link_image_1 != blank %}a{% else %}div{% endif %} class="mega-menu__item grid__item"{% if mg2_link_image_1 != blank %} href="{{ mg2_link_image_1 }}" aria-label="{{ mg2_image_1.alt | escape }}"{% endif %}>
+                                  <div class="media media--transparent media--adapt media--zoom d-block pos-relative o-h" style="padding-bottom: {{ 1 | divided_by: mg2_image_1.aspect_ratio | times: 100 }}%;">
+                                      <img
+                                          srcset="{%- if mg2_image_1.width >= 210 -%}{{ mg2_image_1 | image_url: width: 210 }} 210w,{%- endif -%}
+                                                  {%- if mg2_image_1.width >= 390 -%}{{ mg2_image_1 | image_url: width: 390 }} 390w,{%- endif -%}
+                                                  {%- if mg2_image_1.width >= 570 -%}{{ mg2_image_1 | image_url: width: 570 }} 570w,{%- endif -%}
+                                                  {%- if mg2_image_1.width >= 710 -%}{{ mg2_image_1 | image_url: width: 710 }} 710w,{%- endif -%}
+                                                  {{ mg2_image_1 | image_url }} {{ mg2_image_1.width }}w"
+                                          src="{{ mg2_image_1 | image_url: width: 210 }}"
+                                          sizes="(min-width: 990px) 710px, (min-width: 750px) 570px, calc(100vw - 30px)"
+                                          alt="{{ mg2_image_1.alt }}"
+                                          height="{{ mg2_image_1.height }}"
+                                          width="{{ mg2_image_1.width }}"
+                                          loading="lazy"
+                                      >
+                                  </div>
+                                  {%- if mg2_text_image_1 != blank -%}
+                                    <div class="mg_heading d-inline-block link u-none color-foreground uppercase">
+                                      <span class="link-style" style="font-size: {{ heading_font_size }}px;">{{ mg2_text_image_1 }}</span>
+                                    </div>
+                                  {%- endif -%}
+                              </{% if mg2_link_image_1 != blank %}a{% else %}div{% endif %}>
+                            {%- endif -%}
+                            {%- if mg2_image_2 != blank -%}
+                              <{% if mg2_link_image_2 != blank %}a{% else %}div{% endif %} class="mega-menu__item grid__item"{% if mg2_link_image_2 != blank %} href="{{ mg2_link_image_2 }}" aria-label="{{ mg2_image_2.alt | escape }}"{% endif %}>
+                                  <div class="media media--transparent media--adapt media--zoom d-block pos-relative o-h" style="padding-bottom: {{ 1 | divided_by: mg2_image_2.aspect_ratio | times: 100 }}%;">
+                                    <img
+                                      srcset="{%- if mg2_image_2.width >= 210 -%}{{ mg2_image_2 | image_url: width: 210 }} 210w,{%- endif -%}
+                                              {%- if mg2_image_2.width >= 390 -%}{{ mg2_image_2 | image_url: width: 390 }} 390w,{%- endif -%}
+                                              {%- if mg2_image_2.width >= 570 -%}{{ mg2_image_2 | image_url: width: 570 }} 570w,{%- endif -%}
+                                              {%- if mg2_image_2.width >= 710 -%}{{ mg2_image_2 | image_url: width: 710 }} 710w,{%- endif -%}
+                                              {{ mg2_image_2 | image_url }} {{ mg2_image_2.width }}w"
+                                      src="{{ mg2_image_2 | image_url: width: 210 }}"
+                                      sizes="(min-width: 990px) 710px, (min-width: 750px) 570px, calc(100vw - 30px)"
+                                      alt="{{ mg2_image_2.alt }}"
+                                      height="{{ mg2_image_2.height }}"
+                                      width="{{ mg2_image_2.width }}"
+                                      loading="lazy"
+                                    >
+                                  </div>
+                                  {%- if mg2_text_image_2 != blank -%}
+                                    <div class="mg_heading d-inline-block link u-none color-foreground uppercase">
+                                      <span class="link-style" style="font-size: {{ heading_font_size }}px;">{{ mg2_text_image_2 }}</span>
+                                    </div>
+                                  {%- endif -%}
+                              </{% if mg2_link_image_2 != blank %}a{% else %}div{% endif %}>
+                            {%- endif -%}
+                            {%- if mg2_image_3 != blank -%}
+                                <{% if mg2_link_image_3 != blank %}a{% else %}div{% endif %} class="mega-menu__item grid__item"{% if mg2_link_image_3 != blank %} href="{{ mg2_link_image_3 }}" aria-label="{{ mg2_image_3.alt | escape }}"{% endif %}>
+                                    <div class="media media--transparent media--adapt media--zoom d-block pos-relative o-h" style="padding-bottom: {{ 1 | divided_by: mg2_image_3.aspect_ratio | times: 100 }}%;">
+                                      <img
+                                        srcset="{%- if mg2_image_3.width >= 210 -%}{{ mg2_image_3 | image_url: width: 210 }} 210w,{%- endif -%}
+                                                {%- if mg2_image_3.width >= 390 -%}{{ mg2_image_3 | image_url: width: 390 }} 390w,{%- endif -%}
+                                                {%- if mg2_image_3.width >= 570 -%}{{ mg2_image_3 | image_url: width: 570 }} 570w,{%- endif -%}
+                                                {%- if mg2_image_3.width >= 710 -%}{{ mg2_image_3 | image_url: width: 710 }} 710w,{%- endif -%}
+                                                {{ mg2_image_3 | image_url }} {{ mg2_image_3.width }}w"
+                                        src="{{ mg2_image_3 | image_url: width: 210 }}"
+                                        sizes="(min-width: 990px) 710px, (min-width: 750px) 570px, calc(100vw - 30px)"
+                                        alt="{{ mg2_image_3.alt }}"
+                                        height="{{ mg2_image_3.height }}"
+                                        width="{{ mg2_image_3.width }}"
+                                        loading="lazy"
+                                      >
+                                    </div>
+                                    {%- if mg2_text_image_3 != blank -%}
+                                      <div class="mg_heading d-inline-block link u-none color-foreground uppercase">
+                                        <span class="link-style" style="font-size: {{ heading_font_size }}px;">{{ mg2_text_image_3 }}</span>
+                                      </div>
+                                    {%- endif -%}
+                                </{% if mg2_link_image_3 != blank %}a{% else %}div{% endif %}>
+                            {%- endif -%}
+                            {%- if mg2_image_4 != blank -%}
+                              <{% if mg2_link_image_4 != blank %}a{% else %}div{% endif %} class="mega-menu__item grid__item"{% if mg2_link_image_4 != blank %} href="{{ mg2_link_image_4 }}" aria-label="{{ mg2_image_4.alt | escape }}"{% endif %}>
+                                  <div class="media media--transparent media--adapt media--zoom d-block pos-relative o-h" style="padding-bottom: {{ 1 | divided_by: mg2_image_4.aspect_ratio | times: 100 }}%;">
+                                    <img
+                                      srcset="{%- if mg2_image_4.width >= 210 -%}{{ mg2_image_4 | image_url: width: 210 }} 210w,{%- endif -%}
+                                              {%- if mg2_image_4.width >= 390 -%}{{ mg2_image_4 | image_url: width: 390 }} 390w,{%- endif -%}
+                                              {%- if mg2_image_4.width >= 570 -%}{{ mg2_image_4 | image_url: width: 570 }} 570w,{%- endif -%}
+                                              {%- if mg2_image_4.width >= 710 -%}{{ mg2_image_4 | image_url: width: 710 }} 710w,{%- endif -%}
+                                              {{ mg2_image_4 | image_url }} {{ mg2_image_4.width }}w"
+                                      src="{{ mg2_image_4 | image_url: width: 210 }}"
+                                      sizes="(min-width: 990px) 710px, (min-width: 750px) 570px, calc(100vw - 30px)"
+                                      alt="{{ mg2_image_4.alt }}"
+                                      height="{{ mg2_image_4.height }}"
+                                      width="{{ mg2_image_4.width }}"
+                                      loading="lazy"
+                                    >
+                                  </div>
+                                  {%- if mg2_text_image_4 != blank -%}
+                                    <div class="mg_heading d-inline-block link u-none color-foreground uppercase">
+                                      <span class="link-style" style="font-size: {{ heading_font_size }}px;">{{ mg2_text_image_4 }}</span>
+                                    </div>
+                                  {%- endif -%}
+                              </{% if mg2_link_image_4 != blank %}a{% else %}div{% endif %}>
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </header-menu>
+                {%- else -%}
+                  <a href="{{ link.url }}" class="header__menu-item menu-lv-1 d-inline-block link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset{% if link.current %} active{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+                    <span class="link-style">{{ link.title | escape }}</span>
+                  </a>
+                {%- endif -%}
               </li>
-
-            {%- elsif title == "custom sofas" -%}
-              <li class="menu-lv-1-item">
-                <a href="{{ link.url }}"
-                  class="header__menu-item menu-lv-1 d-inline-block link {{ section.settings.link_type | prepend: 'link--style-' }} u-none color-foreground focus-inset">
-                  <span class="link-style">Made For You</span>
-                </a>
-              </li>
-
             {%- else -%}
-              {%- comment -%}
-                Hidden for now: {{ link.title }}
-                To re-enable, remove the comment block and update label if needed.
-              {%- endcomment -%}
+              <li class="menu-lv-1-item">
+                {%- if link.links != blank -%}
+                  {%- assign index = forloop.index -%}
+                  <header-menu id="Details-HeaderMenu-{{ forloop.index }}" class="dropdown-menu pos-relative">
+                    <a href="{{ link.url }}" class="header__menu-item menu-lv-1 link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset d-flex a-i-center c-pointer pos-relative"{% if link.current %} aria-current="page"{% endif %}>
+                      <span class="link-style">Shop Sofas</span>
+                    </a>
+                    <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu gradient motion-reduce global-settings-popup list-unstyled pos-absolute m-t rounded {{ section.settings.menu_transform }}" role="list" tabindex="-1">
+                      {%- for childlink in link.links -%}
+                        <li class="menu-lv-2-item pos-relative">
+                          {%- if childlink.links == blank -%}
+                            <a href="{{ childlink.url }}" class="header__menu-item menu-lv-2 c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" | replace: "dot", "line" | replace: "border", "line" }} u-none color-foreground focus-inset{% if childlink.current %} u-link{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                              <span class="link-style">{{ childlink.title | escape }}</span>
+                            </a>
+                          {%- else -%}
+                            <header-menu id="Details-HeaderSubMenu-{{ index }}-{{ forloop.index }}" class="w-100">
+                              <a href="{{ childlink.url }}" class="header__menu-item menu-lv-2 link {{ section.settings.link_type | prepend: "link--style-" | replace: "dot", "line" | replace: "border", "line" }} u-none color-foreground focus-inset d-flex a-i-center c-pointer pos-relative"{% if link.current %} aria-current="page"{% endif %}>
+                                <span class="link-style">{{ childlink.title | escape }}</span>
+                                {{ icon_caret }}
+                              </a>
+                              <ul id="HeaderMenu-SubMenuList-{{ index }}-{{ forloop.index }}" class="header__submenu header__submenu--last list-menu gradient motion-reduce global-settings-popup list-unstyled pos-absolute rounded">
+                                {%- for grandchildlink in childlink.links -%}
+                                  <li class="menu-lv-3-item">
+                                    <a href="{{ grandchildlink.url }}" class="header__menu-item menu-lv-3 c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" | replace: "dot", "line" | replace: "border", "line" }} u-none color-foreground focus-inset{% if grandchildlink.current %} u-link{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                      <span class="link-style">{{ grandchildlink.title | escape }}</span>
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </header-menu>
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </header-menu>
+                  {%- elsif link.title == "Custom Sofas" -%}
+                    <a href="{{ link.url }}" class="header__menu-item menu-lv-1 d-flex a-i-center c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                      <span class="link-style">{{ link.title | escape }}</span>
+                    </a>
+                  {%- endif -%}
+              </li>
             {%- endif -%}
-
           {%- endfor -%}
         </ul>
 
@@ -1429,6 +1665,9 @@
                 position: relative;
                 display: inline-block;
                 padding-top: 9px;
+              }
+              .header__submenu .icon {
+                color: black !important;
               }
               .dropdown-button {
                 display: flex;
