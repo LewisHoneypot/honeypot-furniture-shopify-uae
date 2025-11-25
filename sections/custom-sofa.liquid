@@ -11,6 +11,8 @@
 
     <div class="custom-sofa-text-box">
 
+
+    <h2 class="honeypot-intro">{{ section.settings.intro_text }}</h2>
       <h2 class="custom-sofa-intro">{{ section.settings.heading }}</h2>
 
       <p class="custom-sofa-description">{{ section.settings.description }}</p>
@@ -201,8 +203,9 @@ height:100%
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Your Custom Sofa Journey"
     },
+    { "type": "text", "id": "intro_text", "label": "Intro Text", "default": "Your Custom" },
+
     {
       "type": "textarea",
       "id": "description",

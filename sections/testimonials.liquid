@@ -2,7 +2,6 @@
   <div class="page-width">
     <div class="testimonial-stage" data-section-id="{{ section.id }}">
       <div class="testimonial-slides">
-<<<<<<< HEAD
         <!-- Static left image (only once per section) -->
         <div class="testimonial-image-col">
           {% if section.settings.section_image != blank %}
@@ -19,23 +18,6 @@
         <div class="main-slider-container">
         {% for block in section.blocks %}
           <div class="testimonial-slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
-=======
-        {% for block in section.blocks %}
-          <div class="testimonial-slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
-            <!-- Left image -->
-            <div class="testimonial-image-col">
-              {% if block.settings.block_image != blank %}
-                <img
-                  src="{{ block.settings.block_image | image_url: width: 1400 }}"
-                  alt="{{ block.settings.name | escape }}"
-                  loading="lazy"
-                  class="testimonial-image"
-                >
-              {% endif %}
-            </div>
-
-            <!-- Right content -->
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
             <div class="testimonial-content-col">
               <h2 class="testimonial-heading">{{ section.settings.heading }}</h2>
 
@@ -92,19 +74,12 @@
             </div>
           </div>
         {% endfor %}
-<<<<<<< HEAD
         </div>
-=======
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
       </div>
     </div>
   </div>
 </section>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.testimonial-stage').forEach(stage => {
@@ -148,11 +123,8 @@
 {
   "name": "Testimonials",
   "settings": [
-<<<<<<< HEAD
     { "type": "image_picker", "id": "section_image", "label": "Left Side Static Image" },
 
-=======
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
     { "type": "text", "id": "heading", "label": "Heading", "default": "Testimonials" },
     { "type": "image_picker", "id": "rating_logo", "label": "Rating Logo (Google)" },
     { "type": "text", "id": "rating_score", "label": "Rating Score", "default": "4.8" },
@@ -163,10 +135,6 @@
       "type": "testimonial_block",
       "name": "Testimonial",
       "settings": [
-<<<<<<< HEAD
-=======
-        { "type": "image_picker", "id": "block_image", "label": "Left Image (for this testimonial)" },
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
         { "type": "text", "id": "quote", "label": "Quote", "default": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam." },
         { "type": "image_picker", "id": "avatar", "label": "Reviewer Avatar" },
         { "type": "text", "id": "name", "label": "Reviewer Name" },
@@ -190,7 +158,6 @@
 
 {% stylesheet %}
 /* === Base === */
-<<<<<<< HEAD
 
 .main-slider-container{
   position: relative;
@@ -199,8 +166,6 @@
     align-items: center;
     justify-content: center;
 }
-=======
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
 .testimonials-section {
   background-color: #F9F7F5;
   padding: 20px 0;
@@ -213,12 +178,7 @@
 }
 
 .testimonial-slides {
-<<<<<<< HEAD
 display: flex;
-=======
-  position: relative;
-  min-height: 520px;
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
 }
 
 /* === Slide === */
@@ -232,10 +192,7 @@ display: flex;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.45s ease;
-<<<<<<< HEAD
   left: 57px;
-=======
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
 }
 .testimonial-slide.is-active {
   opacity: 1;
@@ -244,16 +201,8 @@ display: flex;
 }
 
 .testimonial-image-col {
-<<<<<<< HEAD
 width: 50%;
 max-height: 450px;
-=======
-  flex: 1 1 48%;
-  background-color: #F9F7F5;
-  border-radius: 8px;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
 }
 .testimonial-image {
   width: 100%;
@@ -263,10 +212,7 @@ max-height: 450px;
 
 /* === Content === */
 .testimonial-content-col {
-<<<<<<< HEAD
 display: none;
-=======
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
   flex: 1 1 48%;
   max-width: 560px;
   display: flex;
@@ -404,7 +350,6 @@ display: none;
 
 /* === Responsive === */
 @media (max-width: 900px) {
-<<<<<<< HEAD
   .testimonial-slides { 
     flex-wrap: wrap;
 
@@ -433,15 +378,6 @@ display: none;
     top:  0;
     left: 0;
   }
-=======
-  .testimonial-slides { min-height: 780px; }
-  .testimonial-slide {
-    position: relative;
-    flex-direction: column;
-    gap: 18px;
-  }
-  .testimonial-content-col { text-align: center; }
->>>>>>> 7eb11d3134dc41e19a81f67358bfa3c88e489f77
   .testimonial-rating { flex-direction: column; gap: 10px; }
   .testimonial-dots-inline { justify-content: center; }
 }
