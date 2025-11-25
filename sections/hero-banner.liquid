@@ -1,0 +1,210 @@
+<section class="hero-slider-section pos-relative overflow-hidden">
+
+  <div class="hero-slider-scroll">
+    {% for block in section.blocks %}
+      <div class="hero-slide"
+           style="background-image:url('{{ block.settings.image | img_url: '2000x' }}');"
+           data-mobile="{{ block.settings.mobile_image | img_url: '800x' }}">
+           
+        <div class="hero-slide-content">
+          {% if block.settings.heading != blank %}
+            <h2>{{ block.settings.heading }}</h2>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <p>{{ block.settings.text }}</p>
+          {% endif %}
+
+          {% if block.settings.button_label != blank %}
+            <a href="{{ block.settings.button_link }}" class="hero-btn">{{ block.settings.button_label }}</a>
+          {% endif %}
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+<style>
+.hero-slider-section {
+  position: relative;
+  height: {{ section.settings.slider_height }}px;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-slider-scroll {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero-slider-scroll::-webkit-scrollbar { display: none; }
+
+.hero-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center top;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* Slide Content */
+.hero-slide-content {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  max-width: 500px;
+}
+
+.hero-slide-content h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-slide-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-slider-section {
+    height: {{ section.settings.slider_height_mobile }}px;
+  }
+
+  .hero-slide-content {
+    left: 20px;
+    bottom: 50px;
+    top: auto;
+    max-width: 80%;
+  }
+
+  .hero-slide-content h2 {
+    font-size: 28px;
+  }
+  .hero-slide-content p {
+    font-size: 16px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".hero-slider-scroll");
+  if (!slider) return;
+
+  // Replace slide images on mobile
+  function updateMobileImages() {
+    if (window.innerWidth <= 768) {
+      slider.querySelectorAll(".hero-slide").forEach(slide => {
+        const mobileImage = slide.dataset.mobile;
+        if (mobileImage) slide.style.backgroundImage = `url('${mobileImage}')`;
+      });
+    } else {
+      slider.querySelectorAll(".hero-slide").forEach(slide => {
+        const desktopImage = slide.querySelector(".hero-slide-content").closest(".hero-slide").style.backgroundImage;
+        // Reset to desktop image if needed
+        slide.style.backgroundImage = `url('${slide.dataset.desktop}')`;
+      });
+    }
+  }
+
+  // Store desktop images
+  slider.querySelectorAll(".hero-slide").forEach(slide => {
+    slide.dataset.desktop = slide.style.backgroundImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+  });
+
+  updateMobileImages();
+  window.addEventListener("resize", updateMobileImages);
+
+  // Slider drag & auto-scroll
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("dragging");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+    slider.classList.remove("dragging");
+  });
+
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+    slider.classList.remove("dragging");
+  });
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  const duration = {{ section.settings.slide_duration | default: 5 }} * 1000;
+  setInterval(() => {
+    const slideWidth = slider.clientWidth;
+    let next = slider.scrollLeft + slideWidth;
+    if (next >= slider.scrollWidth) next = 0;
+    slider.scrollTo({ left: next, behavior: "smooth" });
+  }, duration);
+
+});
+</script>
+
+{% schema %}
+{
+  "name": "Hero Slider",
+  "settings": [
+    { "type": "range", "id": "slider_height", "label": "Slider Height (Desktop)", "default": 650, "min": 300, "max": 900, "step": 10 },
+    { "type": "range", "id": "slider_height_mobile", "label": "Slider Height (Mobile)", "default": 450, "min": 200, "max": 700, "step": 10 },
+    { "type": "range", "id": "slide_duration", "label": "Slide Duration (seconds)", "default": 5, "min": 2, "max": 12, "step": 1 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Desktop Image" },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile Image" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "text", "id": "button_label", "label": "Button Label" },
+        { "type": "url", "id": "button_link", "label": "Button Link" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [{ "name": "Hero Slider (Swipe)" }]
+}
+{% endschema %}

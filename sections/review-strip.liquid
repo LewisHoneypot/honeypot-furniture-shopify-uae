@@ -1,0 +1,72 @@
+<section
+  class="review-strip w-100 pos-relative"
+  style="background-color: #F8F8F8;"
+>
+  <a 
+     href='https://share.google/tyIUhTpsSBOxFn7q3'
+    target='_blank'
+    class="link_container">
+    <!-- Review Text -->
+    <p class="link-text" style="font-size: 18px; color: #333; margin-right: 5px;">
+      Excellent
+    </p>
+    <!-- Google Stars -->
+    <div class="stars d-flex a-i-center">
+      {% for i in (1..5) %}
+        <span style="color: #f4b400; font-size: 1.4rem;">★</span>
+      {% endfor %}
+    </div>
+
+    <!-- Google Logo -->
+    {% if section.settings.google_logo != blank %}
+      <img
+        src="{{ section.settings.google_logo | image_url: width: 120 }}"
+        alt="Google Logo"
+        class="m-l-3"
+        style="height: 24px; width: auto;"
+      >
+    {% else %}
+      <span class="m-l-3 color-foreground-subdued" style="font-size: 0.9rem;">[Add Google Logo]</span>
+    {% endif %}
+  </a>
+</section>
+<style>
+
+  .link_container{
+      width: fit-content;
+    margin: auto;
+     display: flex;
+    align-items: center;
+    cursor:pointer !important;
+    text-decoration:none;
+  
+  }
+
+  .link-text{
+  font-size: 18px !important
+
+}
+
+
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Google Reviews Strip",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "google_logo",
+      "label": "Google Logo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Google Reviews Strip",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

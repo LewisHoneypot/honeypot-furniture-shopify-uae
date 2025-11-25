@@ -1,0 +1,103 @@
+<section class="guarantee-strip-section color-background gradient">
+  <div class="guarantee-marquee">
+    <div class="guarantee-track">
+      <span>{{ text_1 }}</span>
+      <span>{{ text_2 }}</span>
+      <span>{{ text_3 }}</span>
+    </div>
+  </div>
+</section>
+
+<style>
+.guarantee-strip-section {
+  background-color: #d9d9d9;
+  padding: 20px 0;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  overflow: hidden;
+}
+
+/* Marquee container */
+.guarantee-marquee {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Moving track */
+.guarantee-track {
+    display: flex;
+justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+  animation: scrollMarquee 20s linear infinite;
+}
+
+  .guarantee-track span {
+    display: inline-block;
+    max-width: 33%;                   /* each item takes 1/3 of space */
+    white-space: nowrap;              /* stay in one line */
+    overflow: hidden;                 /* hide overflow */
+  }
+
+/* Text styling */
+.guarantee-track span {
+  font-size: 14px;
+  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+
+
+  @media (max-width: 768px) {
+  .guarantee-track {
+    width: 90%;
+    animation: none !important;
+    justify-content: center !important; /* Center single span */
+  }
+
+  /* Hide span 2 and 3 */
+  .guarantee-track span:nth-child(2),
+  .guarantee-track span:nth-child(3) {
+    display: none !important;
+  }
+
+  .guarantee-track span {
+    display: inline-block;
+    max-width: 100%;     /* full width */
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+
+{% comment %} /* Animation - right to left */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .guarantee-track {
+    gap: 2rem;
+    animation-duration: 14s;
+  }
+
+  .guarantee-track span {
+    font-size: 1rem;
+  }
+} {% endcomment %}
+
+
+
+</style>

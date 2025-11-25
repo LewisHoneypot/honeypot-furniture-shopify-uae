@@ -1,0 +1,237 @@
+<section class="fabric-section_main">
+  <div class="fabric-section">
+    <div class="fabric-header">
+      <h2 class="fabric-step">{{ section.settings.heading_number }}</h2>
+      <h3 class="fabric-title">{{ section.settings.heading }}</h3>
+      <p class="fabric-desc">{{ section.settings.subheading_1 }}</p>
+      <p class="fabric-desc">{{ section.settings.subheading_2 }}</p>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="fabric-slider-wrapper">
+      <button class="fabric-arrow left" aria-label="Previous">&#10094;</button>
+
+      <div class="fabric-slider" id="fabric-slider">
+        {% for block in section.blocks %}
+          <div class="fabric-item" data-fabric-item>
+            <div class="fabric-image">
+              {% if block.settings.main_image != blank %}
+                <img 
+                  src="{{ block.settings.main_image | image_url: width: 500 }}" 
+                  alt="{{ block.settings.title }}" 
+                  data-fabric-main-image
+                >
+              {% else %}
+                <div class="placeholder-image">No image</div>
+              {% endif %}
+            </div>
+            <p class="fabric-name">{{ block.settings.title }}</p>
+
+            <div class="fabric-swatches">
+              {% for i in (1..10) %}
+                {% assign color_key = 'color_swatch_' | append: i %}
+                {% assign image_key = 'color_image_' | append: i %}
+                {% assign swatch_color = block.settings[color_key] %}
+                {% assign swatch_image = block.settings[image_key] %}
+                {% if swatch_image != blank %}
+                  <span
+                    class="fabric-swatch"
+                    style="{% if swatch_color != blank %}background-color: {{ swatch_color }};{% endif %}"
+                    data-swatch-image="{{ swatch_image | image_url: width: 500 }}">
+                    <img src="{{ swatch_image | image_url: width: 40 }}" alt="Swatch {{ i }}" class="swatch-thumb">
+                  </span>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="fabric-arrow right" aria-label="Next">&#10095;</button>
+    </div>
+
+    <div class="fabric-footer">
+      <h4>{{ section.settings.footer_title }}</h4>
+      <div class="fabric-footer-boxes">
+        <div class="fabric-box"><span>01</span><p>{{ section.settings.list_item_1 }}</p></div>
+        <div class="fabric-box"><span>02</span><p>{{ section.settings.list_item_2 }}</p></div>
+        <div class="fabric-box"><span>03</span><p>{{ section.settings.list_item_3 }}</p></div>
+      </div>
+      <p class="fabric-note">{{ section.settings.footer_note }}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.fabric-section_main {
+  background: #EDEDED;
+}
+.fabric-section {
+  padding: 60px 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  color: #000;
+}
+.fabric-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ---- Slider Layout ---- */
+.fabric-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fabric-slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 25px;
+}
+
+.fabric-item {
+  flex: 0 0 250px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+.fabric-item:hover {
+  transform: translateY(-3px);
+}
+
+.fabric-image img {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.fabric-name {
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.fabric-swatches {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.fabric-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+.fabric-swatch:hover {
+  transform: scale(1.15);
+  border-color: #000;
+}
+.fabric-swatch.active {
+  border: 2px solid #000;
+}
+.fabric-swatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ---- Arrows ---- */
+.fabric-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+.fabric-arrow:hover:not(:disabled) {
+  background: #000;
+  color: #fff;
+}
+.fabric-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.fabric-arrow.left {
+  left: -20px;
+}
+.fabric-arrow.right {
+  right: -20px;
+}
+
+/* ---- Footer ---- */
+.fabric-footer {
+  text-align: center;
+  margin-top: 50px;
+}
+.fabric-footer-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.fabric-box {
+  border: 1px solid #565656;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 260px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .fabric-item { flex: 0 0 180px; }
+  .fabric-arrow { width: 34px; height: 34px; font-size: 18px; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('fabric-slider');
+  const items = slider.querySelectorAll('.fabric-item');
+  const leftArrow = document.querySelector('.fabric-arrow.left');
+  const rightArrow = document.querySelector('.fabric-arrow.right');
+  const visibleCount = Math.floor(slider.offsetWidth / 250);
+  let currentIndex = 0;
+
+  function updateSlider() {
+    const offset = currentIndex * -275; // item width + gap
+    slider.style.transform = `translateX(${offset}px)`;
+    leftArrow.disabled = currentIndex === 0;
+    rightArrow.disabled = currentIndex >= items.length - visibleCount;
+  }
+
+  rightArrow.addEventListener('click', () => {
+    if (currentIndex < items.length - visibleCount) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  leftArrow.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  window.addEventListener('resize', updateSlider);
+  updateSlider();
+});
+</script>

@@ -1,0 +1,802 @@
+{% doc %}
+  @prompt
+    Create a full-width lifestyle product showcase block with the following functionality and styling:
+    🖼️ Layout (Desktop View):
+    
+    Full-width multi-column layout (3 images side-by-side on desktop).
+    Each column should contain:
+    A lifestyle background image (editable for each column).
+    A product overlay card anchored near the bottom centre of the image.
+    Card includes:
+    Product thumbnail image
+    Product title (editable)
+    “View Product” button (clickable and links to selected product)
+    Allow each block to dynamically select a Shopify product per card for click-through.
+    ⚙️ Editable Controls:
+    
+    Change all background images per column
+    Select a different linked product from the Shopify product catalogue
+    Change product title text displayed on each overlay card
+    Change button label (default: “View Product”)
+    📱 Mobile Responsiveness:
+    
+    On mobile view:
+    Automatically convert layout into a carousel/slider, showing one full image at a time
+    Include swipe support or arrows for navigation
+    Overlay cards remain styled and clickable as in desktop
+    💅 Styling:
+    
+    Rounded overlay card with subtle shadow and white background
+    Maintain consistent size/spacing for all overlay cards
+    Support for custom padding, spacing, and alignment controls
+    Ensure clean typography and button styling (solid black or dark grey)
+    Optional:
+    
+    Enable autoplay or manual scroll toggle for the carousel
+    Add hover effects or parallax background image scroll for enhancement
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-lifestyle-showcase-{{ ai_gen_id }} {
+    width: 100%;
+    position: relative;
+  }
+
+  .ai-lifestyle-showcase__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ block.settings.column_gap }}px;
+    width: 100%;
+  }
+
+  .ai-lifestyle-showcase__column-{{ ai_gen_id }} {
+    position: relative;
+    height: {{ block.settings.image_height }}px;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-lifestyle-showcase__background-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-lifestyle-showcase__column-{{ ai_gen_id }}:hover .ai-lifestyle-showcase__background-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-lifestyle-showcase__placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-lifestyle-showcase__placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    opacity: 0.3;
+  }
+
+  .ai-lifestyle-showcase__overlay-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: {{ block.settings.card_bottom_offset }}px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: {{ block.settings.card_background_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 280px;
+    max-width: 90%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-lifestyle-showcase__overlay-{{ ai_gen_id }}:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .ai-lifestyle-showcase__product-image-{{ ai_gen_id }} {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ai-lifestyle-showcase__product-image-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-lifestyle-showcase__product-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-lifestyle-showcase__product-placeholder-{{ ai_gen_id }} svg {
+    width: 30px;
+    height: 30px;
+    opacity: 0.4;
+  }
+
+  .ai-lifestyle-showcase__content-{{ ai_gen_id }} {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .ai-lifestyle-showcase__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_font_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ai-lifestyle-showcase__button-{{ ai_gen_id }} {
+    background-color: {{ block.settings.button_background_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    padding: 8px 16px;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-lifestyle-showcase__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-lifestyle-showcase__carousel-{{ ai_gen_id }} {
+    display: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-lifestyle-showcase__carousel-track-{{ ai_gen_id }} {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-lifestyle-showcase__carousel-slide-{{ ai_gen_id }} {
+    min-width: 100%;
+    position: relative;
+    height: {{ block.settings.mobile_image_height }}px;
+  }
+
+  .ai-lifestyle-showcase__carousel-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-lifestyle-showcase__carousel-nav-{{ ai_gen_id }}:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .ai-lifestyle-showcase__carousel-nav--prev-{{ ai_gen_id }} {
+    left: 16px;
+  }
+
+  .ai-lifestyle-showcase__carousel-nav--next-{{ ai_gen_id }} {
+    right: 16px;
+  }
+
+  .ai-lifestyle-showcase__carousel-dots-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .ai-lifestyle-showcase__carousel-dot-{{ ai_gen_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-lifestyle-showcase__carousel-dot-{{ ai_gen_id }}.active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-lifestyle-showcase__container-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-lifestyle-showcase__carousel-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-lifestyle-showcase__overlay-{{ ai_gen_id }} {
+      min-width: 250px;
+      padding: {{ block.settings.card_padding | times: 0.8 }}px;
+    }
+
+    .ai-lifestyle-showcase__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_font_size | times: 0.9 }}px;
+    }
+
+    .ai-lifestyle-showcase__button-{{ ai_gen_id }} {
+      font-size: {{ block.settings.button_font_size | times: 0.9 }}px;
+      padding: 6px 12px;
+    }
+  }
+{% endstyle %}
+
+<lifestyle-showcase-{{ ai_gen_id }}
+  class="ai-lifestyle-showcase-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-lifestyle-showcase__container-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign image_key = 'image_' | append: i
+        assign product_key = 'product_' | append: i
+        assign title_key = 'title_' | append: i
+        
+        assign column_image = block.settings[image_key]
+        assign column_product = block.settings[product_key]
+        assign column_title = block.settings[title_key]
+      %}
+      
+      <div class="ai-lifestyle-showcase__column-{{ ai_gen_id }}">
+        {% if column_image %}
+          <img
+            src="{{ column_image | image_url: width: 800 }}"
+            alt="{{ column_image.alt | escape }}"
+            class="ai-lifestyle-showcase__background-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ column_image.width }}"
+            height="{{ column_image.height }}"
+          >
+        {% else %}
+          <div class="ai-lifestyle-showcase__placeholder-{{ ai_gen_id }}">
+            {{ 'hero-apparel-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+
+        {% if column_product or column_title != blank %}
+          <div class="ai-lifestyle-showcase__overlay-{{ ai_gen_id }}">
+            <div class="ai-lifestyle-showcase__product-image-{{ ai_gen_id }}">
+              {% if column_product and column_product.featured_image %}
+                <img
+                  src="{{ column_product.featured_image | image_url: width: 120 }}"
+                  alt="{{ column_product.featured_image.alt | escape }}"
+                  loading="lazy"
+                  width="120"
+                  height="120"
+                >
+              {% else %}
+                <div class="ai-lifestyle-showcase__product-placeholder-{{ ai_gen_id }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="ai-lifestyle-showcase__content-{{ ai_gen_id }}">
+              <h3 class="ai-lifestyle-showcase__title-{{ ai_gen_id }}">
+                {% if column_title != blank %}
+                  {{ column_title }}
+                {% elsif column_product %}
+                  {{ column_product.title }}
+                {% else %}
+                  Product Title
+                {% endif %}
+              </h3>
+              
+              <a
+                href="{% if column_product %}{{ column_product.url }}{% else %}#{% endif %}"
+                class="ai-lifestyle-showcase__button-{{ ai_gen_id }}"
+              >
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="ai-lifestyle-showcase__carousel-{{ ai_gen_id }}">
+    <div class="ai-lifestyle-showcase__carousel-track-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign image_key = 'image_' | append: i
+          assign product_key = 'product_' | append: i
+          assign title_key = 'title_' | append: i
+          
+          assign column_image = block.settings[image_key]
+          assign column_product = block.settings[product_key]
+          assign column_title = block.settings[title_key]
+        %}
+        
+        <div class="ai-lifestyle-showcase__carousel-slide-{{ ai_gen_id }}">
+          {% if column_image %}
+            <img
+              src="{{ column_image | image_url: width: 600 }}"
+              alt="{{ column_image.alt | escape }}"
+              class="ai-lifestyle-showcase__background-{{ ai_gen_id }}"
+              loading="lazy"
+              width="{{ column_image.width }}"
+              height="{{ column_image.height }}"
+            >
+          {% else %}
+            <div class="ai-lifestyle-showcase__placeholder-{{ ai_gen_id }}">
+              {{ 'hero-apparel-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+
+          {% if column_product or column_title != blank %}
+            <div class="ai-lifestyle-showcase__overlay-{{ ai_gen_id }}">
+              <div class="ai-lifestyle-showcase__product-image-{{ ai_gen_id }}">
+                {% if column_product and column_product.featured_image %}
+                  <img
+                    src="{{ column_product.featured_image | image_url: width: 120 }}"
+                    alt="{{ column_product.featured_image.alt | escape }}"
+                    loading="lazy"
+                    width="120"
+                    height="120"
+                  >
+                {% else %}
+                  <div class="ai-lifestyle-showcase__product-placeholder-{{ ai_gen_id }}">
+                    {{ 'product-1' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="ai-lifestyle-showcase__content-{{ ai_gen_id }}">
+                <h3 class="ai-lifestyle-showcase__title-{{ ai_gen_id }}">
+                  {% if column_title != blank %}
+                    {{ column_title }}
+                  {% elsif column_product %}
+                    {{ column_product.title }}
+                  {% else %}
+                    Product Title
+                  {% endif %}
+                </h3>
+                
+                <a
+                  href="{% if column_product %}{{ column_product.url }}{% else %}#{% endif %}"
+                  class="ai-lifestyle-showcase__button-{{ ai_gen_id }}"
+                >
+                  {{ block.settings.button_text }}
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <button class="ai-lifestyle-showcase__carousel-nav-{{ ai_gen_id }} ai-lifestyle-showcase__carousel-nav--prev-{{ ai_gen_id }}" aria-label="Previous slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15,18 9,12 15,6"></polyline>
+      </svg>
+    </button>
+
+    <button class="ai-lifestyle-showcase__carousel-nav-{{ ai_gen_id }} ai-lifestyle-showcase__carousel-nav--next-{{ ai_gen_id }}" aria-label="Next slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9,18 15,12 9,6"></polyline>
+      </svg>
+    </button>
+
+    <div class="ai-lifestyle-showcase__carousel-dots-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        <button
+          class="ai-lifestyle-showcase__carousel-dot-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+          data-slide="{{ forloop.index0 }}"
+          aria-label="Go to slide {{ forloop.index }}"
+        ></button>
+      {% endfor %}
+    </div>
+  </div>
+</lifestyle-showcase-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class LifestyleShowcase{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.totalSlides = 3;
+        this.autoplayInterval = null;
+      }
+
+      connectedCallback() {
+        this.carousel = this.querySelector('.ai-lifestyle-showcase__carousel-{{ ai_gen_id }}');
+        this.track = this.querySelector('.ai-lifestyle-showcase__carousel-track-{{ ai_gen_id }}');
+        this.prevBtn = this.querySelector('.ai-lifestyle-showcase__carousel-nav--prev-{{ ai_gen_id }}');
+        this.nextBtn = this.querySelector('.ai-lifestyle-showcase__carousel-nav--next-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.ai-lifestyle-showcase__carousel-dot-{{ ai_gen_id }}');
+
+        this.setupEventListeners();
+        this.setupTouchEvents();
+        
+        {% if block.settings.enable_autoplay %}
+          this.startAutoplay();
+        {% endif %}
+      }
+
+      setupEventListeners() {
+        this.prevBtn.addEventListener('click', () => this.goToPrevSlide());
+        this.nextBtn.addEventListener('click', () => this.goToNextSlide());
+
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+      }
+
+      setupTouchEvents() {
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        this.carousel.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+          this.pauseAutoplay();
+        });
+
+        this.carousel.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+        });
+
+        this.carousel.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+
+          const diff = startX - currentX;
+          const threshold = 50;
+
+          if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+              this.goToNextSlide();
+            } else {
+              this.goToPrevSlide();
+            }
+          }
+
+          {% if block.settings.enable_autoplay %}
+            this.startAutoplay();
+          {% endif %}
+        });
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateCarousel();
+      }
+
+      goToNextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateCarousel();
+      }
+
+      goToPrevSlide() {
+        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.updateCarousel();
+      }
+
+      updateCarousel() {
+        const translateX = -this.currentSlide * 100;
+        this.track.style.transform = `translateX(${translateX}%)`;
+
+        this.dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentSlide);
+        });
+      }
+
+      startAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+        }
+        
+        this.autoplayInterval = setInterval(() => {
+          this.goToNextSlide();
+        }, {{ block.settings.autoplay_duration | times: 1000 }});
+      }
+
+      pauseAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      disconnectedCallback() {
+        this.pauseAutoplay();
+      }
+    }
+
+    customElements.define('lifestyle-showcase-{{ ai_gen_id }}', LifestyleShowcase{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lifestyle Showcase",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Desktop image height",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "min": 250,
+      "max": 600,
+      "step": 25,
+      "unit": "px",
+      "label": "Mobile image height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Background image"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Custom title"
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Background image"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Custom title"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Background image"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Custom title"
+    },
+    {
+      "type": "header",
+      "content": "Product Card Style"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 12,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_bottom_offset",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Card bottom spacing",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Title font size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Button Style"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Product"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Button font size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Mobile Carousel"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_duration",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay duration",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lifestyle Showcase"
+    }
+  ]
+}
+{% endschema %}

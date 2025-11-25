@@ -1,0 +1,435 @@
+{% doc %}
+  @prompt
+    Section 2: “Here’s how it works” (3-Step Guide)
+Create a three-step instructional section explaining how Tabby works. The section should follow a vertical layout with a modern, accessible design. Each step must include:
+
+🔹 Structure:
+Section Title (Centered):
+Text: Here's how it works
+
+Large, bold font
+
+Optional setting: heading font size and bottom margin
+
+Step Layout (Repeat x3 with similar formatting):
+Each step includes:
+
+Step Label
+
+Text: STEP ONE, STEP TWO, STEP THREE
+
+All-caps, small bold font, slightly muted (e.g., gray or uppercase with letter spacing)
+
+Instruction Text
+
+Example:
+
+Step One: “Choose Tabby at checkout.”
+
+Step Two: “Link any debit or credit card and get instant approval.”
+
+Step Three: “Complete checkout and Tabby will remind you when it’s time to pay.”
+
+Font: Medium weight, clear size (16–18px)
+
+Visual
+
+Image placeholder next to or below the text
+
+Display stacked vertically on mobile
+
+Optionally side-by-side on desktop (configurable in settings)
+
+🧩 Section & Block Settings:
+Add configurable settings to the section to allow full control in the Shopify editor:
+
+section_padding_top: (range: 0–100px)
+
+section_padding_bottom: (range: 0–100px)
+
+heading_font_size: (range: 20–36px)
+
+heading_margin_bottom: (range: 0–40px)
+
+step_label_color: (color picker, default muted gray)
+
+step_spacing: (range: 20–60px between steps)
+
+step_layout: (select: stacked / side-by-side)
+
+image_max_width: (range: 200–600px)
+
+text_alignment: (select: left / center)
+
+🎨 Styling Tips:
+Use light background or alternate light-shaded sections to separate from hero
+
+Add divider lines or subtle shadows between steps (optional)
+
+Ensure all elements are responsive: visuals stack on mobile, text stays readable
+
+Font and image consistency across all three steps
+
+Steps should feel modular — like clean cards or full-width blocks
+
+📦 Content:
+Step 1: “Choose Tabby at checkout.” + Screenshot of checkout
+
+Step 2: “Link any debit or credit card and get instant approval.” + Image of card en, Content:
+Step 1: “Choose Tabby at checkout.” + Screenshot of checkout
+
+Step 2: “Link any debit or credit card and get instant approval.” + Image of card entry
+
+Step 3: “Complete checkout and Tabby will remind you when it’s time to pay.” + Payment confirmation image
+
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .tabby-how-it-works-{{ ai_gen_id }} {
+    padding-top: {{ block.settings.section_padding_top }}px;
+    padding-bottom: {{ block.settings.section_padding_bottom }}px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tabby-how-it-works__heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_font_size }}px;
+    text-align: center;
+    margin-bottom: {{ block.settings.heading_margin_bottom }}px;font-weight: 700;
+  }
+
+  .tabby-how-it-works__steps-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.step_spacing }}px;
+  }
+
+  .tabby-how-it-works__step-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    text-align: {{ block.settings.text_alignment }};}
+
+  @media screen and (min-width: 750px) {
+    .tabby-how-it-works__step-{{ ai_gen_id }} {
+      {% if block.settings.step_layout == 'side-by-side' %}
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+      {% endif %}
+    }
+  }
+
+  .tabby-how-it-works__step-content-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .tabby-how-it-works__step-label-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: {{ block.settings.step_label_color }};
+  }
+
+  .tabby-how-it-works__step-text-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .tabby-how-it-works__step-image-wrapper-{{ ai_gen_id }} {
+    max-width: {{ block.settings.image_max_width }}px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .tabby-how-it-works__step-image-wrapper-{{ ai_gen_id }} {
+      {% if block.settings.step_layout == 'side-by-side' %}
+        flex: 1;{% endif %}
+    }
+  }
+
+  .tabby-how-it-works__step-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    padding-bottom: 75%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;background-color: #f4f4f4;
+  }
+
+  .tabby-how-it-works__step-image-placeholder-{{ ai_gen_id }} svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tabby-how-it-works__step-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+  }
+{% endstyle %}
+
+<div class="tabby-how-it-works-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <h2 class="tabby-how-it-works__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+  <div class="tabby-how-it-works__steps-{{ ai_gen_id }}">
+    <!-- Step 1 -->
+    <div class="tabby-how-it-works__step-{{ ai_gen_id }}">
+      <div class="tabby-how-it-works__step-content-{{ ai_gen_id }}">
+        <div class="tabby-how-it-works__step-label-{{ ai_gen_id }}">{{ block.settings.step_1_label }}</div>
+        <div class="tabby-how-it-works__step-text-{{ ai_gen_id }}">{{ block.settings.step_1_text }}</div>
+      </div>
+      <div class="tabby-how-it-works__step-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.step_1_image %}
+          <img
+            src="{{ block.settings.step_1_image | image_url: width: block.settings.image_max_width }}" 
+            alt="{{ block.settings.step_1_text }}"
+            loading="lazy"
+            class="tabby-how-it-works__step-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="tabby-how-it-works__step-image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="tabby-how-it-works__step-{{ ai_gen_id }}">
+      <div class="tabby-how-it-works__step-content-{{ ai_gen_id }}">
+        <div class="tabby-how-it-works__step-label-{{ ai_gen_id }}">{{ block.settings.step_2_label }}</div>
+        <div class="tabby-how-it-works__step-text-{{ ai_gen_id }}">{{ block.settings.step_2_text }}</div>
+      </div>
+      <div class="tabby-how-it-works__step-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.step_2_image %}
+          <img 
+            src="{{ block.settings.step_2_image | image_url: width: block.settings.image_max_width }}" 
+            alt="{{ block.settings.step_2_text }}"
+            loading="lazy"
+            class="tabby-how-it-works__step-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="tabby-how-it-works__step-image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="tabby-how-it-works__step-{{ ai_gen_id }}">
+      <div class="tabby-how-it-works__step-content-{{ ai_gen_id }}">
+        <div class="tabby-how-it-works__step-label-{{ ai_gen_id }}">{{ block.settings.step_3_label }}</div>
+        <div class="tabby-how-it-works__step-text-{{ ai_gen_id }}">{{ block.settings.step_3_text }}</div>
+      </div>
+      <div class="tabby-how-it-works__step-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.step_3_image %}
+          <img 
+            src="{{ block.settings.step_3_image | image_url: width: block.settings.image_max_width }}" 
+            alt="{{ block.settings.step_3_text }}"
+            loading="lazy"
+            class="tabby-how-it-works__step-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="tabby-how-it-works__step-image-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tabby How It Works",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Here's how it works"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 20,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading font size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading bottom margin",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "step_layout",
+      "label": "Step layout on desktop",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "Stacked"
+        },
+        {
+          "value": "side-by-side",
+          "label": "Side by side"
+        }
+      ],
+      "default": "side-by-side"
+    },
+    {
+      "type": "range",
+      "id": "step_spacing",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Space between steps",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "step_label_color",
+      "label": "Step label color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "image_max_width",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Image max width",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "text",
+      "id": "step_1_label",
+      "label": "Step 1 label",
+      "default": "STEP ONE"
+    },
+    {
+      "type": "text",
+      "id": "step_1_text",
+      "label": "Step 1 text",
+      "default": "Choose Tabby at checkout."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_1_image",
+      "label": "Step 1 image"
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "text",
+      "id": "step_2_label",
+      "label": "Step 2 label",
+      "default": "STEP TWO"
+    },
+    {
+      "type": "text",
+      "id": "step_2_text",
+      "label": "Step 2 text",
+      "default": "Link any debit or credit card and get instant approval."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_2_image",
+      "label": "Step 2 image"
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "text",
+      "id": "step_3_label",
+      "label": "Step 3 label",
+      "default": "STEP THREE"
+    },
+    {
+      "type": "text",
+      "id": "step_3_text",
+      "label": "Step 3 text",
+      "default": "Complete checkout and Tabby will remind you when it's time to pay."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_3_image",
+      "label": "Step 3 image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabby How It Works"
+    }
+  ]
+}
+{% endschema %}

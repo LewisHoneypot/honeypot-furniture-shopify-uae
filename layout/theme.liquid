@@ -1,0 +1,329 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+    
+{% if template.name == 'index' %}
+  <title>Honeypot Furniture UAE – Sofas & Beds Made in Dubai</title>
+{% else %}
+  <title>{{ page_title }} – Honeypot Furniture UAE</title>
+{% endif %}
+
+   {% if template.name == 'index' %}
+  <meta name="description" content="Shop Honeypot Furniture UAE for stylish sofas & beds crafted in Dubai. Enjoy fast UAE-wide delivery—order now and upgrade your home today.">
+{% elsif page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+{% endif %}
+ {{ content_for_header }}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    {% render 'meta-tags' %}
+    {% render 'global-style' %}
+    {{ content_for_header }}
+    {{ 'vendor.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+
+    {%- if template contains 'product' -%}
+      <style>
+        @font-face {
+          font-family: 'Gotham';
+          src: url('{{ 'Gotham Book.woff2' | asset_url }}') format('woff2');
+          font-weight: 100 900;
+          font-style: normal;
+          font-weight: normal;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Gotham';
+          src: url('{{ 'Gotham Bold.woff2' | asset_url }}') format('woff2');
+          font-weight: 100 900;
+          font-style: normal;
+          font-weight: bold;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: 'Anaktoria';
+          src: url('{{ 'Anaktoria.woff2' | asset_url }}') format('woff2'),
+                url('{{ 'Anaktoria.woff' | asset_url }}') format('woff');
+          font-weight: 100 900;
+          font-style: normal;
+          font-display: swap;
+        }
+        /* Italic Variable Font */
+        @font-face {
+          font-family: 'Garamond';
+          src: url('{{ 'EBGaramond-Italic-VariableFont_wght.woff2' | asset_url }}') format('woff2'),
+               url('{{ 'EBGaramond-Italic-VariableFont_wght.woff' | asset_url }}') format('woff');
+          font-weight: 100 900; /* Range of weights for italic */
+          font-style: italic; /* Italic style */
+          font-display: swap;
+        }
+        /* Regular Variable Font */
+        @font-face {
+          font-family: 'Garamond';
+          src: url('{{ 'EBGaramond-VariableFont_wght.woff2' | asset_url }}') format('woff2'),
+               url('{{ 'EBGaramond-VariableFont_wght.woff' | asset_url }}') format('woff');
+          font-weight: 100 900; /* Range of weights for normal */
+          font-style: normal; /* Normal (non-italic) style */
+          font-display: swap;
+        }
+      </style>
+    {% endif %}
+
+    {% comment %} tempalte type {% endcomment %}
+    {%- assign template_log = template | json -%}
+    <script>
+      console.log({{ template_log }});
+    </script>
+
+    {%- if template contains 'collection' or template == 'search' -%}
+      {{ 'collections-arrows.css' | asset_url | stylesheet_tag: preload: true }}
+    {%- endif -%}
+
+    {%- if template == 'blog' or template == 'article' or template contains 'collection' -%}
+      {{ 'clickslice.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+
+    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+    {%- if settings.animations_reveal_on_scroll -%}
+      <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {% render 'global-script' %}
+    {% comment %} <script src="https://shopoe.net/app.js" defer="defer"></script> {% endcomment %}
+
+    {%- unless template contains 'index'
+      or template contains 'collection'
+      or template contains 'blog'
+      or template contains 'article'
+      or template == 'page'
+      or template == 'search'
+    -%}
+      <script src="https://sdk.snapfinance.co.uk/v1/snapuk.min.js" defer="defer"></script>
+    {%- endunless -%}
+
+    {% comment %} Insider Scripts {% endcomment %}
+    {%- if template == 'index' -%}
+      <script>
+        window.insider_object = window.insider_object || {};
+        window.insider_object.page = {
+          type: 'Home',
+        };
+      </script>
+    {%- endif -%}
+    {%- if template contains 'collection' -%}
+      <script>
+        window.insider_object = window.insider_object || {};
+        window.insider_object.page = {
+          type: 'Category',
+        };
+      </script>
+    {%- endif -%}
+    {%- if template contains 'product' -%}
+      <script>
+        window.insider_object = window.insider_object || {};
+        window.insider_object.page = {
+          type: 'Product',
+        };
+      </script>
+    {%- endif -%}
+    {%- if template == 'cart' -%}
+      <script>
+        window.insider_object = window.insider_object || {};
+        window.insider_object.page = {
+          type: 'Basket',
+        };
+      </script>
+    {%- endif -%}
+
+    {% comment %} Clarity Script {% endcomment %}
+    {%- if settings.enable_clarity == true -%}
+      <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = 'https://www.clarity.ms/tag/' + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, 'clarity', 'script', 's0x6yo01lj');
+      </script>
+    {%- endif -%}
+    
+    <meta name="google-site-verification" content="mEm2ZsFKEg6DDfGPtaJ5HzbyU4m4xjUeYhDQAunyOxA">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="page-{{ request.page_type | replace: 'customers/', '' }} gradient {{ settings.text_size | prepend: 'text-size main-text-' }} {{ settings.heading_size | prepend: 'heading-size main-heading-' }}{% if settings.enable_animated_cursor and settings.animated_cursor_style == 'following' %} cursor-fixed__show{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+    {% render 'preload-screen' %}
+    {%- if settings.enable_animated_cursor -%}
+      {% render 'cursor-fixed', style_cursor: settings.animated_cursor_style %}
+    {%- endif -%}
+    {% sections 'header-group' %}
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+    {%- sections 'popup-group' -%}
+    {% render 'multitasking-bar' %}
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% comment %} VENDOR SCRIPTS {% endcomment %}
+    {% comment %} <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+
+    <script src="{{ 'swiper.js' | asset_url }}" defer="defer"></script>
+
+    {% comment %} <script src="{{ 'GSAP.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'ScrollTrigger.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'splitting.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'lightgallery1.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'lightgallery2.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'lightgallery3.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+
+    {% comment %} GLOBAL SCRIPTS {% endcomment %}
+    {% comment %} <script src="{{ 'global.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+
+    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" defer="defer"></script> {% endcomment %}
+
+    <script src="{{ 'GlobalBasics.js' | asset_url }}" defer="defer"></script>
+    {%- unless template contains 'product' or template contains 'collection' or template == 'index' -%}
+      <script src="{{ 'Common.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    <script src="{{ 'AnimateElement.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'AnnouncementBar.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'AZBrands.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'AZLayout.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {%- if template contains 'page' -%}
+      <script src="{{ 'BeforeAfterCursor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {% comment %} <script src="{{ 'CountDown.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'CountDownSpecial.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {%- if template contains 'product' -%}
+      <script src="{{ 'CustomTab.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'DeferredMedia.js' | asset_url }}" defer="defer"></script>
+    {%- if template == 'index' or template contains 'beds' or template contains 'living-and-dining' -%}
+      <script src="{{ 'DetailsDisclosure.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'HeaderTools.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'FooterCollapse.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'LocalizationForm.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'MenuDrawer.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'HeaderDrawer.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'HoverShow.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'CursorMove.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'ImageReveal.js' | asset_url }}" defer="defer"></script>
+    {%- if template == 'collection' -%}
+      <script src="{{ 'HoverChangeImage.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'LookbookPoint.js' | asset_url }}" defer="defer"></script>
+    {%- if template contains 'about-us' -%}
+      <script src="{{ 'MapTemplate.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'ModalTools.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'PageDrawer.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'ProductRecommendations.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'QuantityInput.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'SearchForm.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'ShowMoreButton.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'DrawerOpeners.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'PreloadScreen.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {%- unless template contains 'collection' -%}
+      <script src="{{ 'SliderComponent.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    {%- if template contains 'product' -%}
+      <script src="{{ 'SliderComponentProduct.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {% comment %} <script src="{{ 'CategorySlide.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'AnchorTarget.js' | asset_url }}" defer="defer"></script>
+    {%- unless template contains 'collection' -%}
+      <script src="{{ 'SlideshowComponent.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    <script src="{{ 'StickyHeader.js' | asset_url }}" defer="defer"></script>
+    {%- unless template contains 'collection' -%}
+      <script src="{{ 'ThemeSwiper.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'ThemeTab.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    <script src="{{ 'VariantTools.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'VideoTools.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'ProductCustomerViewing.js' | asset_url }}" defer="defer"></script>
+    {%- if template contains 'article' -%}
+      <script src="{{ 'WriteComment.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {% comment %} <script src="{{ 'Parallax.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {%- unless template contains 'collection' -%}
+      <script src="{{ 'CollapseCollection.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    <script src="{{ 'SplittingAnimate.js' | asset_url }}" defer="defer"></script>
+    {%- unless template contains 'collection' -%}
+      <script src="{{ 'Gallery.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    {%- if template == 'index' or template contains 'product' -%}
+      <script src="{{ 'NewsletterForm.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'ButtonRipple.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'BundleTools.js' | asset_url }}" defer="defer"></script>
+    {% comment %} <script src="{{ 'ScrollContainerCenter.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'cartTools.js' | asset_url }}" defer="defer"></script>
+    {%- unless template contains 'index'
+      or template contains 'collection'
+      or template contains 'blog'
+      or template contains 'article'
+      or template == 'page'
+      or template == 'product'
+    -%}
+      <script src="{{ 'shippingCalculator.js' | asset_url }}" defer="defer"></script>
+    {%- endunless -%}
+    {% comment %} <script src="{{ 'wishlistCard.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'wishlistDrawer.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'cursorFixed.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    {% comment %} <script src="{{ 'cursorBlur.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'pageLoadScrollFix.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'trustpilotServiceReviewStars.js' | asset_url }}" defer="defer"></script>
+
+    <script src="{{ 'refreshCart.js' | asset_url }}" defer="defer"></script>
+
+    {% comment %} Insider {% endcomment %}
+    <script src="{{ 'insider-sw-sdk.js' | asset_url }}" defer="defer"></script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    {%- if template contains 'product' -%}
+      {% comment %} <script src="{{ 'productPage.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+      <script src="{{ 'ufurnish.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {% comment %}
+      {%- if settings.predictive_search_enabled -%}
+        <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+    {% endcomment %}
+    <link rel="stylesheet" href="{{ 'animation.css' | asset_url }}" media="print" onload="this.media='all'">
+  </body>
+</html>

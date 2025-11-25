@@ -1,0 +1,132 @@
+<div class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+  <div class="{{ section.id }}__heading">
+    <div class="app-section__heading-container">
+      <h2 class="app-section__heading">{{ section.settings.heading }}</h2>
+      <a class="app-section__anchor full-unstyled-link linke_desktop" target="_blank" href="{{ section.settings.link_url }}">{{ section.settings.link }} 
+        <span>{% render 'arrow-custom' %}</span>
+      </a>
+    </div>
+    <div class="app-section__description">
+      {{ section.settings.description }}
+    </div>
+     <a class="app-section__anchor full-unstyled-link linke_mobile" target="_blank" href="{{ section.settings.link_url }}">{{ section.settings.link }} 
+        <span>{% render 'arrow-custom' %}</span>
+      </a>
+  </div>
+  
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+
+<style>
+  .app-section__heading {
+    /* text-transform: capitalize; */
+    margin: 0;
+    font-size: calc(var(--font-heading-scale) * 3rem);
+    font-weight: 400
+  }
+  .linke_mobile{
+    display:none !important;
+  }
+  .app-section__description {
+    padding-top: 18px;
+    padding-bottom: 34px;
+  }
+
+  .app-section__heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .app-section__anchor {
+    color: #E49779;
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .app-section__anchor span {
+    width: 14px;
+    height: 14px;
+  }
+
+  .app-section__description {
+    padding-top: 18px;
+    padding-bottom: 34px;
+    font-size: 15px;
+  }
+
+  @media screen and (max-width: 768px){
+    .app-section__heading {
+      font-size: 30px;
+      margin-top:20px;
+    }
+
+    .app-section__heading-container {
+      flex-direction: column;
+      align-items: end;
+    }
+    .linke_mobile{
+      display:flex !important;
+      justify-content: end;
+        margin-bottom: 6px;
+    }
+    .linke_desktop{
+      display:none;
+    }
+    .app-section__description {
+    padding-top: 5px;
+    padding-bottom: 24px;
+    font-size: 15px;
+}
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "link",
+      "label": "Button Text"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "t:sections.apps.settings.include_margins.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

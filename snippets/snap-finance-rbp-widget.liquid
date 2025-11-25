@@ -1,0 +1,126 @@
+<div id="snap-uk-widgets-product-rbp" class="mt-2" style="min-height:63px;"></div>
+
+{% assign product_price = product.price | money_without_currency %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var productPrice = +{{ product_price | replace: "£", "" | replace: ",", "" | split: " " | first }};
+    if (productPrice >= 250) {
+        snapuk.init("fq0hLCzt4Qj1V15ZK78VvjO9K7GUA9zW");
+        snapuk.widgets.productRBP({
+            merchantId: 4816,
+            costOfGoods: productPrice,
+            theme: "LIGHT",
+        });
+
+        // Wait for the widget to be initialized
+        setTimeout(function() {
+            // Select the shadow host element
+            const shadowHost = document.querySelector('#snap-uk-widgets-product-rbp');
+
+            if (shadowHost) {
+                // Access the shadow root
+                const shadowRoot = shadowHost.shadowRoot;
+
+                if (shadowRoot) {
+                    // Find the "Learn more" element
+                    const learnMoreElement = shadowRoot.querySelector('#rbp-bnpl-learn-more');
+
+                    if (learnMoreElement) {
+                        // Keep the "Learn more" element functional without modifying it
+                        shadowHost.addEventListener('click', function() {
+                            learnMoreElement.click();
+                        });
+                    }
+                }
+            }
+        }, 1000); // Adjust the timeout duration if necessary
+
+    } else {
+        var messageElement = document.createElement('div');
+        messageElement.textContent = "Snap Finance is available on orders over £250";
+        messageElement.style.textAlign = 'center';
+        messageElement.style.marginTop = '10px';
+
+        var widgetContainer = document.getElementById('snap-uk-widgets-product-rbp');
+        widgetContainer.appendChild(messageElement);
+    }
+});
+
+// Wait until the DOM is fully loaded to apply custom styles
+document.addEventListener('DOMContentLoaded', function() {
+  var productPrice = +{{ product_price | replace: "£", "" | replace: ",", "" | split: " " | first }};
+  if (productPrice >= 250) {
+
+    // Select the shadow host element
+    const shadowHost = document.querySelector('#snap-uk-widgets-product-rbp');
+    
+    // Access the shadow root
+    const shadowRoot = shadowHost.shadowRoot;
+    
+    // Create a style element
+    const style = document.createElement('style');
+    
+    // Add CSS rules to the style element
+    style.textContent = `
+      .injected-product-widget {
+        background-color: {{ colors_background }} !important;
+        border: 0.1rem solid #707070 !important;
+        border-radius: 0 !important;
+        min-height: 80px !important;
+        min-width: 100%;
+        padding: 0 !important;
+        cursor: pointer;
+        flex-direction: row-reverse;
+      }
+      .injected-product-widget .injected-product-widget__grid__text p {
+        font-size: clamp(11px, 3.5cqw, 14px) !important;
+        gap: 0 !important;
+        justify-content: flex-end !important;
+      }
+      #snap-product-widget-container {
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding-left: 1px;
+        padding-right: 1px;
+      }
+      .rbp-bnpl-widget .injected-product-widget__grid-logo {
+        min-width: 17%;
+        max-width: 17%;
+        @media screen and (min-width:460px) {
+          min-width: 27%;
+          max-width: 27%;
+        }
+        @media screen and (min-width:768px) {
+          min-width: 15%;
+          max-width: 15%;
+        }
+        @media screen and (min-width:992px) {
+          min-width: 20%;
+          max-width: 20%;
+        }
+        @media screen and (min-width:1455px) {
+          min-width: 15%;
+          max-width: 15%;
+        }
+        align-items: flex-start;
+      }
+      .rbp-bnpl-widget .injected-product-widget__grid__text {
+        text-align: right;
+      }
+      .three-col-holder {
+        {% comment %} min-width: 85%;
+        max-width: 85%; {% endcomment %}
+      }
+      /* Hide the 'Learn more' element */
+      #rbp-bnpl-learn-more {
+        display: none !important;
+      }
+    `;
+    
+    // Append the style element to the shadow root
+    shadowRoot.appendChild(style);
+  }
+});
+</script>

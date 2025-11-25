@@ -1,0 +1,373 @@
+{% doc %}
+  @prompt
+    Prompt for Section 1 – Hero Section
+Create a full-width hero section introducing Tabby, a "Buy Now, Pay Later" payment method. The section should be mobile-first and visually engaging. Include the following:
+
+Tabby logo (placeholder image at the top left)
+
+Headline: “Shop now. Pay later with Tabby.”
+
+Subheadline: “We’ve partnered with Tabby to bring you a more rewarding way to shop. Tabby lets you split your purchases into 4 interest-free payments with no fees.”
+
+Promotional Badge Area:
+
+Badge 1: “0% No fees, no interest.”
+
+Badge 2: “Split in 4 payments.”
+
+Hero Image: A vibrant promotional image of a person holding a phone, styled as the focal visual
+
+Styling guidance:
+
+Use bold and modern font styling for headline
+
+Keep layout vertically stacked on mobile
+
+Add generous padding above and below
+
+Center all text and imagery
+
+Use a white or very light background with minimalistic accent elements in Tabby brand colors
+
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .tabby-hero-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tabby-hero__container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tabby-hero__logo-{{ ai_gen_id }} {
+    max-width: 120px;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+
+  .tabby-hero__logo-wrapper-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .tabby-hero__logo-wrapper-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: auto;max-width: 120px;
+  }
+
+  .tabby-hero__heading-{{ ai_gen_id }} {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: {{ block.settings.heading_color }};
+    line-height: 1.2;
+  }
+
+  .tabby-hero__subheading-{{ ai_gen_id }} {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    color: {{ block.settings.text_color }};max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tabby-hero__badges-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tabby-hero__badge-{{ ai_gen_id }} {
+    background-color: {{ block.settings.badge_background_color }};
+    color: {{ block.settings.badge_text_color }};
+    padding: 12px 24px;
+    border-radius: {{ block.settings.badge_border_radius }}px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .tabby-hero__image-container-{{ ai_gen_id }} {
+    margin-top: 24px;
+    max-width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .tabby-hero__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .tabby-hero__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .tabby-hero__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tabby-hero__accent-{{ ai_gen_id }} {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: {{ block.settings.accent_color }};
+    opacity: 0.1;
+    z-index: 1;
+  }
+
+  .tabby-hero__accent-1-{{ ai_gen_id }} {
+    top: -150px;
+    right: -100px;
+  }
+
+  .tabby-hero__accent-2-{{ ai_gen_id }} {
+    bottom: -150px;
+    left: -100px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tabby-hero__heading-{{ ai_gen_id }} {
+      font-size: 42px;
+    }
+
+    .tabby-hero__subheading-{{ ai_gen_id }} {
+      font-size: 18px;
+    }
+
+    .tabby-hero__badges-{{ ai_gen_id }} {
+      flex-direction: row;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .tabby-hero__logo-wrapper-{{ ai_gen_id }} {
+      text-align: left;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .tabby-hero__container-{{ ai_gen_id }} {
+      padding-top: 40px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .tabby-hero-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding }}px 40px;
+    }
+
+    .tabby-hero__heading-{{ ai_gen_id }} {
+      font-size: 48px;
+    }
+
+    .tabby-hero__image-{{ ai_gen_id }},
+    .tabby-hero__image-placeholder-{{ ai_gen_id }} {
+      max-width: 500px;
+    }
+  }
+{% endstyle %}
+
+<div class="tabby-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="tabby-hero__accent-{{ ai_gen_id }} tabby-hero__accent-1-{{ ai_gen_id }}"></div>
+  <div class="tabby-hero__accent-{{ ai_gen_id }} tabby-hero__accent-2-{{ ai_gen_id }}"></div>
+  <div class="tabby-hero__container-{{ ai_gen_id }}">
+    <div class="tabby-hero__logo-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.logo %}
+        <img
+          src="{{ block.settings.logo | image_url: width: 240 }}"
+          alt="{{ block.settings.logo.alt | default: 'Tabby logo' }}"
+          loading="lazy"
+          width="{{ block.settings.logo.width }}"
+          height="{{ block.settings.logo.height }}"
+          class="tabby-hero__logo-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="tabby-hero__logo-wrapper-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <h2 class="tabby-hero__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    <div class="tabby-hero__subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</div>
+
+    <div class="tabby-hero__badges-{{ ai_gen_id }}">
+      <div class="tabby-hero__badge-{{ ai_gen_id }}">{{ block.settings.badge_1_text }}</div>
+      <div class="tabby-hero__badge-{{ ai_gen_id }}">{{ block.settings.badge_2_text }}</div>
+    </div>
+
+    <div class="tabby-hero__image-container-{{ ai_gen_id }}">
+      {% if block.settings.hero_image %}
+        <img 
+          src="{{ block.settings.hero_image | image_url: width: 1000 }}"
+          alt="{{ block.settings.hero_image.alt | default: 'Person using Tabby on mobile phone' }}"
+          loading="lazy"
+          width="{{ block.settings.hero_image.width }}"
+          height="{{ block.settings.hero_image.height }}"
+          class="tabby-hero__image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="tabby-hero__image-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tabby Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Tabby logo"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop now. Pay later with Tabby."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We've partnered with Tabby to bring you a more rewarding way to shop. Tabby lets you split your purchases into 4 interest-free payments with no fees."
+    },
+    {
+      "type": "text",
+      "id": "badge_1_text",
+      "label": "Badge 1 text",
+      "default": "0% No fees, no interest."
+    },
+    {
+      "type": "text",
+      "id": "badge_2_text",
+      "label": "Badge 2 text",
+      "default": "Split in 4 payments."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "badge_background_color",
+      "label": "Badge background color",
+      "default": "#f9f1f6"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#2e0052"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#2e0052"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabby Hero"
+    }
+  ],
+  "tag": null
+}
+{% endschema %}
