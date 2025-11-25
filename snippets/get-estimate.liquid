@@ -1,0 +1,166 @@
+{% comment %}
+  Sofa Estimator Snippet — used inside sidebar drawer
+{% endcomment %}
+
+<section id="get-estimate" class="container">
+  <!-- Step 1 -->
+  <div class="section">
+    <h3>Step 1: Select Sofa Type</h3>
+    <div class="row options-1" style="font-size: 12px;">
+      <div
+        class="col active"
+        data-value="straight"
+        data-index="1"
+      >
+        <div class="border rounded">
+          <div class="title">Straight</div>
+          <img
+            src="https://placeholdit.com/100x300/ffffff/999999"
+            alt="#"
+            style="max-width:100px;"
+            height=""
+            width=""
+          >
+        </div>
+      </div>
+      <div
+        class="col"
+        data-value="l-corner"
+        data-index="2"
+      >
+        <div class="border rounded">
+          <div class="title">L-Corner</div>
+          <img
+            src="https://placeholdit.com/100x300/ffffff/999999"
+            alt="#"
+            style="max-width:100px;"
+            height=""
+            width=""
+          >
+        </div>
+      </div>
+      <div
+        class="col"
+        data-value="corner"
+        data-index="3"
+      >
+        <div class="border rounded">
+          <div class="title">Corner</div>
+          <img
+            src="https://placeholdit.com/100x300/ffffff/999999"
+            alt="#"
+            style="max-width:100px;"
+            height=""
+            width=""
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="section">
+    <h3>Step 2: Select Sofa Size</h3>
+    <img
+      src="https://placeholdit.com/200x100/ffffff/999999"
+      alt="Sofa dimensions"
+      style="width:100%;max-width:200px;margin-bottom:1rem;"
+      height=""
+      width=""
+    >
+
+    <div class="row options-2">
+      <div class="col-12 col-md-4 length-field" data-field="a">
+        <div class="title">Length A</div>
+        <div class="input-field">
+          <input id="length-a" type="number" value="200" placeholder="Enter cm">
+          <span class="units">cm</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 length-field" data-field="b">
+        <div class="title">Length B</div>
+        <div class="input-field">
+          <input id="length-b" type="number" value="100" placeholder="Enter cm">
+          <span class="units">cm</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 length-field" data-field="c">
+        <div class="title">Length C</div>
+        <div class="input-field">
+          <input id="length-c" type="number" value="100" placeholder="Enter cm">
+          <span class="units">cm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="section">
+    <h3>Step 3: Select Sofa Filling</h3>
+    <div class="row options-3">
+      <div class="col active" data-value="feather">
+        <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
+          <img
+            src="https://placeholdit.com/150/ffffff/999999"
+            alt="Feather"
+            style="max-width:150px; margin-top:4px;"
+            height=""
+            width=""
+          >
+          <div class="title">Feather</div>
+        </div>
+      </div>
+      <div class="col " data-value="foam">
+        <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
+          <img
+            src="https://placeholdit.com/150/ffffff/999999"
+            alt="Foam"
+            style="max-width:150px; margin-top:4px;"
+            height=""
+            width=""
+          >
+          <div class="title">Foam</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="section">
+    <h3>Step 4: Select Filling Option</h3>
+    <div class="row options-4">
+      <div class="col active" data-value="classics">
+        <div class="filling-card">
+          <div class="option-title">Classics</div>
+          <div class="option-price" data-option="classics">Dhs —</div>
+          <div class="dropdown-arrow"></div>
+          <div class="filling-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+      </div>
+      <div class="col" data-value="signature">
+        <div class="filling-card">
+          <div class="option-title">Signature</div>
+          <div class="option-price" data-option="signature">Dhs —</div>
+          <div class="dropdown-arrow"></div>
+          <div class="filling-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+      </div>
+      <div class="col" data-value="performance">
+        <div class="filling-card">
+          <div class="option-title">Performance</div>
+          <div class="option-price" data-option="performance">Dhs —</div>
+          <div class="dropdown-arrow"></div>
+          <div class="filling-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span id="price">Price: Dhs. —</span>
+  <span id="monthly">AED —/month (for 4 months)</span>
+
+  <button id="book-btn">BOOK A FREE VISIT</button>
+
+  {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
+</section>
