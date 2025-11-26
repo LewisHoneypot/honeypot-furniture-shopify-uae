@@ -363,6 +363,7 @@
       ],
       "name": "Testimonials",
       "settings": {
+        "section_image": "shopify://shop_images/WhatsApp_Image_2025-11-26_at_11.23.22_PM.jpg",
         "heading": "Testimonials",
         "rating_logo": "shopify://shop_images/Google__G__logo_svg.webp",
         "rating_score": "4.8",
