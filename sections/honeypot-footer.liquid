@@ -31,7 +31,6 @@
       <h4>NEED HELP?</h4>
       <a class="footer-btn whatsapp" 
         href="https://wa.me/{{ section.settings.whatsapp_number | remove: '+' | remove: ' ' }}" 
-        
         target="_blank">
         <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
       </a>
@@ -43,7 +42,15 @@
 
   <div class="footer-bottom">
     <div class="footer-payments">
-      <img src="{{ 'payment-gateway.png' | asset_url }}" width="400" height="50" alt="Payment Methods">
+
+      {% if section.settings.payment_icons != blank %}
+        <img 
+          src="{{ section.settings.payment_icons | image_url: width: 600 }}"
+          width="400"
+          height="50"
+          alt="Payment Methods">
+      {% endif %}
+
       <p class="footer-texts">Privacy policy Refund policy Terms of service</p>
     </div>
     <p>© {{ 'now' | date: '%Y' }} Honeypot Furniture</p>
@@ -242,9 +249,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-
-
-
 {% schema %}
 {
   "name": "Footer",
@@ -254,6 +258,11 @@ document.addEventListener("DOMContentLoaded", function() {
       "id": "whatsapp_number",
       "label": "WhatsApp Number",
       "default": "+971509046848"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icons",
+      "label": "Payment Methods Image"
     }
   ]
 }
