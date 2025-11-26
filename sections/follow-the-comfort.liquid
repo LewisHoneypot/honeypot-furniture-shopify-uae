@@ -1,0 +1,210 @@
+<section class="follow-comfort-section">
+  <div class="page-width">
+    <div class="follow-header">
+      <h2 class="follow-title">{{ section.settings.heading }}</h2>
+      <p class="follow-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="follow-gallery">
+      {% for block in section.blocks %}
+        <div class="follow-card" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer">
+          {% endif %}
+
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+              class="follow-image"
+            >
+          {% endif %}
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+
+          {% if section.settings.insta_icon != blank %}
+            <div class="follow-overlay">
+              <img src="{{ section.settings.insta_icon | image_url: width: 40 }}" alt="Instagram icon" class="insta-icon">
+            </div>
+          {% endif %}
+
+          {% if section.settings.tag_icon != blank %}
+            <div class="follow-likes">
+              <img src="{{ section.settings.tag_icon | image_url: width: 20 }}" alt="Tag icon" class="tag-icon">
+              <span>{{ block.settings.likes }}</span>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Follow The Comfort",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Follow The Comfort"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "See how Honeypot homes come to life."
+    },
+    {
+      "type": "image_picker",
+      "id": "insta_icon",
+      "label": "Instagram Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Image Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Alt Text",
+          "default": "Instagram Image"
+        },
+        {
+          "type": "number",
+          "id": "likes",
+          "label": "Likes Count",
+          "default": 8
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (opens in new tab)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Follow The Comfort",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+.follow-comfort-section {
+  background: #fff;
+  padding: 30px 0;
+}
+
+.follow-header {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.follow-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.follow-subtitle {
+  color: #777;
+  font-size: 1rem;
+}
+
+.follow-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
+}
+.follow-gallery::-webkit-scrollbar { display: none; }
+
+.follow-card {
+  flex: 0 0 calc(25% - 1rem);
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.follow-card:hover { transform: translateY(-5px); }
+
+.follow-image {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.follow-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255,255,255,0.8);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insta-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.follow-likes {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(255,255,255,0.9);
+  border-radius: 24px;
+  padding: 0.3rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.tag-icon {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 1024px) {
+  .follow-card { flex: 0 0 calc(33.333% - 1rem); }
+  .follow-image { height: 360px; }
+}
+
+@media (max-width: 768px) {
+  .follow-card { flex: 0 0 70%; }
+  .follow-image { height: 280px; }
+}
+{% endstylesheet %}

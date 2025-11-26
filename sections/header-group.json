@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -91,19 +82,12 @@
         "padding_bottom": 9
       }
     },
-    "trustpilot_xfrEFN": {
-      "type": "trustpilot",
-      "settings": {
-        "color_scheme": "scheme-d011068e-3d0b-4d0a-9503-63fe05cf10e0",
-        "padding_top": 5,
-        "padding_bottom": 5
-      }
-    },
     "header": {
       "type": "header",
       "blocks": {
         "mega_menu_1_QYBCyP": {
           "type": "mega_menu_1",
+          "disabled": true,
           "settings": {
             "menu_item": "Sofas",
             "section_width": "customized-width",
@@ -117,6 +101,7 @@
         },
         "mega_menu_1_MkHmHf": {
           "type": "mega_menu_1",
+          "disabled": true,
           "settings": {
             "menu_item": "Bedroom",
             "section_width": "customized-width",
@@ -130,6 +115,7 @@
         },
         "mega_menu_1_NE4a6D": {
           "type": "mega_menu_1",
+          "disabled": true,
           "settings": {
             "menu_item": "Living And Dining",
             "section_width": "customized-width",
@@ -143,6 +129,7 @@
         },
         "mega_menu_2_U88XrE": {
           "type": "mega_menu_2",
+          "disabled": true,
           "settings": {
             "menu_item": "Rugs",
             "section_width": "customized-width",
@@ -162,6 +149,7 @@
         },
         "mega_menu_1_TFhwQt": {
           "type": "mega_menu_1",
+          "disabled": true,
           "settings": {
             "menu_item": "Inspiration",
             "section_width": "customized-width",
@@ -182,46 +170,59 @@
         "mega_menu_1_TFhwQt"
       ],
       "custom_css": [
-        ".menu-drawer {background-color: #ffffff;}"
+        ".menu-drawer {background-color: white;}",
+        ".menu-drawer__menu-item {color: black;}",
+        ".menu-drawer__inner-submenu {background-color: white; color: black;}",
+        ".menu-drawer__submenu {background-color: white; color: black;}",
+        ".header__submenu {background-color: white; color: black;}",
+        ".header__submenu .link-style {color: black;}",
+        ".icon-caret {color: black;}",
+        ".header .header__heading-logo {-webkit-filter: brightness(0) invert(1);}",
+        ".header__icon--search-mobile-2 {margin-top: 5px;}",
+        ".header__icon--cart {margin-top: 5px;}"
       ],
       "settings": {
         "use_nosto": true,
         "section_width": "page-width",
         "customize_width": 1800,
         "type_style": "classic",
+        "custom_account_icon": "shopify://shop_images/SVG_1.png",
+        "custom_account_icon_svg": "",
+        "custom_wishlist_icon": "shopify://shop_images/SVG_75229bbf-544e-4edf-add5-2f8584319b6d.png",
+        "custom_wishlist_icon_svg": "",
         "show_line_separator": false,
-        "type_sticky_header": "scroll-up",
-        "color_scheme": "scheme-06080b3f-4cd8-4a34-99a2-b3f3ed18987c",
+        "type_sticky_header": "none",
+        "color_scheme": "accent-1",
         "text_size": "medium",
         "font_transform": "capitalize",
         "enable_transparent": true,
         "logo_transparent": "shopify://shop_images/Primary_Logo.png",
-        "color_opacity_1": 100,
-        "text_transparent": "#000000",
-        "color_opacity_2": 70,
+        "color_opacity_1": 0,
+        "text_transparent": "#ffffff",
+        "color_opacity_2": 0,
         "logo": "shopify://shop_images/Primary_Logo.png",
-        "logo_width": 100,
-        "logo_position": "top-left",
-        "logo_alignment_desktop": "start",
+        "logo_width": 160,
+        "logo_position": "middle-center",
+        "logo_alignment_desktop": "center",
         "menu": "main-menu",
-        "menu_alignment_desktop": "center",
+        "menu_alignment_desktop": "left",
         "spacing_gap": 20,
         "menu_transform": "capitalize",
         "link_type": "line",
-        "use_wide_search": true,
+        "use_wide_search": false,
         "use_custom_button": false,
         "use_button_label": "Button label",
         "use_button_link": "",
         "icon_type_style": "classic",
-        "enable_search": false,
-        "enable_account": false,
+        "enable_search": true,
+        "enable_account": true,
         "enable_cart": true,
         "enable_wishlist": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "function_alignment_desktop": "end",
-        "enable_search_mobile": false,
-        "enable_account_mobile": false,
+        "enable_search_mobile": true,
+        "enable_account_mobile": true,
         "enable_cart_mobile": true,
         "enable_wishlist_mobile": false,
         "enable_country_selector_mobile": true,
@@ -229,7 +230,7 @@
         "mobile_logo_position": "center",
         "padding_top": 16,
         "padding_bottom": 16,
-        "use_country_selector": true,
+        "use_country_selector": false,
         "country_selector_position": "right",
         "country_selector_text_1": "GB",
         "country_selector_url_1": "https://honeypotfurniture.co.uk/",
@@ -243,7 +244,6 @@
   "order": [
     "announcement-bar",
     "b38aad37-e5d6-4a4a-9109-e406344cc53a",
-    "trustpilot_xfrEFN",
     "header"
   ]
 }

@@ -1,0 +1,132 @@
+<section class="info-strip color-background gradient pos-relative" style="background: #F0E9E3;">
+  <div class="page-width d-flex f-wrap a-i-center j-c-center info-strip__inner">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <div class="info-strip__item d-flex a-i-center j-c-center" style="gap: 0.5rem;">
+          {%- if block.settings.icon != blank -%}
+            <img
+              src="{{ block.settings.icon | image_url: width: 40 }}"
+              alt=""
+              class="info-strip__icon"
+              width="24"
+              height="24"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <span class="info-strip__text">
+            {{ block.settings.text }}
+            {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="info-strip__link">{{ block.settings.link_label }}</a>
+            {%- endif -%}
+          </span>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <div class="info-strip__item d-flex a-i-center j-c-center" style="gap: 0.5rem;">
+        <span class="info-strip__text">
+          Order Today, Delivered Tomorrow
+          <a href="/collections/all" class="info-strip__link">Order Now!</a>
+        </span>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <style>
+    .info-strip {
+      padding: 12px 0;
+      background-color: #F0E9E3;
+    }
+
+    .info-strip__inner {
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .info-strip__item {
+      font-size: 14px;
+      color: #000;
+      text-transform: none;
+    }
+
+    .info-strip__link {
+      color: #000;
+      text-decoration: underline;
+      font-weight: 600;
+      margin-left: 4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .info-strip__link:hover {
+      opacity: 0.7;
+    }
+
+    .info-strip__icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 749px) {
+      .info-strip__item {
+        font-size: 13px;
+      }
+      .info-strip__inner {
+        gap: 1rem;
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Info Strip (Top Bar)",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "info_item",
+      "name": "Info item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon (optional)"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Order Today, Delivered Tomorrow"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Order Now!"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Info Strip (Top Bar)",
+      "blocks": [
+        {
+          "type": "info_item",
+          "settings": {
+            "text": "Order Today, Delivered Tomorrow",
+            "link_label": "Order Now!",
+            "link_url": "/collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,354 @@
+<section class="testimonials-section" id="Testimonials-{{ section.id }}">
+  <div class="page-width">
+    <div class="testimonial-stage" data-section-id="{{ section.id }}">
+      <div class="testimonial-slides">
+        {% for block in section.blocks %}
+          <div class="testimonial-slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+            <!-- Left image -->
+            <div class="testimonial-image-col">
+              {% if block.settings.block_image != blank %}
+                <img
+                  src="{{ block.settings.block_image | image_url: width: 1400 }}"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy"
+                  class="testimonial-image"
+                >
+              {% endif %}
+            </div>
+
+            <!-- Right content -->
+            <div class="testimonial-content-col">
+              <h2 class="testimonial-heading">{{ section.settings.heading }}</h2>
+
+              <div class="testimonial-rating">
+                <div class="rating-left">
+                  {% if section.settings.rating_logo != blank %}
+                    <img
+                      src="{{ section.settings.rating_logo | image_url: width: 160 }}"
+                      alt="Rating"
+                      loading="lazy"
+                      class="rating-logo"
+                    >
+                  {% endif %}
+                  <div class="rating-info">
+                    <p class="rating-text">Google Rating</p>
+                    <p class="rating-score">
+                      {{ section.settings.rating_score }}
+                      <span class="rating-stars">★★★★★</span>
+                    </p>
+                    {% if section.settings.reviews_link != blank %}
+                      <a href="{{ section.settings.reviews_link }}" target="_blank" rel="noopener" class="see-all-link">
+                        See all reviews
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <!-- Inline arrows -->
+                <div class="testimonial-controls-inline">
+                  <button class="testimonial-nav testimonial-prev" aria-label="Previous">&#10094;</button>
+                  <button class="testimonial-nav testimonial-next" aria-label="Next">&#10095;</button>
+                </div>
+              </div>
+
+              <p class="testimonial-quote">“{{ block.settings.quote }}”</p>
+
+              <!-- Dots inline below arrows -->
+              <div class="testimonial-dots-inline"></div>
+
+              <div class="testimonial-user">
+                {% if block.settings.avatar != blank %}
+                  <img
+                    src="{{ block.settings.avatar | image_url: width: 120 }}"
+                    alt="{{ block.settings.name | escape }}"
+                    loading="lazy"
+                    class="testimonial-avatar"
+                  >
+                {% endif %}
+                <div class="testimonial-user-info">
+                  <p class="testimonial-name">{{ block.settings.name }}</p>
+                  <p class="testimonial-title">{{ block.settings.title }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.testimonial-stage').forEach(stage => {
+      const slides = Array.from(stage.querySelectorAll('.testimonial-slide'));
+      let current = 0;
+
+      function render() {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('is-active', i === current);
+          const dotsContainer = slide.querySelector('.testimonial-dots-inline');
+          dotsContainer.innerHTML = '';
+          slides.forEach((_, j) => {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (j === current ? ' active' : '');
+            dot.addEventListener('click', () => {
+              current = j;
+              render();
+            });
+            dotsContainer.appendChild(dot);
+          });
+        });
+      }
+
+      function go(delta) {
+        current = (current + delta + slides.length) % slides.length;
+        render();
+      }
+
+      // Event delegation so arrows always work
+      stage.addEventListener('click', (e) => {
+        if (e.target.closest('.testimonial-prev')) go(-1);
+        if (e.target.closest('.testimonial-next')) go(1);
+      });
+
+      render();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Testimonials" },
+    { "type": "image_picker", "id": "rating_logo", "label": "Rating Logo (Google)" },
+    { "type": "text", "id": "rating_score", "label": "Rating Score", "default": "4.8" },
+    { "type": "url", "id": "reviews_link", "label": "See All Reviews Link" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial_block",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "image_picker", "id": "block_image", "label": "Left Image (for this testimonial)" },
+        { "type": "text", "id": "quote", "label": "Quote", "default": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam." },
+        { "type": "image_picker", "id": "avatar", "label": "Reviewer Avatar" },
+        { "type": "text", "id": "name", "label": "Reviewer Name" },
+        { "type": "text", "id": "title", "label": "Reviewer Title" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Custom Sections",
+      "blocks": [
+        { "type": "testimonial_block" },
+        { "type": "testimonial_block" },
+        { "type": "testimonial_block" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+/* === Base === */
+.testimonials-section {
+  background-color: #F9F7F5;
+  padding: 20px 0;
+}
+
+.testimonial-stage {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-slides {
+  position: relative;
+  min-height: 520px;
+}
+
+/* === Slide === */
+.testimonial-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+.testimonial-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.testimonial-image-col {
+  flex: 1 1 48%;
+  background-color: #F9F7F5;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.testimonial-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === Content === */
+.testimonial-content-col {
+  flex: 1 1 48%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.testimonial-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+/* === Rating + Arrows inline === */
+.testimonial-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.rating-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rating-logo {
+  height: 22px;
+}
+
+.rating-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.rating-text {
+  font-size: .95rem;
+  color: #555;
+  margin: 0;
+}
+
+.rating-score {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #111;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rating-stars {
+  color: #FFA500;
+}
+
+/* Inline arrows */
+.testimonial-controls-inline {
+  display: flex;
+  gap: 8px;
+}
+.testimonial-nav {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: none;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 34px;
+  text-align: center;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.testimonial-nav:hover {
+  border-color: #111;
+  color: #111;
+}
+
+/* === Dots below arrows (and aligned near reviewer) === */
+.testimonial-dots-inline {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0 12px;
+  gap: 6px;
+}
+
+.testimonial-dots-inline .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CCC;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.testimonial-dots-inline .dot.active {
+  background: #111;
+}
+
+/* === Quote & User === */
+.testimonial-quote {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.testimonial-title {
+  color: #777;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .testimonial-slides { height: 520px; }
+  .testimonial-slide {
+    position: relative;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .testimonial-content-col { text-align: center; }
+  .testimonial-rating { flex-direction: column; gap: 10px; }
+  .testimonial-dots-inline { justify-content: center; }
+}
+{% endstylesheet %}

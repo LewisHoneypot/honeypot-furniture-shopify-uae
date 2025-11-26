@@ -1,0 +1,156 @@
+<section
+  class="love-it-now-section"
+  style="
+    {% if section.settings.background_image != blank %}
+      background: 
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url({{ section.settings.background_image | image_url: width: 1600 }});
+      background-size: cover;
+      background-position: center;
+    {% else %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+  "
+>
+  <div class="page-width">
+    <div class="love-inner text-center">
+      <h2 class="love-heading">{{ section.settings.heading }}</h2>
+      <p class="love-subtext">{{ section.settings.subtext }}</p>
+
+      <div class="love-logos">
+        {% if section.settings.tabby_logo != blank %}
+          <img 
+            src="{{ section.settings.tabby_logo | image_url: width: 200 }}" 
+            alt="Tabby Logo" 
+            class="love-logo"
+            loading="lazy"
+          >
+        {% endif %}
+        {% if section.settings.tamara_logo != blank %}
+          <img 
+            src="{{ section.settings.tamara_logo | image_url: width: 200 }}" 
+            alt="Tamara Logo" 
+            class="love-logo"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_button %}
+        <a href="{{ section.settings.button_link }}" class="love-btn">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  
+</section>
+{% render 'guarantee-strip', text_1: section.settings.text_1, text_2: section.settings.text_2, text_3: section.settings.text_3 %}
+
+{% schema %}
+{
+  "name": "Love It Now Pay Later",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Love It Now. Pay Later." },
+    { "type": "text", "id": "subtext", "label": "Supporting Text", "default": "Shop your Honeypot favourites with Tabby or Tamara. Flexible payments, zero stress." },
+    { "type": "image_picker", "id": "tabby_logo", "label": "Tabby Logo" },
+    { "type": "image_picker", "id": "tamara_logo", "label": "Tamara Logo" },
+    { "type": "checkbox", "id": "show_button", "label": "Show Button", "default": true },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "Buy Sofa Now" },
+    { "type": "url", "id": "button_link", "label": "Button Link" },
+    { "type": "image_picker", "id": "background_image", "label": "Background Image (optional)" },
+    { "type": "color", "id": "background_color", "label": "Background Color", "default": "#F0E9E3" },
+
+                {
+      "type": "text",
+      "id": "text_1",
+      "label": "First Text",
+      "default": "Eco-friendly fabrics"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Second Text",
+      "default": "Transparent Pricing Estimator"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Third Text",
+      "default": "Order Free Swatches"
+    },
+  ],
+  "presets": [
+    { "name": "Love It Now Pay Later", "category": "Custom Sections" }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.love-it-now-section {
+  padding: 160px 0;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.love-inner {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.love-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.6rem;
+}
+
+.love-subtext {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.love-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.love-logo {
+  height: 30px;
+  object-fit: contain;
+}
+
+.love-btn {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 10px 28px;
+  border-radius: 4px;
+  font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .love-heading {
+    font-size: 1.6rem;
+  }
+  .love-subtext {
+    font-size: 0.95rem;
+  }
+  .love-logo {
+    height: 32px;
+  }
+}
+{% endstylesheet %}
