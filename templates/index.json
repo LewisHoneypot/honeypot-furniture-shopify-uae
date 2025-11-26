@@ -327,7 +327,6 @@
         "testimonial_block_afrEUh": {
           "type": "testimonial_block",
           "settings": {
-            "block_image": "shopify://shop_images/WhatsApp_Image_2025-11-26_at_11.23.22_PM.jpg",
             "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas.",
             "avatar": "shopify://shop_images/8159633c1443bc8b09348ee90e7b7ce919ba16f2.jpg",
             "name": "Michelle Anna",
@@ -544,7 +543,10 @@
         "p {font-size: 16px;}"
       ],
       "name": "Join The Honeypot Club",
-      "settings": {}
+      "settings": {
+        "phone_icon": "shopify://shop_images/bfecf73409c6be6216cf453c2a28d7704daff336.png",
+        "email_icon": "shopify://shop_images/83a619c01212302d5ef95a7b5383b7f371b7de68.png"
+      }
     },
     "honeypot_footer_djMfgi": {
       "type": "honeypot-footer",
