@@ -29,10 +29,13 @@
     </div>
     <div class="footer-column collapsible">
       <h4>NEED HELP?</h4>
-      <a class="footer-btn whatsapp" href="https://wa.me/XXXXXXXXXXXX" target="_blank">
+      <a class="footer-btn whatsapp" 
+        href="https://wa.me/{{ section.settings.whatsapp_number | remove: '+' | remove: ' ' }}" 
+        
+        target="_blank">
         <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
       </a>
-      <a class="footer-btn email" href="mailto:hello@honeypotfurniture.co.uk">
+      <a class="footer-btn email" href="/pages/contact">
         <i class="fa-solid fa-paper-plane"></i> Email Customer Support
       </a>
     </div>
@@ -238,3 +241,20 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+
+
+
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp Number",
+      "default": "+971509046848"
+    }
+  ]
+}
+{% endschema %}
