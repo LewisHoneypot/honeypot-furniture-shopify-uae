@@ -552,7 +552,8 @@
       "type": "honeypot-footer",
       "name": "Honeypot Footer",
       "settings": {
-        "whatsapp_number": "+971509046848"
+        "whatsapp_number": "+971509046848",
+        "payment_icons": "shopify://shop_images/8b870cb98c3ef97c16cb962620acaddba813ceaa.png"
       }
     },
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596": {
