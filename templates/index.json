@@ -43,7 +43,11 @@
           }
         }
       },
-      "block_order": ["slide_RxGJri", "slide_mHjWC7", "slide_aNRVXn"],
+      "block_order": [
+        "slide_RxGJri",
+        "slide_mHjWC7",
+        "slide_aNRVXn"
+      ],
       "custom_css": [
         "h2 {color: white;}",
         "p {color: white;}",
@@ -53,7 +57,7 @@
       ],
       "name": "Hero Banner (Full Width)",
       "settings": {
-        "slider_height": 650,
+        "slider_height": 780,
         "slider_height_mobile": 450,
         "slide_duration": 5
       }
@@ -79,8 +83,13 @@
           }
         }
       },
-      "block_order": ["info_item_DijKpq", "info_item_PVx4Gp"],
-      "custom_css": [".info-strip__text {font-size: 14px;}"],
+      "block_order": [
+        "info_item_DijKpq",
+        "info_item_PVx4Gp"
+      ],
+      "custom_css": [
+        ".info-strip__text {font-size: 14px;}"
+      ],
       "name": "Info Strip (Top Bar)",
       "settings": {}
     },
@@ -126,9 +135,14 @@
         "image_block_4HJ89K",
         "image_block_yj4A4i"
       ],
-      "custom_css": ["h3 {font-size: 16px !important;}"],
+      "custom_css": [
+        "h3 {font-size: 16px !important;}"
+      ],
       "name": "Category Grid (4 Columns)",
-      "settings": { "padding_top": 40, "padding_bottom": 40 }
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     },
     "review_strip_6PQLxP": {
       "type": "review-strip",
@@ -149,7 +163,9 @@
         ".most-liked-product-title {white-space: nowrap; width: 300px; overflow: hidden; text-overflow: ellipsis; text-transform: capitalize;}"
       ],
       "name": "Most Liked",
-      "settings": { "collection": "delivered-tomorrow" }
+      "settings": {
+        "collection": "delivered-tomorrow"
+      }
     },
     "honeypot_furniture_hFmpif": {
       "type": "honeypot-furniture",
@@ -241,7 +257,9 @@
         ".shop-type-title {font-size: 16px;}"
       ],
       "name": "Shop By Type",
-      "settings": { "heading": "Shop By Type" }
+      "settings": {
+        "heading": "Shop By Type"
+      }
     },
     "custom_sofa_CUwUCQ": {
       "type": "custom-sofa",
@@ -257,7 +275,10 @@
         "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.",
         "button_label": "",
         "button_link": "shopify://pages/custom-sofa",
-        "image": "shopify://shop_images/DSC00018-1-1-square.jpg"
+        "image": "shopify://shop_images/DSC00018-1-1-square.jpg",
+        "text_1": "Over 150+ Fabrics & Colours",
+        "text_2": "Book a Free Home Visit",
+        "text_3": "Unlimited Customisation"
       }
     },
     "new_arrivals_RLBEyT": {
@@ -386,7 +407,9 @@
           }
         }
       },
-      "block_order": ["instafeed_app_block_NGpWxj"],
+      "block_order": [
+        "instafeed_app_block_NGpWxj"
+      ],
       "settings": {
         "heading": "Watch & Choose with Confidence",
         "link_url": "https://www.instagram.com/honeypotfurniture.ae?igsh=MWVreno2aGpjYnloMw==",
@@ -530,31 +553,45 @@
       "blocks": {
         "9f53099d-0898-4a6b-99f7-638915d3e2c5": {
           "type": "collection",
-          "settings": { "collection": "corner-sofas" }
+          "settings": {
+            "collection": "corner-sofas"
+          }
         },
         "fb7172ca-46fa-42a1-826f-3bb34a5e8b86": {
           "type": "collection",
-          "settings": { "collection": "u-shape-sofas" }
+          "settings": {
+            "collection": "u-shape-sofas"
+          }
         },
         "9298a67d-a92b-452c-9c21-14a031c2a4c3": {
           "type": "collection",
-          "settings": { "collection": "sofa-beds" }
+          "settings": {
+            "collection": "sofa-beds"
+          }
         },
         "3d65e484-cedc-409d-8bd1-e6722f400bb7": {
           "type": "collection",
-          "settings": { "collection": "3-seater-sofas" }
+          "settings": {
+            "collection": "3-seater-sofas"
+          }
         },
         "11cc0144-b0fb-4f1d-a415-bd1d8a50ff45": {
           "type": "collection",
-          "settings": { "collection": "2-seater-sofas" }
+          "settings": {
+            "collection": "2-seater-sofas"
+          }
         },
         "004436e0-e2cf-4a59-bf91-6668d2138e8f": {
           "type": "collection",
-          "settings": { "collection": "4-seater-sofas" }
+          "settings": {
+            "collection": "4-seater-sofas"
+          }
         },
         "a7e7e249-f6e6-4b09-9bef-19db66cbd683": {
           "type": "collection",
-          "settings": { "collection": "armchairs" }
+          "settings": {
+            "collection": "armchairs"
+          }
         }
       },
       "block_order": [
