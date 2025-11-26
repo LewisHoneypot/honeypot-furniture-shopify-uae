@@ -1,585 +1,551 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "12b81e44-2b28-427b-9080-19dfb79fd112": {
-      "type": "slideshow",
+    "hero_banner_gXfDpH": {
+      "type": "hero-banner",
       "blocks": {
-        "slide_BzgHcM": {
+        "slide_RxGJri": {
           "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1_547ba504-d3ee-431a-94d5-7b1a8f64a8d0.jpg",
+            "heading": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "slide_mHjWC7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
+            "heading": "Invest in Comfort. Experience the Difference.",
+            "text": "",
+            "button_label": "View All",
+            "button_link": "shopify://collections"
+          }
+        },
+        "slide_aNRVXn": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/2_71022430-5e0c-4016-a745-05c862937e3d.png",
+            "heading": "Unlimited Customisation Delivered in Days",
+            "text": "Shop comfort MADE FOR YOU. Handcrafted sofas that fit your home, your lifestyle, and your timeline. Designed for easy delivery, effortless assembly, and endless lounging.",
+            "button_label": "View All",
+            "button_link": "shopify://collections"
+          }
+        }
+      },
+      "block_order": ["slide_RxGJri", "slide_mHjWC7", "slide_aNRVXn"],
+      "custom_css": [
+        "h2 {color: white;}",
+        "p {color: white;}",
+        ".button {background: transparent; color: white; border: 1px white solid;}",
+        ".hero-banner__bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;}",
+        ".hero-banner__bg img {width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;}"
+      ],
+      "name": "Hero Banner (Full Width)",
+      "settings": {
+        "slider_height": 650,
+        "slider_height_mobile": 450,
+        "slide_duration": 5
+      }
+    },
+    "info_strip_eMVrRq": {
+      "type": "info-strip",
+      "blocks": {
+        "info_item_DijKpq": {
+          "type": "info_item",
+          "settings": {
+            "text": "Order Today, Delivered Tomorrow",
+            "link_label": "Order Now!",
+            "link_url": "shopify://collections/all"
+          }
+        },
+        "info_item_PVx4Gp": {
+          "type": "info_item",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/New_Dark_Banners_12.png",
-            "mobile_image": "shopify://shop_images/New_Dark_Banners_12.png",
-            "content_max_width": 440,
-            "content_type": "text",
-            "heading_font": "font-body",
-            "heading": "New Collection: Rugs",
-            "heading_size": "medium",
-            "heading_margin_bottom": 20,
-            "subheading": "This weekend only, enjoy 10% off + FREE delivery on rugs!",
-            "subheading_size": "medium",
-            "subheading_margin_bottom": 30,
-            "box_align": "bottom-left",
-            "text_alignment": "left",
-            "image_overlay_opacity": 30,
-            "color_overlay_opacity": "#000000",
-            "primary_button_label": "Shop The Collection",
-            "primary_button_link": "shopify://collections/medium-rugs",
-            "secondary_button_label": "",
-            "secondary_button_link": "",
-            "button_transparent": "transparent",
-            "button_spacing_between": 10,
-            "buttons_direction": "horizontal",
-            "padding_top_bottom": 0,
-            "padding_left_right": 0
-          }
-        },
-        "template--16793024757999__12b81e44-2b28-427b-9080-19dfb79fd112-1676275303a720accc-0": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/New_Dark_Banners_11.png",
-            "mobile_image": "shopify://shop_images/Untitled_design_-_2025-01-31T092535.491_52d2dc73-6231-4d1e-8fbc-f78edc529e9e.png",
-            "content_max_width": 1200,
-            "content_type": "text",
-            "heading_font": "font-heading",
-            "heading": "Sink Into Comfort, Stay in Style",
-            "heading_size": "small",
-            "heading_margin_bottom": 30,
-            "subheading": "Elevate your home with our cosy corners designed for ultimate relaxation.",
-            "subheading_size": "medium",
-            "subheading_margin_bottom": 32,
-            "box_align": "bottom-left",
-            "text_alignment": "left",
-            "image_overlay_opacity": 0,
-            "color_overlay_opacity": "#ffffff",
-            "primary_button_label": "Shop Corners",
-            "primary_button_link": "shopify://collections/corner-sofas",
-            "secondary_button_label": "",
-            "secondary_button_link": "shopify://collections/chairs",
-            "button_transparent": "transparent",
-            "button_spacing_between": 10,
-            "buttons_direction": "vertical",
-            "padding_top_bottom": 0,
-            "padding_left_right": 0
-          }
-        },
-        "slide_DRDiED": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Tabby_Banner_Desktop_2000_x_800_px_4.jpg",
-            "mobile_image": "shopify://shop_images/Tabby_Mob.jpg",
-            "content_max_width": 440,
-            "content_type": "image",
-            "overlay_image": "shopify://shop_images/Tabby_Text2.png",
-            "heading_font": "font-heading",
-            "heading": "",
-            "heading_size": "default",
-            "heading_margin_bottom": 20,
-            "subheading": "",
-            "subheading_size": "medium",
-            "subheading_margin_bottom": 30,
-            "box_align": "bottom-left",
-            "text_alignment": "left",
-            "image_overlay_opacity": 30,
-            "color_overlay_opacity": "#000000",
-            "primary_button_label": "Learn More",
-            "primary_button_link": "shopify://pages/buy-furniture-with-tabby",
-            "secondary_button_label": "",
-            "secondary_button_link": "",
-            "button_transparent": "transparent",
-            "button_spacing_between": 10,
-            "buttons_direction": "horizontal",
-            "padding_top_bottom": 0,
-            "padding_left_right": 0
-          }
-        },
-        "slide_MVHYjL": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/UAE-Banner-2.jpg",
-            "mobile_image": "shopify://shop_images/SOFA_13M_137031f4-7f70-4179-bf09-8ca640c790a9.jpg",
-            "content_max_width": 910,
-            "content_type": "text",
-            "heading_font": "font-heading",
-            "heading": "Luxury, Redefined. Comfort, Unmatched",
-            "heading_size": "small",
-            "heading_margin_bottom": 30,
-            "subheading": "Discover handcrafted sofas designed for you",
-            "subheading_size": "large",
-            "subheading_margin_bottom": 32,
-            "box_align": "bottom-left",
-            "text_alignment": "left",
-            "image_overlay_opacity": 30,
-            "color_overlay_opacity": "#000000",
-            "primary_button_label": "Find out more",
-            "primary_button_link": "shopify://collections/dubai-feather-cloud",
-            "secondary_button_label": "",
-            "secondary_button_link": "",
-            "button_transparent": "transparent",
-            "button_spacing_between": 10,
-            "buttons_direction": "horizontal",
-            "padding_top_bottom": 0,
-            "padding_left_right": 0
-          }
-        },
-        "slide_dN3rVP": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Jacob_Right_Hand_Facing_Sofa_Vertical_Beige_1_High_Res_1_91a35ab0-d756-4573-802b-2529d9404d0b.jpg",
-            "mobile_image": "shopify://shop_images/Jacob_Right_Hand_Facing_Sofa_Vertical_Beige_1_High_Res_1.jpg",
-            "content_max_width": 1200,
-            "content_type": "text",
-            "heading_font": "font-heading",
-            "heading": "Sofa Spotlight: The Jacob",
-            "heading_size": "small",
-            "heading_margin_bottom": 20,
-            "subheading": "Giving your home that WOW factor",
-            "subheading_size": "medium",
-            "subheading_margin_bottom": 26,
-            "box_align": "bottom-left",
-            "text_alignment": "left",
-            "image_overlay_opacity": 90,
-            "color_overlay_opacity": "#000000",
-            "primary_button_label": "Shop the range",
-            "primary_button_link": "shopify://products/jacob-sofa-natural-left-hand-facing-corner",
-            "secondary_button_label": "",
-            "secondary_button_link": "",
-            "button_transparent": "transparent",
-            "button_spacing_between": 10,
-            "buttons_direction": "horizontal",
-            "padding_top_bottom": 0,
-            "padding_left_right": 0
+            "text": "Hassle-free returns within 14 days",
+            "link_label": "Order Now!",
+            "link_url": "shopify://collections/all"
           }
         }
       },
-      "block_order": [
-        "slide_BzgHcM",
-        "template--16793024757999__12b81e44-2b28-427b-9080-19dfb79fd112-1676275303a720accc-0",
-        "slide_DRDiED",
-        "slide_MVHYjL",
-        "slide_dN3rVP"
-      ],
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1450,
-        "image_ratio": "full-screen",
-        "image_ratio_mobile": "adapt-image",
-        "color_scheme": "scheme-e478b9c9-3edc-41c0-a269-635cbe8ed918",
-        "arrows_type": "lg",
-        "arrows_position": "middle-center",
-        "carousel_infinite_scroll": true,
-        "enable_autoplay": true,
-        "color_autoplay": "#ffffff",
-        "change_slides_speed": 9,
-        "enable_pagination_type": "all",
-        "pagination_type": "dots",
-        "image_behavior": "none",
-        "accessibility_info": ""
-      }
+      "block_order": ["info_item_DijKpq", "info_item_PVx4Gp"],
+      "custom_css": [".info-strip__text {font-size: 14px;}"],
+      "name": "Info Strip (Top Bar)",
+      "settings": {}
     },
-    "0b6105a9-a3ce-4181-b45b-7a55c709e140": {
-      "type": "marquee",
+    "category_grid_P4k9aG": {
+      "type": "category-grid",
       "blocks": {
-        "marquee_6FBeq9": {
-          "type": "marquee",
+        "image_block_XDC7Qn": {
+          "type": "image_block",
           "settings": {
-            "type_marquee": "text",
-            "text": "<p>Free Returns</p>",
-            "set_transparent_text": false,
-            "enable_color_underline": false,
-            "colors_underline": "#000000",
-            "options_colors_underline": "full",
-            "image_height": 152,
-            "link": ""
+            "image": "shopify://shop_images/DSC03259-2-3-rectangle.jpg",
+            "title": "All Sofas",
+            "link": "shopify://collections/sofas"
           }
         },
-        "marquee_3RkMqm": {
-          "type": "marquee",
+        "image_block_DWnN8g": {
+          "type": "image_block",
           "settings": {
-            "type_marquee": "text",
-            "text": "<p>British Quality Guarantee</p>",
-            "set_transparent_text": false,
-            "enable_color_underline": false,
-            "colors_underline": "#000000",
-            "options_colors_underline": "full",
-            "image_height": 152,
-            "link": ""
+            "image": "shopify://shop_images/DSC09645-2-3-rectangle.jpg",
+            "title": "Custom Sofas",
+            "link": "shopify://pages/custom-sofa"
           }
         },
-        "marquee_aGCjeG": {
-          "type": "marquee",
+        "image_block_4HJ89K": {
+          "type": "image_block",
           "settings": {
-            "type_marquee": "text",
-            "text": "<p>5-Year Sofa Frame Guarantee</p>",
-            "set_transparent_text": false,
-            "enable_color_underline": false,
-            "colors_underline": "#000000",
-            "options_colors_underline": "full",
-            "image_height": 152,
-            "link": ""
+            "image": "shopify://shop_images/DSC01017-2-3-rectangle.jpg",
+            "title": "Best Sellers",
+            "link": "shopify://collections/best-sellers"
           }
         },
-        "marquee_JxL8Kw": {
-          "type": "marquee",
+        "image_block_yj4A4i": {
+          "type": "image_block",
           "settings": {
-            "type_marquee": "text",
-            "text": "<p>Free Delivery & Set Up</p>",
-            "set_transparent_text": false,
-            "enable_color_underline": false,
-            "colors_underline": "#000000",
-            "options_colors_underline": "full",
-            "image_height": 152,
-            "link": ""
-          }
-        },
-        "marquee_kD9cM4": {
-          "type": "marquee",
-          "settings": {
-            "type_marquee": "text",
-            "text": "<p>Unlimited Customisations</p>",
-            "set_transparent_text": false,
-            "enable_color_underline": false,
-            "colors_underline": "#000000",
-            "options_colors_underline": "full",
-            "image_height": 152,
-            "link": ""
+            "image": "shopify://shop_images/DSC02416_1_-2-3-rectangle.jpg",
+            "title": "Delivered Tomorrow",
+            "link": "shopify://collections/delivered-tomorrow"
           }
         }
       },
       "block_order": [
-        "marquee_6FBeq9",
-        "marquee_3RkMqm",
-        "marquee_aGCjeG",
-        "marquee_JxL8Kw",
-        "marquee_kD9cM4"
+        "image_block_XDC7Qn",
+        "image_block_DWnN8g",
+        "image_block_4HJ89K",
+        "image_block_yj4A4i"
       ],
+      "custom_css": ["h3 {font-size: 16px !important;}"],
+      "name": "Category Grid (4 Columns)",
+      "settings": { "padding_top": 40, "padding_bottom": 40 }
+    },
+    "review_strip_6PQLxP": {
+      "type": "review-strip",
+      "custom_css": [
+        "p {padding-right: 10px; font-size: 18px !important;}",
+        ".stars {padding-right: 10px;}"
+      ],
+      "name": "Google Reviews Strip",
       "settings": {
-        "section_width": "full-width",
-        "customize_width": 1800,
-        "enable_full_width": true,
-        "enable_cursor_hover": false,
-        "duration_speed": 75,
-        "heading_font": "font-body",
-        "heading_size": "small",
-        "type_separating": "dots",
-        "custom_between": false,
-        "carousel_gap": 40,
-        "color_scheme": "scheme-e7b46f89-aaff-4e16-a42a-d270e9598a21",
-        "use_custom_color": false,
-        "colors_text": "#988c8b",
-        "colors_background": "#ede9e2",
-        "gradient_background": "",
-        "padding_top": 26,
-        "padding_bottom": 26,
-        "padding_top_mobile": 15,
-        "padding_bottom_mobile": 15
+        "google_logo": "shopify://shop_images/7a7f1bd2596b6c524492fc2740ad3f206a6fc734.png"
       }
     },
-    "41769cb9-5f5a-4896-9da0-2d3bf33aef1e": {
-      "type": "icon-with-text",
+    "most_liked_nKAWfC": {
+      "type": "most-liked",
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        ".delivery-text {width: 175px;}",
+        ".most-liked-product-title {white-space: nowrap; width: 300px; overflow: hidden; text-overflow: ellipsis; text-transform: capitalize;}"
+      ],
+      "name": "Most Liked",
+      "settings": { "collection": "delivered-tomorrow" }
+    },
+    "honeypot_furniture_hFmpif": {
+      "type": "honeypot-furniture",
+      "custom_css": [
+        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100;}",
+        ".honeypot-intro {font-size: 20px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 14px;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
+      ],
+      "name": "Honeypot Furniture",
+      "settings": {
+        "intro_text": "welcome to",
+        "heading": "Honeypot Furniture",
+        "subheading": "",
+        "paragraph_one": "Designs Made for Your Life.",
+        "paragraph_two": "We deliver custom comfort and lasting quality, without\nthe designer price. Built on 15 years of UK expertise, our\nsofas feature solid wood frames, premium fillings:\nfeather/foam, and beautiful, high-performance fabrics\nincluding FibreGuard. Furniture designed to fit you.",
+        "paragraph_three": "",
+        "paragraph_four": "",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/DSC01561-1-1-square.jpg",
+        "text_1": "Custom Furniture in 10 days",
+        "text_2": "Free Delivery & Assembly",
+        "text_3": "Modular Designs for Every Space"
+      }
+    },
+    "shop_by_type_w3JNgK": {
+      "type": "shop-by-type",
       "blocks": {
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-0": {
-          "type": "item",
+        "type_item_nHdFTi": {
+          "type": "type_item",
           "settings": {
-            "icon": "truck",
-            "enable_custom_size_icon": false,
-            "custom_size_icon": 30,
-            "custom_icon_background": "",
-            "heading": "",
-            "text": "<h5>1-7 Day Delivery For Items In Stock</h5>",
-            "link_label": "",
-            "link": "shopify://collections"
+            "image": "shopify://shop_images/Mira_Sofa_Beige_Armchair_Module_1_da791430-d405-4bf3-872d-2ea8132ee371.jpg",
+            "title": "Armchairs",
+            "link": "shopify://collections/armchairs"
           }
         },
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-1": {
-          "type": "item",
+        "type_item_E4XXwN": {
+          "type": "type_item",
           "settings": {
-            "icon": "ruler",
-            "enable_custom_size_icon": false,
-            "custom_size_icon": 30,
-            "custom_icon_background": "",
-            "heading": "",
-            "text": "<h5>Doesn't Fit? We'll Bring It Back For Free</h5>",
-            "link_label": "",
-            "link": "shopify://collections"
+            "image": "shopify://shop_images/Lora_Sofa_Bed_Champagne_Left_Hand_Facing_Corner_KF_1.jpg",
+            "title": "Sofa Beds",
+            "link": "shopify://collections/sofa-beds"
           }
         },
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-2": {
-          "type": "item",
+        "type_item_FeNwzK": {
+          "type": "type_item",
           "settings": {
-            "icon": "heart_calendar",
-            "enable_custom_size_icon": false,
-            "custom_size_icon": 30,
-            "custom_icon_background": "",
-            "heading": "",
-            "text": "<h5>5-Year Sofa Frame Guarantee </h5>",
-            "link_label": "",
-            "link": "shopify://collections"
+            "image": "shopify://shop_images/Jacob_Sofa_Natural_Armchair_4.jpg",
+            "title": "Sofas",
+            "link": "shopify://collections/sofas"
           }
         },
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-3": {
-          "type": "item",
+        "type_item_9f4kga": {
+          "type": "type_item",
           "settings": {
-            "icon": "price_tag",
-            "enable_custom_size_icon": false,
-            "custom_size_icon": 30,
-            "custom_icon_background": "",
-            "heading": "",
-            "text": "<h5>Flexibe Payment and Finance Options</h5>",
-            "link_label": "",
-            "link": "shopify://collections"
+            "image": "shopify://shop_images/RupertSofaCreamFootstool_1.jpg",
+            "title": "Footstools",
+            "link": "shopify://collections/foot-stools"
+          }
+        },
+        "type_item_aVgmKK": {
+          "type": "type_item",
+          "settings": {
+            "image": "shopify://shop_images/Lora_Sofa_Bed_Champagne_Left_Hand_Facing_Corner_KF_1.jpg",
+            "title": "L-Shaped Sofas",
+            "link": "shopify://collections/corner-sofas"
+          }
+        },
+        "type_item_BDQmjx": {
+          "type": "type_item",
+          "settings": {
+            "image": "shopify://shop_images/MISK3SEATER4-3.jpg",
+            "title": "Modular Sofas",
+            "link": "shopify://collections/modular-sofas"
           }
         }
       },
       "block_order": [
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-0",
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-1",
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-2",
-        "template--16801853964527__41769cb9-5f5a-4896-9da0-2d3bf33aef1e-167645567188716da0-3"
+        "type_item_nHdFTi",
+        "type_item_E4XXwN",
+        "type_item_FeNwzK",
+        "type_item_9f4kga",
+        "type_item_aVgmKK",
+        "type_item_BDQmjx"
       ],
-      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        ".shop-type-title {font-size: 16px;}"
+      ],
+      "name": "Shop By Type",
+      "settings": { "heading": "Shop By Type" }
+    },
+    "custom_sofa_CUwUCQ": {
+      "type": "custom-sofa",
+      "custom_css": [
+        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100;}",
+        ".custom-sofa-description {font-size: 16px;}",
+        "li {font-size: 16px;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
+      ],
+      "name": "Custom Sofa Section",
       "settings": {
-        "type_style": "classic",
-        "section_width": "customized-width",
-        "customize_width": 1200,
-        "heading": "",
-        "heading_size": "default",
-        "text": "",
-        "text_margin_top": 16,
-        "text_alignment": "left",
-        "margin_bottom": 60,
-        "blocks_heading_font": "font-body",
-        "blocks_heading_size": "h4",
-        "blocks_text_size": "default",
-        "color_scheme": "inverse",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1) 63%, rgba(255, 231, 248, 1) 100%)",
-        "layout": "horizontal",
-        "enable_background_icon": true,
-        "type_vertical": "carousel",
-        "arrows_type": "all",
-        "text_animation": "none",
-        "padding_top": 25,
-        "padding_bottom": 25,
-        "padding_top_mobile": 12,
-        "padding_bottom_mobile": 12
+        "heading": "Your Custom Sofa Journey",
+        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.",
+        "button_label": "",
+        "button_link": "shopify://pages/custom-sofa",
+        "image": "shopify://shop_images/DSC00018-1-1-square.jpg"
       }
     },
-    "1736414156dbc7d523": {
+    "new_arrivals_RLBEyT": {
+      "type": "new-arrivals",
+      "custom_css": [
+        ".btn-view-all {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 200; padding: 10px 25px; font-size: 1.3rem;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 14px;}",
+        ".arrival-title {font-size: 14px; white-space: nowrap; width: 300px; overflow: hidden; text-overflow: ellipsis;}"
+      ],
+      "name": "New Arrivals",
+      "settings": {
+        "heading": "New Arrivals",
+        "subheading": "Fresh Designs. Same Comfort Promise.",
+        "collection": "made-in-dubai",
+        "show_button": true,
+        "button_label": "VIEW ALL"
+      }
+    },
+    "love_it_now_pay_later_dkne96": {
+      "type": "love-it-now-pay-later",
+      "custom_css": [
+        "h2,p {color: white;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 14px;}"
+      ],
+      "name": "Love It Now Pay Later",
+      "settings": {
+        "heading": "Love It Now. Pay Later.",
+        "subtext": "Shop your Honeypot favourites with Tabby or Tamara. Flexible payments, zero stress.",
+        "tabby_logo": "shopify://shop_images/222314fe079a6354dd5ab35989c3adfe709317b5.png",
+        "tamara_logo": "shopify://shop_images/ccdf2d0d48313f862a505c8f74e7f186d9108d51.png",
+        "show_button": true,
+        "button_label": "Buy Sofa Now",
+        "button_link": "",
+        "background_image": "shopify://shop_images/img.jpg",
+        "background_color": "#f0e9e3",
+        "text_1": "Eco-friendly fabrics",
+        "text_2": "Transparent Pricing Estimator",
+        "text_3": "Order Free Swatches"
+      }
+    },
+    "testimonials_t4paTt": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_block_afrEUh": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas.",
+            "avatar": "shopify://shop_images/8159633c1443bc8b09348ee90e7b7ce919ba16f2.jpg",
+            "name": "Michelle Anna",
+            "title": "CEO, Co-Founder, XYZ Inc."
+          }
+        },
+        "testimonial_block_L8WBiC": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas.",
+            "avatar": "shopify://shop_images/male-avatar.png",
+            "name": "John Doe",
+            "title": "CEO, Co-Founder, XYZ Inc."
+          }
+        },
+        "testimonial_block_gaMqij": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas.",
+            "avatar": "shopify://shop_images/8159633c1443bc8b09348ee90e7b7ce919ba16f2.jpg",
+            "name": "Michelle Anna",
+            "title": "CEO, Co-Founder, XYZ Inc."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_block_afrEUh",
+        "testimonial_block_L8WBiC",
+        "testimonial_block_gaMqij"
+      ],
+      "custom_css": [
+        ".testimonial-quote {font-size: 14px;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "heading": "Testimonials",
+        "rating_logo": "shopify://shop_images/Google__G__logo_svg.webp",
+        "rating_score": "4.8",
+        "reviews_link": ""
+      }
+    },
+    "come_sit_with_us_L4jRqf": {
+      "type": "come-sit-with-us",
+      "custom_css": [
+        ".come-sit-detail {font-size: 14px; color: #171717;}",
+        ".come-sit-desc {font-size: 14px; color: #171717; margin-bottom: 6rem;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
+      ],
+      "name": "Come Sit With Us",
+      "settings": {
+        "heading": "Come Sit With Us.",
+        "description": "Visit our showroom to try out our collections, explore fabrics, and design your dream sofa in person.",
+        "address": "MAG Logistic Park, B7 WH10, Maleha St, Warehouses Land, Sharjah, United Arab Emirates",
+        "timings": "Monday to Friday: 9am – 5pmSaturday: 10am – 3pm",
+        "image": "shopify://shop_images/abcecfa98fbfe41dfb812f669d08509fd25fd6c5_958203f6-b069-4193-a2ac-1d4d1a0aeb86.jpg"
+      }
+    },
+    "1762962518bbd799ad": {
       "type": "apps",
-      "disabled": true,
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "type_review": "special",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
-    "ai_smart_section_Y9Fai9": {
-      "type": "ai-smart-section",
       "blocks": {
-        "ai_gen_block_6faa2ed_FPnhEw": {
-          "type": "ai_gen_block_6faa2ed",
+        "instafeed_app_block_NGpWxj": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
-            "padding": 80,
-            "columns_gap": 20,
-            "background_color": "#ede9e2",
-            "text": "DUBAI Feather Cloud",
-            "text_transform": "uppercase",
-            "text_alignment": "center",
-            "image": "shopify://shop_images/poi-burj-khalifa-3-dtcm-jun-2023_jpg.png",
-            "fallback_color": "#000000",
-            "font_size": 135,
-            "font_size_mobile": 45,
-            "font_weight": "800",
-            "show_outline": false,
-            "outline_width": 2,
-            "outline_color": "#000000",
-            "product": "dubai-feather-cloud-sofa-off-white-3-seater-with-ottoman",
-            "product_card_bg_color": "#ffffff",
-            "product_text_color": "#333333",
-            "product_card_radius": 8,
-            "product_button_text": "View Product",
-            "product_button_color": "#000f9f",
-            "product_button_hover_color": "#000000",
-            "product_button_text_color": "#ffffff"
-          },
-          "blocks": {}
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "left",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "right",
+            "link_color": "#1d6ee9",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
         }
       },
-      "block_order": [
-        "ai_gen_block_6faa2ed_FPnhEw"
-      ],
-      "name": "AI Smart Section",
+      "block_order": ["instafeed_app_block_NGpWxj"],
       "settings": {
-        "section_width": "full-width",
-        "customize_width": 1400,
-        "section_margin": 0
+        "heading": "Watch & Choose with Confidence",
+        "link_url": "https://www.instagram.com/honeypotfurniture.ae?igsh=MWVreno2aGpjYnloMw==",
+        "link": "Visit Instagram Account",
+        "description": "Get inspired by our latest furniture setups, styling ideas, and customer favourites.\nFrom real homes to in-store highlights — catch it all in our Instagram Reels.\nFollow us @honeypot.ae and see how our pieces come to life.",
+        "include_margins": true
       }
     },
-    "ai_smart_section_EgDGpH": {
-      "type": "ai-smart-section",
+    "recent_blogs_Eetdzq": {
+      "type": "recent-blogs",
       "blocks": {
-        "ai_gen_block_17d2a5e_ykFmwG": {
-          "type": "ai_gen_block_17d2a5e",
+        "blog_post_ArnVjz": {
+          "type": "blog_post",
           "settings": {
-            "image_height": 500,
-            "mobile_image_height": 400,
-            "column_gap": 16,
-            "image_border_radius": 12,
-            "image_1": "shopify://shop_images/Iris_Sofa_Beige_Lifestyle.png",
-            "product_1": "sadir-sofa-beige-4-seater",
-            "title_1": "Sadir Modular Sofa",
-            "image_2": "shopify://shop_images/Screenshot_2025-06-18_at_10.35.23.png",
-            "product_2": "dubai-feather-cloud-sofa-white-3-seater-with-ottoman",
-            "title_2": "Dubai Feather Cloud",
-            "image_3": "shopify://shop_images/Screenshot_2025-06-18_at_11.13.23.png",
-            "product_3": "zinnia-bed-beige",
-            "title_3": "Zinnia Bed",
-            "card_background_color": "#ededed",
-            "card_padding": 16,
-            "card_border_radius": 12,
-            "card_bottom_offset": 16,
-            "title_color": "#000000",
-            "title_font_size": 14,
-            "button_text": "Shop Now",
-            "button_background_color": "#000000",
-            "button_text_color": "#ffffff",
-            "button_hover_color": "#333333",
-            "button_font_size": 12,
-            "button_border_radius": 6,
-            "enable_autoplay": false,
-            "autoplay_duration": 4
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_17d2a5e_ykFmwG"
-      ],
-      "name": "AI Smart Section",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1400,
-        "section_margin": 40
-      }
-    },
-    "ai_smart_section_LwNh6R": {
-      "type": "ai-smart-section",
-      "blocks": {
-        "ai_gen_block_77a2d6f_77ziyE": {
-          "type": "ai_gen_block_77a2d6f",
-          "settings": {
-            "anchor_id": "",
-            "heading": "Truly Custom.",
-            "heading_font": "Lato",
-            "heading_size": 32,
-            "heading_weight": "normal",
-            "heading_color": "#000000",
-            "image_1": "shopify://shop_images/Choose_your_size.png",
-            "image_2": "shopify://shop_images/Choose_your_layout.png",
-            "image_3": "shopify://shop_images/Pick_Colour.jpg",
-            "image_4": "shopify://shop_images/Take_a_photo.jpg",
-            "image_aspect_ratio": 100,
-            "image_border_radius": 8,
-            "button_color": "#000000",
-            "button_text_color": "#ffffff",
-            "button_hover_color": "#333333"
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/d490d3cd5eca3fd74dc493c2fa1e4d75c88e879a.jpg",
+            "title": "Your trending feed",
+            "description": "Let us inspire you with this season’s hottest trending products, styles, and themes.",
+            "link": ""
+          }
         },
-        "ai_gen_block_91e5717_XJqQbE": {
-          "type": "ai_gen_block_91e5717",
-          "name": "WhatsApp Chat Button",
+        "blog_post_QNhpjt": {
+          "type": "blog_post",
           "settings": {
-            "heading": "Design your Dream Sofa",
-            "subheading": "Contact our customisation team today to design your dream sofa",
-            "heading_size": 28,
-            "subheading_size": 16,
-            "text_color": "#333333",
-            "button_text": "START CHAT",
-            "phone_number": "971509046848",
-            "button_color": "#25d366",
-            "button_width": 200,
-            "border_radius": 24
-          },
-          "blocks": {}
+            "image": "shopify://shop_images/abc0c1bc37461ee6a881abf60f0a3b72d7316d2b_1.jpg",
+            "title": "Your trending feed",
+            "description": "Let us inspire you with this season’s hottest trending products, styles, and themes.",
+            "link": ""
+          }
+        },
+        "blog_post_CzzUEX": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/89ce77f013e8c5602ff5ca2ae3691cc7fe3bbd6c_1.jpg",
+            "title": "Your trending feed",
+            "description": "Let us inspire you with this season’s hottest trending products, styles, and themes.",
+            "link": ""
+          }
+        },
+        "blog_post_mqcDW8": {
+          "type": "blog_post",
+          "settings": {
+            "image": "shopify://shop_images/2d012cf004a09725566cc8b2badc0e0628663d3e_1.png",
+            "title": "Your trending feed",
+            "description": "Let us inspire you with this season’s hottest trending products, styles, and themes.",
+            "link": "shopify://blogs/news/night-in-done-right-the-luna-range-for-relaxed-evenings"
+          }
         }
       },
       "block_order": [
-        "ai_gen_block_77a2d6f_77ziyE",
-        "ai_gen_block_91e5717_XJqQbE"
+        "blog_post_ArnVjz",
+        "blog_post_QNhpjt",
+        "blog_post_CzzUEX",
+        "blog_post_mqcDW8"
       ],
-      "name": "AI Smart Section",
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400; color: #111111;}",
+        "p {font-size: 10.75px; font-weight: 350; line-height: 16.5px; color: #484848;}",
+        ".blog-title {font-size: 18.27px;}"
+      ],
+      "name": "Recent Blogs",
       "settings": {
-        "section_width": "page-width",
-        "customize_width": 1400,
-        "section_margin": 40
+        "heading": "Recent Blogs",
+        "subheading": "From Our Studio to Your Home."
       }
+    },
+    "follow_the_comfort_UTpxJh": {
+      "type": "follow-the-comfort",
+      "blocks": {
+        "image_block_XWffq4": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/1745ab4d0ac9e7780e1a882ef481d051842e8847.jpg",
+            "title": "Instagram Image",
+            "likes": 8,
+            "link": ""
+          }
+        },
+        "image_block_YW48KL": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/22353bb7e2d3f1af618130a5598fe875c6b3d7a0.png",
+            "title": "Instagram Image",
+            "likes": 8,
+            "link": ""
+          }
+        },
+        "image_block_BX8M4h": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/156fd40ecec64f0478e43b45941861d9618920d4.jpg",
+            "title": "Instagram Image",
+            "likes": 8,
+            "link": ""
+          }
+        },
+        "image_block_erVMfQ": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/15379764dd4210bfe460ee79b1c44203b30cb704.png",
+            "title": "Instagram Image",
+            "likes": 8,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_block_XWffq4",
+        "image_block_YW48KL",
+        "image_block_BX8M4h",
+        "image_block_erVMfQ"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        ".follow-subtitle {font-size: 14px;}"
+      ],
+      "name": "Follow The Comfort",
+      "settings": {
+        "heading": "Follow The Comfort",
+        "subheading": "See how Honeypot homes come to life.",
+        "insta_icon": "shopify://shop_images/free-instagram-logo-icon-3497-thumb.png",
+        "tag_icon": "shopify://shop_images/tag-73.png"
+      }
+    },
+    "join_the_honeypot_club_qnTkmF": {
+      "type": "join-the-honeypot-club",
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 16px;}"
+      ],
+      "name": "Join The Honeypot Club",
+      "settings": {}
+    },
+    "honeypot_footer_djMfgi": {
+      "type": "honeypot-footer",
+      "name": "Honeypot Footer",
+      "settings": {}
     },
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596": {
       "type": "collection-list",
       "blocks": {
         "9f53099d-0898-4a6b-99f7-638915d3e2c5": {
           "type": "collection",
-          "settings": {
-            "collection": "corner-sofas"
-          }
+          "settings": { "collection": "corner-sofas" }
         },
         "fb7172ca-46fa-42a1-826f-3bb34a5e8b86": {
           "type": "collection",
-          "settings": {
-            "collection": "u-shape-sofas"
-          }
+          "settings": { "collection": "u-shape-sofas" }
         },
         "9298a67d-a92b-452c-9c21-14a031c2a4c3": {
           "type": "collection",
-          "settings": {
-            "collection": "sofa-beds"
-          }
+          "settings": { "collection": "sofa-beds" }
         },
         "3d65e484-cedc-409d-8bd1-e6722f400bb7": {
           "type": "collection",
-          "settings": {
-            "collection": "3-seater-sofas"
-          }
+          "settings": { "collection": "3-seater-sofas" }
         },
         "11cc0144-b0fb-4f1d-a415-bd1d8a50ff45": {
           "type": "collection",
-          "settings": {
-            "collection": "2-seater-sofas"
-          }
+          "settings": { "collection": "2-seater-sofas" }
         },
         "004436e0-e2cf-4a59-bf91-6668d2138e8f": {
           "type": "collection",
-          "settings": {
-            "collection": "4-seater-sofas"
-          }
+          "settings": { "collection": "4-seater-sofas" }
         },
         "a7e7e249-f6e6-4b09-9bef-19db66cbd683": {
           "type": "collection",
-          "settings": {
-            "collection": "armchairs"
-          }
+          "settings": { "collection": "armchairs" }
         }
       },
       "block_order": [
@@ -628,171 +594,6 @@
         "padding_bottom": 70,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 0
-      }
-    },
-    "ai_smart_section_R8VTxh": {
-      "type": "ai-smart-section",
-      "blocks": {
-        "ai_gen_block_9bfc040_FABb6d": {
-          "type": "ai_gen_block_9bfc040",
-          "settings": {
-            "carousel_height": 600,
-            "carousel_height_mobile": 400,
-            "show_navigation": true,
-            "show_dots": true,
-            "dot_active_color": "#000000",
-            "card_width": 280,
-            "card_bg_color": "#ffffff",
-            "price_color": "#000000",
-            "show_add_to_cart": true,
-            "add_to_cart_text": "Add to Cart",
-            "button_color": "#000000",
-            "button_text_color": "#ffffff",
-            "button_hover_color": "#333333",
-            "slide_1_image": "shopify://shop_images/UAE-Banner-2.jpg",
-            "slide_1_product": "dubai-feather-cloud-sofa-off-white-3-seater-with-ottoman",
-            "slide_2_image": "shopify://shop_images/1860785.png",
-            "slide_2_product": "sadir-sofa-beige-4-seater",
-            "slide_3_product": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_9bfc040_FABb6d"
-      ],
-      "name": "AI Smart Section",
-      "settings": {
-        "section_width": "full-width",
-        "customize_width": 1400,
-        "section_margin": 40
-      }
-    },
-    "testimonial_NkEcJz": {
-      "type": "testimonial",
-      "blocks": {
-        "slide_nKhEhJ": {
-          "type": "slide",
-          "settings": {
-            "heading": "The best Sofa I've ever had!",
-            "heading_margin_bottom": 25,
-            "text": "<h5>I purchased the \"Rupert\" range and I can honestly say it's the best Sofa I've ever had! And I've had many! From the classic elegant look, to the luxury feel and comfort, I often get asked about it, everyone loves it when they visit, Also the service and extremely quick delivery from Honeypot was 2nd to none! I highly recommend this company and their fabulous furniture, 5 stars from me!<br/><br/>Teena - <a href=\"https://www.instagram.com/our_home_onfieldview_lane/\" title=\"https://www.instagram.com/our_home_onfieldview_lane/\">View Instagram</a></h5>",
-            "name": "",
-            "rating": "5",
-            "box_align": "middle-center",
-            "text_alignment": "center"
-          }
-        },
-        "slide_T33ykV": {
-          "type": "slide",
-          "settings": {
-            "heading": "Inga sofa - highly recommend!",
-            "heading_margin_bottom": 25,
-            "text": "<h5>First time using Honeypot furniture and I would highly recommend! We ordered the Inga sofa in cream. The delivery service was great - the delivery men carried the sofa to our front room and helped set up the sofa. The sofa is super comfy and exactly how the photo looked on the website. We often spend most Sundays relaxing on the sofa and we couldn’t be any more happier with it!<br/><br/>Georgia - <a href=\"https://www.instagram.com/missgcole/\" title=\"https://www.instagram.com/missgcole/\">View Instagram</a></h5>",
-            "name": "",
-            "rating": "5",
-            "box_align": "middle-center",
-            "text_alignment": "center"
-          }
-        },
-        "slide_aPFeFp": {
-          "type": "slide",
-          "settings": {
-            "heading": "Beautiful sofa!",
-            "heading_margin_bottom": 25,
-            "text": "<h5>Beautifully made U shaped bishop sofa was purchased online from this small family run business - excellent communication from start to finish and useful delivery updates on the day to make this a hassle free purchase - highly recommended!<br/><br/>Lesley</h5>",
-            "name": "",
-            "rating": "5",
-            "box_align": "middle-center",
-            "text_alignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_nKhEhJ",
-        "slide_T33ykV",
-        "slide_aPFeFp"
-      ],
-      "settings": {
-        "type_style": "classic",
-        "heading": "Customer Reviews",
-        "heading_size": "small",
-        "heading_alignment": "center",
-        "margin_bottom": 0,
-        "use_bg_image": false,
-        "color_scheme": "scheme-89b6d850-7344-4b60-8a06-5b847e8e19a0",
-        "use_custom_color": true,
-        "colors_text": "#000000",
-        "colors_background": "#ffffff",
-        "gradient_background": "",
-        "arrows_type": "all",
-        "carousel_infinite_scroll": false,
-        "enable_autoplay": true,
-        "change_slides_speed": 5,
-        "enable_pagination_type": "all",
-        "pagination_type": "dots",
-        "padding_top": 40,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
-    "069a21ef-b01c-4296-b010-b63bc9797851": {
-      "type": "newsletter",
-      "blocks": {
-        "de9e2704-d013-4a24-a9bc-dbd6bb53a15f": {
-          "type": "heading",
-          "settings": {
-            "show_line_separator_top": false,
-            "heading": "",
-            "heading_size": "small",
-            "heading_margin_bottom": 0,
-            "description": "<p>Join the Honeypot community and receive exclusive offers, rewards and a host of other exciting benefits!</p>",
-            "description_size": "medium",
-            "text_margin_bottom": 0,
-            "text_link": "",
-            "primary_text_link": "",
-            "padding_top": 0,
-            "padding_bottom": 0
-          }
-        },
-        "template--16801853964527__069a21ef-b01c-4296-b010-b63bc9797851-16770759093493e3bb-0": {
-          "type": "email_form",
-          "settings": {
-            "description": "",
-            "description_size": "medium",
-            "text": "Sign up for our newsletter",
-            "button_transparent": "transparent",
-            "show_email": false,
-            "padding_top": 6,
-            "padding_bottom": 6
-          }
-        }
-      },
-      "block_order": [
-        "de9e2704-d013-4a24-a9bc-dbd6bb53a15f",
-        "template--16801853964527__069a21ef-b01c-4296-b010-b63bc9797851-16770759093493e3bb-0"
-      ],
-      "settings": {
-        "type_style": "classic",
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "custom_rouded": false,
-        "custom_block_rouded": 0,
-        "full_width": true,
-        "text_alignment": "center",
-        "text_alignment_mobile": "center",
-        "use_custom_colors_background_content": true,
-        "colors_background_content": "",
-        "color_scheme": "scheme-89b6d850-7344-4b60-8a06-5b847e8e19a0",
-        "use_custom_color": false,
-        "colors_text": "#ffffff",
-        "colors_background": "#006eac",
-        "gradient_background": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 13,
-        "padding_bottom_mobile": 20
       }
     },
     "custom_liquid_dfcHEi": {
@@ -924,183 +725,29 @@
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20
       }
-    },
-    "79993e5e-b47d-42d2-8535-5d30f78f1b0f": {
-      "type": "image-banner",
-      "blocks": {
-        "template--16801853964527__79993e5e-b47d-42d2-8535-5d30f78f1b0f-1677220473c4c15372-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Warehouse sale up to 70% off",
-            "heading_size": "default",
-            "padding_top": 0,
-            "padding_bottom": 10
-          }
-        },
-        "template--16801853964527__79993e5e-b47d-42d2-8535-5d30f78f1b0f-1677220473c4c15372-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Thousand of designer pieces from high point furniture market, more to love for even less.</p>",
-            "text_size": "medium",
-            "padding_top": 12,
-            "padding_bottom": 12
-          }
-        },
-        "878f867e-5227-4a95-be99-d828d462e84f": {
-          "type": "countdown",
-          "settings": {
-            "time": "02/07/2024 11:05:00",
-            "colors_text": "#ffffff",
-            "colors_background": "#b30e13",
-            "gradient_background": "",
-            "padding_top": 22,
-            "padding_bottom": 22
-          }
-        },
-        "template--16801853964527__79993e5e-b47d-42d2-8535-5d30f78f1b0f-1677220473c4c15372-2": {
-          "type": "buttons",
-          "settings": {
-            "button_transparent": "transparent",
-            "primary_button_label": "Grab This Offer",
-            "primary_button_link": "shopify://collections",
-            "secondary_button_label": "",
-            "secondary_button_link": "",
-            "padding_top": 12,
-            "padding_bottom": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--16801853964527__79993e5e-b47d-42d2-8535-5d30f78f1b0f-1677220473c4c15372-0",
-        "template--16801853964527__79993e5e-b47d-42d2-8535-5d30f78f1b0f-1677220473c4c15372-1",
-        "878f867e-5227-4a95-be99-d828d462e84f",
-        "template--16801853964527__79993e5e-b47d-42d2-8535-5d30f78f1b0f-1677220473c4c15372-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "section_width": "full-width",
-        "customize_width": 1800,
-        "custom_rouded": false,
-        "custom_block_rouded": 0,
-        "content_inside_image_mobile": false,
-        "mobile_row_height": 42,
-        "desktop_content_position": "middle-right",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "center",
-        "custom_content_max_width": false,
-        "content_max_width": 500,
-        "mobile_color_scheme": "custom",
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "color_scheme": "accent-1",
-        "image_overlay_opacity": 30,
-        "color_overlay_opacity": "#000000",
-        "image_behavior": "fixed",
-        "text_animation": "fade-up",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
-    "slideshow_E9Lebj": {
-      "type": "slideshow",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "image_ratio": "adapt-image",
-        "image_ratio_mobile": "550px",
-        "color_scheme": "",
-        "arrows_type": "all",
-        "arrows_position": "middle-center",
-        "carousel_infinite_scroll": true,
-        "enable_autoplay": false,
-        "color_autoplay": "#ffffff",
-        "change_slides_speed": 5,
-        "enable_pagination_type": "all",
-        "pagination_type": "dots",
-        "image_behavior": "none",
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "visual_hightlight_XzftDa": {
-      "type": "visual-hightlight",
-      "blocks": {
-        "slide_DMUmny": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "type_banner": "full",
-            "image_primary": "shopify://shop_images/Trustpilot_Reviews_2.jpg",
-            "heading": "",
-            "heading_size": "x-large",
-            "subheading": "Customer Reviews",
-            "subheading_size": "medium",
-            "description": "<p><strong>I purchased the \"Rupert\" range and I can honestly it's the best Sofa I've ever had! And I've had many! From the classic elegant look, to the luxury feel and comfort, I often get asked about it, everyone loves it when they visit, Also the service and extremely quick delivery from Honeypot was 2nd to none! I highly recommend this company and their fabulous furniture, 5 stars from me!<br/><br/>- Teena</strong></p>",
-            "description_size": "large",
-            "button_style": "default",
-            "button_label": "",
-            "button_link": "",
-            "text_alignment": "center",
-            "image_overlay_opacity": 30,
-            "color_overlay_opacity": "#000000"
-          }
-        },
-        "slide_tKcmjD": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "type_banner": "full",
-            "heading": "Image slide",
-            "heading_size": "x-large",
-            "subheading": "Tell your brand's story through images",
-            "subheading_size": "medium",
-            "description": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.<br/> Add details on availability, style, or even provide a review.</p>",
-            "description_size": "large",
-            "button_style": "default",
-            "button_label": "Button label",
-            "button_link": "",
-            "text_alignment": "center",
-            "image_overlay_opacity": 30,
-            "color_overlay_opacity": "#000000"
-          }
-        }
-      },
-      "block_order": [
-        "slide_DMUmny",
-        "slide_tKcmjD"
-      ],
-      "settings": {
-        "slide_height": 70,
-        "color_scheme": "accent-1",
-        "carousel_infinite_scroll": true,
-        "enable_autoplay": false,
-        "change_slides_speed": 5,
-        "enable_pagination_type": "all",
-        "pagination_type": "dots",
-        "image_behavior": "none",
-        "accessibility_info": "Slideshow about our brand"
-      }
     }
   },
   "order": [
-    "12b81e44-2b28-427b-9080-19dfb79fd112",
-    "0b6105a9-a3ce-4181-b45b-7a55c709e140",
-    "41769cb9-5f5a-4896-9da0-2d3bf33aef1e",
-    "1736414156dbc7d523",
-    "ai_smart_section_Y9Fai9",
-    "ai_smart_section_EgDGpH",
-    "ai_smart_section_LwNh6R",
+    "hero_banner_gXfDpH",
+    "info_strip_eMVrRq",
+    "category_grid_P4k9aG",
+    "review_strip_6PQLxP",
+    "most_liked_nKAWfC",
+    "honeypot_furniture_hFmpif",
+    "shop_by_type_w3JNgK",
+    "custom_sofa_CUwUCQ",
+    "new_arrivals_RLBEyT",
+    "love_it_now_pay_later_dkne96",
+    "testimonials_t4paTt",
+    "come_sit_with_us_L4jRqf",
+    "1762962518bbd799ad",
+    "recent_blogs_Eetdzq",
+    "follow_the_comfort_UTpxJh",
+    "join_the_honeypot_club_qnTkmF",
+    "honeypot_footer_djMfgi",
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596",
-    "ai_smart_section_R8VTxh",
-    "testimonial_NkEcJz",
-    "069a21ef-b01c-4296-b010-b63bc9797851",
     "custom_liquid_dfcHEi",
     "2c0f3337-8adc-4a53-bad5-fa7e4e5087e1",
-    "featured_blog_DdAnpK",
-    "79993e5e-b47d-42d2-8535-5d30f78f1b0f",
-    "slideshow_E9Lebj",
-    "visual_hightlight_XzftDa"
+    "featured_blog_DdAnpK"
   ]
 }
