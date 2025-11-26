@@ -327,6 +327,7 @@
         "testimonial_block_afrEUh": {
           "type": "testimonial_block",
           "settings": {
+            "block_image": "shopify://shop_images/WhatsApp_Image_2025-11-26_at_11.23.22_PM.jpg",
             "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas.",
             "avatar": "shopify://shop_images/8159633c1443bc8b09348ee90e7b7ce919ba16f2.jpg",
             "name": "Michelle Anna",
