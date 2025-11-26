@@ -10,9 +10,14 @@
         <div class="input-wrapper">
           <input type="text" id="honeypot-phone" name="phone" placeholder="Phone Number" required>
           <span class="icon">
-            
-          <img src="{{ 'phone.png' | asset_url }}" width="20" height="20" alt="Tamara">
-          
+            {% if section.settings.phone_icon != blank %}
+              <img 
+                src="{{ section.settings.phone_icon | image_url: width: 40 }}"
+                width="20"
+                height="20"
+                alt="Phone Icon"
+              >
+            {% endif %}
           </span>
         </div>
       </div>
@@ -21,7 +26,14 @@
         <div class="input-wrapper">
           <input type="email" id="honeypot-email" name="email" placeholder="Email" required>
           <span class="icon">
-            <img src="{{ 'envlop.png' | asset_url }}" width="20" height="20" alt="Tamara">
+            {% if section.settings.email_icon != blank %}
+              <img 
+                src="{{ section.settings.email_icon | image_url: width: 40 }}"
+                width="20"
+                height="20"
+                alt="Email Icon"
+              >
+            {% endif %}
           </span>
         </div>
       </div>
@@ -30,3 +42,16 @@
     </form>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Honeypot Signup",
+  "settings": [
+    { "type": "image_picker", "id": "phone_icon", "label": "Phone Icon" },
+    { "type": "image_picker", "id": "email_icon", "label": "Email Icon" }
+  ],
+  "presets": [
+    { "name": "Honeypot Signup Section" }
+  ]
+}
+{% endschema %}
