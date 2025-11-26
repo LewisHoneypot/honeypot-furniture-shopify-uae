@@ -382,6 +382,8 @@
         "description": "Visit our showroom to try out our collections, explore fabrics, and design your dream sofa in person.",
         "address": "MAG Logistic Park, B7 WH10, Maleha St, Warehouses Land, Sharjah, United Arab Emirates",
         "timings": "Monday to Friday: 9am – 5pmSaturday: 10am – 3pm",
+        "location_icon": "shopify://shop_images/location.png",
+        "clock_icon": "shopify://shop_images/clock.png",
         "image": "shopify://shop_images/abcecfa98fbfe41dfb812f669d08509fd25fd6c5_958203f6-b069-4193-a2ac-1d4d1a0aeb86.jpg"
       }
     },
@@ -546,7 +548,9 @@
     "honeypot_footer_djMfgi": {
       "type": "honeypot-footer",
       "name": "Honeypot Footer",
-      "settings": {}
+      "settings": {
+        "whatsapp_number": "+971509046848"
+      }
     },
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596": {
       "type": "collection-list",
