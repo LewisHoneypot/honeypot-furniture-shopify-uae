@@ -7,6 +7,9 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
@@ -168,6 +171,7 @@
     {%- endif -%}
     
     <meta name="google-site-verification" content="mEm2ZsFKEg6DDfGPtaJ5HzbyU4m4xjUeYhDQAunyOxA">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="page-{{ request.page_type | replace: 'customers/', '' }} gradient {{ settings.text_size | prepend: 'text-size main-text-' }} {{ settings.heading_size | prepend: 'heading-size main-heading-' }}{% if settings.enable_animated_cursor and settings.animated_cursor_style == 'following' %} cursor-fixed__show{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -300,11 +304,15 @@
     {% comment %} <script src="{{ 'cursorFixed.js' | asset_url }}" defer="defer"></script> {% endcomment %}
     {% comment %} <script src="{{ 'cursorBlur.js' | asset_url }}" defer="defer"></script> {% endcomment %}
     <script src="{{ 'pageLoadScrollFix.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'trustpilotServiceReviewStars.js' | asset_url }}" defer="defer"></script>
 
     <script src="{{ 'refreshCart.js' | asset_url }}" defer="defer"></script>
 
     {% comment %} Insider {% endcomment %}
     <script src="{{ 'insider-sw-sdk.js' | asset_url }}" defer="defer"></script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
     {%- if template contains 'product' -%}
       {% comment %} <script src="{{ 'productPage.js' | asset_url }}" defer="defer"></script> {% endcomment %}

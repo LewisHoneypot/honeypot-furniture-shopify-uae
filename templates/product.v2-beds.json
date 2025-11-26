@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -21,14 +12,6 @@
             "padding_top": 12,
             "padding_bottom": 12,
             "heading_size": "default"
-          }
-        },
-        "trustpilot_mini_TB9jLy": {
-          "type": "trustpilot_mini",
-          "settings": {
-            "title": "Trustpilot Mini",
-            "padding_top": 0,
-            "padding_bottom": 0
           }
         },
         "color_swatch_bWwLRJ": {
@@ -86,9 +69,7 @@
         },
         "tabby_pay_later_pdp_final_kHwRFp": {
           "type": "shopify://apps/tabby-pay-later/blocks/pdp-final/b31c2495-41fc-4b20-9fc7-8cb2e9dd9a95",
-          "settings": {
-            "no_price_display": false
-          }
+          "settings": { "no_price_display": false }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -222,7 +203,6 @@
       },
       "block_order": [
         "title",
-        "trustpilot_mini_TB9jLy",
         "color_swatch_bWwLRJ",
         "variant_picker_9aPepy",
         "price",
@@ -484,11 +464,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_yjApHr",
-        "text_mDUJrg",
-        "button_HKewh9"
-      ],
+      "block_order": ["heading_yjApHr", "text_mDUJrg", "button_HKewh9"],
       "settings": {
         "section_width": "page-width",
         "customize_width": 1800,
@@ -559,11 +535,7 @@
           }
         }
       },
-      "block_order": [
-        "column_9g4pWk",
-        "column_CXnQL3",
-        "column_eYGjdt"
-      ],
+      "block_order": ["column_9g4pWk", "column_CXnQL3", "column_eYGjdt"],
       "settings": {
         "layout": "v2",
         "use_hr": true,
@@ -617,9 +589,7 @@
           }
         }
       },
-      "block_order": [
-        "hr_separator_inKcfw"
-      ],
+      "block_order": ["hr_separator_inKcfw"],
       "settings": {
         "video_width": 1000,
         "video_url": "",
@@ -667,42 +637,6 @@
         "background_color": "#48544c"
       }
     },
-    "trustpilot_product_reviews_collapsible_8YH8Ak": {
-      "type": "trustpilot-product-reviews-collapsible",
-      "blocks": {
-        "collapsible_row_V9KmDH": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Customer Reviews",
-            "padding_top": 36,
-            "padding_bottom": 36,
-            "padding_top_mobile": 0,
-            "padding_bottom_mobile": 0,
-            "primary_button_label": "Rating Breakdown",
-            "primary_button_color_scheme": "background-1",
-            "secondary_button_label": "Hide Breakdown",
-            "secondary_button_color_scheme": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_V9KmDH"
-      ],
-      "settings": {
-        "heading": "Reviews",
-        "use_hr": true,
-        "font": "Gotham",
-        "section_width": "customized-width",
-        "customize_width": 1400,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 35,
-        "padding_bottom_mobile": 43,
-        "padding_left_right": 50,
-        "padding_left_right_mobile": 10
-      }
-    },
     "lookbook_pGUge4": {
       "type": "lookbook",
       "blocks": {
@@ -727,9 +661,7 @@
           }
         }
       },
-      "block_order": [
-        "image_L4QhHh"
-      ],
+      "block_order": ["image_L4QhHh"],
       "disabled": true,
       "settings": {
         "section_width": "full-width",
@@ -775,9 +707,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_z3PBJz"
-      ],
+      "block_order": ["heading_z3PBJz"],
       "disabled": true,
       "settings": {
         "section_width": "page-width",
@@ -831,23 +761,7 @@
         "padding_bottom_mobile": 15
       }
     },
-    "17361637054b91e455": {
-      "type": "apps",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "type_review": "special",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
+    "17361637054b91e455": { "type": "apps", "settings": {} },
     "recently-products": {
       "type": "recently-products",
       "disabled": true,
@@ -902,10 +816,7 @@
           }
         }
       },
-      "block_order": [
-        "heading_YPHcci",
-        "email_form_cKwJab"
-      ],
+      "block_order": ["heading_YPHcci", "email_form_cKwJab"],
       "settings": {
         "type_style": "classic",
         "section_width": "page-width",
@@ -937,7 +848,6 @@
     "multicolumn_FJHgEr",
     "video_FxQj6U",
     "as_seen_in_Pnd8YJ",
-    "trustpilot_product_reviews_collapsible_8YH8Ak",
     "lookbook_pGUge4",
     "featured_collection_RD8KMd",
     "related-products",

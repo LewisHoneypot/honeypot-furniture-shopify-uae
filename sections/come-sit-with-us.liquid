@@ -1,0 +1,172 @@
+<section class="come-sit-section">
+  <div class="page-width come-sit-wrapper">
+    <div class="come-sit-text">
+      <h2 class="come-sit-heading">{{ section.settings.heading }}</h2>
+      <p class="come-sit-desc">{{ section.settings.description }}</p>
+
+      <div class="come-sit-location">
+        <div class="come-sit-row">
+          <span class="">  
+     <img 
+  src="{{ 'location.png' | asset_url }}" 
+  alt="Showroom Image" 
+  class="come-sit-image-icons"
+  height="17"
+  width="17"
+/>
+
+        
+        </span>
+          <p class="come-sit-detail">{{ section.settings.address }}</p>
+        </div>
+        <hr class="come-sit-separator">
+        <div class="come-sit-row">
+          <span class="">
+
+     <img 
+  src="{{ 'clock.png' | asset_url }}" 
+  alt="Showroom Image" 
+  class="come-sit-image-icons"
+  height="17"
+  width="17"
+/>
+
+
+          </span>
+          <p class="come-sit-detail">{{ section.settings.timings }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="come-sit-image-wrap">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 1000 }}"
+          alt="Showroom Image"
+          loading="lazy"
+          class="come-sit-image"
+        >
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Come Sit With Us",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Come Sit With Us." },
+    { "type": "text", "id": "description", "label": "Description", "default": "Visit our showroom to try out our collections, explore fabrics, and design your dream sofa in person." },
+    { "type": "text", "id": "address", "label": "Address", "default": "MAG Logistic Park, B7 WH10, Maleha St, Warehouses Land, Sharjah, United Arab Emirates" },
+    { "type": "text", "id": "timings", "label": "Timings", "default": "Monday to Friday: 9am – 5pm\nSaturday: 10am – 3pm" },
+    { "type": "image_picker", "id": "image", "label": "Right Side Image" }
+  ],
+  "presets": [
+    { "name": "Come Sit With Us", "category": "Custom Sections" }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.come-sit-section {
+  background-color: #fff;
+  padding: 40px 0;
+}
+
+.come-sit-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.come-sit-text {
+  flex: 1 1 35%; /* reduced width from 45% */
+  text-align: left;
+}
+
+.come-sit-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 1rem;
+}
+
+.come-sit-desc {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.come-sit-location {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.come-sit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.come-sit-icon {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.come-sit-detail {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.come-sit-separator {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 1.2rem 0;
+  width: 100%;
+}
+
+.come-sit-image-wrap {
+  flex: 1 1 60%; /* increased width from 50% */
+}
+
+.come-sit-image-icons{
+  object-fit: fit;
+  height: 17px;
+  width: 17px;
+  max-width: none;
+}
+
+.come-sit-image {
+  width: 100%;
+  height: 550px; /* taller image for better proportion */
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+@media (max-width: 900px) {
+  .come-sit-wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .come-sit-text {
+    flex: 1 1 100%;
+  }
+  .come-sit-heading {
+    font-size: 1.6rem;
+  }
+  .come-sit-desc {
+    font-size: 0.95rem;
+  }
+  .come-sit-separator {
+    margin: 2rem auto;
+    width: 100%;
+  }
+  .come-sit-row {
+    justify-content: center;
+  }
+}
+{% endstylesheet %}

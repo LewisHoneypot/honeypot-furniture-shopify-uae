@@ -1,0 +1,32 @@
+<section class="honeypot-signup">
+  <div class="honeypot-container">
+    <div class="honeypot-text">
+      <h2>Join The Honeypot Club!</h2>
+      <p>Sign up for first access to Honeypot’s newest collections, special offers, and member-only moments.</p>
+    </div>
+
+    <form class="honeypot-form" method="post" action="#">
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="text" id="honeypot-phone" name="phone" placeholder="Phone Number" required>
+          <span class="icon">
+            
+          <img src="{{ 'phone.png' | asset_url }}" width="20" height="20" alt="Tamara">
+          
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrapper">
+          <input type="email" id="honeypot-email" name="email" placeholder="Email" required>
+          <span class="icon">
+            <img src="{{ 'envlop.png' | asset_url }}" width="20" height="20" alt="Tamara">
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="honeypot-btn">SUBMIT</button>
+    </form>
+  </div>
+</section>

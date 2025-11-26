@@ -1,0 +1,225 @@
+<section class="recent-blogs-section">
+  <div class="page-width">
+    <div class="recent-blogs-header">
+      <h2 class="recent-blogs-title">{{ section.settings.heading }}</h2>
+      <p class="recent-blogs-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="recent-blogs-carousel">
+      {% for block in section.blocks %}
+        <div class="blog-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 1000 }}"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+              class="blog-image"
+            >
+          {% endif %}
+
+          <div class="blog-card-content">
+            <h3 class="blog-title">{{ block.settings.title }}</h3>
+            <p class="blog-desc">{{ block.settings.description }}</p>
+
+            <a href="{{ block.settings.link }}" class="blog-arrow">→</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const carousels = document.querySelectorAll('.recent-blogs-carousel');
+    carousels.forEach(carousel => {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      carousel.addEventListener('mousedown', e => {
+        isDown = true;
+        carousel.classList.add('active');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        carousel.classList.remove('active');
+      });
+
+      carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        carousel.classList.remove('active');
+      });
+
+      carousel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Recent Blogs (Scrollable)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Recent Blogs" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "From Our Studio to Your Home." }
+  ],
+  "blocks": [
+    {
+      "type": "blog_post",
+      "name": "Blog Post",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Blog Image" },
+        { "type": "text", "id": "title", "label": "Blog Title", "default": "Your trending feed" },
+        { "type": "text", "id": "description", "label": "Blog Description", "default": "Let us inspire you with this season’s hottest trending products, styles, and themes." },
+        { "type": "url", "id": "link", "label": "Blog Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recent Blogs Carousel",
+      "category": "Custom Sections",
+      "blocks": [
+        { "type": "blog_post" },
+        { "type": "blog_post" },
+        { "type": "blog_post" },
+        { "type": "blog_post" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.recent-blogs-section {
+  background-color: #fff;
+  padding: 30px 0;
+  overflow: hidden;
+}
+
+.recent-blogs-header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.recent-blogs-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.recent-blogs-subtitle {
+  color: #777;
+  font-size: 1rem;
+}
+
+/* --- Carousel --- */
+.recent-blogs-carousel {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+}
+.recent-blogs-carousel:active {
+  cursor: grabbing;
+}
+.recent-blogs-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+.recent-blogs-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.recent-blogs-carousel::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* --- Blog Cards --- */
+.blog-card {
+  flex: 0 0 30%; /* allows partial 4th card */
+  scroll-snap-align: start;
+  background: #EDEDED;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.blog-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.blog-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.blog-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.blog-desc {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 5rem;
+}
+
+.blog-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #111;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+.blog-arrow:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .blog-card {
+    flex: 0 0 40%; /* show 2 full + peek of next */
+  }
+}
+@media (max-width: 768px) {
+  .blog-card {
+    flex: 0 0 75%; /* show 1 + peek of next */
+  }
+}
+{% endstylesheet %}

@@ -1,0 +1,309 @@
+{% comment %}
+  Section: New Arrivals (Dynamic from Collection)
+  Displays products from a selected collection in a scrollable carousel.
+{% endcomment %}
+
+<section class="new-arrivals-section color-background gradient">
+  <div class="page-width">
+    <!-- Header -->
+    <div class="new-arrivals-header">
+      <div class="heading-wrap">
+        <h2 class="new-arrivals-heading">{{ section.settings.heading }}</h2>
+        <p class="new-arrivals-subtitle">{{ section.settings.subheading }}</p>
+      </div>
+      <div class="new-arrivals-arrows">
+        <button type="button" class="arrow-btn left-btn" aria-label="Scroll left">&#10094;</button>
+        <button type="button" class="arrow-btn right-btn" aria-label="Scroll right">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Product Carousel -->
+    {% assign collection = collections[section.settings.collection] %}
+    {% if collection %}
+      {% assign product_count = collection.products_count | plus: 0 %}
+      {% if product_count > 0 %}
+        <div class="new-arrivals-carousel">
+          {% for product in collection.products %}
+
+            {% assign words = product.title | split: " " %}
+            {% assign word_count = words | size %}
+            {% assign third_word = words[2] | downcase %}
+            {% assign fourth_word = words[3] | downcase %}
+
+            {% if word_count > 3 %}
+              {% if fourth_word == "bed" or fourth_word == "sofa" %}
+                {% assign first_line = words[0] | append: " " | append: words[1] | append: " " | append: words[2] | append: " " | append: words[3] %}
+                {% assign second_line = words | slice: 4, word_count | join: " " %}
+              {% elsif third_word == "bed" or third_word == "sofa" %}
+                {% assign first_line = words[0] | append: " " | append: words[1] | append: " " | append: words[2] %}
+                {% assign second_line = words | slice: 3, word_count | join: " " %}
+              {% else %}
+                {% assign first_line = words[0] | append: " " | append: words[1] %}
+                {% assign second_line = words | slice: 2, word_count | join: " " %}
+              {% endif %}
+            {% elsif word_count > 2 %}
+              {% if third_word == "bed" or third_word == "sofa" %}
+                {% assign first_line = words[0] | append: " " | append: words[1] | append: " " | append: words[2] %}
+                {% assign second_line = "" %}
+              {% else %}
+                {% assign first_line = words[0] | append: " " | append: words[1] %}
+                {% assign second_line = words | slice: 2, word_count | join: " " %}
+              {% endif %}
+            {% elsif word_count > 1 %}
+              {% assign first_line = words[0] | append: " " | append: words[1] %}
+              {% assign second_line = words | slice: 2, word_count | join: " " %}
+            {% else %}
+              {% assign first_line = product.title %}
+              {% assign second_line = "" %}
+            {% endif %}
+            <div class="new-arrival-item">
+              <a href="{{ product.url }}" class="arrival-link">
+                <img
+                  src="{{ product.featured_image | image_url: width: 800 }}"
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  class="arrival-image"
+                >
+                <div class="arrival-info">
+                  <h3 class="arrival-title">
+                    <span class="title-line-upper">{{ first_line }}</span><br>
+                    <span class="title-line-lower">{{ second_line }}</span>
+                  </h3>
+                  <span class="arrival-price">{{ product.price | money }}</span>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="text-align:center; color:#555;">No products found in this collection.</p>
+      {% endif %}
+    {% endif %}
+
+    {% if section.settings.show_button %}
+      <div class="text-center">
+        <a href="{{ collection.url }}" class="btn-view-all">{{ section.settings.button_label }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Working Carousel Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.new-arrivals-section').forEach(section => {
+      const carousel = section.querySelector('.new-arrivals-carousel');
+      const leftBtn = section.querySelector('.arrow-btn.left-btn');
+      const rightBtn = section.querySelector('.arrow-btn.right-btn');
+      if (!carousel || !leftBtn || !rightBtn) return;
+
+      // Scroll step (about 80% of visible width)
+      const getScrollStep = () => Math.max(200, Math.floor(carousel.clientWidth * 0.8));
+
+      // Enable/disable arrow states
+      const updateArrows = () => {
+        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+        leftBtn.disabled = carousel.scrollLeft <= 0;
+        rightBtn.disabled = carousel.scrollLeft >= Math.floor(maxScrollLeft);
+        leftBtn.style.opacity = leftBtn.disabled ? '0.4' : '1';
+        rightBtn.style.opacity = rightBtn.disabled ? '0.4' : '1';
+        leftBtn.style.cursor = leftBtn.disabled ? 'default' : 'pointer';
+        rightBtn.style.cursor = rightBtn.disabled ? 'default' : 'pointer';
+      };
+
+      // Scroll and throttle arrow updates
+      let rafId = null;
+      carousel.addEventListener('scroll', () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          updateArrows();
+          rafId = null;
+        });
+      });
+
+      // Click behavior
+      leftBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+      });
+      rightBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+      });
+
+      // Keyboard arrow support
+      section.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' }); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' }); }
+      });
+
+      // Init state
+      updateArrows();
+
+      // Responsive check
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateArrows, 120);
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "New Arrivals (Collection)",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "New Arrivals" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Fresh Designs. Same Comfort Promise." },
+    { "type": "collection", "id": "collection", "label": "Select Collection" },
+    { "type": "checkbox", "id": "show_button", "label": "Show 'View All' button", "default": true },
+    { "type": "text", "id": "button_label", "label": "Button Label", "default": "View All" }
+  ],
+  "presets": [
+    { "name": "New Arrivals Carousel (Collection)", "category": "Custom Sections" }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.new-arrivals-section {
+  padding: 80px 0;
+  background-color: #F9F7F5;
+  overflow: hidden;
+}
+
+/* Header */
+.new-arrivals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.heading-wrap {
+  max-width: 70%;
+}
+
+.new-arrivals-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.4rem;
+}
+
+.new-arrivals-subtitle {
+  color: #777;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Arrows */
+.new-arrivals-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.arrow-btn:hover:not(:disabled) {
+  background: #111;
+  color: #fff;
+}
+
+/* Carousel */
+.new-arrivals-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.2rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.new-arrivals-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.new-arrival-item {
+  flex: 0 0 calc(25% - 1rem);
+  text-align: left;
+}
+
+.arrival-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.arrival-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  background-color: #EFEFEF;
+}
+.new-arrival-item:hover .arrival-image {
+  transform: scale(1.05);
+}
+
+.arrival-info {
+  padding-top: 0.8rem;
+}
+
+.arrival-title {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.arrival-price {
+  margin-top: 1px ;
+  font-size: 13px;
+  font-weight: 800;
+  color: #000;
+  text-transform: uppercase;
+}
+
+/* View All Button */
+.btn-view-all {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 8px 20px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.text-center {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .new-arrival-item { flex: 0 0 calc(33.333% - 1rem); }
+}
+@media (max-width: 768px) {
+  .new-arrival-item { flex: 0 0 calc(50% - 1rem); }
+}
+@media (max-width: 480px) {
+  .new-arrival-item { flex: 0 0 calc(80% - 1rem); }
+  .new-arrivals-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .new-arrivals-arrows {
+    align-self: flex-end;
+  }
+}
+{% endstylesheet %}

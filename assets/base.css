@@ -26819,3 +26819,316 @@ body.multitasking__show .newsletter-popup-opener {
   height: 21px;
   padding-bottom: 4px;
 }
+
+
+
+
+
+
+
+/* Footer */
+.footer {
+  background-color: #e5ddcf;
+  color: #1c1b1b;
+  padding: 40px 80px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-column h4 {
+  font-family: 'Gotham', sans-serif !important;
+  font-weight: 350;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-style: bold;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  color: #1c1b1b;
+  text-decoration: none;
+  font-family: 'Gotham', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+.footer-column p {
+  font-family: 'Gotham', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #1c1b1b;
+}
+
+.footer-btn {
+  display: block;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: #1c1b1b;
+  text-decoration: none;
+  background-color: #F0E9E3;
+  padding-left:20px
+}
+
+.footer-btn i {
+  margin-right: 6px;
+}
+
+.footer-socials a {
+  margin-right: 10px;
+  color: #1c1b1b;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+
+.footer-socials a:hover {
+  color: #000;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #d1c8b5;
+  padding-top: 15px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.footer-payments {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  flex-direction: column;
+}
+
+.footer-payments img {
+  margin-right: 8px;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-payments p {
+  margin-top: 10px;
+  margin-right: 0;
+  text-align: right;
+  font-size: 13px;
+}
+
+/* ----------- Responsive Styles ----------- */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 40px 40px;
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-payments {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .footer-payments p {
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer-column h4 {
+    font-size: 16px;
+  }
+
+  .footer-column a,
+  .footer-column p {
+    font-size: 15px;
+  }
+
+  .footer-btn {
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+
+  .footer-socials a {
+    font-size: 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .footer-payments {
+    align-items: flex-start;
+  }
+
+  .footer-payments img {
+    width: 250px;
+  }
+
+  .footer-payments p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 25px 15px;
+  }
+
+  .footer-column h4 {
+    font-size: 15px;
+  }
+
+  .footer-column a,
+  .footer-column p {
+    font-size: 14px;
+  }
+
+  .footer-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .footer-socials a {
+    font-size: 18px;
+  }
+
+  .footer-payments img {
+    width: 200px;
+  }
+
+  .footer-payments p {
+    font-size: 12px;
+  }
+}
+
+
+
+/*================= Join Club Css=============================== */
+
+
+.honeypot-signup {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.honeypot-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 40px;
+}
+
+.honeypot-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.honeypot-text h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.honeypot-text p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.honeypot-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 35px 10px 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+}
+.input-wrapper input:focus-visible{
+  box-shadow: none;
+}
+
+
+.input-wrapper .icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 18px;
+  color: #555;
+}
+
+.honeypot-btn {
+  background-color: transparent;
+  border: 1px solid #d9bca0;
+  color: #000;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.honeypot-btn:hover {
+  background-color: #d9bca0;
+  color: #fff;
+}
