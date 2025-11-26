@@ -7,31 +7,32 @@
       <div class="come-sit-location">
         <div class="come-sit-row">
           <span class="">  
-     <img 
-  src="{{ 'location.png' | asset_url }}" 
-  alt="Showroom Image" 
-  class="come-sit-image-icons"
-  height="17"
-  width="17"
-/>
-
-        
-        </span>
+            {% if section.settings.location_icon != blank %}
+              <img 
+                src="{{ section.settings.location_icon | image_url: width: 40 }}"
+                alt="Location Icon"
+                class="come-sit-image-icons"
+                height="17"
+                width="17"
+              />
+            {% endif %}
+          </span>
           <p class="come-sit-detail">{{ section.settings.address }}</p>
         </div>
+
         <hr class="come-sit-separator">
+
         <div class="come-sit-row">
           <span class="">
-
-     <img 
-  src="{{ 'clock.png' | asset_url }}" 
-  alt="Showroom Image" 
-  class="come-sit-image-icons"
-  height="17"
-  width="17"
-/>
-
-
+            {% if section.settings.clock_icon != blank %}
+              <img 
+                src="{{ section.settings.clock_icon | image_url: width: 40 }}"
+                alt="Clock Icon"
+                class="come-sit-image-icons"
+                height="17"
+                width="17"
+              />
+            {% endif %}
           </span>
           <p class="come-sit-detail">{{ section.settings.timings }}</p>
         </div>
@@ -59,6 +60,10 @@
     { "type": "text", "id": "description", "label": "Description", "default": "Visit our showroom to try out our collections, explore fabrics, and design your dream sofa in person." },
     { "type": "text", "id": "address", "label": "Address", "default": "MAG Logistic Park, B7 WH10, Maleha St, Warehouses Land, Sharjah, United Arab Emirates" },
     { "type": "text", "id": "timings", "label": "Timings", "default": "Monday to Friday: 9am – 5pm\nSaturday: 10am – 3pm" },
+
+    { "type": "image_picker", "id": "location_icon", "label": "Location Icon" },
+    { "type": "image_picker", "id": "clock_icon", "label": "Clock Icon" },
+
     { "type": "image_picker", "id": "image", "label": "Right Side Image" }
   ],
   "presets": [
@@ -82,7 +87,7 @@
 }
 
 .come-sit-text {
-  flex: 1 1 35%; /* reduced width from 45% */
+  flex: 1 1 35%;
   text-align: left;
 }
 
@@ -112,11 +117,6 @@
   margin-bottom: 1rem;
 }
 
-.come-sit-icon {
-  font-size: 1.1rem;
-  line-height: 1.4;
-}
-
 .come-sit-detail {
   margin: 0;
   line-height: 1.5;
@@ -130,11 +130,11 @@
 }
 
 .come-sit-image-wrap {
-  flex: 1 1 60%; /* increased width from 50% */
+  flex: 1 1 60%;
 }
 
-.come-sit-image-icons{
-  object-fit: fit;
+.come-sit-image-icons {
+  object-fit: contain;
   height: 17px;
   width: 17px;
   max-width: none;
@@ -142,7 +142,7 @@
 
 .come-sit-image {
   width: 100%;
-  height: 550px; /* taller image for better proportion */
+  height: 550px;
   object-fit: cover;
   border-radius: 6px;
 }
