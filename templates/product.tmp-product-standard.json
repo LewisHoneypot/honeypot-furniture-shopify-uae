@@ -199,9 +199,9 @@
       "settings": {
         "heading": "Love every coners...",
         "heading_size": "default",
-        "text": "<p>Bring your vision to life with hand-curated collections, priced just right.<\/p>",
+        "text": "<p>Bring your vision to life with hand-curated collections, priced just right.</p>",
         "link_label": "Shop all",
-        "link": "shopify:\/\/collections",
+        "link": "shopify://collections",
         "heading_alignment": "center",
         "image_ratio": "adapt",
         "color_scheme": "",
@@ -237,9 +237,9 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Free Shipping US Orders $499",
-            "text": "<p>If your order does not qualify for free shipping, any associated shipping costs will be listed in Cart.<\/p>",
+            "text": "<p>If your order does not qualify for free shipping, any associated shipping costs will be listed in Cart.</p>",
             "link_label": "More Details",
-            "link": "shopify:\/\/collections"
+            "link": "shopify://collections"
           }
         },
         "template--16864572244207__d429c49f-e09d-426d-a360-6ab92fc46930-1686822038126118ed-1": {
@@ -250,9 +250,9 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "90-Day Free Returns*",
-            "text": "<p>Any delivery ship fees or service charges collected on the order will not be refunded.<\/p>",
+            "text": "<p>Any delivery ship fees or service charges collected on the order will not be refunded.</p>",
             "link_label": "More Details",
-            "link": "shopify:\/\/collections"
+            "link": "shopify://collections"
           }
         },
         "template--16864572244207__d429c49f-e09d-426d-a360-6ab92fc46930-1686822038126118ed-2": {
@@ -263,9 +263,9 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Lifetime Warranty Guarantee*",
-            "text": "<p>Repair or replace elements, which are defective due to manufacturing faults – over the entire life of the product.<\/p>",
+            "text": "<p>Repair or replace elements, which are defective due to manufacturing faults – over the entire life of the product.</p>",
             "link_label": "Find Out More",
-            "link": "shopify:\/\/collections"
+            "link": "shopify://collections"
           }
         },
         "template--16864572244207__d429c49f-e09d-426d-a360-6ab92fc46930-1686822038126118ed-3": {
@@ -276,9 +276,9 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Free Pickup In-Store",
-            "text": "<p>Choose \"Free Pickup In-store\" when placing your order, then select your preferred store<\/p>",
+            "text": "<p>Choose \"Free Pickup In-store\" when placing your order, then select your preferred store</p>",
             "link_label": "Learn How",
-            "link": "shopify:\/\/collections"
+            "link": "shopify://collections"
           }
         }
       },
@@ -332,7 +332,7 @@
         "template--16801853931759__27987c00-ca23-4ea4-b339-4d3210ab03bc-167953961925a82b0a-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Save up to 60% off on selected items.<\/p>",
+            "text": "<p>Save up to 60% off on selected items.</p>",
             "padding_top": 10,
             "padding_bottom": 20
           }
@@ -341,7 +341,7 @@
           "type": "buttons",
           "settings": {
             "primary_button_label": "Shop Now",
-            "primary_button_link": "shopify:\/\/collections",
+            "primary_button_link": "shopify://collections",
             "secondary_button_label": "",
             "secondary_button_link": "",
             "padding_top": 18,
@@ -356,7 +356,7 @@
       ],
       "settings": {
         "video_width": 1000,
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_Xp1kODwk4I",
+        "video_url": "https://www.youtube.com/watch?v=_Xp1kODwk4I",
         "description": "",
         "enable_autoplay": false,
         "enable_video_looping": false,
@@ -391,7 +391,7 @@
             "button_transparent": "transparent",
             "button_type": "standard",
             "button_label": "",
-            "link": "shopify:\/\/collections",
+            "link": "shopify://collections",
             "image_overlay_opacity": 30,
             "color_overlay_opacity": "#000000",
             "desktop_content_position": "top-left"
@@ -405,7 +405,7 @@
             "button_transparent": "transparent",
             "button_type": "standard",
             "button_label": "",
-            "link": "shopify:\/\/collections",
+            "link": "shopify://collections",
             "image_overlay_opacity": 30,
             "color_overlay_opacity": "#000000",
             "desktop_content_position": "top-left"
@@ -524,7 +524,7 @@
             "text_margin_bottom": 7,
             "use_custom_size_avatar": false,
             "custom_size_avatar": 40,
-            "info": "<p><strong>Annie Lee<\/strong> - CEO, Founder at Concept<\/p>",
+            "info": "<p><strong>Annie Lee</strong> - CEO, Founder at Concept</p>",
             "info_size": "h3",
             "rating": "0",
             "text_alignment": "center",
@@ -543,7 +543,7 @@
             "text_margin_bottom": 7,
             "use_custom_size_avatar": false,
             "custom_size_avatar": 40,
-            "info": "<p><strong>Mark Junior Z.<\/strong> - Executive Marketing<\/p>",
+            "info": "<p><strong>Mark Junior Z.</strong> - Executive Marketing</p>",
             "info_size": "h3",
             "rating": "0",
             "text_alignment": "center",
@@ -562,7 +562,7 @@
             "text_margin_bottom": 7,
             "use_custom_size_avatar": false,
             "custom_size_avatar": 40,
-            "info": "<p><strong>Sue William<\/strong> - District Manager<\/p>",
+            "info": "<p><strong>Sue William</strong> - District Manager</p>",
             "info_size": "h3",
             "rating": "0",
             "text_alignment": "center",
