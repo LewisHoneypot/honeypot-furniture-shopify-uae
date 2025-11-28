@@ -1060,6 +1060,46 @@
                       </div>
                     {%- endif -%}
                   </div>
+
+                  {% if section.settings.plp_card_discount_toggle == true %}
+
+                    <div 
+                      class="
+                        plp-card-discount 
+                        {% if section.settings.plp_card_discount_blink_style !="none" %}{{ section.settings.plp_card_discount_blink_style }}{% endif %}
+                      "
+                    >
+                      {{ section.settings.plp_card_discount_text }}{{ card_product.price | times: 0.20 | divided_by: 100 | round }}
+                    </div>
+
+                    <style>
+                      .plp-card-discount {
+                        color: {{ section.settings.plp_card_discount_color }};
+                        font-size: {{ section.settings.plp_card_discount_font_size}}px;
+                      }
+
+                      .blink {
+                        animation: blink 1s step-start infinite;
+                      }
+
+                      @keyframes blink {
+                        50% {
+                          opacity: 0;
+                        }
+                      }
+
+                      .blink-smooth {
+                        animation: blinkSmooth 1.2s infinite;
+                      }
+
+                      @keyframes blinkSmooth {
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0; }
+                      }
+                    </style>
+
+                  {%- endif -%}
+
                 {%- endif -%}
 
                 {%- if product_cards_style == 'advanced-default' or card_style_popup == 'advanced-default' -%}

@@ -1104,6 +1104,44 @@
     },
     {
       "type": "checkbox",
+      "id": "plp_card_discount_toggle",
+      "default": true,
+      "label": "Discount Off/On"
+    },
+    {
+      "type": "text",
+      "id": "plp_card_discount_text",
+      "label": "Discount Text",
+      "default": "20% OFF"
+    },
+    {
+      "type": "range",
+      "id": "plp_card_discount_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 15,
+      "label": "Font Size"
+    },
+    {
+      "type": "color",
+      "id": "plp_card_discount_color",
+      "label": "Discount Text Color",
+      "default": "#FF0000"
+    },
+    {
+      "type": "select",
+      "id": "plp_card_discount_blink_style",
+      "label": "Blink Style",
+      "options": [
+        { "label": "None", "value": "none" },
+        { "label": "Blink", "value": "blink" },
+        { "label": "Blink Smooth", "value": "blink-smooth" }
+      ],
+      "default": "blink-smooth"
+    },
+    {
+      "type": "checkbox",
       "id": "christmas_delivery_eta_toggle",
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.delivery_eta.christmas_delivery_eta_toggle.label"
