@@ -1069,7 +1069,7 @@
                         {% if section.settings.plp_card_discount_blink_style !="none" %}{{ section.settings.plp_card_discount_blink_style }}{% endif %}
                       "
                     >
-                      {{ section.settings.plp_card_discount_text }}{{ card_product.price | times: 0.20 | divided_by: 100 | round }}
+                      {{ section.settings.plp_card_discount_text }}{{ card_product.compare_at_price | times: 0.20 | divided_by: 100 | round }}
                     </div>
 
                     <style>
