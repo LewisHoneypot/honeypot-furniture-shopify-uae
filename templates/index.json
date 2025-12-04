@@ -172,7 +172,7 @@
       "custom_css": [
         ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100;}",
         ".honeypot-intro {font-size: 20px; font-style: normal; font-weight: 400;}",
-        "p {font-size: 14px;}",
+        "p {font-size: 16px;}",
         "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
       ],
       "name": "Honeypot Furniture",
