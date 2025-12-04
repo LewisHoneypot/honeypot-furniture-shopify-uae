@@ -27,6 +27,101 @@
 <style>
 .hero-slider-section {
   position: relative;
+  /* was: height: {{ section.settings.slider_height }}px; */
+  min-height: {{ section.settings.slider_height }}px;  /* allow it to grow */
+  color: white;
+  overflow: hidden;
+}
+
+.hero-slider-scroll {
+  display: flex;
+  width: 100%;
+  /* was: height: 100%;  -> remove so height can auto-adjust */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.hero-slider-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-slide {
+  flex: 0 0 100%;
+  /* was: height: 100%; */
+  min-height: inherit;                  /* takes min-height from section */
+
+  /* show full image, no crop, no duplicate */
+  background-size: contain;             /* fit whole image */
+  background-repeat: no-repeat;         /* prevent “double” banner */
+  background-position: top center;
+
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* Slide Content */
+.hero-slide-content {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  max-width: 500px;
+}
+
+.hero-slide-content h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero-slide-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.hero-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-slider-section {
+    /* was: height: {{ section.settings.slider_height_mobile }}px; */
+    min-height: {{ section.settings.slider_height_mobile }}px;
+  }
+
+  .hero-slide-content {
+    left: 20px;
+    bottom: 50px;
+    top: auto;          /* ensure it anchors from bottom on mobile */
+    max-width: 80%;
+  }
+
+  .hero-slide-content h2 {
+    font-size: 28px;
+  }
+  .hero-slide-content p {
+    font-size: 16px;
+  }
+}
+</style>
+
+{% comment %} 
+<style>
+.hero-slider-section {
+  position: relative;
   height: {{ section.settings.slider_height }}px;
   color: white;
   overflow: hidden;
@@ -107,7 +202,7 @@
     font-size: 16px;
   }
 }
-</style>
+</style> {% endcomment %}
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
