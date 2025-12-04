@@ -266,13 +266,13 @@
       "custom_css": [
         ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100;}",
         ".custom-sofa-description {font-size: 16px;}",
-        "li {font-size: 16px;}",
+        "p {font-size: 16px;}",
         "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
       ],
       "name": "Custom Sofa Section",
       "settings": {
         "heading": "Your Custom Sofa Journey",
-        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.",
+        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.\nChoose your shape and dimensions.\n\nSelect your comfort level Cloud, Balanced or Support\n\nPick from over 30 fabrics and 150+ colours\n\nAll designed, built, and delivered in as little as 7–14 days.",
         "button_label": "",
         "button_link": "shopify://pages/custom-sofa",
         "image": "shopify://shop_images/DSC00018-1-1-square.jpg",
