@@ -30,19 +30,16 @@
   height: {{ section.settings.slider_height }}px;
   color: white;
   overflow: hidden;
-    min-height: 70vh;
-
 }
 
 .hero-slider-scroll {
   display: flex;
   width: 100%;
-  {% comment %} height: 100%; {% endcomment %}
+  height: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  
 }
 
 .hero-slider-scroll::-webkit-scrollbar {
@@ -51,12 +48,8 @@
 
 .hero-slide {
   flex: 0 0 100%;
-  {% comment %} height: 100%; {% endcomment %}
-     min-height: inherit;
-
-  {% comment %} background-size: cover;
-    {% endcomment %}
-     background-size: contain
+  height: 100%;
+  background-size: cover;
   background-position: top center;
   scroll-snap-align: start;
   position: relative;
@@ -65,7 +58,6 @@
 /* Slide Content */
 .hero-slide-content {
   position: absolute;
-  
   top: 100px; /* <-- fix distance from top */
   left: 50px;
   max-width: 500px;
