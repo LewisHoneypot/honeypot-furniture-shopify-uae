@@ -23,12 +23,10 @@
   </div>
 
 </section>
-
 <style>
 .hero-slider-section {
   position: relative;
-  /* was: height: {{ section.settings.slider_height }}px; */
-  min-height: {{ section.settings.slider_height }}px;  /* allow it to grow */
+  height: {{ section.settings.slider_height }}px;
   color: white;
   overflow: hidden;
 }
@@ -36,7 +34,7 @@
 .hero-slider-scroll {
   display: flex;
   width: 100%;
-  /* was: height: 100%;  -> remove so height can auto-adjust */
+  height: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -49,14 +47,10 @@
 
 .hero-slide {
   flex: 0 0 100%;
-  /* was: height: 100%; */
-  min-height: inherit;                  /* takes min-height from section */
-
-  /* show full image, no crop, no duplicate */
-  background-size: contain;             /* fit whole image */
-  background-repeat: no-repeat;         /* prevent “double” banner */
+  height: 100%;
+  background-size: cover;
   background-position: top center;
-
+  background-repeat: no-repeat;   /* prevent tiling / “duplicate” look */
   scroll-snap-align: start;
   position: relative;
 }
@@ -64,7 +58,7 @@
 /* Slide Content */
 .hero-slide-content {
   position: absolute;
-  top: 100px;
+  top: 100px; /* <-- fix distance from top */
   left: 50px;
   max-width: 500px;
 }
@@ -97,15 +91,27 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  /* Let the section grow instead of forcing a fixed height */
   .hero-slider-section {
-    /* was: height: {{ section.settings.slider_height_mobile }}px; */
-    min-height: {{ section.settings.slider_height_mobile }}px;
+    height: auto;
+  }
+
+  /* Inner wrappers also need auto height, or slides collapse */
+  .hero-slider-scroll {
+    height: auto;
+  }
+
+  .hero-slide {
+    height: auto;
+    background-size: contain;     /* show full image, no crop */
+    background-position: top center;
+    background-repeat: no-repeat; /* still avoid duplicates */
   }
 
   .hero-slide-content {
     left: 20px;
     bottom: 50px;
-    top: auto;          /* ensure it anchors from bottom on mobile */
+    top: auto;
     max-width: 80%;
   }
 
@@ -117,6 +123,7 @@
   }
 }
 </style>
+
 
 {% comment %} 
 <style>
