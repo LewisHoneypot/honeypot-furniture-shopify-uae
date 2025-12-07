@@ -1,20 +1,19 @@
 {% comment %}
   Section: New Arrivals (Dynamic from Collection)
-  Displays products from a selected collection in a scrollable carousel.
+  Displays products from a selected collection in a scrollable carousel (drag-scroll version).
 {% endcomment %}
 
 <section class="new-arrivals-section color-background gradient">
   <div class="page-width">
+
     <!-- Header -->
     <div class="new-arrivals-header">
       <div class="heading-wrap">
         <h2 class="new-arrivals-heading">{{ section.settings.heading }}</h2>
         <p class="new-arrivals-subtitle">{{ section.settings.subheading }}</p>
       </div>
-      <div class="new-arrivals-arrows">
-        <button type="button" class="arrow-btn left-btn" aria-label="Scroll left">&#10094;</button>
-        <button type="button" class="arrow-btn right-btn" aria-label="Scroll right">&#10095;</button>
-      </div>
+
+      <!-- Arrows removed -->
     </div>
 
     <!-- Product Carousel -->
@@ -23,8 +22,8 @@
       {% assign product_count = collection.products_count | plus: 0 %}
       {% if product_count > 0 %}
         <div class="new-arrivals-carousel">
-          {% for product in collection.products %}
 
+          {% for product in collection.products %}
             {% assign words = product.title | split: " " %}
             {% assign word_count = words | size %}
             {% assign third_word = words[2] | downcase %}
@@ -56,6 +55,7 @@
               {% assign first_line = product.title %}
               {% assign second_line = "" %}
             {% endif %}
+
             <div class="new-arrival-item">
               <a href="{{ product.url }}" class="arrival-link">
                 <img
@@ -73,6 +73,7 @@
                 </div>
               </a>
             </div>
+
           {% endfor %}
         </div>
       {% else %}
@@ -85,64 +86,60 @@
         <a href="{{ collection.url }}" class="btn-view-all">{{ section.settings.button_label }}</a>
       </div>
     {% endif %}
+
   </div>
 </section>
 
-<!-- Working Carousel Script -->
+<!-- Drag + Touch Scroll Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.new-arrivals-section').forEach(section => {
       const carousel = section.querySelector('.new-arrivals-carousel');
-      const leftBtn = section.querySelector('.arrow-btn.left-btn');
-      const rightBtn = section.querySelector('.arrow-btn.right-btn');
-      if (!carousel || !leftBtn || !rightBtn) return;
+      if (!carousel) return;
 
-      // Scroll step (about 80% of visible width)
-      const getScrollStep = () => Math.max(200, Math.floor(carousel.clientWidth * 0.8));
+      /* ----- Mouse Drag Scroll ----- */
+      let isDown = false;
+      let startX;
+      let scrollLeft;
 
-      // Enable/disable arrow states
-      const updateArrows = () => {
-        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-        leftBtn.disabled = carousel.scrollLeft <= 0;
-        rightBtn.disabled = carousel.scrollLeft >= Math.floor(maxScrollLeft);
-        leftBtn.style.opacity = leftBtn.disabled ? '0.4' : '1';
-        rightBtn.style.opacity = rightBtn.disabled ? '0.4' : '1';
-        leftBtn.style.cursor = leftBtn.disabled ? 'default' : 'pointer';
-        rightBtn.style.cursor = rightBtn.disabled ? 'default' : 'pointer';
-      };
-
-      // Scroll and throttle arrow updates
-      let rafId = null;
-      carousel.addEventListener('scroll', () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-          updateArrows();
-          rafId = null;
-        });
+      carousel.addEventListener('mousedown', e => {
+        isDown = true;
+        carousel.classList.add('active-drag');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
       });
 
-      // Click behavior
-      leftBtn.addEventListener('click', () => {
-        carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-      });
-      rightBtn.addEventListener('click', () => {
-        carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+      carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        carousel.classList.remove('active-drag');
       });
 
-      // Keyboard arrow support
-      section.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') { e.preventDefault(); carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' }); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' }); }
+      carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        carousel.classList.remove('active-drag');
       });
 
-      // Init state
-      updateArrows();
+      carousel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
 
-      // Responsive check
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(updateArrows, 120);
+      /* ----- Mobile Touch Swipe ----- */
+      let touchStartX = 0;
+      let touchScrollLeft = 0;
+
+      carousel.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].pageX;
+        touchScrollLeft = carousel.scrollLeft;
+      });
+
+      carousel.addEventListener('touchmove', e => {
+        const x = e.touches[0].pageX;
+        const walk = (x - touchStartX) * 1.4;
+        carousel.scrollLeft = touchScrollLeft - walk;
       });
     });
   });
@@ -196,29 +193,7 @@
   margin: 0;
 }
 
-/* Arrows */
-.new-arrivals-arrows {
-  display: flex;
-  gap: 8px;
-}
-
-.arrow-btn {
-  background: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 34px;
-  height: 34px;
-  font-size: 1.5rem;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-}
-
-.arrow-btn:hover:not(:disabled) {
-  background: #111;
-  color: #fff;
-}
+/* Arrows removed — keeping CSS untouched for safety */
 
 /* Carousel */
 .new-arrivals-carousel {
@@ -265,7 +240,7 @@
 }
 
 .arrival-price {
-  margin-top: 1px ;
+  margin-top: 1px;
   font-size: 13px;
   font-weight: 800;
   color: #000;
@@ -301,9 +276,6 @@
   .new-arrivals-header {
     flex-direction: column;
     gap: 0.5rem;
-  }
-  .new-arrivals-arrows {
-    align-self: flex-end;
   }
 }
 {% endstylesheet %}
