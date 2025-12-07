@@ -14,6 +14,7 @@
       "blocks": {
         "slide_RxGJri": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/1_547ba504-d3ee-431a-94d5-7b1a8f64a8d0.jpg",
             "heading": "",
