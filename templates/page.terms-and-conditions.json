@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -185,16 +194,6 @@
         "padding_bottom_mobile": 40
       }
     },
-    "custom_liquid_PEbtxe": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
     "image_with_text_zJhwhJ": {
       "type": "image-with-text",
       "blocks": {
@@ -246,16 +245,6 @@
         "image_animation": "none",
         "text_animation": "none",
         "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
-    "custom_liquid_bBkwGJ": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
         "padding_bottom": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
@@ -502,9 +491,7 @@
     "rich_text_JPy3zj",
     "custom_liquid_T7RRLB",
     "icon_with_text_ngUGpR",
-    "custom_liquid_PEbtxe",
     "image_with_text_zJhwhJ",
-    "custom_liquid_bBkwGJ",
     "collapsible_content_4F8ffL",
     "rich_text_KmMN7n",
     "rich_text_VJNk4X",
