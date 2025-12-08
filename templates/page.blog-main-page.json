@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -9,16 +18,6 @@
         "padding_bottom": 60,
         "padding_top_mobile": 10,
         "padding_bottom_mobile": 30
-      }
-    },
-    "custom_liquid_T7RRLB": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
       }
     },
     "rich_text_WyLWbA": {
@@ -36,7 +35,7 @@
         "text_cwebWF": {
           "type": "text",
           "settings": {
-            "text": "<p>The latest styling tips, decor advice and inspiration all in one hive.<\/p>",
+            "text": "<p>The latest styling tips, decor advice and inspiration all in one hive.</p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -116,7 +115,6 @@
   },
   "order": [
     "main",
-    "custom_liquid_T7RRLB",
     "rich_text_WyLWbA",
     "featured_blog_jAqHCg"
   ]
