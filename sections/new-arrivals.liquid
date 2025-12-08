@@ -199,17 +199,28 @@
 .new-arrivals-carousel {
   display: flex;
   overflow-x: auto;
-  gap: 1.2rem;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
 }
 .new-arrivals-carousel::-webkit-scrollbar {
-  display: none;
+  height: 6px;
 }
 
 .new-arrival-item {
-  flex: 0 0 calc(25% - 1rem);
-  text-align: left;
+  flex: 0 0 270px !important;
+  scroll-snap-align: start;
+}
+
+.arrival-image {
+  width: 100%;
+  height: 320px !important;
+  object-fit: cover !important;
+  background-color: #EEEEEE;
+  border-radius: 0;
+  transition: transform 0.3s ease;
 }
 
 .arrival-link {
@@ -217,14 +228,6 @@
   color: inherit;
 }
 
-.arrival-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-  background-color: #EFEFEF;
-}
 .new-arrival-item:hover .arrival-image {
   transform: scale(1.05);
 }
