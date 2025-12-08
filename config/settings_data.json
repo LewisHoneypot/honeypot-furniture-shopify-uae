@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "link_type": "line",
@@ -626,6 +635,27 @@
           "button_gradient": "",
           "secondary_button_label": "#000000",
           "secondary_button_background": "#ffffff",
+          "secondary_button_gradient": "",
+          "arrow": "#121212",
+          "arrow_background": "#121212",
+          "arrow_gradient": "",
+          "secondary_arrow": "#121212",
+          "secondary_arrow_background": "#b7b0a3",
+          "secondary_arrow_gradient": "",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-ab2e9655-9a5e-4fbb-ab36-fad79bbc26e4": {
+        "settings": {
+          "text": "#121212",
+          "text_link": "#000000",
+          "background": "#e5ddcf",
+          "background_gradient": "",
+          "button_label": "#ffffff",
+          "button_background": "#000000",
+          "button_gradient": "",
+          "secondary_button_label": "#000000",
+          "secondary_button_background": "#b7b0a3",
           "secondary_button_gradient": "",
           "arrow": "#121212",
           "arrow_background": "#121212",

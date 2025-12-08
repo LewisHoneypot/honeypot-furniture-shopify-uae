@@ -136,10 +136,9 @@
         "link_list_mnzbkY",
         "whatsapp_hGmeMU"
       ],
-      "disabled": true,
       "settings": {
         "type_style": "classic",
-        "section_width": "page-width",
+        "section_width": "full-width",
         "customize_width": 1800,
         "margin_top": 30,
         "heading_size": "h3",
@@ -152,7 +151,7 @@
         "footer_top_padding_bottom": 65,
         "footer_top_padding_top_mobile": 40,
         "footer_top_padding_bottom_mobile": 40,
-        "footer_top_color_scheme": "scheme-a7105165-5a01-4c68-86bd-c6d839cad3ad",
+        "footer_top_color_scheme": "scheme-ab2e9655-9a5e-4fbb-ab36-fad79bbc26e4",
         "footer_bot_show_line_separator": false,
         "footer_bottom_padding_top": 26,
         "footer_bottom_padding_bottom": 26,
