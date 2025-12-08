@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -88,6 +97,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
+            "use_buy_button_price": false,
             "show_quantity_selector": true,
             "show_wishlist_product": true,
             "show_dynamic_checkout": true,
@@ -210,10 +220,15 @@
         "f172f031-f0cf-4aaa-8ee0-ba3892df0310"
       ],
       "settings": {
+        "use_custom_title": false,
+        "use_dimensions_icon": false,
+        "use_image_zoom_icon": false,
         "enable_sticky_add_to_cart": true,
         "show_product_badges": true,
         "enable_share": true,
         "type_style": "modern",
+        "image_tech": "default",
+        "cylindo_thumbnail_bar": "off",
         "media_size": "small",
         "gallery_layout": "slider_thumbnail",
         "image_zoom": "lightbox",
@@ -229,30 +244,14 @@
         "padding_bottom_mobile": 30,
         "use_overlay_1": false,
         "overlay_text_1": "Delivery from Fri, 13 Dec",
-        "overlay_text_color_1": "#000",
-        "overlay_background_color_1": "#fff",
+        "overlay_text_size_1": 16,
+        "overlay_text_color_1": "#000000",
+        "overlay_background_color_1": "#ffffff",
         "use_overlay_2": false,
         "overlay_text_2": "PRE-CHRISTMAS DELIVERY",
-        "overlay_text_color_2": "#fff",
-        "overlay_background_color_2": "#000",
+        "overlay_text_color_2": "#ffffff",
+        "overlay_background_color_2": "#000000",
         "christmas_delivery_eta_toggle": false
-      }
-    },
-    "1679044770251ee1c2": {
-      "type": "apps",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "background-1",
-        "use_custom_color": true,
-        "colors_text": "#000000",
-        "colors_background": "#eeeeee",
-        "gradient_background": "",
-        "type_review": "modern",
-        "padding_top": 68,
-        "padding_bottom": 70,
-        "padding_top_mobile": 33,
-        "padding_bottom_mobile": 35
       }
     },
     "621be3cd-4147-460f-91ba-588045460f3e": {
@@ -868,7 +867,6 @@
   },
   "order": [
     "main",
-    "1679044770251ee1c2",
     "621be3cd-4147-460f-91ba-588045460f3e",
     "d429c49f-e09d-426d-a360-6ab92fc46930",
     "92d596e0-c4d5-488b-86e8-d20f02930b64",
