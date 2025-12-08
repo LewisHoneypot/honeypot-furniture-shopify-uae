@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -88,7 +97,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Place Your Order",
-            "text": "<p>Find your favourite items and checkout using a variety of payment and finance options.<\/p>",
+            "text": "<p>Find your favourite items and checkout using a variety of payment and finance options.</p>",
             "link_label": "",
             "link": ""
           }
@@ -101,7 +110,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Await Confirmation",
-            "text": "<p>You'll receieve confirmation of your order via email. We'll be in touch to arrange delivery.<\/p>",
+            "text": "<p>You'll receieve confirmation of your order via email. We'll be in touch to arrange delivery.</p>",
             "link_label": "",
             "link": ""
           }
@@ -115,7 +124,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "#c66969",
             "heading": "Guarantee heading",
-            "text": "<p>Share information about your products, policies or services.<\/p>",
+            "text": "<p>Share information about your products, policies or services.</p>",
             "link_label": "",
             "link": ""
           }
@@ -128,7 +137,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "The Day Of Delivery",
-            "text": "<p>You'll receieve a live tracking link and our two-person team will deliver your items. <\/p>",
+            "text": "<p>You'll receieve a live tracking link and our two-person team will deliver your items. </p>",
             "link_label": "",
             "link": ""
           }
@@ -141,7 +150,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Enjoy Your New Furniture",
-            "text": "<p>Sit back, relax and please don't forget to leave us a review on Trustpilot.<\/p>",
+            "text": "<p>Sit back, relax and please don't forget to leave us a review on Trustpilot.</p>",
             "link_label": "",
             "link": ""
           }
@@ -185,23 +194,13 @@
         "padding_bottom_mobile": 40
       }
     },
-    "custom_liquid_PEbtxe": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
     "image_with_text_zJhwhJ": {
       "type": "image-with-text",
       "blocks": {
         "heading_FtzRWC": {
           "type": "heading",
           "settings": {
-            "heading": "<h3>Live Delivery Tracking<\/h3>",
+            "heading": "<h3>Live Delivery Tracking</h3>",
             "heading_size": "h1",
             "padding_top": 10,
             "padding_bottom": 10
@@ -210,7 +209,7 @@
         "text_hB8Ee3": {
           "type": "text",
           "settings": {
-            "text": "<p>Tired of being given a 12-hour time window for deliveries? We've got you covered!<br\/><br\/>On the day of your delivery, you'll receieve a live tracking link with regular, real-time updates on your expected delivery time. <br\/><br\/>Whether you want to pop home from work quickly to take the delivery or want to enjoy your day off, you'll be able to see our drivers whereabouts in real time.<\/p>",
+            "text": "<p>Tired of being given a 12-hour time window for deliveries? We've got you covered!<br/><br/>On the day of your delivery, you'll receieve a live tracking link with regular, real-time updates on your expected delivery time. <br/><br/>Whether you want to pop home from work quickly to take the delivery or want to enjoy your day off, you'll be able to see our drivers whereabouts in real time.</p>",
             "padding_top": 10,
             "padding_bottom": 10
           }
@@ -226,7 +225,7 @@
         "section_width": "page-width",
         "customize_width": 1800,
         "color_scheme": "scheme-e7b46f89-aaff-4e16-a42a-d270e9598a21",
-        "image": "shopify:\/\/shop_images\/Screenshot_2024-04-16_at_09.19.16.png",
+        "image": "shopify://shop_images/Screenshot_2024-04-16_at_09.19.16.png",
         "heading": "",
         "heading_size": "default",
         "link_label": "",
@@ -251,16 +250,6 @@
         "padding_bottom_mobile": 0
       }
     },
-    "custom_liquid_bBkwGJ": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
     "collapsible_content_4F8ffL": {
       "type": "collapsible-content",
       "blocks": {
@@ -269,7 +258,7 @@
           "settings": {
             "heading": "Guarantee Coverage",
             "icon": "none",
-            "row_content": "<p>Our guarantee takes effect from the delivery date of your original purchase, providing comprehensive coverage against manufacturing defects in the frame and frame springs for an initial period of 1 year. As a testament to our commitment, we extend an additional 5-year frame guarantee at no additional cost.<\/p>",
+            "row_content": "<p>Our guarantee takes effect from the delivery date of your original purchase, providing comprehensive coverage against manufacturing defects in the frame and frame springs for an initial period of 1 year. As a testament to our commitment, we extend an additional 5-year frame guarantee at no additional cost.</p>",
             "page": ""
           }
         },
@@ -278,7 +267,7 @@
           "settings": {
             "heading": "Exclusions",
             "icon": "none",
-            "row_content": "<p>To maintain the integrity of our guarantee, it's essential to clarify certain exclusions. Regrettably, deliberate damage, such as rough handling or neglecting proper maintenance, falls outside our coverage. Please be aware that the guarantee is designed for domestic use only and does not extend to furniture used in workplaces or businesses. Notably, the 12-month guarantee includes one exchange, if required, with distinct procedures for claims initiated after the initial 6 months from delivery. Wear and tear, misuse, failure to maintain, commercial use, natural fading, incorrect assembly, and damage caused by unexpected actions are also excluded, as well as items such as small replacements, electrical components, and issues reported beyond 30 days from installation.<\/p>",
+            "row_content": "<p>To maintain the integrity of our guarantee, it's essential to clarify certain exclusions. Regrettably, deliberate damage, such as rough handling or neglecting proper maintenance, falls outside our coverage. Please be aware that the guarantee is designed for domestic use only and does not extend to furniture used in workplaces or businesses. Notably, the 12-month guarantee includes one exchange, if required, with distinct procedures for claims initiated after the initial 6 months from delivery. Wear and tear, misuse, failure to maintain, commercial use, natural fading, incorrect assembly, and damage caused by unexpected actions are also excluded, as well as items such as small replacements, electrical components, and issues reported beyond 30 days from installation.</p>",
             "page": ""
           }
         },
@@ -287,7 +276,7 @@
           "settings": {
             "heading": "Transferability",
             "icon": "none",
-            "row_content": "<p>Kindly note that the guarantee is personal and non-transferable. In the event of selling or gifting your sofa, the guarantee naturally concludes.<\/p>",
+            "row_content": "<p>Kindly note that the guarantee is personal and non-transferable. In the event of selling or gifting your sofa, the guarantee naturally concludes.</p>",
             "page": ""
           }
         },
@@ -296,7 +285,7 @@
           "settings": {
             "heading": "Guarantee Conditions",
             "icon": "none",
-            "row_content": "<p>To ensure you enjoy the full benefits of our guarantee, adherence to specific conditions is paramount. This includes professional installation by Honeypot Furniture, regular care, and strict adherence to provided instructions. Unauthorised alterations or interference with the product void the guarantee.<\/p>",
+            "row_content": "<p>To ensure you enjoy the full benefits of our guarantee, adherence to specific conditions is paramount. This includes professional installation by Honeypot Furniture, regular care, and strict adherence to provided instructions. Unauthorised alterations or interference with the product void the guarantee.</p>",
             "page": ""
           }
         },
@@ -305,7 +294,7 @@
           "settings": {
             "heading": "Assembly and Care",
             "icon": "none",
-            "row_content": "<p>To enhance your experience, we offer complimentary assembly by our dedicated delivery team. For those who prefer items to remain packaged, we advise checking the item's condition with the delivery team present. When it comes to care, we recommend a simple approach—cleaning with a damp cloth and avoiding the use of chemical products. We advise against putting covers in the washing machine.<\/p>",
+            "row_content": "<p>To enhance your experience, we offer complimentary assembly by our dedicated delivery team. For those who prefer items to remain packaged, we advise checking the item's condition with the delivery team present. When it comes to care, we recommend a simple approach—cleaning with a damp cloth and avoiding the use of chemical products. We advise against putting covers in the washing machine.</p>",
             "page": ""
           }
         },
@@ -314,7 +303,7 @@
           "settings": {
             "heading": "Sofa Usage Guidelines",
             "icon": "none",
-            "row_content": "<p>A gentle reminder to refrain from sitting on sofa arms, especially those with adjustable mechanisms, as this may compromise the product. Additionally, items featured in our sale section are considered clearance products and do not come with a guarantee.<\/p>",
+            "row_content": "<p>A gentle reminder to refrain from sitting on sofa arms, especially those with adjustable mechanisms, as this may compromise the product. Additionally, items featured in our sale section are considered clearance products and do not come with a guarantee.</p>",
             "page": ""
           }
         },
@@ -323,7 +312,7 @@
           "settings": {
             "heading": "Defects After Six Months",
             "icon": "none",
-            "row_content": "<p>For defects arising after the initial 6 months, we will request evidence of the fault at the time of delivery. Normally this is provided to us in the form of a thorough inspection and a comprehensive report. We highly recommend engaging a reputable furniture repair company, such as Castelan Group or Emmiera.<\/p>",
+            "row_content": "<p>For defects arising after the initial 6 months, we will request evidence of the fault at the time of delivery. Normally this is provided to us in the form of a thorough inspection and a comprehensive report. We highly recommend engaging a reputable furniture repair company, such as Castelan Group or Emmiera.</p>",
             "page": ""
           }
         },
@@ -332,7 +321,7 @@
           "settings": {
             "heading": "Structural Frame Guarantee",
             "icon": "none",
-            "row_content": "<p>As part of our commitment to your satisfaction, we offer an extended 5-year structural frame guarantee in addition to the initial 1-year guarantee. This covers hardwood sofa frames against manufacturing defects for 5 years from the delivery date, verified by independent bodies like Castelan or Emmiera.<\/p>",
+            "row_content": "<p>As part of our commitment to your satisfaction, we offer an extended 5-year structural frame guarantee in addition to the initial 1-year guarantee. This covers hardwood sofa frames against manufacturing defects for 5 years from the delivery date, verified by independent bodies like Castelan or Emmiera.</p>",
             "page": ""
           }
         },
@@ -341,7 +330,7 @@
           "settings": {
             "heading": "Claim Process",
             "icon": "none",
-            "row_content": "<p>If you suspect a manufacturer defect, please take advantage of our efficient claims process. Simply complete the form on our website, attaching any supporting evidence. Rest assured, all claims will receive our prompt attention within 2 working days.<\/p>",
+            "row_content": "<p>If you suspect a manufacturer defect, please take advantage of our efficient claims process. Simply complete the form on our website, attaching any supporting evidence. Rest assured, all claims will receive our prompt attention within 2 working days.</p>",
             "page": ""
           }
         }
@@ -393,7 +382,7 @@
           "type": "button",
           "settings": {
             "primary_button_label": "Download Returns Label",
-            "primary_button_link": "https:\/\/cdn.shopify.com\/s\/files\/1\/0857\/1358\/4415\/files\/Returns-Label_1.pdf?v=1713341863",
+            "primary_button_link": "https://cdn.shopify.com/s/files/1/0857/1358/4415/files/Returns-Label_1.pdf?v=1713341863",
             "primary_button_type": "default",
             "secondary_button_label": "",
             "secondary_button_link": "",
@@ -436,7 +425,7 @@
         "text_Ce6X7A": {
           "type": "text",
           "settings": {
-            "text": "<p>For a detailed understanding of our terms and conditions, we invite you to explore our dedicated page, specifically focusing on <a href=\"https:\/\/honeypotfurniture.co.uk\/terms-and-conditions\/\" title=\"https:\/\/honeypotfurniture.co.uk\/terms-and-conditions\/\"><span style=\"text-decoration:underline\">section 9<\/span><\/a>. Your comfort and contentment matter to us at Honeypot Furniture Outlet.<\/p>",
+            "text": "<p>For a detailed understanding of our terms and conditions, we invite you to explore our dedicated page, specifically focusing on <a href=\"https://honeypotfurniture.co.uk/terms-and-conditions/\" title=\"https://honeypotfurniture.co.uk/terms-and-conditions/\"><span style=\"text-decoration:underline\">section 9</span></a>. Your comfort and contentment matter to us at Honeypot Furniture Outlet.</p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -493,9 +482,7 @@
     "rich_text_JPy3zj",
     "custom_liquid_T7RRLB",
     "icon_with_text_ngUGpR",
-    "custom_liquid_PEbtxe",
     "image_with_text_zJhwhJ",
-    "custom_liquid_bBkwGJ",
     "collapsible_content_4F8ffL",
     "rich_text_KmMN7n",
     "rich_text_mKYMgE",
