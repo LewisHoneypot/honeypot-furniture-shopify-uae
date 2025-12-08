@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -518,18 +527,11 @@
     "1736163654e8d791fe": {
       "type": "apps",
       "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "type_review": "special",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "heading": "",
+        "link_url": "",
+        "link": "",
+        "description": "",
+        "include_margins": true
       }
     },
     "as_seen_in_Pnd8YJ": {
@@ -551,23 +553,6 @@
         "image_picker_link3": "",
         "image_picker_alt3": "COUNTRY LIVING",
         "background_color": "#48544c"
-      }
-    },
-    "1736163667c8a5c273": {
-      "type": "apps",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "type_review": "special",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
       }
     },
     "lookbook_pGUge4": {
@@ -698,23 +683,6 @@
         "padding_bottom_mobile": 15
       }
     },
-    "17361637054b91e455": {
-      "type": "apps",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "type_review": "special",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
     "recently-products": {
       "type": "recently-products",
       "disabled": true,
@@ -804,11 +772,9 @@
     "video_FxQj6U",
     "1736163654e8d791fe",
     "as_seen_in_Pnd8YJ",
-    "1736163667c8a5c273",
     "lookbook_pGUge4",
     "featured_collection_RD8KMd",
     "related-products",
-    "17361637054b91e455",
     "recently-products",
     "newsletter_Lkdri8"
   ]
