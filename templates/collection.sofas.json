@@ -199,16 +199,6 @@
         "padding_bottom_mobile": 50
       }
     },
-    "1736440044ce275a3d": {
-      "type": "apps",
-      "settings": {
-        "heading": "",
-        "link_url": "",
-        "link": "",
-        "description": "",
-        "include_margins": true
-      }
-    },
     "collection_list_ig8tXp": {
       "type": "collection-list",
       "blocks": {
@@ -368,7 +358,6 @@
     "banner",
     "product-grid",
     "29a4766e-9b16-4206-927b-f13e02616027",
-    "1736440044ce275a3d",
     "collection_list_ig8tXp",
     "recently-products",
     "clickslice_bottom_description_gfNHzA",
