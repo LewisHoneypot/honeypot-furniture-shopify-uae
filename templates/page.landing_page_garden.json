@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -12,29 +21,13 @@
         "padding_bottom_mobile": 30
       }
     },
-    "17406567193e76d02a": {
-      "type": "apps",
-      "settings": {
-        "section_width": "page-width",
-        "customize_width": 1800,
-        "color_scheme": "",
-        "use_custom_color": false,
-        "colors_text": "#424242",
-        "colors_background": "",
-        "gradient_background": "linear-gradient(90deg, rgba(246, 238, 227, 1), rgba(223, 244, 247, 1) 100%)",
-        "type_review": "special",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
     "carousel_images_eN6MFk": {
       "type": "carousel-images",
       "blocks": {
         "slide_YbEkpe": {
           "type": "slide",
           "settings": {
+            "video_url": "",
             "content_margin_negative_top_desktop": 75,
             "content_margin_negative_top_tablet": 60,
             "content_margin_negative_top_mobile": 45,
@@ -54,6 +47,7 @@
         "slide_tt84Xk": {
           "type": "slide",
           "settings": {
+            "video_url": "",
             "content_margin_negative_top_desktop": 75,
             "content_margin_negative_top_tablet": 60,
             "content_margin_negative_top_mobile": 45,
@@ -71,7 +65,10 @@
           }
         }
       },
-      "block_order": ["slide_YbEkpe", "slide_tt84Xk"],
+      "block_order": [
+        "slide_YbEkpe",
+        "slide_tt84Xk"
+      ],
       "settings": {
         "section_width": "full-width",
         "customize_width": 1800,
@@ -112,7 +109,10 @@
         },
         "vendor_n7rDr8": {
           "type": "vendor",
-          "settings": { "padding_top": 5, "padding_bottom": 5 }
+          "settings": {
+            "padding_top": 5,
+            "padding_bottom": 5
+          }
         },
         "variant_picker_RGd834": {
           "type": "variant_picker",
@@ -134,19 +134,19 @@
             "add_to_cart_colors_text": "#121212",
             "add_to_cart_colors_background": "#ffffff",
             "add_to_cart_gradient_background": "",
-            "add_to_cart_colors_text_hover": "#FFFFFF",
+            "add_to_cart_colors_text_hover": "#ffffff",
             "add_to_cart_colors_background_hover": "#396774",
             "add_to_cart_gradient_background_hover": "",
             "buy_it_now_colors_text": "#ffffff",
             "buy_it_now_colors_background": "#121212",
             "buy_it_now_gradient_background": "",
-            "buy_it_now_colors_text_hover": "#FFFFFF",
+            "buy_it_now_colors_text_hover": "#ffffff",
             "buy_it_now_colors_background_hover": "#000000",
             "buy_it_now_gradient_background_hover": "",
             "wishlist_colors_text": "#000000",
             "wishlist_colors_background": "#000000",
-            "wishlist_colors_text_hover": "#EB9C9C",
-            "wishlist_colors_background_hover": "#EB9C9C",
+            "wishlist_colors_text_hover": "#eb9c9c",
+            "wishlist_colors_background_hover": "#eb9c9c",
             "padding_top": 5,
             "padding_bottom": 5
           }
@@ -185,6 +185,7 @@
         "slide_G6LweX": {
           "type": "slide",
           "settings": {
+            "video_url": "",
             "content_margin_negative_top_desktop": 75,
             "content_margin_negative_top_tablet": 60,
             "content_margin_negative_top_mobile": 45,
@@ -204,6 +205,7 @@
         "slide_aLxUfV": {
           "type": "slide",
           "settings": {
+            "video_url": "",
             "content_margin_negative_top_desktop": 75,
             "content_margin_negative_top_tablet": 60,
             "content_margin_negative_top_mobile": 45,
@@ -221,7 +223,10 @@
           }
         }
       },
-      "block_order": ["slide_G6LweX", "slide_aLxUfV"],
+      "block_order": [
+        "slide_G6LweX",
+        "slide_aLxUfV"
+      ],
       "settings": {
         "section_width": "full-width",
         "customize_width": 1800,
@@ -262,7 +267,10 @@
         },
         "vendor_wXEVX3": {
           "type": "vendor",
-          "settings": { "padding_top": 5, "padding_bottom": 5 }
+          "settings": {
+            "padding_top": 5,
+            "padding_bottom": 5
+          }
         },
         "variant_picker_Nwbxit": {
           "type": "variant_picker",
@@ -284,19 +292,19 @@
             "add_to_cart_colors_text": "#121212",
             "add_to_cart_colors_background": "#ffffff",
             "add_to_cart_gradient_background": "",
-            "add_to_cart_colors_text_hover": "#FFFFFF",
+            "add_to_cart_colors_text_hover": "#ffffff",
             "add_to_cart_colors_background_hover": "#396774",
             "add_to_cart_gradient_background_hover": "",
             "buy_it_now_colors_text": "#ffffff",
             "buy_it_now_colors_background": "#121212",
             "buy_it_now_gradient_background": "",
-            "buy_it_now_colors_text_hover": "#FFFFFF",
+            "buy_it_now_colors_text_hover": "#ffffff",
             "buy_it_now_colors_background_hover": "#000000",
             "buy_it_now_gradient_background_hover": "",
             "wishlist_colors_text": "#000000",
             "wishlist_colors_background": "#000000",
-            "wishlist_colors_text_hover": "#EB9C9C",
-            "wishlist_colors_background_hover": "#EB9C9C",
+            "wishlist_colors_text_hover": "#eb9c9c",
+            "wishlist_colors_background_hover": "#eb9c9c",
             "padding_top": 5,
             "padding_bottom": 5
           }
@@ -335,6 +343,7 @@
         "slide_zzAQMP": {
           "type": "slide",
           "settings": {
+            "video_url": "",
             "content_margin_negative_top_desktop": 75,
             "content_margin_negative_top_tablet": 60,
             "content_margin_negative_top_mobile": 45,
@@ -354,6 +363,7 @@
         "slide_kLfkti": {
           "type": "slide",
           "settings": {
+            "video_url": "",
             "content_margin_negative_top_desktop": 75,
             "content_margin_negative_top_tablet": 60,
             "content_margin_negative_top_mobile": 45,
@@ -371,7 +381,10 @@
           }
         }
       },
-      "block_order": ["slide_zzAQMP", "slide_kLfkti"],
+      "block_order": [
+        "slide_zzAQMP",
+        "slide_kLfkti"
+      ],
       "settings": {
         "section_width": "full-width",
         "customize_width": 1800,
@@ -412,7 +425,10 @@
         },
         "vendor_UqYMbd": {
           "type": "vendor",
-          "settings": { "padding_top": 5, "padding_bottom": 5 }
+          "settings": {
+            "padding_top": 5,
+            "padding_bottom": 5
+          }
         },
         "variant_picker_XhMrkj": {
           "type": "variant_picker",
@@ -434,19 +450,19 @@
             "add_to_cart_colors_text": "#121212",
             "add_to_cart_colors_background": "#ffffff",
             "add_to_cart_gradient_background": "",
-            "add_to_cart_colors_text_hover": "#FFFFFF",
+            "add_to_cart_colors_text_hover": "#ffffff",
             "add_to_cart_colors_background_hover": "#396774",
             "add_to_cart_gradient_background_hover": "",
             "buy_it_now_colors_text": "#ffffff",
             "buy_it_now_colors_background": "#121212",
             "buy_it_now_gradient_background": "",
-            "buy_it_now_colors_text_hover": "#FFFFFF",
+            "buy_it_now_colors_text_hover": "#ffffff",
             "buy_it_now_colors_background_hover": "#000000",
             "buy_it_now_gradient_background_hover": "",
             "wishlist_colors_text": "#000000",
             "wishlist_colors_background": "#000000",
-            "wishlist_colors_text_hover": "#EB9C9C",
-            "wishlist_colors_background_hover": "#EB9C9C",
+            "wishlist_colors_text_hover": "#eb9c9c",
+            "wishlist_colors_background_hover": "#eb9c9c",
             "padding_top": 5,
             "padding_bottom": 5
           }
@@ -482,7 +498,6 @@
   },
   "order": [
     "main",
-    "17406567193e76d02a",
     "carousel_images_eN6MFk",
     "featured_product_Fyyy34",
     "carousel_images_znf4rL",
