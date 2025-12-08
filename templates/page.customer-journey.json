@@ -21,16 +21,6 @@
         "padding_bottom_mobile": 30
       }
     },
-    "custom_liquid_T7RRLB": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
-      }
-    },
     "breadcrump_with_bg_bka7Qq": {
       "type": "breadcrump_with_bg",
       "disabled": true,
@@ -516,24 +506,8 @@
     },
     "customer_journey_5_xEHcez": {
       "type": "customer_journey_5",
-      "blocks": {
-        
-      },
-      "block_order": [
-
-      ],
       "name": "Pick Your Fabric & Colour",
-      "settings": {
-        "heading_number": "STEP 05",
-        "heading": "Pick Your Fabric & Colour",
-        "subheading_1": "Explore over 30 fabric types, each with more than 30 colours.",
-        "subheading_2": "Our eight curated looks make it easy to find the perfect texture and tone for your home.",
-        "footer_title": "choose from three clear price categories",
-        "list_item_1": "Honeypot Classics",
-        "list_item_2": "Honeypot Signatures",
-        "list_item_3": "Honeypot Performance",
-        "footer_note": "All performance fabrics feature FibreGuard – stain-resistant, pet-friendly, and built to last!"
-      }
+      "settings": {}
     },
     "custom_journey_6_4LC8H7": {
       "type": "custom_journey_6",
@@ -554,7 +528,6 @@
   },
   "order": [
     "main",
-    "custom_liquid_T7RRLB",
     "breadcrump_with_bg_bka7Qq",
     "customer_main_header_XeBfft",
     "customer_journey_6_YHXknH",
