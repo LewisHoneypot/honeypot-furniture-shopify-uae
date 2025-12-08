@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -10,16 +19,6 @@
         "padding_bottom": 60,
         "padding_top_mobile": 10,
         "padding_bottom_mobile": 30
-      }
-    },
-    "custom_liquid_T7RRLB": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
       }
     },
     "rich_text_eb8Wpy": {
@@ -37,7 +36,7 @@
         "text_9kyCPf": {
           "type": "text",
           "settings": {
-            "text": "<p>Welcome to our inspiration hive, our world of style, with lifestyle features, real homes, tips and tricks.<\/p>",
+            "text": "<p>Welcome to our inspiration hive, our world of style, with lifestyle features, real homes, tips and tricks.</p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -144,7 +143,7 @@
         "heading_WAFJYx": {
           "type": "heading",
           "settings": {
-            "heading": "<h1>Honeypot Homes<\/h1>",
+            "heading": "<h1>Honeypot Homes</h1>",
             "heading_size": "h1",
             "padding_top": 0,
             "padding_bottom": 0
@@ -153,7 +152,7 @@
         "text_pTCVKj": {
           "type": "text",
           "settings": {
-            "text": "<h4>Take a look into the homes of our stylish customers!<\/h4>",
+            "text": "<h4>Take a look into the homes of our stylish customers!</h4>",
             "padding_top": 0,
             "padding_bottom": 5
           }
@@ -180,7 +179,7 @@
         "section_width": "page-width",
         "customize_width": 1800,
         "color_scheme": "",
-        "image": "shopify:\/\/shop_images\/INSPO_GAL_12.webp",
+        "image": "shopify://shop_images/INSPO_GAL_12.webp",
         "heading": "",
         "heading_size": "default",
         "link_label": "",
@@ -225,14 +224,14 @@
         "image_HVReRL": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/INSPO_GAL_3.webp",
+            "image": "shopify://shop_images/INSPO_GAL_3.webp",
             "link": ""
           }
         },
         "image_rQj6dn": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Photo_27-05-2024_13_09_16.jpg",
+            "image": "shopify://shop_images/Photo_27-05-2024_13_09_16.jpg",
             "link": ""
           }
         }
@@ -244,7 +243,7 @@
       "settings": {
         "heading": "Meet Our Ambassadors",
         "heading_size": "default",
-        "text": "<p>Introducing our brand ambassadors. Explore the homes of influencers representing Honeypot and discover their unique style!<\/p>",
+        "text": "<p>Introducing our brand ambassadors. Explore the homes of influencers representing Honeypot and discover their unique style!</p>",
         "link_label": "Explore here",
         "link": "",
         "heading_alignment": "start",
@@ -274,7 +273,6 @@
   },
   "order": [
     "main",
-    "custom_liquid_T7RRLB",
     "rich_text_eb8Wpy",
     "featured_blog_LtkT8c",
     "quotes_g4Wk4y",
