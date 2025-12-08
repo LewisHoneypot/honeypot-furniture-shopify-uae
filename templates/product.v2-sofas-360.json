@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -40,9 +49,14 @@
         },
         "tabby_pay_later_pdp_final_VAVpq4": {
           "type": "shopify://apps/tabby-pay-later/blocks/pdp-final/b31c2495-41fc-4b20-9fc7-8cb2e9dd9a95",
-          "settings": { "no_price_display": false }
+          "settings": {
+            "no_price_display": false
+          }
         },
-        "tamara_Hw8QMq": { "type": "tamara", "settings": {} },
+        "tamara_Hw8QMq": {
+          "type": "tamara",
+          "settings": {}
+        },
         "drawer_j3bNWd": {
           "type": "drawer",
           "settings": {
@@ -334,7 +348,11 @@
           }
         }
       },
-      "block_order": ["heading_yjApHr", "text_mDUJrg", "button_HKewh9"],
+      "block_order": [
+        "heading_yjApHr",
+        "text_mDUJrg",
+        "button_HKewh9"
+      ],
       "settings": {
         "section_width": "page-width",
         "customize_width": 1800,
@@ -405,7 +423,11 @@
           }
         }
       },
-      "block_order": ["column_9g4pWk", "column_CXnQL3", "column_eYGjdt"],
+      "block_order": [
+        "column_9g4pWk",
+        "column_CXnQL3",
+        "column_eYGjdt"
+      ],
       "settings": {
         "layout": "v2",
         "use_hr": true,
@@ -459,7 +481,9 @@
           }
         }
       },
-      "block_order": ["hr_separator_inKcfw"],
+      "block_order": [
+        "hr_separator_inKcfw"
+      ],
       "settings": {
         "video_width": 1000,
         "video_url": "",
@@ -486,7 +510,6 @@
         "padding_bottom_mobile": 0
       }
     },
-    "1736163654e8d791fe": { "type": "apps", "settings": {} },
     "as_seen_in_Pnd8YJ": {
       "type": "as-seen-in",
       "settings": {
@@ -508,7 +531,6 @@
         "background_color": "#48544c"
       }
     },
-    "1736163667c8a5c273": { "type": "apps", "settings": {} },
     "lookbook_pGUge4": {
       "type": "lookbook",
       "blocks": {
@@ -533,7 +555,9 @@
           }
         }
       },
-      "block_order": ["image_L4QhHh"],
+      "block_order": [
+        "image_L4QhHh"
+      ],
       "disabled": true,
       "settings": {
         "section_width": "full-width",
@@ -579,7 +603,9 @@
           }
         }
       },
-      "block_order": ["heading_z3PBJz"],
+      "block_order": [
+        "heading_z3PBJz"
+      ],
       "disabled": true,
       "settings": {
         "section_width": "page-width",
@@ -633,7 +659,6 @@
         "padding_bottom_mobile": 15
       }
     },
-    "17361637054b91e455": { "type": "apps", "settings": {} },
     "recently-products": {
       "type": "recently-products",
       "disabled": true,
@@ -688,7 +713,10 @@
           }
         }
       },
-      "block_order": ["heading_YPHcci", "email_form_cKwJab"],
+      "block_order": [
+        "heading_YPHcci",
+        "email_form_cKwJab"
+      ],
       "settings": {
         "type_style": "classic",
         "section_width": "page-width",
@@ -718,13 +746,10 @@
     "rich_text_WaVhX9",
     "multicolumn_FJHgEr",
     "video_FxQj6U",
-    "1736163654e8d791fe",
     "as_seen_in_Pnd8YJ",
-    "1736163667c8a5c273",
     "lookbook_pGUge4",
     "featured_collection_RD8KMd",
     "related-products",
-    "17361637054b91e455",
     "recently-products",
     "newsletter_Lkdri8"
   ]
