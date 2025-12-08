@@ -147,6 +147,7 @@
         "link_list_mnzbkY",
         "whatsapp_hGmeMU"
       ],
+      "disabled": true,
       "settings": {
         "type_style": "classic",
         "section_width": "page-width",
