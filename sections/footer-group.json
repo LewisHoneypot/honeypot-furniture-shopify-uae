@@ -138,7 +138,7 @@
       ],
       "settings": {
         "type_style": "classic",
-        "section_width": "full-width",
+        "section_width": "page-width",
         "customize_width": 1800,
         "margin_top": 30,
         "heading_size": "h3",
