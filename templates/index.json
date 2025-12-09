@@ -367,7 +367,7 @@
         "section_image": "shopify://shop_images/af9a6d873b592d320d8fd4bc4777ec718f297845_f79ba19d-aafe-4db4-b2e9-43980e6b3f65.png",
         "heading": "Testimonials",
         "rating_logo": "shopify://shop_images/Google__G__logo_svg.webp",
-        "rating_score": "4.8",
+        "rating_score": "5.0",
         "reviews_link": ""
       }
     },
@@ -548,6 +548,27 @@
       "settings": {
         "phone_icon": "shopify://shop_images/bfecf73409c6be6216cf453c2a28d7704daff336.png",
         "email_icon": "shopify://shop_images/83a619c01212302d5ef95a7b5383b7f371b7de68.png"
+      }
+    },
+    "1765274537b5cf3dc7": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_FCaCHa": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": ""
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_FCaCHa"
+      ],
+      "settings": {
+        "heading": "",
+        "link_url": "",
+        "link": "",
+        "description": "",
+        "include_margins": true
       }
     },
     "honeypot_footer_djMfgi": {
@@ -801,6 +822,7 @@
     "recent_blogs_Eetdzq",
     "follow_the_comfort_UTpxJh",
     "join_the_honeypot_club_qnTkmF",
+    "1765274537b5cf3dc7",
     "honeypot_footer_djMfgi",
     "a0b92d9e-e25a-4de9-9035-373ef5c4d596",
     "custom_liquid_dfcHEi",
