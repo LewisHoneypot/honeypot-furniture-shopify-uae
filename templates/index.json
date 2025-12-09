@@ -552,6 +552,7 @@
     },
     "honeypot_footer_djMfgi": {
       "type": "honeypot-footer",
+      "disabled": true,
       "name": "Honeypot Footer",
       "settings": {
         "whatsapp_number": "+971509046848",
