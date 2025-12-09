@@ -222,7 +222,7 @@
         "use_button_link": "",
         "icon_type_style": "classic",
         "enable_search": true,
-        "enable_account": true,
+        "enable_account": false,
         "enable_cart": true,
         "enable_wishlist": false,
         "enable_country_selector": false,
