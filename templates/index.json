@@ -314,7 +314,7 @@
         "tamara_logo": "shopify://shop_images/ccdf2d0d48313f862a505c8f74e7f186d9108d51.png",
         "show_button": true,
         "button_label": "Buy Sofa Now",
-        "button_link": "",
+        "button_link": "shopify://pages/buy-furniture-with-tabby",
         "background_image": "shopify://shop_images/img.jpg",
         "background_color": "#f0e9e3",
         "text_1": "Eco-friendly fabrics",
