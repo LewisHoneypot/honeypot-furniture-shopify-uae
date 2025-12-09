@@ -119,10 +119,10 @@
             "button_transparent": "transparent",
             "WhatsAppButtonText1": "Chat on WhatsApp",
             "WhatsAppButtonPhoneNumber": "971509046848",
-            "WhatsAppButtonIconColour1": "#45544c",
-            "WhatsAppButtonIconColour2": "#ffffff",
+            "WhatsAppButtonIconColour1": "#121212",
+            "WhatsAppButtonIconColour2": "#e5ddcf",
             "EmailButtonText": "Email Customer Support",
-            "EmailButtonIconColour": "#ffffff",
+            "EmailButtonIconColour": "#121212",
             "use_sticky": true
           }
         }
