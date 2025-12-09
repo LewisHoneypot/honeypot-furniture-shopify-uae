@@ -168,7 +168,7 @@
         "social_media_colors_background": "",
         "social_media_gradient_background": "",
         "text_copyright": "<p>©2025 Honeypot Furniture</p>",
-        "awards_enable": true,
+        "awards_enable": false,
         "awards_logo_1": "shopify://shop_images/HOME_AWARDS_2024_FINALISTS.png",
         "awards_logo_1_alt": "ufurnish awards"
       }
