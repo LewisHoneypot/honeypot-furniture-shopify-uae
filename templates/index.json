@@ -438,7 +438,7 @@
         "heading_margin_bottom": 60,
         "blog": "news",
         "post_limit": 4,
-        "spacing_desktop": 30,
+        "spacing_desktop": 12,
         "spacing_tablet": 30,
         "spacing_mobile": 10,
         "show_image": true,
