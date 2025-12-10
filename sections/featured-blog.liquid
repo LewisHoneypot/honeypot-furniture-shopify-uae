@@ -174,7 +174,7 @@
                                   {%- if article.excerpt.size > 0 -%}
                                     {{ article.excerpt | strip_html }}
                                   {%- else -%}
-                                    {{ article.content | strip_html | truncatewords: 250 }}
+                                    {{ article.content | strip_html | truncatewords: 25 }}
                                   {%- endif -%}
                                 </div>
                               {%- endif -%}
