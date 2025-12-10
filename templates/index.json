@@ -431,7 +431,7 @@
         "style_layout": "enable_carousel",
         "icon": "none",
         "heading": "Recent Blogs",
-        "heading_size": "default",
+        "heading_size": "small",
         "show_view_all": "none",
         "button_label": "Button label",
         "heading_alignment": "left",
