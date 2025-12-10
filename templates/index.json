@@ -520,6 +520,7 @@
         "blog_post_CzzUEX",
         "blog_post_mqcDW8"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {font-size: 34px; font-style: normal; font-weight: 400; color: #111111;}",
         "p {font-size: 10.75px; font-weight: 350; line-height: 16.5px; color: #484848;}",
