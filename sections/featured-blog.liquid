@@ -57,6 +57,9 @@
               {%- endif -%}
               {{ section.settings.heading | escape }}
             </h2>
+
+            <p class="recent-blogs-subtitle">From Our Studio to Your Home.</p>
+
             {%- if section.settings.show_view_all == 'link' and section.settings.blog != blank and section.settings.post_limit < section.settings.blog.articles_count -%}
               <a href="{{ section.settings.blog.url }}" class="link u-u u-link {{ settings.link_type | prepend: "link--style-" }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" aria-label="{{ 'sections.featured_blog.view_all' | t }}">
                 <span class="text link-style">
@@ -113,7 +116,7 @@
                         style="--animation-order: {{ forloop.index }};"
                       {% endif %}
                     >
-                      <div class="item pos-relative{% if carousel_number == 1 %} d-flex{% endif %}">
+                      <div class="item pos-relative{% if carousel_number == 1 %} d-flex{% endif %}" style="background:#ededed;">
                         {%- if section.settings.show_image -%}
                           <a class="item__media d-block color-foreground{% unless section.settings.show_tags %} link-cover{% endunless %}{% if carousel_number == 1 %} d-inline-block{% endif %}" href="{{ article.url }}">
                             <animate-element class="d-block gradient-global o-h" background>
@@ -147,7 +150,7 @@
                           </a>
                         {%- endif -%}
                         <animate-element class="item__content {{ section.settings.text_alignment }}{% if carousel_number == 1 %} d-inline-block{% endif %}">
-                          <div class="d-block o-h{% if section.settings.style_layout == 'enable_carousel' %} m-auto{% endif %}" data-animate="{{ section.settings.text_animation }}" style="--a-delay: {{ '0.2' | times: forloop.index }}s;{% if section.settings.style_layout == 'enable_carousel' %} --m-w: 45.6rem;{% endif %}">
+                          <div class="d-block o-h{% if section.settings.style_layout == 'enable_carousel' %} m-auto{% endif %}" data-animate="{{ section.settings.text_animation }}" style="--a-delay: {{ '0.2' | times: forloop.index }}s;{% if section.settings.style_layout == 'enable_carousel' %} --m-w: 45.6rem;{% endif %} padding:15px;">
                             {%- if section.settings.show_tags -%}
                               <div class="tags d-flex f-wrap j-c-{{ section.settings.text_alignment | replace: 'left', 'start' | replace: 'right', 'end' }}">
                                 {% for tag in article.tags %}
@@ -155,7 +158,7 @@
                                 {% endfor %}
                               </div>
                             {%- endif -%}
-                            <h2 class="h2 spacing" style="--padding-top: {{ section.settings.title_margin_top }}px; --padding-bottom: {{ section.settings.title_margin_bottom }}px;">
+                            <h2 class="h2 spacing" style="--padding-top: {{ section.settings.title_margin_top }}px; --padding-bottom: {{ section.settings.title_margin_bottom }}px; font-size:18px; font-weight:bold;">
                               <a href="{{ article.url }}" class="d-block u-none color-current link{% if section.settings.text_per_line != 'none' %} limit-text{% endif %}" style="{% if section.settings.text_per_line != 'none' %} --text-per-line: {{ section.settings.text_per_line }} {% endif %}">{{ article.title | escape }}</a>
                             </h2>
                             {%- if section.settings.show_date or section.settings.show_author -%}
@@ -170,7 +173,12 @@
                             {%- endif -%}
                             {%- if section.settings.show_content -%}
                               {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-                                <div class="rte spacing" style="--padding-top: {{ section.settings.content_margin_top }}px; --padding-bottom: {{ section.settings.content_margin_bottom }}px;">
+                                <div class="rte spacing" style="--padding-top: {{ section.settings.content_margin_top }}px; --padding-bottom: {{ section.settings.content_margin_bottom }}px; 
+                                  font-size: 10.75px;
+                                  font-weight: 350;
+                                  line-height: 16.5px;
+                                  color: #484848;"
+                                >
                                   {%- if article.excerpt.size > 0 -%}
                                     {{ article.excerpt | strip_html }}
                                   {%- else -%}
@@ -180,10 +188,23 @@
                               {%- endif -%}
                             {%- endif -%}
                             {%- if section.settings.show_button -%}
-                                <a class="button {{ settings.button_type | prepend: 'button--main-' }} {{ settings.button_icon | prepend: 'button--icon-' }} {{ settings.button_style | prepend: 'button--style-' }}{% if section.settings.button_transparent == 'transparent' %} button--transparent{% endif %} mi-w" href="{{ article.url }}" style="--mi-w: 20rem;">
+                              {%- if section.settings.button_design == "circle" -%}
+                                <a href="{{ article.url }}" class="blog-arrow">→</a>
+                              {%- else -%}
+                                <a 
+                                  class="
+                                    button 
+                                    {{ settings.button_type | prepend: 'button--main-' }} 
+                                    {{ settings.button_icon | prepend: 'button--icon-' }} 
+                                    {{ settings.button_style | prepend: 'button--style-' }}
+                                    {% if section.settings.button_transparent == 'transparent' %} button--transparent{% endif %} mi-w" 
+                                  href="{{ article.url }}" 
+                                  style="--mi-w: 20rem;"
+                                >
                                   <span class="text">{{ 'blogs.article.read_more' | t }}</span>
                                   {% render 'button-main-style' %}
                                 </a>
+                              {%- endif -%}
                             {%- endif -%}
                           </div>
                         </animate-element>
@@ -774,15 +795,15 @@
   },
   {
     "type": "select",
-    "id": "button_transparent",
+    "id": "button_design",
     "options": [
       {
         "value": "default",
         "label": "t:sections.all.button_style.label__2"
       },
       {
-        "value": "transparent",
-        "label": "t:sections.all.button_style.label__3"
+        "value": "circle",
+        "label": "Circle"
       }
     ],
     "default": "default",
