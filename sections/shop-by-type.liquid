@@ -14,6 +14,8 @@
                     alt="{{ block.settings.title | escape }}"
                     class="shop-type-image"
                     loading="lazy"
+                    height=""
+                    width=""
                   >
                 {% else %}
                   {{ 'image' | placeholder_svg_tag: 'placeholder-svg shop-type-image' }}
@@ -25,10 +27,6 @@
         </div>
       </div>
 
-      <!-- Persistent scrollbar line below -->
-      <div class="shop-scrollbar-track">
-        <div class="shop-scrollbar-thumb"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -53,10 +51,21 @@
 }
 
 .shop-by-type-scroll {
+  display: flex;
   overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* hide native scrollbar */
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+}
+
+.shop-by-type-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.shop-by-type-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
 }
 
 .shop-by-type-row {
