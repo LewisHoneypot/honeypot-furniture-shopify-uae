@@ -28,6 +28,7 @@
           "settings": {
             "label": "Straight",
             "value": "straight",
+            "image": "shopify://shop_images/Straight.png",
             "image_width": 150
           }
         },
@@ -36,6 +37,7 @@
           "settings": {
             "label": "L-Corner",
             "value": "l-corner",
+            "image": "shopify://shop_images/L-Corner.png",
             "image_width": 150
           }
         },
@@ -44,6 +46,7 @@
           "settings": {
             "label": "Corner",
             "value": "corner",
+            "image": "shopify://shop_images/U-Corner.png",
             "image_width": 150
           }
         },
@@ -103,6 +106,7 @@
         "main_heading": "Get Estimate",
         "step1_heading": "Step 1: Select Sofa Type",
         "step2_heading": "Step 2: Select Sofa Size",
+        "dimensions_image": "shopify://shop_images/L-corner_lenght_A.png",
         "dimensions_image_width": 200,
         "step3_heading": "Step 3: Select Sofa Filling",
         "step4_heading": "Step 4: Select Filling Option",
