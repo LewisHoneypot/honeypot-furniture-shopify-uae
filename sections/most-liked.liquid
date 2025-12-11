@@ -27,6 +27,8 @@
                     loading="lazy"
                     class="most-liked-image"
                     id="main-image-{{ product.id }}"
+                    height=""
+                    width=""
                   >
                 </a>
 
@@ -224,7 +226,8 @@
   bottom: 45px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+  /* display: flex; */
+  display: none;
   gap: 8px;
   z-index: 5;
   background: transparent;
