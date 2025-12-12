@@ -103,14 +103,14 @@
       ],
       "name": "Get Estimate",
       "settings": {
-        "main_heading": "Get Estimate",
-        "step1_heading": "Step 1: Select Sofa Type",
-        "step2_heading": "Step 2: Select Sofa Size",
+        "main_heading": "Get your instant sofa estimate now!",
+        "step1_heading": "CHOOSE YOUR SOFA TYPE",
+        "step2_heading": "CHOOSE YOUR SOFA LENGTH",
         "dimensions_image": "shopify://shop_images/L-corner_lenght_A.png",
         "dimensions_image_width": 200,
-        "step3_heading": "Step 3: Select Sofa Filling",
-        "step4_heading": "Step 4: Select Filling Option",
-        "button_label": "BOOK A FREE VISIT"
+        "step3_heading": "CHOOSE YOUR SOFA FILLING",
+        "step4_heading": "CHOOSE YOUR SOFA FABRIC",
+        "button_label": "CONSULT WITH OUR TEAM"
       }
     },
     "custom_liquid_T7RRLB": {
