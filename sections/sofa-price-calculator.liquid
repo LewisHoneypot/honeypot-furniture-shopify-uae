@@ -7,7 +7,14 @@
 
   <!-- Step 1 -->
   <div class="section">
-    <h3>{{ section.settings.step1_heading }}</h3>
+    <div class="section-title">
+      <div class="h3-icon-outer">
+        <div class="h3-icon-inner">01</div>
+      </div>
+      <div class="h3-outer">
+        <h3>{{ section.settings.step1_heading }}</h3>
+      </div>
+    </div>
     <div class="row options-1">
       {% for block in section.blocks %}
         {% if block.type == 'sofa_type' %}
@@ -44,41 +51,64 @@
 
   <!-- Step 2 -->
   <div class="section">
-    <h3>{{ section.settings.step2_heading }}</h3>
-    {% if section.settings.dimensions_image != blank %}
-      <img
-        src="{{ section.settings.dimensions_image | image_url: width: section.settings.dimensions_image_width }}"
-        alt="Sofa dimensions"
-        style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% else %}
-      <img
-        src="https://placeholdit.com/{{ section.settings.dimensions_image_width }}x100/ffffff/999999"
-        alt="Sofa dimensions"
-        style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% endif %}
+    <div class="section-title">
+      <div class="h3-icon-outer"><div class="h3-icon-inner">02</div></div>
+      <div class="h3-outer">
+        <h3>{{ section.settings.step2_heading }}</h3>
+      </div>
+    </div>
 
     <div class="row options-2">
+      <!-- A COLUMN -->
       <div class="col-12 col-md-4 length-field" data-field="a">
+        <div class="dimension-image">
+          {% if section.settings.dimensions_image_1 != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_1 | image_url: width: section.settings.dimensions_image_width }}"
+              alt="Dimensions A"
+              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+            >
+          {% endif %}
+        </div>
+
         <div class="title">Length A</div>
         <div class="input-field">
           <input id="length-a" type="number" value="200" placeholder="Enter cm">
           <span class="units">cm</span>
         </div>
       </div>
-      <div class="col-12 col-md-4 length-field" data-field="b">
+
+      <!-- B COLUMN -->
+      <div class="col-12 col-md-4 length-field" data-field="b" style="display:none;">
+        <div class="dimension-image">
+          {% if section.settings.dimensions_image_2 != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_2 | image_url: width: section.settings.dimensions_image_width }}"
+              alt="Dimensions B"
+              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+            >
+          {% endif %}
+        </div>
+
         <div class="title">Length B</div>
         <div class="input-field">
           <input id="length-b" type="number" value="100" placeholder="Enter cm">
           <span class="units">cm</span>
         </div>
       </div>
-      <div class="col-12 col-md-4 length-field" data-field="c">
+
+      <!-- C COLUMN -->
+      <div class="col-12 col-md-4 length-field" data-field="c" style="display:none;">
+        <div class="dimension-image">
+          {% if section.settings.dimensions_image_3 != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_3 | image_url: width: section.settings.dimensions_image_width }}"
+              alt="Dimensions C"
+              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+            >
+          {% endif %}
+        </div>
+
         <div class="title">Length C</div>
         <div class="input-field">
           <input id="length-c" type="number" value="100" placeholder="Enter cm">
@@ -90,7 +120,14 @@
 
   <!-- Step 3 -->
   <div class="section">
-    <h3>{{ section.settings.step3_heading }}</h3>
+    <div class="section-title">
+      <div class="h3-icon-outer">
+        <div class="h3-icon-inner">03</div>
+      </div>
+      <div class="h3-outer">
+        <h3>{{ section.settings.step3_heading }}</h3>
+      </div>
+    </div>
     <div class="row options-3">
       {% assign first_filling = true %}
       {% for block in section.blocks %}
@@ -125,7 +162,14 @@
 
   <!-- Step 4 -->
   <div class="section">
-    <h3>{{ section.settings.step4_heading }}</h3>
+    <div class="section-title">
+      <div class="h3-icon-outer">
+        <div class="h3-icon-inner">04</div>
+      </div>
+      <div class="h3-outer">
+        <h3>{{ section.settings.step4_heading }}</h3>
+      </div>
+    </div>
     <div class="row options-4">
       {% assign first_filling_option = true %}
       {% for block in section.blocks %}
@@ -164,7 +208,9 @@
     { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Get Estimate" },
     { "type": "text", "id": "step1_heading", "label": "Step 1 Heading", "default": "Step 1: Select Sofa Type" },
     { "type": "text", "id": "step2_heading", "label": "Step 2 Heading", "default": "Step 2: Select Sofa Size" },
-    { "type": "image_picker", "id": "dimensions_image", "label": "Sofa Dimensions Image" },
+    { "type": "image_picker", "id": "dimensions_image_1", "label": "Sofa Dimensions Image" },
+    { "type": "image_picker", "id": "dimensions_image_2", "label": "Sofa Dimensions Image" },
+    { "type": "image_picker", "id": "dimensions_image_3", "label": "Sofa Dimensions Image" },
     {
       "type": "range",
       "id": "dimensions_image_width",
