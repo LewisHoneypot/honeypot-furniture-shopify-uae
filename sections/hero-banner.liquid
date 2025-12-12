@@ -2,8 +2,8 @@
 
   <div class="hero-slider-scroll">
     {% for block in section.blocks %}
-      <div class="hero-slide"
-           style="background-image:url('{{ block.settings.image | img_url: '2000x' }}');">
+      <div class="hero-slide hero-slide-{{ block.id }}"
+           style="background-image:url('{{ block.settings.image_desktop | img_url: '2000x' }}');">
         <div class="hero-slide-content">
           {% if block.settings.heading != blank %}
             <h2>{{ block.settings.heading }}</h2>
@@ -94,6 +94,14 @@
   .hero-slider-section {
     height: {{ section.settings.slider_height_mobile }}px;
   }
+
+  /* Apply mobile background images per slide */
+  {% for block in section.blocks %}
+    .hero-slide-{{ block.id }} {
+      background-image: url('{{ block.settings.image_mobile | img_url: "900x" }}') !important;
+    }
+  {% endfor %}
+
   .hero-slide-content {
     left: 20px;
     bottom: 50px;
@@ -200,7 +208,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "type": "slide",
       "name": "Slide",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Background Image" },
+        { "type": "image_picker", "id": "image_desktop", "label": "Background Image (Desktop)" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Background Image (Mobile)" },
         { "type": "text", "id": "heading", "label": "Heading" },
         { "type": "textarea", "id": "text", "label": "Description" },
         { "type": "text", "id": "button_label", "label": "Button Label" },
