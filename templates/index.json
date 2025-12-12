@@ -14,9 +14,9 @@
       "blocks": {
         "slide_RxGJri": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/1_547ba504-d3ee-431a-94d5-7b1a8f64a8d0.jpg",
+            "image_desktop": "shopify://shop_images/Banner_1_update_2.jpg",
+            "image_mobile": "shopify://shop_images/Banner_1_insta_size_2.jpg",
             "heading": "",
             "text": "",
             "button_label": "",
@@ -26,7 +26,8 @@
         "slide_mHjWC7": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
+            "image_desktop": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
+            "image_mobile": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
             "heading": "Invest in Comfort. Experience the Difference.",
             "text": "",
             "button_label": "View All",
@@ -36,7 +37,8 @@
         "slide_aNRVXn": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/2_71022430-5e0c-4016-a745-05c862937e3d.png",
+            "image_desktop": "shopify://shop_images/2_71022430-5e0c-4016-a745-05c862937e3d.png",
+            "image_mobile": "shopify://shop_images/2_71022430-5e0c-4016-a745-05c862937e3d.png",
             "heading": "Unlimited Customisation Delivered in Days",
             "text": "Shop comfort MADE FOR YOU. Handcrafted sofas that fit your home, your lifestyle, and your timeline. Designed for easy delivery, effortless assembly, and endless lounging.",
             "button_label": "View All",
