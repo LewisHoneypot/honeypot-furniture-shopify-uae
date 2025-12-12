@@ -17,6 +17,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/Banner_1_update_2.jpg",
             "image_mobile": "shopify://shop_images/Banner_1_insta_size_2.jpg",
+            "slide_link": "https://honeypotfurniture.ae/collections/delivered-tomorrow",
             "heading": "",
             "text": "",
             "button_label": "",
@@ -28,6 +29,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
             "image_mobile": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
+            "slide_link": "",
             "heading": "Invest in Comfort. Experience the Difference.",
             "text": "",
             "button_label": "View All",
@@ -39,6 +41,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/2_71022430-5e0c-4016-a745-05c862937e3d.png",
             "image_mobile": "shopify://shop_images/2_71022430-5e0c-4016-a745-05c862937e3d.png",
+            "slide_link": "",
             "heading": "Unlimited Customisation Delivered in Days",
             "text": "Shop comfort MADE FOR YOU. Handcrafted sofas that fit your home, your lifestyle, and your timeline. Designed for easy delivery, effortless assembly, and endless lounging.",
             "button_label": "View All",
