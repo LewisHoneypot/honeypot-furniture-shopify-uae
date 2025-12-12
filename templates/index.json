@@ -30,7 +30,7 @@
             "heading": "Invest in Comfort. Experience the Difference.",
             "text": "",
             "button_label": "View All",
-            "button_link": "shopify://collections"
+            "button_link": "https://honeypotfurniture.ae/collections/made-in-dubai"
           }
         },
         "slide_aNRVXn": {
@@ -189,8 +189,8 @@
         "button_link": "",
         "image": "shopify://shop_images/DSC01561-1-1-square.jpg",
         "text_1": "Custom Furniture in 10 days",
-        "text_2": "Free Delivery & Assembly",
-        "text_3": "Modular Designs for Every Space"
+        "text_2": "Free delivery",
+        "text_3": "2 year guarantee"
       }
     },
     "shop_by_type_w3JNgK": {
@@ -293,7 +293,7 @@
       "name": "New Arrivals",
       "settings": {
         "heading": "Customise",
-        "subheading": "Fresh Designs. Same Comfort Promise.",
+        "subheading": "Endless ways to shape your perfect sofa",
         "collection": "made-in-dubai",
         "show_button": true,
         "button_label": "VIEW ALL"
@@ -380,7 +380,7 @@
         "heading": "Come Sit With Us.",
         "description": "Visit our showroom to try out our collections, explore fabrics, and design your dream sofa in person.",
         "address": "MAG Logistic Park, B7 WH10, Maleha St, Warehouses Land, Sharjah, United Arab Emirates",
-        "timings": "Monday to Friday: 9am – 5pm <br>Saturday: 10am – 3pm",
+        "timings": "Monday to Friday: 8am – 8pm Saturday - Sunday:  10am – 3pm",
         "location_icon": "shopify://shop_images/location.png",
         "clock_icon": "shopify://shop_images/clock.png",
         "image": "shopify://shop_images/abcecfa98fbfe41dfb812f669d08509fd25fd6c5_958203f6-b069-4193-a2ac-1d4d1a0aeb86.jpg"
