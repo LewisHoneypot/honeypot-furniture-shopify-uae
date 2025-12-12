@@ -2,6 +2,12 @@
 
   <div class="hero-slider-scroll">
     {% for block in section.blocks %}
+      {% assign slide_link = block.settings.slide_link %}
+
+      {% if slide_link != blank %}
+        <a href="{{ slide_link }}" class="hero-slide-link hero-slide-{{ block.id }}">
+      {% endif %}
+
       <div class="hero-slide hero-slide-{{ block.id }}"
            style="background-image:url('{{ block.settings.image_desktop | img_url: '2000x' }}');">
         <div class="hero-slide-content">
@@ -19,6 +25,11 @@
         </div>
 
       </div>
+
+      {% if slide_link != blank %}
+        </a>
+      {% endif %}
+
     {% endfor %}
   </div>
 
@@ -53,6 +64,15 @@
   background-position: top center;
   scroll-snap-align: start;
   position: relative;
+}
+
+/* Full-slide link wrapper */
+.hero-slide-link {
+  display: block;
+  flex: 0 0 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Slide Content */
@@ -210,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "settings": [
         { "type": "image_picker", "id": "image_desktop", "label": "Background Image (Desktop)" },
         { "type": "image_picker", "id": "image_mobile", "label": "Background Image (Mobile)" },
+        { "type": "url", "id": "slide_link", "label": "Slide Click Link" },
         { "type": "text", "id": "heading", "label": "Heading" },
         { "type": "textarea", "id": "text", "label": "Description" },
         { "type": "text", "id": "button_label", "label": "Button Label" },
