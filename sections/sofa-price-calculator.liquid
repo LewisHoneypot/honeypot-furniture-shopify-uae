@@ -62,11 +62,39 @@
       <!-- A COLUMN -->
       <div class="col-12 col-md-4 length-field" data-field="a">
         <div class="dimension-image">
-          {% if section.settings.dimensions_image_1 != blank %}
+          {% comment %} IMAGE 1 {% endcomment %}
+          {% if section.settings.dimensions_image_1A != blank %}
             <img
-              src="{{ section.settings.dimensions_image_1 | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_1A | image_url: width: section.settings.dimensions_image_width }}"
               alt="Dimensions A"
               style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="1" 
+            >
+          {% endif %}
+
+          {% comment %} IMAGE 2 {% endcomment %}
+          {% if section.settings.dimensions_image_2A != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_2A | image_url: width: section.settings.dimensions_image_width }}"
+              alt="Dimensions A"
+              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="2" 
+            >
+          {% endif %}
+
+          {% comment %} IMAGE 3 {% endcomment %}
+          {% if section.settings.dimensions_image_3A != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_3A | image_url: width: section.settings.dimensions_image_width }}"
+              alt="Dimensions A"
+              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="3" 
             >
           {% endif %}
         </div>
@@ -81,11 +109,24 @@
       <!-- B COLUMN -->
       <div class="col-12 col-md-4 length-field" data-field="b" style="display:none;">
         <div class="dimension-image">
-          {% if section.settings.dimensions_image_2 != blank %}
+          {% if section.settings.dimensions_image_2B != blank %}
             <img
-              src="{{ section.settings.dimensions_image_2 | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_2B | image_url: width: section.settings.dimensions_image_width }}"
               alt="Dimensions B"
               style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="2" 
+            >
+          {% endif %}
+          {% if section.settings.dimensions_image_3B != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_3B | image_url: width: section.settings.dimensions_image_width }}"
+              alt="Dimensions B"
+              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="3" 
             >
           {% endif %}
         </div>
@@ -100,11 +141,14 @@
       <!-- C COLUMN -->
       <div class="col-12 col-md-4 length-field" data-field="c" style="display:none;">
         <div class="dimension-image">
-          {% if section.settings.dimensions_image_3 != blank %}
+          {% if section.settings.dimensions_image_3C != blank %}
             <img
-              src="{{ section.settings.dimensions_image_3 | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_3C | image_url: width: section.settings.dimensions_image_width }}"
               alt="Dimensions C"
               style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="3" 
             >
           {% endif %}
         </div>
@@ -208,9 +252,12 @@
     { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Get Estimate" },
     { "type": "text", "id": "step1_heading", "label": "Step 1 Heading", "default": "Step 1: Select Sofa Type" },
     { "type": "text", "id": "step2_heading", "label": "Step 2 Heading", "default": "Step 2: Select Sofa Size" },
-    { "type": "image_picker", "id": "dimensions_image_1", "label": "Sofa Dimensions Image" },
-    { "type": "image_picker", "id": "dimensions_image_2", "label": "Sofa Dimensions Image" },
-    { "type": "image_picker", "id": "dimensions_image_3", "label": "Sofa Dimensions Image" },
+    { "type": "image_picker", "id": "dimensions_image_1A", "label": "Sofa Dimensions Image 1A" },
+    { "type": "image_picker", "id": "dimensions_image_2A", "label": "Sofa Dimensions Image 2A" },
+    { "type": "image_picker", "id": "dimensions_image_2B", "label": "Sofa Dimensions Image 2B" },
+    { "type": "image_picker", "id": "dimensions_image_3A", "label": "Sofa Dimensions Image 3A" },
+    { "type": "image_picker", "id": "dimensions_image_3B", "label": "Sofa Dimensions Image 3B" },
+    { "type": "image_picker", "id": "dimensions_image_3C", "label": "Sofa Dimensions Image 3C" },
     {
       "type": "range",
       "id": "dimensions_image_width",

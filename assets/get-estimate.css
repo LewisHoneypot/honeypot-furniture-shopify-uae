@@ -77,6 +77,30 @@
 #get-estimate .title {
   padding: 10px;
 }
+
+#get-estimate .options-2 .title {
+  margin-top: 115px;
+}
+
+#get-estimate .dimension-image {
+  position: relative;
+}
+
+#get-estimate .dimension-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#get-estimate .dimension-image img.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 #get-estimate .rounded {
   border-radius: 1rem;
 }
