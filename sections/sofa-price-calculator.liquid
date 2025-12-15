@@ -65,9 +65,9 @@
           {% comment %} IMAGE 1 {% endcomment %}
           {% if section.settings.dimensions_image_1A != blank %}
             <img
-              src="{{ section.settings.dimensions_image_1A | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_1A | image_url }}"
               alt="Dimensions A"
-              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
               data-type="1" 
@@ -77,9 +77,9 @@
           {% comment %} IMAGE 2 {% endcomment %}
           {% if section.settings.dimensions_image_2A != blank %}
             <img
-              src="{{ section.settings.dimensions_image_2A | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_2A | image_url }}"
               alt="Dimensions A"
-              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
               data-type="2" 
@@ -89,9 +89,9 @@
           {% comment %} IMAGE 3 {% endcomment %}
           {% if section.settings.dimensions_image_3A != blank %}
             <img
-              src="{{ section.settings.dimensions_image_3A | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_3A | image_url }}"
               alt="Dimensions A"
-              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
               data-type="3" 
@@ -111,9 +111,9 @@
         <div class="dimension-image">
           {% if section.settings.dimensions_image_2B != blank %}
             <img
-              src="{{ section.settings.dimensions_image_2B | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_2B | image_url }}"
               alt="Dimensions B"
-              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
               data-type="2" 
@@ -121,9 +121,9 @@
           {% endif %}
           {% if section.settings.dimensions_image_3B != blank %}
             <img
-              src="{{ section.settings.dimensions_image_3B | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_3B | image_url }}"
               alt="Dimensions B"
-              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
               data-type="3" 
@@ -143,9 +143,9 @@
         <div class="dimension-image">
           {% if section.settings.dimensions_image_3C != blank %}
             <img
-              src="{{ section.settings.dimensions_image_3C | image_url: width: section.settings.dimensions_image_width }}"
+              src="{{ section.settings.dimensions_image_3C | image_url }}"
               alt="Dimensions C"
-              style="width:100%;max-width:{{ section.settings.dimensions_image_width }}px;margin-bottom:1rem;"
+              style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
               data-type="3" 
@@ -258,15 +258,6 @@
     { "type": "image_picker", "id": "dimensions_image_3A", "label": "Sofa Dimensions Image 3A" },
     { "type": "image_picker", "id": "dimensions_image_3B", "label": "Sofa Dimensions Image 3B" },
     { "type": "image_picker", "id": "dimensions_image_3C", "label": "Sofa Dimensions Image 3C" },
-    {
-      "type": "range",
-      "id": "dimensions_image_width",
-      "label": "Dimensions Image Width (px)",
-      "min": 100,
-      "max": 800,
-      "step": 10,
-      "default": 200
-    },
     { "type": "text", "id": "step3_heading", "label": "Step 3 Heading", "default": "Step 3: Select Sofa Filling" },
     { "type": "text", "id": "step4_heading", "label": "Step 4 Heading", "default": "Step 4: Select Filling Option" },
     { "type": "text", "id": "button_label", "label": "Button Label", "default": "BOOK A FREE VISIT" }
