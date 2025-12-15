@@ -21,6 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function updateDimensionImages(sofaIndex) {
+  document
+    .querySelectorAll("#get-estimate .dimension-image")
+    .forEach((wrapper) => {
+      const images = wrapper.querySelectorAll("img");
+
+      images.forEach((img) => {
+        img.classList.toggle(
+          "active",
+          img.dataset.type === sofaIndex.toString()
+        );
+      });
+    });
+}
+
+
   // Initial state
   showLengthFields(1);
 
@@ -35,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (index === 1) showLengthFields(1);
       else if (index === 2) showLengthFields(2);
       else if (index === 3) showLengthFields(3);
+
+      updateDimensionImages(index); // ✅ ADD THIS LINE
       updatePrice();
     });
   });
@@ -159,6 +177,10 @@ document.addEventListener("DOMContentLoaded", function () {
     ).toFixed(2)}/month (for 4 months)`;
   }
 
+  const initialSofaIndex =
+    document.querySelector(".options-1 .col.active")?.dataset.index || 1;
+
+  updateDimensionImages(parseInt(initialSofaIndex));
   updatePrice();
 
   // --- SEND TO WHATSAPP ---
