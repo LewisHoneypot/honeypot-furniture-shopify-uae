@@ -74,12 +74,23 @@
   background: #fff;
 }
 
+#get-estimate .length-field {
+  max-width: 384px;
+  margin-bottom: 50px;
+}
+
 #get-estimate .title {
   padding: 10px;
 }
 
 #get-estimate .options-2 .title {
-  margin-top: 115px;
+  margin-top: 190px;
+}
+
+@media screen and (min-width: 768px) {
+  #get-estimate .options-2 .title {
+    margin-top: 115px;
+  }
 }
 
 #get-estimate .dimension-image {
