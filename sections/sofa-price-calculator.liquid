@@ -70,7 +70,7 @@
               style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
-              data-type="1" 
+              data-type="1"
             >
           {% endif %}
 
@@ -82,7 +82,7 @@
               style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
-              data-type="2" 
+              data-type="2"
             >
           {% endif %}
 
@@ -94,7 +94,7 @@
               style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
-              data-type="3" 
+              data-type="3"
             >
           {% endif %}
         </div>
@@ -109,6 +109,7 @@
       <!-- B COLUMN -->
       <div class="col-12 col-md-4 length-field" data-field="b" style="display:none;">
         <div class="dimension-image">
+          {% comment %} IMAGE 1 {% endcomment %}
           {% if section.settings.dimensions_image_2B != blank %}
             <img
               src="{{ section.settings.dimensions_image_2B | image_url }}"
@@ -116,9 +117,10 @@
               style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
-              data-type="2" 
+              data-type="2"
             >
           {% endif %}
+          {% comment %} IMAGE 2 {% endcomment %}
           {% if section.settings.dimensions_image_3B != blank %}
             <img
               src="{{ section.settings.dimensions_image_3B | image_url }}"
@@ -126,7 +128,7 @@
               style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
-              data-type="3" 
+              data-type="3"
             >
           {% endif %}
         </div>
@@ -141,6 +143,7 @@
       <!-- C COLUMN -->
       <div class="col-12 col-md-4 length-field" data-field="c" style="display:none;">
         <div class="dimension-image">
+          {% comment %} IMAGE 1 {% endcomment %}
           {% if section.settings.dimensions_image_3C != blank %}
             <img
               src="{{ section.settings.dimensions_image_3C | image_url }}"
@@ -148,7 +151,7 @@
               style="width:100%;margin-bottom:1rem;"
               height=""
               width=""
-              data-type="3" 
+              data-type="3"
             >
           {% endif %}
         </div>
@@ -178,25 +181,28 @@
         {% if block.type == 'sofa_filling' %}
           <div class="col{% if first_filling %} active{% endif %}" data-value="{{ block.settings.value }}">
             {% assign first_filling = false %}
-            <div class="border rounded mx-auto" style="width: 160px; min-height: 100%;">
-              {% if block.settings.image != blank %}
-                <img
-                  src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
-                  alt="{{ block.settings.label }}"
-                  style="max-width:{{ block.settings.image_width }}px; padding-top:4px;"
-                  height=""
-                  width=""
-                >
-              {% else %}
-                <img
-                  src="https://placeholdit.com/{{ block.settings.image_width }}/ffffff/999999"
-                  alt="{{ block.settings.label }}"
-                  style="max-width:{{ block.settings.image_width }}px; margin-top:4px;"
-                  height=""
-                  width=""
-                >
-              {% endif %}
-              <div class="title">{{ block.settings.label }}</div>
+            <div class="flling-outer" style="width: 100%;">
+              <div class="border rounded mx-auto d-flex align-items-start" style="width: 100%;">
+                <!-- Square with centered text -->
+                <div class="square">
+                  {{ block.settings.label | upcase }}
+                </div>
+
+                <!-- Dynamic list to the right of the square -->
+                <div class="title" style="width:70%">
+                  <ul>
+                    {% if block.settings.item_1 != blank %}
+                      <li>{{ block.settings.item_1 }}</li>
+                    {% endif %}
+                    {% if block.settings.item_2 != blank %}
+                      <li>{{ block.settings.item_2 }}</li>
+                    {% endif %}
+                    {% if block.settings.item_3 != blank %}
+                      <li>{{ block.settings.item_3 }}</li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         {% endif %}
@@ -245,6 +251,16 @@
   <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
 </section>
 
+{% style %}
+  #get-estimate .options-3 li::before {
+  background-image: url('{{ "check-circle-black.png" | asset_url }}'); 
+}
+/* Change bullet image when the parent .col is active */
+#get-estimate .options-3 .col.active li::before {
+  background-image: url('{{ "check-circle-white.png" | asset_url }}');
+}
+{% endstyle %}
+
 {% schema %}
 {
   "name": "Get Estimate",
@@ -287,7 +303,21 @@
       "settings": [
         { "type": "text", "id": "label", "label": "Label" },
         { "type": "text", "id": "value", "label": "Value" },
-        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "text",
+          "id": "item_1",
+          "label": "Item 1"
+        },
+        {
+          "type": "text",
+          "id": "item_2",
+          "label": "Item 2"
+        },
+        {
+          "type": "text",
+          "id": "item_3",
+          "label": "Item 3"
+        },
         {
           "type": "range",
           "id": "image_width",

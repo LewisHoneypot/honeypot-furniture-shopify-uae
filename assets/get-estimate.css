@@ -79,17 +79,16 @@
   margin-bottom: 50px;
 }
 
-#get-estimate .title {
-  padding: 10px;
-}
-
 #get-estimate .options-2 .title {
   margin-top: 190px;
 }
 
 @media screen and (min-width: 768px) {
   #get-estimate .options-2 .title {
-    margin-top: 115px;
+    margin-top: 143px;
+  }
+  #get-estimate .options-3 .title {
+    margin-top: 6px;
   }
 }
 
@@ -264,6 +263,42 @@
 }
 #get-estimate .options-3 .col {
   flex-grow: inherit;
+  min-width: 100%;
+}
+
+#get-estimate .options-3 ul {
+  font-size: 9.4px;
+  text-align: start;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-family: Gotham;
+}
+
+/* Step 3 list items with default bullet image */
+#get-estimate .options-3 li {
+  position: relative;
+  padding-left: 16px;
+  padding-right: 3px;
+  margin-bottom: 5px;
+  list-style: none; /* remove default bullets */
+}
+
+#get-estimate .options-3 li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 8px;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 11px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 720px) {
+  #get-estimate .options-3 li {
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -275,6 +310,59 @@
     margin-left: 0; /* remove mx-auto effect */
     margin-right: 1rem; /* optional spacing between cards */
   }
+
+  #get-estimate .options-3 li {
+    padding-left: 23px;
+    margin-bottom: 15px;
+  }
+
+  #get-estimate .options-3 li::before {
+    top: 10px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+#get-estimate .options-3 .square {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border: solid 1px #e8e2d9;
+  margin: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  font-family: Gotham;
+}
+
+@media (min-width: 403px) {
+  #get-estimate .options-3 .square {
+    width: 123px;
+    height: 123px;
+    min-width: 123px;
+    min-height: 123px;
+  }
+}
+
+@media (min-width: 768px) {
+  #get-estimate .options-3 .square {
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
+  }
+}
+
+#get-estimate .options-3 .active .square {
+  color: #cdac8e;
+  background-color: #f0e9e3;
 }
 
 /* Step 4 layout */
