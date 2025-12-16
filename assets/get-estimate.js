@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         result = ceiling((base * L + 7.5 * 75 * L) * 2.1, 50);
       }
 
-      priceEl.textContent = `AED ${result.toLocaleString()}`;
+      priceEl.textContent = `${result.toLocaleString()} AED`;
     });
   }
 
@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
       addonText = ` (+${addonQty} footstool${addonQty > 1 ? 's' : ''})`;
     }
 
-    document.getElementById("price").textContent = `AED ${result.toLocaleString()}`;
-    document.getElementById("monthly").textContent = `AED ${(result / 4).toFixed(2)}/month (for 4 months)`;
+    document.getElementById("price").textContent = `${result.toLocaleString()} AED`;
+    document.getElementById("monthly").textContent = `${(result / 4).toFixed(2)} AED/month (for 4 months)`;
   }
 
   const initialSofaIndex = document.querySelector(".options-1 .col.active")?.dataset.index || 1;

@@ -259,6 +259,8 @@
 
 #get-estimate #book-btn {
   height: 50px;
+  border-radius: 0;
+  max-width: 427px;
 }
 
 /* Step 3: center on mobile, left-align on tablet+ */
