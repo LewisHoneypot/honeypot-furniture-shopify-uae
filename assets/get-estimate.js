@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const addonPrice = addonUnitPrice * addonQty;
       addonInfo = `\n*Add-on:* ${addonQty} footstool${
         addonQty > 1 ? "s" : ""
-      } (AED ${addonPrice.toLocaleString()})`;
+      }`;
     }
 
     const priceText = document
