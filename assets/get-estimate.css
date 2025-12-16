@@ -97,12 +97,12 @@
   margin-bottom: 50px;
 }
 
-#get-estimate .options-2 .title {
+#get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
   margin-top: 190px;
 }
 
 @media screen and (min-width: 768px) {
-  #get-estimate .options-2 .title {
+  #get-estimate .options-2 .title, #get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
     margin-top: 143px;
   }
   #get-estimate .options-3 .title {

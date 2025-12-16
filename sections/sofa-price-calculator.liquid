@@ -74,7 +74,19 @@
             >
           {% endif %}
 
-          {% comment %} IMAGE 2 {% endcomment %}
+          {% comment %} IMAGE 2 MOBILE{% endcomment %}
+          {% if section.settings.dimensions_image_2_mobile != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_2_mobile | image_url }}"
+              alt="Dimensions A"
+              style="width:100%;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="2"
+              class="d-block d-md-none"
+            >
+          {% endif %}
+          {% comment %} IMAGE 2 DESKTOP {% endcomment %}
           {% if section.settings.dimensions_image_2A != blank %}
             <img
               src="{{ section.settings.dimensions_image_2A | image_url }}"
@@ -83,10 +95,23 @@
               height=""
               width=""
               data-type="2"
+              class="d-none d-md-block"
             >
           {% endif %}
 
-          {% comment %} IMAGE 3 {% endcomment %}
+          {% comment %} IMAGE 3 MOBILE{% endcomment %}
+          {% if section.settings.dimensions_image_3_mobile != blank %}
+            <img
+              src="{{ section.settings.dimensions_image_3_mobile | image_url }}"
+              alt="Dimensions A"
+              style="width:100%;margin-bottom:1rem;"
+              height=""
+              width=""
+              data-type="3"
+              class="d-block d-md-none"
+            >
+          {% endif %}
+          {% comment %} IMAGE 3 DESKTOP {% endcomment %}
           {% if section.settings.dimensions_image_3A != blank %}
             <img
               src="{{ section.settings.dimensions_image_3A | image_url }}"
@@ -95,6 +120,7 @@
               height=""
               width=""
               data-type="3"
+              class="d-none d-md-block"
             >
           {% endif %}
         </div>
@@ -118,6 +144,7 @@
               height=""
               width=""
               data-type="2"
+              class="d-none d-md-block"
             >
           {% endif %}
           {% comment %} IMAGE 2 {% endcomment %}
@@ -129,6 +156,7 @@
               height=""
               width=""
               data-type="3"
+              class="d-none d-md-block"
             >
           {% endif %}
         </div>
@@ -152,6 +180,7 @@
               height=""
               width=""
               data-type="3"
+              class="d-none d-md-block"
             >
           {% endif %}
         </div>
@@ -341,6 +370,9 @@
     { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Get Estimate" },
     { "type": "text", "id": "step1_heading", "label": "Step 1 Heading", "default": "Step 1: Select Sofa Type" },
     { "type": "text", "id": "step2_heading", "label": "Step 2 Heading", "default": "Step 2: Select Sofa Size" },
+    { "type": "image_picker", "id": "dimensions_image_1_mobile", "label": "Sofa Dimensions Image 1 Mobile" },
+    { "type": "image_picker", "id": "dimensions_image_2_mobile", "label": "Sofa Dimensions Image 2 Mobile" },
+    { "type": "image_picker", "id": "dimensions_image_3_mobile", "label": "Sofa Dimensions Image 3 Mobile" },
     { "type": "image_picker", "id": "dimensions_image_1A", "label": "Sofa Dimensions Image 1A" },
     { "type": "image_picker", "id": "dimensions_image_2A", "label": "Sofa Dimensions Image 2A" },
     { "type": "image_picker", "id": "dimensions_image_2B", "label": "Sofa Dimensions Image 2B" },
