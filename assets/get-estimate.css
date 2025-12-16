@@ -87,8 +87,7 @@
 }
 
 #get-estimate .section {
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: 0 1.5rem;
   background: #fff;
 }
 
@@ -580,4 +579,10 @@
 
 #get-estimate .checkbox-ui:hover {
   box-shadow: 0 0 0 3px rgba(205, 172, 142, 0.25);
+}
+
+/* OVERRIDES */
+
+.section__m-page {
+  padding-bottom: 0;
 }
