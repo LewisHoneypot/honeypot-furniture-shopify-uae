@@ -93,7 +93,7 @@
 
 #get-estimate .length-field {
   max-width: 384px;
-  margin-bottom: 50px;
+  margin-bottom: 13px;
 }
 
 #get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
