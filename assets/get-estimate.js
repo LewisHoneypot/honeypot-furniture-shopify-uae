@@ -274,6 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- Send to WhatsApp ---
   document.getElementById("book-btn").addEventListener("click", function () {
+    updatePrice(); // <- ensure current price is calculated
     const phoneNumber = "971509046848";
 
     const sofaCol = document.querySelector(".options-1 .col.active");
