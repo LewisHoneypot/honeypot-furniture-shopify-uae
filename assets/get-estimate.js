@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const sofaTypeRow = document.querySelector("#get-estimate .options-1");
   const fillingRow = document.querySelector("#get-estimate .options-3");
-  const fillingOptionRow = document.querySelector("#get-estimate .options-4");
 
   let selectedFilling =
     document.querySelector("#get-estimate .options-3 .col")?.dataset.value ||
@@ -15,6 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#get-estimate .options-4 .col")?.dataset.value ||
     null;
 
+  const addonCheckbox = document.getElementById("addon-checkbox");
+  const addonQuantityWrapper = document.querySelector(".addon-quantity");
+  const addonQtyInput = document.getElementById("addon-qty");
+  const addonUnitPrice = 300; // AED per footstool
+
+  // --- Helper functions ---
+  function ceiling(value, significance) {
+    return Math.ceil(value / significance) * significance;
+  }
+
   function showLengthFields(count) {
     lengthFields.forEach((field, i) => {
       field.style.display = i < count ? "block" : "none";
@@ -22,21 +31,172 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateDimensionImages(sofaIndex) {
-    document
-      .querySelectorAll("#get-estimate .dimension-image")
-      .forEach((wrapper) => {
-        const images = wrapper.querySelectorAll("img");
-        images.forEach((img) => {
-          img.classList.toggle(
-            "active",
-            img.dataset.type === sofaIndex.toString()
-          );
-        });
+    dimensionImages.forEach((wrapper) => {
+      wrapper.querySelectorAll("img").forEach((img) => {
+        img.classList.toggle(
+          "active",
+          img.dataset.type === sofaIndex.toString()
+        );
       });
+    });
   }
 
-  // Initial state
-  showLengthFields(1);
+  // --- Incremental price calculation ---
+  function calculateTotalPrice({
+    lengthA = 0,
+    lengthB = 0,
+    lengthC = 0,
+    fillingOption,
+    addonQty = 0,
+    includeAddon = false,
+  }) {
+    let total = 0;
+
+    const calc = (length, base, extra = 0) => {
+      return fillingOption === "performance"
+        ? ceiling((base * (length / 100) + extra * (length / 100)) * 2.2, 50)
+        : ceiling(base * (length / 100) * 2.2, 50);
+    };
+
+    // Length A (default)
+    if (lengthA > 0) {
+      let base = 0,
+        extra = 0;
+      if (fillingOption === "classics") base = 1200;
+      else if (fillingOption === "signature") base = 1400;
+      else if (fillingOption === "performance") {
+        base = 1050;
+        extra = 7.5 * 75;
+      }
+      total += calc(lengthA, base, extra);
+    }
+
+    // Length B
+    if (lengthB > 0) {
+      let base = 0,
+        extra = 0;
+      if (fillingOption === "classics") base = 600;
+      else if (fillingOption === "signature") base = 800;
+      else if (fillingOption === "performance") {
+        base = 500;
+        extra = 5 * 75;
+      }
+      total += calc(lengthB, base, extra);
+    }
+
+    // Length C
+    if (lengthC > 0) {
+      let base = 0,
+        extra = 0;
+      if (fillingOption === "classics") base = 600;
+      else if (fillingOption === "signature") base = 800;
+      else if (fillingOption === "performance") {
+        base = 500;
+        extra = 5 * 75;
+      }
+      total += calc(lengthC, base, extra);
+    }
+
+    // Footstools
+    if (includeAddon && addonQty > 0) {
+      for (let i = 0; i < addonQty; i++) {
+        let base = 0,
+          extra = 0;
+        if (fillingOption === "classics") base = 600;
+        else if (fillingOption === "signature") base = 800;
+        else if (fillingOption === "performance") {
+          base = 500;
+          extra = 5 * 75;
+        }
+
+        total += calc(100, base, extra); // 100 cm per footstool
+        total += addonUnitPrice; // AED per footstool
+      }
+    }
+
+    return total;
+  }
+
+  // --- Update mini prices ---
+  function updateStep4Prices(
+    totalLength,
+    fillingOption,
+    sofaIndex,
+    addonQty = 0
+  ) {
+    const prices = document.querySelectorAll(".option-price");
+    prices.forEach((priceEl) => {
+      const option = priceEl.dataset.option;
+      if (!option || totalLength === 0) {
+        priceEl.textContent = "AED —";
+        return;
+      }
+
+      const miniPrice = calculateTotalPrice({
+        lengthA:
+          sofaIndex >= 1
+            ? parseFloat(document.getElementById("length-a").value) || 0
+            : 0,
+        lengthB:
+          sofaIndex >= 2
+            ? parseFloat(document.getElementById("length-b").value) || 0
+            : 0,
+        lengthC:
+          sofaIndex >= 3
+            ? parseFloat(document.getElementById("length-c").value) || 0
+            : 0,
+        fillingOption: option,
+        addonQty,
+      });
+
+      priceEl.textContent = `${miniPrice.toLocaleString()} AED`;
+    });
+  }
+
+  // --- Update total price ---
+  function updatePrice() {
+    const selectedSofaIndex = parseInt(
+      document.querySelector(".options-1 .col.active")?.dataset.index || 1
+    );
+    const selectedFillingOptionLocal =
+      document.querySelector(".options-4 .col.active")?.dataset.value || null;
+
+    const lengthA = parseFloat(document.getElementById("length-a").value) || 0;
+    const lengthB = parseFloat(document.getElementById("length-b").value) || 0;
+    const lengthC = parseFloat(document.getElementById("length-c").value) || 0;
+
+    const addonQty = addonCheckbox.checked
+      ? parseInt(addonQtyInput.value) || 1
+      : 0;
+
+    // Total price (includes footstools)
+    const totalPrice = calculateTotalPrice({
+      lengthA,
+      lengthB: selectedSofaIndex >= 2 ? lengthB : 0,
+      lengthC: selectedSofaIndex === 3 ? lengthC : 0,
+      fillingOption: selectedFillingOptionLocal,
+      addonQty,
+      includeAddon: addonCheckbox.checked,
+    });
+
+    document.getElementById("price").textContent = totalPrice
+      ? `${totalPrice.toLocaleString()} AED`
+      : "AED —";
+
+    document.getElementById("monthly").textContent = totalPrice
+      ? `${(totalPrice / 4).toFixed(2)} AED/month (for 4 months)`
+      : "AED —/month (for 4 months)";
+
+    // Step 4 mini prices (exclude footstools)
+    updateStep4Prices(
+      lengthA +
+        (selectedSofaIndex >= 2 ? lengthB : 0) +
+        (selectedSofaIndex === 3 ? lengthC : 0),
+      selectedFillingOptionLocal,
+      selectedSofaIndex,
+      0 // footstools excluded in step 4 mini prices
+    );
+  }
 
   // --- Step 1: Sofa Type selection ---
   sofaTypeRow.querySelectorAll(".col").forEach((col) => {
@@ -45,21 +205,20 @@ document.addEventListener("DOMContentLoaded", function () {
         .querySelectorAll(".col")
         .forEach((c) => c.classList.remove("active"));
       col.classList.add("active");
-      const index = parseInt(col.dataset.index);
-      if (index === 1) showLengthFields(1);
-      else if (index === 2) showLengthFields(2);
-      else if (index === 3) showLengthFields(3);
 
+      const index = parseInt(col.dataset.index);
+      showLengthFields(index);
       updateDimensionImages(index);
       updatePrice();
     });
   });
 
   // --- Step 2: Length inputs ---
-  const inputs = document.querySelectorAll(
-    "#get-estimate #length-a, #get-estimate #length-b, #get-estimate #length-c"
-  );
-  inputs.forEach((input) => input.addEventListener("input", updatePrice));
+  document
+    .querySelectorAll(
+      "#get-estimate #length-a, #get-estimate #length-b, #get-estimate #length-c"
+    )
+    .forEach((input) => input.addEventListener("input", updatePrice));
 
   // --- Step 3: Sofa Filling ---
   fillingRow.querySelectorAll(".col").forEach((col) => {
@@ -73,66 +232,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // --- Step 4: Filling Option (radio behavior) ---
-  const fillingCards = document.querySelectorAll(".options-4 .col");
-  fillingCards.forEach((card) => {
+  // --- Step 4: Filling Option ---
+  document.querySelectorAll(".options-4 .col").forEach((card) => {
     card.addEventListener("click", () => {
       if (card.classList.contains("active")) return;
-      fillingCards.forEach((c) => c.classList.remove("active"));
+      document
+        .querySelectorAll(".options-4 .col")
+        .forEach((c) => c.classList.remove("active"));
       card.classList.add("active");
       selectedFillingOption = card.dataset.value;
       updatePrice();
     });
   });
 
-  // --- CEILING helper (round up to nearest multiple) ---
-  function ceiling(value, significance) {
-    return Math.ceil(value / significance) * significance;
-  }
-
-  // --- Step 4 mini prices ---
-  function updateStep4Prices(totalLength) {
-    const L = totalLength / 100; // cm → meters
-    const prices = document.querySelectorAll(".option-price");
-
-    prices.forEach((priceEl) => {
-      const option = priceEl.dataset.option;
-      let base = 0;
-      let result = 0;
-
-      if (!option || totalLength === 0) {
-        priceEl.textContent = `AED —`;
-        return;
-      }
-
-      // Always use the feather price
-      if (option === "classics") base = 1200;
-      else if (option === "signature") base = 1400;
-      else if (option === "performance") base = 1050;
-
-      result = ceiling(
-        option === "performance"
-          ? (base * L + 7.5 * 75 * L) * 2.2
-          : base * L * 2.2,
-        50
-      );
-
-      // Include add-on if selected
-      if (addonCheckbox.checked) {
-        const addonQty = parseInt(addonQtyInput.value) || 1;
-        result += addonUnitPrice * addonQty;
-      }
-
-      priceEl.textContent = `${result.toLocaleString()} AED`;
-    });
-  }
-
-  // --- Add-on price configuration ---
-  const addonCheckbox = document.getElementById("addon-checkbox");
-  const addonQuantityWrapper = document.querySelector(".addon-quantity");
-  const addonQtyInput = document.getElementById("addon-qty");
-  const addonUnitPrice = 300; // AED per footstool
-
+  // --- Add-on Footstool ---
   if (addonCheckbox && addonQuantityWrapper && addonQtyInput) {
     addonQuantityWrapper.style.display = "none";
     addonQtyInput.disabled = true;
@@ -151,61 +264,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- Update total price ---
-  function updatePrice() {
-    let totalLength = 0;
-    lengthFields.forEach((field) => {
-      if (field.style.display !== "none") {
-        const input = field.querySelector("input");
-        totalLength += parseFloat(input.value) || 0;
-      }
-    });
-
-    updateStep4Prices(totalLength, selectedFilling);
-
-    if (!selectedFillingOption || !selectedFilling || totalLength === 0) {
-      document.getElementById("price").textContent = "AED —";
-      document.getElementById("monthly").textContent =
-        "AED —/month (for 4 months)";
-      return;
-    }
-
-    let base = 0;
-    const L = totalLength / 100;
-    let result = 0;
-
-    // Always use the feather price
-    if (selectedFillingOption === "classics") base = 1200;
-    else if (selectedFillingOption === "signature") base = 1400;
-    else if (selectedFillingOption === "performance") base = 1050;
-
-    result = ceiling(
-      selectedFillingOption === "performance"
-        ? (base * L + 7.5 * 75 * L) * 2.2
-        : base * L * 2.2,
-      50
-    );
-
-    // Add-on price
-    if (addonCheckbox.checked) {
-      const addonQty = parseInt(addonQtyInput.value) || 1;
-      result += addonUnitPrice * addonQty;
-    }
-
-    document.getElementById(
-      "price"
-    ).textContent = `${result.toLocaleString()} AED`;
-    document.getElementById("monthly").textContent = `${(result / 4).toFixed(
-      2
-    )} AED/month (for 4 months)`;
-  }
-
-  const initialSofaIndex =
-    document.querySelector(".options-1 .col.active")?.dataset.index || 1;
-  updateDimensionImages(parseInt(initialSofaIndex));
+  // --- Initialize ---
+  const initialSofaIndex = parseInt(
+    document.querySelector(".options-1 .col.active")?.dataset.index || 1
+  );
+  updateDimensionImages(initialSofaIndex);
   updatePrice();
 
-  // --- SEND TO WHATSAPP ---
+  // --- Send to WhatsApp ---
   document.getElementById("book-btn").addEventListener("click", function () {
     const phoneNumber = "971509046848";
 
@@ -222,7 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const lengthB = document.getElementById("length-b").value || "—";
     const lengthC = document.getElementById("length-c").value || "—";
 
-    // Include add-on info
     let addonInfo = "";
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
