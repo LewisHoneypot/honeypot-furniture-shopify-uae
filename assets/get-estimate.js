@@ -276,41 +276,50 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("book-btn").addEventListener("click", function () {
     const phoneNumber = "971509046848";
 
-    const sofaType =
-      document.querySelector(".options-1 .col.active")?.dataset.value ||
-      "Not selected";
+    const sofaCol = document.querySelector(".options-1 .col.active");
+    const sofaType = sofaCol?.dataset.value || "Not selected";
+    const sofaIndex = parseInt(sofaCol?.dataset.index || 1);
+
     const filling =
       document.querySelector(".options-3 .col.active")?.dataset.value ||
       "Not selected";
     const fillingOption =
       document.querySelector(".options-4 .col.active")?.dataset.value ||
       "Not selected";
+
     const lengthA = document.getElementById("length-a").value || "—";
     const lengthB = document.getElementById("length-b").value || "—";
     const lengthC = document.getElementById("length-c").value || "—";
 
+    // Build length text based on sofa type
+    let lengthText = `*Length A:* ${lengthA} cm`;
+
+    if (sofaIndex >= 2) {
+      lengthText += `\n*Length B:* ${lengthB} cm`;
+    }
+
+    if (sofaIndex === 3) {
+      lengthText += `\n*Length C:* ${lengthC} cm`;
+    }
+
+    // Add-on info
     let addonInfo = "";
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
-      const addonPrice = addonUnitPrice * addonQty;
-      addonInfo = `\n*Add-on:* ${addonQty} footstool${
-        addonQty > 1 ? "s" : ""
-      }`;
+      addonInfo = `\n*Add-on:* ${addonQty} footstool${addonQty > 1 ? "s" : ""}`;
     }
 
     const priceText = document
       .getElementById("price")
-      .textContent.replace("AED ", "");
+      .textContent.replace(" AED", "");
 
     const message =
       `*New Estimate Request*\n\n` +
       `*Sofa Type:* ${sofaType}\n` +
       `*Filling:* ${filling}\n` +
       `*Filling Option:* ${fillingOption}\n\n` +
-      `*Length A:* ${lengthA} cm\n` +
-      `*Length B:* ${lengthB} cm\n` +
-      `*Length C:* ${lengthC} cm${addonInfo}\n\n` +
-      `*Estimated Price:* ${priceText}`;
+      `${lengthText}${addonInfo}\n\n` +
+      `*Estimated Price:* ${priceText} AED`;
 
     const encodedMessage = encodeURIComponent(message);
     const waURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
