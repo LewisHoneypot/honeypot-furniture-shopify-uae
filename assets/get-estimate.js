@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lengthA > 0) {
       let base = 0,
         extra = 0;
-      if (fillingOption === "classic") base = 1200;
+      if (fillingOption === "classics") base = 1200;
       else if (fillingOption === "signature") base = 1400;
       else if (fillingOption === "performance") {
         base = 1050;
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lengthB > 0) {
       let base = 0,
         extra = 0;
-      if (fillingOption === "classic") base = 600;
+      if (fillingOption === "classics") base = 600;
       else if (fillingOption === "signature") base = 800;
       else if (fillingOption === "performance") {
         base = 500;
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lengthC > 0) {
       let base = 0,
         extra = 0;
-      if (fillingOption === "classic") base = 600;
+      if (fillingOption === "classics") base = 600;
       else if (fillingOption === "signature") base = 800;
       else if (fillingOption === "performance") {
         base = 500;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let i = 0; i < addonQty; i++) {
         let base = 0,
           extra = 0;
-        if (fillingOption === "classic") base = 600;
+        if (fillingOption === "classics") base = 600;
         else if (fillingOption === "signature") base = 800;
         else if (fillingOption === "performance") {
           base = 500;
@@ -320,8 +320,8 @@ document.addEventListener("DOMContentLoaded", function () {
       `*New Estimate Request*\n\n` +
       `*Sofa Type:* ${sofaType}\n` +
       `*Sofa Filling:* ${filling}\n` +
-      `*Sofa Fabric:* ${fillingOption}\n` +
-      `*Sofa Length:* \n\n` +
+      `*Sofa Fabric:* ${fillingOption}\n\n` +
+      `*Sofa Length:* \n\n\n` +
       `${lengthText}${addonInfo}\n\n` +
       `*Estimated Price:* ${priceText} AED`;
 
