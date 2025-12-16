@@ -19,11 +19,13 @@
   opacity: 1;
   font-weight: 500;
   font-size: 12px;
+  padding-top: 6px;
 }
 
 @media screen and (min-width: 420px) {
   #get-estimate h3 {
     font-size: 18px;
+    padding-top: 0px;
   }
 }
 
@@ -493,6 +495,13 @@
   padding: 1.5rem;
   color: #000;
   text-align: start;
+  font-size: 9.4px;
+}
+
+@media screen and (min-width:720px) {
+  #get-estimate .options-4 .filling-description {
+    font-size: 14px;
+  }
 }
 
 #get-estimate .options-4 .col.active .filling-description {

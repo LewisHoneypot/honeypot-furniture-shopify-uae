@@ -112,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       result = ceiling(
         option === "performance"
-          ? (base * L + 7.5 * 75 * L) * 2.1
-          : base * L * 2.1,
+          ? (base * L + 7.5 * 75 * L) * 2.2
+          : base * L * 2.2,
         50
       );
 
@@ -181,8 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     result = ceiling(
       selectedFillingOption === "performance"
-        ? (base * L + 7.5 * 75 * L) * 2.1
-        : base * L * 2.1,
+        ? (base * L + 7.5 * 75 * L) * 2.2
+        : base * L * 2.2,
       50
     );
 
