@@ -316,12 +316,33 @@ document.addEventListener("DOMContentLoaded", function () {
       .getElementById("price")
       .textContent.replace(" AED", "");
 
+    const sofaTypeLabels = {
+      straight: "Straight",
+      "l-corner": "L-Corner",
+      "u-corner": "U-Corner",
+    };
+
+    const fillingLabels = {
+      foam: "Foam",
+      feather: "Feather",
+    };
+
+    const fabricLabels = {
+      classics: "Classic",
+      signature: "Signature",
+      performance: "Performance",
+    };
+
+    const sofaTypeLabel = sofaTypeLabels[sofaType] || sofaType;
+    const fillingLabel = fillingLabels[filling] || filling;
+    const fabricLabel = fabricLabels[fillingOption] || fillingOption;
+
     const message =
       `*New Estimate Request*\n\n` +
-      `*Sofa Type:* ${sofaType}\n` +
-      `*Sofa Filling:* ${filling}\n` +
-      `*Sofa Fabric:* ${fillingOption}\n\n` +
-      `*Sofa Length:* \n\n\n` +
+      `*Sofa Type:* ${sofaTypeLabel}\n` +
+      `*Sofa Filling:* ${fillingLabel}\n` +
+      `*Sofa Fabric:* ${fabricLabel}\n` +
+      `*Sofa Length:*\n\n` +
       `${lengthText}${addonInfo}\n\n` +
       `*Estimated Price:* ${priceText} AED`;
 
