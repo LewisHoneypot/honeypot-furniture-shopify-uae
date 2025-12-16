@@ -318,6 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `*Sofa Type:* ${sofaType}\n` +
       `*Sofa Filling:* ${filling}\n` +
       `*Sofa Fabric:* ${fillingOption}\n\n` +
+      `*Sofa Length:* \n\n\n` +
       `${lengthText}${addonInfo}\n\n` +
       `*Estimated Price:* ${priceText} AED`;
 
