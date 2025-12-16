@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `*Length A:* ${lengthA} cm\n` +
       `*Length B:* ${lengthB} cm\n` +
       `*Length C:* ${lengthC} cm${addonInfo}\n\n` +
-      `*Estimated Price:* AED ${priceText}`;
+      `*Estimated Price:* ${priceText}`;
 
     const encodedMessage = encodeURIComponent(message);
     const waURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
