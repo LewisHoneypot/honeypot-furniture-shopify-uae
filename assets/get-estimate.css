@@ -9,6 +9,9 @@
 #get-estimate h3 {
   font-weight: 600;
 }
+#get-estimate h2 {
+  font-size: 28px;
+}
 #get-estimate h3 {
   position: relative;
   height: 49px;
@@ -223,6 +226,7 @@
   height: 48px !important;
   font-size: 16px !important;
   padding-left: 15px;
+  margin-top: 10px;
 }
 
 #get-estimate input[type="number"] {
