@@ -304,9 +304,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add-on info
     let addonInfo = "";
+
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
       addonInfo = `\n\n*Ottoman:* ${addonQty}`;
+    } else {
+      addonInfo = `\n\n*Ottoman:* No`;
     }
 
     const priceText = document
