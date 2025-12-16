@@ -96,12 +96,21 @@
   margin-bottom: 13px;
 }
 
-#get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
+#get-estimate
+  > div:nth-child(3)
+  > div.row.options-2
+  > div:first-child
+  > div.title {
   margin-top: 190px;
 }
 
 @media screen and (min-width: 768px) {
-  #get-estimate .options-2 .title, #get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
+  #get-estimate .options-2 .title,
+  #get-estimate
+    > div:nth-child(3)
+    > div.row.options-2
+    > div:first-child
+    > div.title {
     margin-top: 143px;
   }
   #get-estimate .options-3 .title {
@@ -497,9 +506,11 @@
   text-align: start;
   font-size: 9.4px;
   font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center; /* vertical alignment */
 }
 
-@media screen and (min-width:720px) {
+@media screen and (min-width: 720px) {
   #get-estimate .options-4 .filling-description {
     font-size: 14px;
   }
