@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let addonInfo = "";
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
-      addonInfo = `\n*Add-on:* ${addonQty} footstool${addonQty > 1 ? "s" : ""}`;
+      addonInfo = `\n\n*Ottoman:* ${addonQty}`;
     }
 
     const priceText = document
@@ -316,8 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const message =
       `*New Estimate Request*\n\n` +
       `*Sofa Type:* ${sofaType}\n` +
-      `*Filling:* ${filling}\n` +
-      `*Filling Option:* ${fillingOption}\n\n` +
+      `*Sofa Filling:* ${filling}\n` +
+      `*Sofa Fabric:* ${fillingOption}\n\n` +
+      `*Sofa Length:* \n\n\n` +
       `${lengthText}${addonInfo}\n\n` +
       `*Estimated Price:* ${priceText} AED`;
 
