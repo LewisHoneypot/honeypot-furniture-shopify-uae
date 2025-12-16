@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
   const lengthFields = document.querySelectorAll("#get-estimate .length-field");
-  const dimensionImages = document.querySelectorAll("#get-estimate .dimension-image");
+  const dimensionImages = document.querySelectorAll(
+    "#get-estimate .dimension-image"
+  );
 
   const sofaTypeRow = document.querySelector("#get-estimate .options-1");
   const fillingRow = document.querySelector("#get-estimate .options-3");
   const fillingOptionRow = document.querySelector("#get-estimate .options-4");
 
-  let selectedFilling = document.querySelector("#get-estimate .options-3 .col")?.dataset.value || null;
-  let selectedFillingOption = document.querySelector("#get-estimate .options-4 .col")?.dataset.value || null;
+  let selectedFilling =
+    document.querySelector("#get-estimate .options-3 .col")?.dataset.value ||
+    null;
+  let selectedFillingOption =
+    document.querySelector("#get-estimate .options-4 .col")?.dataset.value ||
+    null;
 
   function showLengthFields(count) {
     lengthFields.forEach((field, i) => {
@@ -16,12 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateDimensionImages(sofaIndex) {
-    document.querySelectorAll("#get-estimate .dimension-image").forEach((wrapper) => {
-      const images = wrapper.querySelectorAll("img");
-      images.forEach((img) => {
-        img.classList.toggle("active", img.dataset.type === sofaIndex.toString());
+    document
+      .querySelectorAll("#get-estimate .dimension-image")
+      .forEach((wrapper) => {
+        const images = wrapper.querySelectorAll("img");
+        images.forEach((img) => {
+          img.classList.toggle(
+            "active",
+            img.dataset.type === sofaIndex.toString()
+          );
+        });
       });
-    });
   }
 
   // Initial state
@@ -30,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- Step 1: Sofa Type selection ---
   sofaTypeRow.querySelectorAll(".col").forEach((col) => {
     col.addEventListener("click", () => {
-      sofaTypeRow.querySelectorAll(".col").forEach((c) => c.classList.remove("active"));
+      sofaTypeRow
+        .querySelectorAll(".col")
+        .forEach((c) => c.classList.remove("active"));
       col.classList.add("active");
       const index = parseInt(col.dataset.index);
       if (index === 1) showLengthFields(1);
@@ -43,13 +56,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // --- Step 2: Length inputs ---
-  const inputs = document.querySelectorAll("#get-estimate #length-a, #get-estimate #length-b, #get-estimate #length-c");
+  const inputs = document.querySelectorAll(
+    "#get-estimate #length-a, #get-estimate #length-b, #get-estimate #length-c"
+  );
   inputs.forEach((input) => input.addEventListener("input", updatePrice));
 
   // --- Step 3: Sofa Filling ---
   fillingRow.querySelectorAll(".col").forEach((col) => {
     col.addEventListener("click", () => {
-      fillingRow.querySelectorAll(".col").forEach((c) => c.classList.remove("active"));
+      fillingRow
+        .querySelectorAll(".col")
+        .forEach((c) => c.classList.remove("active"));
       col.classList.add("active");
       selectedFilling = col.dataset.value;
       updatePrice();
@@ -99,6 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
         result = ceiling((base * L + 7.5 * 75 * L) * 2.1, 50);
       }
 
+      // ✅ Include add-on if selected
+      if (addonCheckbox.checked) {
+        const addonQty = parseInt(addonQtyInput.value) || 1;
+        result += addonUnitPrice * addonQty;
+      }
+
       priceEl.textContent = `${result.toLocaleString()} AED`;
     });
   }
@@ -141,7 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!selectedFillingOption || !selectedFilling || totalLength === 0) {
       document.getElementById("price").textContent = "AED —";
-      document.getElementById("monthly").textContent = "AED —/month (for 4 months)";
+      document.getElementById("monthly").textContent =
+        "AED —/month (for 4 months)";
       return;
     }
 
@@ -161,18 +185,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Add-on price
-    let addonText = '';
+    let addonText = "";
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
       result += addonUnitPrice * addonQty;
-      addonText = ` (+${addonQty} footstool${addonQty > 1 ? 's' : ''})`;
+      addonText = ` (+${addonQty} footstool${addonQty > 1 ? "s" : ""})`;
     }
 
-    document.getElementById("price").textContent = `${result.toLocaleString()} AED`;
-    document.getElementById("monthly").textContent = `${(result / 4).toFixed(2)} AED/month (for 4 months)`;
+    document.getElementById(
+      "price"
+    ).textContent = `${result.toLocaleString()} AED`;
+    document.getElementById("monthly").textContent = `${(result / 4).toFixed(
+      2
+    )} AED/month (for 4 months)`;
   }
 
-  const initialSofaIndex = document.querySelector(".options-1 .col.active")?.dataset.index || 1;
+  const initialSofaIndex =
+    document.querySelector(".options-1 .col.active")?.dataset.index || 1;
   updateDimensionImages(parseInt(initialSofaIndex));
   updatePrice();
 
@@ -180,22 +209,32 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("book-btn").addEventListener("click", function () {
     const phoneNumber = "971509046848";
 
-    const sofaType = document.querySelector(".options-1 .col.active")?.dataset.value || "Not selected";
-    const filling = document.querySelector(".options-3 .col.active")?.dataset.value || "Not selected";
-    const fillingOption = document.querySelector(".options-4 .col.active")?.dataset.value || "Not selected";
+    const sofaType =
+      document.querySelector(".options-1 .col.active")?.dataset.value ||
+      "Not selected";
+    const filling =
+      document.querySelector(".options-3 .col.active")?.dataset.value ||
+      "Not selected";
+    const fillingOption =
+      document.querySelector(".options-4 .col.active")?.dataset.value ||
+      "Not selected";
     const lengthA = document.getElementById("length-a").value || "—";
     const lengthB = document.getElementById("length-b").value || "—";
     const lengthC = document.getElementById("length-c").value || "—";
 
     // Include add-on info
-    let addonInfo = '';
+    let addonInfo = "";
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
       const addonPrice = addonUnitPrice * addonQty;
-      addonInfo = `\n*Add-on:* ${addonQty} footstool${addonQty > 1 ? 's' : ''} (AED ${addonPrice.toLocaleString()})`;
+      addonInfo = `\n*Add-on:* ${addonQty} footstool${
+        addonQty > 1 ? "s" : ""
+      } (AED ${addonPrice.toLocaleString()})`;
     }
 
-    const priceText = document.getElementById("price").textContent.replace("AED ", "");
+    const priceText = document
+      .getElementById("price")
+      .textContent.replace("AED ", "");
 
     const message =
       `*New Estimate Request*\n\n` +
