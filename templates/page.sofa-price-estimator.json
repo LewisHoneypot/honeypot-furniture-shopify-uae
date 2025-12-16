@@ -44,7 +44,7 @@
         "sofa_type_EXtE4g": {
           "type": "sofa_type",
           "settings": {
-            "label": "Corner",
+            "label": "U-Corner",
             "value": "corner",
             "image": "shopify://shop_images/U-Corner.png",
             "image_width": 150
