@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- Step 4 mini prices ---
-  function updateStep4Prices(totalLength, selectedFilling) {
+  function updateStep4Prices(totalLength) {
     const L = totalLength / 100; // cm → meters
     const prices = document.querySelectorAll(".option-price");
 
@@ -105,18 +105,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      if (option === "classics") {
-        base = selectedFilling === "feather" ? 1200 : 1100;
-        result = ceiling(base * L * 2.1, 50);
-      } else if (option === "signature") {
-        base = selectedFilling === "feather" ? 1400 : 1300;
-        result = ceiling(base * L * 2.1, 50);
-      } else if (option === "performance") {
-        base = selectedFilling === "feather" ? 1050 : 950;
-        result = ceiling((base * L + 7.5 * 75 * L) * 2.1, 50);
-      }
+      // Always use the feather price
+      if (option === "classics") base = 1200;
+      else if (option === "signature") base = 1400;
+      else if (option === "performance") base = 1050;
 
-      // ✅ Include add-on if selected
+      result = ceiling(
+        option === "performance"
+          ? (base * L + 7.5 * 75 * L) * 2.1
+          : base * L * 2.1,
+        50
+      );
+
+      // Include add-on if selected
       if (addonCheckbox.checked) {
         const addonQty = parseInt(addonQtyInput.value) || 1;
         result += addonUnitPrice * addonQty;
@@ -173,23 +174,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const L = totalLength / 100;
     let result = 0;
 
-    if (selectedFillingOption === "classics") {
-      base = selectedFilling === "feather" ? 1200 : 1100;
-      result = ceiling(base * L * 2.1, 50);
-    } else if (selectedFillingOption === "signature") {
-      base = selectedFilling === "feather" ? 1400 : 1300;
-      result = ceiling(base * L * 2.1, 50);
-    } else if (selectedFillingOption === "performance") {
-      base = selectedFilling === "feather" ? 1050 : 950;
-      result = ceiling((base * L + 7.5 * 75 * L) * 2.1, 50);
-    }
+    // Always use the feather price
+    if (selectedFillingOption === "classics") base = 1200;
+    else if (selectedFillingOption === "signature") base = 1400;
+    else if (selectedFillingOption === "performance") base = 1050;
+
+    result = ceiling(
+      selectedFillingOption === "performance"
+        ? (base * L + 7.5 * 75 * L) * 2.1
+        : base * L * 2.1,
+      50
+    );
 
     // Add-on price
-    let addonText = "";
     if (addonCheckbox.checked) {
       const addonQty = parseInt(addonQtyInput.value) || 1;
       result += addonUnitPrice * addonQty;
-      addonText = ` (+${addonQty} footstool${addonQty > 1 ? "s" : ""})`;
     }
 
     document.getElementById(
