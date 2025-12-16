@@ -170,10 +170,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Total price (includes footstools)
     const totalPrice = calculateTotalPrice({
       lengthA,
-      lengthB,
-      lengthC,
-      fillingOption: fillingOption,
-      addonQty: addonCheckbox.checked ? parseInt(addonQtyInput.value) || 1 : 0,
+      lengthB: selectedSofaIndex >= 2 ? lengthB : 0,
+      lengthC: selectedSofaIndex === 3 ? lengthC : 0,
+      fillingOption: selectedFillingOptionLocal,
+      addonQty,
       includeAddon: addonCheckbox.checked,
     });
 
@@ -288,15 +288,9 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".options-4 .col.active")?.dataset.value ||
       "Not selected";
 
-    const lengthA = parseFloat(document.getElementById("length-a").value) || 0;
-    const lengthB =
-      sofaIndex >= 2
-        ? parseFloat(document.getElementById("length-b").value) || 100
-        : 0;
-    const lengthC =
-      sofaIndex === 3
-        ? parseFloat(document.getElementById("length-c").value) || 100
-        : 0;
+    const lengthA = document.getElementById("length-a").value || "—";
+    const lengthB = document.getElementById("length-b").value || "—";
+    const lengthC = document.getElementById("length-c").value || "—";
 
     // Build length text based on sofa type
     let lengthText = `*Length A:* ${lengthA} cm`;
