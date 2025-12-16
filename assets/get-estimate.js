@@ -316,8 +316,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const message =
       `*New Estimate Request*\n\n` +
       `*Sofa Type:* ${sofaType}\n` +
-      `*Filling:* ${filling}\n` +
-      `*Filling Option:* ${fillingOption}\n\n` +
+      `*Sofa Filling:* ${filling}\n` +
+      `*Sofa Fabric:* ${fillingOption}\n\n` +
       `${lengthText}${addonInfo}\n\n` +
       `*Estimated Price:* ${priceText} AED`;
 
