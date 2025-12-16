@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       total += calc(lengthC, base, extra);
     }
 
-    // Footstools
+    // Add footstool as extra length
     if (includeAddon && addonQty > 0) {
       for (let i = 0; i < addonQty; i++) {
         let base = 0,
@@ -108,9 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
           base = 500;
           extra = 5 * 75;
         }
-
         total += calc(100, base, extra); // 100 cm per footstool
-        total += addonUnitPrice; // AED per footstool
       }
     }
 
