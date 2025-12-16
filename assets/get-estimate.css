@@ -404,6 +404,32 @@
   border-color: #cdac8e;
 }
 
+/* Step 4 square content */
+#get-estimate .options-4 .square {
+  display: flex;
+  flex-direction: column; /* stack label above price */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 6px; /* space between label & price */
+  background-color: #f9f7f4;
+}
+
+/* Label styling */
+#get-estimate .options-4 .square-label {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #7d7d7d;
+}
+
+/* Price styling */
+#get-estimate .options-4 .option-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #171717;
+}
+
 /* Title + Price */
 #get-estimate .options-4 .option-title {
   background: #fbf7f3;
@@ -413,6 +439,7 @@
   padding: 15px;
   border-radius: 1rem;
 }
+
 #get-estimate .options-4 .col.active .option-title {
   background: #cdac8e;
   color: #fff;
@@ -424,36 +451,89 @@
   padding-top: 10px;
 }
 
-/* Arrow */
-#get-estimate .options-4 .dropdown-arrow {
-  width: 12px;
-  height: 12px;
-  border-left: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(-45deg);
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-}
-
-/* Rotate */
-#get-estimate .options-4 .col.active .dropdown-arrow {
-  color: transparent;
-}
-
-/* Description (reveal area) */
+/* FOOTSTOOL */
 #get-estimate .options-4 .filling-description {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
   margin-top: 0.5rem;
-  transition: max-height 0.45s ease, opacity 0.5s ease;
   line-height: 1.4;
   padding: 1.5rem;
+  color: #000;
+  text-align: start;
 }
 
-/* Show description when active */
 #get-estimate .options-4 .col.active .filling-description {
-  max-height: 160px;
-  opacity: 1;
-  font-size: 14px;
+  color: #fff;
+}
+
+#get-estimate .addon-section {
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+#get-estimate .addon-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#get-estimate .addon-toggle span {
+  font-size: 16px;
+}
+
+#get-estimate .addon-quantity .title {
+  margin-bottom: 10px;
+}
+
+#get-estimate .addon-quantity {
+  margin-top: 12px;
+  display: none;
+}
+
+#get-estimate .addon-quantity input[type="number"] {
+  width: 232px;
+}
+
+#get-estimate .addon-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Hide native checkbox */
+#get-estimate .addon-toggle input {
+  display: none;
+}
+
+/* Custom box */
+#get-estimate .checkbox-ui {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid #cdac8e;
+  background: #fff;
+  position: relative;
+}
+
+/* Checked background */
+#get-estimate .addon-toggle input:checked + .checkbox-ui {
+  background: #cdac8e;
+}
+
+/* White tick */
+#get-estimate .addon-toggle input:checked + .checkbox-ui::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  left: 6px;
+  top: 2px;
+}
+
+#get-estimate .checkbox-ui:hover {
+  box-shadow: 0 0 0 3px rgba(205, 172, 142, 0.25);
 }

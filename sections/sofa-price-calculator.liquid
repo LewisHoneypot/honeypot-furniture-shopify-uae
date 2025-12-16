@@ -183,12 +183,10 @@
             {% assign first_filling = false %}
             <div class="flling-outer" style="width: 100%;">
               <div class="border rounded mx-auto d-flex align-items-start" style="width: 100%;">
-                <!-- Square with centered text -->
                 <div class="square">
                   {{ block.settings.label | upcase }}
                 </div>
 
-                <!-- Dynamic list to the right of the square -->
                 <div class="title" style="width:70%">
                   <ul>
                     {% if block.settings.item_1 != blank %}
@@ -220,19 +218,28 @@
         <h3>{{ section.settings.step4_heading }}</h3>
       </div>
     </div>
-    <div class="row options-4">
+
+    <div class="row options-4 options-3">
       {% assign first_filling_option = true %}
       {% for block in section.blocks %}
         {% if block.type == 'filling_option' %}
           <div class="col{% if first_filling_option %} active{% endif %}" data-value="{{ block.settings.value }}">
             {% assign first_filling_option = false %}
-            <div class="filling-card">
-              <div class="option-title">{{ block.settings.label }}</div>
-              <div class="option-price" data-option="{{ block.settings.value }}">Dhs —</div>
-              <div class="dropdown-arrow"></div>
 
-              <div class="filling-description">
-                {{ block.settings.description }}
+            <div class="flling-outer" style="width:100%;">
+              <div class="border rounded d-flex align-items-start" style="width:100%;">
+                <!-- Square (same as Step 3) -->
+                <div class="square">
+                  <div class="square-label">{{ block.settings.label }}</div>
+                  <div class="option-price" data-option="{{ block.settings.value }}">Dhs —</div>
+                </div>
+
+                <!-- Right content -->
+                <div class="title">
+                  <div class="filling-description">
+                    {{ block.settings.description }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -240,6 +247,54 @@
       {% endfor %}
     </div>
   </div>
+
+  <!-- Add-on Section -->
+  <div class="section addon-section">
+    
+    <label class="addon-toggle">
+      <input type="checkbox" id="addon-checkbox">
+      <span class="checkbox-ui"></span>
+      <span>Add Footstool</span>
+    </label>
+
+    {% if section.settings.footstool_image_1 != blank %}
+      <img
+        src="{{ section.settings.footstool_image_1 | image_url }}"
+        alt="Footstool 1"
+        style="width:32%;max-width:230px;margin-bottom:1rem;"
+        height=""
+        width=""
+      >
+    {% endif %}
+    {% if section.settings.footstool_image_2 != blank %}
+      <img
+        src="{{ section.settings.footstool_image_2 | image_url }}"
+        alt="Footstool 2"
+        style="width:32%;max-width:230px;margin-bottom:1rem;"
+        height=""
+        width=""
+      >
+    {% endif %}
+    {% if section.settings.footstool_image_3 != blank %}
+      <img
+        src="{{ section.settings.footstool_image_3 | image_url }}"
+        alt="Footstool 3"
+        style="width:32%;max-width:230px;margin-bottom:1rem;"
+        height=""
+        width=""
+      >
+    {% endif %}
+
+    <div class="addon-quantity" style="max-width: 293px;">
+      <div class="title">Quantity</div>
+      <div class="input-field">
+        <input id="addon-qty" type="number" min="1" value="1">
+        <span class="units">Qty</span>
+      </div>
+    </div>
+  </div>
+
+  <hr>
 
   <span id="price">Price: Dhs. —</span>
   <span id="monthly">AED —/month (for 4 months)</span>
@@ -253,12 +308,12 @@
 
 {% style %}
   #get-estimate .options-3 li::before {
-  background-image: url('{{ "check-circle-black.png" | asset_url }}'); 
-}
-/* Change bullet image when the parent .col is active */
-#get-estimate .options-3 .col.active li::before {
-  background-image: url('{{ "check-circle-white.png" | asset_url }}');
-}
+    background-image: url('{{ "check-circle-black.png" | asset_url }}');
+  }
+  /* Change bullet image when the parent .col is active */
+  #get-estimate .options-3 .col.active li::before {
+    background-image: url('{{ "check-circle-white.png" | asset_url }}');
+  }
 {% endstyle %}
 
 {% schema %}
@@ -276,6 +331,9 @@
     { "type": "image_picker", "id": "dimensions_image_3C", "label": "Sofa Dimensions Image 3C" },
     { "type": "text", "id": "step3_heading", "label": "Step 3 Heading", "default": "Step 3: Select Sofa Filling" },
     { "type": "text", "id": "step4_heading", "label": "Step 4 Heading", "default": "Step 4: Select Filling Option" },
+    { "type": "image_picker", "id": "footstool_image_1", "label": "Footstool Image 1" },
+    { "type": "image_picker", "id": "footstool_image_2", "label": "Footstool Image 2" },
+    { "type": "image_picker", "id": "footstool_image_3", "label": "Footstool Image 3" },
     { "type": "text", "id": "button_label", "label": "Button Label", "default": "BOOK A FREE VISIT" }
   ],
   "blocks": [
