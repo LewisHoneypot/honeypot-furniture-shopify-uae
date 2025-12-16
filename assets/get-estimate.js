@@ -257,7 +257,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addonQtyInput.addEventListener("input", () => {
-      if (addonQtyInput.value < 1) addonQtyInput.value = 1;
+      // Allow empty input while typing
+      if (addonQtyInput.value !== "" && parseInt(addonQtyInput.value) < 1) {
+        addonQtyInput.value = 1;
+      }
       updatePrice();
     });
   }
