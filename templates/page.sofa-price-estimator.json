@@ -55,6 +55,9 @@
           "settings": {
             "label": "Feather",
             "value": "feather",
+            "item_1": "",
+            "item_2": "",
+            "item_3": "",
             "image_width": 150
           }
         },
@@ -63,6 +66,9 @@
           "settings": {
             "label": "Foam",
             "value": "foam",
+            "item_1": "",
+            "item_2": "",
+            "item_3": "",
             "image_width": 150
           }
         },
@@ -114,6 +120,9 @@
         "dimensions_image_3C": "shopify://shop_images/U_corner_Lenght_C.png",
         "step3_heading": "CHOOSE YOUR SOFA FILLING",
         "step4_heading": "CHOOSE YOUR SOFA FABRIC",
+        "footstool_image_1": "shopify://shop_images/Footstool_1.png",
+        "footstool_image_2": "shopify://shop_images/Footstool_2.png",
+        "footstool_image_3": "shopify://shop_images/Footstool_3.png",
         "button_label": "CONSULT WITH OUR TEAM"
       }
     },
