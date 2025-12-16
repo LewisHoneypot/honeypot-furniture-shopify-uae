@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
       `*New Estimate Request*\n\n` +
       `*Sofa Type:* ${sofaType}\n` +
       `*Sofa Filling:* ${filling}\n` +
-      `*Sofa Fabric:* ${fillingOption}\n\n` +
+      `*Sofa Fabric:* ${fillingOption}\n` +
       `*Sofa Length:* \n\n` +
       `${lengthText}${addonInfo}\n\n` +
       `*Estimated Price:* ${priceText} AED`;
