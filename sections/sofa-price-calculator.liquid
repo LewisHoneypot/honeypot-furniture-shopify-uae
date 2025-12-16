@@ -250,7 +250,6 @@
 
   <!-- Add-on Section -->
   <div class="section addon-section">
-
     <label class="addon-toggle">
       <input type="checkbox" id="addon-checkbox">
       <span class="checkbox-ui"></span>
@@ -298,6 +297,25 @@
 
   <span id="price">Price: AED. —</span>
   <span id="monthly">AED —/month (for 4 months)</span>
+
+  <div style="margin-top: 20px; margin-bottom:20px;">
+    Pay with
+    <img
+      src="{{ 'Tamara.png' | asset_url }}"
+      alt="Tamara"
+      style="max-width:57px; vertical-align: middle; margin-right:10px;"
+      height="20"
+      width="57"
+    >
+    &nbsp;Pay with&nbsp;
+    <img
+      src="{{ 'Tabby.png' | asset_url }}"
+      alt="Tabby"
+      style="max-width:50px; vertical-align: middle;"
+      height="20"
+      width="50"
+    >
+  </div>
 
   <button id="book-btn">{{ section.settings.button_label }}</button>
 
