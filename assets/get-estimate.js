@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lengthA = 0,
     lengthB = 0,
     lengthC = 0,
+    sofaTypeIndex = 1,
     fillingOption,
     addonQty = 0,
     includeAddon = false,
@@ -58,57 +59,34 @@ document.addEventListener("DOMContentLoaded", function () {
         : ceiling(base * (length / 100) * 2.2, 50);
     };
 
-    // Length A (default)
-    if (lengthA > 0) {
-      let base = 0,
-        extra = 0;
-      if (fillingOption === "classics") base = 1200;
-      else if (fillingOption === "signature") base = 1400;
-      else if (fillingOption === "performance") {
-        base = 1050;
-        extra = 7.5 * 75;
-      }
-      total += calc(lengthA, base, extra);
+    // Adjust lengths for L and U shapes
+    let adjustedLength = lengthA;
+    if (sofaTypeIndex === 2) adjustedLength = lengthA + lengthB - 100; // L-corner
+    else if (sofaTypeIndex === 3) adjustedLength = lengthA + lengthB + lengthC - 200; // U-corner
+
+    let base = 0,
+      extra = 0;
+    if (fillingOption === "classics") base = 1200;
+    else if (fillingOption === "signature") base = 1400;
+    else if (fillingOption === "performance") {
+      base = 1050;
+      extra = 7.5 * 75;
     }
 
-    // Length B
-    if (lengthB > 0) {
-      let base = 0,
-        extra = 0;
-      if (fillingOption === "classics") base = 600;
-      else if (fillingOption === "signature") base = 800;
-      else if (fillingOption === "performance") {
-        base = 500;
-        extra = 5 * 75;
-      }
-      total += calc(lengthB, base, extra);
-    }
-
-    // Length C
-    if (lengthC > 0) {
-      let base = 0,
-        extra = 0;
-      if (fillingOption === "classics") base = 600;
-      else if (fillingOption === "signature") base = 800;
-      else if (fillingOption === "performance") {
-        base = 500;
-        extra = 5 * 75;
-      }
-      total += calc(lengthC, base, extra);
-    }
+    total += calc(adjustedLength, base, extra);
 
     // Add footstool as extra length
     if (includeAddon && addonQty > 0) {
       for (let i = 0; i < addonQty; i++) {
-        let base = 0,
-          extra = 0;
-        if (fillingOption === "classics") base = 600;
-        else if (fillingOption === "signature") base = 800;
+        let addonBase = 0,
+          addonExtra = 0;
+        if (fillingOption === "classics") addonBase = 600;
+        else if (fillingOption === "signature") addonBase = 800;
         else if (fillingOption === "performance") {
-          base = 500;
-          extra = 5 * 75;
+          addonBase = 500;
+          addonExtra = 5 * 75;
         }
-        total += calc(100, base, extra); // 100 cm per footstool
+        total += calc(100, addonBase, addonExtra); // 100 cm per footstool
       }
     }
 
@@ -116,12 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- Update mini prices ---
-  function updateStep4Prices(
-    totalLength,
-    fillingOption,
-    sofaIndex,
-    addonQty = 0
-  ) {
+  function updateStep4Prices(totalLength, fillingOption, sofaIndex, addonQty = 0) {
     const prices = document.querySelectorAll(".option-price");
     prices.forEach((priceEl) => {
       const option = priceEl.dataset.option;
@@ -130,21 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
+      // Get individual lengths from inputs
+      const lengthA = parseFloat(document.getElementById("length-a").value) || 0;
+      const lengthB = parseFloat(document.getElementById("length-b").value) || 0;
+      const lengthC = parseFloat(document.getElementById("length-c").value) || 0;
+
       const miniPrice = calculateTotalPrice({
-        lengthA:
-          sofaIndex >= 1
-            ? parseFloat(document.getElementById("length-a").value) || 0
-            : 0,
-        lengthB:
-          sofaIndex >= 2
-            ? parseFloat(document.getElementById("length-b").value) || 0
-            : 0,
-        lengthC:
-          sofaIndex >= 3
-            ? parseFloat(document.getElementById("length-c").value) || 0
-            : 0,
+        lengthA,
+        lengthB,
+        lengthC,
+        sofaTypeIndex: sofaIndex,
         fillingOption: option,
         addonQty,
+        includeAddon: false, // exclude footstools for mini prices
       });
 
       priceEl.textContent = `${miniPrice.toLocaleString()} AED`;
@@ -170,8 +141,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Total price (includes footstools)
     const totalPrice = calculateTotalPrice({
       lengthA,
-      lengthB: selectedSofaIndex >= 2 ? lengthB : 0,
-      lengthC: selectedSofaIndex === 3 ? lengthC : 0,
+      lengthB,
+      lengthC,
+      sofaTypeIndex: selectedSofaIndex,
       fillingOption: selectedFillingOptionLocal,
       addonQty,
       includeAddon: addonCheckbox.checked,
@@ -187,12 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Step 4 mini prices (exclude footstools)
     updateStep4Prices(
-      lengthA +
-        (selectedSofaIndex >= 2 ? lengthB : 0) +
-        (selectedSofaIndex === 3 ? lengthC : 0),
+      lengthA + lengthB + lengthC,
       selectedFillingOptionLocal,
       selectedSofaIndex,
-      0 // footstools excluded in step 4 mini prices
+      0
     );
   }
 
