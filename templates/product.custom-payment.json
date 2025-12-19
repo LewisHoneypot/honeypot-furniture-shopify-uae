@@ -258,6 +258,7 @@
       "blocks": {
         "drawer_nfiTCK": {
           "type": "drawer",
+          "disabled": true,
           "settings": {
             "heading": "Dimensions",
             "content_type": "dimensions",
@@ -268,9 +269,20 @@
         },
         "drawer_EkDrRn": {
           "type": "drawer",
+          "disabled": true,
           "settings": {
             "heading": "Additional Information",
             "content_type": "additional_information",
+            "content1": "",
+            "content2": "",
+            "page": ""
+          }
+        },
+        "drawer_aNBQEa": {
+          "type": "drawer",
+          "settings": {
+            "heading": "Description",
+            "content_type": "description",
             "content1": "",
             "content2": "",
             "page": ""
@@ -295,24 +307,14 @@
             "content2": "<h2>Fabric Sofa Care</h2><p>Spills:</p><ul><li>Act quickly: The sooner you address a spill, the easier it will be to remove.</li><li>Blot, don't rub: Use a clean, absorbent cloth to blot up the spill. Rubbing can spread the stain.</li><li>Avoid harsh chemicals: Strong cleaners can damage the fabric. Opt for mild, fabric-safe products.</li><li>For stubborn stains: If the spill is persistent, consult a professional cleaning service.</li></ul><p>General Cleaning:</p><ul><li>Regular vacuuming: Vacuum your sofa regularly to remove dust and dirt.</li><li>Spot cleaning: For stains or spills, use a mild upholstery cleaner and a clean, soft cloth. Test the cleaner in an inconspicuous area first to ensure it doesn't cause discoloration.</li><li>Avoid excessive moisture: While spot cleaning is necessary, avoid soaking the fabric. Too much moisture can lead to mold or mildew.</li></ul><p>Protection:</p><ul><li>Protect from sunlight: Prolonged exposure to direct sunlight can cause fading. Consider using curtains or blinds to protect your sofa.</li><li>Prevent moisture: Keep your sofa away from damp areas and avoid placing it directly on the floor. Consider using a sofa cover or throw to protect it from spills and wear and tear.</li></ul><p>Conditioning:</p><ul><li>Use fabric conditioner or protector: To help maintain the fabric's appearance and durability, apply a fabric conditioner or protector according to the manufacturer's instructions.</li></ul><p>Prevention:</p><ul><li>Use covers: To protect your sofa from spills, stains, and wear and tear, consider using removable covers.</li><li>Handle pets carefully: If you have pets, keep them off the sofa or use pet-friendly covers to prevent damage.</li><li>Avoid sharp objects: Be cautious of sharp items that could snag or tear the fabric.</li></ul><p>By following these tips, you can keep your fabric sofa looking its best for years to come.</p>",
             "page": ""
           }
-        },
-        "drawer_aNBQEa": {
-          "type": "drawer",
-          "settings": {
-            "heading": "Description",
-            "content_type": "description",
-            "content1": "",
-            "content2": "",
-            "page": ""
-          }
         }
       },
       "block_order": [
         "drawer_nfiTCK",
         "drawer_EkDrRn",
+        "drawer_aNBQEa",
         "drawer_9K8JiB",
-        "drawer_r9twij",
-        "drawer_aNBQEa"
+        "drawer_r9twij"
       ],
       "settings": {
         "font": "Gotham",
