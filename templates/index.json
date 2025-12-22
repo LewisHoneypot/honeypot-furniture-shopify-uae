@@ -198,6 +198,26 @@
         "text_3": "2 year guarantee"
       }
     },
+    "custom_sofa_CUwUCQ": {
+      "type": "custom-sofa",
+      "custom_css": [
+        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100; padding: 15px 25px;}",
+        ".custom-sofa-description {font-size: 16px;}",
+        "p {font-size: 16px;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
+      ],
+      "name": "Custom Sofa Section",
+      "settings": {
+        "heading": "Your Custom Sofa Journey",
+        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.\n<br>\nChoose your shape and dimensions.\n\nSelect your comfort level Cloud, Balanced or Support\n\nPick from over 30 fabrics and 150+ colours\n\nAll designed, built, and delivered in as little as 7–14 days.",
+        "button_label": "Know More",
+        "button_link": "shopify://pages/custom-sofa",
+        "image": "shopify://shop_images/DSC00018-1-1-square.jpg",
+        "text_1": "Over 150+ Fabrics & Colours",
+        "text_2": "Book a Free Home Visit",
+        "text_3": "Unlimited Customisation"
+      }
+    },
     "shop_by_type_w3JNgK": {
       "type": "shop-by-type",
       "blocks": {
@@ -265,26 +285,6 @@
       "name": "Shop By Type",
       "settings": {
         "heading": "Shop By Type"
-      }
-    },
-    "custom_sofa_CUwUCQ": {
-      "type": "custom-sofa",
-      "custom_css": [
-        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100; padding: 15px 25px;}",
-        ".custom-sofa-description {font-size: 16px;}",
-        "p {font-size: 16px;}",
-        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
-      ],
-      "name": "Custom Sofa Section",
-      "settings": {
-        "heading": "Your Custom Sofa Journey",
-        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.\n<br>\nChoose your shape and dimensions.\n\nSelect your comfort level Cloud, Balanced or Support\n\nPick from over 30 fabrics and 150+ colours\n\nAll designed, built, and delivered in as little as 7–14 days.",
-        "button_label": "Know More",
-        "button_link": "shopify://pages/custom-sofa",
-        "image": "shopify://shop_images/DSC00018-1-1-square.jpg",
-        "text_1": "Over 150+ Fabrics & Colours",
-        "text_2": "Book a Free Home Visit",
-        "text_3": "Unlimited Customisation"
       }
     },
     "new_arrivals_RLBEyT": {
@@ -848,9 +848,9 @@
     "category_grid_P4k9aG",
     "review_strip_6PQLxP",
     "most_liked_nKAWfC",
-    "honeypot_furniture_hFmpif",
-    "shop_by_type_w3JNgK",
     "custom_sofa_CUwUCQ",
+    "shop_by_type_w3JNgK",
+    "honeypot_furniture_hFmpif",
     "new_arrivals_RLBEyT",
     "love_it_now_pay_later_dkne96",
     "testimonials_t4paTt",
