@@ -277,51 +277,6 @@
     </div>
   </div>
 
-  <!-- Add-on Section -->
-  <div class="section addon-section">
-    <label class="addon-toggle">
-      <input type="checkbox" id="addon-checkbox">
-      <span class="checkbox-ui"></span>
-      <span>Add Footstool</span>
-    </label>
-
-    {% if section.settings.footstool_image_1 != blank %}
-      <img
-        src="{{ section.settings.footstool_image_1 | image_url }}"
-        alt="Footstool 1"
-        style="width:32%;max-width:230px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% endif %}
-    {% if section.settings.footstool_image_2 != blank %}
-      <img
-        src="{{ section.settings.footstool_image_2 | image_url }}"
-        alt="Footstool 2"
-        style="width:32%;max-width:230px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% endif %}
-    {% if section.settings.footstool_image_3 != blank %}
-      <img
-        src="{{ section.settings.footstool_image_3 | image_url }}"
-        alt="Footstool 3"
-        style="width:32%;max-width:230px;margin-bottom:1rem;"
-        height=""
-        width=""
-      >
-    {% endif %}
-
-    <div class="addon-quantity" style="max-width: 293px;">
-      <div class="title">Quantity</div>
-      <div class="input-field">
-        <input id="addon-qty" type="number" value="1">
-        <span class="units">Qty</span>
-      </div>
-    </div>
-  </div>
-
   <hr>
 
   <span id="price">Price: AED. —</span>
