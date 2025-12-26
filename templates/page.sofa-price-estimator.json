@@ -284,6 +284,48 @@
         "text_2": "Transparent Pricing Estimator",
         "text_3": "Order Free Swatches"
       }
+    },
+    "testimonials_3qCQV7": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_block_z4Eeww": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
+            "name": "",
+            "title": ""
+          }
+        },
+        "testimonial_block_iXNn7k": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
+            "name": "",
+            "title": ""
+          }
+        },
+        "testimonial_block_66UQC9": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
+            "name": "",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_block_z4Eeww",
+        "testimonial_block_iXNn7k",
+        "testimonial_block_66UQC9"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "section_image": "shopify://shop_images/image_39_5dd3f741-eab0-468c-b4d8-176eb44ccbd0.png",
+        "heading": "Testimonials",
+        "rating_logo": "shopify://shop_images/Google__G__logo_svg.webp",
+        "rating_score": "4.8",
+        "reviews_link": ""
+      }
     }
   },
   "order": [
@@ -292,6 +334,7 @@
     "custom_liquid_T7RRLB",
     "why_honeypot_TkJmgK",
     "custom_sofa_steps_iKttc3",
-    "love_it_now_pay_later_6rhnDF"
+    "love_it_now_pay_later_6rhnDF",
+    "testimonials_3qCQV7"
   ]
 }
