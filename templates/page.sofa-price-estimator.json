@@ -326,6 +326,55 @@
         "rating_score": "4.8",
         "reviews_link": ""
       }
+    },
+    "faq_accordion_K7hi9h": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_item_wzAQ4Q": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I customise the size of my sofa or bed?",
+            "answer": "<p>Absolutely! Customisation is at the heart of the Honeypot experience. You can tailor nearlyevery element, from precise length and depth to armrest width and back height, to ensure aperfect fit for your space.</p>"
+          }
+        },
+        "faq_item_qhgqxw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the custom design process work?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        },
+        "faq_item_iE6Xby": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I customize my service package?Who can use Tabby?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_wzAQ4Q",
+        "faq_item_qhgqxw",
+        "faq_item_iE6Xby"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "FAQS",
+        "accordion_border_style": "thin_line",
+        "accordion_icon": "plus_minus",
+        "title_font_size": 24,
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "help_center_text": "Visit Tabby’s help center to find out more.",
+        "help_center_link": "",
+        "link_alignment": "center",
+        "question_bg_color": "#f7f7f7",
+        "question_hover_color": "#efefef",
+        "question_text_color": "#333333",
+        "answer_bg_color": "#ffffff",
+        "answer_text_color": "#666666",
+        "link_color": "#4A90E2"
+      }
     }
   },
   "order": [
@@ -335,6 +384,7 @@
     "why_honeypot_TkJmgK",
     "custom_sofa_steps_iKttc3",
     "love_it_now_pay_later_6rhnDF",
-    "testimonials_3qCQV7"
+    "testimonials_3qCQV7",
+    "faq_accordion_K7hi9h"
   ]
 }
