@@ -138,11 +138,61 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "why_honeypot_TkJmgK": {
+      "type": "why-honeypot",
+      "blocks": {
+        "tab_KtiK6X": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Dedicated Customer Support",
+            "heading": "",
+            "content": "We build for life. Every piece is meticulously handcrafted using only the finest materials, from solid, robust frames to premium fillings and luxurious, performance grade fabrics. We ensure exceptional quality that is designed to stand up to the rigours of everyday living, beautifully.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "Get Quote",
+            "button_link": ""
+          }
+        },
+        "tab_AEghYG": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Truly Personalised Solutions",
+            "heading": "",
+            "content": "We build for life. Every piece is meticulously handcrafted using only the finest materials, from solid, robust frames to premium fillings and luxurious, performance grade fabrics. We ensure exceptional quality that is designed to stand up to the rigours of everyday living, beautifully.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "Get Quote",
+            "button_link": ""
+          }
+        },
+        "tab_ax7edc": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Enduring Quality & Craftsmanship",
+            "heading": "",
+            "content": "We build for life. Every piece is meticulously handcrafted using only the finest materials, from solid, robust frames to premium fillings and luxurious, performance grade fabrics. We ensure exceptional quality that is designed to stand up to the rigours of everyday living, beautifully.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "Get Quote",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_KtiK6X",
+        "tab_AEghYG",
+        "tab_ax7edc"
+      ],
+      "name": "Why Honeypot Section",
+      "settings": {
+        "heading": "Why Honeypot?",
+        "subheading": "We don’t just sell furniture; we deliver the foundation for beautiful living.",
+        "Mainheading": "Why Choose Honeypot Furniture?"
+      }
     }
   },
   "order": [
     "main",
     "sofa_price_calculator_JtAKFQ",
-    "custom_liquid_T7RRLB"
+    "custom_liquid_T7RRLB",
+    "why_honeypot_TkJmgK"
   ]
 }
