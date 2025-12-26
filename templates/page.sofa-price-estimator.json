@@ -261,6 +261,29 @@
         "button_text": "Learn More",
         "button_link": ""
       }
+    },
+    "love_it_now_pay_later_6rhnDF": {
+      "type": "love-it-now-pay-later",
+      "custom_css": [
+        "h2,p {color: white;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 14px;}"
+      ],
+      "name": "Love It Now Pay Later",
+      "settings": {
+        "heading": "Love It Now. Pay Later.",
+        "subtext": "Shop your Honeypot favourites with Tabby or Tamara. Flexible payments, zero stress.",
+        "tabby_logo": "shopify://shop_images/ccdf2d0d48313f862a505c8f74e7f186d9108d51.png",
+        "show_button": true,
+        "button_label": "Buy Sofa Now",
+        "button_link": "",
+        "background_image": "shopify://shop_images/Rectangle_34624323.png",
+        "background_color": "#F0E9E3",
+        "show_button_marque": false,
+        "text_1": "Eco-friendly fabrics",
+        "text_2": "Transparent Pricing Estimator",
+        "text_3": "Order Free Swatches"
+      }
     }
   },
   "order": [
@@ -268,6 +291,7 @@
     "sofa_price_calculator_JtAKFQ",
     "custom_liquid_T7RRLB",
     "why_honeypot_TkJmgK",
-    "custom_sofa_steps_iKttc3"
+    "custom_sofa_steps_iKttc3",
+    "love_it_now_pay_later_6rhnDF"
   ]
 }
