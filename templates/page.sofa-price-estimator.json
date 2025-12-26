@@ -142,6 +142,17 @@
     "why_honeypot_TkJmgK": {
       "type": "why-honeypot",
       "blocks": {
+        "tab_P7cmMT": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Proven Reliability & Trust",
+            "heading": "",
+            "content": "We build for life. Every piece is meticulously handcrafted using only the finest materials, from solid, robust frames to premium fillings and luxurious, performance grade fabrics. We ensure exceptional quality that is designed to stand up to the rigours of everyday living, beautifully.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "Get Quote",
+            "button_link": ""
+          }
+        },
         "tab_KtiK6X": {
           "type": "tab",
           "settings": {
@@ -177,6 +188,7 @@
         }
       },
       "block_order": [
+        "tab_P7cmMT",
         "tab_KtiK6X",
         "tab_AEghYG",
         "tab_ax7edc"
