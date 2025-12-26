@@ -199,12 +199,75 @@
         "subheading": "We don’t just sell furniture; we deliver the foundation for beautiful living.",
         "Mainheading": "Why Choose Honeypot Furniture?"
       }
+    },
+    "custom_sofa_steps_iKttc3": {
+      "type": "custom-sofa-steps",
+      "blocks": {
+        "step_TrxWwe": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Design"
+          }
+        },
+        "step_kAGnAq": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Size"
+          }
+        },
+        "step_hUDcKr": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Quote"
+          }
+        },
+        "step_97kTim": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Filling"
+          }
+        },
+        "step_iFXJD9": {
+          "type": "step",
+          "settings": {
+            "number": "05",
+            "title": "Fabric"
+          }
+        },
+        "step_KEYmiC": {
+          "type": "step",
+          "settings": {
+            "number": "06",
+            "title": "Delivery"
+          }
+        }
+      },
+      "block_order": [
+        "step_TrxWwe",
+        "step_kAGnAq",
+        "step_hUDcKr",
+        "step_97kTim",
+        "step_iFXJD9",
+        "step_KEYmiC"
+      ],
+      "name": "Custom Sofa Steps",
+      "settings": {
+        "heading": "Design You Custom Sofa With Honeypot",
+        "subheading": "From concept to comfort, we craft a sofa that’s just as unique as you!",
+        "button_text": "Learn More",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "main",
     "sofa_price_calculator_JtAKFQ",
     "custom_liquid_T7RRLB",
-    "why_honeypot_TkJmgK"
+    "why_honeypot_TkJmgK",
+    "custom_sofa_steps_iKttc3"
   ]
 }
