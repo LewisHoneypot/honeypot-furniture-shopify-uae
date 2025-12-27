@@ -193,6 +193,7 @@
         "tab_AEghYG",
         "tab_ax7edc"
       ],
+      "disabled": true,
       "name": "Why Honeypot Section",
       "settings": {
         "heading": "Why Honeypot?",
@@ -254,6 +255,7 @@
         "step_iFXJD9",
         "step_KEYmiC"
       ],
+      "disabled": true,
       "name": "Custom Sofa Steps",
       "settings": {
         "heading": "Design You Custom Sofa With Honeypot",
@@ -264,6 +266,7 @@
     },
     "love_it_now_pay_later_6rhnDF": {
       "type": "love-it-now-pay-later",
+      "disabled": true,
       "custom_css": [
         "h2,p {color: white;}",
         "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
@@ -278,7 +281,7 @@
         "button_label": "Buy Sofa Now",
         "button_link": "",
         "background_image": "shopify://shop_images/Rectangle_34624323.png",
-        "background_color": "#F0E9E3",
+        "background_color": "#f0e9e3",
         "show_button_marque": false,
         "text_1": "Eco-friendly fabrics",
         "text_2": "Transparent Pricing Estimator",
@@ -318,6 +321,7 @@
         "testimonial_block_iXNn7k",
         "testimonial_block_66UQC9"
       ],
+      "disabled": true,
       "name": "Testimonials",
       "settings": {
         "section_image": "shopify://shop_images/image_39_5dd3f741-eab0-468c-b4d8-176eb44ccbd0.png",
@@ -357,6 +361,7 @@
         "faq_item_qhgqxw",
         "faq_item_iE6Xby"
       ],
+      "disabled": true,
       "name": "FAQ Accordion",
       "settings": {
         "title": "FAQS",
@@ -373,7 +378,7 @@
         "question_text_color": "#333333",
         "answer_bg_color": "#ffffff",
         "answer_text_color": "#666666",
-        "link_color": "#4A90E2"
+        "link_color": "#4a90e2"
       }
     }
   },
