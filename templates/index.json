@@ -25,18 +25,6 @@
             "button_link": ""
           }
         },
-        "slide_mHjWC7": {
-          "type": "slide",
-          "settings": {
-            "image_desktop": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
-            "image_mobile": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
-            "slide_link": "",
-            "heading": "Invest in Comfort. Experience the Difference.",
-            "text": "",
-            "button_label": "View All",
-            "button_link": "https://honeypotfurniture.ae/collections/made-in-dubai"
-          }
-        },
         "slide_aNRVXn": {
           "type": "slide",
           "settings": {
@@ -48,12 +36,24 @@
             "button_label": "View All",
             "button_link": "shopify://collections"
           }
+        },
+        "slide_mHjWC7": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
+            "image_mobile": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
+            "slide_link": "",
+            "heading": "Invest in Comfort. Experience the Difference.",
+            "text": "",
+            "button_label": "View All",
+            "button_link": "https://honeypotfurniture.ae/collections/made-in-dubai"
+          }
         }
       },
       "block_order": [
         "slide_RxGJri",
-        "slide_mHjWC7",
-        "slide_aNRVXn"
+        "slide_aNRVXn",
+        "slide_mHjWC7"
       ],
       "custom_css": [
         "h2 {color: white;}",
