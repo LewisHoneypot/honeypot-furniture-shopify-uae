@@ -297,6 +297,14 @@
             "title": ""
           }
         },
+        "testimonial_block_RkeqyK": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
+            "name": "",
+            "title": ""
+          }
+        },
         "testimonial_block_T4Cqzn": {
           "type": "testimonial_block",
           "settings": {
@@ -318,14 +326,6 @@
           "settings": {
             "quote": "I was pleasantly surprised by the quality of the sofas and beds when I visited the Honeypot Furniture warehouse. The staff were very helpful and gave me great advice based on my needs. They offer unique, stylish sofa beds that are hard to find elsewhere in Dubai. Delivery is available, which is super convenient, and you can even customize the color of the furniture you choose. Highly recommended if you’re looking for quality and flexibility!",
             "name": "Ylona",
-            "title": ""
-          }
-        },
-        "testimonial_block_e9XChg": {
-          "type": "testimonial_block",
-          "settings": {
-            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
-            "name": "",
             "title": ""
           }
         },
@@ -388,10 +388,10 @@
       },
       "block_order": [
         "testimonial_block_r8XY7c",
+        "testimonial_block_RkeqyK",
         "testimonial_block_T4Cqzn",
         "testimonial_block_gW8LMb",
         "testimonial_block_fyVrUK",
-        "testimonial_block_e9XChg",
         "testimonial_block_n9kUFY",
         "testimonial_block_TrJ74z",
         "testimonial_block_xcz6qK",
