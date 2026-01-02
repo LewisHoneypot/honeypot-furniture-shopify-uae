@@ -297,14 +297,6 @@
             "title": ""
           }
         },
-        "testimonial_block_RkeqyK": {
-          "type": "testimonial_block",
-          "settings": {
-            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
-            "name": "",
-            "title": ""
-          }
-        },
         "testimonial_block_T4Cqzn": {
           "type": "testimonial_block",
           "settings": {
@@ -380,7 +372,6 @@
       },
       "block_order": [
         "testimonial_block_r8XY7c",
-        "testimonial_block_RkeqyK",
         "testimonial_block_T4Cqzn",
         "testimonial_block_gW8LMb",
         "testimonial_block_fyVrUK",
