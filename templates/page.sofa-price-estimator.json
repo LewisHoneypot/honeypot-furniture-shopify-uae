@@ -353,6 +353,14 @@
             "title": ""
           }
         },
+        "testimonial_block_xcz6qK": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam.",
+            "name": "",
+            "title": ""
+          }
+        },
         "testimonial_block_Mq9AAp": {
           "type": "testimonial_block",
           "settings": {
@@ -395,6 +403,7 @@
         "testimonial_block_e9XChg",
         "testimonial_block_n9kUFY",
         "testimonial_block_TrJ74z",
+        "testimonial_block_xcz6qK",
         "testimonial_block_Mq9AAp",
         "testimonial_block_8pbePf",
         "testimonial_block_3HnxYy",
@@ -461,6 +470,13 @@
             "answer": "<p>Once your order is finalized, our expert artisans get to work. We deliver most custom pieces within 7–14 days within the UAE.</p>"
           }
         },
+        "faq_item_R7jzJW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who can use Tabby?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        },
         "faq_item_XT8Vhw": {
           "type": "faq_item",
           "settings": {
@@ -498,6 +514,7 @@
         "faq_item_qJANHW",
         "faq_item_ztmdDi",
         "faq_item_Wp4ARW",
+        "faq_item_R7jzJW",
         "faq_item_XT8Vhw",
         "faq_item_p3PDmp",
         "faq_item_taVE3H",
