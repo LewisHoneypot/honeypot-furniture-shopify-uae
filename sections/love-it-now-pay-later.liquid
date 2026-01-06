@@ -46,7 +46,9 @@
 
   
 </section>
-{% render 'guarantee-strip', text_1: section.settings.text_1, text_2: section.settings.text_2, text_3: section.settings.text_3 %}
+{% if section.settings.show_button_marque %}
+  {% render 'guarantee-strip', text_1: section.settings.text_1, text_2: section.settings.text_2, text_3: section.settings.text_3 %}
+{% endif %}
 
 {% schema %}
 {
@@ -61,6 +63,8 @@
     { "type": "url", "id": "button_link", "label": "Button Link" },
     { "type": "image_picker", "id": "background_image", "label": "Background Image (optional)" },
     { "type": "color", "id": "background_color", "label": "Background Color", "default": "#F0E9E3" },
+    { "type": "checkbox", "id": "show_button_marque", "label": "Show Banner", "default": true },
+
 
                 {
       "type": "text",

@@ -116,11 +116,11 @@
         "dimensions_image_2_mobile": "shopify://shop_images/L-_Corner_Lenght_A_B.png",
         "dimensions_image_3_mobile": "shopify://shop_images/U_corner_Lenght_A_B_C.png",
         "dimensions_image_1A": "shopify://shop_images/Straight_sofa_size.png",
-        "dimensions_image_2A": "shopify://shop_images/L-corner_lenght_A.png",
-        "dimensions_image_2B": "shopify://shop_images/L-_Corner_Lenght_B.png",
-        "dimensions_image_3A": "shopify://shop_images/U_corner_Lenght_A.png",
-        "dimensions_image_3B": "shopify://shop_images/U_corner_lenght_B.png",
-        "dimensions_image_3C": "shopify://shop_images/U_corner_Lenght_C.png",
+        "dimensions_image_2A": "shopify://shop_images/L-corner_lenght_A_e3271212-e007-4d14-8076-31e21091fb96.png",
+        "dimensions_image_2B": "shopify://shop_images/L-_Corner_Lenght_B_43872c14-6da1-42b1-9c9e-10c4d9c9a42d.png",
+        "dimensions_image_3A": "shopify://shop_images/U_corner_Lenght_A_08f7477c-a101-4eb4-8e1a-489fabf5752a.png",
+        "dimensions_image_3B": "shopify://shop_images/U_corner_lenght_B_ec5b3036-b19f-49d1-90bb-9870b1d02be7.png",
+        "dimensions_image_3C": "shopify://shop_images/U_corner_Lenght_C_85b4ddb5-2558-4fc5-b38f-7a8cb8beb2d7.png",
         "step3_heading": "CHOOSE YOUR SOFA FILLING",
         "step4_heading": "CHOOSE YOUR SOFA FABRIC",
         "footstool_image_1": "shopify://shop_images/Footstool_1.png",
@@ -138,11 +138,389 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "why_honeypot_TkJmgK": {
+      "type": "why-honeypot",
+      "blocks": {
+        "tab_P7cmMT": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Enduring Quality & Craftsmanship",
+            "heading": "",
+            "content": "We build for life. Every piece is meticulously handcrafted using only the finest materials,\nfrom solid, robust frames to premium fillings and luxurious, performance grade fabrics. We\nensure exceptional quality that is designed to stand up to the rigours of everyday living,\nbeautifully.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "tab_KtiK6X": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Truly Personalized Solutions",
+            "heading": "",
+            "content": "Designed by you, for your home. Forget standard sizes. Our bespoke service offers limitless\ncustomization, allowing you to tailor the dimensions, style, and comfort of your furniture. We\nprovide personalized solutions that perfectly fit your space and your unique lifestyle.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "tab_AEghYG": {
+          "type": "tab",
+          "settings": {
+            "tab_title": " Dedicated Customer Support",
+            "heading": "",
+            "content": "We are with you every step of the way. From your initial fabric swatch request to our\ncomplimentary white-glove delivery, our team offers dedicated customer support. We\nprovide expert consultations and prompt aftercare, ensuring your entire experience is\nseamless, stress-free, and delightful.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "tab_ax7edc": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Proven Reliability & Trust",
+            "heading": "",
+            "content": "Invest with confidence. We pride ourselves on transparent pricing, clear communication, andfast, dependable delivery within 7-14 days. Our reputation is built on proven reliability,\nensuring your custom designed dream piece arrives on time and exceeds every expectation",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_P7cmMT",
+        "tab_KtiK6X",
+        "tab_AEghYG",
+        "tab_ax7edc"
+      ],
+      "name": "Why Honeypot Section",
+      "settings": {
+        "heading": "Why Honeypot?",
+        "subheading": "We don’t just sell furniture; we deliver the foundation for beautiful living.",
+        "Mainheading": "Why Choose Honeypot Furniture?"
+      }
+    },
+    "custom_sofa_steps_iKttc3": {
+      "type": "custom-sofa-steps",
+      "blocks": {
+        "step_TrxWwe": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Design"
+          }
+        },
+        "step_kAGnAq": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Size"
+          }
+        },
+        "step_hUDcKr": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Quote"
+          }
+        },
+        "step_97kTim": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Filling"
+          }
+        },
+        "step_iFXJD9": {
+          "type": "step",
+          "settings": {
+            "number": "05",
+            "title": "Fabric"
+          }
+        },
+        "step_KEYmiC": {
+          "type": "step",
+          "settings": {
+            "number": "06",
+            "title": "Delivery"
+          }
+        }
+      },
+      "block_order": [
+        "step_TrxWwe",
+        "step_kAGnAq",
+        "step_hUDcKr",
+        "step_97kTim",
+        "step_iFXJD9",
+        "step_KEYmiC"
+      ],
+      "name": "Custom Sofa Steps",
+      "settings": {
+        "heading": "Design your Custom Sofa With Honeypot",
+        "subheading": "From concept to comfort, we craft a sofa that’s just as unique as you!",
+        "button_text": "Learn More",
+        "button_link": "https://honeypotfurniture.ae/pages/custom-sofa"
+      }
+    },
+    "love_it_now_pay_later_6rhnDF": {
+      "type": "love-it-now-pay-later",
+      "custom_css": [
+        "h2,p {color: white;}",
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 14px;}"
+      ],
+      "name": "Love It Now Pay Later",
+      "settings": {
+        "heading": "Love It Now. Pay Later.",
+        "subtext": "Shop your Honeypot favourites with Tabby or Tamara. Flexible payments, zero stress.",
+        "tabby_logo": "shopify://shop_images/ccdf2d0d48313f862a505c8f74e7f186d9108d51.png",
+        "tamara_logo": "shopify://shop_images/222314fe079a6354dd5ab35989c3adfe709317b5.png",
+        "show_button": true,
+        "button_label": "Know more",
+        "button_link": "",
+        "background_image": "shopify://shop_images/Rectangle_34624323.png",
+        "background_color": "#f0e9e3",
+        "show_button_marque": false,
+        "text_1": "Eco-friendly fabrics",
+        "text_2": "Transparent Pricing Estimator",
+        "text_3": "Order Free Swatches"
+      }
+    },
+    "testimonials_3qCQV7": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_block_r8XY7c": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "They have the most beautiful, unique designs. The quality is top notch. The customer service is amazing. Am very happy with my purchase.",
+            "name": "Monica Kamau",
+            "title": ""
+          }
+        },
+        "testimonial_block_T4Cqzn": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Guys! if you want to spend money on good quality furniture then go for it..highly recommendedhttps://share.google/fRvhm82ESCaAfMb3U",
+            "name": "Esha",
+            "title": ""
+          }
+        },
+        "testimonial_block_gW8LMb": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Went there with a friend who's an expat to buy a sofa at Honeypot. My friend brought the feather sofa. The guy who serviced us was very helpful. We tried loads of sofas. Best price for what my friend was looking for.",
+            "name": "Arron",
+            "title": ""
+          }
+        },
+        "testimonial_block_fyVrUK": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "I was pleasantly surprised by the quality of the sofas and beds when I visited the Honeypot Furniture warehouse. The staff were very helpful and gave me great advice based on my needs. They offer unique, stylish sofa beds that are hard to find elsewhere in Dubai. Delivery is available, which is super convenient, and you can even customize the color of the furniture you choose. Highly recommended if you’re looking for quality and flexibility!",
+            "name": "Ylona",
+            "title": ""
+          }
+        },
+        "testimonial_block_n9kUFY": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "I'm so happy I found Honeypot while looking for the perfect sofa. The entire team, from Yusuf, to the sales colleagues, to the delivery team were so professional, knowledgable, and friendly. The range of furniture available made it easy to pick a style, then the team helped fully customise everything to suit our home. We visited many furniture stores from the known brands in malls to individual furniture providers in Al Quoz, and Honeypot came out well ahead in terms of comfort, quality, and price. Very refreshing experience and can't recommend them enough!",
+            "name": "Sam.A",
+            "title": ""
+          }
+        },
+        "testimonial_block_TrJ74z": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": " I bought a feather cloud sofa and bed from Honeypot and it was an awesome experience. They were really knowledgable and helped me with all my questions. I was able to customise the fabric and size and they delivered it in 10 days! Their quality for the price was much better than everywhere else I looked. A big thank you to Yusuf for giving me his time and looking after me!",
+            "name": "Jihan",
+            "title": ""
+          }
+        },
+        "testimonial_block_Mq9AAp": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Very nice sofas and beds. Very good prices and amazing quality. Customized for me and delivered in a week. Very comfortable sofa with feather filled cushions and nice bed design with a fabric I chose. Friendly service. Recommended. Thank you Yusuf",
+            "name": "Ali ahmad",
+            "title": ""
+          }
+        },
+        "testimonial_block_8pbePf": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "I'm very satisfied with the quality of furniture. Thank you for the wonderful service. We'll surely order again.",
+            "name": "Zubair",
+            "title": ""
+          }
+        },
+        "testimonial_block_3HnxYy": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "The designs were so nice, yusuf was very helpful , thanks for your time, can't wait for my delivery",
+            "name": "Noraiz",
+            "title": ""
+          }
+        },
+        "testimonial_block_ziRYxD": {
+          "type": "testimonial_block",
+          "settings": {
+            "quote": "Beautiful british craftsmanship at it best....got their belgravia sofa, great value for money, fantastic stuffs.......am glad i found them",
+            "name": "Solomon",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_block_r8XY7c",
+        "testimonial_block_T4Cqzn",
+        "testimonial_block_gW8LMb",
+        "testimonial_block_fyVrUK",
+        "testimonial_block_n9kUFY",
+        "testimonial_block_TrJ74z",
+        "testimonial_block_Mq9AAp",
+        "testimonial_block_8pbePf",
+        "testimonial_block_3HnxYy",
+        "testimonial_block_ziRYxD"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "section_image": "shopify://shop_images/image_39_5dd3f741-eab0-468c-b4d8-176eb44ccbd0.png",
+        "heading": "Testimonials",
+        "rating_logo": "shopify://shop_images/Google__G__logo_svg.webp",
+        "rating_score": "5.0",
+        "reviews_link": ""
+      }
+    },
+    "faq_accordion_K7hi9h": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_item_8mb34K": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What services does Honeypot Furniture offer?",
+            "answer": "<p><em>We offer a complete, end-to-end service for a stress-free experience:</em></p><p><em>* Bespoke Design: Full customisation of dimensions, style, and comfort (Feather/Foam).</em></p><p><em>* Complimentary Design Consultation: Expert advice on sizing, layout, and fabric choice for your space.</em></p><p><em>* Free Fabric Swatches: Sample any fabric in your own home before you order.</em></p><p><em>* White-Glove Delivery & Assembly: Professional delivery and installation to your room of choice, completely free of charge.</em></p><p><em>* Warranty: Dedicated customer support and comprehensive warranty coverage for peace of mind.</em></p>"
+          }
+        },
+        "faq_item_UTqW63": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do your products come with a warranty?",
+            "answer": "<p><em>Yes, quality is guaranteed. We stand behind the craftsmanship of every piece. Please refer toour </em><a href=\"https://honeypotfurniture.ae/pages/terms-and-conditions\" title=\"https://honeypotfurniture.ae/pages/terms-and-conditions \">https://honeypotfurniture.ae/pages/terms-and-conditions </a><em>for details on coverage for the frame and components.</em></p>"
+          }
+        },
+        "faq_item_qG4a64": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is FibreGuard?",
+            "answer": "<p><em>Our best protection! FibreGuard is an advanced fabric technology used in our Performance range. It makes the upholstery stain-resistant, scratch-resistant, and incredibly easy to clean. It’s ideal for busy families and pet owners.</em></p>"
+          }
+        },
+        "faq_item_3UkCqy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I care for my cushions, Feather or Foam?",
+            "answer": "<p>Minimal effort required! Feather cushions require occasional plumping (a quick fluff) to maintain their cloud-like loft. Foam cushions are low-maintenance and hold their structured shape with ease.</p>"
+          }
+        },
+        "faq_item_qJANHW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if the furniture doesn't fit through my doorway?",
+            "answer": "<p>We plan for this! We encourage you to check the product dimensions and door/stairway measurements before ordering. If you have concerns, please contact our team for a consultation we often use modular designs to ensure a smooth delivery.Your answer goes here.</p>"
+          }
+        },
+        "faq_item_ztmdDi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer assembly or white-glove delivery?",
+            "answer": "<p>Your answer goeYes, complimentary White-Glove Service! Our dedicated team will carefully deliver your new furniture to your room of choice, unpack it, and complete any necessary assembly.s here.</p>"
+          }
+        },
+        "faq_item_Wp4ARW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your typical delivery time for custom furniture?",
+            "answer": "<p>Once your order is finalized, our expert artisans get to work. We deliver most custom pieces within 7–14 days within the UAE.</p>"
+          }
+        },
+        "faq_item_R7jzJW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who can use Tabby?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        },
+        "faq_item_XT8Vhw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How accurate are the product colors shown online?",
+            "answer": "<p>We strive for accuracy. We take professional photos, but colors can vary slightly based on screen settings. For complete peace of mind, please order a free swatch</p>"
+          }
+        },
+        "faq_item_p3PDmp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I see the fabrics in person?",
+            "answer": "<p>Yes, we highly recommend it! You can request free Swatches to feel the texture and see the true color of our fabrics in your own home's light, ensuring you make the perfect choice.</p>"
+          }
+        },
+        "faq_item_taVE3H": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the custom design process work?",
+            "answer": "<p>We make it easy in just 6 steps! You start with your preferred style, select the perfect dimensions, choose your filling Feather or Foam, select from our vast fabric library, and wetake care of the rest. View our <a href=\"https://honeypotfurniture.ae/pages/custom-sofa\" title=\"https://honeypotfurniture.ae/pages/custom-sofa\">https://honeypotfurniture.ae/pages/custom-sofa </a> for a full breakdown.</p>"
+          }
+        },
+        "faq_item_BnQpgd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I customise the size of my sofa or bed?",
+            "answer": "<p><em>Absolutely! Customization is at the heart of the Honeypot experience. You can tailor nearly every element, from precise length and depth to armrest width and back height, to ensure a perfect fit for your space.</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_8mb34K",
+        "faq_item_UTqW63",
+        "faq_item_qG4a64",
+        "faq_item_3UkCqy",
+        "faq_item_qJANHW",
+        "faq_item_ztmdDi",
+        "faq_item_Wp4ARW",
+        "faq_item_R7jzJW",
+        "faq_item_XT8Vhw",
+        "faq_item_p3PDmp",
+        "faq_item_taVE3H",
+        "faq_item_BnQpgd"
+      ],
+      "name": "FAQ Accordion",
+      "settings": {
+        "title": "FAQS",
+        "accordion_border_style": "thin_line",
+        "accordion_icon": "plus_minus",
+        "title_font_size": 24,
+        "section_padding_top": 40,
+        "section_padding_bottom": 40,
+        "help_center_text": "",
+        "help_center_link": "",
+        "link_alignment": "center",
+        "question_bg_color": "#f2eae2",
+        "question_hover_color": "#efefef",
+        "question_text_color": "#333333",
+        "answer_bg_color": "#ffffff",
+        "answer_text_color": "#666666",
+        "link_color": "#4a90e2"
+      }
     }
   },
   "order": [
     "main",
     "sofa_price_calculator_JtAKFQ",
-    "custom_liquid_T7RRLB"
+    "custom_liquid_T7RRLB",
+    "why_honeypot_TkJmgK",
+    "custom_sofa_steps_iKttc3",
+    "love_it_now_pay_later_6rhnDF",
+    "testimonials_3qCQV7",
+    "faq_accordion_K7hi9h"
   ]
 }

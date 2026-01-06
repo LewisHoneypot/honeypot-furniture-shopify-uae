@@ -77,7 +77,7 @@
   background-color: #eae6e3;
   border-color: #cead8e;
   padding: 7px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .section-title {
@@ -93,15 +93,24 @@
 
 #get-estimate .length-field {
   max-width: 384px;
-  margin-bottom: 50px;
+  margin-bottom: 13px;
 }
 
-#get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
+#get-estimate
+  > div:nth-child(3)
+  > div.row.options-2
+  > div:first-child
+  > div.title {
   margin-top: 190px;
 }
 
 @media screen and (min-width: 768px) {
-  #get-estimate .options-2 .title, #get-estimate > div:nth-child(3) > div.row.options-2 > div:first-child > div.title {
+  #get-estimate .options-2 .title,
+  #get-estimate
+    > div:nth-child(3)
+    > div.row.options-2
+    > div:first-child
+    > div.title {
     margin-top: 143px;
   }
   #get-estimate .options-3 .title {
@@ -300,6 +309,7 @@
   font-size: 9.4px;
   text-align: start;
   padding-left: 20px;
+  margin-top: 8px;
   margin-bottom: 0;
   font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -482,7 +492,6 @@
 }
 
 #get-estimate .options-4 .option-price {
-  font-size: 2rem;
   margin-bottom: 0.5rem;
   padding-top: 10px;
 }
@@ -495,9 +504,12 @@
   color: #000;
   text-align: start;
   font-size: 9.4px;
+  font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center; /* vertical alignment */
 }
 
-@media screen and (min-width:720px) {
+@media screen and (min-width: 720px) {
   #get-estimate .options-4 .filling-description {
     font-size: 14px;
   }

@@ -1590,6 +1590,10 @@
                     <a href="{{ link.url }}" class="header__menu-item menu-lv-1 d-flex a-i-center c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset"{% if link.current %} aria-current="page"{% endif %}>
                       <span class="link-style">{{ link.title | escape }}</span>
                     </a>
+                  {%- elsif link.title == "Shop Beds" -%}
+                    <a href="{{ link.url }}" class="header__menu-item menu-lv-1 d-flex a-i-center c-pointer pos-relative link {{ section.settings.link_type | prepend: "link--style-" }} u-none color-foreground focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                      <span class="link-style">{{ link.title | escape }}</span>
+                    </a>
                   {%- endif -%}
               </li>
             {%- endif -%}

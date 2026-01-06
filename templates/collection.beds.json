@@ -128,7 +128,7 @@
         "overlay_text_2": "PRE-CHRISTMAS DELIVERY",
         "overlay_text_color_2": "#ffffff",
         "overlay_background_color_2": "#000000",
-        "plp_card_discount_toggle": true,
+        "plp_card_discount_toggle": false,
         "plp_card_discount_text": "20% OFF - You Saved Dhs.",
         "plp_card_discount_font_size": 15,
         "plp_card_discount_color": "#ff0000",
