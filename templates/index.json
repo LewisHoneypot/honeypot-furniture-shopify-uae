@@ -14,6 +14,7 @@
       "blocks": {
         "slide_RxGJri": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image_desktop": "shopify://shop_images/Banner_1_update_2.jpg",
             "image_mobile": "shopify://shop_images/Banner_1_insta_size_2.jpg",
@@ -22,18 +23,6 @@
             "text": "",
             "button_label": "",
             "button_link": ""
-          }
-        },
-        "slide_mHjWC7": {
-          "type": "slide",
-          "settings": {
-            "image_desktop": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
-            "image_mobile": "shopify://shop_images/freepik__enhance__81873_3_1bb8838e-756c-42e9-9dff-86d5100b59b6.jpg",
-            "slide_link": "",
-            "heading": "Invest in Comfort. Experience the Difference.",
-            "text": "",
-            "button_label": "View All",
-            "button_link": "https://honeypotfurniture.ae/collections/made-in-dubai"
           }
         },
         "slide_aNRVXn": {
@@ -47,12 +36,25 @@
             "button_label": "View All",
             "button_link": "shopify://collections"
           }
+        },
+        "slide_mHjWC7": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image_desktop": "shopify://shop_images/New_Year_Banner.webp",
+            "image_mobile": "shopify://shop_images/New_Year_Banner.webp",
+            "slide_link": "",
+            "heading": "Invest in Comfort. Experience the Difference.",
+            "text": "",
+            "button_label": "View All",
+            "button_link": "https://honeypotfurniture.ae/collections/made-in-dubai"
+          }
         }
       },
       "block_order": [
         "slide_RxGJri",
-        "slide_mHjWC7",
-        "slide_aNRVXn"
+        "slide_aNRVXn",
+        "slide_mHjWC7"
       ],
       "custom_css": [
         "h2 {color: white;}",
@@ -173,29 +175,24 @@
         "collection": "delivered-tomorrow"
       }
     },
-    "honeypot_furniture_hFmpif": {
-      "type": "honeypot-furniture",
+    "custom_sofa_CUwUCQ": {
+      "type": "custom-sofa",
       "custom_css": [
-        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100;}",
-        ".honeypot-intro {font-size: 20px; font-style: normal; font-weight: 400;}",
+        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100; padding: 15px 25px;}",
+        ".custom-sofa-description {font-size: 16px;}",
         "p {font-size: 16px;}",
         "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
       ],
-      "name": "Honeypot Furniture",
+      "name": "Custom Sofa Section",
       "settings": {
-        "intro_text": "welcome to",
-        "heading": "Honeypot Furniture",
-        "subheading": "",
-        "paragraph_one": "Designs Made for Your Life.",
-        "paragraph_two": "We deliver custom comfort and lasting quality, without\nthe designer price. Built on 15 years of UK expertise, our\nsofas feature solid wood frames, premium fillings:\nfeather/foam, and beautiful, high-performance fabrics\nincluding FibreGuard. Furniture designed to fit you.",
-        "paragraph_three": "",
-        "paragraph_four": "",
-        "button_label": "",
-        "button_link": "",
-        "image": "shopify://shop_images/DSC01561-1-1-square.jpg",
-        "text_1": "Custom Furniture in 10 days",
-        "text_2": "Free delivery",
-        "text_3": "2 year guarantee"
+        "heading": "Your Custom Sofa Journey",
+        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.\n<br>\nChoose your shape and dimensions.\n\nSelect your comfort level Cloud, Balanced or Support\n\nPick from over 30 fabrics and 150+ colours\n\nAll designed, built, and delivered in as little as 7–14 days.",
+        "button_label": "Know More",
+        "button_link": "shopify://pages/custom-sofa",
+        "image": "shopify://shop_images/DSC00018-1-1-square.jpg",
+        "text_1": "Over 150+ Fabrics & Colours",
+        "text_2": "Book a Free Home Visit",
+        "text_3": "Unlimited Customisation"
       }
     },
     "shop_by_type_w3JNgK": {
@@ -267,24 +264,29 @@
         "heading": "Shop By Type"
       }
     },
-    "custom_sofa_CUwUCQ": {
-      "type": "custom-sofa",
+    "honeypot_furniture_hFmpif": {
+      "type": "honeypot-furniture",
       "custom_css": [
-        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100; padding: 15px 25px;}",
-        ".custom-sofa-description {font-size: 16px;}",
+        ".button {background: transparent; color: #cead8e; border: 1px solid #cead8e; font-weight: 100;}",
+        ".honeypot-intro {font-size: 20px; font-style: normal; font-weight: 400;}",
         "p {font-size: 16px;}",
         "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
       ],
-      "name": "Custom Sofa Section",
+      "name": "Honeypot Furniture",
       "settings": {
-        "heading": "Your Custom Sofa Journey",
-        "description": "Your Design. Your Comfort. Your Way.\n\nFrom style and size to fabric and filling, every\nHoneypot sofa can be customised to You.\n<br>\nChoose your shape and dimensions.\n\nSelect your comfort level Cloud, Balanced or Support\n\nPick from over 30 fabrics and 150+ colours\n\nAll designed, built, and delivered in as little as 7–14 days.",
-        "button_label": "Know More",
-        "button_link": "shopify://pages/custom-sofa",
-        "image": "shopify://shop_images/DSC00018-1-1-square.jpg",
-        "text_1": "Over 150+ Fabrics & Colours",
-        "text_2": "Book a Free Home Visit",
-        "text_3": "Unlimited Customisation"
+        "intro_text": "welcome to",
+        "heading": "Honeypot Furniture",
+        "subheading": "",
+        "paragraph_one": "Designs Made for Your Life.",
+        "paragraph_two": "We deliver custom comfort and lasting quality, without\nthe designer price. Built on 15 years of UK expertise, our\nsofas feature solid wood frames, premium fillings:\nfeather/foam, and beautiful, high-performance fabrics\nincluding FibreGuard. Furniture designed to fit you.",
+        "paragraph_three": "",
+        "paragraph_four": "",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/DSC01561-1-1-square.jpg",
+        "text_1": "Custom Furniture in 10 days",
+        "text_2": "Free delivery",
+        "text_3": "2 year guarantee"
       }
     },
     "new_arrivals_RLBEyT": {
@@ -322,6 +324,7 @@
         "button_link": "shopify://pages/buy-furniture-with-tabby",
         "background_image": "shopify://shop_images/img.jpg",
         "background_color": "#f0e9e3",
+        "show_button_marque": true,
         "text_1": "Eco-friendly fabrics",
         "text_2": "Transparent Pricing Estimator",
         "text_3": "Order Free Swatches"
@@ -848,9 +851,9 @@
     "category_grid_P4k9aG",
     "review_strip_6PQLxP",
     "most_liked_nKAWfC",
-    "honeypot_furniture_hFmpif",
-    "shop_by_type_w3JNgK",
     "custom_sofa_CUwUCQ",
+    "shop_by_type_w3JNgK",
+    "honeypot_furniture_hFmpif",
     "new_arrivals_RLBEyT",
     "love_it_now_pay_later_dkne96",
     "testimonials_t4paTt",
