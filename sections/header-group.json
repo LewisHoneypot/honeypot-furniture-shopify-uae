@@ -246,11 +246,16 @@
         "country_selector_url_2": "https://honeypotfurniture.ae/",
         "country_selector_image_2": "shopify://shop_images/ae.webp"
       }
+    },
+    "custom_mega_menu": {
+      "type": "custom-mega-menu",
+      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
     "b38aad37-e5d6-4a4a-9109-e406344cc53a",
+    "custom_mega_menu",
     "header"
   ]
 }

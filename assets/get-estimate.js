@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const calc = (length, base, extra = 0) => {
       return fillingOption === "performance"
-        ? ceiling((base * (length / 100) + extra * (length / 100)) * 2, 50)
-        : ceiling(base * (length / 100) * 2, 50);
+        ? ceiling((base * (length / 100) + extra * (length / 100)) * 2.2, 50)
+        : ceiling(base * (length / 100) * 2.2, 50);
     };
 
     // Adjust lengths for L and U shapes

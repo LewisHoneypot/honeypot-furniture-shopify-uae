@@ -87,7 +87,6 @@
         "show_author": false,
         "show_tags": false,
         "show_button": true,
-        "button_transparent": "default",
         "text_per_line": "3",
         "text_alignment": "left",
         "title_margin_top": 0,
