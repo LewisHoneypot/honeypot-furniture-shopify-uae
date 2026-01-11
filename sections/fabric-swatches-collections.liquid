@@ -1,0 +1,311 @@
+{{ 'fabric-swatches-collections.css' | asset_url | stylesheet_tag }}
+
+{%- assign fabric_looks = section.blocks | where: "type", "fabric_look" -%}
+{%- assign features = section.blocks | where: "type", "feature" -%}
+
+<div class="fabric-picker">
+
+  <!-- LEFT SIDE - Fabric Looks -->
+  <div>
+    {% for block in fabric_looks %}
+    <div class="fabric-group" {{ block.shopify_attributes }}>
+      <h2>{{ block.settings.title }}</h2>
+      <div class="fabric-grid">
+       {% assign col = block.settings.collection %}
+{% if col != blank and col.products_count > 0 %}
+{% for product in col.products %}
+<div
+  class="fabric-card"
+  data-product-handle="{{ product.handle }}"
+  {% if product.metafields.custom.features_tags != blank %}
+    data-features='{{ product.metafields.custom.features_tags.value | json }}'
+  {% endif %}
+>
+     <img
+        src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}"
+        class="main-fabric-image"
+        alt="{{ product.title }}"
+        loading="lazy"
+      >
+
+      <div class="fabric-title">{{ product.title }}</div>
+
+      <!-- swatches -->
+<div class="color-dots">
+  {% for variant in product.variants %}
+    {% if variant.featured_image %}
+      <div
+        class="swatch-dot {% if forloop.first %}active{% endif %}"
+        style="background-image: url('{{ variant.featured_image | img_url: '100x100', crop: 'center' }}');"
+        data-variant-id="{{ variant.id }}"
+        data-img="{{ variant.featured_image | img_url: '600x600', crop: 'center' }}"
+        data-thumb="{{ variant.featured_image | img_url: '100x100', crop: 'center' }}"
+        title="{{ product.title }} - {{ variant.title }}">
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+
+
+      <div class="fabric-actions">
+        <button class="more-btn"
+          data-product-handle="{{ product.handle }}"
+          data-product-title="{{ product.title }}"
+          data-product-id="{{ product.id }}">
+          More Info
+        </button>
+
+        <button class="add-btn"
+          data-product-id="{{ product.id }}"
+          data-product-handle="{{ product.handle }}"
+          data-product-title="{{ product.title }}"
+          data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          data-product-image="{{ product.featured_image | img_url: '100x100' }}">
+          Add Swatch
+        </button>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+          <!-- Demo Products -->
+          <div class="fabric-card">
+            <div class="main-fabric-image" style="background: #f5f5f5; aspect-ratio: 1/1; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <span style="color: #999;">{{ block.settings.title }} Image 1</span>
+            </div>
+            <div class="fabric-title">
+              {% if block.settings.title == "Linen Look" %}Naturama-05-Sky
+              {% elsif block.settings.title == "Cotton Look" %}Sand
+              {% elsif block.settings.title == "Chenille Look" %}Flake
+              {% elsif block.settings.title == "Suede" %}Truffel
+              {% else %}Product 1{% endif %}
+            </div>
+            <div class="color-dots">
+              <div class="swatch-dot active" 
+                   style="background-color: #87CEEB; background-image: none;"></div>
+              <div class="swatch-dot" 
+                   style="background-color: #483C32; background-image: none;"></div>
+            </div>
+            <div class="fabric-actions">
+              <button class="more-btn" data-demo="true" data-fabric-type="{{ block.settings.title }}">More Info</button>
+              <button class="add-btn" data-demo="true">Add Swatch</button>
+            </div>
+          </div>
+          
+          <div class="fabric-card">
+            <div class="main-fabric-image" style="background: #f5f5f5; aspect-ratio: 1/1; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <span style="color: #999;">{{ block.settings.title }} Image 2</span>
+            </div>
+            <div class="fabric-title">
+              {% if block.settings.title == "Linen Look" %}Wisdom-19-Taupe
+              {% elsif block.settings.title == "Cotton Look" %}Natural
+              {% elsif block.settings.title == "Chenille Look" %}Mist
+              {% elsif block.settings.title == "Suede" %}Fresco
+              {% else %}Product 2{% endif %}
+            </div>
+            <div class="color-dots">
+              <div class="swatch-dot active" 
+                   style="background-color: #483C32; background-image: none;"></div>
+              <div class="swatch-dot" 
+                   style="background-color: #87CEEB; background-image: none;"></div>
+            </div>
+            <div class="fabric-actions">
+              <button class="more-btn" data-demo="true" data-fabric-type="{{ block.settings.title }}">More Info</button>
+              <button class="add-btn" data-demo="true">Add Swatch</button>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- RIGHT SIDE - Free Swatches Card -->
+  <aside class="fabric-right">
+    <div class="right-box">
+      <h4>FREE SWATCHES (<span id="count">0</span>/4)</h4>
+      <p style="color: #666; font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+        Select your free switches from the left hand side and we will send you them for free.
+      </p>
+      
+      <div class="selected-list" id="selected">
+        <div style="text-align: center; color: #999; font-style: italic; padding: 40px 0;">
+          No swatches selected yet
+        </div>
+      </div>
+      
+      <div class="remaining_main">
+        <div class="remaining-box">+<span id="remain">4</span></div>
+      
+      <p style="text-align: center; color: #666; font-size: 14px; margin-bottom: 20px;">
+        You can add <span id="remaining-text">4</span> more free switches
+      </p>
+      </div>
+      
+      <button class="order-btn" disabled>ORDER NOW FOR FREE</button>
+      
+      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:15px;">
+  <img src="{{ 'truck.png' | asset_url }}" alt="Delivery" style="width:20px; height:20px;">
+  <p style="margin:0; color:#666; font-size:13px;">Delivered within 7-10 days</p>
+</div>
+
+
+    </div>
+  </aside>
+
+</div>
+
+<!-- More Info Popup -->
+<div class="more-info-popup" id="more-info-popup">
+  <div class="popup-overlay"></div>
+  <div class="popup-content">
+    <button class="close-popup">&times;</button>
+    
+    <div class="popup-body">
+      <!-- Left Side - Product Image -->
+      <div class="popup-image-container">
+        <img id="popup-product-image" src="" alt="">
+      </div>
+      
+      <!-- Right Side - Product Info -->
+      <div class="popup-info-container">
+        <!-- Product Title -->
+        <h1 class="popup-product-title" id="popup-product-title">Product Title</h1>
+        
+        <!-- Swatches under title -->
+        <div class="popup-swatches-container">
+          <h3>Select Colour</h3>
+          <div class="popup-swatches" id="popup-swatches">
+            <!-- Swatches will be added here -->
+          </div>
+        </div>
+        
+        <!-- Material Info -->
+        <div class="popup-material-info" id="popup-material-info">
+          <p>Material information will appear here</p>
+        </div>
+        
+        <!-- Features with checkmark -->
+        <div class="popup-features-container">
+          <div class="popup-features-grid" id="popup-features-grid">
+            <!-- Features will be loaded here -->
+          </div>
+        </div>
+        
+        <!-- Add Swatch Button -->
+        
+      </div>
+    </div>
+    <button class="popup-add-btn" id="popup-add-btn">ADD SWATCH</button>
+  </div>
+</div>
+{{ 'fabric-swatches.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "🎨 Fabric Swatches Picker",
+  "tag": "section",
+  "class": "fabric-swatches-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Free Fabric Swatches"
+    },
+    {
+      "type": "text",
+      "id": "default_material",
+      "label": "Default Material Info",
+      "default": "Recycled Polyester & Organic Cotton"
+    }
+  ],
+  "max_blocks": 20,
+  "blocks": [
+    {
+      "type": "fabric_look",
+      "name": "🧵 Fabric Look",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Fabric Look Title",
+          "default": "Linen Look"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection",
+          "info": "Choose a collection with products for this fabric look"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "⭐ Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Feature Name",
+          "default": "Water Repellant"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Feature Value",
+          "default": "Water Repellant",
+          "info": "Display text for this feature"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "🎨 Fabric Swatches Picker",
+      "category": "Product",
+      "blocks": [
+        {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Linen Look"
+          }
+        },
+        {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Cotton Look"
+          }
+        },
+        {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Chenille Look"
+          }
+        },
+        {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Suede"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "name": "Water Repellant",
+            "value": "Water Repellant"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "name": "Moisture Barrier",
+            "value": "Moisture Barrier"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

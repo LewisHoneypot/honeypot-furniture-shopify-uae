@@ -1,0 +1,293 @@
+<section
+  class="fabric-swatches"
+  style="
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="fabric-swatches__container">
+    
+    <!-- LEFT CONTENT -->
+    <div class="fabric-swatches__content">
+      <h2 class="fabric-swatches__heading">
+        {{ section.settings.heading }}
+      </h2>
+
+      <p class="fabric-swatches__description">
+        {{ section.settings.description }}
+      </p>
+
+      <div class="fabric-swatches__features">
+        {% for block in section.blocks %}
+          <div class="fabric-swatches__feature" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <img
+                src="{{ block.settings.icon | image_url: width: 100 }}"
+                alt=""
+                class="fabric-swatches__icon"
+              >
+            {% endif %}
+            <span class="fabric-swatches__feature-text">{{ block.settings.text }}</span>
+          </div>
+          
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="fabric-swatches__image-wrapper">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 800 }}"
+          alt="Fabric swatches"
+          class="fabric-swatches__image"
+        >
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+.fabric-swatches {
+  width: 100%;
+}
+
+.fabric-swatches__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 200px;
+  align-items: center;
+}
+
+.fabric-swatches__heading {
+  font-size: 50px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: {{ section.settings.heading_color }};
+}
+
+.fabric-swatches__description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: {{ section.settings.text_color }};
+  margin-bottom: 32px;
+}
+
+.fabric-swatches__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid #6E6E6E;
+}
+
+.fabric-swatches__feature {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 12px;
+  font-size: 14px;
+  color: {{ section.settings.text_color }};
+  text-align: center;
+  position: relative;
+}
+
+/* CENTER DIVIDER LINE */
+.fabric-swatches__feature {
+  position: relative;
+}
+
+.fabric-swatches__feature:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60px;
+  background-color: #6E6E6E;
+}
+
+.fabric-swatches__icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.fabric-swatches__image-wrapper {
+  text-align: right;
+}
+
+.fabric-swatches__image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .fabric-swatches { padding-top: 40px !important; padding-bottom: 40px !important; }
+  .fabric-swatches__container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    gap: 0;
+  }
+  .fabric-swatches__content { 
+    display: contents; 
+    text-align: left; 
+  }
+  .fabric-swatches__heading {
+    order: 1;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+  }
+  .fabric-swatches__description {
+    order: 2;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  .fabric-swatches__image-wrapper {
+    order: 3;
+    margin: 20px 0 60px 0;
+    text-align: center;
+  }
+  .fabric-swatches__image {
+     width: 90%;
+     filter: drop-shadow(0 50px 40px rgba(0,0,0,0.2));
+  }
+  .fabric-swatches__features {
+    order: 4;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid #6E6E6E;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .fabric-swatches__feature {
+    padding: 15px 5px;
+    flex-direction: column;
+    gap: 12px;
+    border: none !important;
+  }
+  .fabric-swatches__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .fabric-swatches__feature-text {
+    font-size: 10px;
+    line-height: 1.2;
+    color: #333;
+  }
+  .fabric-swatches__feature:not(:last-child)::after {
+    height: 40px;
+    background-color: #6E6E6E;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Free Fabric Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "GET YOUR FREE FABRIC SWATCHES"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Our free swatch service lets you request up to 4 swatches at a time, allowing you to feel the texture and see the true colour in your space before making a decision."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f5efe9"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Feature Border Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Free Fabric Hero",
+      "blocks": [
+        { "type": "feature" },
+        { "type": "feature" },
+        { "type": "feature" }
+      ]
+    }
+  ]
+}
+{% endschema %}
