@@ -81,28 +81,28 @@
           "type": "fabric_look",
           "settings": {
             "title": "Linen Look",
-            "collection": ""
+            "collection": "linen-look"
           }
         },
         "fabric_look_aJetXz": {
           "type": "fabric_look",
           "settings": {
             "title": "Cotton Look",
-            "collection": ""
+            "collection": "cotton-look"
           }
         },
         "fabric_look_7Wpr7h": {
           "type": "fabric_look",
           "settings": {
             "title": "Chenille Look",
-            "collection": ""
+            "collection": "chenille"
           }
         },
         "fabric_look_RerT8M": {
           "type": "fabric_look",
           "settings": {
             "title": "Suede",
-            "collection": ""
+            "collection": "suede"
           }
         },
         "feature_KCYCEQ": {
