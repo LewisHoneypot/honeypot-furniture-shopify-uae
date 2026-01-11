@@ -104,29 +104,13 @@
             "title": "Suede",
             "collection": "suede"
           }
-        },
-        "feature_KCYCEQ": {
-          "type": "feature",
-          "settings": {
-            "name": "Water Repellant",
-            "value": "Water Repellant"
-          }
-        },
-        "feature_e8P9pU": {
-          "type": "feature",
-          "settings": {
-            "name": "Moisture Barrier",
-            "value": "Moisture Barrier"
-          }
         }
       },
       "block_order": [
         "fabric_look_WjbjY9",
         "fabric_look_aJetXz",
         "fabric_look_7Wpr7h",
-        "fabric_look_RerT8M",
-        "feature_KCYCEQ",
-        "feature_e8P9pU"
+        "fabric_look_RerT8M"
       ],
       "name": "🎨 Fabric Swatches Picker",
       "settings": {
