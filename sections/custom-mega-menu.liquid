@@ -96,6 +96,33 @@
           "label": "Link Url"
         }
       ]
+    },
+    {
+      "type": "sidebar_section",
+      "name": "Sidebar Section (Shop By)",
+      "settings": [
+        {
+          "type": "select",
+          "id": "tab",
+          "label": "Assign to Tab",
+          "options": [
+            { "value": "products", "label": "Shop Products" },
+            { "value": "custom", "label": "Shop Custom" }
+          ],
+          "default": "products"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "info": "e.g. 'Shop Sofa By:'"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu"
+        }
+      ]
     }
   ],
   "presets": [
@@ -505,9 +532,6 @@
               <button class="cmm-m-back" onclick="closeMobileLevel()">
                   {% render 'icon-arrow' %}
               </button>
-              <span>Shop Products</span>
-          </div>
-          <ul class="cmm-m-list">
               {% assign mobile_products = section.settings.mobile_menu_products | default: section.settings.menu_products %}
               {% if mobile_products != blank %}
                   <li class="cmm-m-item">
@@ -532,6 +556,27 @@
                   <li class="cmm-m-item"><a href="#" class="cmm-m-sub-link">Next Day Delivery</a></li>
                   <li class="cmm-m-item"><a href="#" class="cmm-m-sub-link">Clearance</a></li>
               {% endif %}
+
+              {% for block in section.blocks %}
+                {% if block.type == 'sidebar_section' and block.settings.tab == 'products' %}
+                    {% if block.settings.title != blank %}
+                        <li class="cmm-m-item cmm-m-header" style="background:#f9f9f9; min-height:40px; border-bottom:1px solid #eee; display:flex; align-items:center; padding: 0 20px;"><span>{{ block.settings.title }}</span></li>
+                    {% endif %}
+                    {% if block.settings.menu != blank %}
+                        {% for link in linklists[block.settings.menu].links %}
+                            <li class="cmm-m-item">
+                                {% if link.links != blank %}
+                                    <div class="cmm-m-link" onclick="openMobileLevel('m-view-{{ link.title | handle }}')">
+                                        {{ link.title }} <span class="cmm-m-caret">{% render 'icon-caret' %}</span>
+                                    </div>
+                                {% else %}
+                                    <a href="{{ link.url }}" class="cmm-m-sub-link">{{ link.title }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+              {% endfor %}
           </ul>
       </div>
 
@@ -559,6 +604,27 @@
                   <li class="cmm-m-item"><a href="#" class="cmm-m-sub-link">Custom Beds</a></li>
                   <li class="cmm-m-item"><a href="#" class="cmm-m-sub-link">Instant Estimate</a></li>
               {% endif %}
+
+              {% for block in section.blocks %}
+                {% if block.type == 'sidebar_section' and block.settings.tab == 'custom' %}
+                    {% if block.settings.title != blank %}
+                        <li class="cmm-m-item cmm-m-header" style="background:#f9f9f9; min-height:40px; border-bottom:1px solid #eee; display:flex; align-items:center; padding: 0 20px;"><span>{{ block.settings.title }}</span></li>
+                    {% endif %}
+                    {% if block.settings.menu != blank %}
+                        {% for link in linklists[block.settings.menu].links %}
+                            <li class="cmm-m-item">
+                                {% if link.links != blank %}
+                                    <div class="cmm-m-link" onclick="openMobileLevel('m-view-{{ link.title | handle }}')">
+                                        {{ link.title }} <span class="cmm-m-caret">{% render 'icon-caret' %}</span>
+                                    </div>
+                                {% else %}
+                                    <a href="{{ link.url }}" class="cmm-m-sub-link">{{ link.title }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+              {% endfor %}
           </ul>
       </div>
 
@@ -598,21 +664,40 @@
       </div>
 
        <!-- DYNAMIC LEVEL 3: Generate automatically for dynamic menus -->
-       {% if mobile_products != blank %}
-            {% for link in linklists[mobile_products].links %}
-                 {% if link.links != blank %}
-                    <div class="cmm-m-view" id="view-{{ link.handle }}">
-                        <div class="cmm-m-header"> <button class="cmm-m-back" onclick="closeMobileLevel()">{% render 'icon-arrow' %}</button> <span>{{ link.title }}</span> </div>
-                        <ul class="cmm-m-list">
-                            <li><a href="{{ link.url }}" class="cmm-m-sub-link cmm-m-goto">Go to {{ link.title }}</a></li>
-                            {% for child in link.links %}
-                                <li><a href="{{ child.url }}" class="cmm-m-sub-link">{{ child.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                 {% endif %}
-            {% endfor %}
-       {% endif %}
+        {% if mobile_products != blank %}
+             {% for link in linklists[mobile_products].links %}
+                  {% if link.links != blank %}
+                     <div class="cmm-m-view" id="view-{{ link.handle }}">
+                         <div class="cmm-m-header"> <button class="cmm-m-back" onclick="closeMobileLevel()">{% render 'icon-arrow' %}</button> <span>{{ link.title }}</span> </div>
+                         <ul class="cmm-m-list">
+                             <li><a href="{{ link.url }}" class="cmm-m-sub-link cmm-m-goto">Go to {{ link.title }}</a></li>
+                             {% for child in link.links %}
+                                 <li><a href="{{ child.url }}" class="cmm-m-sub-link">{{ child.title }}</a></li>
+                             {% endfor %}
+                         </ul>
+                     </div>
+                  {% endif %}
+             {% endfor %}
+        {% endif %}
+
+        <!-- SECTION-DRIVEN LEVEL 3: Sidebar Blocks -->
+        {% for block in section.blocks %}
+             {% if block.type == 'sidebar_section' and block.settings.menu != blank %}
+                 {% for link in linklists[block.settings.menu].links %}
+                     {% if link.links != blank %}
+                         <div class="cmm-m-view" id="m-view-{{ link.title | handle }}">
+                             <div class="cmm-m-header"> <button class="cmm-m-back" onclick="closeMobileLevel()">{% render 'icon-arrow' %}</button> <span>{{ link.title }}</span> </div>
+                             <ul class="cmm-m-list">
+                                 <li><a href="{{ link.url }}" class="cmm-m-sub-link cmm-m-goto">Go to {{ link.title }}</a></li>
+                                 {% for child in link.links %}
+                                     <li><a href="{{ child.url }}" class="cmm-m-sub-link">{{ child.title }}</a></li>
+                                 {% endfor %}
+                             </ul>
+                         </div>
+                     {% endif %}
+                 {% endfor %}
+             {% endif %}
+        {% endfor %}
 
   </div>
 
@@ -685,97 +770,30 @@
         <!-- 1. Left Sidebar -->
         <div class="cmm-sidebar">
             {% if section.settings.menu_products != blank %}
-                 {% for link in linklists[section.settings.menu_products].links %}
-                    <div class="cmm-sidebar-link" data-handle="{{ link.title | handle }}">
-                        {{ link.title }} <span>&#10095;</span>
-                    </div>
-                 {% endfor %}
-            {% else %}
-                <div class="cmm-sidebar-link" data-handle="sofas">Sofas <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="beds">Beds <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="accessories">Accessories <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="next-day">Next Day Delivery</div>
-                <div class="cmm-sidebar-link" data-handle="clearance">clearance</div>
-                
-                <span class="cmm-group-title">Shop Sofa By:</span>
-                <div class="cmm-sidebar-link" data-handle="type">Type <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="filling">Filling <span>&#10095;</span></div>
-
-                <span class="cmm-group-title">Shop Accessories By:</span>
-                <div class="cmm-sidebar-link" data-handle="acc-type">Type <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="material">Material <span>&#10095;</span></div>
-
-                <span class="cmm-group-title">Shop By Delivery:</span>
-                <div class="cmm-sidebar-link" data-handle="instock">In stock, Delivered Tomorrow</div>
-                <div class="cmm-sidebar-link" data-handle="custom-del">Custom, Delivered In 14 Days</div>
-                
-                <span class="cmm-group-title">Shop By Collection:</span>
-                <div class="cmm-sidebar-link" data-handle="coll-custom">Completely Customisable</div>
-                <div class="cmm-sidebar-link" data-handle="coll-fabric">Customisable Fabric</div>
-                <div class="cmm-sidebar-link" data-handle="new">New Arrivals</div>
                 <div class="cmm-sidebar-link" data-handle="best">Best Sellers</div>
                 <div class="cmm-sidebar-link" data-handle="feather">The Feather Cloud Collection</div>
             {% endif %}
+
+            {% for block in section.blocks %}
+              {% if block.type == 'sidebar_section' and block.settings.tab == 'products' %}
+                {% if block.settings.title != blank %}
+                  <span class="cmm-group-title">{{ block.settings.title }}</span>
+                {% endif %}
+                {% if block.settings.menu != blank %}
+                  {% for link in linklists[block.settings.menu].links %}
+                    <div class="cmm-sidebar-link" data-handle="{{ link.title | handle }}">
+                        {{ link.title }} {% if link.links != blank %}<span>&#10095;</span>{% endif %}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
         </div>
 
         <!-- 2. Middle Panel -->
         <div class="cmm-col-middle">
             {% if section.settings.menu_products != blank %}
-                 {% for link in linklists[section.settings.menu_products].links %}
-                    <div class="cmm-submenu-panel" id="panel-{{ link.title | handle }}">
-                        <span class="cmm-sub-heading">{{ link.title }}</span>
-                        <ul class="cmm-sub-list">
-                            {% for child in link.links %}
-                                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                 {% endfor %}
-            {% else %}
-                <!-- Hardcoded Content Panels -->
-                
-                <!-- Sofas -->
-                <div class="cmm-submenu-panel" id="panel-sofas">
-                    <span class="cmm-sub-heading">Sofas</span>
-                    <ul class="cmm-sub-list">
-                        <li><a href="#">All Sofas</a></li>
-                        <li><a href="#">Customisable Sofas</a></li>
-                        <li><a href="#">Corner Sofas</a></li>
-                        <li><a href="#">Modular Sofas</a></li>
-                        <li><a href="#">Sofa Beds</a></li>
-                        <li><a href="#">Recliner Sofas</a></li>
-                        <li><a href="#">Curved Sofas</a></li>
-                        <li><a href="#">4 Seater Sofas</a></li>
-                        <li><a href="#">3 Seater Sofas</a></li>
-                        <li><a href="#">2 Seater Sofas</a></li>
-                        <li><a href="#">Armchairs</a></li>
-                        <li><a href="#">Accent Chairs</a></li>
-                        <li><a href="#">Ottoman Footstool</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Beds -->
-                <div class="cmm-submenu-panel" id="panel-beds">
-                    <span class="cmm-sub-heading">Beds</span>
-                    <ul class="cmm-sub-list">
-                        <li><a href="#">All Beds</a></li>
-                        <li><a href="#">Storage Beds</a></li>
-                        <li><a href="#">Divan Beds</a></li>
-                        <li><a href="#">Bed Frames</a></li>
-                    </ul>
-                </div>
-
-                <!-- Accessories -->
-                <div class="cmm-submenu-panel" id="panel-accessories">
-                    <span class="cmm-sub-heading">Accessories</span>
-                    <ul class="cmm-sub-list">
-                        <li><a href="#">All Accessories</a></li>
-                        <li><a href="#">Dining Tables</a></li>
-                        <li><a href="#">Coffee Tables</a></li>
-                        <li><a href="#">Side Tables</a></li>
-                        <li><a href="#">Rugs</a></li>
-                        <li><a href="#">Mirrors</a></li>
-                    </ul>
+                     </ul>
                 </div>
                 
                 <!-- Generic Fallback for others to prevent empty space -->
@@ -787,6 +805,26 @@
                     </ul>
                 </div>
             {% endif %}
+
+            {% for block in section.blocks %}
+              {% if block.type == 'sidebar_section' and block.settings.tab == 'products' %}
+                {% if block.settings.menu != blank %}
+                  {% for link in linklists[block.settings.menu].links %}
+                    {% if link.links != blank %}
+                      <div class="cmm-submenu-panel" id="panel-{{ link.title | handle }}">
+                          <span class="cmm-sub-heading">{{ link.title }}</span>
+                          <ul class="cmm-sub-list">
+                              {% for child in link.links %}
+                                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+        </div>
         </div>
 
         <!-- 3. Right Promo -->
@@ -804,58 +842,53 @@
          <!-- Sidebar -->
          <div class="cmm-sidebar">
             {% if section.settings.menu_custom != blank %}
-                {% for link in linklists[section.settings.menu_custom].links %}
-                    <div class="cmm-sidebar-link" data-handle="{{ link.title | handle }}">
-                        {{ link.title }} <span>&#10095;</span>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <div class="cmm-sidebar-link" data-handle="custom-sofas">Custom Sofas <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="custom-beds">Custom Beds <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="instant">Instant Estimate <span>&#10095;</span></div>
-                <div class="cmm-sidebar-link" data-handle="swatches">Free Fabric Swatches</div>
-                <div class="cmm-sidebar-link" data-handle="inspiration">Send Your Inspiration</div>
-                <span class="cmm-group-title">Info</span>
-                <div class="cmm-sidebar-link" data-handle="about">About Us</div>
-                <div class="cmm-sidebar-link" data-handle="tabby">Tabby Pay In Four</div>
-                <div class="cmm-sidebar-link" data-handle="tamara">Tamara Pay In Three</div>
-                <div class="cmm-sidebar-link" data-handle="delivery">Delivery</div>
-                <div class="cmm-sidebar-link" data-handle="returns">Returns Policy</div>
                 <div class="cmm-sidebar-link" data-handle="contact">Contact Us</div>
             {% endif %}
+
+            {% for block in section.blocks %}
+              {% if block.type == 'sidebar_section' and block.settings.tab == 'custom' %}
+                {% if block.settings.title != blank %}
+                  <span class="cmm-group-title">{{ block.settings.title }}</span>
+                {% endif %}
+                {% if block.settings.menu != blank %}
+                  {% for link in linklists[block.settings.menu].links %}
+                    <div class="cmm-sidebar-link" data-handle="{{ link.title | handle }}">
+                        {{ link.title }} {% if link.links != blank %}<span>&#10095;</span>{% endif %}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+         </div>
          </div>
 
          <!-- Panel -->
          <div class="cmm-col-middle">
             {% if section.settings.menu_custom != blank %}
-                 {% for link in linklists[section.settings.menu_custom].links %}
-                    <div class="cmm-submenu-panel" id="panel-{{ link.title | handle }}">
-                        <span class="cmm-sub-heading">{{ link.title }}</span>
-                         <ul class="cmm-sub-list">
-                            {% for child in link.links %}
-                                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                 {% endfor %}
-            {% else %}
-                <div class="cmm-submenu-panel" id="panel-custom-sofas">
-                    <span class="cmm-sub-heading">Custom Sofas</span>
-                    <ul class="cmm-sub-list">
-                        <li><a href="#">Customisable Sofas</a></li>
-                        <li><a href="#">Custom Sofa Journey</a></li>
-                        <li><a href="#">Custom Sofa Estimator</a></li>
-                    </ul>
-                </div>
-                 <div class="cmm-submenu-panel" id="panel-custom-beds">
-                    <span class="cmm-sub-heading">Custom Beds</span>
-                    <ul class="cmm-sub-list">
-                        <li><a href="#">Customisable Beds</a></li>
-                        <li><a href="#">Custom Bed Journey</a></li>
-                        <li><a href="#">Custom Bed Estimator</a></li>
+                         <li><a href="#">Custom Bed Estimator</a></li>
                     </ul>
                 </div>
             {% endif %}
+
+            {% for block in section.blocks %}
+              {% if block.type == 'sidebar_section' and block.settings.tab == 'custom' %}
+                {% if block.settings.menu != blank %}
+                  {% for link in linklists[block.settings.menu].links %}
+                    {% if link.links != blank %}
+                      <div class="cmm-submenu-panel" id="panel-{{ link.title | handle }}">
+                          <span class="cmm-sub-heading">{{ link.title }}</span>
+                          <ul class="cmm-sub-list">
+                              {% for child in link.links %}
+                                  <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+         </div>
          </div>
          
          <div class="cmm-promo-panel active"><div class="cmm-promo-empty"></div></div>
