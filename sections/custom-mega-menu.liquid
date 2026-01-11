@@ -532,6 +532,9 @@
               <button class="cmm-m-back" onclick="closeMobileLevel()">
                   {% render 'icon-arrow' %}
               </button>
+              <span>Shop Products</span>
+          </div>
+          <ul class="cmm-m-list">
               {% assign mobile_products = section.settings.mobile_menu_products | default: section.settings.menu_products %}
               {% if mobile_products != blank %}
                   <li class="cmm-m-item">
