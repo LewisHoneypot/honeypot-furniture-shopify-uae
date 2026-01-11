@@ -133,29 +133,12 @@
         "section_title": "Free Fabric Swatches",
         "default_material": "Recycled Polyester & Organic Cotton"
       }
-    },
-    "fabric_swatch_form_bhYXKK": {
-      "type": "fabric-swatch-form",
-      "name": "Fabric Swatch Form",
-      "settings": {
-        "heading": "Join The Honeypot Club!",
-        "description": "Sign up for first access to Honeypot’s newest collections, special offers, and member-only moments.",
-        "show_phone": true,
-        "phone_placeholder": "Phone Number",
-        "email_placeholder": "Email",
-        "button_text": "SUBMIT",
-        "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#555555",
-        "button_color": "#d6a27a"
-      }
     }
   },
   "order": [
     "main",
     "custom_liquid_T7RRLB",
     "free_fabric_hero_4VeWk9",
-    "fabric_swatches_collections_WHyG39",
-    "fabric_swatch_form_bhYXKK"
+    "fabric_swatches_collections_WHyG39"
   ]
 }
