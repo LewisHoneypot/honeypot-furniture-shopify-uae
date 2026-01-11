@@ -770,6 +770,34 @@
         <!-- 1. Left Sidebar -->
         <div class="cmm-sidebar">
             {% if section.settings.menu_products != blank %}
+                {% for link in linklists[section.settings.menu_products].links %}
+                    <div class="cmm-sidebar-link" data-handle="{{ link.title | handle }}">
+                        {{ link.title }} {% if link.links != blank %}<span>&#10095;</span>{% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="cmm-sidebar-link" data-handle="sofas">Sofas <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="beds">Beds <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="accessories">Accessories <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="next-day">Next Day Delivery</div>
+                <div class="cmm-sidebar-link" data-handle="clearance">clearance</div>
+                
+                <span class="cmm-group-title">Shop Sofa By:</span>
+                <div class="cmm-sidebar-link" data-handle="type">Type <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="filling">Filling <span>&#10095;</span></div>
+
+                <span class="cmm-group-title">Shop Accessories By:</span>
+                <div class="cmm-sidebar-link" data-handle="acc-type">Type <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="material">Material <span>&#10095;</span></div>
+
+                <span class="cmm-group-title">Shop By Delivery:</span>
+                <div class="cmm-sidebar-link" data-handle="instock">In stock, Delivered Tomorrow</div>
+                <div class="cmm-sidebar-link" data-handle="custom-del">Custom, Delivered In 14 Days</div>
+                
+                <span class="cmm-group-title">Shop By Collection:</span>
+                <div class="cmm-sidebar-link" data-handle="coll-custom">Completely Customisable</div>
+                <div class="cmm-sidebar-link" data-handle="coll-fabric">Customisable Fabric</div>
+                <div class="cmm-sidebar-link" data-handle="new">New Arrivals</div>
                 <div class="cmm-sidebar-link" data-handle="best">Best Sellers</div>
                 <div class="cmm-sidebar-link" data-handle="feather">The Feather Cloud Collection</div>
             {% endif %}
@@ -793,7 +821,63 @@
         <!-- 2. Middle Panel -->
         <div class="cmm-col-middle">
             {% if section.settings.menu_products != blank %}
-                     </ul>
+                 {% for link in linklists[section.settings.menu_products].links %}
+                    {% if link.links != blank %}
+                        <div class="cmm-submenu-panel" id="panel-{{ link.title | handle }}">
+                            <span class="cmm-sub-heading">{{ link.title }}</span>
+                            <ul class="cmm-sub-list">
+                                {% for child in link.links %}
+                                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                 {% endfor %}
+            {% else %}
+                <!-- Hardcoded Content Panels -->
+                
+                <!-- Sofas -->
+                <div class="cmm-submenu-panel" id="panel-sofas">
+                    <span class="cmm-sub-heading">Sofas</span>
+                    <ul class="cmm-sub-list">
+                        <li><a href="#">All Sofas</a></li>
+                        <li><a href="#">Customisable Sofas</a></li>
+                        <li><a href="#">Corner Sofas</a></li>
+                        <li><a href="#">Modular Sofas</a></li>
+                        <li><a href="#">Sofa Beds</a></li>
+                        <li><a href="#">Recliner Sofas</a></li>
+                        <li><a href="#">Curved Sofas</a></li>
+                        <li><a href="#">4 Seater Sofas</a></li>
+                        <li><a href="#">3 Seater Sofas</a></li>
+                        <li><a href="#">2 Seater Sofas</a></li>
+                        <li><a href="#">Armchairs</a></li>
+                        <li><a href="#">Accent Chairs</a></li>
+                        <li><a href="#">Ottoman Footstool</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Beds -->
+                <div class="cmm-submenu-panel" id="panel-beds">
+                    <span class="cmm-sub-heading">Beds</span>
+                    <ul class="cmm-sub-list">
+                        <li><a href="#">All Beds</a></li>
+                        <li><a href="#">Storage Beds</a></li>
+                        <li><a href="#">Divan Beds</a></li>
+                        <li><a href="#">Bed Frames</a></li>
+                    </ul>
+                </div>
+
+                <!-- Accessories -->
+                <div class="cmm-submenu-panel" id="panel-accessories">
+                    <span class="cmm-sub-heading">Accessories</span>
+                    <ul class="cmm-sub-list">
+                        <li><a href="#">All Accessories</a></li>
+                        <li><a href="#">Dining Tables</a></li>
+                        <li><a href="#">Coffee Tables</a></li>
+                        <li><a href="#">Side Tables</a></li>
+                        <li><a href="#">Rugs</a></li>
+                        <li><a href="#">Mirrors</a></li>
+                    </ul>
                 </div>
                 
                 <!-- Generic Fallback for others to prevent empty space -->
@@ -825,7 +909,6 @@
               {% endif %}
             {% endfor %}
         </div>
-        </div>
 
         <!-- 3. Right Promo -->
         <div class="cmm-promo-panel active">
@@ -842,6 +925,23 @@
          <!-- Sidebar -->
          <div class="cmm-sidebar">
             {% if section.settings.menu_custom != blank %}
+                {% for link in linklists[section.settings.menu_custom].links %}
+                    <div class="cmm-sidebar-link" data-handle="{{ link.title | handle }}">
+                        {{ link.title }} {% if link.links != blank %}<span>&#10095;</span>{% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="cmm-sidebar-link" data-handle="custom-sofas">Custom Sofas <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="custom-beds">Custom Beds <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="instant">Instant Estimate <span>&#10095;</span></div>
+                <div class="cmm-sidebar-link" data-handle="swatches">Free Fabric Swatches</div>
+                <div class="cmm-sidebar-link" data-handle="inspiration">Send Your Inspiration</div>
+                <span class="cmm-group-title">Info</span>
+                <div class="cmm-sidebar-link" data-handle="about">About Us</div>
+                <div class="cmm-sidebar-link" data-handle="tabby">Tabby Pay In Four</div>
+                <div class="cmm-sidebar-link" data-handle="tamara">Tamara Pay In Three</div>
+                <div class="cmm-sidebar-link" data-handle="delivery">Delivery</div>
+                <div class="cmm-sidebar-link" data-handle="returns">Returns Policy</div>
                 <div class="cmm-sidebar-link" data-handle="contact">Contact Us</div>
             {% endif %}
 
@@ -860,12 +960,37 @@
               {% endif %}
             {% endfor %}
          </div>
-         </div>
 
          <!-- Panel -->
          <div class="cmm-col-middle">
             {% if section.settings.menu_custom != blank %}
-                         <li><a href="#">Custom Bed Estimator</a></li>
+                 {% for link in linklists[section.settings.menu_custom].links %}
+                    {% if link.links != blank %}
+                        <div class="cmm-submenu-panel" id="panel-{{ link.title | handle }}">
+                            <span class="cmm-sub-heading">{{ link.title }}</span>
+                             <ul class="cmm-sub-list">
+                                {% for child in link.links %}
+                                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                 {% endfor %}
+            {% else %}
+                <div class="cmm-submenu-panel" id="panel-custom-sofas">
+                    <span class="cmm-sub-heading">Custom Sofas</span>
+                    <ul class="cmm-sub-list">
+                        <li><a href="#">Customisable Sofas</a></li>
+                        <li><a href="#">Custom Sofa Journey</a></li>
+                        <li><a href="#">Custom Sofa Estimator</a></li>
+                    </ul>
+                </div>
+                 <div class="cmm-submenu-panel" id="panel-custom-beds">
+                    <span class="cmm-sub-heading">Custom Beds</span>
+                    <ul class="cmm-sub-list">
+                        <li><a href="#">Customisable Beds</a></li>
+                        <li><a href="#">Custom Bed Journey</a></li>
+                        <li><a href="#">Custom Bed Estimator</a></li>
                     </ul>
                 </div>
             {% endif %}
@@ -888,7 +1013,6 @@
                 {% endif %}
               {% endif %}
             {% endfor %}
-         </div>
          </div>
          
          <div class="cmm-promo-panel active"><div class="cmm-promo-empty"></div></div>
@@ -998,8 +1122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const activePanels = dropdowns[id].querySelectorAll('.cmm-submenu-panel.active');
             activePanels.forEach(el => el.classList.remove('active'));
             // Reset Middle Column
-             const middleCols = dropdowns[id].querySelectorAll('.cmm-col-middle');
-             middleCols.forEach(el => el.classList.remove('active'));
+            const middleCols = dropdowns[id].querySelectorAll('.cmm-col-middle');
+            middleCols.forEach(el => el.classList.remove('active'));
         }
     }
 
