@@ -74,6 +74,66 @@
         "padding_bottom": 60
       }
     },
+    "fabric_swatches_collections_UJpm8R": {
+      "type": "fabric-swatches-collections",
+      "blocks": {
+        "fabric_look_F88wEL": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Linen Look",
+            "collection": "linen-look"
+          }
+        },
+        "fabric_look_FGDwq7": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Cotton Look",
+            "collection": "cotton-look"
+          }
+        },
+        "fabric_look_4qPJ4R": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Chenille Look",
+            "collection": "chenille"
+          }
+        },
+        "fabric_look_CBfctp": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Suede",
+            "collection": "suede"
+          }
+        },
+        "feature_XDUxbE": {
+          "type": "feature",
+          "settings": {
+            "name": "Water Repellant",
+            "value": "Water Repellant"
+          }
+        },
+        "feature_yAjA8K": {
+          "type": "feature",
+          "settings": {
+            "name": "Moisture Barrier",
+            "value": "Moisture Barrier"
+          }
+        }
+      },
+      "block_order": [
+        "fabric_look_F88wEL",
+        "fabric_look_FGDwq7",
+        "fabric_look_4qPJ4R",
+        "fabric_look_CBfctp",
+        "feature_XDUxbE",
+        "feature_yAjA8K"
+      ],
+      "name": "🎨 Fabric Swatches Picker",
+      "settings": {
+        "section_title": "Free Fabric Swatches",
+        "default_material": "Recycled Polyester & Organic Cotton"
+      }
+    },
     "join_the_honeypot_club_qnTkmF": {
       "type": "join-the-honeypot-club",
       "custom_css": [
@@ -91,6 +151,7 @@
     "main",
     "custom_liquid_T7RRLB",
     "free_fabric_hero_hGajMt",
+    "fabric_swatches_collections_UJpm8R",
     "join_the_honeypot_club_qnTkmF"
   ]
 }
