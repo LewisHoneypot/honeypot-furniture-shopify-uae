@@ -11,9 +11,14 @@
     <div class="fabric-group" {{ block.shopify_attributes }}>
       <h2>{{ block.settings.title }}</h2>
       <div class="fabric-grid">
-       {% assign col = block.settings.collection %}
-{% if col != blank and col.products_count > 0 %}
-{% for product in col.products %}
+        {%- assign col_setting = block.settings.collection -%}
+        {%- if col_setting.title != blank -%}
+          {%- assign col = col_setting -%}
+        {%- else -%}
+          {%- assign col = collections[col_setting] -%}
+        {%- endif -%}
+        {%- if col != blank -%}
+          {%- for product in col.products limit: 20 -%}
 <div
   class="fabric-card"
   data-product-handle="{{ product.handle }}"
@@ -24,27 +29,31 @@
      <img
         src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}"
         class="main-fabric-image"
-        alt="{{ product.title }}"
+        alt="{{ product.title }}{% if product.images.first.alt != blank %}-{{ product.images.first.alt }}{% endif %}"
         loading="lazy"
       >
 
-      <div class="fabric-title">{{ product.title }}</div>
-
-      <!-- swatches -->
-<div class="color-dots">
-  {% for variant in product.variants %}
-    {% if variant.featured_image %}
-      <div
-        class="swatch-dot {% if forloop.first %}active{% endif %}"
-        style="background-image: url('{{ variant.featured_image | img_url: '100x100', crop: 'center' }}');"
-        data-variant-id="{{ variant.id }}"
-        data-img="{{ variant.featured_image | img_url: '600x600', crop: 'center' }}"
-        data-thumb="{{ variant.featured_image | img_url: '100x100', crop: 'center' }}"
-        title="{{ product.title }} - {{ variant.title }}">
+      <div class="fabric-title" data-base-title="{{ product.title | escape }}">
+        {%- assign first_image_url = product.images.first | img_url: '600x600' -%}
+        {%- assign image_filename = first_image_url | split: '/' | last | split: '?' | first -%}
+        {%- assign color_name = image_filename | split: '_' | first | split: '.' | first -%}
+        {{ product.title }}{% if color_name != blank %}-{{ color_name }}{% endif %}
       </div>
-    {% endif %}
-  {% endfor %}
-</div>
+
+      <!-- swatches (From Product Images) -->
+      <div class="color-dots">
+        {% for image in product.images %}
+          <div
+            class="swatch-dot {% if forloop.first %}active{% endif %}"
+            style="background-image: url('{{ image | img_url: '100x100', crop: 'center' }}');"
+            data-variant-id="{{ product.variants.first.id }}"
+            data-img="{{ image | img_url: '600x600', crop: 'center' }}"
+            data-thumb="{{ image | img_url: '100x100', crop: 'center' }}"
+            data-alt="{{ image.alt | escape }}"
+            title="{{ product.title | escape }} - {{ image.alt | escape }}">
+          </div>
+        {% endfor %}
+      </div>
 
 
 
@@ -74,18 +83,24 @@
             <div class="main-fabric-image" style="background: #f5f5f5; aspect-ratio: 1/1; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
               <span style="color: #999;">{{ block.settings.title }} Image 1</span>
             </div>
-            <div class="fabric-title">
+            <div class="fabric-title" data-base-title="{% if block.settings.title == 'Linen Look' %}Naturama{% elsif block.settings.title == 'Cotton Look' %}Sand{% elsif block.settings.title == 'Chenille Look' %}Flake{% elsif block.settings.title == 'Suede' %}Truffel{% else %}Product 1{% endif %}">
               {% if block.settings.title == "Linen Look" %}Naturama-05-Sky
-              {% elsif block.settings.title == "Cotton Look" %}Sand
-              {% elsif block.settings.title == "Chenille Look" %}Flake
-              {% elsif block.settings.title == "Suede" %}Truffel
+              {% elsif block.settings.title == "Cotton Look" %}Sand-Natural
+              {% elsif block.settings.title == "Chenille Look" %}Flake-White
+              {% elsif block.settings.title == "Suede" %}Truffel-Brown
               {% else %}Product 1{% endif %}
             </div>
             <div class="color-dots">
               <div class="swatch-dot active" 
-                   style="background-color: #87CEEB; background-image: none;"></div>
+                   style="background-color: #87CEEB; background-image: none;"
+                   data-alt="05-Sky"
+                   data-img="https://placehold.co/400x400/87CEEB/FFFFFF?text=sky"
+                   data-variant-id="demo-1"></div>
               <div class="swatch-dot" 
-                   style="background-color: #483C32; background-image: none;"></div>
+                   style="background-color: #483C32; background-image: none;"
+                   data-alt="06-Dark"
+                   data-img="https://placehold.co/400x400/483C32/FFFFFF?text=dark"
+                   data-variant-id="demo-2"></div>
             </div>
             <div class="fabric-actions">
               <button class="more-btn" data-demo="true" data-fabric-type="{{ block.settings.title }}">More Info</button>
@@ -97,18 +112,24 @@
             <div class="main-fabric-image" style="background: #f5f5f5; aspect-ratio: 1/1; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
               <span style="color: #999;">{{ block.settings.title }} Image 2</span>
             </div>
-            <div class="fabric-title">
+            <div class="fabric-title" data-base-title="{% if block.settings.title == 'Linen Look' %}Wisdom{% elsif block.settings.title == 'Cotton Look' %}Natural{% elsif block.settings.title == 'Chenille Look' %}Mist{% elsif block.settings.title == 'Suede' %}Fresco{% else %}Product 2{% endif %}">
               {% if block.settings.title == "Linen Look" %}Wisdom-19-Taupe
-              {% elsif block.settings.title == "Cotton Look" %}Natural
-              {% elsif block.settings.title == "Chenille Look" %}Mist
-              {% elsif block.settings.title == "Suede" %}Fresco
+              {% elsif block.settings.title == "Cotton Look" %}Natural-Cream
+              {% elsif block.settings.title == "Chenille Look" %}Mist-Grey
+              {% elsif block.settings.title == "Suede" %}Fresco-Tan
               {% else %}Product 2{% endif %}
             </div>
             <div class="color-dots">
               <div class="swatch-dot active" 
-                   style="background-color: #483C32; background-image: none;"></div>
+                   style="background-color: #483C32; background-image: none;"
+                   data-alt="19-Taupe"
+                   data-img="https://placehold.co/400x400/483C32/FFFFFF?text=taupe"
+                   data-variant-id="demo-3"></div>
               <div class="swatch-dot" 
-                   style="background-color: #87CEEB; background-image: none;"></div>
+                   style="background-color: #87CEEB; background-image: none;"
+                   data-alt="20-Light"
+                   data-img="https://placehold.co/400x400/87CEEB/FFFFFF?text=light"
+                   data-variant-id="demo-4"></div>
             </div>
             <div class="fabric-actions">
               <button class="more-btn" data-demo="true" data-fabric-type="{{ block.settings.title }}">More Info</button>

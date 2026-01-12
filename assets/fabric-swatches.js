@@ -1,7 +1,25 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     const MAX_SWATCHES = 4;
     let selectedSwatches = JSON.parse(localStorage.getItem('fabricSwatches')) || [];
+
+    // MIGRATION: Add colorName to legacy swatches that don't have it
+    let needsMigration = false;
+    selectedSwatches = selectedSwatches.map(swatch => {
+        if (!swatch.colorName && swatch.image) {
+            // Extract color name from image URL
+            const imageName = swatch.image.split('/').pop().split('?')[0];
+            const colorName = imageName.split('_')[0].split('.')[0];
+            needsMigration = true;
+            return { ...swatch, colorName: colorName };
+        }
+        return swatch;
+    });
+
+    // Save migrated data back to localStorage
+    if (needsMigration) {
+        localStorage.setItem('fabricSwatches', JSON.stringify(selectedSwatches));
+        console.log('✅ Migrated legacy swatches with colorName');
+    }
 
     // Initialize
     renderSelected();
@@ -14,16 +32,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
         card.querySelectorAll('.swatch-dot').forEach(dot => {
             dot.addEventListener('click', function () {
+                const altText = (this.getAttribute('data-alt') || '').trim();
+                const thumbUrl = this.getAttribute('data-thumb') || this.dataset.thumb;
+                const imgUrl = this.getAttribute('data-img') || this.dataset.img;
+
+                // Extract image filename from URL
+                const imageName = imgUrl ? imgUrl.split('/').pop().split('?')[0] : 'N/A';
+
+                // Extract color/variant name from filename (e.g., "02-River" from "02-River_600x600_crop_center.jpg")
+                const colorName = imageName.split('_')[0].split('.')[0];
+
+                console.log('=== Swatch Clicked ===');
+                console.log('Image Alt Text:', altText);
+                console.log('Image Name:', imageName);
+                console.log('Color Name:', colorName);
+                console.log('======================');
+
                 // Change main image
                 if (mainImage && mainImage.tagName === 'IMG') {
-                    mainImage.src = this.dataset.img;
+                    const titleEl = card.querySelector('.fabric-title');
+                    const baseTitle = titleEl ? (titleEl.getAttribute('data-base-title') || '').trim() : '';
+
+                    // Use color name from filename for title
+                    const fullTitle = colorName ? `${baseTitle}-${colorName}` : baseTitle;
+
+                    mainImage.src = imgUrl;
+                    mainImage.alt = fullTitle;
+                    mainImage.title = fullTitle;
+
+                    if (titleEl) {
+                        titleEl.textContent = fullTitle;
+                    }
                 }
 
-                // Update add button data
+                // Update add button data - Extract color name from MAIN IMAGE
                 if (addBtn) {
-                    addBtn.dataset.variantId = this.dataset.variantId;
-                    if (this.dataset.thumb) {
-                        addBtn.dataset.productImage = this.dataset.thumb;
+                    // Extract color name from the MAIN image that was just set
+                    const mainImageSrc = mainImage && mainImage.tagName === 'IMG' ? mainImage.src : imgUrl;
+                    const mainImageName = mainImageSrc ? mainImageSrc.split('/').pop().split('?')[0] : '';
+                    const mainColorName = mainImageName.split('_')[0].split('.')[0];
+
+                    addBtn.dataset.variantId = this.dataset.variantId || this.getAttribute('data-variant-id');
+                    addBtn.dataset.altName = altText;
+                    addBtn.dataset.colorName = mainColorName; // Use main image's color name
+                    if (this.dataset.thumb || this.getAttribute('data-thumb')) {
+                        addBtn.dataset.productImage = this.dataset.thumb || this.getAttribute('data-thumb');
                     }
                 }
 
@@ -33,10 +86,15 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Set first swatch as active by default
+        // Set first swatch as active by default and extract its color name
         const firstSwatch = card.querySelector('.swatch-dot');
         if (firstSwatch && addBtn && !addBtn.dataset.variantId) {
+            const imgUrl = firstSwatch.getAttribute('data-img') || firstSwatch.dataset.img;
+            const imageName = imgUrl ? imgUrl.split('/').pop().split('?')[0] : '';
+            const colorName = imageName.split('_')[0].split('.')[0];
+
             addBtn.dataset.variantId = firstSwatch.dataset.variantId;
+            addBtn.dataset.colorName = colorName;
             if (firstSwatch.dataset.thumb) {
                 addBtn.dataset.productImage = firstSwatch.dataset.thumb;
             }
@@ -69,7 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.dataset.productHandle,
                     this.dataset.productTitle,
                     this.dataset.variantId,
-                    this.dataset.productImage || ''
+                    this.dataset.productImage || '',
+                    this.dataset.colorName || ''
                 );
             }
         });
@@ -86,8 +145,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    /* ORDER NOW BUTTON */
-    document.querySelector('.order-btn')?.addEventListener('click', proceedToCheckout);
+    /* ORDER NOW BUTTON - WhatsApp Redirect */
+    document.querySelector('.order-btn')?.addEventListener('click', sendToWhatsApp);
 
     /* SHOW PRODUCT POPUP */
     async function showProductPopup(productHandle, productTitle, productId) {
@@ -290,10 +349,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
-
     /* ADD SWATCH */
-    function addSwatch(productId, productHandle, productTitle, variantId, productImage) {
+    function addSwatch(productId, productHandle, productTitle, variantId, productImage, colorName = '') {
         if (selectedSwatches.length >= MAX_SWATCHES) {
             showNotification(`Maximum ${MAX_SWATCHES} swatches allowed. Please remove some before adding more.`, 'error');
             return;
@@ -316,6 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
             productHandle: productHandle,
             variantId: variantId,
             title: productTitle,
+            colorName: colorName,
             image: productImage || getDemoImage(productTitle),
             addedAt: new Date().toISOString()
         };
@@ -362,10 +420,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let html = '';
         selectedSwatches.forEach((item, index) => {
+            // Fallback: Extract colorName from image URL if missing
+            let colorName = item.colorName;
+            if (!colorName && item.image) {
+                const imageName = item.image.split('/').pop().split('?')[0];
+                colorName = imageName.split('_')[0].split('.')[0];
+            }
+
             html += `
         <div class="selected-item" data-index="${index}">
           <img src="${item.image}" alt="${item.title}">
-          <div>${item.title}</div>
+          <div class="item-info">
+            <div class="title">${item.title}</div>
+            ${colorName ? `<div class="color-name">${colorName}</div>` : ''}
+          </div>
           <div class="remove" onclick="window.removeSwatch(${index})">×</div>
         </div>
       `;
@@ -382,7 +450,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateUI();
         showNotification('Swatch removed');
     };
-
 
     /* UPDATE UI */
     function updateUI() {
@@ -407,7 +474,8 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('fabricSwatches', JSON.stringify(selectedSwatches));
     }
 
-    async function proceedToCheckout() {
+    /* SEND TO WHATSAPP FUNCTION */
+    function sendToWhatsApp() {
         if (selectedSwatches.length === 0) {
             showNotification('Please add at least one swatch before ordering.', 'error');
             return;
@@ -426,51 +494,92 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const orderBtn = document.querySelector('.order-btn');
         const originalText = orderBtn.textContent;
-        orderBtn.textContent = 'Processing...';
+        orderBtn.textContent = 'Preparing WhatsApp...';
         orderBtn.disabled = true;
 
         try {
-            // Add items **one by one** to cart
-            for (const swatch of realSwatches) {
-                const response = await fetch('/cart/add.js', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: swatch.variantId,
-                        quantity: 1
-                    })
-                });
+            const whatsappMessage = createWhatsAppMessage(realSwatches);
 
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.description || 'Failed to add item to cart');
-                }
-            }
+            const encodedMessage = encodeURIComponent(whatsappMessage);
 
-            // Clear swatches and update cart UI
-            selectedSwatches = [];
-            saveToLocalStorage();
-            renderSelected();
-            updateUI();
+            const phoneNumber = '+971509046848';
 
-            // Refresh header cart/bubble if theme supports it
-            if (window.theme && typeof window.theme.refreshCart === 'function') {
-                window.theme.refreshCart();
-            }
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-            // Redirect to checkout after a short delay to allow UI to update
             setTimeout(() => {
-                window.location.href = '/checkout';
+                window.open(whatsappURL, '_blank');
+
+                setTimeout(() => {
+                    orderBtn.textContent = originalText;
+                    orderBtn.disabled = false;
+
+                    selectedSwatches = [];
+                    saveToLocalStorage();
+                    renderSelected();
+                    updateUI();
+
+                    showNotification('Message prepared for WhatsApp!');
+                }, 1000);
             }, 500);
 
         } catch (error) {
-            console.error('Error adding to cart:', error);
-            showNotification('Error adding items to cart. Please try again.', 'error');
+            console.error('Error creating WhatsApp message:', error);
+            showNotification('Error preparing WhatsApp message. Please try again.', 'error');
             orderBtn.textContent = originalText;
             orderBtn.disabled = false;
         }
+    }
+
+    /* CREATE WHATSAPP MESSAGE */
+    function createWhatsAppMessage(swatches) {
+        // Website URL
+        const websiteURL = window.location.origin;
+
+        // Current date
+        const currentDate = new Date().toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+
+        // Create message header
+        let message = `🎯 *FABRIC SWATCHES ORDER REQUEST* 🎯\n`;
+        message += `📅 Date: ${currentDate}\n`;
+        message += `🌐 Website: ${websiteURL}\n`;
+        message += `================================\n\n`;
+
+        // Add swatch details
+        message += `📋 *Selected Swatches (${swatches.length} items):*\n\n`;
+
+        swatches.forEach((swatch, index) => {
+            message += `${index + 1}. *${swatch.title}*\n`;
+            if (swatch.colorName) {
+                message += `   🎨 Color: ${swatch.colorName}\n`;
+            }
+            message += `   🔗 Product ID: ${swatch.productId}\n`;
+            message += `   🔗 Variant ID: ${swatch.variantId}\n`;
+            message += `   📸 Image: ${swatch.image}\n`;
+            message += `\n`;
+        });
+
+        // Add customer information request
+        message += `================================\n\n`;
+        message += `👤 *PLEASE PROVIDE YOUR DETAILS:*\n\n`;
+        message += `1. Full Name:\n`;
+        message += `2. Phone Number:\n`;
+        message += `3. Shipping Address:\n`;
+        message += `4. City:\n`;
+        message += `5. Postal Code:\n`;
+        message += `6. Any Special Instructions:\n`;
+
+        // Add footer
+        message += `\n================================\n`;
+        message += `📦 *Free Swatches Order*\n`;
+        message += `🚚 Delivery: 7-10 working days\n`;
+        message += `💰 Total: FREE\n`;
+        message += `\nThank you! We'll process your order shortly. 🙏`;
+
+        return message;
     }
 
     /* HELPER FUNCTIONS */
