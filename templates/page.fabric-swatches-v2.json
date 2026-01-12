@@ -29,10 +29,23 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "join_the_honeypot_club_qnTkmF": {
+      "type": "join-the-honeypot-club",
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 16px;}"
+      ],
+      "name": "Join The Honeypot Club",
+      "settings": {
+        "phone_icon": "shopify://shop_images/bfecf73409c6be6216cf453c2a28d7704daff336.png",
+        "email_icon": "shopify://shop_images/83a619c01212302d5ef95a7b5383b7f371b7de68.png"
+      }
     }
   },
   "order": [
     "main",
-    "custom_liquid_T7RRLB"
+    "custom_liquid_T7RRLB",
+    "join_the_honeypot_club_qnTkmF"
   ]
 }
