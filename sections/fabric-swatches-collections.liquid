@@ -192,13 +192,7 @@
       <!-- Right Side - Product Info -->
       <div class="popup-info-container">
         <!-- Product Title -->
-        {% comment %} <h1 class="popup-product-title" id="popup-product-title">Product Title</h1> {% endcomment %}
-         <div class="fabric-title" data-base-title="{{ product.title | escape }}">
-        {%- assign first_image_url = product.images.first | img_url: '600x600' -%}
-        {%- assign image_filename = first_image_url | split: '/' | last | split: '?' | first -%}
-        {%- assign color_name = image_filename | split: '_' | first | split: '.' | first -%}
-        {{ product.title }}{% if color_name != blank %}-{{ color_name }}{% endif %}
-      </div>
+        <h1 class="popup-product-title" id="popup-product-title">Product Title</h1>
         
         <!-- Swatches under title -->
         <div class="popup-swatches-container">
