@@ -11,9 +11,10 @@
     <div class="fabric-group" {{ block.shopify_attributes }}>
       <h2>{{ block.settings.title }}</h2>
       <div class="fabric-grid">
-       {% assign col = block.settings.collection %}
-{% if col != blank and col.products_count > 0 %}
-{% for product in col.products %}
+        {% assign col_handle = block.settings.collection %}
+        {% assign col = collections[col_handle] %}
+        {% if col != blank and col.products_count > 0 %}
+          {% for product in col.products limit: 250 %}
 <div
   class="fabric-card"
   data-product-handle="{{ product.handle }}"
