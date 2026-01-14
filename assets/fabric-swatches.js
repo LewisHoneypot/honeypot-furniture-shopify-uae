@@ -602,7 +602,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add footer
         message += `\n================================\n`;
         message += `📦 *Free Swatches Order*\n`;
-        message += `🚚 Delivery: 7-10 working days\n`;
+        message += `🚚 Delivery: Next working day\n`;
         message += `💰 Total: FREE\n`;
         message += `\nThank you! We'll process your order shortly. 🙏`;
 
