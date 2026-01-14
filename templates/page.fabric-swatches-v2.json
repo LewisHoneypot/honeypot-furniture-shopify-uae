@@ -91,6 +91,13 @@
             "collection": "cotton-look"
           }
         },
+        "fabric_look_jYnWnH": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Boucle",
+            "collection": ""
+          }
+        },
         "fabric_look_4qPJ4R": {
           "type": "fabric_look",
           "settings": {
@@ -123,6 +130,7 @@
       "block_order": [
         "fabric_look_F88wEL",
         "fabric_look_FGDwq7",
+        "fabric_look_jYnWnH",
         "fabric_look_4qPJ4R",
         "fabric_look_CBfctp",
         "feature_XDUxbE",
@@ -130,8 +138,7 @@
       ],
       "name": "🎨 Fabric Swatches Picker",
       "settings": {
-        "section_title": "Free Fabric Swatches",
-        "default_material": "Recycled Polyester & Organic Cotton"
+        "section_title": "Free Fabric Swatches"
       }
     },
     "join_the_honeypot_club_qnTkmF": {
