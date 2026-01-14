@@ -166,10 +166,15 @@
       
       <button class="order-btn" disabled>ORDER NOW FOR FREE</button>
       
-      <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:15px;">
-  <img src="{{ 'truck.png' | asset_url }}" alt="Delivery" style="width:20px; height:20px;">
-  <p style="margin:0; color:#666; font-size:13px;">Delivered within 7-10 days</p>
-</div>
+       <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:15px;">
+   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path d="M1 3H15V16H1V3Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M15 8H20L23 11V16H15" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+     <circle cx="5.5" cy="18.5" r="2.5" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+     <circle cx="18.5" cy="18.5" r="2.5" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+   </svg>
+   <p style="margin:0; color:#666; font-size:13px;">Next Day Delivery</p>
+ </div>
 
 
     </div>
@@ -204,7 +209,7 @@
         
         <!-- Material Info -->
         <div class="popup-material-info" id="popup-material-info">
-          <p>Material information will appear here</p>
+          <p></p>
         </div>
         
         <!-- Features with checkmark -->
@@ -235,12 +240,6 @@
       "label": "Section Title",
       "default": "Free Fabric Swatches"
     },
-    {
-      "type": "text",
-      "id": "default_material",
-      "label": "Default Material Info",
-      "default": "Recycled Polyester & Organic Cotton"
-    }
   ],
   "max_blocks": 20,
   "blocks": [

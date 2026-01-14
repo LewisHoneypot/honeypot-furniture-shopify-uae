@@ -1,7 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "section_width": "customized-width",
         "customize_width": 1400,
@@ -21,6 +31,109 @@
         "padding_bottom_mobile": 0
       }
     },
+    "free_fabric_hero_hGajMt": {
+      "type": "free-fabric-hero",
+      "blocks": {
+        "feature_KNQFND": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Filter.png",
+            "text": "Feature text"
+          }
+        },
+        "feature_HJdiN6": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Buy.png",
+            "text": "Click for more info"
+          }
+        },
+        "feature_cJBznh": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Click.png",
+            "text": "Select up to 4 swatches to deliver for free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_KNQFND",
+        "feature_HJdiN6",
+        "feature_cJBznh"
+      ],
+      "name": "Free Fabric Hero",
+      "settings": {
+        "heading": "GET YOUR FREE FABRIC SWATCHES",
+        "description": "Our free swatch service lets you request up to 4 swatches at a time,\nallowing you to feel the texture and see the true colour in your space\nbefore making a decision. Whether you’re looking for bold hues or\nsubtle tones, we’ve got you covered! With 59 stunning shades to choose\nfrom, finding the perfect fabric for your new sofa has never been easier.",
+        "image": "shopify://shop_images/image_10_1.webp",
+        "bg_color": "#f5efe9",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "border_color": "#cccccc",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "fabric_swatches_collections_UJpm8R": {
+      "type": "fabric-swatches-collections",
+      "blocks": {
+        "fabric_look_F88wEL": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Linen Look",
+            "collection": "linen-look"
+          }
+        },
+        "fabric_look_FGDwq7": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Cotton Look",
+            "collection": "cotton-look"
+          }
+        },
+        "fabric_look_4qPJ4R": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Chenille Look",
+            "collection": "chenille"
+          }
+        },
+        "fabric_look_CBfctp": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Suede",
+            "collection": "suede"
+          }
+        },
+        "feature_XDUxbE": {
+          "type": "feature",
+          "settings": {
+            "name": "Water Repellant",
+            "value": "Water Repellant"
+          }
+        },
+        "feature_yAjA8K": {
+          "type": "feature",
+          "settings": {
+            "name": "Moisture Barrier",
+            "value": "Moisture Barrier"
+          }
+        }
+      },
+      "block_order": [
+        "fabric_look_F88wEL",
+        "fabric_look_FGDwq7",
+        "fabric_look_4qPJ4R",
+        "fabric_look_CBfctp",
+        "feature_XDUxbE",
+        "feature_yAjA8K"
+      ],
+      "name": "🎨 Fabric Swatches Picker",
+      "settings": {
+        "section_title": "Free Fabric Swatches",
+        "default_material": "Recycled Polyester & Organic Cotton"
+      }
+    },
     "join_the_honeypot_club_qnTkmF": {
       "type": "join-the-honeypot-club",
       "custom_css": [
@@ -37,6 +150,8 @@
   "order": [
     "main",
     "custom_liquid_T7RRLB",
+    "free_fabric_hero_hGajMt",
+    "fabric_swatches_collections_UJpm8R",
     "join_the_honeypot_club_qnTkmF"
   ]
 }

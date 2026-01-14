@@ -184,7 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
     /* UPDATE POPUP CONTENT */
     function updatePopupContent(product, fabricType = '') {
         // Set product title
-        document.getElementById('popup-product-title').textContent = product.title;
+        const titleEl = document.getElementById('popup-product-title');
+        titleEl.textContent = product.title;
+        titleEl.setAttribute('data-base-title', product.title);
 
         // Set product image
         const imageElement = document.getElementById('popup-product-image');
@@ -223,6 +225,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (imageElement) {
                         imageElement.src = dot.dataset.img;
                     }
+
+                    // Update popup title with color name
+                    const titleEl = document.getElementById('popup-product-title');
+                    const baseTitle = titleEl ? (titleEl.getAttribute('data-base-title') || '').trim() : '';
+
+                    if (baseTitle && dot.dataset.img) {
+                        const imgUrl = dot.dataset.img;
+                        const imageName = imgUrl.split('/').pop().split('?')[0];
+                        const colorName = imageName.split('_')[0].split('.')[0];
+
+                        const fullTitle = colorName ? `${baseTitle}-${colorName}` : baseTitle;
+                        titleEl.textContent = fullTitle;
+                    }
                 });
 
                 swatchesContainer.appendChild(swatch);
@@ -251,6 +266,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             }
+        }
+
+        // Set initial title based on first active swatch
+        const activeSwatch = swatchesContainer.querySelector('.popup-swatch.active');
+        if (activeSwatch && activeSwatch.dataset.img) {
+            const baseTitle = product.title;
+            const imgUrl = activeSwatch.dataset.img;
+            const imageName = imgUrl.split('/').pop().split('?')[0];
+            const colorName = imageName.split('_')[0].split('.')[0];
+
+            const fullTitle = colorName ? `${baseTitle}-${colorName}` : baseTitle;
+            document.getElementById('popup-product-title').textContent = fullTitle;
         }
 
         // Set material info from metafield or default
