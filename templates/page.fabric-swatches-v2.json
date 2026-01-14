@@ -91,11 +91,18 @@
             "collection": "cotton-look"
           }
         },
+        "fabric_look_6xEeQT": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "⁠Leather look",
+            "collection": "leather-look"
+          }
+        },
         "fabric_look_jYnWnH": {
           "type": "fabric_look",
           "settings": {
-            "title": "Boucle",
-            "collection": ""
+            "title": "Velvet",
+            "collection": "boucle"
           }
         },
         "fabric_look_4qPJ4R": {
@@ -103,6 +110,27 @@
           "settings": {
             "title": "Chenille Look",
             "collection": "chenille"
+          }
+        },
+        "fabric_look_4RTJQ4": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Boucle",
+            "collection": "boucle"
+          }
+        },
+        "fabric_look_39fp7Y": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Jumbo",
+            "collection": "jumbo"
+          }
+        },
+        "fabric_look_nWq4C6": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Textured",
+            "collection": "textured"
           }
         },
         "fabric_look_CBfctp": {
@@ -130,8 +158,12 @@
       "block_order": [
         "fabric_look_F88wEL",
         "fabric_look_FGDwq7",
+        "fabric_look_6xEeQT",
         "fabric_look_jYnWnH",
         "fabric_look_4qPJ4R",
+        "fabric_look_4RTJQ4",
+        "fabric_look_39fp7Y",
+        "fabric_look_nWq4C6",
         "fabric_look_CBfctp",
         "feature_XDUxbE",
         "feature_yAjA8K"
