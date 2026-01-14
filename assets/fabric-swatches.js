@@ -605,11 +605,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     orderBtn.textContent = originalText;
                     orderBtn.disabled = false;
 
-                    selectedSwatches = [];
-                    saveToLocalStorage();
-                    renderSelected();
-                    updateUI();
-
                     showNotification('Message prepared for WhatsApp!');
                 }, 1000);
             }, 500);
