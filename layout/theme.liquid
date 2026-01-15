@@ -219,7 +219,7 @@
     {% comment %} <script src="{{ 'AZLayout.js' | asset_url }}" defer="defer"></script> {% endcomment %}
     {%- if template contains 'page' -%}
       <script src="{{ 'BeforeAfterCursor.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    {%- endunless -%}
     {% comment %} <script src="{{ 'CountDown.js' | asset_url }}" defer="defer"></script> {% endcomment %}
     {% comment %} <script src="{{ 'CountDownSpecial.js' | asset_url }}" defer="defer"></script> {% endcomment %}
     {%- if template contains 'product' -%}
