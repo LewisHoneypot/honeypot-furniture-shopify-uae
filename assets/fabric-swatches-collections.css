@@ -602,6 +602,7 @@
 
   .popup-info-container {
     padding-top: 0px;
+    gap: 0px;
   }
 
   .color-dots {

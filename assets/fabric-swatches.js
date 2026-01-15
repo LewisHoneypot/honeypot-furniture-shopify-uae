@@ -24,6 +24,62 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     renderSelected();
     updateUI();
+    sortSwatches(); // New sorting function
+
+    /* SORT SWATCHES NUMERICALLY (01-name, 02-name) */
+    function sortSwatches() {
+        document.querySelectorAll('.fabric-card .color-dots').forEach(container => {
+            const swatches = Array.from(container.querySelectorAll('.swatch-dot'));
+
+            swatches.sort((a, b) => {
+                const getVal = (el) => {
+                    const url = el.getAttribute('data-img') || el.dataset.img || '';
+                    const filename = url.split('/').pop().split('?')[0];
+                    return filename;
+                };
+
+                return getVal(a).localeCompare(getVal(b), undefined, { numeric: true, sensitivity: 'base' });
+            });
+
+            // Re-append in sorted order (also sets the first one active if needed, 
+            // but usually the first strictly-sorted one should be active or the logic needs adjustment)
+            swatches.forEach(swatch => container.appendChild(swatch));
+
+            // Reset active class: ensure only the first one (now sorted) is active
+            swatches.forEach(s => s.classList.remove('active'));
+            if (swatches.length > 0) {
+                swatches[0].classList.add('active');
+
+                // Also update the main image to match the NEW first swatch
+                const card = container.closest('.fabric-card');
+                const mainImage = card.querySelector('.main-fabric-image');
+                const firstSwatch = swatches[0];
+                const imgUrl = firstSwatch.getAttribute('data-img');
+
+                if (mainImage && imgUrl) {
+                    mainImage.src = imgUrl;
+
+                    // Update title too
+                    const titleEl = card.querySelector('.fabric-title');
+                    const baseTitle = titleEl ? (titleEl.getAttribute('data-base-title') || '').trim() : '';
+                    const imageName = imgUrl.split('/').pop().split('?')[0];
+                    const colorName = imageName.split('_')[0].split('.')[0];
+                    const fullTitle = colorName ? `${baseTitle}-${colorName}` : baseTitle;
+
+                    mainImage.alt = fullTitle;
+                    mainImage.title = fullTitle;
+                    if (titleEl) titleEl.textContent = fullTitle;
+
+                    // Update Add Button Data
+                    const addBtn = card.querySelector('.add-btn');
+                    if (addBtn) {
+                        addBtn.dataset.colorName = colorName;
+                        addBtn.dataset.productImage = firstSwatch.getAttribute('data-thumb');
+                    }
+                }
+            }
+        });
+    }
 
     /* SWATCH CLICK → CHANGE MAIN IMAGE + UPDATE BUTTON DATA */
     document.querySelectorAll('.fabric-card').forEach(card => {
@@ -31,6 +87,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const addBtn = card.querySelector('.add-btn');
 
         card.querySelectorAll('.swatch-dot').forEach(dot => {
+            // Preload image on hover
+            dot.addEventListener('mouseenter', function () {
+                const imgUrl = this.getAttribute('data-img') || this.dataset.img;
+                if (imgUrl) {
+                    const img = new Image();
+                    img.src = imgUrl;
+                }
+            });
+
             dot.addEventListener('click', function () {
                 const altText = (this.getAttribute('data-alt') || '').trim();
                 const thumbUrl = this.getAttribute('data-thumb') || this.dataset.thumb;
@@ -539,11 +604,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(() => {
                     orderBtn.textContent = originalText;
                     orderBtn.disabled = false;
-
-                    selectedSwatches = [];
-                    saveToLocalStorage();
-                    renderSelected();
-                    updateUI();
 
                     showNotification('Message prepared for WhatsApp!');
                 }, 1000);
