@@ -109,13 +109,39 @@
             "title": "Info",
             "menu": "info"
           }
+        },
+        "sidebar_section_Fm8TDc": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop Accessories By:",
+            "menu": "shop-accessories-by"
+          }
+        },
+        "sidebar_section_nF3fEe": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop By Delivery",
+            "menu": "shop-ny-delivery"
+          }
+        },
+        "sidebar_section_hdRQxc": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop By Collection:",
+            "menu": "shop-by-collection"
+          }
         }
       },
       "block_order": [
         "sidebar_section_y8NNXD",
-        "sidebar_section_AFQXwy"
+        "sidebar_section_AFQXwy",
+        "sidebar_section_Fm8TDc",
+        "sidebar_section_nF3fEe",
+        "sidebar_section_hdRQxc"
       ],
-      "disabled": true,
       "settings": {
         "menu_products": "shop-products",
         "menu_custom": "shop-custom",
