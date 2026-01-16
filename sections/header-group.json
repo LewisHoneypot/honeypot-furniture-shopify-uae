@@ -93,13 +93,35 @@
     },
     "custom_mega_menu": {
       "type": "custom-mega-menu",
-      "disabled": true,
+      "blocks": {
+        "sidebar_section_y8NNXD": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop Sofa By:",
+            "menu": "shop-sofa-by"
+          }
+        },
+        "sidebar_section_AFQXwy": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "custom",
+            "title": "Info",
+            "menu": "info"
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_section_y8NNXD",
+        "sidebar_section_AFQXwy"
+      ],
       "settings": {
-        "menu_products": "",
-        "menu_custom": "",
-        "mobile_menu_products": "",
-        "mobile_menu_custom": "",
-        "logo_width": 140,
+        "menu_products": "shop-products",
+        "menu_custom": "shop-custom",
+        "mobile_menu_products": "shop-products",
+        "mobile_menu_custom": "shop-custom",
+        "logo": "shopify://shop_images/212aca512c652373c100782f9577504113d44878.png",
+        "logo_width": 180,
         "show_mega_menu": true
       }
     },
