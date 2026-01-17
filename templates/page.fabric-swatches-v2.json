@@ -142,23 +142,10 @@
         },
         "fabric_look_ifVhzr": {
           "type": "fabric_look",
+          "disabled": true,
           "settings": {
             "title": "Natural linen",
             "collection": ""
-          }
-        },
-        "feature_XDUxbE": {
-          "type": "feature",
-          "settings": {
-            "name": "Water Repellant",
-            "value": "Water Repellant"
-          }
-        },
-        "feature_yAjA8K": {
-          "type": "feature",
-          "settings": {
-            "name": "Moisture Barrier",
-            "value": "Moisture Barrier"
           }
         }
       },
@@ -172,9 +159,7 @@
         "fabric_look_pUVEiL",
         "fabric_look_dwwMag",
         "fabric_look_CBfctp",
-        "fabric_look_ifVhzr",
-        "feature_XDUxbE",
-        "feature_yAjA8K"
+        "fabric_look_ifVhzr"
       ],
       "name": "🎨 Fabric Swatches Picker",
       "settings": {
