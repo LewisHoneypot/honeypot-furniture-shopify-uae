@@ -84,11 +84,25 @@
             "collection": "linen-look"
           }
         },
+        "fabric_look_yHFTN9": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Boucle",
+            "collection": "boucle"
+          }
+        },
         "fabric_look_FGDwq7": {
           "type": "fabric_look",
           "settings": {
             "title": "Cotton Look",
             "collection": "cotton-look"
+          }
+        },
+        "fabric_look_Mi8tg3": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Velvet",
+            "collection": "velvet"
           }
         },
         "fabric_look_4qPJ4R": {
@@ -98,11 +112,39 @@
             "collection": "chenille"
           }
         },
+        "fabric_look_wNbNaV": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "⁠Leather look",
+            "collection": "leather-look"
+          }
+        },
+        "fabric_look_pUVEiL": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Jumbo",
+            "collection": "jumbo"
+          }
+        },
+        "fabric_look_dwwMag": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Textured",
+            "collection": "textured"
+          }
+        },
         "fabric_look_CBfctp": {
           "type": "fabric_look",
           "settings": {
             "title": "Suede",
             "collection": "suede"
+          }
+        },
+        "fabric_look_ifVhzr": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Natural linen",
+            "collection": ""
           }
         },
         "feature_XDUxbE": {
@@ -122,9 +164,15 @@
       },
       "block_order": [
         "fabric_look_F88wEL",
+        "fabric_look_yHFTN9",
         "fabric_look_FGDwq7",
+        "fabric_look_Mi8tg3",
         "fabric_look_4qPJ4R",
+        "fabric_look_wNbNaV",
+        "fabric_look_pUVEiL",
+        "fabric_look_dwwMag",
         "fabric_look_CBfctp",
+        "fabric_look_ifVhzr",
         "feature_XDUxbE",
         "feature_yAjA8K"
       ],
