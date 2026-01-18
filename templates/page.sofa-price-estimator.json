@@ -55,9 +55,9 @@
           "settings": {
             "label": "Feather",
             "value": "feather",
-            "item_1": "CLOUD: Premium natural feathers for an ultra-soft, plush feel.",
-            "item_2": "BALANCED: A harmonious blend of plush feather and supportive biscuit foam for cushioned.",
-            "item_3": "SUPPORT: : Firmer seating that retains its shape beautifully.",
+            "item_1": "CLOUD: Sink into ultra-soft comfort with premium natural feathers, plush, relaxed, and indulgent.",
+            "item_2": "BALANCED: A cushioned feel with added support, combining soft feathers and supportive biscuit foam.",
+            "item_3": "SUPPORT: Firmer seating that keeps its shape beautifully, while still feeling comfortable.",
             "image_width": 150
           }
         },
@@ -66,9 +66,9 @@
           "settings": {
             "label": "Foam",
             "value": "foam",
-            "item_1": "CLOUD: The most cushioned, sink in feel.",
-            "item_2": "BALANCED: Balanced comfort with soft yet supportive foams.",
-            "item_3": "SUPPORT: Higher density foam for extra resilience and support.",
+            "item_1": "CLOUD: Our most cushioned foam option, designed for a soft, sink-in sit.",
+            "item_2": "BALANCED: Comfortably supportive with just the right amount of softness for everyday use.",
+            "item_3": "SUPPORT: Higher-density foam for extra resilience, structure, and long-lasting support.",
             "image_width": 150
           }
         },
@@ -109,7 +109,7 @@
       ],
       "name": "Get Estimate",
       "settings": {
-        "main_heading": "Get your instant sofa estimate now!",
+        "main_heading": "Calculate your custom sofa price",
         "step1_heading": "CHOOSE YOUR SOFA TYPE",
         "step2_heading": "CHOOSE YOUR SOFA LENGTH",
         "dimensions_image_1_mobile": "shopify://shop_images/Straight_sofa_size-1.png",
