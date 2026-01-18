@@ -271,8 +271,8 @@
       ],
       "name": "Love It Now Pay Later",
       "settings": {
-        "heading": "Love It Now. Pay Later.",
-        "subtext": "Shop your Honeypot favourites with Tabby or Tamara. Flexible payments, zero stress.",
+        "heading": "Comfort first. Payments later.",
+        "subtext": "Choose Tabby or Tamara at checkout and spread the cost with flexible payments.",
         "tabby_logo": "shopify://shop_images/ccdf2d0d48313f862a505c8f74e7f186d9108d51.png",
         "tamara_logo": "shopify://shop_images/222314fe079a6354dd5ab35989c3adfe709317b5.png",
         "show_button": true,
