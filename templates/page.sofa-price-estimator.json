@@ -193,6 +193,68 @@
         "tab_AEghYG",
         "tab_ax7edc"
       ],
+      "disabled": true,
+      "name": "Why Honeypot Section",
+      "settings": {
+        "heading": "Why Honeypot?",
+        "subheading": "We don’t just sell furniture; we deliver the foundation for beautiful living.",
+        "Mainheading": "Why Choose Honeypot Furniture?"
+      }
+    },
+    "why_honeypot_RkPHYy": {
+      "type": "why-honeypot",
+      "blocks": {
+        "tab_AKT4pN": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Made For You",
+            "heading": "",
+            "content": "Your sofa should fit your space, your style, and your comfort. From size and comfort, to fabric and colour, your Honeypot sofa is made entirely to order. No fixed sizes. No compromises. Just a sofa designed exactly the way you want it.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "tab_QYEWQP": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "14-Day Delivery",
+            "heading": "",
+            "content": "Custom doesn’t have to mean slow. Once you place your order, we get straight to work, delivering your made-to-order sofa in as little as 14 days. No long waits. No vague timelines. Just your perfect sofa, delivered when promised.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "tab_KfFjxb": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Transparent Pricing",
+            "heading": "",
+            "content": "No guesswork. No awkward conversations. No running around for prices. Our online sofa estimator shows you the price as you customise instantly. Change the size, fabric, or filling and see how it affects the cost in real time. What you see is what you pay, with no hidden surprises later.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "tab_6GcDbn": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Built to Last",
+            "heading": "",
+            "content": "We believe your sofa should look great today, and years from now. Our sofas are built using high-quality materials and decades of experience, designed to handle everyday life and years of lounging. We’re so confident in our quality that every sofa comes with a 2-year guarantee for your peace of mind.",
+            "image": "shopify://shop_images/027A3955_360x_jpg_5079fbd2-1d79-4e29-877f-407718088b45.png",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_AKT4pN",
+        "tab_QYEWQP",
+        "tab_KfFjxb",
+        "tab_6GcDbn"
+      ],
       "name": "Why Honeypot Section",
       "settings": {
         "heading": "Why Honeypot?",
@@ -518,6 +580,7 @@
     "sofa_price_calculator_JtAKFQ",
     "custom_liquid_T7RRLB",
     "why_honeypot_TkJmgK",
+    "why_honeypot_RkPHYy",
     "custom_sofa_steps_iKttc3",
     "love_it_now_pay_later_6rhnDF",
     "testimonials_3qCQV7",
