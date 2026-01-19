@@ -84,13 +84,6 @@
             "collection": "linen-look"
           }
         },
-        "fabric_look_yHFTN9": {
-          "type": "fabric_look",
-          "settings": {
-            "title": "Boucle",
-            "collection": "boucle"
-          }
-        },
         "fabric_look_FGDwq7": {
           "type": "fabric_look",
           "settings": {
@@ -98,11 +91,11 @@
             "collection": "cotton-look"
           }
         },
-        "fabric_look_Mi8tg3": {
+        "fabric_look_yHFTN9": {
           "type": "fabric_look",
           "settings": {
-            "title": "Velvet",
-            "collection": "velvet"
+            "title": "Boucle",
+            "collection": "boucle"
           }
         },
         "fabric_look_4qPJ4R": {
@@ -110,6 +103,13 @@
           "settings": {
             "title": "Chenille Look",
             "collection": "chenille"
+          }
+        },
+        "fabric_look_Mi8tg3": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Velvet",
+            "collection": "velvet"
           }
         },
         "fabric_look_wNbNaV": {
@@ -151,10 +151,10 @@
       },
       "block_order": [
         "fabric_look_F88wEL",
-        "fabric_look_yHFTN9",
         "fabric_look_FGDwq7",
-        "fabric_look_Mi8tg3",
+        "fabric_look_yHFTN9",
         "fabric_look_4qPJ4R",
+        "fabric_look_Mi8tg3",
         "fabric_look_wNbNaV",
         "fabric_look_pUVEiL",
         "fabric_look_dwwMag",
