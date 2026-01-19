@@ -109,6 +109,8 @@
       ],
       "name": "Get Estimate",
       "settings": {
+        "section_width": "customized-width",
+        "customize_width": 1350,
         "main_heading": "Calculate your custom sofa price",
         "step1_heading": "CHOOSE YOUR SOFA TYPE",
         "step2_heading": "CHOOSE YOUR SOFA LENGTH",
