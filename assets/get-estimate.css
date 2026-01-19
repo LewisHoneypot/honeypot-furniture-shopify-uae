@@ -1,6 +1,5 @@
 /* --- Inline Bootstrap-like Styles --- */
 #get-estimate {
-  max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
@@ -89,6 +88,7 @@
 #get-estimate .section {
   padding: 0 1.5rem;
   background: #fff;
+  border-radius: 1rem;
 }
 
 #get-estimate .length-field {
@@ -96,25 +96,31 @@
   margin-bottom: 13px;
 }
 
-#get-estimate
-  > div:nth-child(3)
-  > div.row.options-2
-  > div:first-child
-  > div.title {
+#get-estimate div.row.options-2 div:first-child div.title.first {
   margin-top: 190px;
 }
 
 @media screen and (min-width: 768px) {
   #get-estimate .options-2 .title,
-  #get-estimate
-    > div:nth-child(3)
-    > div.row.options-2
-    > div:first-child
-    > div.title {
-    margin-top: 143px;
+  #get-estimate div.row.options-2 div:first-child div.title.first {
+    margin-top: 101px;
   }
   #get-estimate .options-3 .title {
     margin-top: 6px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #get-estimate .options-2 .title,
+  #get-estimate div.row.options-2 div:first-child div.title.first {
+    margin-top: 143px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #get-estimate .options-2 .title,
+  #get-estimate div.row.options-2 div:first-child div.title.first {
+    margin-top: 181px;
   }
 }
 
@@ -409,7 +415,6 @@
 #get-estimate .options-4 {
   display: flex;
   gap: 1rem;
-  min-height: 270px;
 }
 
 @media (max-width: 767px) {
@@ -597,4 +602,10 @@
 
 .section__m-page {
   padding-bottom: 0;
+}
+
+@media screen and (min-width:1200px) {
+  .col-lg-4 {
+    min-width: 32.33333% !important;
+  }
 }
