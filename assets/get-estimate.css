@@ -96,31 +96,23 @@
   margin-bottom: 13px;
 }
 
+@media screen and (min-width: 768px) {
+  #get-estimate .length-field {
+    max-width: 33.3333333%;
+  }
+}
+
 #get-estimate div.row.options-2 div:first-child div.title.first {
-  margin-top: 190px;
+  margin-top: 53%;
 }
 
 @media screen and (min-width: 768px) {
   #get-estimate .options-2 .title,
   #get-estimate div.row.options-2 div:first-child div.title.first {
-    margin-top: 101px;
+    margin-top: 53%;
   }
   #get-estimate .options-3 .title {
     margin-top: 6px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  #get-estimate .options-2 .title,
-  #get-estimate div.row.options-2 div:first-child div.title.first {
-    margin-top: 143px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  #get-estimate .options-2 .title,
-  #get-estimate div.row.options-2 div:first-child div.title.first {
-    margin-top: 181px;
   }
 }
 
@@ -503,9 +495,9 @@
 
 /* FOOTSTOOL */
 #get-estimate .options-4 .filling-description {
-  margin-top: 0.5rem;
   line-height: 1.4;
   padding: 1.5rem;
+  padding-top: 5px;
   color: #000;
   text-align: start;
   font-size: 9.4px;

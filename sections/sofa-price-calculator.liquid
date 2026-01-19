@@ -2,13 +2,17 @@
   Shopify Section: Get Estimate (dynamic inputs + placeholder images)
 {% endcomment %}
 
-<section style="background-color: #EDEDED;">
-  <div id="get-estimate" class="container">
-
+<section style="background-color: #EDEDED;" class="section">
+  <div
+    id="get-estimate"
+    class="{{ section.settings.section_width }} m-auto"
+    {% if section.settings.section_width == 'customized-width' %}
+      style="--page-width: {{ section.settings.customize_width }}px;"
+    {% endif %}
+  >
     <h2>{{ section.settings.main_heading }}</h2>
 
     <div class="p-sm-5 rounded" style="background-color: #fff;">
-
       <!-- Step 1 -->
       <div class="section">
         <div class="section-title">
@@ -131,7 +135,14 @@
 
             <div class="title first">Length A</div>
             <div class="input-field">
-              <input id="length-a" type="number" min="100" value="200" placeholder="Enter cm" onblur="if (this.value < 100) this.value = 100">
+              <input
+                id="length-a"
+                type="number"
+                min="100"
+                value="200"
+                placeholder="Enter cm"
+                onblur="if (this.value < 100) this.value = 100"
+              >
               <span class="units">cm</span>
             </div>
           </div>
@@ -167,7 +178,14 @@
 
             <div class="title">Length B</div>
             <div class="input-field">
-              <input id="length-b" type="number" min="100" value="100" placeholder="Enter cm" onblur="if (this.value < 100) this.value = 100">
+              <input
+                id="length-b"
+                type="number"
+                min="100"
+                value="100"
+                placeholder="Enter cm"
+                onblur="if (this.value < 100) this.value = 100"
+              >
               <span class="units">cm</span>
             </div>
           </div>
@@ -191,7 +209,14 @@
 
             <div class="title">Length C</div>
             <div class="input-field">
-              <input id="length-c" type="number" min="100" value="100" placeholder="Enter cm" onblur="if (this.value < 100) this.value = 100">
+              <input
+                id="length-c"
+                type="number"
+                min="100"
+                value="100"
+                placeholder="Enter cm"
+                onblur="if (this.value < 100) this.value = 100"
+              >
               <span class="units">cm</span>
             </div>
           </div>
@@ -256,7 +281,10 @@
           {% assign first_filling_option = true %}
           {% for block in section.blocks %}
             {% if block.type == 'filling_option' %}
-              <div class="col{% if first_filling_option %} active{% endif %} col-12 col-lg-4" data-value="{{ block.settings.value }}">
+              <div
+                class="col{% if first_filling_option %} active{% endif %} col-12 col-lg-4"
+                data-value="{{ block.settings.value }}"
+              >
                 {% assign first_filling_option = false %}
 
                 <div class="flling-outer" style="width:100%;">
@@ -310,7 +338,6 @@
       {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
 
       <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
-      
     </div>
   </div>
 </section>
@@ -329,6 +356,36 @@
 {
   "name": "Get Estimate",
   "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "t:sections.all.section_width.options__1"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.all.section_width.options__2"
+        },
+        {
+          "value": "customized-width",
+          "label": "t:sections.all.section_width.options__3"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.all.section_width.label"
+    },
+    {
+      "type": "range",
+      "id": "customize_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "default": 1800,
+      "unit": "px",
+      "label": "t:sections.all.customize_width.label"
+    },
     { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Get Estimate" },
     { "type": "text", "id": "step1_heading", "label": "Step 1 Heading", "default": "Step 1: Select Sofa Type" },
     { "type": "text", "id": "step2_heading", "label": "Step 2 Heading", "default": "Step 2: Select Sofa Size" },
