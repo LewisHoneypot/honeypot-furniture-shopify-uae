@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lengthC = 0,
     sofaTypeIndex = 1,
     fillingOption,
+    filling,
   }) {
     let total = 0;
 
@@ -65,6 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
     else if (fillingOption === "performance") {
       base = 1050;
       extra = 7.5 * 75;
+    }
+
+    // Foam adjustment
+    if (filling === "foam") {
+      base -= 100;
     }
 
     total += calc(adjustedLength, base, extra);
@@ -92,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
         lengthC,
         sofaTypeIndex: sofaIndex,
         fillingOption: option,
+        filling: selectedFilling,
       });
 
       priceEl.textContent = `${miniPrice.toLocaleString()} AED`;
@@ -116,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
       lengthC,
       sofaTypeIndex: selectedSofaIndex,
       fillingOption: selectedFillingOptionLocal,
+      filling: selectedFilling,
     });
 
     document.getElementById("price").textContent = totalPrice

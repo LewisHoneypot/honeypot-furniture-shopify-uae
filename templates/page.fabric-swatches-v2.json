@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "section_width": "customized-width",
+        "customize_width": 1400,
+        "padding_top": 30,
+        "padding_bottom": 60,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "custom_liquid_T7RRLB": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "padding_top": 30,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "free_fabric_hero_hGajMt": {
+      "type": "free-fabric-hero",
+      "blocks": {
+        "feature_KNQFND": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Filter.png",
+            "text": "Feature text"
+          }
+        },
+        "feature_HJdiN6": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Buy.png",
+            "text": "Click for more info"
+          }
+        },
+        "feature_cJBznh": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Click.png",
+            "text": "Select up to 4 swatches to deliver for free"
+          }
+        }
+      },
+      "block_order": [
+        "feature_KNQFND",
+        "feature_HJdiN6",
+        "feature_cJBznh"
+      ],
+      "name": "Free Fabric Hero",
+      "settings": {
+        "heading": "GET YOUR FREE FABRIC SWATCHES",
+        "description": "Our free swatch service lets you request up to 4 swatches at a time,\nallowing you to feel the texture and see the true colour in your space\nbefore making a decision. Whether you’re looking for bold hues or\nsubtle tones, we’ve got you covered! With 59 stunning shades to choose\nfrom, finding the perfect fabric for your new sofa has never been easier.",
+        "image": "shopify://shop_images/image_10_1.webp",
+        "bg_color": "#f5efe9",
+        "heading_color": "#000000",
+        "text_color": "#333333",
+        "border_color": "#cccccc",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "fabric_swatches_collections_UJpm8R": {
+      "type": "fabric-swatches-collections",
+      "blocks": {
+        "fabric_look_F88wEL": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Linen Look",
+            "collection": "linen-look"
+          }
+        },
+        "fabric_look_FGDwq7": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Cotton Look",
+            "collection": "cotton-look"
+          }
+        },
+        "fabric_look_yHFTN9": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Boucle",
+            "collection": "boucle"
+          }
+        },
+        "fabric_look_4qPJ4R": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Chenille Look",
+            "collection": "chenille"
+          }
+        },
+        "fabric_look_Mi8tg3": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Velvet",
+            "collection": "velvet"
+          }
+        },
+        "fabric_look_wNbNaV": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "⁠Leather look",
+            "collection": "leather-look"
+          }
+        },
+        "fabric_look_pUVEiL": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Jumbo",
+            "collection": "jumbo"
+          }
+        },
+        "fabric_look_dwwMag": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Textured",
+            "collection": "textured"
+          }
+        },
+        "fabric_look_CBfctp": {
+          "type": "fabric_look",
+          "settings": {
+            "title": "Suede",
+            "collection": "suede"
+          }
+        },
+        "fabric_look_ifVhzr": {
+          "type": "fabric_look",
+          "disabled": true,
+          "settings": {
+            "title": "Natural linen",
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "fabric_look_F88wEL",
+        "fabric_look_FGDwq7",
+        "fabric_look_yHFTN9",
+        "fabric_look_4qPJ4R",
+        "fabric_look_Mi8tg3",
+        "fabric_look_wNbNaV",
+        "fabric_look_pUVEiL",
+        "fabric_look_dwwMag",
+        "fabric_look_CBfctp",
+        "fabric_look_ifVhzr"
+      ],
+      "name": "🎨 Fabric Swatches Picker",
+      "settings": {
+        "section_title": "Free Fabric Swatches"
+      }
+    },
+    "join_the_honeypot_club_qnTkmF": {
+      "type": "join-the-honeypot-club",
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 16px;}"
+      ],
+      "name": "Join The Honeypot Club",
+      "settings": {
+        "phone_icon": "shopify://shop_images/bfecf73409c6be6216cf453c2a28d7704daff336.png",
+        "email_icon": "shopify://shop_images/83a619c01212302d5ef95a7b5383b7f371b7de68.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_T7RRLB",
+    "free_fabric_hero_hGajMt",
+    "fabric_swatches_collections_UJpm8R",
+    "join_the_honeypot_club_qnTkmF"
+  ]
+}

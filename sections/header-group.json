@@ -91,6 +91,68 @@
         "padding_bottom": 9
       }
     },
+    "custom_mega_menu": {
+      "type": "custom-mega-menu",
+      "blocks": {
+        "sidebar_section_y8NNXD": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop Sofa By:",
+            "menu": "shop-sofa-by"
+          }
+        },
+        "sidebar_section_AFQXwy": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "custom",
+            "title": "Info",
+            "menu": "info"
+          }
+        },
+        "sidebar_section_Fm8TDc": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop Accessories By:",
+            "menu": "shop-accessories-by"
+          }
+        },
+        "sidebar_section_nF3fEe": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop By Delivery",
+            "menu": "shop-ny-delivery"
+          }
+        },
+        "sidebar_section_hdRQxc": {
+          "type": "sidebar_section",
+          "settings": {
+            "tab": "products",
+            "title": "Shop By Collection:",
+            "menu": "shop-by-collection"
+          }
+        }
+      },
+      "block_order": [
+        "sidebar_section_y8NNXD",
+        "sidebar_section_AFQXwy",
+        "sidebar_section_Fm8TDc",
+        "sidebar_section_nF3fEe",
+        "sidebar_section_hdRQxc"
+      ],
+      "disabled": true,
+      "settings": {
+        "menu_products": "shop-products",
+        "menu_custom": "shop-custom",
+        "mobile_menu_products": "shop-products",
+        "mobile_menu_custom": "shop-custom",
+        "logo": "shopify://shop_images/212aca512c652373c100782f9577504113d44878.png",
+        "logo_width": 180,
+        "show_mega_menu": true
+      }
+    },
     "header": {
       "type": "header",
       "blocks": {
@@ -251,6 +313,7 @@
   "order": [
     "announcement-bar",
     "b38aad37-e5d6-4a4a-9109-e406344cc53a",
+    "custom_mega_menu",
     "header"
   ]
 }

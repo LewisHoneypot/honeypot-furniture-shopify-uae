@@ -2,310 +2,344 @@
   Shopify Section: Get Estimate (dynamic inputs + placeholder images)
 {% endcomment %}
 
-<section id="get-estimate" class="container">
-  <h2>{{ section.settings.main_heading }}</h2>
+<section style="background-color: #EDEDED;" class="section">
+  <div
+    id="get-estimate"
+    class="{{ section.settings.section_width }} m-auto"
+    {% if section.settings.section_width == 'customized-width' %}
+      style="--page-width: {{ section.settings.customize_width }}px;"
+    {% endif %}
+  >
+    <h2>{{ section.settings.main_heading }}</h2>
 
-  <!-- Step 1 -->
-  <div class="section">
-    <div class="section-title">
-      <div class="h3-icon-outer">
-        <div class="h3-icon-inner">01</div>
+    <div class="p-sm-5 rounded" style="background-color: #fff;">
+      <!-- Step 1 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="h3-icon-outer">
+            <div class="h3-icon-inner">01</div>
+          </div>
+          <div class="h3-outer">
+            <h3>{{ section.settings.step1_heading }}</h3>
+          </div>
+        </div>
+        <div class="row options-1">
+          {% for block in section.blocks %}
+            {% if block.type == 'sofa_type' %}
+              <div
+                class="col{% if forloop.first %} active{% endif %}"
+                data-value="{{ block.settings.value }}"
+                data-index="{{ forloop.index }}"
+              >
+                <div class="border rounded">
+                  <div class="title">{{ block.settings.label }}</div>
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
+                      alt="{{ block.settings.label }}"
+                      style="max-width:{{ block.settings.image_width }}px;"
+                      height=""
+                      width=""
+                    >
+                  {% else %}
+                    <img
+                      src="https://placeholdit.com/{{ block.settings.image_width }}x300/ffffff/999999"
+                      alt="{{ block.settings.label }}"
+                      style="max-width:{{ block.settings.image_width }}px;"
+                      height=""
+                      width=""
+                    >
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
-      <div class="h3-outer">
-        <h3>{{ section.settings.step1_heading }}</h3>
-      </div>
-    </div>
-    <div class="row options-1">
-      {% for block in section.blocks %}
-        {% if block.type == 'sofa_type' %}
-          <div
-            class="col{% if forloop.first %} active{% endif %}"
-            data-value="{{ block.settings.value }}"
-            data-index="{{ forloop.index }}"
-          >
-            <div class="border rounded">
-              <div class="title">{{ block.settings.label }}</div>
-              {% if block.settings.image != blank %}
+
+      <!-- Step 2 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="h3-icon-outer"><div class="h3-icon-inner">02</div></div>
+          <div class="h3-outer">
+            <h3>{{ section.settings.step2_heading }}</h3>
+          </div>
+        </div>
+
+        <div class="row options-2">
+          <!-- A COLUMN -->
+          <div class="col-12 col-md-4 length-field" data-field="a">
+            <div class="dimension-image">
+              {% comment %} IMAGE 1 {% endcomment %}
+              {% if section.settings.dimensions_image_1A != blank %}
                 <img
-                  src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
-                  alt="{{ block.settings.label }}"
-                  style="max-width:{{ block.settings.image_width }}px;"
+                  src="{{ section.settings.dimensions_image_1A | image_url }}"
+                  alt="Dimensions A"
+                  style="width:100%;margin-bottom:1rem;"
                   height=""
                   width=""
+                  data-type="1"
                 >
-              {% else %}
+              {% endif %}
+
+              {% comment %} IMAGE 2 MOBILE{% endcomment %}
+              {% if section.settings.dimensions_image_2_mobile != blank %}
                 <img
-                  src="https://placeholdit.com/{{ block.settings.image_width }}x300/ffffff/999999"
-                  alt="{{ block.settings.label }}"
-                  style="max-width:{{ block.settings.image_width }}px;"
+                  src="{{ section.settings.dimensions_image_2_mobile | image_url }}"
+                  alt="Dimensions A"
+                  style="width:100%;margin-bottom:1rem;"
                   height=""
                   width=""
+                  data-type="2"
+                  class="d-block d-md-none"
+                >
+              {% endif %}
+              {% comment %} IMAGE 2 DESKTOP {% endcomment %}
+              {% if section.settings.dimensions_image_2A != blank %}
+                <img
+                  src="{{ section.settings.dimensions_image_2A | image_url }}"
+                  alt="Dimensions A"
+                  style="width:100%;margin-bottom:1rem;"
+                  height=""
+                  width=""
+                  data-type="2"
+                  class="d-none d-md-block"
+                >
+              {% endif %}
+
+              {% comment %} IMAGE 3 MOBILE{% endcomment %}
+              {% if section.settings.dimensions_image_3_mobile != blank %}
+                <img
+                  src="{{ section.settings.dimensions_image_3_mobile | image_url }}"
+                  alt="Dimensions A"
+                  style="width:100%;margin-bottom:1rem;"
+                  height=""
+                  width=""
+                  data-type="3"
+                  class="d-block d-md-none"
+                >
+              {% endif %}
+              {% comment %} IMAGE 3 DESKTOP {% endcomment %}
+              {% if section.settings.dimensions_image_3A != blank %}
+                <img
+                  src="{{ section.settings.dimensions_image_3A | image_url }}"
+                  alt="Dimensions A"
+                  style="width:100%;margin-bottom:1rem;"
+                  height=""
+                  width=""
+                  data-type="3"
+                  class="d-none d-md-block"
                 >
               {% endif %}
             </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
 
-  <!-- Step 2 -->
-  <div class="section">
-    <div class="section-title">
-      <div class="h3-icon-outer"><div class="h3-icon-inner">02</div></div>
-      <div class="h3-outer">
-        <h3>{{ section.settings.step2_heading }}</h3>
-      </div>
-    </div>
-
-    <div class="row options-2">
-      <!-- A COLUMN -->
-      <div class="col-12 col-md-4 length-field" data-field="a">
-        <div class="dimension-image">
-          {% comment %} IMAGE 1 {% endcomment %}
-          {% if section.settings.dimensions_image_1A != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_1A | image_url }}"
-              alt="Dimensions A"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="1"
-            >
-          {% endif %}
-
-          {% comment %} IMAGE 2 MOBILE{% endcomment %}
-          {% if section.settings.dimensions_image_2_mobile != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_2_mobile | image_url }}"
-              alt="Dimensions A"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="2"
-              class="d-block d-md-none"
-            >
-          {% endif %}
-          {% comment %} IMAGE 2 DESKTOP {% endcomment %}
-          {% if section.settings.dimensions_image_2A != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_2A | image_url }}"
-              alt="Dimensions A"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="2"
-              class="d-none d-md-block"
-            >
-          {% endif %}
-
-          {% comment %} IMAGE 3 MOBILE{% endcomment %}
-          {% if section.settings.dimensions_image_3_mobile != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_3_mobile | image_url }}"
-              alt="Dimensions A"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="3"
-              class="d-block d-md-none"
-            >
-          {% endif %}
-          {% comment %} IMAGE 3 DESKTOP {% endcomment %}
-          {% if section.settings.dimensions_image_3A != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_3A | image_url }}"
-              alt="Dimensions A"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="3"
-              class="d-none d-md-block"
-            >
-          {% endif %}
-        </div>
-
-        <div class="title">Length A</div>
-        <div class="input-field">
-          <input id="length-a" type="number" min="100" value="200" placeholder="Enter cm" onblur="if (this.value < 100) this.value = 100">
-          <span class="units">cm</span>
-        </div>
-      </div>
-
-      <!-- B COLUMN -->
-      <div class="col-12 col-md-4 length-field" data-field="b" style="display:none;">
-        <div class="dimension-image">
-          {% comment %} IMAGE 1 {% endcomment %}
-          {% if section.settings.dimensions_image_2B != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_2B | image_url }}"
-              alt="Dimensions B"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="2"
-              class="d-none d-md-block"
-            >
-          {% endif %}
-          {% comment %} IMAGE 2 {% endcomment %}
-          {% if section.settings.dimensions_image_3B != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_3B | image_url }}"
-              alt="Dimensions B"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="3"
-              class="d-none d-md-block"
-            >
-          {% endif %}
-        </div>
-
-        <div class="title">Length B</div>
-        <div class="input-field">
-          <input id="length-b" type="number" min="100" value="100" placeholder="Enter cm" onblur="if (this.value < 100) this.value = 100">
-          <span class="units">cm</span>
-        </div>
-      </div>
-
-      <!-- C COLUMN -->
-      <div class="col-12 col-md-4 length-field" data-field="c" style="display:none;">
-        <div class="dimension-image">
-          {% comment %} IMAGE 1 {% endcomment %}
-          {% if section.settings.dimensions_image_3C != blank %}
-            <img
-              src="{{ section.settings.dimensions_image_3C | image_url }}"
-              alt="Dimensions C"
-              style="width:100%;margin-bottom:1rem;"
-              height=""
-              width=""
-              data-type="3"
-              class="d-none d-md-block"
-            >
-          {% endif %}
-        </div>
-
-        <div class="title">Length C</div>
-        <div class="input-field">
-          <input id="length-c" type="number" min="100" value="100" placeholder="Enter cm" onblur="if (this.value < 100) this.value = 100">
-          <span class="units">cm</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Step 3 -->
-  <div class="section">
-    <div class="section-title">
-      <div class="h3-icon-outer">
-        <div class="h3-icon-inner">03</div>
-      </div>
-      <div class="h3-outer">
-        <h3>{{ section.settings.step3_heading }}</h3>
-      </div>
-    </div>
-    <div class="row options-3">
-      {% assign first_filling = true %}
-      {% for block in section.blocks %}
-        {% if block.type == 'sofa_filling' %}
-          <div class="col{% if first_filling %} active{% endif %}" data-value="{{ block.settings.value }}">
-            {% assign first_filling = false %}
-            <div class="flling-outer" style="width: 100%;">
-              <div class="border rounded mx-auto d-flex align-items-start" style="width: 100%;">
-                <div class="square">
-                  {{ block.settings.label | upcase }}
-                </div>
-
-                <div class="title" style="width:70%">
-                  <ul>
-                    {% if block.settings.item_1 != blank %}
-                      <li>{{ block.settings.item_1 }}</li>
-                    {% endif %}
-                    {% if block.settings.item_2 != blank %}
-                      <li>{{ block.settings.item_2 }}</li>
-                    {% endif %}
-                    {% if block.settings.item_3 != blank %}
-                      <li>{{ block.settings.item_3 }}</li>
-                    {% endif %}
-                  </ul>
-                </div>
-              </div>
+            <div class="title first">Length A</div>
+            <div class="input-field">
+              <input
+                id="length-a"
+                type="number"
+                min="100"
+                value="200"
+                placeholder="Enter cm"
+                onblur="if (this.value < 100) this.value = 100"
+              >
+              <span class="units">cm</span>
             </div>
           </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
 
-  <!-- Step 4 -->
-  <div class="section">
-    <div class="section-title">
-      <div class="h3-icon-outer">
-        <div class="h3-icon-inner">04</div>
+          <!-- B COLUMN -->
+          <div class="col-12 col-md-4 length-field" data-field="b" style="display:none;">
+            <div class="dimension-image">
+              {% comment %} IMAGE 1 {% endcomment %}
+              {% if section.settings.dimensions_image_2B != blank %}
+                <img
+                  src="{{ section.settings.dimensions_image_2B | image_url }}"
+                  alt="Dimensions B"
+                  style="width:100%;margin-bottom:1rem;"
+                  height=""
+                  width=""
+                  data-type="2"
+                  class="d-none d-md-block"
+                >
+              {% endif %}
+              {% comment %} IMAGE 2 {% endcomment %}
+              {% if section.settings.dimensions_image_3B != blank %}
+                <img
+                  src="{{ section.settings.dimensions_image_3B | image_url }}"
+                  alt="Dimensions B"
+                  style="width:100%;margin-bottom:1rem;"
+                  height=""
+                  width=""
+                  data-type="3"
+                  class="d-none d-md-block"
+                >
+              {% endif %}
+            </div>
+
+            <div class="title">Length B</div>
+            <div class="input-field">
+              <input
+                id="length-b"
+                type="number"
+                min="100"
+                value="100"
+                placeholder="Enter cm"
+                onblur="if (this.value < 100) this.value = 100"
+              >
+              <span class="units">cm</span>
+            </div>
+          </div>
+
+          <!-- C COLUMN -->
+          <div class="col-12 col-md-4 length-field" data-field="c" style="display:none;">
+            <div class="dimension-image">
+              {% comment %} IMAGE 1 {% endcomment %}
+              {% if section.settings.dimensions_image_3C != blank %}
+                <img
+                  src="{{ section.settings.dimensions_image_3C | image_url }}"
+                  alt="Dimensions C"
+                  style="width:100%;margin-bottom:1rem;"
+                  height=""
+                  width=""
+                  data-type="3"
+                  class="d-none d-md-block"
+                >
+              {% endif %}
+            </div>
+
+            <div class="title">Length C</div>
+            <div class="input-field">
+              <input
+                id="length-c"
+                type="number"
+                min="100"
+                value="100"
+                placeholder="Enter cm"
+                onblur="if (this.value < 100) this.value = 100"
+              >
+              <span class="units">cm</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="h3-outer">
-        <h3>{{ section.settings.step4_heading }}</h3>
-      </div>
-    </div>
 
-    <div class="row options-4 options-3">
-      {% assign first_filling_option = true %}
-      {% for block in section.blocks %}
-        {% if block.type == 'filling_option' %}
-          <div class="col{% if first_filling_option %} active{% endif %}" data-value="{{ block.settings.value }}">
-            {% assign first_filling_option = false %}
+      <!-- Step 3 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="h3-icon-outer">
+            <div class="h3-icon-inner">03</div>
+          </div>
+          <div class="h3-outer">
+            <h3>{{ section.settings.step3_heading }}</h3>
+          </div>
+        </div>
+        <div class="row options-3">
+          {% assign first_filling = true %}
+          {% for block in section.blocks %}
+            {% if block.type == 'sofa_filling' %}
+              <div class="col{% if first_filling %} active{% endif %}" data-value="{{ block.settings.value }}">
+                {% assign first_filling = false %}
+                <div class="flling-outer" style="width: 100%;">
+                  <div class="border rounded mx-auto d-flex align-items-start" style="width: 100%;">
+                    <div class="square">
+                      {{ block.settings.label | upcase }}
+                    </div>
 
-            <div class="flling-outer" style="width:100%;">
-              <div class="border rounded d-flex align-items-start" style="width:100%;">
-                <!-- Square (same as Step 3) -->
-                <div class="square">
-                  <div class="square-label">{{ block.settings.label }}</div>
-                  <div class="option-price" data-option="{{ block.settings.value }}">AED —</div>
-                </div>
-
-                <!-- Right content -->
-                <div class="title">
-                  <div class="filling-description">
-                    {{ block.settings.description }}
+                    <div class="title" style="width:70%">
+                      <ul>
+                        {% if block.settings.item_1 != blank %}
+                          <li>{{ block.settings.item_1 }}</li>
+                        {% endif %}
+                        {% if block.settings.item_2 != blank %}
+                          <li>{{ block.settings.item_2 }}</li>
+                        {% endif %}
+                        {% if block.settings.item_3 != blank %}
+                          <li>{{ block.settings.item_3 }}</li>
+                        {% endif %}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="h3-icon-outer">
+            <div class="h3-icon-inner">04</div>
           </div>
-        {% endif %}
-      {% endfor %}
+          <div class="h3-outer">
+            <h3>{{ section.settings.step4_heading }}</h3>
+          </div>
+        </div>
+
+        <div class="row options-4 options-3">
+          {% assign first_filling_option = true %}
+          {% for block in section.blocks %}
+            {% if block.type == 'filling_option' %}
+              <div
+                class="col{% if first_filling_option %} active{% endif %} col-12 col-lg-4"
+                data-value="{{ block.settings.value }}"
+              >
+                {% assign first_filling_option = false %}
+
+                <div class="flling-outer" style="width:100%;">
+                  <div class="border rounded d-flex align-items-start" style="width:100%;">
+                    <!-- Square (same as Step 3) -->
+                    <div class="square">
+                      <div class="square-label">{{ block.settings.label }}</div>
+                      <div class="option-price" data-option="{{ block.settings.value }}">AED —</div>
+                    </div>
+
+                    <!-- Right content -->
+                    <div class="title">
+                      <div class="filling-description">
+                        {{ block.settings.description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <hr>
+
+      <span id="price">Price: AED. —</span>
+      <span id="monthly">AED —/month (for 4 months)</span>
+
+      <div style="margin-top: 20px; margin-bottom:20px;">
+        Pay with
+        <img
+          src="{{ 'Tamara.png' | asset_url }}"
+          alt="Tamara"
+          style="max-width:57px; vertical-align: middle; margin-right:10px;"
+          height="20"
+          width="57"
+        >
+        &nbsp;Pay with&nbsp;
+        <img
+          src="{{ 'Tabby.png' | asset_url }}"
+          alt="Tabby"
+          style="max-width:50px; vertical-align: middle;"
+          height="20"
+          width="50"
+        >
+      </div>
+
+      <button id="book-btn">{{ section.settings.button_label }}</button>
+
+      {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
+
+      <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
     </div>
   </div>
-
-  <hr>
-
-  <span id="price">Price: AED. —</span>
-  <span id="monthly">AED —/month (for 4 months)</span>
-
-  <div style="margin-top: 20px; margin-bottom:20px;">
-    Pay with
-    <img
-      src="{{ 'Tamara.png' | asset_url }}"
-      alt="Tamara"
-      style="max-width:57px; vertical-align: middle; margin-right:10px;"
-      height="20"
-      width="57"
-    >
-    &nbsp;Pay with&nbsp;
-    <img
-      src="{{ 'Tabby.png' | asset_url }}"
-      alt="Tabby"
-      style="max-width:50px; vertical-align: middle;"
-      height="20"
-      width="50"
-    >
-  </div>
-
-  <button id="book-btn">{{ section.settings.button_label }}</button>
-
-  {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
-
-  <script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
 </section>
 
 {% style %}
@@ -322,6 +356,36 @@
 {
   "name": "Get Estimate",
   "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "t:sections.all.section_width.options__1"
+        },
+        {
+          "value": "page-width",
+          "label": "t:sections.all.section_width.options__2"
+        },
+        {
+          "value": "customized-width",
+          "label": "t:sections.all.section_width.options__3"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.all.section_width.label"
+    },
+    {
+      "type": "range",
+      "id": "customize_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "default": 1800,
+      "unit": "px",
+      "label": "t:sections.all.customize_width.label"
+    },
     { "type": "text", "id": "main_heading", "label": "Main Heading", "default": "Get Estimate" },
     { "type": "text", "id": "step1_heading", "label": "Step 1 Heading", "default": "Step 1: Select Sofa Type" },
     { "type": "text", "id": "step2_heading", "label": "Step 2 Heading", "default": "Step 2: Select Sofa Size" },

@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_UTNQE4": {
+          "type": "title",
+          "settings": {
+            "layout": "default",
+            "font_weight": "normal",
+            "padding_top": 5,
+            "padding_bottom": 5,
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "title_UTNQE4"
+      ],
+      "settings": {
+        "use_custom_title": false,
+        "use_dimensions_icon": false,
+        "use_image_zoom_icon": false,
+        "enable_sticky_add_to_cart": false,
+        "show_product_badges": true,
+        "enable_share": true,
+        "type_style": "classic",
+        "media_size": "large",
+        "gallery_layout": "stacked",
+        "image_zoom": "lightbox",
+        "enable_video_looping": false,
+        "image_ratio": "square",
+        "carousel_direction": "vertical",
+        "carousel_gap_desktop": 16,
+        "carousel_gap_tablet": 8,
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 45,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 25,
+        "use_overlay_1": false,
+        "overlay_text_1": "Delivery from Fri, 13 Dec",
+        "overlay_text_color_1": "#000",
+        "overlay_background_color_1": "#fff",
+        "use_overlay_2": false,
+        "overlay_text_2": "PRE-CHRISTMAS DELIVERY",
+        "overlay_text_color_2": "#fff",
+        "overlay_background_color_2": "#000",
+        "christmas_delivery_eta_toggle": false
+      }
+    },
+    "join_the_honeypot_club_qnTkmF": {
+      "type": "join-the-honeypot-club",
+      "custom_css": [
+        "h2 {font-size: 34px; font-style: normal; font-weight: 400;}",
+        "p {font-size: 16px;}"
+      ],
+      "name": "Join The Honeypot Club",
+      "settings": {
+        "phone_icon": "shopify://shop_images/bfecf73409c6be6216cf453c2a28d7704daff336.png",
+        "email_icon": "shopify://shop_images/83a619c01212302d5ef95a7b5383b7f371b7de68.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "join_the_honeypot_club_qnTkmF"
+  ]
+}

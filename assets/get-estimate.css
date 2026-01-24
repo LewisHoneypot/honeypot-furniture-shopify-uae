@@ -1,6 +1,5 @@
 /* --- Inline Bootstrap-like Styles --- */
 #get-estimate {
-  max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
@@ -77,7 +76,7 @@
   background-color: #eae6e3;
   border-color: #cead8e;
   padding: 7px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .section-title {
@@ -89,6 +88,7 @@
 #get-estimate .section {
   padding: 0 1.5rem;
   background: #fff;
+  border-radius: 1rem;
 }
 
 #get-estimate .length-field {
@@ -96,22 +96,20 @@
   margin-bottom: 13px;
 }
 
-#get-estimate
-  > div:nth-child(3)
-  > div.row.options-2
-  > div:first-child
-  > div.title {
-  margin-top: 190px;
+@media screen and (min-width: 768px) {
+  #get-estimate .length-field {
+    max-width: 33.3333333%;
+  }
+}
+
+#get-estimate div.row.options-2 div:first-child div.title.first {
+  margin-top: 53%;
 }
 
 @media screen and (min-width: 768px) {
   #get-estimate .options-2 .title,
-  #get-estimate
-    > div:nth-child(3)
-    > div.row.options-2
-    > div:first-child
-    > div.title {
-    margin-top: 143px;
+  #get-estimate div.row.options-2 div:first-child div.title.first {
+    margin-top: 53%;
   }
   #get-estimate .options-3 .title {
     margin-top: 6px;
@@ -409,7 +407,6 @@
 #get-estimate .options-4 {
   display: flex;
   gap: 1rem;
-  min-height: 270px;
 }
 
 @media (max-width: 767px) {
@@ -498,9 +495,9 @@
 
 /* FOOTSTOOL */
 #get-estimate .options-4 .filling-description {
-  margin-top: 0.5rem;
   line-height: 1.4;
   padding: 1.5rem;
+  padding-top: 5px;
   color: #000;
   text-align: start;
   font-size: 9.4px;
@@ -597,4 +594,10 @@
 
 .section__m-page {
   padding-bottom: 0;
+}
+
+@media screen and (min-width:1200px) {
+  .col-lg-4 {
+    min-width: 32.33333% !important;
+  }
 }
