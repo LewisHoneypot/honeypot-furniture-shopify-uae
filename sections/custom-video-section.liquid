@@ -1,0 +1,160 @@
+<section class="custom-video-section">
+  <div class="video-wrapper">
+
+    {% if section.settings.video != blank %}
+      {{
+        section.settings.video
+        | video_tag:
+          autoplay: false,
+          loop: false,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          class: 'video-bg'
+      }}
+    {% endif %}
+
+    <!-- Custom Play Button -->
+    <div class="custom-play-button" id="playButton">
+      <div class="divider"></div>
+      <div class="circle">
+        <span class="triangle"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.custom-video-section {
+  width: 100%;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PLAY BUTTON */
+.custom-play-button {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.custom-play-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.custom-play-button .circle {
+  width: 96px;
+  height: 96px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-play-button .triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid #d1b28a;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  margin-left: 4px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .video-wrapper {
+    height: 60vh;
+  }
+
+  .custom-play-button .circle {
+    width: 72px;
+    height: 72px;
+  }
+
+  .custom-play-button .triangle {
+    border-left-width: 16px;
+    border-top-width: 11px;
+    border-bottom-width: 11px;
+  }
+
+}
+</style>
+
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.querySelector(".video-bg");
+  const playButton = document.getElementById("playButton");
+
+  if (!video || !playButton) return;
+
+  // Play from custom button
+  playButton.addEventListener("click", function (e) {
+    e.stopPropagation();
+    video.muted = false;
+    video.play();
+  });
+
+  // Toggle play/pause when clicking video
+  video.addEventListener("click", function () {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  // Hide button on play
+  video.addEventListener("play", function () {
+    playButton.classList.add("hidden");
+  });
+
+  // Show button on pause or end
+  video.addEventListener("pause", showButton);
+  video.addEventListener("ended", showButton);
+
+  function showButton() {
+    playButton.classList.remove("hidden");
+  }
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Custom Video Section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Upload video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Video with Toggle Play Button"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,128 @@
+{% schema %}
+{
+  "name": "Step Quote Box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step Number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose Your Size And Get Quoted"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub Heading",
+      "default": "Design the shape and size that perfectly fits your home:"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step Quote Box"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.step-quote-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center   ;
+  justify-content: center;
+  margin: 60px 20px;
+    position: relative;
+
+}
+
+
+
+ .h3-icon-outer {
+    position: absolute;
+    width: 79px;
+    height: 79px;
+    top: -32px;
+    opacity: 1;
+    border-width: 2.75px;
+    border-style: dashed;
+    border-radius: 48.37px;
+    background-color: #eae6e3;
+    border-color: #cead8e;
+    padding: 4px;
+    z-index: 2;
+    left: 50%;
+}
+
+
+.h3-icon-inner {
+  width: 69px;
+  height: 69px;
+  opacity: 1;
+  border-radius: 48px;
+  background-color: #f5f5f5;
+  font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 30.73px;
+  line-height:52.33px;
+  letter-spacing: -0.75px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: capitalize;
+  color: #cead8e;
+  padding: 10px;
+}
+
+
+.step-quote-box {
+  position: relative;
+  background: #F0E9E3;
+  padding: 50px 30px 35px;
+  border-radius: 14px;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.step-quote-box h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+}
+
+.step-quote-box p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .step-quote-box h2 {
+    font-size: 20px;
+  }
+
+  .step-quote-box p {
+    font-size: 14px;
+  }
+}
+</style>
+
+<div class="step-quote-wrapper">
+  <div class="step-quote-box">
+
+            <div class="h3-icon-outer">
+            <div class="h3-icon-inner">01</div>
+          </div>
+
+
+    <h2>{{ section.settings.heading }}</h2>
+  </div>
+      <p>{{ section.settings.subheading }}</p>
+
+</div>
