@@ -1,0 +1,99 @@
+<section class="banner-with-text">
+  <!-- Banner Image -->
+  <div class="banner-image">
+    {% if section.settings.desktop_image %}
+      <picture>
+        {% if section.settings.mobile_image %}
+          <source
+            media="(max-width: 768px)"
+            srcset="{{ section.settings.mobile_image | image_url: width: 800 }}"
+          >
+        {% endif %}
+        <img
+          src="{{ section.settings.desktop_image | image_url: width: 2000 }}"
+          alt="{{ section.settings.heading | escape }}"
+          width="2000"
+          height="1200"
+          loading="lazy"
+        >
+      </picture>
+    {% endif %}
+  </div>
+
+  <!-- Content -->
+  <div class="banner-content page-width">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="banner-text">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.banner-with-text {
+  width: 100%;
+}
+
+.banner-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.banner-content {
+  max-width: 900px;
+  margin: 40px auto 0;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.banner-content h2 {
+  margin-bottom: 16px;
+}
+
+.banner-text {
+  text-align: justify;
+  text-align-last: center;
+  line-height: 1.6;
+}
+</style>
+
+{% schema %}
+{
+  "name": "WareHouse Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Your description text goes here.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner with Text"
+    }
+  ]
+}
+{% endschema %}

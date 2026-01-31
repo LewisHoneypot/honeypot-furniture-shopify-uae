@@ -1,0 +1,220 @@
+{{ 'warehouse.css' | asset_url | stylesheet_tag }}
+
+{% assign collection = section.settings.collection %}
+{% if collection != blank %}
+
+{% paginate collection.products by 12 %}
+
+<section class="product-grid-wrapper">
+
+  <!-- FILTER & SORT -->
+  <div class="filter-sort-bar">
+    <form method="get">
+      {% for filter in collection.filters %}
+        <details class="filter-group">
+          <summary>{{ filter.label }}</summary>
+
+          {% for value in filter.values %}
+            <label>
+              <input
+                type="checkbox"
+                name="{{ value.param_name }}"
+                value="{{ value.value }}"
+                {% if value.active %}checked{% endif %}
+              >
+              {{ value.label }} ({{ value.count }})
+            </label>
+          {% endfor %}
+        </details>
+      {% endfor %}
+
+      <select name="sort_by" onchange="this.form.submit()">
+        {% for option in collection.sort_options %}
+          <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>
+            {{ option.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="product-grid">
+    {% for product in collection.products %}
+      <div class="product-card" data-product-id="{{ product.id }}">
+        <div class="product-swatches">
+            <a class="productcard" href="{{ product.url }}">
+              <div class="product-image">
+                {% assign first_image = product.featured_image %}
+                <img src="{{ first_image | image_url: width: 600 }}" alt="{{ product.title }}" width="600" height="600">
+              </div>
+            </a>
+    
+            <div class="colors_delivery-text">
+    
+            
+               {% assign color_products = product.metafields.custom.product_colour_list.value %}
+              {% if color_products and color_products.size > 0 %}
+                <div class="color-swatches">
+                  {% for color_product in color_products %}
+                    {% assign color_code = color_product.metafields.custom.color.value | default: color_product.metafields.custom.colour.value %}
+                    {% if color_code %}
+                      <span
+                        class="color-dot"
+                        style="background-color: {{ color_code }};"
+                        data-image="{{ color_product.featured_image | image_url: width: 600 }}"
+                        data-handle="{{ color_product.handle }}"
+                      ></span>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            
+
+                 <p class="delivery-text">
+                DELIVERY FROM {{ 'now' | date: "%a, %d %b" | upcase }}
+              </p>
+            </div>
+
+        </div>
+
+        <div class="product-info">
+       
+
+          <h3 class="product-title">{{ product.title }} testa</h3>
+
+              {% comment %} Split title into two lines {% endcomment %}
+                  {% assign words = product.title | split: " " %}
+                  {% assign word_count = words | size %}
+                  {% assign third_word = words[2] | downcase %}
+                  {% if word_count > 2 %}
+                    {% if third_word == "bed" or third_word == "sofa" or third_word == "linen" %}
+                      {% assign first_line = words[0] | append: " " | append: words[1] | append: " " | append: words[2] %}
+                      {% assign second_line = words | slice: 3, word_count | join: " " %}
+                    {% else %}
+                      {% assign first_line = words[0] | append: " " | append: words[1] %}
+                      {% assign second_line = words | slice: 2, word_count | join: " " %}
+                    {% endif %}
+                  {% else %}
+                    {% assign first_line = product.title %}
+                    {% assign second_line = "" %}
+                  {% endif %}
+
+                  <h3 class="most-liked-product-title">
+                    <span class="title-line-upper">{{ first_line }}</span><br>
+                    <span class="title-line-lower">{{ second_line }}</span>
+                  </h3>
+          <p class="product-price">{{ product.price | money }}</p>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- PAGINATION -->
+  {% if paginate.pages > 1 %}
+    <div class="pagination">
+      {% if paginate.previous %}
+        <a href="{{ paginate.previous.url }}">Previous</a>
+      {% endif %}
+
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a href="{{ part.url }}">{{ part.title }}</a>
+        {% else %}
+          <span class="active">{{ part.title }}</span>
+        {% endif %}
+      {% endfor %}
+
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}">Next</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+</section>
+
+<!-- COLOR SWATCH JS -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".product-card").forEach(card => {
+    const dots = card.querySelectorAll(".color-dot");
+    const mainImage = card.querySelector(".product-image img");
+    const productLink = card.querySelector("a.productcard");
+
+    // Make first dot active by default
+    if (dots.length > 0) dots[0].classList.add("active");
+
+    dots.forEach(dot => {
+      dot.addEventListener("click", e => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const newSrc = dot.dataset.image;
+        const newHandle = dot.dataset.handle;
+
+        // Update main image
+        if (newSrc) {
+          mainImage.style.opacity = 0;
+          setTimeout(() => {
+            mainImage.src = newSrc;
+            mainImage.style.opacity = 1;
+          }, 200);
+        }
+
+        // Update product link
+        if (newHandle) {
+          productLink.href = `/products/${newHandle}`;
+        }
+
+        // Highlight selected dot
+        dots.forEach(d => d.classList.remove("active"));
+        dot.classList.add("active");
+      });
+    });
+  });
+});
+</script>
+
+<style>
+.color-swatches {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.color-dot:hover,
+.color-dot.active {
+  border-color: #111;
+  transform: scale(1.2);
+}
+</style>
+
+{% endpaginate %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Advanced Product)",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid with Color Swatches",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
