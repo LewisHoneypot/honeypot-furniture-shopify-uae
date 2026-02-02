@@ -142,7 +142,6 @@
         },
         "fabric_look_ifVhzr": {
           "type": "fabric_look",
-          "disabled": true,
           "settings": {
             "title": "Natural linen",
             "collection": ""
