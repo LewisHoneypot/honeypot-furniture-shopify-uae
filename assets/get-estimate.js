@@ -28,10 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateDimensionImages(sofaIndex) {
     dimensionImages.forEach((wrapper) => {
       wrapper.querySelectorAll("img").forEach((img) => {
-        img.classList.toggle(
-          "active",
-          img.dataset.type === sofaIndex.toString()
-        );
+        img.classList.remove("active");
+
+        if (img.dataset.type === sofaIndex.toString()) {
+          img.classList.add("active");
+        }
       });
     });
   }
