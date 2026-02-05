@@ -28,7 +28,7 @@
           "settings": {
             "label": "Straight",
             "value": "straight",
-            "image": "shopify://shop_images/Straight.png",
+            "image": "shopify://shop_images/Straight_d8779435-b408-4c12-8a65-c51f58a94355.png",
             "image_width": 150
           }
         },
@@ -37,7 +37,7 @@
           "settings": {
             "label": "L-Corner",
             "value": "l-corner",
-            "image": "shopify://shop_images/L-Corner.png",
+            "image": "shopify://shop_images/L-Corner_d4a504dc-613a-4391-aa81-598fff758809.png",
             "image_width": 150
           }
         },
@@ -46,7 +46,7 @@
           "settings": {
             "label": "U-Corner",
             "value": "corner",
-            "image": "shopify://shop_images/U-Corner.png",
+            "image": "shopify://shop_images/U-Corner_fbdded20-152c-4a5e-9551-04bed4662f4e.png",
             "image_width": 150
           }
         },
