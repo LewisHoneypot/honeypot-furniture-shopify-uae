@@ -1,0 +1,142 @@
+/* Sofa Dimension Diagram Styles */
+
+.sofa-dimensions-section {
+  padding: 70px 20px;
+  background: #f9f9f9;
+}
+
+.section-header {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.preheading {
+  font-size: 16px;
+  font-weight: 500;
+  color: #171717;
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.features-grid {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 25px;
+  max-width: 1200px;
+  margin: 0 auto 70px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #CEAD8E;
+  border-radius: 5px;
+  padding: 16px 28px 16px 24px;
+  font-weight: 600;
+  color: #333;
+  min-width: 220px;
+  transition: all 0.22s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-item:hover {
+  box-shadow: 0 6px 20px rgba(206, 173, 142, 0.15);
+  border-color: #d4a373;
+  transform: translateY(-2px);
+}
+
+.feature-item img {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.diagram-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sofa-diagram {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09);
+  display: block;
+}
+
+.sofa-dimensions-footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #171717;
+  line-height: 1.5;
+}
+
+/* Tablet & Medium Screens */
+@media screen and (max-width: 1024px) {
+  .sofa-dimensions-section {
+    padding: 50px 20px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .features-grid {
+    gap: 16px 20px;
+    margin-bottom: 50px;
+  }
+
+  .feature-item {
+    padding: 14px 22px;
+    font-size: 0.95rem;
+    min-width: 200px;
+  }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  .sofa-dimensions-section {
+    padding: 40px 16px;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .preheading {
+    font-size: 14px;
+  }
+
+  .features-grid {
+    width: 100%;
+    gap: 12px 16px;
+    margin-bottom: 40px;
+  }
+
+  .feature-item {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    min-width: 160px;
+    border-radius: 4px;
+  }
+
+  .diagram-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .sofa-diagram {
+    border-radius: 8px;
+  }
+
+  .sofa-dimensions-footer {
+    margin-top: 30px;
+    font-size: 14px;
+  }
+}

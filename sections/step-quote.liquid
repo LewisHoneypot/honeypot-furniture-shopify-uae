@@ -56,6 +56,7 @@
     padding: 4px;
     z-index: 2;
     left: 50%;
+    transform: translateX(-50%);
 }
 
 
@@ -102,11 +103,19 @@
   color: #666;
 }
 
+.subheading{
+max-width: 40%;
+ text-align:center;
+}
+
 @media (max-width: 768px) {
   .step-quote-box h2 {
     font-size: 20px;
   }
 
+  .subheading{
+    max-width: 100%;
+  }
   .step-quote-box p {
     font-size: 14px;
   }
@@ -117,12 +126,14 @@
   <div class="step-quote-box">
 
             <div class="h3-icon-outer">
-            <div class="h3-icon-inner">01</div>
+            <div class="h3-icon-inner">{{ section.settings.step_number }}</div>
           </div>
 
 
     <h2>{{ section.settings.heading }}</h2>
   </div>
-      <p>{{ section.settings.subheading }}</p>
+
+
+      <p class="subheading" >{{ section.settings.subheading }}</p>
 
 </div>

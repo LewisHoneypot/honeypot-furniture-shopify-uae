@@ -1,0 +1,193 @@
+{% comment %}
+  Shopify Section: Price Summary
+  - Displays price and monthly payment based on sofa selections
+  - Works with get-estimate.js formula logic
+  - Includes Tamara/Tabby payment options
+{% endcomment %}
+
+
+<section style="background-color: {{ section.settings.background_color }};" class="section">
+  <div
+    id="get-estimate"
+    class="{{ section.settings.section_width }} m-auto"
+    {% if section.settings.section_width == 'customized-width' %}
+      style="--page-width: {{ section.settings.customize_width }}px;"
+    {% endif %}
+  >
+    <div class="price-summary-container">
+      <!-- Price Display -->
+      <div class="price-display">
+        <div class="price-item">
+          <span id="price" class="price-value" style="text-align: center;">AED. —</span>
+        </div>
+
+        <div class="price-item">
+          <span id="monthly" class="monthly-value">AED —/month (for 4 months)</span>
+        </div>
+      </div>
+
+
+      <!-- Payment Methods -->
+      {% if section.settings.show_payment_methods %}
+        <div class="payment-methods">
+          <div class="payment-options">
+            {% if section.settings.show_tamara %}
+                            <span class="separator">{{ section.settings.separator_text }}</span>
+
+              <img
+                src="{{ 'Tamara.png' | asset_url }}"
+                alt="Tamara"
+                class="payment-icon"
+                height="20"
+                width="57"
+              >
+            {% endif %}
+
+            {% if section.settings.show_tabby %}
+              <span class="separator">{{ section.settings.separator_text }}</span>
+              <img
+                src="{{ 'Tabby.png' | asset_url }}"
+                alt="Tabby"
+                class="payment-icon"
+                height="20"
+                width="50"
+              >
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Call to Action Button -->
+      {% if section.settings.show_button %}
+      
+          <button id="book-btn">{{ section.settings.button_label }}</button>
+  
+      {% endif %}
+    </div>
+  </div>
+</section>
+      {{ 'get-estimate.css' | asset_url | stylesheet_tag }}
+
+
+<script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Price Summary",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "page-width",
+          "label": "Page Width"
+        },
+        {
+          "value": "customized-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "page-width",
+      "label": "Section Width"
+    },
+    {
+      "type": "range",
+      "id": "customize_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "default": 1800,
+      "unit": "px",
+      "label": "Custom Width (px)"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#EDEDED"
+    },
+    {
+      "type": "header",
+      "content": "Price Display Settings"
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "Price Label",
+      "default": "Price:"
+    },
+    {
+      "type": "text",
+      "id": "monthly_label",
+      "label": "Monthly Payment Label",
+      "default": "Monthly Payment:"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show Divider",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Payment Methods"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_methods",
+      "label": "Show Payment Methods Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "payment_label",
+      "label": "Payment Methods Label",
+      "default": "Pay with"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tamara",
+      "label": "Show Tamara Option",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tabby",
+      "label": "Show Tabby Option",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "separator_text",
+      "label": "Separator Text",
+      "default": "&nbsp;Pay with&nbsp;"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show CTA Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "BOOK A FREE VISIT"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Price Summary"
+    }
+  ]
+}
+{% endschema %}

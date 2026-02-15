@@ -1,0 +1,185 @@
+/* Our Designs Slider Styles */
+
+.our-designs {
+  padding: 40px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.our-designs h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.design-card {
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.design-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.design-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.design-title {
+  padding: 16px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.choose-card {
+  background: #f8f5f2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  border-radius: 12px;
+  min-height: 320px;
+}
+
+.choose-circle {
+  width: 80px;
+  height: 80px;
+  background: #d4a373;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.choose-text {
+  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #333;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+/* Tablet & Medium Screens */
+@media screen and (max-width: 1024px) {
+  .our-designs {
+    padding: 30px 20px;
+  }
+
+  .our-designs h2 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  .design-card {
+    max-width: 280px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  .our-designs {
+    padding: 24px 16px;
+  }
+
+  .our-designs h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .design-card {
+    max-width: 260px;
+  }
+
+  .design-title {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .choose-card {
+    padding: 30px 16px;
+    min-height: 280px;
+  }
+
+  .choose-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+
+  .choose-text {
+    font-size: 1.1rem;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .swiper-button-prev {
+    left: 5px;
+  }
+
+  .swiper-button-next {
+    right: 5px;
+  }
+}

@@ -1,0 +1,169 @@
+{% comment %}
+  Shopify Section: Step 3 - Sofa Filling Selection
+  - Standalone section for sofa filling selection
+  - Can be used independently or as part of a larger form
+{% endcomment %}
+
+{{ 'step-3-sofa-filling.css' | asset_url | stylesheet_tag }}
+
+<section class="section">
+  <div
+    id="get-estimate"
+    class="{{ section.settings.section_width }} m-auto"
+    {% if section.settings.section_width == 'customized-width' %}
+      style="--page-width: {{ section.settings.customize_width }}px;"
+    {% endif %}
+  >
+  
+    <div class="p-sm-5 rounded" style="background-color: #fff; max-width: 1092px; margin: 0  auto;">
+      <div class="section">
+     
+        <div class="row options-3">
+          {% assign first_filling = true %}
+          {% for block in section.blocks %}
+            {% if block.type == 'sofa_filling' %}
+              <div class="col{% if first_filling %} active{% endif %}" data-value="{{ block.settings.value }}">
+                {% assign first_filling = false %}
+                <div class="flling-outer" style="width: 100%;">
+                  <div class="border rounded mx-auto d-flex align-items-start" style="width: 100%;">
+                    <div class="square">
+                      {{ block.settings.label | upcase }}
+                    </div>
+
+                    <div class="title" style="width:70%">
+                      <ul>
+                        {% if block.settings.item_1 != blank %}
+                          <li>{{ block.settings.item_1 }}</li>
+                        {% endif %}
+                        {% if block.settings.item_2 != blank %}
+                          <li>{{ block.settings.item_2 }}</li>
+                        {% endif %}
+                        {% if block.settings.item_3 != blank %}
+                          <li>{{ block.settings.item_3 }}</li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  #get-estimate .options-3 .title ul li::before {
+    content: '';
+    background-image: url('{{ "check-circle-black.png" | asset_url }}');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  #get-estimate .options-3 .col.active .title ul li::before {
+    background-image: url('{{ "check-circle-white.png" | asset_url }}');
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "3 Sofa Filling",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Section Heading",
+      "default": "Step 3: Select Sofa Filling"
+    },
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step Number",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "step_heading",
+      "label": "Step Heading",
+      "default": "Select Sofa Filling"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show Section Heading",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#EDEDED"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "page-width",
+          "label": "Page Width"
+        },
+        {
+          "value": "customized-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "page-width",
+      "label": "Section Width"
+    },
+    {
+      "type": "range",
+      "id": "customize_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "default": 1800,
+      "unit": "px",
+      "label": "Custom Width (px)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sofa_filling",
+      "name": "Sofa Filling",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        {
+          "type": "text",
+          "id": "item_1",
+          "label": "Item 1"
+        },
+        {
+          "type": "text",
+          "id": "item_2",
+          "label": "Item 2"
+        },
+        {
+          "type": "text",
+          "id": "item_3",
+          "label": "Item 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step 3 - Sofa Filling Selection",
+      "blocks": [
+        { "type": "sofa_filling", "settings": { "label": "Feather", "value": "feather" } },
+        { "type": "sofa_filling", "settings": { "label": "Foam", "value": "foam" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

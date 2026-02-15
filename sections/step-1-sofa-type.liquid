@@ -1,0 +1,152 @@
+{% comment %}
+  Shopify Section: Step 1 - Sofa Type Selection
+  - Standalone section for sofa type selection
+  - Can be used independently or as part of a larger form
+{% endcomment %}
+
+
+<section class="section" style="max-width: 1092px; margin: 0 auto">
+  <div
+    id="get-estimate"
+    class="{{ section.settings.section_width }} m-auto"
+    {% if section.settings.section_width == 'customized-width' %}
+      style="--page-width: {{ section.settings.customize_width }}px;"
+    {% endif %}
+  >
+
+    <div class="p-sm-5 rounded" style="background-color: #fff;">
+      <!-- Step 1: Sofa Type Selection -->
+      <div class="section">
+     
+        <div class="row options-1">
+          {% for block in section.blocks %}
+            {% if block.type == 'sofa_type' %}
+              <div
+                class="col{% if forloop.first %} active{% endif %}"
+                data-value="{{ block.settings.value }}"
+                data-index="{{ forloop.index }}"
+              >
+                <div class="border rounded">
+                  <div class="title">{{ block.settings.label }}</div>
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: block.settings.image_width }}"
+                      alt="{{ block.settings.label }}"
+                      style="max-width:{{ block.settings.image_width }}px;"
+                      height=""
+                      width=""
+                    >
+                  {% else %}
+                    <img
+                      src="https://placeholdit.com/{{ block.settings.image_width }}x300/ffffff/999999"
+                      alt="{{ block.settings.label }}"
+                      style="max-width:{{ block.settings.image_width }}px;"
+                      height=""
+                      width=""
+                    >
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Step 1 - Sofa Type",
+  "settings": [
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step Number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "step_heading",
+      "label": "Step Heading",
+      "default": "Select Sofa Type"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show Section Heading",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#EDEDED"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "page-width",
+          "label": "Page Width"
+        },
+        {
+          "value": "customized-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "page-width",
+      "label": "Section Width"
+    },
+    {
+      "type": "range",
+      "id": "customize_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "default": 1800,
+      "unit": "px",
+      "label": "Custom Width (px)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "sofa_type",
+      "name": "Sofa Type",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (px)",
+          "min": 50,
+          "max": 400,
+          "step": 10,
+          "default": 150
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step 1 - Sofa Type",
+      "blocks": [
+        { "type": "sofa_type", "settings": { "label": "Straight", "value": "straight" } },
+        { "type": "sofa_type", "settings": { "label": "L-Corner", "value": "l-corner" } },
+        { "type": "sofa_type", "settings": { "label": "U-Corner", "value": "corner" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+<style>
+.step-helper-wrapper {
+  max-width: 380px;
+    margin: 0 auto;
+    border-radius: 14.97px;
+    text-align: center;
+    background-color: #f0e9e3;
+  padding: 16px;
+  margin-bottom: 2rem;
+}  
+
+.step-helper-wrapper p {
+  font-size: 18px;
+  line-height: 28px;
+  color: #000;
+  margin: 0;
+}
+</style>
+
+<div class="step-helper-wrapper">
+  <p>{{ section.settings.heading }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Helper Box",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose Your Size And Get Quoted"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Helper Box"
+    }
+  ]
+}
+{% endschema %}
