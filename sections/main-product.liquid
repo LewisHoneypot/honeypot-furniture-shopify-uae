@@ -205,7 +205,20 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.image_tech == 'cylindo' -%}
+          {%- if section.settings.image_tech == 'fixtuur' -%}
+            {% render 'product-media-gallery-fixtuur',
+              product: product,
+              gallery_layout: section.settings.gallery_layout,
+              media_size: section.settings.media_size,
+              enable_video_looping: section.settings.enable_video_looping,
+              type_style: section.settings.type_style,
+              show_product_badges: section.settings.show_product_badges,
+              carousel_direction: section.settings.carousel_direction,
+              carousel_gap_tablet: section.settings.carousel_gap_tablet,
+              carousel_gap_desktop: section.settings.carousel_gap_desktop,
+              ratio_square: section.settings.image_ratio
+            %}
+          {%- elsif section.settings.image_tech == 'cylindo' -%}
             {% render 'product-media-gallery-cylindo',
               product: product,
               gallery_layout: section.settings.gallery_layout,
@@ -1270,7 +1283,6 @@
                     {%- endif -%}
 
                   {%- elsif block.settings.content_type == 'sofa_estimator' -%}
-
                     {%- assign drawer_heading = block.settings.heading | default: 'Get an Estimate' -%}
 
                     <side-drawer-opener
@@ -1294,7 +1306,6 @@
                         {{ drawer_heading }}
                       </button>
                     </side-drawer-opener>
-
                   {%- endif -%}
                 </div>
 
@@ -1517,7 +1528,7 @@
                           {%- if in_stock == true -%}
                             <strong class="pr-1 mr-1"> Tomorrow</strong>
                           {%- else -%}
-                            {%- if product.vendor == 'Honeypot Furniture UAE' -%}
+                            {%- if product.vendor == 'Honeypot Furniture UAE' or product.vendor == 'Honeypot UAE' -%}
                               <strong class="pr-1 mr-1"> 1 - 2 weeks</strong>
                             {%- else -%}
                               <strong class="pr-1 mr-1"> 6 - 8 weeks</strong>
@@ -2979,7 +2990,6 @@
                   {% endfor %}
 
                 {%- elsif block.settings.content_type == 'sofa_estimator' -%}
-
                   {% render 'get-estimate', block: block %}
 
                 {%- else -%}
@@ -6878,6 +6888,10 @@
         {
           "value": "default",
           "label": "Default"
+        },
+        {
+          "value": "fixtuur",
+          "label": "Fixtuur"
         },
         {
           "value": "cylindo",
