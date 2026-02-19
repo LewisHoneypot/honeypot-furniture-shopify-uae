@@ -1,0 +1,253 @@
+{%- style -%}
+.comfort-wrapper {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.comfort-card {
+  max-width: 490px;
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.comfort-card.active {
+  background: {{ section.settings.active_color }};
+  border-color: transparent;
+}
+
+.comfort-left {
+  min-width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: #f5f5f5;
+}
+
+.comfort-card.active .comfort-left {
+  background: rgba(255,255,255,0.4);
+  border-color: transparent;
+}
+
+.comfort-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comfort-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.comfort-item strong {
+  font-weight: 600;
+}
+
+.check {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+/* Text color control */
+.comfort-card {
+  color: #000;
+}
+
+.comfort-card.active {
+  color: #fff;
+}
+
+/* Check icon handling */
+.check-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+
+.check-icon img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Default: show black */
+.check-white {
+  display: none;
+}
+
+/* Active: show white */
+.comfort-card.active .check-black {
+  display: none;
+}
+
+.comfort-card.active .check-white {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .comfort-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+{%- endstyle -%}
+
+<div class="comfort-wrapper page-width" data-comfort-wrapper>
+
+  {% for block in section.blocks %}
+    <div
+      class="comfort-card {% if block.settings.active %}active{% endif %}"
+      data-comfort-card
+    >
+      <div class="comfort-left">
+        {{ block.settings.title }}
+      </div>
+
+      <div class="comfort-right">
+        <div class="comfort-item">
+  <img class="check-black" src="{{ 'check-circle-black.png' | asset_url }}" alt="check" width="22" height="22">
+  <img class="check-white" src="{{ 'check-circle-white.png' | asset_url }}" alt="check" width="22" height="22">
+          <span>
+            <strong>{{ block.settings.cloud_label }}:</strong>
+            {{ block.settings.cloud }}
+          </span>
+        </div>
+
+        <div class="comfort-item">
+      <img class="check-black" src="{{ 'check-circle-black.png' | asset_url }}" alt="check" width="22" height="22">
+  <img class="check-white" src="{{ 'check-circle-white.png' | asset_url }}" alt="check" width="22" height="22">
+
+          <span>
+            <strong>{{ block.settings.balanced_label }}:</strong>
+            {{ block.settings.balanced }}
+          </span>
+        </div>
+
+        <div class="comfort-item">
+   <img class="check-black" src="{{ 'check-circle-black.png' | asset_url }}" alt="check" width="22" height="22">
+  <img class="check-white" src="{{ 'check-circle-white.png' | asset_url }}" alt="check" width="22" height="22">
+
+          <span>
+            <strong>{{ block.settings.support_label }}:</strong>
+            {{ block.settings.support }}
+          </span>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const cards = document.querySelectorAll('[data-comfort-card]');
+
+ cards.forEach(c => c.classList.remove('active'));
+  if (cards.length > 0) {
+    cards[0].classList.add('active');
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Comfort Comparison",
+  "settings": [
+    {
+      "type": "color",
+      "id": "active_color",
+      "label": "Active Box Color",
+      "default": "#CEAD8E"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comfort",
+      "name": "Comfort Box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Box Title",
+          "default": "FEATHER"
+        },
+        {
+          "type": "text",
+          "id": "cloud_label",
+          "label": "Cloud Label",
+          "default": "CLOUD"
+        },
+        {
+          "type": "textarea",
+          "id": "cloud",
+          "label": "Cloud Text",
+          "default": "Premium natural feathers for an ultra-soft, plush feel."
+        },
+        {
+          "type": "text",
+          "id": "balanced_label",
+          "label": "Balanced Label",
+          "default": "BALANCED"
+        },
+        {
+          "type": "textarea",
+          "id": "balanced",
+          "label": "Balanced Text",
+          "default": "A harmonious blend of plush feather and supportive biscuit foam."
+        },
+        {
+          "type": "text",
+          "id": "support_label",
+          "label": "Support Label",
+          "default": "SUPPORT"
+        },
+        {
+          "type": "textarea",
+          "id": "support",
+          "label": "Support Text",
+          "default": "Firmer seating that retains its shape beautifully."
+        },
+        {
+          "type": "checkbox",
+          "id": "active",
+          "label": "Active by Default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comfort Comparison",
+      "blocks": [
+        { "type": "comfort" },
+        { "type": "comfort" }
+      ]
+    }
+  ]
+}
+{% endschema %}

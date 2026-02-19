@@ -1,0 +1,173 @@
+/* Step 4 - Filling Options */
+
+.section .row.optionsfill-4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  
+}
+
+.section .row.optionsfill-4 .col {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+}
+
+.section .row.optionsfill-4 .flling-outer {
+  width: 100%;
+}
+
+.section .row.optionsfill-4 .border {
+  border: 2px solid #d3cbc0;
+  transition: all 0.3s ease;
+  background-color: #fafaf9;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.section .row.optionsfill-4 .col:hover .border {
+  border-color: #CEAD8E;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+ .section .row.optionsfill-4 .col.active .square {
+  background-color: #CEAD8E;
+}
+
+
+.section .row.optionsfill-4 .square {
+  min-width: 150px;
+  max-width: 150px;
+  background-color: #e8e1d9;
+  /* border-radius: 8px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+
+
+.section .row.optionsfill-4 .square-label {
+  font-weight: 350;
+  font-size: 18px;
+  color: #2a2a2a;
+  margin-bottom: 0.5rem;
+}
+
+.section .row.optionsfill-4 .option-price {
+  font-size: 18px;
+  font-weight: 350;
+  color: #2a2a2a;
+}
+
+.section .row.optionsfill-4 .col.active .square-label,
+.section .row.optionsfill-4 .col.active .option-price {
+  color: #fff;
+}
+
+.section .row.optionsfill-4 .title {
+  margin: 0;
+  padding: 0;
+}
+
+.section .row.optionsfill-4 .filling-description {
+  font-size: 16px;
+  color: #2a2a2a;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  padding: 30px 10px;
+  flex: 1;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section .row.optionsfill-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .section .row.optionsfill-4 .square {
+    min-width: 120px;
+    max-width: 120px;
+  }
+
+  .section .row.optionsfill-4 .square-label {
+    font-size: 16px;
+  }
+
+  .section .row.optionsfill-4 .option-price {
+    font-size: 16px;
+  }
+
+  .section .row.optionsfill-4 .filling-description {
+    font-size: 14px;
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section .row.optionsfill-4 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .section .row.optionsfill-4 .border {
+    padding: 1rem;
+    min-height: auto;
+    flex-direction: column;
+  }
+
+  .section .row.optionsfill-4 .square {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .section .row.optionsfill-4 .square-label {
+    font-size: 16px;
+  }
+
+  .section .row.optionsfill-4 .option-price {
+    font-size: 14px;
+  }
+
+  .section .row.optionsfill-4 .filling-description {
+    font-size: 12px;
+    padding: 10px 0;
+  }
+
+  .section .row.optionsfill-4 .title {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section .row.optionsfill-4 {
+    gap: 0.75rem;
+  }
+
+  .section .row.optionsfill-4 .border {
+    padding: 0.75rem;
+  }
+
+  .section .row.optionsfill-4 .square-label {
+    font-size: 14px;
+  }
+
+  .section .row.optionsfill-4 .option-price {
+    font-size: 12px;
+  }
+
+  .section .row.optionsfill-4 .filling-description {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}

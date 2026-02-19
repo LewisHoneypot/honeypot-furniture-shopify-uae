@@ -1,0 +1,44 @@
+/* Helper Box Styles */
+
+.step-helper-wrapper {
+  max-width: 380px;
+  margin: 0 auto;
+  border-radius: 14.97px;
+  text-align: center;
+  background-color: #f0e9e3;
+  padding: 16px;
+}
+
+.step-helper-wrapper p {
+  font-size: 18px;
+  line-height: 28px;
+  color: #000;
+  margin: 0;
+}
+
+/* Tablet & Medium Screens */
+@media screen and (max-width: 1024px) {
+  .step-helper-wrapper {
+    max-width: 90%;
+  }
+
+  .step-helper-wrapper p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  .step-helper-wrapper {
+    max-width: 100%;
+    padding: 14px;
+    margin: 0 16px;
+    border-radius: 12px;
+  }
+
+  .step-helper-wrapper p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

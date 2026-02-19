@@ -1,0 +1,154 @@
+{% comment %}
+  Shopify Section: Step 4 - Filling Options
+  - Standalone section for filling options selection
+  - Can be used independently or as part of a larger form
+{% endcomment %}
+
+{{ 'step-4-filling-options.css' | asset_url | stylesheet_tag }}
+
+<section 
+style="max-width:1400px; margin: 0 auto;"  class="section"
+
+>
+  <div
+    {% comment %} id="get-estimate" {% endcomment %}
+    class="{{ section.settings.section_width }} m-auto"
+    {% if section.settings.section_width == 'customized-width' %}
+      style="--page-width: {{ section.settings.customize_width }}px;"
+    {% endif %}
+  >
+   
+    <div class="p-sm-5 rounded" style="background-color: #fff;">
+      <div class="section">
+    
+        <div class="row optionsfill-4 options-4 options-filling-3">
+          {% assign first_filling_option = true %}
+          {% for block in section.blocks %}
+            {% if block.type == 'filling_option' %}
+              <div
+                class="col{% if first_filling_option %} active{% endif %} col-12 "
+                data-value="{{ block.settings.value }}"
+              >
+                {% assign first_filling_option = false %}
+
+                <div class="flling-outer" style="width:100%;">
+                  <div class="border rounded d-flex" style="width:100%;">
+                    <!-- Square (same as Step 3) -->
+<div class="squarefilling square{% if first_filling_option %} active{% endif %} col-12">
+                    <div class="square-label">{{ block.settings.label }}</div>
+                    <div class="option-price" data-option="{{ block.settings.value }}">AED —</div>
+                </div>
+                    <!-- Right content -->
+                    <div class="title" style="align-self: center; margin: 0;">
+                      <div class="filling-description">
+                        {{ block.settings.description }}
+                      </div>
+                    </div>
+
+                    
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'get-estimate.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Step 4 - Filling Options",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Section Heading",
+      "default": "Step 4: Select Filling Option"
+    },
+    {
+      "type": "text",
+      "id": "step_number",
+      "label": "Step Number",
+      "default": "04"
+    },
+    {
+      "type": "text",
+      "id": "step_heading",
+      "label": "Step Heading",
+      "default": "Select Filling Option"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show Section Heading",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#EDEDED"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "page-width",
+          "label": "Page Width"
+        },
+        {
+          "value": "customized-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "page-width",
+      "label": "Section Width"
+    },
+    {
+      "type": "range",
+      "id": "customize_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 50,
+      "default": 1800,
+      "unit": "px",
+      "label": "Custom Width (px)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filling_option",
+      "name": "Filling Option",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Step 4 - Filling Options",
+      "blocks": [
+        { "type": "filling_option", "settings": { "label": "Classic", "value": "classic" } },
+        { "type": "filling_option", "settings": { "label": "Signature", "value": "signature" } },
+        { "type": "filling_option", "settings": { "label": "Performance", "value": "performance" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

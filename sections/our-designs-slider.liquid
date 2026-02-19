@@ -1,0 +1,162 @@
+
+<!-- Include Swiper CSS & JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<script async src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+{%- style -%}
+  .our-designs {
+    padding: 40px 0;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .our-designs h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+  }
+
+  .swiper-slide {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .design-card {
+    width: 100%;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+  }
+
+  .design-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .design-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .design-title {
+    padding: 16px;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .choose-card {
+    background: #f8f5f2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    border-radius: 12px;
+  }
+
+  .choose-circle {
+    width: 80px;
+    height: 80px;
+    background: #d4a373;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 749px) {
+    .design-card { max-width: 280px; }
+  }
+{%- endstyle -%}
+
+<div class="our-designs page-width">
+  <h2>Our Designs</h2>
+
+  <div class="swiper our-designs-swiper">
+    <div class="swiper-wrapper">
+      {% assign products = collections[section.settings.design_collection].products %}
+      {% for product in products %}
+        <div class="swiper-slide">
+          <div class="design-card">
+            <img src="{{ product.featured_image | img_url: '600x' }}" loading="lazy" alt="{{ product.title }}">
+            <div class="design-title">{{ product.title }}</div>
+          </div>
+        </div>
+      {% endfor %}
+
+      <!-- Optional "Choose your own" slide -->
+      <div class="swiper-slide">
+        <div class="design-card choose-card">
+          <div class="choose-circle">↗</div>
+          <div style="font-weight: bold; font-size: 1.3rem; margin-bottom: 8px;">
+            CHOOSE<br>YOUR OWN<br>DESIGN
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation arrows -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.our-designs-swiper', {
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+      centeredSlides: false,
+            freeMode: true,          // allows horizontal drag scroll
+      loop: false,             // no infinite loop
+      grabCursor: true,        // cursor shows draggable
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 2.2, spaceBetween: 24 },
+        1024: { slidesPerView: 3.2, spaceBetween: 32 },
+        1400: { slidesPerView: 4, spaceBetween: 40 },
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Our Designs Slider",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "design_collection",
+      "label": "Select Design Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Designs Slider"
+    }
+  ]
+}
+{% endschema %}

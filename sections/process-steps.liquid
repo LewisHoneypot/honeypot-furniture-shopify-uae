@@ -1,0 +1,316 @@
+
+<div class="process-steps-section {{ section.settings.section_padding }} {{ section.settings.background_color }}">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+      {% if section.settings.description != blank %}
+        <p class="section-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="steps-wrapper">
+      {% for block in section.blocks %}
+        <div class="step-item" {{ block.shopify_attributes }}>
+          <div class="step-circle">
+            {% if block.settings.icon %}
+              <img 
+                src="{{ block.settings.icon | image_url: width: 120 }}" 
+                alt="{{ block.settings.label | escape }}" 
+                loading="lazy"
+                width="90" 
+                height="90"
+              >
+            {% else %}
+              <!-- Placeholder if no icon -->
+              <div class="placeholder-circle"></div>
+            {% endif %}
+          </div>
+          <p class="step-label">{{ block.settings.label | escape }}</p>
+        </div>
+
+        {% unless forloop.last %}
+          <span class="arrow">→</span>
+
+
+        {% endunless %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_footer_text or section.settings.button_label != blank %}
+      <div class="section-footer">
+        {% if section.settings.show_footer_text and section.settings.footer_text != blank %}
+          <p class="footer-text">{{ section.settings.footer_text }}</p>
+        {% endif %}
+
+        {% if section.settings.button_label != blank %}
+          <a 
+            href="{{ section.settings.button_link }}" 
+            class="cta-button"
+          >
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Process Steps",
+  "tag": "section",
+  "class": "section-process-steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Designing your sofa with Honeypot is simple:"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description (optional)",
+      "default": "dsfasdf"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "From concept to comfort, we craft a sofa that's just as unique as you!"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_footer_text",
+      "label": "Show footer text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "GET YOUR ESTIMATE NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "Link to your quote/estimate page"
+    },
+    {
+      "type": "select",
+      "id": "section_padding",
+      "label": "Section padding",
+      "options": [
+        { "value": "padding-top-bottom", "label": "Normal" },
+        { "value": "padding-top-only", "label": "Top only" },
+        { "value": "padding-bottom-only", "label": "Bottom only" },
+        { "value": "no-padding", "label": "No padding" }
+      ],
+      "default": "padding-top-bottom"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon / Illustration"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Step label",
+          "default": "Step"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process Steps",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "label": "Size"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Quote"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Design"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Filling"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Fabric"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Delivery"
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8
+}
+{% endschema %}
+
+{% stylesheet %}
+.process-steps-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.section-description {
+  font-size: 32px;
+  font-weight: 350;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.steps-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+}
+
+.step-circle {
+  width: 100px;
+  height: 100px;
+  background: #EAE6E3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.step-circle img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.placeholder-circle {
+  width: 60%;
+  height: 60%;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.step-label {
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  font-size: 18px
+}
+
+.arrow {
+  font-size: 26px;
+  color: #000;
+  font-weight: bold;
+  align-self: start;
+  margin: 35px 12px;
+}
+
+.section-footer {
+  margin-top: 40px;
+}
+
+.footer-text {
+  font-size: 18px;
+  color: #555;
+  font-weight: 325;
+  margin-bottom: 1.8rem;
+}
+
+.cta-button {
+  display: inline-block;
+  color: white;
+  padding: 16px 40px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #CEAD8E;
+  font-size: 1.15rem;
+  transition: all 0.25s ease;
+  border: 1px solid #CEAD8E;
+}
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  .steps-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    margin: 20px 0;
+    font-size: 3rem;
+    color: #000;
+    align-self: center;
+}
+
+  .step-circle {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Optional padding classes */
+.padding-top-bottom { padding: 60px 20px; }
+.padding-top-only { padding: 60px 20px 0; }
+.padding-bottom-only { padding: 0 20px 60px; }
+.no-padding { padding: 0; }
+{% endstylesheet %}
