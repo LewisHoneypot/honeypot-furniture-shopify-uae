@@ -32,7 +32,7 @@ style="max-width:1400px; margin: 0 auto;"  class="section"
                 {% assign first_filling_option = false %}
 
                 <div class="flling-outer" style="width:100%;">
-                  <div class="border rounded d-flex" style="width:100%;">
+                  <div class="border rounded d-flex filling-inner" style="width:100%; min-height: 350px;">
                     <!-- Square (same as Step 3) -->
 <div class="squarefilling square{% if first_filling_option %} active{% endif %} col-12">
                     <div class="square-label">{{ block.settings.label }}</div>
@@ -144,7 +144,7 @@ style="max-width:1400px; margin: 0 auto;"  class="section"
     {
       "name": "Step 4 - Filling Options",
       "blocks": [
-        { "type": "filling_option", "settings": { "label": "Classic", "value": "classic" } },
+        { "type": "filling_option", "settings": { "label": "Classics", "value": "classics" } },
         { "type": "filling_option", "settings": { "label": "Signature", "value": "signature" } },
         { "type": "filling_option", "settings": { "label": "Performance", "value": "performance" } }
       ]

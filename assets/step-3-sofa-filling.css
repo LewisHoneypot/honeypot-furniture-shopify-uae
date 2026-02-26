@@ -111,6 +111,10 @@
 
 
 
+  .section .row.options-3 .square{
+margin: auto 0 !important;
+  }
+
   .section .row.options-3 .square {
     width: 120px;
     height: 120px;

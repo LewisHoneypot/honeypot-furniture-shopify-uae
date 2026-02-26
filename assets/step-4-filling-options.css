@@ -120,12 +120,11 @@
   .section .row.optionsfill-4 .border {
     padding: 1rem;
     min-height: auto;
-    flex-direction: column;
   }
 
   .section .row.optionsfill-4 .square {
-    min-width: 100%;
-    max-width: 100%;
+    min-width: 25%;
+    max-width: 30%;
     min-height: 100px;
     margin-right: 0;
     margin-bottom: 1rem;
@@ -153,7 +152,9 @@
   .section .row.optionsfill-4 {
     gap: 0.75rem;
   }
-
+.filling-inner{
+  min-height: auto !important;
+}
   .section .row.optionsfill-4 .border {
     padding: 0.75rem;
   }
