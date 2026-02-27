@@ -350,6 +350,58 @@
         "text_3": "Order Free Swatches"
       }
     },
+    "blocks_dAAbkw": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d071a9b_C7UAdc": {
+          "type": "ai_gen_block_d071a9b",
+          "settings": {
+            "height": 40,
+            "mobile_height": 20
+          },
+          "blocks": {}
+        },
+        "google_reviews_carousel_widget_block_bJHbhL": {
+          "type": "shopify://apps/google-reviews/blocks/carousel-widget-block/8b378e9e-c56d-47ce-a754-feca5e0caf59",
+          "settings": {
+            "contentIndex": "1",
+            "variant": "carousel",
+            "headerType": "top",
+            "customContentIndex": 31,
+            "font": "default",
+            "themeId": "light",
+            "ratingType": "stars",
+            "emojiType": "0",
+            "cardColor": "#F3F6F9",
+            "starsColor": "#FBB000",
+            "textColor": "#404040",
+            "transparent": 1,
+            "solidShadow": false,
+            "hasShadow": false,
+            "autoscroll": true,
+            "fluidScrolling": false,
+            "delay": 5,
+            "reviewPhotosType": "small",
+            "writeReview": true,
+            "fixedReviewsHeight": true
+          }
+        },
+        "ai_gen_block_d071a9b_jRyEpw": {
+          "type": "ai_gen_block_d071a9b",
+          "settings": {
+            "height": 40,
+            "mobile_height": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d071a9b_C7UAdc",
+        "google_reviews_carousel_widget_block_bJHbhL",
+        "ai_gen_block_d071a9b_jRyEpw"
+      ],
+      "settings": {}
+    },
     "testimonials_3qCQV7": {
       "type": "testimonials",
       "blocks": {
@@ -446,6 +498,7 @@
         "testimonial_block_3HnxYy",
         "testimonial_block_ziRYxD"
       ],
+      "disabled": true,
       "name": "Testimonials",
       "settings": {
         "section_image": "shopify://shop_images/image_39_5dd3f741-eab0-468c-b4d8-176eb44ccbd0.png",
@@ -585,6 +638,7 @@
     "why_honeypot_RkPHYy",
     "custom_sofa_steps_iKttc3",
     "love_it_now_pay_later_6rhnDF",
+    "blocks_dAAbkw",
     "testimonials_3qCQV7",
     "faq_accordion_K7hi9h"
   ]
