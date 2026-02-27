@@ -363,6 +363,7 @@
         "testimonial_block_L8WBiC",
         "testimonial_block_gaMqij"
       ],
+      "disabled": true,
       "custom_css": [
         ".testimonial-quote {font-size: 14px;}",
         "h2 {font-size: 34px; font-style: normal; font-weight: 400;}"
@@ -375,6 +376,58 @@
         "rating_score": "5.0",
         "reviews_link": ""
       }
+    },
+    "1772211827519bc09b": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d071a9b_xWEpAg": {
+          "type": "ai_gen_block_d071a9b",
+          "settings": {
+            "height": 40,
+            "mobile_height": 20
+          },
+          "blocks": {}
+        },
+        "google_reviews_carousel_widget_block_D3QDTL": {
+          "type": "shopify://apps/google-reviews/blocks/carousel-widget-block/8b378e9e-c56d-47ce-a754-feca5e0caf59",
+          "settings": {
+            "contentIndex": "1",
+            "variant": "carousel",
+            "headerType": "top",
+            "customContentIndex": 31,
+            "font": "default",
+            "themeId": "light",
+            "ratingType": "stars",
+            "emojiType": "0",
+            "cardColor": "#F3F6F9",
+            "starsColor": "#FBB000",
+            "textColor": "#404040",
+            "transparent": 1,
+            "solidShadow": false,
+            "hasShadow": false,
+            "autoscroll": true,
+            "fluidScrolling": false,
+            "delay": 5,
+            "reviewPhotosType": "small",
+            "writeReview": true,
+            "fixedReviewsHeight": true
+          }
+        },
+        "ai_gen_block_d071a9b_ykAjCa": {
+          "type": "ai_gen_block_d071a9b",
+          "settings": {
+            "height": 40,
+            "mobile_height": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d071a9b_xWEpAg",
+        "google_reviews_carousel_widget_block_D3QDTL",
+        "ai_gen_block_d071a9b_ykAjCa"
+      ],
+      "settings": {}
     },
     "come_sit_with_us_L4jRqf": {
       "type": "come-sit-with-us",
@@ -857,6 +910,7 @@
     "new_arrivals_RLBEyT",
     "love_it_now_pay_later_dkne96",
     "testimonials_t4paTt",
+    "1772211827519bc09b",
     "come_sit_with_us_L4jRqf",
     "1762962518bbd799ad",
     "featured_blog_UtjBx8",
