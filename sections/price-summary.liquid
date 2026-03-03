@@ -18,10 +18,10 @@
       <!-- Price Display -->
       <div class="price-display">
         <div class="price-item">
-          <span id="price" class="price-value" style="text-align: center;">AED. —</span>
+          <span id="price" class="price-value" style="text-align: center; font-weight: 300;">AED. —</span>
         </div>
 
-        <div class="price-item">
+        <div class="price-item" style ='padding-bottom :10px'>
           <span id="monthly" class="monthly-value">AED —/month (for 4 months)</span>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <!-- Payment Methods -->
       {% if section.settings.show_payment_methods %}
         <div class="payment-methods">
-          <div class="payment-options">
+          <div class="payment-options"  style ='padding-bottom :10px'>
             {% if section.settings.show_tamara %}
                             <span class="separator">{{ section.settings.separator_text }}</span>
 
@@ -109,7 +109,7 @@
       "type": "color",
       "id": "background_color",
       "label": "Background Color",
-      "default": "#EDEDED"
+      "default": "#fff"
     },
     {
       "type": "header",

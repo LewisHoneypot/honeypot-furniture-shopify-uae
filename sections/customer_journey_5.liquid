@@ -26,14 +26,17 @@
           {% endif %}
         </div>
         <p class="fabric-name">{{ block.settings.title }}</p>
+        <div class="selected-swatch-name" data-selected-swatch-display style="display: none;"></div>
 
         <div class="fabric-swatches">
           {% assign swatch_count = 0 %}
           {% for i in (1..20) %}
             {% assign color_key = 'color_swatch_' | append: i %}
             {% assign image_key = 'color_image_' | append: i %}
+            {% assign name_key = 'swatch_name_' | append: i %}
             {% assign swatch_color = block.settings[color_key] %}
             {% assign swatch_image = block.settings[image_key] %}
+            {% assign swatch_name = block.settings[name_key] %}
             
             {% if swatch_color != blank or swatch_image != blank %}
               {% assign swatch_count = swatch_count | plus: 1 %}
@@ -41,7 +44,9 @@
                 <span
                   class="fabric-swatch {% if swatch_image != blank %}has-image{% endif %}"
                   style="{% if swatch_color != blank %}background-color: {{ swatch_color }};{% endif %}"
-                  data-swatch-image="{% if swatch_image != blank %}{{ swatch_image | image_url: width: 500 }}{% endif %}">
+                  data-swatch-image="{% if swatch_image != blank %}{{ swatch_image | image_url: width: 500 }}{% endif %}"
+                  data-swatch-number="{{ swatch_count }}"
+                  data-swatch-name="{{ swatch_name }}">
                   <img src="{{ swatch_image | image_url: width: 40 }}" alt="Swatch {{ i }}" class="swatch-thumb">
                 </span>
               {% endif %}
@@ -64,11 +69,9 @@
 </section>
 
 <style>
-  .fabric-section_main{
-  background:#EDEDED
-}
+
 .fabric-section {
-  padding: 60px 20px;
+  padding: 0 20px;
   text-align: left;
   max-width:1440px;
   margin:auto;
@@ -112,9 +115,11 @@
 }
 .fabric-name {
   font-weight: 500;
+  font-weight: 325;
   font-size: 20px;
   margin-top: 10px;
   text-align:start;
+  margin-bottom: 6px !important;
 }
 .fabric-swatches {
   display: flex;
@@ -144,6 +149,14 @@
 }
 .fabric-swatch.active {
   border: 2px solid #000;
+}
+.selected-swatch-name {
+  font-size: 16px;
+  font-weight: 325;
+  color: #171717;
+  margin-bottom: 10px;
+  text-align: start;
+  letter-spacing: 0.5px;
 }
 .fabric-footer {
   text-align: center;
@@ -291,11 +304,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Auto-activate first swatch with image
     const first = Array.from(swatches).find(s => s.dataset.swatchImage);
+    const swatchDisplay = item.querySelector('[data-selected-swatch-display]');
     if (first) {
       first.classList.add('active');
       const firstImage = first.getAttribute('data-swatch-image');
       if (firstImage) {
         mainImg.src = firstImage;
+      }
+      if (swatchDisplay) {
+        const swatchName = first.getAttribute('data-swatch-name');
+        if (swatchName && swatchName.trim()) {
+          swatchDisplay.textContent = swatchName;
+          swatchDisplay.style.display = 'block';
+        } else {
+          swatchDisplay.style.display = 'none';
+        }
       }
     }
 
@@ -307,6 +330,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         swatches.forEach(s => s.classList.remove('active'));
         swatch.classList.add('active');
+
+        // Update swatch display name
+        if (swatchDisplay) {
+          const swatchName = swatch.getAttribute('data-swatch-name');
+          if (swatchName && swatchName.trim()) {
+            swatchDisplay.textContent = swatchName;
+            swatchDisplay.style.display = 'block';
+          } else {
+            swatchDisplay.style.display = 'none';
+          }
+        }
 
         // Smooth fade transition
         mainImg.style.transition = 'opacity 0.3s ease';
@@ -396,6 +430,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update swatch + image
         swatches.forEach(s => s.classList.remove('active'));
         swatches[currentIndex].classList.add('active');
+
+        // Update swatch display name
+        if (swatchDisplay) {
+          const swatchName = swatches[currentIndex].getAttribute('data-swatch-name');
+          if (swatchName && swatchName.trim()) {
+            swatchDisplay.textContent = swatchName;
+            swatchDisplay.style.display = 'block';
+          } else {
+            swatchDisplay.style.display = 'none';
+          }
+        }
       });
 
       // Initial setup
@@ -477,65 +522,84 @@ document.addEventListener('DOMContentLoaded', function() {
       "settings": [
         { "type": "text", "id": "title", "label": "Fabric Name", "default": "Cotton Canvas" },
         { "type": "image_picker", "id": "main_image", "label": "Main Fabric Image" },
-        
         { "type": "color", "id": "color_swatch_1", "label": "Swatch 1 Color", "default": "#8B4513" },
+        { "type": "text", "id": "swatch_name_1", "label": "Swatch 1 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_1", "label": "Swatch 1 Image" },
         
         { "type": "color", "id": "color_swatch_2", "label": "Swatch 2 Color", "default": "#228B22" },
+        { "type": "text", "id": "swatch_name_2", "label": "Swatch 2 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_2", "label": "Swatch 2 Image" },
         
         { "type": "color", "id": "color_swatch_3", "label": "Swatch 3 Color", "default": "#1E90FF" },
+        { "type": "text", "id": "swatch_name_3", "label": "Swatch 3 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_3", "label": "Swatch 3 Image" },
         
         { "type": "color", "id": "color_swatch_4", "label": "Swatch 4 Color", "default": "#FFD700" },
+        { "type": "text", "id": "swatch_name_4", "label": "Swatch 4 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_4", "label": "Swatch 4 Image" },
         
         { "type": "color", "id": "color_swatch_5", "label": "Swatch 5 Color", "default": "#DC143C" },
+        { "type": "text", "id": "swatch_name_5", "label": "Swatch 5 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_5", "label": "Swatch 5 Image" },
         
         { "type": "color", "id": "color_swatch_6", "label": "Swatch 6 Color", "default": "#4B0082" },
+        { "type": "text", "id": "swatch_name_6", "label": "Swatch 6 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_6", "label": "Swatch 6 Image" },
         
         { "type": "color", "id": "color_swatch_7", "label": "Swatch 7 Color", "default": "#FF69B4" },
+        { "type": "text", "id": "swatch_name_7", "label": "Swatch 7 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_7", "label": "Swatch 7 Image" },
         
         { "type": "color", "id": "color_swatch_8", "label": "Swatch 8 Color", "default": "#00CED1" },
+        { "type": "text", "id": "swatch_name_8", "label": "Swatch 8 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_8", "label": "Swatch 8 Image" },
         
         { "type": "color", "id": "color_swatch_9", "label": "Swatch 9 Color", "default": "#FF6347" },
+        { "type": "text", "id": "swatch_name_9", "label": "Swatch 9 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_9", "label": "Swatch 9 Image" },
         
         { "type": "color", "id": "color_swatch_10", "label": "Swatch 10 Color", "default": "#32CD32" },
+        { "type": "text", "id": "swatch_name_10", "label": "Swatch 10 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_10", "label": "Swatch 10 Image" },
         
         { "type": "color", "id": "color_swatch_11", "label": "Swatch 11 Color", "default": "#8A2BE2" },
+        { "type": "text", "id": "swatch_name_11", "label": "Swatch 11 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_11", "label": "Swatch 11 Image" },
         
         { "type": "color", "id": "color_swatch_12", "label": "Swatch 12 Color", "default": "#FF4500" },
+        { "type": "text", "id": "swatch_name_12", "label": "Swatch 12 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_12", "label": "Swatch 12 Image" },
         
         { "type": "color", "id": "color_swatch_13", "label": "Swatch 13 Color", "default": "#2E8B57" },
+        { "type": "text", "id": "swatch_name_13", "label": "Swatch 13 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_13", "label": "Swatch 13 Image" },
         
         { "type": "color", "id": "color_swatch_14", "label": "Swatch 14 Color", "default": "#DA70D6" },
+        { "type": "text", "id": "swatch_name_14", "label": "Swatch 14 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_14", "label": "Swatch 14 Image" },
         
         { "type": "color", "id": "color_swatch_15", "label": "Swatch 15 Color", "default": "#F0E68C" },
+        { "type": "text", "id": "swatch_name_15", "label": "Swatch 15 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_15", "label": "Swatch 15 Image" },
         
         { "type": "color", "id": "color_swatch_16", "label": "Swatch 16 Color", "default": "#FFA500" },
+        { "type": "text", "id": "swatch_name_16", "label": "Swatch 16 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_16", "label": "Swatch 16 Image" },
         
         { "type": "color", "id": "color_swatch_17", "label": "Swatch 17 Color", "default": "#FFC0CB" },
+        { "type": "text", "id": "swatch_name_17", "label": "Swatch 17 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_17", "label": "Swatch 17 Image" },
         
         { "type": "color", "id": "color_swatch_18", "label": "Swatch 18 Color", "default": "#A52A2A" },
+        { "type": "text", "id": "swatch_name_18", "label": "Swatch 18 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_18", "label": "Swatch 18 Image" },
         
         { "type": "color", "id": "color_swatch_19", "label": "Swatch 19 Color", "default": "#DEB887" },
+        { "type": "text", "id": "swatch_name_19", "label": "Swatch 19 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_19", "label": "Swatch 19 Image" },
         
         { "type": "color", "id": "color_swatch_20", "label": "Swatch 20 Color", "default": "#5F9EA0" },
+        { "type": "text", "id": "swatch_name_20", "label": "Swatch 20 Name (Optional)" },
         { "type": "image_picker", "id": "color_image_20", "label": "Swatch 20 Image" }
       ]
     }

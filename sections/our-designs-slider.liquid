@@ -5,9 +5,17 @@
 
 {%- style -%}
   .our-designs {
-    padding: 40px 0;
     max-width: 1400px;
     margin: 0 auto;
+  }
+
+  .our-designs-heading{
+    font-weight: 700;
+     color: #000;
+     font-size: 32px;
+      text-align: center;
+  margin-bottom: 30px;
+  color: #333;
   }
 
   .our-designs h2 {
@@ -30,13 +38,13 @@
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    /* box-shadow: 0 4px 20px rgba(0,0,0,0.08); */
     transition: transform 0.3s;
   }
 
-  .design-card:hover {
+  /* .design-card:hover {
     transform: translateY(-8px);
-  }
+  } */
 
   .design-card img {
     width: 100%;
@@ -47,11 +55,11 @@
   .design-title {
     padding: 16px;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 16px;
   }
 
   .choose-card {
-    background: #f8f5f2;
+    /* background: #f8f5f2; */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -79,8 +87,8 @@
   }
 {%- endstyle -%}
 
-<div class="our-designs page-width">
-  <h2>Our Designs</h2>
+<div class="our-designs ">
+  <h2 class="our-designs-heading">Our Designs</h2>
 
   <div class="swiper our-designs-swiper">
     <div class="swiper-wrapper">
@@ -116,7 +124,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('.our-designs-swiper', {
       slidesPerView: 1.2,
-      spaceBetween: 20,
+      spaceBetween: 8,
       centeredSlides: false,
             freeMode: true,          // allows horizontal drag scroll
       loop: false,             // no infinite loop
@@ -135,9 +143,9 @@
         prevEl: '.swiper-button-prev',
       },
       breakpoints: {
-        640: { slidesPerView: 2.2, spaceBetween: 24 },
-        1024: { slidesPerView: 3.2, spaceBetween: 32 },
-        1400: { slidesPerView: 4, spaceBetween: 40 },
+        640: { slidesPerView: 3.2, spaceBetween: 8 },
+        1024: { slidesPerView: 3.2, spaceBetween: 8 },
+        1400: { slidesPerView: 4, spaceBetween: 8 },
       }
     });
   });

@@ -9,16 +9,12 @@
 <section class="section">
   <div
     id="get-estimate"
-    class="{{ section.settings.section_width }} m-auto"
-    {% if section.settings.section_width == 'customized-width' %}
-      style="--page-width: {{ section.settings.customize_width }}px;"
-    {% endif %}
   >
   
-    <div class="p-sm-5 rounded" style="background-color: #fff; max-width: 1092px; margin: 0  auto;">
-      <div class="section">
+    <div class="p-sm-5 rounded" style="background-color: #fff; max-width: 1440px; margin: 0  auto;">
+      <div class="  ">
      
-        <div class="row options-3">
+        <div class="row options-3 main-section">
           {% assign first_filling = true %}
           {% for block in section.blocks %}
             {% if block.type == 'sofa_filling' %}

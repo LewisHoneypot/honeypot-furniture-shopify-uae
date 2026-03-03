@@ -1,7 +1,7 @@
 <style>
 .step-helper-wrapper {
-  max-width: 380px;
-    margin: 0 auto;
+  width: fit-content;
+margin: 0 auto;
     border-radius: 14.97px;
     text-align: center;
     background-color: #f0e9e3;
@@ -11,14 +11,15 @@
 
 .step-helper-wrapper p {
   font-size: 18px;
-  line-height: 28px;
+  line-height: 22px;
+  font-weight: 350;
   color: #000;
   margin: 0;
 }
 </style>
 
 <div class="step-helper-wrapper">
-  <p>{{ section.settings.heading }}</p>
+  <p class="uppercase">{{ section.settings.heading }}</p>
 </div>
 
 {% schema %}

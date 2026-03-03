@@ -1,0 +1,55 @@
+{% comment %}
+  Shopify Section: Text Content
+  - Simple section for adding custom text content
+  - Text can be edited through the Shopify theme editor
+{% endcomment %}
+
+<section class="text-content-section">
+  <div class="text-content-wrapper">
+    <div class="text-content">
+      {{ section.settings.text_content }}
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-content-section {
+    padding: 0 20px 20px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .text-content-wrapper {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+  }
+
+  .text-content {
+    font-size: 24px;
+    line-height: 100%;
+    color: #171717;
+    font-weight: 500;
+
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Text Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_content",
+      "label": "Text Content",
+      "default": "<p>Add your text content here</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Content"
+    }
+  ]
+}
+{% endschema %}

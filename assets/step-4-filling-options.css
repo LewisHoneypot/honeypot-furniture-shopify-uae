@@ -3,18 +3,22 @@
 .section .row.optionsfill-4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: 1.5rem;
   
 }
 
 .section .row.optionsfill-4 .col {
   cursor: pointer;
   transition: all 0.3s ease;
+  padding: 0;
+  height: 100%;
   
 }
 
 .section .row.optionsfill-4 .flling-outer {
   width: 100%;
+  height: 100%;
+
 }
 
 .section .row.optionsfill-4 .border {
@@ -23,6 +27,8 @@
   background-color: #fafaf9;
   gap: 16px;
   align-items: stretch;
+  border-radius: 1rem;
+  height: 100% !important;
 }
 
 .section .row.optionsfill-4 .col:hover .border {
@@ -30,9 +36,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
-
- .section .row.optionsfill-4 .col.active .square {
+ .section .row.optionsfill-4 .col.active .border {
   background-color: #CEAD8E;
 }
 
@@ -40,8 +44,9 @@
 .section .row.optionsfill-4 .square {
   min-width: 150px;
   max-width: 150px;
+  height: 150px;
   background-color: #e8e1d9;
-  /* border-radius: 8px; */
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,35 +58,38 @@
 
 
 .section .row.optionsfill-4 .square-label {
-  font-weight: 350;
-  font-size: 18px;
-  color: #2a2a2a;
+  font-weight: 600;
+  font-size: 14px;
+  color: #7d7d7d;
   margin-bottom: 0.5rem;
+  transform: uppercase;
 }
 
 .section .row.optionsfill-4 .option-price {
-  font-size: 18px;
-  font-weight: 350;
-  color: #2a2a2a;
-}
-
-.section .row.optionsfill-4 .col.active .square-label,
-.section .row.optionsfill-4 .col.active .option-price {
-  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  color: #171717;
 }
 
 .section .row.optionsfill-4 .title {
   margin: 0;
   padding: 0;
 }
+.section .row.optionsfill-4 .col.active .filling-description {
+  color: #ffffff;
+
+}
 
 .section .row.optionsfill-4 .filling-description {
-  font-size: 16px;
-  color: #2a2a2a;
-  line-height: 1.5;
-  transition: all 0.3s ease;
-  padding: 30px 10px;
-  flex: 1;
+line-height: 1.4;
+    padding: 1.5rem;
+    padding-top: 5px;
+    color: #000;
+    text-align: start;
+    font-size: 14px;
+    font-family: Gotham, Helvetica Neue, Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -93,8 +101,8 @@
   }
 
   .section .row.optionsfill-4 .square {
-    min-width: 120px;
-    max-width: 120px;
+    min-width: 150px;
+    max-width: 150px;
   }
 
   .section .row.optionsfill-4 .square-label {
@@ -127,7 +135,6 @@
     max-width: 30%;
     min-height: 100px;
     margin-right: 0;
-    margin-bottom: 1rem;
   }
 
   .section .row.optionsfill-4 .square-label {
@@ -139,7 +146,7 @@
   }
 
   .section .row.optionsfill-4 .filling-description {
-    font-size: 12px;
+    font-size: 14px;
     padding: 10px 0;
   }
 
@@ -170,5 +177,9 @@
   .section .row.optionsfill-4 .filling-description {
     font-size: 11px;
     line-height: 1.4;
+  }
+
+  .main-section-filling{
+    margin: 20px;
   }
 }

@@ -103,21 +103,60 @@
   background-image: url('{{ "check-circle-white.png" | asset_url }}');
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .section .row.options-3 {
-    grid-template-columns: 1fr;
-  }
 
-
-
-  .section .row.options-3 .square{
-margin: auto 0 !important;
-  }
-
-  .section .row.options-3 .square {
-    width: 120px;
-    height: 120px;
-    font-size: 1.3rem;
-  }
+.main-section{
+display: flex !important;
+flex-direction: row !important;
+gap: 0  !important;
 }
+
+
+.main-section .col{
+min-width: 50% !important;
+}
+
+.main-section .col li {
+  margin-bottom: 5px !important;
+  font-size: 14px !important;
+}
+
+.main-section .border{
+  padding: 0.5rem !important  ;
+}
+
+.main-section .square{
+  width: 150px !important;
+        height: 168px !important;
+        min-width: 168px !important;
+        min-height: 168px !important;
+        margin: auto 0 !important;
+}
+
+
+
+
+/* Responsive */
+@media (max-width: 700px) {
+
+  .main-section .border{
+  padding: 0.5rem !important  ;
+}
+.main-section .col{
+min-width: 100% !important;
+}
+
+
+.main-section .col ul {
+padding-left: 0 !important;
+}
+
+
+.main-section .square{
+  width: 100px !important;
+        height: 130px !important;
+        min-width: 130px !important;
+        min-height: 130px !important;
+        margin: auto 0 !important;
+}
+}
+
