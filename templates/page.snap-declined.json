@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -17,7 +26,7 @@
         "heading_iA9QEq": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Congratulations!<\/p>",
+            "heading": "<p>Congratulations!</p>",
             "heading_size": "h1",
             "padding_top": 0,
             "padding_bottom": 10
@@ -26,7 +35,7 @@
         "text_WMhDPy": {
           "type": "text",
           "settings": {
-            "text": "<p>You've been approved to spend finance with us. <br\/><br\/>So what happens next?<br\/><br\/>If you have already signed your agreement with Snap Finance, all you need to do is await contact from our team to confirm your delivery date. <br\/><br\/>If you have an approval but are yet to receieve your contract, our team will be in touch to complete your order. Alternatively, you can contact us.<br\/><br\/>Office Hours: Mon-Fri 8AM - 8PM<\/p>",
+            "text": "<p>You've been approved to spend finance with us. <br/><br/>So what happens next?<br/><br/>If you have already signed your agreement with Snap Finance, all you need to do is await contact from our team to confirm your delivery date. <br/><br/>If you have an approval but are yet to receieve your contract, our team will be in touch to complete your order. Alternatively, you can contact us.<br/><br/>Office Hours: Mon-Fri 8AM - 8PM</p>",
             "padding_top": 10,
             "padding_bottom": 10
           }
@@ -54,7 +63,7 @@
         "section_width": "page-width",
         "customize_width": 1800,
         "color_scheme": "scheme-06080b3f-4cd8-4a34-99a2-b3f3ed18987c",
-        "image": "shopify:\/\/shop_images\/Snap_Approved.jpg",
+        "image": "shopify://shop_images/Snap_Approved.jpg",
         "heading": "",
         "heading_size": "default",
         "link_label": "",
@@ -101,7 +110,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Guarantee heading",
-            "text": "<p>Share information about your products, policies or services.<\/p>",
+            "text": "<p>Share information about your products, policies or services.</p>",
             "link_label": "Link label",
             "link": ""
           }
@@ -114,7 +123,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Guarantee heading",
-            "text": "<p>Share information about your products, policies or services.<\/p>",
+            "text": "<p>Share information about your products, policies or services.</p>",
             "link_label": "Link label",
             "link": ""
           }
@@ -127,7 +136,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Guarantee heading",
-            "text": "<p>Share information about your products, policies or services.<\/p>",
+            "text": "<p>Share information about your products, policies or services.</p>",
             "link_label": "Link label",
             "link": ""
           }
@@ -140,7 +149,7 @@
             "custom_size_icon": 30,
             "custom_icon_background": "",
             "heading": "Guarantee heading",
-            "text": "<p>Share information about your products, policies or services.<\/p>",
+            "text": "<p>Share information about your products, policies or services.</p>",
             "link_label": "Link label",
             "link": ""
           }
@@ -201,7 +210,7 @@
           "settings": {
             "heading": "How long is my finance approval valid for?",
             "icon": "question_mark",
-            "row_content": "<p>You have 30 days from the day of your approval to use your finance. If your approval expires you can apply again however, there is no guarantee that you will receieve the approval again. <\/p>",
+            "row_content": "<p>You have 30 days from the day of your approval to use your finance. If your approval expires you can apply again however, there is no guarantee that you will receieve the approval again. </p>",
             "page": ""
           }
         },
@@ -210,7 +219,7 @@
           "settings": {
             "heading": "Can I have my items delivered to a different address?",
             "icon": "question_mark",
-            "row_content": "<p>If you would like your items delivered to an address that is different to what's on your finance agreement, you will have to contact Snap Finance in order to do this. Once you have signed your agreement, please call Snap Finance on: <a href=\"tel:03300109381 \" title=\"tel:03300109381 \">03300 109381 <br\/><br\/><\/a><em>Their lines are open 8.30am-5.30pm on weekdays or 10am-2pm on Saturday.<\/em><\/p>",
+            "row_content": "<p>If you would like your items delivered to an address that is different to what's on your finance agreement, you will have to contact Snap Finance in order to do this. Once you have signed your agreement, please call Snap Finance on: <a href=\"tel:03300109381 \" title=\"tel:03300109381 \">03300 109381 <br/><br/></a><em>Their lines are open 8.30am-5.30pm on weekdays or 10am-2pm on Saturday.</em></p>",
             "page": ""
           }
         },
@@ -219,7 +228,7 @@
           "settings": {
             "heading": "Can I add Emmiera accidental damage cover to my finance?",
             "icon": "question_mark",
-            "row_content": "<p>Yes! If you haven't already added Emmiera to your order, you can request this with our team. For more information on Emmiera's accidental damage cover <a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0857\/1358\/4415\/files\/Staingard_Generic_Upholstery_Leaflet_3.pdf?v=1713435215\" title=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0857\/1358\/4415\/files\/Staingard_Generic_Upholstery_Leaflet_3.pdf?v=1713435215\">click here<\/a>. <\/p>",
+            "row_content": "<p>Yes! If you haven't already added Emmiera to your order, you can request this with our team. For more information on Emmiera's accidental damage cover <a href=\"https://cdn.shopify.com/s/files/1/0857/1358/4415/files/Staingard_Generic_Upholstery_Leaflet_3.pdf?v=1713435215\" title=\"https://cdn.shopify.com/s/files/1/0857/1358/4415/files/Staingard_Generic_Upholstery_Leaflet_3.pdf?v=1713435215\">click here</a>. </p>",
             "page": ""
           }
         },
@@ -228,7 +237,7 @@
           "settings": {
             "heading": "Am I limited to what I can order using Finance?",
             "icon": "question_mark",
-            "row_content": "<p>You can order any of the items from our website. Should your order be more than your agreed loan amount, you can pay the difference directly to us.<\/p>",
+            "row_content": "<p>You can order any of the items from our website. Should your order be more than your agreed loan amount, you can pay the difference directly to us.</p>",
             "page": ""
           }
         }
@@ -275,7 +284,7 @@
         "text_w6JLzg": {
           "type": "text",
           "settings": {
-            "text": "<p>We still have other payment options available, including Klarna, PayPal, Clearpay and Debit and Credit Card. Simply head back to the checkout and select another payment option. <\/p>",
+            "text": "<p>We still have other payment options available, including Klarna, PayPal, Clearpay and Debit and Credit Card. Simply head back to the checkout and select another payment option. </p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -321,7 +330,7 @@
           "settings": {
             "heading": "Klarna",
             "content_type": "custom",
-            "content": "<p>Join 150 million customers and choose flexible payments, lightning-fast checkout and secure shopping. Klarna's Pay in 3\/Pay in 30 days allow you to spread the cost. <br\/><br\/><a href=\"\/pages\/klarna\" title=\"Klarna\">Find out more. <\/a><\/p>",
+            "content": "<p>Join 150 million customers and choose flexible payments, lightning-fast checkout and secure shopping. Klarna's Pay in 3/Pay in 30 days allow you to spread the cost. <br/><br/><a href=\"/pages/klarna\" title=\"Klarna\">Find out more. </a></p>",
             "page": "",
             "padding_top": 61,
             "padding_bottom": 61,
@@ -334,7 +343,7 @@
           "settings": {
             "heading": "Clearpay",
             "content_type": "custom",
-            "content": "<p>Choose Clearpay at checkout and pay in 4 interest-free instalments - make your first payment today and the rest over 6 weeks.<br\/><br\/><a href=\"\/pages\/clearpay\" title=\"Clearpay\">Find out more. <\/a><\/p>",
+            "content": "<p>Choose Clearpay at checkout and pay in 4 interest-free instalments - make your first payment today and the rest over 6 weeks.<br/><br/><a href=\"/pages/clearpay\" title=\"Clearpay\">Find out more. </a></p>",
             "page": "",
             "padding_top": 61,
             "padding_bottom": 61,
@@ -347,7 +356,7 @@
           "settings": {
             "heading": "PayPal",
             "content_type": "custom",
-            "content": "<p>With Pay in 3, there's no interest, no late fees or setup fees. Your purchases are covered by the same security and Buyer Protection you already enjoy from PayPal.<\/p>",
+            "content": "<p>With Pay in 3, there's no interest, no late fees or setup fees. Your purchases are covered by the same security and Buyer Protection you already enjoy from PayPal.</p>",
             "page": "",
             "padding_top": 61,
             "padding_bottom": 61,
@@ -457,7 +466,6 @@
         "show_author": false,
         "show_tags": false,
         "show_button": false,
-        "button_transparent": "default",
         "text_per_line": "none",
         "text_alignment": "left",
         "title_margin_top": 0,

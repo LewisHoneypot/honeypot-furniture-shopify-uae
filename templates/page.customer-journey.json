@@ -21,497 +21,270 @@
         "padding_bottom_mobile": 30
       }
     },
-    "custom_liquid_T7RRLB": {
-      "type": "custom-liquid",
+    "step_quote_bXmDbP": {
+      "type": "step-quote",
+      "name": "Step Quote Box",
       "settings": {
-        "custom_liquid": "",
-        "padding_top": 30,
-        "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "step_number": "01",
+        "heading": "Choose Your Size & Get Quoted",
+        "subheading": "Design the shape & size that perfectly fits your home:"
       }
     },
-    "breadcrump_with_bg_bka7Qq": {
-      "type": "breadcrump_with_bg",
-      "disabled": true,
-      "name": "Breadcrumb with Banner",
+    "helper_box_X9y7Vi": {
+      "type": "helper-box",
+      "name": "Helper Box",
       "settings": {
-        "banner_bg": "shopify://shop_images/Untitled_1080_x_1920_px_1920_x_1080_px_1_11zon.webp",
-        "banner_height": "medium",
-        "banner_heading": "Page Title Here",
-        "banner_text": "This is your paragraph text",
-        "banner_button_text": "",
-        "banner_button_link": "shopify://collections/all"
+        "heading": "Choose Your Size & Get Quoted"
       }
     },
-    "customer_main_header_XeBfft": {
-      "type": "customer_main_header",
-      "name": "Custom Sofa Journey",
-      "settings": {
-        "show_section": true,
-        "section_id": "sofa-section-1",
-        "layout_direction": "content_left",
-        "outer_bg_color": "#ededed",
-        "outer_bg_size": "cover",
-        "outer_bg_position": "center center",
-        "outer_section_padding_top": 0,
-        "outer_section_padding_bottom": 0,
-        "outer_mobile_section_padding_top": 0,
-        "outer_mobile_section_padding_bottom": 0,
-        "mobile_layout": "image_top",
-        "section_bg_color": "#ededed",
-        "bg_size": "contain",
-        "bg_position": "center center",
-        "section_padding_top": 50,
-        "section_padding_bottom": 60,
-        "mobile_section_padding_top": 0,
-        "mobile_section_padding_bottom": 0,
-        "content_width": 40,
-        "image_width": 60,
-        "mobile_content_height": 200,
-        "mobile_image_height": 200,
-        "heading": "Your Custom  Sofa Journey",
-        "heading_size": 59,
-        "mobile_heading_size": 40,
-        "content": "<p>With Honeypot Furniture</p>",
-        "content_size": 24,
-        "mobile_content_size": 20,
-        "show_content_border": true,
-        "border_side": "left",
-        "show_mobile_border": false,
-        "border_color": "#000000",
-        "border_width": 1,
-        "button_text": "",
-        "button_link": "",
-        "button_bg_color": "#000000",
-        "button_text_color": "#ffffff",
-        "button_padding_top": 12,
-        "button_padding_sides": 24,
-        "button_margin_top": 20,
-        "mobile_button_padding_top": 10,
-        "mobile_button_padding_sides": 20,
-        "mobile_button_margin_top": 15,
-        "mobile_button_font_size": 14,
-        "section_image": "shopify://shop_images/image_31_1__11zon.webp",
-        "image_border_radius": 0
-      }
-    },
-    "customer_journey_6_YHXknH": {
-      "type": "customer_journey_6",
-      "name": "customer jouney 6",
-      "settings": {
-        "section_id": "journey-6",
-        "top_bg_color": "#ffffff",
-        "top_bg_size": "cover",
-        "top_bg_position": "center center",
-        "top_bg_repeat": "no-repeat",
-        "section_max_width": 1200,
-        "top_padding_top": 60,
-        "top_padding_bottom": 60,
-        "top_padding_sides": 20,
-        "content_alignment": "center",
-        "content_gap": 40,
-        "text_width": 40,
-        "images_width": 55,
-        "text_alignment": "left",
-        "heading_number": "",
-        "number_size": 28,
-        "number_weight": "700",
-        "number_color": "#000000",
-        "number_margin_bottom": 5,
-        "desc_line_height": "1.6",
-        "bottom_heading_line_height": "1.2",
-        "step_item_line_height": "1.2",
-        "arrow_line_height": "1.2",
-        "bottom_desc_line_height": "1.6",
-        "number_font": "inherit",
-        "heading": "Why Bespoke?",
-        "title_size": 32,
-        "title_weight": "500",
-        "title_color": "#000000",
-        "title_margin_bottom": 10,
-        "title_line_height": 1.2,
-        "title_font": "inherit",
-        "description": "At Honeypot, we believe your sofa should feel as unique as your home. That's why we make every piece bespoke. From the style and size to the comfort filling and fabric, each detail is tailored to you.\n<br><br>\nChoose the look you love, the dimensions that fit your space, the seat feel that lets you truly relax, and the fabric that feels and looks just right. Then, we handcraft it and deliver it straight to your home.",
-        "desc_size": 16,
-        "desc_weight": "400",
-        "desc_color": "#000000",
-        "desc_margin_bottom": 0,
-        "desc_font": "inherit",
-        "image_1": "shopify://shop_images/Rectangle_34624304_11zon.webp",
-        "images_gap": 15,
-        "image_border_radius": 0,
-        "image_border_width": 0,
-        "image_border_color": "#000000",
-        "bottom_bg_color": "#f5eee8",
-        "bottom_bg_size": "cover",
-        "bottom_bg_position": "center center",
-        "bottom_bg_repeat": "no-repeat",
-        "bottom_max_width": 1200,
-        "bottom_padding_top": 40,
-        "bottom_padding_bottom": 40,
-        "bottom_padding_sides": 20,
-        "bottom_margin_top": 0,
-        "bottom_alignment": "center",
-        "bottom_heading": "We've simplified our journey:",
-        "bottom_heading_size": 24,
-        "bottom_heading_weight": "600",
-        "bottom_heading_color": "#000000",
-        "bottom_heading_margin_bottom": 25,
-        "bottom_heading_font": "inherit",
-        "steps_text": "Design → Size → Quote → Filling → Fabric → Delivery",
-        "steps_justify": "center",
-        "steps_align": "center",
-        "steps_gap": 25,
-        "steps_margin_bottom": 15,
-        "step_item_size": 32,
-        "step_item_weight": "600",
-        "step_item_color": "#000000",
-        "step_item_font": "",
-        "step_item_bg_color": "rgba(0,0,0,0)",
-        "step_item_padding_vertical": 0,
-        "step_item_padding_horizontal": 0,
-        "step_item_border_radius": 0,
-        "step_item_border_width": 0,
-        "step_item_border_color": "#000000",
-        "arrow_size": 28,
-        "arrow_weight": "600",
-        "arrow_color": "#000000",
-        "bottom_desc": "From concept to comfort, we craft a sofa that’s just as unique as you.",
-        "bottom_desc_size": 16,
-        "bottom_desc_weight": "400",
-        "bottom_desc_color": "#000000",
-        "bottom_desc_max_width": 600,
-        "bottom_desc_font": "inherit",
-        "bottom_desc_padding_vertical": 0,
-        "bottom_desc_padding_horizontal": 0,
-        "mobile_layout": "column",
-        "mobile_text_alignment": "center",
-        "mobile_content_gap": 20,
-        "mobile_images_layout": "column",
-        "mobile_images_gap": 15,
-        "mobile_top_padding_top": 40,
-        "mobile_top_padding_bottom": 40,
-        "mobile_top_padding_sides": 15,
-        "mobile_number_size": 24,
-        "mobile_title_size": 32,
-        "mobile_desc_size": 14,
-        "mobile_bottom_padding_top": 30,
-        "mobile_bottom_padding_bottom": 30,
-        "mobile_bottom_padding_sides": 15,
-        "mobile_bottom_margin_top": 40,
-        "mobile_bottom_heading_size": 18,
-        "mobile_step_item_size": 16,
-        "mobile_arrow_size": 16,
-        "mobile_bottom_desc_size": 14,
-        "mobile_steps_gap": 5
-      }
-    },
-    "customer_main_header_CTaA6M": {
-      "type": "customer_main_header",
-      "name": "Custom Sofa Journey",
-      "settings": {
-        "show_section": true,
-        "section_id": "sofa-section-2",
-        "layout_direction": "content_right",
-        "outer_bg_color": "#ededed",
-        "outer_bg_size": "cover",
-        "outer_bg_position": "center center",
-        "outer_section_padding_top": 0,
-        "outer_section_padding_bottom": 0,
-        "outer_mobile_section_padding_top": 0,
-        "outer_mobile_section_padding_bottom": 0,
-        "mobile_layout": "image_top",
-        "section_bg_color": "#ededed",
-        "bg_size": "cover",
-        "bg_position": "center center",
-        "section_padding_top": 60,
-        "section_padding_bottom": 60,
-        "mobile_section_padding_top": 40,
-        "mobile_section_padding_bottom": 40,
-        "content_width": 40,
-        "image_width": 60,
-        "mobile_content_height": 300,
-        "mobile_image_height": 300,
-        "heading": "STEP 01",
-        "heading_size": 36,
-        "mobile_heading_size": 32,
-        "content": "<h2>Choose Your Design</h2><p>Start with one of our signature base designs, or bring your own inspiration image or sketch. You can adjust the arm shapes, back styles, or combine elements from different sofa styles. Whether you prefer modern designs or a classic look, the style is entirely yours.<br/></p>",
-        "content_size": 16,
-        "mobile_content_size": 14,
-        "show_content_border": false,
-        "border_side": "left",
-        "show_mobile_border": false,
-        "border_color": "#000000",
-        "border_width": 3,
-        "button_text": "",
-        "button_link": "",
-        "button_bg_color": "#000000",
-        "button_text_color": "#ffffff",
-        "button_padding_top": 12,
-        "button_padding_sides": 24,
-        "button_margin_top": 0,
-        "mobile_button_padding_top": 10,
-        "mobile_button_padding_sides": 20,
-        "mobile_button_margin_top": 15,
-        "mobile_button_font_size": 14,
-        "section_image": "shopify://shop_images/photo-collage_2731bb72-2a68-47ea-bc64-5fe4335395e2.png",
-        "image_border_radius": 0
-      }
-    },
-    "customer_journey_2_i7LHUN": {
-      "type": "customer_journey_2",
+    "step_1_sofa_type_QCQyMb": {
+      "type": "step-1-sofa-type",
       "blocks": {
-        "shape_image_THeHwF": {
-          "type": "shape_image",
+        "sofa_type_R47bLV": {
+          "type": "sofa_type",
           "settings": {
-            "image": "shopify://shop_images/Product-Dimension-Order-Illsutration-07.png"
+            "label": "Straight",
+            "value": "straight",
+            "image": "shopify://shop_images/Straight_d8779435-b408-4c12-8a65-c51f58a94355.png",
+            "image_width": 150
           }
         },
-        "shape_image_Ry3neN": {
-          "type": "shape_image",
+        "sofa_type_Q9i4Wz": {
+          "type": "sofa_type",
           "settings": {
-            "image": "shopify://shop_images/Product-Dimension-Order-Illsutration-15.png"
+            "label": "L-Corner",
+            "value": "l-corner",
+            "image": "shopify://shop_images/L-Corner_d4a504dc-613a-4391-aa81-598fff758809.png",
+            "image_width": 150
           }
         },
-        "shape_image_epbXTq": {
-          "type": "shape_image",
+        "sofa_type_EKFDHE": {
+          "type": "sofa_type",
           "settings": {
-            "image": "shopify://shop_images/Product-Dimension-Order-Illsutration-11.png"
-          }
-        },
-        "shape_image_3tcqQJ": {
-          "type": "shape_image",
-          "settings": {
-            "image": "shopify://shop_images/Product-Dimension-Order-Illsutration-09.png"
-          }
-        },
-        "shape_image_ttqnaW": {
-          "type": "shape_image",
-          "settings": {
-            "image": "shopify://shop_images/Product-Dimension-Order-Illsutration-17.png"
-          }
-        },
-        "list_item_JVnHnT": {
-          "type": "list_item",
-          "settings": {
-            "text": "Length"
-          }
-        },
-        "list_item_TrUAKb": {
-          "type": "list_item",
-          "settings": {
-            "text": "Depth"
-          }
-        },
-        "list_item_HDxkfT": {
-          "type": "list_item",
-          "settings": {
-            "text": "Floor-to-Base Height"
-          }
-        },
-        "list_item_nGCNLt": {
-          "type": "list_item",
-          "settings": {
-            "text": "Floor-to-Seat Height"
-          }
-        },
-        "list_item_rxjpqU": {
-          "type": "list_item",
-          "settings": {
-            "text": "Seat Depth & Width"
-          }
-        },
-        "list_item_Crzq6y": {
-          "type": "list_item",
-          "settings": {
-            "text": "Armrest Height & Thickness"
-          }
-        },
-        "list_item_ffLFBx": {
-          "type": "list_item",
-          "settings": {
-            "text": "Backrest Height & Thickness"
-          }
-        },
-        "list_item_b8GWFJ": {
-          "type": "list_item",
-          "disabled": true,
-          "settings": {
-            "text": "Armrest Width"
-          }
-        },
-        "list_item_f3rYgD": {
-          "type": "list_item",
-          "disabled": true,
-          "settings": {
-            "text": "Backrest Width"
-          }
-        },
-        "list_item_wA6hky": {
-          "type": "list_item",
-          "disabled": true,
-          "settings": {
-            "text": "Seat Width"
+            "label": "U-Corner",
+            "value": "corner",
+            "image": "shopify://shop_images/U-Corner_fbdded20-152c-4a5e-9551-04bed4662f4e.png",
+            "image_width": 150
           }
         }
       },
       "block_order": [
-        "shape_image_THeHwF",
-        "shape_image_Ry3neN",
-        "shape_image_epbXTq",
-        "shape_image_3tcqQJ",
-        "shape_image_ttqnaW",
-        "list_item_JVnHnT",
-        "list_item_TrUAKb",
-        "list_item_HDxkfT",
-        "list_item_nGCNLt",
-        "list_item_rxjpqU",
-        "list_item_Crzq6y",
-        "list_item_ffLFBx",
-        "list_item_b8GWFJ",
-        "list_item_f3rYgD",
-        "list_item_wA6hky"
+        "sofa_type_R47bLV",
+        "sofa_type_Q9i4Wz",
+        "sofa_type_EKFDHE"
       ],
-      "custom_css": [
-        ".customise-bottom-right {transform: scale(1.3); object-fit: cover;}",
-        ".shape-img-2 {margin-top: 10px;}",
-        ".shape-img-3 {margin-top: 30px;}",
-        ".shape-img-4 {margin-top: 15px;}",
-        ".shape-img-5 {margin-top: 7px;}"
-      ],
-      "name": "Customer Journey 2 - Customise Size",
+      "name": "Step 1 - Sofa Type",
       "settings": {
-        "number": "STEP 02",
-        "heading": "Customise Your Size & Layout",
-        "subheading": "Design the shape and size that perfectly fits your home:",
-        "paragraph": "L-shape, U-shape, 3-Seater, 4-Seater, 5-Seater - anything you need.",
-        "middle_text": "",
-        "measurements_title": "Specify every detail from seat depth and armrest width,to backrest height so your sofa sits beautifully in your space:",
-        "note": "No awkward gaps, no wasted space. Just perfect proportions.",
-        "main_image": "shopify://shop_images/WhatsApp_Image_2025-12-20_at_5.42.52_PM.jpg"
-      }
-    },
-    "customer_journey_1_MPXCwG": {
-      "type": "customer_journey_1",
-      "blocks": {
-        "image_3a6J8t": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/image_4__11zon.webp"
-          }
-        },
-        "image_PN4PUj": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/image_5__11zon.webp"
-          }
-        },
-        "image_pA8hJ8": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/image_11zon.webp"
-          }
-        },
-        "image_fTNRHC": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/image_6__11zon.webp"
-          }
-        }
-      },
-      "block_order": [
-        "image_3a6J8t",
-        "image_PN4PUj",
-        "image_pA8hJ8",
-        "image_fTNRHC"
-      ],
-      "disabled": true,
-      "name": "customer journey 1",
-      "settings": {
-        "number": "01",
-        "heading": "Choose Your Style",
-        "paragraph": "Mix & Match: Adjust arm shapes, back styles, or combine elements from different sofa styles.",
-        "extra_text1": "Start with one of our base designs, or bring your own inspiration photo.",
-        "extra_text2": "<br>\nWhether you prefer modern designs or a classic look, the style is entirely yours."
-      }
-    },
-    "customer_journey_3_6ew86H": {
-      "type": "customer_journey_3",
-      "name": "Customer Journey 3 ",
-      "settings": {
-        "container_max_width": 1200,
-        "section_padding_top": 60,
-        "section_padding_bottom": 60,
-        "section_padding_sides": 20,
-        "section_margin_top": 0,
-        "section_margin_bottom": 0,
+        "step_number": "01",
+        "step_heading": "Select Sofa Type",
+        "show_heading": true,
         "background_color": "#ededed",
-        "number": "STEP 03",
-        "number_color": "#000000",
-        "number_font_size": 35,
-        "number_font_weight": "600",
-        "number_margin_bottom": 8,
-        "heading": "Get A Quote",
-        "heading_color": "#000000",
-        "heading_font_size": 24,
-        "heading_font_weight": "500",
-        "heading_margin_bottom": 15,
-        "paragraph": "<p>Your chosen style and size lead straight to a clear, upfront price that includes both filling types and all three fabric categories.</p><p>We provide a price for every fabric so you can easily see what fits your budget, because transparency matters. No surprises, just clarity and choice.</p>",
-        "text_color": "#555555",
-        "text_font_size": 16,
-        "text_line_height": 1.5,
-        "text_max_width": 800,
-        "image": "shopify://shop_images/Group_1000004181_2.png",
-        "image_alt": "Quote Image",
-        "table_margin_top": 30
+        "section_width": "page-width",
+        "customize_width": 1800
       }
     },
-    "grid_image_text_qChzVn": {
-      "type": "grid-image-text",
-      "name": "Grid Image Text",
+    "step_2_sofa_dimensions_QapbDR": {
+      "type": "step-2-sofa-dimensions",
+      "name": "Sofa Dimensions fields",
       "settings": {
-        "container_max_width": 1200,
-        "section_padding_top": 60,
-        "section_padding_bottom": 0,
-        "section_padding_sides": 0,
-        "background_color": "#ffffff",
-        "grid_gap": 40,
-        "grid_margin_top": 40,
-        "number": "STEP 04",
-        "number_color": "#000000",
-        "number_font_size": 35,
-        "number_font_weight": "600",
-        "number_margin_bottom": 0,
-        "heading": "Select Your Filling",
-        "heading_color": "#000000",
-        "heading_font_size": 24,
-        "heading_font_weight": "500",
-        "heading_margin_bottom": 15,
-        "subheading": "Find the comfort that fits how you love to sit.",
-        "subheading_color": "#171717",
-        "subheading_font_size": 16,
-        "subheading_line_height": 1.5,
-        "subheading_max_width": 600,
-        "feather_image": "shopify://shop_images/Rectangle_34624276_11zon.webp",
-        "foam_image": "shopify://shop_images/Rectangle_34624273_11zon.webp",
-        "feather_label": "Feather Filling",
-        "feather_label_bg": "#f0e9e3",
-        "feather_label_text": "#000000",
-        "foam_label": "Foam Filling",
-        "foam_label_bg": "#f0e9e3",
-        "foam_label_text": "#171717",
-        "label_font_size": 18,
-        "label_font_weight": "600",
-        "label_padding": 14,
-        "label_border_radius": 0,
-        "feather_content": "<ul><li><strong>Feather Cloud: </strong>Cloud-like, soft, and full of feathers</li><li><strong>Feather Balanced:</strong> A perfect blend of feather and biscuit foam</li><li><strong>Feather Support: </strong>Firmer, with more biscuit foam and extra spring-back<br/><br/>     </li></ul>",
-        "foam_content": "<ul><li><strong>Foam Cloud:</strong> The most cushioned, sink in feel</li><li><strong>Foam Balanced:</strong> Balanced comfort with soft yet supportive foams</li><li><strong>Foam Support:</strong> Higher density foam for extra resilience and support<br/><br/></li></ul>",
-        "content_text_color": "#000000",
-        "content_font_size": 16,
-        "content_line_height": 2,
-        "content_text_align": "left",
-        "content_margin_top": 10
+        "step_number": "02",
+        "step_heading": "Select Sofa Size",
+        "show_heading": true,
+        "background_color": "#ededed",
+        "section_width": "page-width",
+        "customize_width": 1800,
+        "field_a_label": "Length A",
+        "field_b_label": "Length B",
+        "field_c_label": "Length C",
+        "dimensions_image_1A": "shopify://shop_images/Straight_sofa_size-1.png",
+        "dimensions_image_2_mobile": "shopify://shop_images/L-_Corner_Lenght_A_B.png",
+        "dimensions_image_2A": "shopify://shop_images/L-corner_lenght_A_e3271212-e007-4d14-8076-31e21091fb96.png",
+        "dimensions_image_3_mobile": "shopify://shop_images/U_corner_Lenght_A_B_C.png",
+        "dimensions_image_3A": "shopify://shop_images/U_corner_Lenght_A_08f7477c-a101-4eb4-8e1a-489fabf5752a.png",
+        "dimensions_image_2B": "shopify://shop_images/L-_Corner_Lenght_B_43872c14-6da1-42b1-9c9e-10c4d9c9a42d.png",
+        "dimensions_image_3B": "shopify://shop_images/U_corner_lenght_B_ec5b3036-b19f-49d1-90bb-9870b1d02be7.png",
+        "dimensions_image_3C": "shopify://shop_images/U_corner_Lenght_C_85b4ddb5-2558-4fc5-b38f-7a8cb8beb2d7.png"
+      }
+    },
+    "step_quote_tqtwcF": {
+      "type": "step-quote",
+      "name": "Step Quote Box",
+      "settings": {
+        "step_number": "02",
+        "heading": "Choose Your Design & Layout",
+        "subheading": "Design the shape & size that perfectly fits your home:"
+      }
+    },
+    "our_designs_slider_NXWthd": {
+      "type": "our-designs-slider",
+      "name": "Our Designs Slider",
+      "settings": {
+        "design_collection": "made-in-dubai"
+      }
+    },
+    "layout_ideas_bx3NEg": {
+      "type": "layout-ideas",
+      "blocks": {
+        "layout_item_hW7jUR": {
+          "type": "layout_item",
+          "settings": {
+            "image": "shopify://shop_images/layout1.png"
+          }
+        },
+        "layout_item_VBhgj6": {
+          "type": "layout_item",
+          "settings": {
+            "image": "shopify://shop_images/layout2.png"
+          }
+        },
+        "layout_item_Fxpazr": {
+          "type": "layout_item",
+          "settings": {
+            "image": "shopify://shop_images/layout3.png"
+          }
+        },
+        "layout_item_g7TWqG": {
+          "type": "layout_item",
+          "settings": {
+            "image": "shopify://shop_images/layout4.png"
+          }
+        },
+        "layout_item_G7xBUN": {
+          "type": "layout_item",
+          "settings": {
+            "image": "shopify://shop_images/layout5.png"
+          }
+        }
+      },
+      "block_order": [
+        "layout_item_hW7jUR",
+        "layout_item_VBhgj6",
+        "layout_item_Fxpazr",
+        "layout_item_g7TWqG",
+        "layout_item_G7xBUN"
+      ],
+      "name": "Layout Ideas",
+      "settings": {
+        "heading": "Layout Ideas"
+      }
+    },
+    "sofa_dimension_diagram_P9a3QD": {
+      "type": "sofa-dimension-diagram",
+      "blocks": {
+        "dimension_JUFPMh": {
+          "type": "dimension",
+          "settings": {
+            "label": "Seat Depth & Width"
+          }
+        },
+        "dimension_tET63N": {
+          "type": "dimension",
+          "settings": {
+            "label": "Floor-To-Seat Height"
+          }
+        },
+        "dimension_cmAAM6": {
+          "type": "dimension",
+          "settings": {
+            "label": "Floor-To-Base Height"
+          }
+        },
+        "dimension_A6DzVB": {
+          "type": "dimension",
+          "settings": {
+            "label": "Depth"
+          }
+        },
+        "dimension_4zJRU6": {
+          "type": "dimension",
+          "settings": {
+            "label": "Armrest Height & Thickness"
+          }
+        },
+        "dimension_Eadjaz": {
+          "type": "dimension",
+          "settings": {
+            "label": "Backrest Height & Thickness"
+          }
+        },
+        "dimension_CDaTC7": {
+          "type": "dimension",
+          "settings": {
+            "label": "Length"
+          }
+        }
+      },
+      "block_order": [
+        "dimension_JUFPMh",
+        "dimension_tET63N",
+        "dimension_cmAAM6",
+        "dimension_A6DzVB",
+        "dimension_4zJRU6",
+        "dimension_Eadjaz",
+        "dimension_CDaTC7"
+      ],
+      "name": "Custom Sofa Dimensions",
+      "settings": {
+        "heading_text": "Specify every detail from seat depth and armrest width, to backrest height so your sofa sits beautifully in your space:",
+        "heading_last": "No awkward gaps, no wasted space. Just perfect proportions.",
+        "diagram_image": "shopify://shop_images/drawing.png"
+      }
+    },
+    "step_quote_YrJPia": {
+      "type": "step-quote",
+      "name": "Step Quote Box",
+      "settings": {
+        "step_number": "03",
+        "heading": "Choose Your Filling & Comfort",
+        "subheading": "Design the shape & size that perfectly fits your home:"
+      }
+    },
+    "step_3_sofa_filling_QwYahH": {
+      "type": "step-3-sofa-filling",
+      "blocks": {
+        "sofa_filling_Lxar9R": {
+          "type": "sofa_filling",
+          "settings": {
+            "label": "Feather",
+            "value": "feather",
+            "item_1": "CLOUD: Sink into ultra-soft comfort with premium natural feathers, plush, relaxed, and indulgent.",
+            "item_2": "BALANCED: A cushioned feel with added support, combining soft feathers and supportive biscuit foam.",
+            "item_3": "SUPPORT: Firmer seating that keeps its shape beautifully, while still feeling comfortable."
+          }
+        },
+        "sofa_filling_iJJFap": {
+          "type": "sofa_filling",
+          "settings": {
+            "label": "Foam",
+            "value": "foam",
+            "item_1": "CLOUD: Our most cushioned foam option, designed for a soft, sink-in sit.",
+            "item_2": "BALANCED: Comfortably supportive with just the right amount of softness for everyday use.",
+            "item_3": "SUPPORT: Higher-density foam for extra resilience, structure, and long-lasting support."
+          }
+        }
+      },
+      "block_order": [
+        "sofa_filling_Lxar9R",
+        "sofa_filling_iJJFap"
+      ],
+      "name": "Step 3 - Sofa Filling Selection",
+      "settings": {
+        "main_heading": "Step 3: Select Sofa Filling",
+        "step_number": "03",
+        "step_heading": "Select Sofa Filling",
+        "show_heading": true,
+        "background_color": "#ededed",
+        "section_width": "page-width",
+        "customize_width": 1800
+      }
+    },
+    "step_quote_D6pTdG": {
+      "type": "step-quote",
+      "name": "Step Quote Box",
+      "settings": {
+        "step_number": "04",
+        "heading": "Choose Your Fabric & Colour",
+        "subheading": ""
       }
     },
     "customer_journey_5_xEHcez": {
@@ -878,46 +651,178 @@
       ],
       "name": "Pick Your Fabric & Colour",
       "settings": {
-        "heading_number": "STEP 05",
-        "heading": "Pick Your Fabric & Colour",
-        "subheading_1": "Explore over 30 fabric types, each with more than 30 colours.",
-        "subheading_2": "Our eight curated looks make it easy to find the perfect texture and tone for your home.",
-        "footer_title": "choose from three clear price categories",
-        "list_item_1": "Honeypot Classics",
-        "list_item_2": "Honeypot Signatures",
-        "list_item_3": "Honeypot Performance",
-        "footer_note": "All performance fabrics feature FibreGuard – stain-resistant, pet-friendly, and built to last!"
+        "heading_number": "",
+        "heading": "",
+        "subheading_1": "",
+        "subheading_2": "",
+        "footer_title": ""
       }
     },
-    "custom_journey_6_4LC8H7": {
-      "type": "custom_journey_6",
-      "name": "Sofa Step Section 6",
+    "step_4_filling_options_pGqKmA": {
+      "type": "step-4-filling-options",
+      "blocks": {
+        "filling_option_KwfHEX": {
+          "type": "filling_option",
+          "settings": {
+            "label": "Classics",
+            "value": "classics",
+            "description": "Our affordable, everyday-friendly range.This fabric offers the perfect balance of style and practicality, available in a wide palette of colours at a great price point."
+          }
+        },
+        "filling_option_gCzUae": {
+          "type": "filling_option",
+          "settings": {
+            "label": "Signature",
+            "value": "signature",
+            "description": "Our premium 100% natural linen range. It has a beautiful, breathable feel that’s perfect for our warm climate and comes in two natural shades: white and off-white."
+          }
+        },
+        "filling_option_aFrn9z": {
+          "type": "filling_option",
+          "settings": {
+            "label": "Performance",
+            "value": "performance",
+            "description": "Our top-tier range for busy households. Stain-resistant, super durable, and fully washable. These eco-friendly fabrics come in over 50 collections, each with multiple looks and colours."
+          }
+        }
+      },
+      "block_order": [
+        "filling_option_KwfHEX",
+        "filling_option_gCzUae",
+        "filling_option_aFrn9z"
+      ],
+      "name": "Step 4 - Filling Options",
       "settings": {
-        "model_url": "",
-        "step_title": "STEP 06",
-        "subtitle": "Creation & Delivery",
-        "cylindo_sku": "",
-        "cylindo_client": "",
-        "image": "shopify://shop_images/Mask_group_4__11zon.webp",
-        "image_alt": "Custom Sofa Creation & Delivery",
-        "description": "Once you've finalised your design and fabric choice, we handcraft your sofa to order and deliver it within 7–14 days.",
-        "button_label": "CUSTOMISE YOUR SOFA",
-        "button_link": "https://wa.me/971509046848?text=Ok%20fine%2C%20Honeypot.%20You%20win.%20Let%E2%80%99s%20build%20my%20dream%20sofa%21"
+        "main_heading": "Step 4: Select Filling Option",
+        "step_number": "04",
+        "step_heading": "Select Filling Option",
+        "show_heading": true,
+        "background_color": "#ededed",
+        "section_width": "full-width",
+        "customize_width": 1800
       }
+    },
+    "why_performance_Hb4fH6": {
+      "type": "why-performance",
+      "name": "Why Performance",
+      "settings": {
+        "heading": "Why Performance?",
+        "description": "Because great furniture should do more than look good. Our pieces are crafted for everyday living  durable materials, thoughtful construction, and finishes that stand up to time, use, and style. From comfort to craftsmanship, performance is built into every detail.",
+        "button_text": "SHOP SOFA NOW!",
+        "button_link": "",
+        "image": "shopify://shop_images/performancesofa.jpg",
+        "background_color": "#ffffff"
+      }
+    },
+    "price_summary_qMC7iA": {
+      "type": "price-summary",
+      "name": "Price Summary",
+      "settings": {
+        "section_width": "page-width",
+        "customize_width": 1800,
+        "background_color": "#ededed",
+        "price_label": "Price:",
+        "monthly_label": "Monthly Payment:",
+        "show_divider": true,
+        "show_payment_methods": true,
+        "payment_label": "Pay with",
+        "show_tamara": true,
+        "show_tabby": true,
+        "separator_text": " Pay with ",
+        "show_button": true,
+        "button_label": "BOOK A FREE VISIT"
+      }
+    },
+    "process_steps_8PApcJ": {
+      "type": "process-steps",
+      "blocks": {
+        "step_bqrxQx": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/size.png",
+            "label": "Size"
+          }
+        },
+        "step_69kriq": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/icon.png",
+            "label": "Quote"
+          }
+        },
+        "step_e6wWw7": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_0d97ea1f-a3ef-48e3-8519-ff72aab75c32.png",
+            "label": "Design"
+          }
+        },
+        "step_EHJyEN": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_5b163d5b-4a51-4083-b06c-a3bb9b1b547c.png",
+            "label": "Filling"
+          }
+        },
+        "step_ng7W7n": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/icon.png",
+            "label": "Fabric"
+          }
+        },
+        "step_LBkcqb": {
+          "type": "step",
+          "settings": {
+            "icon": "shopify://shop_images/Mask_group_2.png",
+            "label": "Delivery"
+          }
+        }
+      },
+      "block_order": [
+        "step_bqrxQx",
+        "step_69kriq",
+        "step_e6wWw7",
+        "step_EHJyEN",
+        "step_ng7W7n",
+        "step_LBkcqb"
+      ],
+      "name": "Process Steps",
+      "settings": {
+        "title": "",
+        "description": "Designing your sofa with Honeypot is simple:",
+        "footer_text": "From concept to comfort, we craft a sofa that's just as unique as you!",
+        "show_footer_text": true,
+        "button_label": "",
+        "button_link": "",
+        "section_padding": "padding-top-bottom",
+        "background_color": "#ffffff"
+      }
+    },
+    "join_the_honeypot_club_PBfAyq": {
+      "type": "join-the-honeypot-club",
+      "name": "Honeypot Signup Section",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "custom_liquid_T7RRLB",
-    "breadcrump_with_bg_bka7Qq",
-    "customer_main_header_XeBfft",
-    "customer_journey_6_YHXknH",
-    "customer_main_header_CTaA6M",
-    "customer_journey_2_i7LHUN",
-    "customer_journey_1_MPXCwG",
-    "customer_journey_3_6ew86H",
-    "grid_image_text_qChzVn",
+    "step_quote_bXmDbP",
+    "helper_box_X9y7Vi",
+    "step_1_sofa_type_QCQyMb",
+    "step_2_sofa_dimensions_QapbDR",
+    "step_quote_tqtwcF",
+    "our_designs_slider_NXWthd",
+    "layout_ideas_bx3NEg",
+    "sofa_dimension_diagram_P9a3QD",
+    "step_quote_YrJPia",
+    "step_3_sofa_filling_QwYahH",
+    "step_quote_D6pTdG",
     "customer_journey_5_xEHcez",
-    "custom_journey_6_4LC8H7"
+    "step_4_filling_options_pGqKmA",
+    "why_performance_Hb4fH6",
+    "price_summary_qMC7iA",
+    "process_steps_8PApcJ",
+    "join_the_honeypot_club_PBfAyq"
   ]
 }

@@ -142,6 +142,12 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+#get-estimate .customer-journey {
+justify-content: center;
+}
+
+
 #get-estimate .col {
   flex: 1;
   text-align: center;
@@ -159,6 +165,16 @@
   box-shadow: 0 0 0 2px #ccc;
   border-radius: 1rem;
 }
+
+
+#get-estimate .col-journey.active .border {
+  box-shadow: 0 0 0 2px #ccc;
+  border-radius: 1rem;
+  border: 2px solid   #CEAD8E !important;
+}
+
+
+
 #get-estimate button {
   background: #cdac8e;
   color: #fff;
@@ -374,7 +390,7 @@
   margin-right: 20px;
   border: solid 1px #e8e2d9;
   margin: 1px;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   line-height: 20px;
   font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;

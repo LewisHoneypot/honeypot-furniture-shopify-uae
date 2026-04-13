@@ -34,12 +34,16 @@
 
   .design-card {
     width: 100%;
-    max-width: 320px;
+    max-width: 350px;
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
     /* box-shadow: 0 4px 20px rgba(0,0,0,0.08); */
     transition: transform 0.3s;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
 
   /* .design-card:hover {
@@ -95,10 +99,10 @@
       {% assign products = collections[section.settings.design_collection].products %}
       {% for product in products %}
         <div class="swiper-slide">
-          <div class="design-card">
+          <a href="{{ product.url }}" class="design-card">
             <img src="{{ product.featured_image | img_url: '600x' }}" loading="lazy" alt="{{ product.title }}">
             <div class="design-title">{{ product.title }}</div>
-          </div>
+          </a>
         </div>
       {% endfor %}
 

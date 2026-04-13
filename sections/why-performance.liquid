@@ -46,10 +46,15 @@
 {% endschema %}
 
 <section 
-  class="why-performance-section" 
-  style="background-color: {{ section.settings.background_color }}; max-width: 1400px; margin: 50px auto 0 auto;"
+  class="" 
+  style=" max-width: 1400px; margin: 50px auto 0 auto;"
 >
-  <div class="">
+  <div 
+  
+    class="why-performance-section" 
+  style="background-color: {{ section.settings.background_color }}; max-width: 1400px; margin: 50px auto 0 auto;"
+
+  >
     <div class="why-performance-wrapper">
 
       <!-- Left Content -->
@@ -91,9 +96,20 @@
 
     </div>
   </div>
+
+  <div class="line_container"></div>
+
 </section>
 
+
 <style>
+
+  .line_container{
+    width: 90%;
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 50px auto;
+  }
 .why-performance-section {
   padding: 30px 0;
 }

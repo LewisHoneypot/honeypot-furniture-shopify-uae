@@ -22,7 +22,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'sofa_type' %}
               <div
-                class="col{% if forloop.first %} active{% endif %}"
+                class="col{% if forloop.first %} active{% endif %} col-journey{% if forloop.first %} active{% endif %}"
                 data-value="{{ block.settings.value }}"
                 data-index="{{ forloop.index }}"
               >

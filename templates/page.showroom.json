@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -26,7 +35,7 @@
         "text_h6ePXH": {
           "type": "text",
           "settings": {
-            "text": "<h3>OUR SHOWROOM IS ONE OF OUR FAVOURITE LONG-TERM PROJECTS AT HONEYPOT FURNITURE…<\/h3><p>It enables our customers to meet us in person, discuss their needs with our expert sales staff, and experience our products up close. Situated by the A1 in Colsterworth and connecting us to all the major routes in the UK, the Showroom is where you get to see – and sit – before you buy.<\/p><p><\/p><p>As our business has grown, we’ve expanded, we've also expanded our showroom space, with over 50 sofas on display as well as beds, mattresses and an assortment of furniture pieces and accessories. <\/p>",
+            "text": "<h3>OUR SHOWROOM IS ONE OF OUR FAVOURITE LONG-TERM PROJECTS AT HONEYPOT FURNITURE…</h3><p>It enables our customers to meet us in person, discuss their needs with our expert sales staff, and experience our products up close. Situated by the A1 in Colsterworth and connecting us to all the major routes in the UK, the Showroom is where you get to see – and sit – before you buy.</p><p></p><p>As our business has grown, we’ve expanded, we've also expanded our showroom space, with over 50 sofas on display as well as beds, mattresses and an assortment of furniture pieces and accessories. </p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -81,7 +90,7 @@
         "customize_width": 1800,
         "custom_rouded": false,
         "custom_block_rouded": 0,
-        "image": "shopify:\/\/shop_images\/desktop-banner-showroom.webp",
+        "image": "shopify://shop_images/desktop-banner-showroom.webp",
         "content_inside_image_mobile": false,
         "mobile_row_height": 42,
         "desktop_content_position": "middle-center",
@@ -122,7 +131,7 @@
         "text_n7FiKp": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Showroom Opening Hours<br\/><\/strong>Mon-Fri: 9am-5pm<br\/>Sat: 10am-3pm<br\/>Sun: Closed<\/p>",
+            "text": "<p><strong>Showroom Opening Hours<br/></strong>Mon-Fri: 9am-5pm<br/>Sat: 10am-3pm<br/>Sun: Closed</p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -160,7 +169,7 @@
         "text_qCmrhQ": {
           "type": "text",
           "settings": {
-            "text": "<p>Quote <strong>SHOWROOM5<\/strong> for 5% off when you visit us!<\/p>",
+            "text": "<p>Quote <strong>SHOWROOM5</strong> for 5% off when you visit us!</p>",
             "show_line_separator": false,
             "padding_top": 10,
             "padding_bottom": 10
@@ -226,7 +235,6 @@
         "show_author": false,
         "show_tags": false,
         "show_button": false,
-        "button_transparent": "default",
         "text_per_line": "none",
         "text_alignment": "left",
         "title_margin_top": 0,
